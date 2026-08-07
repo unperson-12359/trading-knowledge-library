@@ -1,0 +1,490 @@
+<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Indicators</title><style>
+body{font-family:Georgia,serif;max-width:860px;margin:0 auto;padding:2rem 1rem;color:#1a1a1a;line-height:1.55}
+a{color:#0b5fff;text-decoration:none}a:hover{text-decoration:underline}
+h1{border-bottom:3px solid #111;padding-bottom:.3rem}
+h2{margin-top:2rem}
+.badge{display:inline-block;font-size:.72rem;font-weight:bold;padding:.1rem .45rem;border-radius:.7rem;vertical-align:middle;text-transform:uppercase;font-family:system-ui}
+.reviewed{background:#d8f3dc;color:#1b4332}.provisional{background:#fff3cd;color:#7f6000}
+.trusted{background:#cfe2ff;color:#084298}.disputed{background:#f8d7da;color:#842029}
+.entry{border-bottom:1px solid #ddd;padding:1rem 0}
+.entry h3{margin:0 0 .3rem}
+.field{margin:.25rem 0}.label{font-weight:bold;font-family:system-ui;font-size:.8rem;text-transform:uppercase;color:#555}
+.formula{font-family:Consolas,monospace;background:#f4f4f4;padding:.4rem .6rem;border-radius:4px}
+.bar{background:#eee;border-radius:6px;overflow:hidden;height:1.2rem;margin:.3rem 0 1rem}
+.bar>div{background:#2d6a4f;height:100%}
+table{border-collapse:collapse;width:100%;font-family:system-ui;font-size:.9rem}
+td,th{border-bottom:1px solid #ddd;padding:.35rem .5rem;text-align:left}
+.meta{color:#666;font-size:.85rem;font-family:system-ui}
+ul.rel{margin:.2rem 0;padding-left:1.2rem}
+</style></head><body><p><a href='index.html'>&larr; Library index</a></p><h1>Indicators</h1><p class='meta'>79 concepts · 15 reviewed</p><div class="entry"><h3>Simple moving average <span class="badge reviewed">reviewed</span></h3>
+<div class="field">The unweighted arithmetic mean of the last n observations (usually closing prices), recomputed each period as the window slides forward; the most basic trend-following overlay.</div>
+<div class="field"><span class="label">Intuition:</span> A rolling average that smooths day-to-day noise so the underlying trend is easier to see. Every observation in the window counts equally.</div>
+<div class="field"><span class="label">Mechanics:</span> Sum the last n prices and divide by n; each new bar drops the oldest point and adds the newest, so the average moves through time. Used to define trend direction, support/resistance zones, and as a building block for other indicators such as Bollinger Bands and MACD.</div>
+<div class="field"><span class="label">Failure modes:</span> It is a lagging, trend-following measure: the longer the window the greater the lag, and in sideways, trendless markets price crosses it repeatedly, producing whipsaws.</div>
+<div class="field"><span class="label">Misconceptions:</span> A moving average does not predict future prices; it defines the current trend from past data. Nor is any single length (e.g. the 200-day) inherently significant beyond convention and self-reinforcing usage.</div>
+<div class="field"><span class="label">Example:</span> Closes of 11, 12, 13, 14, 15 give a 5-day SMA of 13; when the next close is 16, the SMA becomes (12+13+14+15+16)/5 = 14.</div>
+<div class="formula">SMA(n) = (P_1 + P_2 + ... + P_n) / n, where P_i are the last n prices (usually closes) and n is the window length.</div>
+<div class="field"><span class="label">Aliases:</span> SMA</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Exponential moving average</li><li>Weighted moving average</li><li>Moving average crossover</li><li>Bollinger Bands</li><li>Golden cross</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/moving-averages-simple-and-exponential">Moving Averages - Simple and Exponential | ChartSchool | StockCharts.com</a> — Simple Moving Average Formulas</div>
+</div>
+<div class="entry"><h3>Exponential moving average <span class="badge reviewed">reviewed</span></h3>
+<div class="field">A recursively computed moving average whose weights decay geometrically with age, giving recent observations more influence and reducing lag relative to a same-length simple moving average.</div>
+<div class="field"><span class="label">Intuition:</span> Like a simple average, but today&#x27;s price counts more than last week&#x27;s, so it reacts faster to new information.</div>
+<div class="field"><span class="label">Mechanics:</span> EMA_t = k*P_t + (1-k)*EMA_{t-1} with k = 2/(n+1), seeded with an SMA. Because each value depends on all previous values, a long history (hundreds of bars) is needed for the series to converge to accurate values.</div>
+<div class="field"><span class="label">Failure modes:</span> Still a lagging trend-follower: less lag than an SMA means more sensitivity to noise, so it whipsaws sooner and more often in trading ranges.</div>
+<div class="field"><span class="label">Misconceptions:</span> An EMA is not inherently better than an SMA — it trades lag for noise sensitivity. Also, early EMA values depend on the seed, so short data histories yield inaccurate values.</div>
+<div class="field"><span class="label">Example:</span> A 10-day EMA applies an 18.18% weight (2/11) to the latest close; a 20-day EMA applies 9.52% (2/21).</div>
+<div class="formula">EMA_t = k * P_t + (1 - k) * EMA_{t-1}; k = 2/(n+1); P_t = current price; n = period.</div>
+<div class="field"><span class="label">Aliases:</span> EMA</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Simple moving average</li><li>MACD line</li><li>Double exponential moving average</li><li>Smoothed moving average</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/moving-averages-simple-and-exponential">Moving Averages - Simple and Exponential | ChartSchool | StockCharts.com</a> — Exponential Moving Average Formulas</div>
+</div>
+<div class="entry"><h3>Weighted moving average <span class="badge provisional">provisional</span></h3>
+<div class="field">A moving average that weights observations linearly by recency — the newest price gets weight n, the next n-1, down to 1 — so recent data dominates while the window length stays fixed.</div>
+<div class="field"><span class="label">Intuition:</span> A compromise between the SMA and EMA: recent prices matter more, but the weights decline in a straight line rather than exponentially.</div>
+<div class="field"><span class="label">Mechanics:</span> Multiply each of the last n prices by its recency rank, sum the products, and divide by the sum of the weights n(n+1)/2. Recomputed fresh each bar; not recursive.</div>
+<div class="field"><span class="label">Failure modes:</span> Lags like all averages and whipsaws in ranges; the abrupt weight cutoff at the window edge makes it twitchy when a large old value exits the window.</div>
+<div class="field"><span class="label">Misconceptions:</span> A WMA is not an EMA: WMA weights decline linearly over a fixed window, whereas EMA weights decay exponentially over an effectively infinite history.</div>
+<div class="field"><span class="label">Example:</span> With closes 10, 11, 12, the 3-period WMA = (1*10 + 2*11 + 3*12)/6 = 68/6 = 11.33, versus an SMA of 11.</div>
+<div class="formula">WMA(n) = sum(i * P_i, i=1..n) / sum(i, i=1..n), with P_n the most recent price; the denominator equals n(n+1)/2.</div>
+<div class="field"><span class="label">Aliases:</span> WMA, Linearly weighted moving average, LWMA</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Simple moving average</li><li>Exponential moving average</li><li>Hull moving average</li><li>Triangular moving average</li></ul></div>
+<div class="meta">Note: Definition written from canonical literature (standard linear-weighting construction, used e.g. inside the Hull MA and Coppock curve); citation fetch blocked by provider quota limits (HTTP 402/429) during this pass — re-fetch a source (Investopedia/Fidelity WMA page) to promote to reviewed.</div>
+</div>
+<div class="entry"><h3>Smoothed moving average <span class="badge provisional">provisional</span></h3>
+<div class="field">A recursive moving average (also called modified or running moving average) equivalent to an EMA with smoothing constant 1/n, so it smooths far more heavily than a same-length standard EMA.</div>
+<div class="field"><span class="label">Intuition:</span> The gentlest common average: each new price is absorbed at only 1/n weight, so the line moves slowly and filters a great deal of noise.</div>
+<div class="field"><span class="label">Mechanics:</span> Seeded with an n-period SMA; thereafter SMMA_t = (SMMA_{t-1}*(n-1) + P_t)/n. This is the smoothing Welles Wilder used for RSI, ATR, and ADX, and the average used in Bill Williams&#x27; Alligator lines.</div>
+<div class="field"><span class="label">Failure modes:</span> Very heavy lag; early values depend strongly on the seed and need long histories to stabilize, so short data sets give unreliable readings.</div>
+<div class="field"><span class="label">Misconceptions:</span> SMMA(n) is not the same as EMA(n): its alpha is 1/n rather than 2/(n+1), so a 14-period SMMA responds roughly like a 27-period standard EMA.</div>
+<div class="field"><span class="label">Example:</span> If the prior 14-period SMMA is 50 and the new close is 52, SMMA = (50*13 + 52)/14 = 50.14.</div>
+<div class="formula">SMMA_t = (SMMA_{t-1} * (n - 1) + P_t) / n; first value = SMA of the first n prices.</div>
+<div class="field"><span class="label">Aliases:</span> SMMA, Modified moving average, Running moving average, MMA</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Exponential moving average</li><li>Simple moving average</li><li>Alligator indicator</li><li>Average true range</li></ul></div>
+<div class="meta">Note: Construction verified against Wilder-style smoothing and the Alligator SMMA documented on the fetched ChartSchool Alligator page; a dedicated primary page could not be fetched due to provider quota limits (HTTP 402/429) — re-fetch to promote to reviewed.</div>
+</div>
+<div class="entry"><h3>Hull moving average <span class="badge reviewed">reviewed</span></h3>
+<div class="field">Alan Hull&#x27;s moving average (2005), engineered to nearly eliminate lag while retaining smoothness by combining weighted moving averages of different lengths with a lag-canceling correction term.</div>
+<div class="field"><span class="label">Intuition:</span> An average designed to hug price closely without becoming jagged — fast like a short WMA, smooth like a long one.</div>
+<div class="field"><span class="label">Mechanics:</span> Compute WMA(n/2) and WMA(n) of price, form the raw series 2*WMA(n/2) - WMA(n) to cancel lag, then smooth the result with a WMA of length sqrt(n), rounding non-integer periods to whole numbers.</div>
+<div class="field"><span class="label">Failure modes:</span> Reduced lag means reduced noise filtering: it whipsaws in sideways markets and remains a trend-follower, not a predictor.</div>
+<div class="field"><span class="label">Misconceptions:</span> Hull himself advises against HMA crossover systems — crossovers exploit lag differences that the HMA was built to remove; use turns in the HMA&#x27;s direction instead.</div>
+<div class="field"><span class="label">Example:</span> For an 11-period HMA, use WMA(6) and WMA(11) for the raw line, then smooth with a 3-period WMA (sqrt(11) = 3.3 rounds to 3).</div>
+<div class="formula">HMA(n) = WMA( 2*WMA(P, n/2) - WMA(P, n), sqrt(n) ), where WMA(P, m) is the m-period weighted moving average of price.</div>
+<div class="field"><span class="label">Aliases:</span> HMA</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Weighted moving average</li><li>Zero-lag exponential moving average</li><li>Double exponential moving average</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/hull-moving-average-hma">Hull Moving Average (HMA) | ChartSchool | StockCharts.com</a> — Calculation</div>
+</div>
+<div class="entry"><h3>Triangular moving average <span class="badge provisional">provisional</span></h3>
+<div class="field">A double-smoothed simple moving average — an SMA of an SMA — whose effective weights form a triangle that peaks at the middle of the window, giving mid-window data the most influence.</div>
+<div class="field"><span class="label">Intuition:</span> Averaging an average: extra smooth at the cost of extra lag, with the middle of the window weighted most.</div>
+<div class="field"><span class="label">Mechanics:</span> TMA(n) = SMA( SMA(P, m1), m2 ) with m1 = ceil((n+1)/2) and m2 = floor((n+1)/2); equivalently a single convolution with triangular weights 1, 2, ..., m, ..., 2, 1.</div>
+<div class="field"><span class="label">Failure modes:</span> Twice the smoothing means roughly twice the lag of its component SMA, so it is poor for timing and usable mainly as a slow trend reference.</div>
+<div class="field"><span class="label">Misconceptions:</span> Despite the peaked weighting it is not centered in the signal sense — it uses past data only and still lags; a true centered moving average uses future data and cannot be computed in real time.</div>
+<div class="field"><span class="label">Example:</span> A 5-period TMA = SMA(SMA(P, 3), 3); if the last three 3-period SMA values are 10, 11, 12, the TMA is 11.</div>
+<div class="formula">TMA(n) = SMA( SMA(P, ceil((n+1)/2)), floor((n+1)/2) ).</div>
+<div class="field"><span class="label">Aliases:</span> TMA</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Simple moving average</li><li>Weighted moving average</li></ul></div>
+<div class="meta">Note: Definition written from the canonical double-SMA construction; citation fetch blocked by provider quota limits (HTTP 402/429) during this pass — re-fetch a source to promote to reviewed.</div>
+</div>
+<div class="entry"><h3>Variable index dynamic average <span class="badge provisional">provisional</span></h3>
+<div class="field">Tushar Chande&#x27;s Variable Index Dynamic Average: an exponential-style moving average whose smoothing constant is scaled each bar by a volatility index — the absolute Chande Momentum Oscillator — so it reacts faster in decisive, volatile markets and slower in quiet ones.</div>
+<div class="field"><span class="label">Intuition:</span> An adaptive average that automatically speeds up when the market is moving decisively and slows down when it is drifting.</div>
+<div class="field"><span class="label">Mechanics:</span> VIDYA_t = VIDYA_{t-1} + alpha * |CMO_t|/100 * (P_t - VIDYA_{t-1}), with alpha = 2/(n+1). When |CMO| nears 100 (one-way market) VIDYA behaves like a fast EMA; when CMO nears 0 it barely moves.</div>
+<div class="field"><span class="label">Failure modes:</span> In choppy markets CMO hovers near zero and VIDYA effectively freezes, missing genuine moves; results are sensitive to the CMO look-back choice.</div>
+<div class="field"><span class="label">Misconceptions:</span> VIDYA is not the same as KAMA: KAMA adapts via an efficiency ratio (net change over path length), while VIDYA adapts via a momentum-volatility index.</div>
+<div class="field"><span class="label">Example:</span> If alpha = 0.2 and the CMO reads +60, the effective smoothing constant is 0.12; at CMO = +10 it falls to 0.02.</div>
+<div class="formula">VIDYA_t = VIDYA_{t-1} + alpha * (|CMO_t|/100) * (P_t - VIDYA_{t-1}); alpha = 2/(n+1); CMO = 100*(Su - Sd)/(Su + Sd) with Su, Sd the sums of up and down close-to-close changes over the look-back.</div>
+<div class="field"><span class="label">Aliases:</span> VIDYA</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Exponential moving average</li><li>Kaufman adaptive moving average</li><li>Chande momentum oscillator</li></ul></div>
+<div class="meta">Note: Definition follows Chande &amp; Kroll, The New Technical Trader (1994); citation fetch blocked by provider quota limits (HTTP 402/429) during this pass — re-fetch a source to promote to reviewed.</div>
+</div>
+<div class="entry"><h3>Kaufman adaptive moving average <span class="badge reviewed">reviewed</span></h3>
+<div class="field">Perry Kaufman&#x27;s adaptive moving average, which varies its smoothing constant with an Efficiency Ratio measuring how directional (versus noisy) recent price movement has been, hugging price in trends and going flat in chop.</div>
+<div class="field"><span class="label">Intuition:</span> An average that asks how much of the recent movement is real trend versus random wiggle, and speeds up only when the answer is mostly trend.</div>
+<div class="field"><span class="label">Mechanics:</span> ER = |Close - Close_n| / sum|Close - prior Close| over n bars (0 to 1); SC = [ER*(fast - slow) + slow]^2 with fast = 2/(2+1) and slow = 2/(30+1); KAMA_t = KAMA_{t-1} + SC*(P_t - KAMA_{t-1}). Recommended settings KAMA(10,2,30); the first value is seeded with an SMA.</div>
+<div class="field"><span class="label">Failure modes:</span> A simple price/KAMA crossover system still whipsaws without price or time filters, and in persistently choppy markets ER stays low, leaving KAMA flat and uninformative.</div>
+<div class="field"><span class="label">Misconceptions:</span> Lengthening the ER look-back does not necessarily improve the indicator — the documented guidance is to adjust the fast (middle) parameter for smoothing, not the ER period.</div>
+<div class="field"><span class="label">Example:</span> If price rises for 10 straight bars, change equals volatility so ER = 1 and KAMA tracks a 2-period EMA; if price ends unchanged after 10 choppy bars, ER is near 0 and KAMA barely moves.</div>
+<div class="formula">ER = |P_t - P_{t-n}| / sum(|P_i - P_{i-1}|, i=t-n+1..t); SC = [ER*(2/3 - 2/31) + 2/31]^2; KAMA_t = KAMA_{t-1} + SC*(P_t - KAMA_{t-1}).</div>
+<div class="field"><span class="label">Aliases:</span> KAMA</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Exponential moving average</li><li>Variable index dynamic average</li><li>Efficiency ratio</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/kaufmans-adaptive-moving-average-kama">Kaufman&#x27;s Adaptive Moving Average (KAMA) | ChartSchool | StockCharts.com</a> — Calculation</div>
+</div>
+<div class="entry"><h3>Zero-lag exponential moving average <span class="badge provisional">provisional</span></h3>
+<div class="field">A lag-corrected EMA (John Ehlers and Ric Way, &#x27;Zero Lag (Well, Almost)&#x27;, TASC 2010): an EMA applied to de-lagged data — price plus the difference between the current price and the price (n-1)/2 bars ago — compensating for the EMA&#x27;s inherent lag.</div>
+<div class="field"><span class="label">Intuition:</span> Pre-correct the data for the lag you know the EMA will add, so the smoothed output lands close to the current price.</div>
+<div class="field"><span class="label">Mechanics:</span> Form the adjusted series Z_t = P_t + (P_t - P_{t-lag}) with lag = floor((n-1)/2), then take a standard n-period EMA of Z. The construction is related to Mulloy&#x27;s DEMA/TEMA lag-cancellation idea.</div>
+<div class="field"><span class="label">Failure modes:</span> The de-lagging term amplifies noise and overshoots on sharp reversals; in sideways markets it whipsaws more than a plain EMA.</div>
+<div class="field"><span class="label">Misconceptions:</span> Zero lag is aspirational: the correction removes the systematic EMA lag in smooth trends but cannot anticipate turning points, where lag remains.</div>
+<div class="field"><span class="label">Example:</span> For n = 10, lag = 4; if P_t = 105 and P_{t-4} = 100, the EMA is applied to 110 instead of 105, pulling the average up toward the trending price.</div>
+<div class="formula">lag = floor((n-1)/2); Z_t = P_t + (P_t - P_{t-lag}); ZLEMA_t = EMA_n(Z)_t with k = 2/(n+1).</div>
+<div class="field"><span class="label">Aliases:</span> ZLEMA, Zero-lag EMA</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Exponential moving average</li><li>Double exponential moving average</li><li>Hull moving average</li></ul></div>
+<div class="meta">Note: Definition follows the Ehlers/Way TASC (2010) construction; citation fetch blocked by provider quota limits (HTTP 402/429) during this pass — re-fetch a source to promote to reviewed.</div>
+</div>
+<div class="entry"><h3>Double exponential moving average <span class="badge reviewed">reviewed</span></h3>
+<div class="field">Patrick Mulloy&#x27;s Double Exponential Moving Average (Technical Analysis of Stocks &amp; Commodities, January 1994): a composite of a single and a double EMA that subtracts the extra lag of the double-smoothed series from the single-smoothed one to track price more closely.</div>
+<div class="field"><span class="label">Intuition:</span> Measure how much double-smoothing lags single-smoothing, and add that gap back to the fast EMA as a correction.</div>
+<div class="field"><span class="label">Mechanics:</span> EMA1 = EMA(price), EMA2 = EMA(EMA1); DEMA = 2*EMA1 - EMA2. The double-smoothed EMA2 serves only as a lag-correction term, not as the output. Default 20 periods; signals via price/line crosses or fast/slow DEMA crossovers, which occur earlier than equivalent EMA crossovers.</div>
+<div class="field"><span class="label">Failure modes:</span> Greater responsiveness means more noise and more false signals in choppy markets; long-term investors may be better served by a traditional, smoother average.</div>
+<div class="field"><span class="label">Misconceptions:</span> DEMA is not simply the EMA of an EMA — that double-smoothed series alone would lag more, not less; the output is 2*EMA1 - EMA2.</div>
+<div class="field"><span class="label">Example:</span> If EMA1 = 50 and EMA2 = 48, DEMA = 2*50 - 48 = 52, pulling the average above EMA1 toward current price.</div>
+<div class="formula">DEMA = 2*EMA_n(P) - EMA_n(EMA_n(P)).</div>
+<div class="field"><span class="label">Aliases:</span> DEMA</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Exponential moving average</li><li>Triple exponential moving average</li><li>Zero-lag exponential moving average</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/double-exponential-moving-average-dema">Double Exponential Moving Average (DEMA) | ChartSchool | StockCharts.com</a> — Calculation</div>
+</div>
+<div class="entry"><h3>Triple exponential moving average <span class="badge reviewed">reviewed</span></h3>
+<div class="field">Patrick Mulloy&#x27;s Triple Exponential Moving Average, which extends DEMA with a third smoothing layer, combining single, double, and triple EMAs to remove even more lag for short-term trading.</div>
+<div class="field"><span class="label">Intuition:</span> DEMA with one more correction term — closer still to price, noisier still.</div>
+<div class="field"><span class="label">Mechanics:</span> TEMA = 3*EMA1 - 3*EMA2 + EMA3, where EMA2 = EMA(EMA1) and EMA3 = EMA(EMA2). Used via price crosses or fast/slow TEMA crossovers, which fire earlier than equivalent DEMA or EMA crosses; default 20 periods.</div>
+<div class="field"><span class="label">Failure modes:</span> Minimal lag means minimal noise filtering — it whipsaws the most of the EMA family in sideways markets, and some lag is actually useful for longer-term analysis.</div>
+<div class="field"><span class="label">Misconceptions:</span> Faster is not universally better: TEMA&#x27;s responsiveness amplifies noise, so it is not a straight upgrade over EMA or DEMA. Also, TEMA is not TRIX — TRIX is the 1-period rate of change of a triple EMA.</div>
+<div class="field"><span class="label">Example:</span> If EMA1 = 50, EMA2 = 48, EMA3 = 46, TEMA = 3*50 - 3*48 + 46 = 52.</div>
+<div class="formula">TEMA = 3*EMA_n(P) - 3*EMA_n(EMA_n(P)) + EMA_n(EMA_n(EMA_n(P))).</div>
+<div class="field"><span class="label">Aliases:</span> TEMA</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Double exponential moving average</li><li>Exponential moving average</li><li>TRIX</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/triple-exponential-moving-average-tema">Triple Exponential Moving Average (TEMA) | ChartSchool | StockCharts.com</a> — Calculation</div>
+</div>
+<div class="entry"><h3>Moving average crossover <span class="badge reviewed">reviewed</span></h3>
+<div class="field">A signal framework in which a shorter-period moving average crossing a longer-period one (or price crossing a moving average) is read as a shift in trend direction; John Murphy calls the two-average version the double crossover method. It is an analytical convention, not a proven predictive law.</div>
+<div class="field"><span class="label">Intuition:</span> When the fast average overtakes the slow one, recent prices have moved enough to bend the trend measure — a simple, mechanical trend-change rule.</div>
+<div class="field"><span class="label">Mechanics:</span> Bullish signal: the short MA crosses above the long MA; bearish: short crosses below. Common pairs are 5/35 (short-term) and 50/200 (long-term); a triple-crossover variant uses three averages. MACD(12,26,1) quantifies EMA crossovers as the fast-minus-slow difference.</div>
+<div class="field"><span class="label">Failure modes:</span> Both averages lag, so signals are late by construction and whipsaw repeatedly in trendless markets; the documented Home Depot example shows three whipsaws before one successful 20%+ signal.</div>
+<div class="field"><span class="label">Misconceptions:</span> A crossover describes what has already happened; it does not predict continuation. Unfiltered crossover systems are unreliable — price or time filters are typically needed.</div>
+<div class="field"><span class="label">Example:</span> A 10-day EMA crossing above a 50-day EMA is a bullish crossover; with MACD(10,50,1), the MACD line crossing zero marks the same event.</div>
+<div class="field"><span class="label">Aliases:</span> Double crossover method, MA crossover</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Golden cross</li><li>Death cross</li><li>Simple moving average</li><li>Moving average convergence divergence</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/moving-averages-simple-and-exponential">Moving Averages - Simple and Exponential | ChartSchool | StockCharts.com</a> — Double Moving Average Crossovers</div>
+</div>
+<div class="entry"><h3>Golden cross <span class="badge reviewed">reviewed</span></h3>
+<div class="field">A bullish moving-average crossover — classically the 50-day SMA crossing above the 200-day SMA — interpreted by technicians as confirmation of a long-term uptrend. It is a widely watched analytical convention, not a proven predictive law.</div>
+<div class="field"><span class="label">Intuition:</span> The market&#x27;s medium-term average climbing above its long-term average suggests that upward momentum has been sustained long enough to matter.</div>
+<div class="field"><span class="label">Mechanics:</span> Identified on daily charts when the shorter (typically 50-day) moving average crosses up through the longer (typically 200-day) one; because both averages lag, the cross usually prints well after the actual low.</div>
+<div class="field"><span class="label">Failure modes:</span> Late by construction and whipsaw-prone in range-bound markets; by the time a golden cross prints, much of the advance has often already occurred.</div>
+<div class="field"><span class="label">Misconceptions:</span> It is not a guaranteed buy signal or a law of markets — it records that an advance has been large and persistent; any forward-looking edge is an empirical question, not a property of the construction.</div>
+<div class="field"><span class="label">Example:</span> MACD(50,200,1) turning positive marks the same 50/200 EMA golden cross in oscillator form.</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Death cross</li><li>Moving average crossover</li><li>Simple moving average</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/moving-averages-simple-and-exponential">Moving Averages - Simple and Exponential | ChartSchool | StockCharts.com</a> — Double Moving Average Crossovers</div>
+</div>
+<div class="entry"><h3>Death cross <span class="badge reviewed">reviewed</span></h3>
+<div class="field">A bearish moving-average crossover — classically the 50-day SMA crossing below the 200-day SMA — read as confirmation of a long-term downtrend; the mirror image of the golden cross and equally a convention rather than a proven law.</div>
+<div class="field"><span class="label">Intuition:</span> The medium-term average sinking below the long-term average suggests the decline has been deep and persistent enough to bend long-term trend measures.</div>
+<div class="field"><span class="label">Mechanics:</span> The shorter (typically 50-day) moving average crosses down through the longer (typically 200-day) one; like the golden cross, it lags and typically prints well after the actual top.</div>
+<div class="field"><span class="label">Failure modes:</span> Late and whipsaw-prone in sideways markets; many historical death crosses have occurred near market lows rather than before extended declines.</div>
+<div class="field"><span class="label">Misconceptions:</span> A death cross does not forecast a crash — it records that a decline has already been large enough to pull the 50-day average below the 200-day.</div>
+<div class="field"><span class="label">Example:</span> MACD(50,200,1) turning negative marks the same 50/200 EMA death cross in oscillator form.</div>
+<div class="field"><span class="label">Aliases:</span> Dead cross</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Golden cross</li><li>Moving average crossover</li><li>Simple moving average</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/moving-averages-simple-and-exponential">Moving Averages - Simple and Exponential | ChartSchool | StockCharts.com</a> — Double Moving Average Crossovers</div>
+</div>
+<div class="entry"><h3>Moving average convergence divergence <span class="badge reviewed">reviewed</span></h3>
+<div class="field">Gerald Appel&#x27;s Moving Average Convergence/Divergence oscillator (late 1970s): a momentum indicator built from the difference between a fast and a slow EMA (default 12 and 26) with a 9-period EMA signal line, combining trend-following and momentum information in one unbounded oscillator.</div>
+<div class="field"><span class="label">Intuition:</span> When the fast average pulls away from the slow one, momentum is accelerating; when they converge, the move is running out of steam.</div>
+<div class="field"><span class="label">Mechanics:</span> MACD line = EMA(12) - EMA(26) of closes; signal line = 9-period EMA of the MACD line; histogram = line minus signal. Signals include signal-line crossovers, zero-line (centerline) crossovers — equivalent to the underlying EMA crossover — and divergences with price.</div>
+<div class="field"><span class="label">Failure modes:</span> Signal-line crossovers whipsaw in flat or volatile markets, and crossovers at extremes often mark momentum exhaustion rather than reversal; being unbounded, MACD cannot flag overbought or oversold conditions.</div>
+<div class="field"><span class="label">Misconceptions:</span> MACD is not a bounded oscillator, so high readings are not inherently overbought; nor does a signal-line cross guarantee a trend change.</div>
+<div class="field"><span class="label">Example:</span> If the 12-day EMA is 102 and the 26-day EMA is 100, MACD = +2; with a 9-day signal line at 1.5, the histogram reads +0.5.</div>
+<div class="formula">MACD = EMA_12(Close) - EMA_26(Close); Signal = EMA_9(MACD); Histogram = MACD - Signal.</div>
+<div class="field"><span class="label">Aliases:</span> MACD</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>MACD line</li><li>MACD signal line</li><li>MACD histogram</li><li>Exponential moving average</li><li>Percentage price oscillator</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/macd-moving-average-convergence-divergence-oscillator">MACD (Moving Average Convergence/Divergence Oscillator) | ChartSchool | StockCharts.com</a> — How Do You Calculate the MACD?</div>
+</div>
+<div class="entry"><h3>MACD line <span class="badge reviewed">reviewed</span></h3>
+<div class="field">The core series of the MACD: the fast (default 12-period) EMA minus the slow (default 26-period) EMA of closing prices, oscillating around zero as the two averages converge and diverge.</div>
+<div class="field"><span class="label">Intuition:</span> The spread between a fast and a slow average: positive and widening means upside momentum is building.</div>
+<div class="field"><span class="label">Mechanics:</span> Computed each bar as EMA_12(C) - EMA_26(C); it crosses zero exactly when the two EMAs cross, and its distance from zero measures how far the averages have diverged.</div>
+<div class="field"><span class="label">Failure modes:</span> As an EMA spread it lags and whipsaws in trendless markets; absolute values are price-scale dependent and not comparable across securities (use the PPO for that).</div>
+<div class="field"><span class="label">Misconceptions:</span> A falling MACD line is not the same as falling prices — the EMA spread can shrink while prices are still rising, reflecting decelerating momentum only.</div>
+<div class="field"><span class="label">Example:</span> A 12-day EMA of 50 and a 26-day EMA of 48 give a MACD line of +2: the fast average sits 2 points above the slow one.</div>
+<div class="formula">MACD line = EMA_12(Close) - EMA_26(Close).</div>
+<div class="field"><span class="label">Aliases:</span> Fast MACD line</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Moving average convergence divergence</li><li>MACD signal line</li><li>MACD histogram</li><li>Moving average crossover</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/macd-moving-average-convergence-divergence-oscillator">MACD (Moving Average Convergence/Divergence Oscillator) | ChartSchool | StockCharts.com</a> — How Do You Calculate the MACD?</div>
+</div>
+<div class="entry"><h3>MACD signal line <span class="badge reviewed">reviewed</span></h3>
+<div class="field">A 9-period EMA of the MACD line, plotted alongside it; crossovers of the MACD line through this signal line are the most common MACD trading signal.</div>
+<div class="field"><span class="label">Intuition:</span> A moving average of the MACD itself, smoothing its turns so crossovers are easier to read.</div>
+<div class="field"><span class="label">Mechanics:</span> Signal_t = EMA_9(MACD line). A bullish crossover occurs when the MACD line rises above the signal line, bearish when it falls below; because it trails the MACD line, it adds a further layer of lag.</div>
+<div class="field"><span class="label">Failure modes:</span> Adds lag to an already lagging construction, and crossovers occurring at positive or negative extremes often mark exhaustion and reverse quickly.</div>
+<div class="field"><span class="label">Misconceptions:</span> The 9-period setting is a convention, not an optimum, and the signal line has no meaning independently of the MACD line it smooths.</div>
+<div class="field"><span class="label">Example:</span> If the MACD line is 2.0 and its 9-period EMA is 1.5, the MACD sits above its signal line — a post-crossover bullish state.</div>
+<div class="formula">Signal = EMA_9(MACD), where MACD = EMA_12(Close) - EMA_26(Close).</div>
+<div class="field"><span class="label">Aliases:</span> Signal line</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>MACD line</li><li>MACD histogram</li><li>Moving average convergence divergence</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/macd-moving-average-convergence-divergence-oscillator">MACD (Moving Average Convergence/Divergence Oscillator) | ChartSchool | StockCharts.com</a> — Signal Line Crossovers</div>
+</div>
+<div class="entry"><h3>MACD histogram <span class="badge reviewed">reviewed</span></h3>
+<div class="field">The bar plot of the MACD line minus its signal line, visualizing the distance between them; it expands and contracts ahead of crossovers and is used to spot momentum shifts early.</div>
+<div class="field"><span class="label">Intuition:</span> Instead of waiting for the two MACD lines to cross, watch the gap between them shrink or grow.</div>
+<div class="field"><span class="label">Mechanics:</span> Histogram = MACD - Signal; positive when MACD is above its signal line, negative below. It crosses zero exactly at a signal-line crossover, and its peaks and troughs precede the crossovers themselves.</div>
+<div class="field"><span class="label">Failure modes:</span> More sensitive than the lines themselves, so it flips sign more often in choppy markets; a shrinking histogram warns of a crossover but says nothing about whether that crossover will matter.</div>
+<div class="field"><span class="label">Misconceptions:</span> A declining histogram does not mean prices are falling — only that the MACD&#x27;s lead over its signal line is narrowing.</div>
+<div class="field"><span class="label">Example:</span> MACD = 2.0 with signal = 1.5 gives a histogram of +0.5; if the next bar&#x27;s MACD is 1.8 and signal 1.6, the histogram shrinks to +0.2, warning that upside momentum is fading.</div>
+<div class="formula">Histogram = MACD line - Signal line = (EMA_12(C) - EMA_26(C)) - EMA_9(MACD).</div>
+<div class="field"><span class="label">Aliases:</span> MACD-Histogram</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>MACD line</li><li>MACD signal line</li><li>Moving average convergence divergence</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/macd-moving-average-convergence-divergence-oscillator">MACD (Moving Average Convergence/Divergence Oscillator) | ChartSchool | StockCharts.com</a> — How Do You Calculate the MACD?</div>
+</div>
+<div class="entry"><h3>Relative strength index <span class="badge reviewed">reviewed</span></h3>
+<div class="field">J. Welles Wilder&#x27;s momentum oscillator (New Concepts in Technical Trading Systems, 1978) comparing smoothed average gains to smoothed average losses over a look-back period (default 14), bounded between 0 and 100.</div>
+<div class="field"><span class="label">Intuition:</span> A speedometer for price: it shows how persistently and strongly the market has been closing up versus down.</div>
+<div class="field"><span class="label">Mechanics:</span> RS = Average Gain / Average Loss, with first values simple 14-period means and subsequent values Wilder-smoothed ((prior*13 + current)/14); RSI = 100 - 100/(1+RS). Wilder treated readings above 70 as overbought and below 30 as oversold; also used for divergences, failure swings, and centerline analysis.</div>
+<div class="field"><span class="label">Failure modes:</span> In strong trends RSI can stay above 70 or below 30 for extended periods, so fading overbought/oversold readings fails; bearish divergences can recur for months before any reversal.</div>
+<div class="field"><span class="label">Misconceptions:</span> Overbought does not mean the price must fall — it can signal strength. RSI is also not a comparison between two securities; that is relative strength (price relative).</div>
+<div class="field"><span class="label">Example:</span> If the 14-day average gain is 1.0 and the average loss is 0.5, RS = 2 and RSI = 100 - 100/3 = 66.7.</div>
+<div class="formula">RSI = 100 - 100/(1 + RS); RS = AvgGain / AvgLoss; AvgGain_t = (AvgGain_{t-1}*13 + Gain_t)/14 (likewise losses, expressed as positive values).</div>
+<div class="field"><span class="label">Aliases:</span> RSI</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Stochastic RSI</li><li>Money flow index</li><li>Connors RSI</li><li>Stochastic oscillator</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/relative-strength-index-rsi">Relative Strength Index (RSI) | ChartSchool | StockCharts.com</a> — RSI Calculation</div>
+</div>
+<div class="entry"><h3>Stochastic oscillator <span class="badge reviewed">reviewed</span></h3>
+<div class="field">George Lane&#x27;s momentum indicator (late 1950s) measuring where the close sits within the high-low range of the look-back period, bounded 0-100 and published in Fast, Slow, and Full versions. Lane&#x27;s premise: momentum changes direction before price.</div>
+<div class="field"><span class="label">Intuition:</span> In an uptrend prices tend to close near the top of their recent range; the stochastic quantifies that tendency.</div>
+<div class="field"><span class="label">Mechanics:</span> %K = (C - LL)/(HH - LL)*100 over (default) 14 periods; %D = 3-period SMA of %K acts as the signal line; the Slow version smooths %K once more. Readings above 80 are overbought, below 20 oversold; signals come from %K/%D crosses, divergences, and Lane&#x27;s bull/bear set-ups.</div>
+<div class="field"><span class="label">Failure modes:</span> Can remain overbought or oversold through an entire strong trend, so counter-trend signals fail repeatedly; fast versions whipsaw, and signals work best in trading ranges or zigzag trends.</div>
+<div class="field"><span class="label">Misconceptions:</span> The stochastic does not follow price or volume — per Lane it follows the speed (momentum) of price; and an overbought reading alone is not a sell signal.</div>
+<div class="field"><span class="label">Example:</span> With a 14-day high of 110, low of 100, and close of 108, %K = (108-100)/(110-100)*100 = 80.</div>
+<div class="formula">%K = 100 * (C - LL_n)/(HH_n - LL_n); %D = SMA_3(%K); HH_n and LL_n are the highest high and lowest low over n periods.</div>
+<div class="field"><span class="label">Aliases:</span> Stochastics, %K and %D</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Williams percent R</li><li>Stochastic RSI</li><li>Relative strength index</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/stochastic-oscillator-fast-slow-and-full">Stochastic Oscillator (Fast, Slow, and Full) | ChartSchool | StockCharts.com</a> — How Do You Calculate the Stochastic Oscillator?</div>
+</div>
+<div class="entry"><h3>Stochastic RSI <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Williams percent R <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Rate of change <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Momentum indicator <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Commodity channel index <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Average directional index <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Positive directional indicator <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Negative directional indicator <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Average true range <span class="badge provisional">provisional</span></h3>
+<div class="field">A smoothed measure of true range used as a volatility indicator.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Bollinger Bands <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Bollinger bandwidth <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Percent B <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Keltner Channel <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Donchian Channel <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Standard deviation channel <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Moving average envelope <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Parabolic SAR <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Supertrend <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Ichimoku Kinko Hyo <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Tenkan-sen <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Kijun-sen <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Senkou Span A <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Senkou Span B <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Chikou Span <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>On-balance volume <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Accumulation distribution line <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Chaikin money flow <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Money flow index <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Ease of movement <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Force index <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Negative volume index <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Positive volume index <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Volume-weighted average price <span class="badge provisional">provisional</span></h3>
+<div class="field">Cumulative traded value divided by cumulative traded volume over a defined interval.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Anchored VWAP <span class="badge provisional">provisional</span></h3>
+<div class="field">VWAP calculated from a user-selected anchor event or time.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Moving VWAP <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Volume-weighted moving average <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Relative volume <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Volume oscillator <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Chaikin oscillator <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Aroon up <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Aroon down <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Aroon oscillator <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Chande momentum oscillator <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Ultimate oscillator <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>TRIX <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Detrended price oscillator <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Know Sure Thing oscillator <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Coppock curve <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Fisher transform <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Zigzag indicator <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Fractal indicator <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Alligator indicator <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Awesome oscillator <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Gator oscillator <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Elder Ray index <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Mass index <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Vortex indicator <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Relative vigor index <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Connors RSI <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within indicators that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div><p class='meta'>Generated 2026-08-07 by scripts/build_site.py · <a href='https://github.com/unperson-12359/trading-knowledge-library'>GitHub repo</a></p></body></html>

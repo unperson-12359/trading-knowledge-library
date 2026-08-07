@@ -1,0 +1,363 @@
+<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Trading systems</title><style>
+body{font-family:Georgia,serif;max-width:860px;margin:0 auto;padding:2rem 1rem;color:#1a1a1a;line-height:1.55}
+a{color:#0b5fff;text-decoration:none}a:hover{text-decoration:underline}
+h1{border-bottom:3px solid #111;padding-bottom:.3rem}
+h2{margin-top:2rem}
+.badge{display:inline-block;font-size:.72rem;font-weight:bold;padding:.1rem .45rem;border-radius:.7rem;vertical-align:middle;text-transform:uppercase;font-family:system-ui}
+.reviewed{background:#d8f3dc;color:#1b4332}.provisional{background:#fff3cd;color:#7f6000}
+.trusted{background:#cfe2ff;color:#084298}.disputed{background:#f8d7da;color:#842029}
+.entry{border-bottom:1px solid #ddd;padding:1rem 0}
+.entry h3{margin:0 0 .3rem}
+.field{margin:.25rem 0}.label{font-weight:bold;font-family:system-ui;font-size:.8rem;text-transform:uppercase;color:#555}
+.formula{font-family:Consolas,monospace;background:#f4f4f4;padding:.4rem .6rem;border-radius:4px}
+.bar{background:#eee;border-radius:6px;overflow:hidden;height:1.2rem;margin:.3rem 0 1rem}
+.bar>div{background:#2d6a4f;height:100%}
+table{border-collapse:collapse;width:100%;font-family:system-ui;font-size:.9rem}
+td,th{border-bottom:1px solid #ddd;padding:.35rem .5rem;text-align:left}
+.meta{color:#666;font-size:.85rem;font-family:system-ui}
+ul.rel{margin:.2rem 0;padding-left:1.2rem}
+</style></head><body><p><a href='index.html'>&larr; Library index</a></p><h1>Trading systems</h1><p class='meta'>56 concepts · 14 reviewed</p><div class="entry"><h3>Scalping <span class="badge reviewed">reviewed</span></h3>
+<div class="field">An ultra-short-horizon trading style in which a trader opens and closes positions within seconds to minutes to capture very small price movements, often exploiting the bid-ask spread or momentary micro-imbalances in highly liquid instruments. It is the shortest-horizon form of day trading and relies on high trade frequency, tight risk limits, and low per-trade costs.</div>
+<div class="field"><span class="label">Intuition:</span> Instead of trying to catch a big move, the scalper skims many tiny moves, accepting a few ticks of profit per trade and repeating this dozens or hundreds of times a day.</div>
+<div class="field"><span class="label">Mechanics:</span> Positions are established and liquidated within minutes or seconds, using direct-access execution, level-2/order-book data, and strict stop discipline. Profit per trade is typically a fraction of a percent, so commissions, fees, and slippage must be minimized; small losses are cut immediately because a single large loss can erase dozens of wins.</div>
+<div class="field"><span class="label">Failure modes:</span> Transaction costs and slippage can exceed the small gross edge; during volatility spikes or thin liquidity, stops are jumped and small losses become large ones.</div>
+<div class="field"><span class="label">Misconceptions:</span> That scalping is easy money because each trade is small and quick; in practice most retail scalpers lose after costs, and the SEC warns that day traders typically suffer severe financial losses. Scalping is also confused with the illegal practice of &#x27;scalping&#x27; by advisers who tout a stock after secretly buying it.</div>
+<div class="field"><span class="label">Example:</span> A trader buys 2,000 shares of a liquid large-cap stock at $50.01 and sells them seconds later at $50.04, capturing about $60 gross before fees, repeating the process many times per session.</div>
+<div class="field"><span class="label">Aliases:</span> spread trading (historical)</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Day trading</li><li>Market making</li><li>Latency arbitrage</li><li>Bid-ask spread</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Day_trading">Wikipedia: Day trading (section: Scalping)</a> — Techniques - Scalping</div>
+<div class="field"><span class="label">Source:</span> <a href="https://www.sec.gov/investor/pubs/daytips.htm">SEC, Day Trading: Your Dollars at Risk</a> — Investor Publications</div>
+<div class="meta">Note: Regulator and exchange sources do not formally define scalping as a style; definition verified against Wikipedia&#x27;s Day trading article (scalping section) and the SEC day-trading bulletin, which describes holding periods of seconds to minutes.</div>
+</div>
+<div class="entry"><h3>Day trading <span class="badge reviewed">reviewed</span></h3>
+<div class="field">A speculative trading approach in which a trader buys and sells (or sells and buys) the same financial instrument within the same trading day, closing all positions before the session ends to avoid overnight gap risk. Under FINRA rules, a &#x27;day trade&#x27; is the purchase and sale of the same security on the same day in a margin account, and customers executing four or more day trades in five business days are designated pattern day traders subject to special margin requirements.</div>
+<div class="field"><span class="label">Intuition:</span> Day traders try to profit from intraday price swings, riding a stock&#x27;s momentum for seconds to hours, and never hold positions overnight.</div>
+<div class="field"><span class="label">Mechanics:</span> Positions are opened and closed during a single session, often on margin and with direct-access platforms; true day traders hold nothing overnight. In U.S. margin accounts, pattern day traders must maintain at least $25,000 in equity and are subject to day-trading buying-power limits.</div>
+<div class="field"><span class="label">Failure modes:</span> High leverage, commissions, and spread costs cause most retail day traders to lose money; academic studies of day traders find that the large majority are unprofitable after fees.</div>
+<div class="field"><span class="label">Misconceptions:</span> That day trading is a form of investing or a reliable income source; the SEC states that day traders do not &#x27;invest&#x27;, typically suffer severe losses in their first months, and should never risk money needed for living expenses or retirement.</div>
+<div class="field"><span class="label">Example:</span> A trader buys 500 shares of XYZ at $41.20 at 10:00 a.m. after a breakout, sells them at $41.75 by 11:30 a.m., and holds no position into the close.</div>
+<div class="field"><span class="label">Aliases:</span> intraday trading</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Scalping</li><li>Swing trading</li><li>Momentum trading</li><li>News trading</li><li>Pattern day trader rule</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://www.sec.gov/investor/pubs/daytips.htm">SEC, Day Trading: Your Dollars at Risk</a> — Investor Publications</div>
+<div class="field"><span class="label">Source:</span> <a href="https://www.investor.gov/introduction-investing/investing-basics/glossary">Investor.gov Glossary (Day Trade; Day Trading entries)</a> — Glossary D</div>
+<div class="meta">Note: Definition combines the SEC investor publication with the Investor.gov glossary, which restates the FINRA day-trade definition.</div>
+</div>
+<div class="entry"><h3>Swing trading <span class="badge reviewed">reviewed</span></h3>
+<div class="field">A speculative trading style in which positions are held for one or more days up to several weeks to profit from short- to medium-term price &#x27;swings&#x27;. Holding periods sit between day trading (closed intraday) and position trading or buy-and-hold (months to years), and entries/exits are typically driven by technical analysis, sometimes combined with fundamentals.</div>
+<div class="field"><span class="label">Intuition:</span> The swing trader tries to catch the middle chunk of a move that plays out over days, without needing to buy the exact bottom or sell the exact top.</div>
+<div class="field"><span class="label">Mechanics:</span> Traders identify setups (trend continuation, pullbacks to support, breakouts) on daily or intraday charts, enter with predefined stops and targets, and hold overnight, accepting gap risk in exchange for capturing multi-day moves. Rule-based swing systems encode entry/exit as objective technical rules.</div>
+<div class="field"><span class="label">Failure modes:</span> Overnight and weekend gaps can blow through stops; in choppy, trendless markets swing signals whipsaw and repeated small losses accumulate.</div>
+<div class="field"><span class="label">Misconceptions:</span> That swing trading reliably times tops and bottoms, or that widely followed rule-based setups keep their edge; competition and regime change erode simple swing rules.</div>
+<div class="field"><span class="label">Example:</span> A trader buys a stock pulling back to its rising 20-day average at $88, places a stop at $85 and a target at $96, and exits eight trading days later.</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Day trading</li><li>Position trading</li><li>Trend following</li><li>Momentum trading</li><li>Technical analysis</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Swing_trading">Wikipedia: Swing trading</a> — Lead and Swing trading methods</div>
+<div class="meta">Note: No regulator defines this retail style; verified against Wikipedia (which in turn cites Investopedia and Wiley sources).</div>
+</div>
+<div class="entry"><h3>Position trading <span class="badge reviewed">reviewed</span></h3>
+<div class="field">A trading style in which positions are held for weeks to months (or longer) to capture major price trends, with decisions driven mainly by macro trends, fundamentals, or long-horizon technical analysis. The term is sometimes used interchangeably with buy and hold, though position traders may actively exit when the underlying thesis or long-term trend ends.</div>
+<div class="field"><span class="label">Intuition:</span> Position traders ignore daily noise and try to own an asset for the big part of a long move, reviewing the thesis periodically rather than watching the tape.</div>
+<div class="field"><span class="label">Mechanics:</span> Entries are based on long-term trend signals (e.g., weekly charts, macro or fundamental theses); stops are wide and positions are reviewed weekly or monthly rather than intraday. Transaction costs are low because turnover is low, but capital is exposed to drawdowns over long holding periods.</div>
+<div class="field"><span class="label">Failure modes:</span> Wide stops mean large per-trade losses when a long-term thesis is wrong; secular reversals or value traps can hold capital in losing positions for years.</div>
+<div class="field"><span class="label">Misconceptions:</span> That position trading is identical to passive buy-and-hold indexing; position traders actively select securities and exit when trends or theses fail, whereas buy and hold implies no market timing at all.</div>
+<div class="field"><span class="label">Example:</span> A trader goes long an equity index ETF after a weekly golden cross, holds for nine months through interim corrections, and exits when the weekly trend breaks.</div>
+<div class="field"><span class="label">Aliases:</span> long-term trading</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Buy and hold</li><li>Swing trading</li><li>Trend following</li><li>Global macro trading</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Buy_and_hold">Wikipedia: Buy and hold</a> — Lead (position trading as synonym)</div>
+<div class="meta">Note: Terminology is loose: Wikipedia treats &#x27;position trading&#x27; as a synonym of buy and hold, while practitioner usage (weeks-to-months trend holding) distinguishes it; definition records both usages. No primary source defines the term.</div>
+</div>
+<div class="entry"><h3>Trend following <span class="badge reviewed">reviewed</span></h3>
+<div class="field">A systematic trading approach that takes long positions in instruments whose own recent returns have been positive and short positions in those whose recent returns have been negative, on the hypothesis that price trends persist. It is an empirical strategy family, not a proven predictive law; academic work documents that a security&#x27;s own past returns positively predict its near-term future returns across many futures markets, with partial reversal at longer horizons.</div>
+<div class="field"><span class="label">Intuition:</span> Rather than predicting turning points, trend followers assume a market that has been going up will keep going up for a while, and they ride it until the trend reverses.</div>
+<div class="field"><span class="label">Mechanics:</span> Signals are computed from past returns or price series (e.g., sign of the trailing 12-month excess return, moving-average filters, channel breakouts); positions are often scaled by inverse volatility and diversified across equity index, bond, currency, and commodity futures. Positions are exited or flipped when the trend signal reverses.</div>
+<div class="field"><span class="label">Failure modes:</span> In range-bound or mean-reverting markets trend signals whipsaw, producing strings of small losses; trend strategies also suffer sharp drawdowns at abrupt trend reversals (e.g., V-shaped recoveries).</div>
+<div class="field"><span class="label">Misconceptions:</span> That trend following predicts where prices will go; it is purely reactive to what prices have done and its documented edge is a statistical regularity that can weaken as it is crowded, not a guarantee.</div>
+<div class="field"><span class="label">Example:</span> A CTA goes long S&amp;P 500 futures because the 12-month return is positive, sizes the position to 10% annualized volatility, and flips short a year later after the trailing return turns negative.</div>
+<div class="formula">Position sign s_t = sign(r_{t-12,t}), where r_{t-12,t} is the instrument&#x27;s excess return over the past 12 months (Moskowitz, Ooi, Pedersen 2012); position size is commonly scaled as s_t / sigma_t with sigma_t an ex-ante volatility estimate.</div>
+<div class="field"><span class="label">Aliases:</span> trend trading, managed futures trend following</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Time-series momentum</li><li>Cross-sectional momentum</li><li>Donchian breakout strategy</li><li>Turtle trading</li><li>Moving-average crossover strategy</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://www.aqr.com/Insights/Research/Journal-Article/Time-Series-Momentum">AQR: Time Series Momentum (Moskowitz, Ooi, Pedersen, Journal of Financial Economics 2012)</a> — Abstract</div>
+<div class="meta">Note: Verified against the AQR publication page of Moskowitz, Ooi, Pedersen (2012), which documents the trend (time-series momentum) effect across 58 liquid futures and forwards.</div>
+</div>
+<div class="entry"><h3>Mean reversion <span class="badge reviewed">reviewed</span></h3>
+<div class="field">The hypothesis, and the family of strategies built on it, that asset prices or returns contain a transitory component that tends to revert toward a long-run mean, so that extreme moves are at least partially undone. Empirically, stock returns show positive serial correlation at short horizons and negative autocorrelation at long horizons, consistent with a slowly decaying transitory price component, though the effect is statistical and contested, not a law.</div>
+<div class="field"><span class="label">Intuition:</span> What stretches too far from its usual level tends to snap back; mean-reversion traders buy what has fallen too far and sell what has risen too far.</div>
+<div class="field"><span class="label">Mechanics:</span> Traders measure deviation from an estimated mean (moving average, fair-value model, or historical spread) and take positions expecting reversion, exiting when the series returns toward its mean. Statistically, mean reversion is tested with variance-ratio tests or modeled with mean-reverting processes such as Ornstein-Uhlenbeck.</div>
+<div class="field"><span class="label">Failure modes:</span> When the underlying equilibrium shifts (structural breaks, bankruptcies, regime change), &#x27;cheap&#x27; assets keep getting cheaper; betting against strong trends produces large losses, and estimated reversion speeds are unstable out of sample.</div>
+<div class="field"><span class="label">Misconceptions:</span> That prices must revert to a historical mean on a predictable schedule, or that mean reversion contradicts momentum; empirically both coexist at different horizons, and apparent reversion can reflect time-varying required returns rather than mispricing.</div>
+<div class="field"><span class="label">Example:</span> A stock drops 12% in two weeks on no fundamental news while its sector is flat; a mean-reversion trader buys, expecting the gap versus its 60-day average to close, and exits after an 8% rebound.</div>
+<div class="formula">Ornstein-Uhlenbeck model: dX_t = theta * (mu - X_t) dt + sigma dW_t, where mu is the long-run mean, theta the speed of reversion, and sigma the volatility; variance-ratio test: VR(q) = Var(r_t^q) / (q * Var(r_t)), with VR &lt; 1 indicating mean reversion (Poterba and Summers 1988).</div>
+<div class="field"><span class="label">Aliases:</span> reversal strategy, contrarian trading</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Pairs trading</li><li>Statistical arbitrage</li><li>Range trading</li><li>Fade strategy</li><li>Momentum trading</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://www.nber.org/papers/w2343">NBER Working Paper 2343: Mean Reversion in Stock Prices: Evidence and Implications (Poterba and Summers)</a> — Abstract</div>
+<div class="meta">Note: Verified against the NBER page for Poterba and Summers (1987/1988), the canonical variance-ratio evidence on transitory components in stock prices.</div>
+</div>
+<div class="entry"><h3>Momentum trading <span class="badge reviewed">reviewed</span></h3>
+<div class="field">A family of strategies that buy assets with strong recent performance and sell or short assets with weak recent performance, based on the empirically documented pattern that securities outperforming their peers over the past 3 to 12 months tend to keep outperforming over the following month. Momentum is a well-studied cross-sectional anomaly, not a guaranteed law, and is distinct from time-series momentum, which uses an asset&#x27;s own past return rather than its rank versus peers.</div>
+<div class="field"><span class="label">Intuition:</span> Winners tend to keep winning for a while, so the momentum trader buys what is already strong and avoids or shorts what is weak.</div>
+<div class="field"><span class="label">Mechanics:</span> Universe securities are ranked on trailing (typically 3- to 12-month) returns, skipping the most recent month to avoid short-term reversal; the portfolio goes long the top decile/quintile and short the bottom, rebalanced periodically. Retail implementations simply buy instruments breaking to new highs or showing high relative strength.</div>
+<div class="field"><span class="label">Failure modes:</span> Momentum crashes occur at sharp market reversals (e.g., 2009), when past losers rebound violently and the short leg surges; crowding and transaction costs also erode the gross anomaly.</div>
+<div class="field"><span class="label">Misconceptions:</span> That momentum means simply chasing whatever is up; systematic momentum is a ranked, hedged, periodically rebalanced portfolio construction, and its long-run returns come with occasional severe crashes.</div>
+<div class="field"><span class="label">Example:</span> Each month a quant ranks 500 stocks on their trailing 6-month return, buys the top 30, shorts the bottom 30, and rebalances monthly.</div>
+<div class="formula">Momentum score M_i = R_i(t-12, t-1), the cumulative return of asset i from 12 months to 1 month before formation; portfolios are formed by sorting on M (Jegadeesh and Titman 1993).</div>
+<div class="field"><span class="label">Aliases:</span> relative strength trading, momentum investing</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Cross-sectional momentum</li><li>Time-series momentum</li><li>Trend following</li><li>Relative strength rotation</li><li>Breakout trading</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://www.aqr.com/Insights/Research/Journal-Article/Time-Series-Momentum">AQR: Time Series Momentum (Moskowitz, Ooi, Pedersen 2012), discussion of the cross-sectional momentum literature</a> — Abstract</div>
+<div class="meta">Note: The canonical primary source (Jegadeesh and Titman 1993, Journal of Finance; SSRN abstract_id=299107) could not be fetched in this pass (SSRN blocked automated access); the definition is verified against the AQR page, which explicitly describes the 3-to-12-month cross-sectional momentum literature.</div>
+</div>
+<div class="entry"><h3>Breakout trading <span class="badge reviewed">reviewed</span></h3>
+<div class="field">A technical-analysis trading style that enters a position when price passes through and holds beyond a defined support or resistance level, on the hypothesis that such breakouts mark the early stage of a new trend. It is an analytical framework, not a proven predictive law; broken resistance is often treated as new support and vice versa.</div>
+<div class="field"><span class="label">Intuition:</span> When price finally escapes the ceiling or floor where it has been stuck, breakout traders jump in, betting the escape is the start of a real move.</div>
+<div class="field"><span class="label">Mechanics:</span> Traders mark horizontal support/resistance from prior swing highs and lows, then place buy stops above resistance or sell stops below support, often confirming with volume. Stops are placed back inside the broken level (a breakout that immediately re-enters the range is treated as failed).</div>
+<div class="field"><span class="label">Failure modes:</span> False breakouts are common, especially in low-volume or range-bound conditions: price pokes through the level, triggers entries, then reverses back into the range, stopping out breakout traders repeatedly.</div>
+<div class="field"><span class="label">Misconceptions:</span> That a breakout predicts continued movement with high probability; support/resistance levels are heuristic constructs, and the frequency of failed breakouts means risk control, not prediction, drives any edge.</div>
+<div class="field"><span class="label">Example:</span> A stock has failed three times near $60; a trader places a buy stop at $60.25 with volume confirmation and a protective stop at $58.50 when filled.</div>
+<div class="formula">Typical long trigger: enter if P_t &gt; R, where R = max(High_{t-N}, ..., High_{t-1}) over a chosen lookback N; stop placed at or below R after entry.</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Channel breakout strategy</li><li>Donchian breakout strategy</li><li>Opening-range breakout</li><li>Trend following</li><li>Range trading</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Breakout_(technical_analysis)">Wikipedia: Breakout (technical analysis)</a> — Lead</div>
+<div class="meta">Note: Technical-analysis pattern; no regulator or academic primary source defines it. Verified against Wikipedia&#x27;s technical-analysis article.</div>
+</div>
+<div class="entry"><h3>Range trading <span class="badge reviewed">reviewed</span></h3>
+<div class="field">A trading style applied to non-trending markets in which price repeatedly rises off a support level and falls off a resistance level; the trader buys near support and sells or shorts near resistance, expecting the oscillation to persist. It is a technical-analysis heuristic whose validity ends when the range breaks.</div>
+<div class="field"><span class="label">Intuition:</span> If a stock keeps bouncing between the same floor and ceiling, trade the bounce: buy low in the band, sell high in the band.</div>
+<div class="field"><span class="label">Mechanics:</span> Support and resistance are identified from repeated reaction highs/lows; entries are taken near the boundaries with stops just outside the range and targets near the opposite boundary. Oscillators (e.g., stochastic, RSI) are often used to time entries within the range.</div>
+<div class="field"><span class="label">Failure modes:</span> The strategy is destroyed by range breakouts: a position entered at the &#x27;wrong&#x27; boundary just before a genuine breakout loses continuously, and repeated range profits can be erased by one failed range.</div>
+<div class="field"><span class="label">Misconceptions:</span> That ranges are stable structures; what looks like a range is often just a pause in a trend, and the edges are fuzzy zones rather than precise prices.</div>
+<div class="field"><span class="label">Example:</span> EUR/USD oscillates between 1.0800 and 1.1000 for two months; a range trader buys near 1.0820 with a stop at 1.0770 and a target at 1.0970.</div>
+<div class="field"><span class="label">Aliases:</span> range-bound trading, channel trading</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Mean reversion</li><li>Breakout trading</li><li>Support and resistance</li><li>Grid trading</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Day_trading">Wikipedia: Day trading (section: Range trading)</a> — Techniques - Range trading</div>
+<div class="meta">Note: Technical-analysis heuristic; verified against Wikipedia (range trading section, citing Investopedia&#x27;s &#x27;Trading Range&#x27; definition).</div>
+</div>
+<div class="entry"><h3>Pairs trading <span class="badge reviewed">reviewed</span></h3>
+<div class="field">A market-neutral strategy that matches two securities whose prices historically move together, then goes long the underperformer and short the outperformer when their prices diverge, profiting if the spread between them reconverges. Gatev, Goetzmann, and Rouwenhorst (2006) formalized the canonical version: stocks are paired by minimum distance between normalized historical prices and traded with a simple divergence/convergence rule.</div>
+<div class="field"><span class="label">Intuition:</span> If two similar companies&#x27; prices drift apart, bet they will come back together: buy the laggard, short the leader, and you profit on the gap closing regardless of market direction.</div>
+<div class="field"><span class="label">Mechanics:</span> Pairs are formed from a historical estimation window (e.g., 12 months of normalized prices or a cointegration/hedge-ratio regression); a trade opens when the spread widens beyond a threshold (e.g., two standard deviations) and closes on convergence or at the end of a fixed horizon. Dollar-neutral sizing makes the position roughly insensitive to market moves.</div>
+<div class="field"><span class="label">Failure modes:</span> When the historical co-movement breaks for fundamental reasons (e.g., one firm is deteriorating), the spread widens instead of converging; pairs profits also decayed after the strategy became crowded in the 2000s.</div>
+<div class="field"><span class="label">Misconceptions:</span> That a diverging pair must reconverge because it always did before; co-movement is a statistical association that can break permanently, so divergence can signal a real relative-value change rather than a temporary mispricing.</div>
+<div class="field"><span class="label">Example:</span> Coca-Cola and PepsiCo normalized prices diverge by 2.5 standard deviations; the trader shorts the outperformer and buys the underperformer in equal dollar amounts, exiting when the spread returns to its mean.</div>
+<div class="formula">Spread S_t = ln P_A,t - beta * ln P_B,t, where beta is the hedge ratio from regressing A&#x27;s log price on B&#x27;s; trade when z_t = (S_t - mu_S) / sigma_S exceeds an entry band (commonly +/-2), exit when z_t crosses 0.</div>
+<div class="field"><span class="label">Aliases:</span> pairs trade, relative-value arbitrage</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Statistical arbitrage</li><li>Mean reversion</li><li>Pairs spread z-score strategy</li><li>Pairs convergence trade</li><li>Pairs divergence trade</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=141615">Gatev, Goetzmann, Rouwenhorst, Pairs Trading: Performance of a Relative Value Arbitrage Rule (SSRN, Yale ICF Working Paper 08-03)</a> — Abstract</div>
+<div class="meta">Note: Verified against the SSRN abstract of the canonical academic reference on pairs trading.</div>
+</div>
+<div class="entry"><h3>Statistical arbitrage <span class="badge reviewed">reviewed</span></h3>
+<div class="field">A family of quantitative, typically market-neutral strategies that exploit statistical mispricings among large portfolios of related securities, using short-horizon mean reversion and factor models rather than the strict riskless mispricing of classical arbitrage. Pairs trading is the canonical example; profits are expected values over many small trades, not risk-free arbitrage.</div>
+<div class="field"><span class="label">Intuition:</span> Instead of one guaranteed mispricing, stat arb places hundreds of small, hedged bets that each have a slight statistical edge, so the law of large numbers does the work.</div>
+<div class="field"><span class="label">Mechanics:</span> Models estimate expected short-horizon returns from residuals after removing factor exposures; portfolios are built long undervalued and short overvalued securities, neutralized to market and common factors, and turned over quickly. Gatev et al. (2006) link pairs-trading profits to temporary mispricing of close substitutes with a common return factor.</div>
+<div class="field"><span class="label">Failure modes:</span> Model risk and regime shifts: estimated relationships degrade exactly when correlations spike in crises, and deleveraging events (e.g., August 2007 quant unwind) cause many stat-arb books to lose simultaneously.</div>
+<div class="field"><span class="label">Misconceptions:</span> That &#x27;arbitrage&#x27; here means riskless profit; statistical arbitrage is a set of probabilistic bets that can and do produce extended losses.</div>
+<div class="field"><span class="label">Example:</span> A fund residuals-neutralizes 2,000 U.S. stocks against sector and style factors, shorts stocks 2 sigma above their model price, buys those 2 sigma below, and rebalances daily.</div>
+<div class="field"><span class="label">Aliases:</span> stat arb, statistical relative-value trading</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Pairs trading</li><li>Mean reversion</li><li>Volatility arbitrage</li><li>Index arbitrage</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=141615">Gatev, Goetzmann, Rouwenhorst, Pairs Trading: Performance of a Relative Value Arbitrage Rule (SSRN)</a> — Abstract</div>
+<div class="meta">Note: Cited source covers pairs trading as the canonical relative-value/statistical-arbitrage rule and documents that its profits stem from temporary mispricing of close substitutes.</div>
+</div>
+<div class="entry"><h3>Convertible arbitrage <span class="badge reviewed">reviewed</span></h3>
+<div class="field">A market-neutral hedge-fund strategy involving the simultaneous purchase of a convertible security (usually a convertible bond) and the short sale of the same issuer&#x27;s common stock, designed to exploit inefficient pricing of the convertible relative to the underlying equity. The short stock position is sized to the convertible&#x27;s equity sensitivity (delta), and the position is dynamically re-hedged.</div>
+<div class="field"><span class="label">Intuition:</span> Buy the convertible bond, short the stock against it: if the bond is cheap relative to the stock-plus-option it embeds, you harvest the difference while staying roughly immune to small stock moves.</div>
+<div class="field"><span class="label">Mechanics:</span> The arbitrageur buys the convertible and shorts a delta-neutral ratio of the underlying shares, capturing the bond&#x27;s coupon plus the cheapness of the embedded equity option; as the stock moves, the hedge ratio is rebalanced (dynamic delta hedging), and this re-hedging of a long-gamma position adds to returns.</div>
+<div class="field"><span class="label">Failure modes:</span> Credit events hurt both legs at once (e.g., the 2005 GM downgrade: long convertibles lost on credit while short equity rallied); liquidity gaps can also make convertible prices fall faster than the stock hedge gains, as in 1987.</div>
+<div class="field"><span class="label">Misconceptions:</span> That the trade is riskless because it is hedged; it carries credit risk, liquidity risk, and model risk in the delta estimate, and returns depend heavily on cheap financing and borrow availability for the short leg.</div>
+<div class="field"><span class="label">Example:</span> A fund buys $10 million face of a convertible trading below theoretical value and shorts 60,000 shares of the issuer (the delta hedge), earning the coupon and gamma P&amp;L as it re-hedges.</div>
+<div class="formula">Shares shorted = delta_cv x conversion ratio x number of bonds, where delta_cv is the sensitivity of the convertible&#x27;s price to the underlying stock price.</div>
+<div class="field"><span class="label">Aliases:</span> convert arb</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Delta-neutral trading</li><li>Gamma scalping</li><li>Volatility arbitrage</li><li>Fixed-income arbitrage</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Convertible_arbitrage">Wikipedia: Convertible arbitrage</a> — Lead and Risks</div>
+<div class="meta">Note: Verified against Wikipedia&#x27;s strategy article; the President&#x27;s Working Group LTCM report (preferred primary source for hedge-fund strategy definitions) could not be fetched in this pass.</div>
+</div>
+<div class="entry"><h3>Fixed-income arbitrage <span class="badge reviewed">reviewed</span></h3>
+<div class="field">A group of market-neutral strategies that exploit pricing differences between related fixed-income securities or contracts, such as swap-spread, yield-curve, mortgage, and cash-futures basis trades. Positions pair long and short exposures in economically similar instruments and bet on the convergence of small yield or price discrepancies, usually with substantial leverage.</div>
+<div class="field"><span class="label">Intuition:</span> Two bonds or rates that should be priced almost identically sometimes are not; fixed-income arbs buy the cheap one, short the rich one, and wait for the tiny gap to close.</div>
+<div class="field"><span class="label">Mechanics:</span> Traders identify rich/cheap points using yield-curve models, financing via repo; typical trades include long Treasury/short swap (swap-spread), butterfly structures on the curve, long MBS hedged with Treasuries or swaps, and long cash bond/short futures (basis). Returns per trade are small, so leverage is high.</div>
+<div class="field"><span class="label">Failure modes:</span> High leverage on small spreads means liquidity and financing shocks force losses: the LTCM collapse (1998) and the March 2020 Treasury basis unwind show convergence trades diverging further before converging, triggering margin spirals.</div>
+<div class="field"><span class="label">Misconceptions:</span> That convergence is guaranteed within a tolerable horizon; &#x27;riskless&#x27; relative-value trades can stay mispriced longer than a levered trader can stay solvent.</div>
+<div class="field"><span class="label">Example:</span> A desk buys the cheapest-to-deliver 10-year Treasury, shorts the matched futures contract, finances the bond in repo, and plans to hold the position as the basis converges toward delivery.</div>
+<div class="formula">Swap spread = yield to maturity of the Treasury bond minus the fixed rate of the matched-maturity interest-rate swap (sign conventions vary by market).</div>
+<div class="field"><span class="label">Aliases:</span> fixed-income relative value</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Basis trade</li><li>Cash-futures basis trade</li><li>Convertible arbitrage</li><li>Statistical arbitrage</li><li>Volatility arbitrage</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Fixed_income_arbitrage">Wikipedia: Fixed income arbitrage</a> — Lead and strategy sections</div>
+<div class="field"><span class="label">Source:</span> <a href="https://www.financialresearch.gov/briefs/2020/07/16/basis-trades-and-treasury-market-illiquidity/">OFR Brief 20-01: Basis Trades and Treasury Market Illiquidity</a> — Brief summary</div>
+<div class="meta">Note: Strategy taxonomy verified against Wikipedia (drawing on Duarte, Longstaff, Yu 2007 and Pedersen 2015); the OFR brief documents the Treasury basis trade and its liquidity risks.</div>
+</div>
+<div class="entry"><h3>Volatility arbitrage <span class="badge reviewed">reviewed</span></h3>
+<div class="field">A class of option-based relative-value strategies that trade the difference between an option&#x27;s implied volatility and a forecast of the underlying&#x27;s future realized volatility, implemented through a delta-neutral portfolio of options and the underlying. The trader treats volatility, rather than price, as the unit of relative value: buying options delta-hedged is a bet that realized volatility will exceed implied, and selling them is the opposite bet.</div>
+<div class="field"><span class="label">Intuition:</span> If the market is pricing options as if the stock will move 10% but you think it will move 20%, you can buy the options, hedge out the direction, and profit from the extra movement itself.</div>
+<div class="field"><span class="label">Mechanics:</span> Forecast realized volatility (e.g., from historical or high-frequency returns), compare with implied volatility backed out of market option prices, then buy underpriced or sell overpriced options and keep the book delta-neutral by trading the underlying. Profit is realized through the continuous re-hedging (gamma scalping) of the position over the option&#x27;s life.</div>
+<div class="field"><span class="label">Failure modes:</span> It is not true arbitrage: the forecast can be wrong, and volatility spikes correlated across markets (black-swan events) cause losses across a whole book, as with LTCM&#x27;s short-volatility positions.</div>
+<div class="field"><span class="label">Misconceptions:</span> That delta-hedging removes all risk; a delta-neutral book still carries gamma, vega, theta, and jump risk, and &#x27;buying vol cheap&#x27; loses steadily through theta if the realized move never comes.</div>
+<div class="field"><span class="label">Example:</span> A trader buys S&amp;P 500 straddles at 12% implied volatility while forecasting 18% realized, delta-hedging daily; if realized vol comes in near 18%, the re-hedging gains exceed the theta paid.</div>
+<div class="formula">Option value C = f(S, sigma, ...); implied volatility sigma_imp solves C_market = f(S, sigma_imp, ...). Trade long vol if sigma_imp &lt; sigma_forecast, short vol if sigma_imp &gt; sigma_forecast.</div>
+<div class="field"><span class="label">Aliases:</span> vol arb</div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Delta-neutral trading</li><li>Gamma scalping</li><li>Dispersion trading</li><li>Statistical arbitrage</li><li>Implied volatility</li></ul></div>
+<div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Volatility_arbitrage">Wikipedia: Volatility arbitrage</a> — Overview, Market (implied) volatility, Mechanism</div>
+<div class="meta">Note: Verified against Wikipedia&#x27;s article, which itself cites standard practitioner references (Javaheri 2005; Gatheral 2006).</div>
+</div>
+<div class="entry"><h3>Dispersion trading <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Gamma scalping <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Delta-neutral trading <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Market making <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Grid trading <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Dollar-cost averaging <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Value averaging <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Pyramiding <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Averaging down <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Averaging up <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Scaling in <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Scaling out <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Core-satellite approach <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Buy and hold <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Carry trade <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Basis trade <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Cash-futures basis trade <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Funding-rate arbitrage <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Cross-exchange arbitrage <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Latency arbitrage <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Index arbitrage <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Calendar arbitrage <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>News trading <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Earnings trading <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Opening-range breakout <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Gap-and-go strategy <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Fade strategy <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Pairs spread z-score strategy <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Channel breakout strategy <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Moving-average crossover strategy <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Donchian breakout strategy <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Turtle trading <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Risk-on risk-off trading <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Global macro trading <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Relative strength rotation <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Cross-sectional momentum <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Time-series momentum <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Post-earnings announcement drift <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Short squeeze trading <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Long squeeze trading <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Pairs convergence trade <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div>
+<div class="entry"><h3>Pairs divergence trade <span class="badge provisional">provisional</span></h3>
+<div class="field">A trading concept within trading systems that must be represented with an explicit definition, mechanics, assumptions, valid uses, failure modes, examples, and exact source provenance.</div>
+<div class="meta">Note: Restored from master_v1 during repair; verification pending.</div>
+</div><p class='meta'>Generated 2026-08-07 by scripts/build_site.py · <a href='https://github.com/unperson-12359/trading-knowledge-library'>GitHub repo</a></p></body></html>
