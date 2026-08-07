@@ -1,0 +1,917 @@
+[
+  {
+    "id": "market-abuse-and-ethics/quote-stuffing",
+    "name": "Quote stuffing",
+    "aliases": [],
+    "domain": "Market abuse and ethics",
+    "definition": "A disruptive order-book practice in which a trader rapidly submits and cancels very large numbers of bids or offers to overload a trading venue's quotation system, delay other participants' market data or executions, or create misleading impressions of market activity. The CFTC has described submitting or cancelling bids or offers to overload a registered entity's quotation system as conduct 'of the character of' spoofing, which Dodd-Frank made unlawful as a disruptive practice under CEA section 4c(a)(5).",
+    "intuition": "Imagine shouting thousands of fake orders into a market every second and instantly retracting them, just so everyone else's screens and systems choke on the noise while you exploit the confusion.",
+    "mechanics": "An algorithm floods the order book with quotes that are cancelled within milliseconds, inflating message traffic and quote-to-trade ratios. The burst can slow data feeds and matching engines, widen apparent depth, and obscure the true book, giving the stuffer a latency or informational edge over slower participants.",
+    "formula": "",
+    "relationships": ["Spoofing", "Layering", "Market manipulation", "Trade surveillance"],
+    "failure_modes": "High message rates also arise from legitimate market making and aggressive re-quoting in volatile markets, so detection based purely on quote-to-trade ratios produces false positives; the prohibited element is the disruptive intent or effect, not speed itself.",
+    "misconceptions": "It is not simply 'posting many quotes' — high quote traffic from bona fide market makers is lawful; quote stuffing specifically involves orders not intended to trade, used to jam or mislead the market.",
+    "example": "An HFT firm fires 5,000 orders per second into an equity's book and cancels 99.9% of them within 10 milliseconds, causing consolidated-feed latency that slows rival algorithms while the firm trades on the faster direct feed.",
+    "citations": [
+      {
+        "source": "CFTC, Antidisruptive Practices Authority (Interpretive Guidance), 78 FR 31890",
+        "url": "https://www.federalregister.gov/documents/2013/05/28/2013-12365/antidisruptive-practices-authority",
+        "section": "Discussion of CEA section 4c(a)(5)(C) and proposed spoofing description (footnote 25)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "Term is market slang rather than a statutory category; the CFTC's interpretive guidance covers the underlying conduct (overloading quotation systems) as conduct of the character of spoofing.",
+    "master_index": 286
+  },
+  {
+    "id": "market-abuse-and-ethics/spoofing",
+    "name": "Spoofing",
+    "aliases": ["spoof orders"],
+    "domain": "Market abuse and ethics",
+    "definition": "Bidding or offering with the intent to cancel the bid or offer before execution, an explicitly prohibited disruptive trading practice under CEA section 4c(a)(5)(C) as added by the Dodd-Frank Act. The spoofer places visible orders it never intends to fill in order to deceive other participants about supply or demand and profit from the induced price movement.",
+    "intuition": "You wave a huge fake buy order in front of the market so prices tick up, then you sell into the move and yank the fake order before anyone can hit it.",
+    "mechanics": "A trader enters a large, visible order on one side of the book (the spoof order) while holding or entering a genuine smaller order on the opposite side. The spoof order shifts the quoted imbalance, nudging price toward the genuine order, which executes; the spoof order is then cancelled. Violation requires intent to cancel before execution, as shown by patterns of placement and cancellation.",
+    "formula": "",
+    "relationships": ["Quote stuffing", "Layering", "Market manipulation", "Trade surveillance"],
+    "failure_modes": "Because violation turns on intent to cancel, legitimate rapid order modification by market makers can resemble spoofing in surveillance data; regulators distinguish the two using order lifetime, fill ratios, and opposite-side trading patterns, and enforcement has faced acquittals where intent was not proven.",
+    "misconceptions": "Cancelling orders is not itself illegal — markets depend on cancellation; spoofing requires entering the order with the intent to cancel it before execution in order to mislead others.",
+    "example": "A trader places a 2,000-lot offer in E-mini S&P futures 2 ticks above market, causing the price to dip into their resting 50-lot bid; once filled, the large offer is cancelled in under a second — the pattern prosecuted in cases like U.S. v. Coscia.",
+    "citations": [
+      {
+        "source": "CFTC, Antidisruptive Practices Authority (Interpretive Guidance), 78 FR 31890",
+        "url": "https://www.federalregister.gov/documents/2013/05/28/2013-12365/antidisruptive-practices-authority",
+        "section": "Interpretation of CEA section 4c(a)(5)(C) (spoofing)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/ConsumerProtection/EducationCenter/CFTCGlossary/index.htm",
+        "section": "Entries: Disruptive Practices; Spoofing",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 287
+  },
+  {
+    "id": "market-abuse-and-ethics/layering",
+    "name": "Layering",
+    "aliases": [],
+    "domain": "Market abuse and ethics",
+    "definition": "A variant of spoofing in which a trader submits multiple non-bona fide orders at successively different price levels on one side of the order book to create a false appearance of market depth and pressure, thereby moving the price so that a genuine order on the opposite side can execute advantageously. The CFTC's description of spoofing-type conduct includes submitting or cancelling multiple bids or offers to create an appearance of false market depth.",
+    "intuition": "Instead of one big fake order, you stack a whole staircase of fake orders at different prices so the book looks deep on one side and the market walks straight into your real trade on the other side.",
+    "mechanics": "The trader places several visible limit orders at progressively worse prices away from the touch on one side, amplifying apparent supply or demand. As other participants reprice in response, the trader's genuine smaller order on the opposite side fills, after which the layered orders are cancelled.",
+    "formula": "",
+    "relationships": ["Spoofing", "Quote stuffing", "Market manipulation", "Trade surveillance"],
+    "failure_modes": "Legitimate laddered order placement (scaling into a position at multiple price levels) looks similar in order data; enforcement hinges on evidence that the layered orders were never intended to trade, which is hard to prove from book data alone.",
+    "misconceptions": "Layering is not a distinct statute but a named pattern of the spoofing-type conduct prohibited as entering bids or offers with intent to cancel before execution; placing orders at multiple levels is lawful when they are bona fide.",
+    "example": "A trader layers five sell orders of 500 lots each at successively higher prices in a Treasury future, creating apparent selling pressure that drives the price down into their genuine 100-lot bid, then cancels all five layers.",
+    "citations": [
+      {
+        "source": "CFTC, Antidisruptive Practices Authority (Interpretive Guidance), 78 FR 31890",
+        "url": "https://www.federalregister.gov/documents/2013/05/28/2013-12365/antidisruptive-practices-authority",
+        "section": "Proposed spoofing description: multiple bids or offers creating false market depth (footnote 25)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "The term 'layering' itself comes from enforcement and exchange practice rather than the statute; the cited guidance covers the underlying conduct (false market depth via multiple non-bona fide orders).",
+    "master_index": 288
+  },
+  {
+    "id": "market-abuse-and-ethics/wash-trading",
+    "name": "Wash trading",
+    "aliases": ["wash sale (manipulative sense)", "round trip trading"],
+    "domain": "Market abuse and ethics",
+    "definition": "Entering into, or purporting to enter into, transactions that give the appearance that purchases and sales have been made without incurring market risk or changing the trader's market position; the Commodity Exchange Act prohibits wash trading, and Section 9(a)(1) of the Securities Exchange Act of 1934 prohibits transactions involving no change in beneficial ownership (and matched orders) done to create a false or misleading appearance of active trading.",
+    "intuition": "You sell to yourself — the asset never really changes hands and you take no risk, but the tape lights up with 'activity' that lures in real traders.",
+    "mechanics": "The same beneficial owner (or colluding parties) acts as both buyer and seller, often across accounts or venues, generating fictitious volume and prices. Because no genuine change of ownership or risk occurs, the printed trades convey false information about liquidity and interest in the instrument.",
+    "formula": "",
+    "relationships": ["Painting the tape", "Market manipulation", "Wash-sale rule", "Trade surveillance"],
+    "failure_modes": "Self-trades can occur accidentally at firms running multiple algorithms, and bona fide transfers between accounts for legitimate purposes can resemble wash trades; regulators look for intent, repetition, and absence of economic rationale, and exchanges generally require systems to prevent self-match.",
+    "misconceptions": "Wash trading (a manipulation offense) is different from the tax wash-sale rule (a loss-disallowance rule); also, a trade between two accounts at the same institution is not automatically a wash trade — the key is no change in beneficial ownership plus manipulative purpose.",
+    "example": "A crypto trader controls two exchange accounts and repeatedly sells tokens between them at rising prices, inflating reported volume to attract momentum buyers to an illiquid token.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/ConsumerProtection/EducationCenter/CFTCGlossary/index.htm",
+        "section": "Entry: Wash Trading",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Securities Exchange Act of 1934, Section 9(a), 15 U.S.C. § 78i (U.S. Code, GPO)",
+        "url": "https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap2B-sec78i.htm",
+        "section": "Subsection (a)(1)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 289
+  },
+  {
+    "id": "market-abuse-and-ethics/front-running",
+    "name": "Front running",
+    "aliases": ["trading ahead"],
+    "domain": "Market abuse and ethics",
+    "definition": "With respect to commodity futures and options, taking a futures or option position based on non-public information regarding an impending transaction by another person in the same or a related future or option; in securities markets, the analogous practice of a broker or adviser trading ahead of a known customer order to profit from its expected price impact. It misappropriates order information and disadvantages the customer whose order is anticipated.",
+    "intuition": "You know a giant buy order is about to hit the market, so you buy first, let the customer's order push the price up, and sell into their demand.",
+    "mechanics": "A broker, clerk, or adviser with advance knowledge of a pending order (or block trade) establishes a position for their own account before executing the customer's order, then unwinds it at the price level created by the customer's execution. The profit comes directly from the price impact the customer's own order produces.",
+    "formula": "",
+    "relationships": ["Insider trading", "Material nonpublic information", "Market manipulation", "Fiduciary duty"],
+    "failure_modes": "Distinguishing front running from legitimate anticipatory hedging or riskless-principal facilitation is fact-dependent; dealers may pre-position with customer consent, and parallel trading on independent analysis is not front running without misuse of non-public order information.",
+    "misconceptions": "Trading on a publicly known large order flow or guessing that a big order is coming is not front running; the offense requires trading on non-public knowledge of a specific impending transaction, typically in breach of a duty to the order's owner.",
+    "example": "A futures broker learns a pension fund is about to buy 10,000 crude contracts, buys 100 contracts for his own account first, then executes the fund's order and sells his position into the price rise.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/ConsumerProtection/EducationCenter/CFTCGlossary/index.htm",
+        "section": "Entry: Front Running",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 290
+  },
+  {
+    "id": "market-abuse-and-ethics/marking-the-close",
+    "name": "Marking the close",
+    "aliases": ["banging the close"],
+    "domain": "Market abuse and ethics",
+    "definition": "A manipulative or disruptive trading practice whereby a trader buys or sells a large number of futures contracts during the closing period of a contract — the period in which the settlement price is determined — in order to benefit an even larger position in an option, swap, or other derivative that is cash-settled based on that day's settlement price.",
+    "intuition": "You shove the price around in the last minutes of trading not because you want the position, but because today's official closing price sets the payoff on a much bigger bet you hold elsewhere.",
+    "mechanics": "The trader concentrates aggressive orders in the closing window to push the settlement print up or down. A derivatives position sized much larger than the closing-period trades then settles off the distorted price, so a small loss on the closing trades is outweighed by the gain on the larger position.",
+    "formula": "",
+    "relationships": ["Painting the tape", "Market manipulation", "Spoofing", "Trade surveillance"],
+    "failure_modes": "Heavy closing-period volume is also produced by legitimate index rebalancing, MOC orders, and delta-hedging; proving manipulation requires showing the trading was intended to distort the settlement price rather than to fill a genuine need at the close.",
+    "misconceptions": "Trading large size at the close is not inherently abusive; the violation lies in trading specifically to engineer the settlement price for the benefit of a related position.",
+    "example": "A fund short 50,000 cash-settled gas swaps sells 2,000 futures contracts aggressively in the final two minutes of the settlement window, depressing the settlement price by 3 cents and increasing the swap position's value far more than the cost of the futures sales.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/ConsumerProtection/EducationCenter/CFTCGlossary/index.htm",
+        "section": "Entry: Marking the Close",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 291
+  },
+  {
+    "id": "market-abuse-and-ethics/painting-the-tape",
+    "name": "Painting the tape",
+    "aliases": [],
+    "domain": "Market abuse and ethics",
+    "definition": "Engaging in a series of transactions — typically wash trades or matched orders — designed to create a false or misleading appearance of active trading or of price movement in a security, so that the publicly reported 'tape' attracts other investors. Section 9(a)(1)-(2) of the Securities Exchange Act of 1934 prohibits effecting such transactions for the purpose of inducing purchases or sales by others.",
+    "intuition": "You manufacture busy-looking trades and rising prints on the ticker so the crowd thinks something is happening and piles in — the activity is theater, not genuine demand.",
+    "mechanics": "Manipulators execute rapid, often self-referential or collusive trades at escalating prices in an otherwise thin stock. Because the consolidated tape reports every trade, the manufactured prints signal momentum to screeners and retail traders, into whose buying the manipulators sell.",
+    "formula": "",
+    "relationships": ["Wash trading", "Pump and dump", "Market manipulation", "Marking the close"],
+    "failure_modes": "Genuine bursts of small-lot trading in illiquid names (e.g., around news) can look like tape painting in surveillance; the manipulative element is the fictitious or induced character of the activity and the purpose of deceiving observers.",
+    "misconceptions": "The term is often loosely applied to any suspicious price action at day-end; strictly it refers to creating a false appearance of trading activity, distinct from marking the close, which targets the settlement/closing price specifically.",
+    "example": "Two colluding accounts trade a penny stock back and forth 200 times in an hour at prices stepping from $0.50 to $0.80; the tape shows 'surging volume,' chatrooms notice, and the operators dump their real holdings into the arriving buyers.",
+    "citations": [
+      {
+        "source": "Securities Exchange Act of 1934, Section 9(a), 15 U.S.C. § 78i (U.S. Code, GPO)",
+        "url": "https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap2B-sec78i.htm",
+        "section": "Subsections (a)(1)-(a)(2)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "The phrase is market vernacular rather than a statutory term; the statutory hook is Section 9(a)'s prohibition on fictitious trades and series of transactions creating apparent active trading.",
+    "master_index": 292
+  },
+  {
+    "id": "market-abuse-and-ethics/insider-trading",
+    "name": "Insider trading",
+    "aliases": ["illegal insider trading"],
+    "domain": "Market abuse and ethics",
+    "definition": "Illegal insider trading refers generally to buying or selling a security, in breach of a fiduciary duty or other relationship of trust and confidence, on the basis of material, nonpublic information about the security. Not all trading by corporate insiders is illegal: insiders may lawfully trade when they do so without using material nonpublic information and report their transactions as required.",
+    "intuition": "If you trade using secret, market-moving information that you were entrusted with and weren't supposed to use, you're stealing an unfair edge from everyone on the other side of your trade.",
+    "mechanics": "Liability under Section 10(b) and Rule 10b-5 requires (1) material nonpublic information, (2) a breach of duty by the insider who trades or tips, and (3) scienter. Tippers and tippees can both be liable; a tippee is liable when trading on the tip while knowing the tipper breached a duty and received a personal benefit.",
+    "formula": "",
+    "relationships": ["Material nonpublic information", "Fiduciary duty", "Front running", "Market manipulation"],
+    "failure_modes": "Materiality and breach-of-duty are fact-specific, making borderline cases (mosaic research, expert networks, political intelligence) hard to classify; lawful Rule 10b5-1 plans can be abused by adopting them while aware of MNPI, undermining their affirmative defense.",
+    "misconceptions": "Insider trading is not any trading by an insider — insiders trade legally all the time with proper disclosure; nor is trading on a hot rumor automatically illegal — the trader must be in or downstream of a breached duty of trust or confidence.",
+    "example": "A CFO learns privately that quarterly earnings will badly miss estimates and sells 20,000 shares two days before the announcement, avoiding a 30% loss; the SEC charges her under Rule 10b-5.",
+    "citations": [
+      {
+        "source": "Investor.gov Glossary (SEC Office of Investor Education and Advocacy)",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Entry: Insider Trading",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 293
+  },
+  {
+    "id": "market-abuse-and-ethics/material-nonpublic-information",
+    "name": "Material nonpublic information",
+    "aliases": ["MNPI"],
+    "domain": "Market abuse and ethics",
+    "definition": "Information about a security or its issuer that is both material — meaning there is a substantial likelihood a reasonable investor would consider it important in making an investment decision — and not yet disseminated to the public. Trading on such information in breach of a duty of trust or confidence is the core of illegal insider trading.",
+    "intuition": "It's the kind of secret that would obviously change someone's mind about buying or selling — like an unannounced merger or an earnings collapse — and that the market hasn't been told yet.",
+    "mechanics": "Materiality is assessed case by case (e.g., earnings surprises, mergers, major contracts, regulatory actions); information is nonpublic until it has been broadly disseminated (e.g., press release, SEC filing) and investors have had time to absorb it. Possession or knowing use of MNPI triggers trading restrictions, blackout rules, and information-barrier obligations at firms.",
+    "formula": "",
+    "relationships": ["Insider trading", "Front running", "Fiduciary duty"],
+    "failure_modes": "Materiality judgments are probabilistic and hindsight bias is common — information that seems obviously material after a price move may have been uncertain ex ante (e.g., contingent merger talks); the mosaic theory also allows analysts to lawfully assemble immaterial pieces into a material conclusion.",
+    "misconceptions": "Information does not have to be exact or certain to be material — a credible, specific advance indication of a market-moving event can qualify; nor is information 'public' merely because it circulates in a closed group or niche channel.",
+    "example": "A biotech employee knows an FDA complete-response letter rejecting the company's lead drug will be published tomorrow; that fact is material and nonpublic until the announcement, and trading on it breaches insider-trading law.",
+    "citations": [
+      {
+        "source": "Investor.gov Glossary (SEC Office of Investor Education and Advocacy)",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Entry: Insider Trading (defines trading on material, nonpublic information)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "The term is defined through insider-trading doctrine (SEC v. Texas Gulf Sulphur; Basic Inc. v. Levinson) rather than a standalone rule text; the cited SEC glossary defines its role in the offense.",
+    "master_index": 294
+  },
+  {
+    "id": "market-abuse-and-ethics/market-manipulation",
+    "name": "Market manipulation",
+    "aliases": ["price manipulation"],
+    "domain": "Market abuse and ethics",
+    "definition": "Intentional conduct that artificially affects the supply, demand, or price of a security or commodity rather than letting prices reflect genuine market forces — for example, wash trades, matched orders, spoofing, marking the close, or spreading false information to move a price. Section 9 of the Securities Exchange Act and CEA section 4c/6(c) prohibit specific manipulative acts, and Rule 10b-5 reaches manipulative schemes generally.",
+    "intuition": "It's rigging the scoreboard: instead of predicting where prices will go, the manipulator makes the price move and cashes in on the fake signal everyone else is reacting to.",
+    "mechanics": "Manipulative schemes work either through trade-based activity (fictitious or dominant trading that moves prints or settlement prices), information-based activity (false rumors or touting), or position-based power (corners and squeezes). Enforcement generally requires proving an artificial price and scienter.",
+    "formula": "",
+    "relationships": ["Wash trading", "Spoofing", "Painting the tape", "Marking the close", "Cornering the market", "Pump and dump", "Trade surveillance"],
+    "failure_modes": "Artificiality is hard to establish when the accused has plausible economic motives, and large legitimate trades inevitably move prices; courts have struggled to draw the line between aggressive trading and manipulation, especially in power and derivatives markets.",
+    "misconceptions": "Not every price spike, short-selling campaign, or whale order is manipulation — moving the market through genuine, disclosed trading is lawful; manipulation requires deceptive, fictitious, or coercive conduct aimed at creating an artificial price.",
+    "example": "A trader simultaneously buys a thin stock while placing and cancelling large spoof offers above the market, then posts fake 'breakout' analysis on message boards; the SEC charges a manipulative scheme under Rule 10b-5.",
+    "citations": [
+      {
+        "source": "Investor.gov Glossary (SEC Office of Investor Education and Advocacy)",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Entry: Market Manipulation",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Securities Exchange Act of 1934, Section 9, 15 U.S.C. § 78i (U.S. Code, GPO)",
+        "url": "https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap2B-sec78i.htm",
+        "section": "Subsection (a)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 295
+  },
+  {
+    "id": "market-abuse-and-ethics/pump-and-dump",
+    "name": "Pump and dump",
+    "aliases": ["pump-and-dump scheme"],
+    "domain": "Market abuse and ethics",
+    "definition": "A fraud in which promoters boost ('pump') the price of a stock — typically a little-known microcap — through false or misleading positive statements, then sell ('dump') their own holdings into the inflated price, after which the hype stops, the price collapses, and later investors lose their money.",
+    "intuition": "The operators buy a cheap stock quietly, shout spectacular lies about it until the crowd bids it up, and then unload everything on the crowd before the truth catches up.",
+    "mechanics": "The scheme has two parts: a promotion phase using spam, newsletters, social media, or paid touts (often with undisclosed compensation and fabricated 'inside information' claims), and a distribution phase in which the promoters' shares are sold into the induced buying. Victims are left holding shares that fall back toward their pre-promotion value.",
+    "formula": "",
+    "relationships": ["Market manipulation", "Painting the tape", "Short and distort", "Wash trading"],
+    "failure_modes": "For investigators, the promotional content often lives on ephemeral channels and the beneficiary chain is hidden through nominee accounts; for victims, the red flags (unsolicited hype, guaranteed returns, pressure to buy immediately) are easily overlooked amid genuine speculative frenzies.",
+    "misconceptions": "Touting a stock is not per se illegal — newsletters may recommend stocks if they disclose who paid them, how much, and in what form; the fraud lies in false statements and undisclosed self-dealing promotion.",
+    "example": "A promoter acquires 2 million shares of a $0.10 shell company, blasts emails claiming an imminent 'game-changing' contract, watches the price hit $1.20 on retail buying, sells out over three days, and the stock returns to $0.05.",
+    "citations": [
+      {
+        "source": "SEC Office of Investor Education and Assistance, Internet Fraud: How to Avoid Internet Investment Scams",
+        "url": "https://www.sec.gov/investor/pubs/cyberfraud.htm",
+        "section": "Section: Pump and Dump Schemes",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Investor.gov Glossary (SEC Office of Investor Education and Advocacy)",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Entry: Pump and Dump Schemes",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 296
+  },
+  {
+    "id": "market-abuse-and-ethics/churning",
+    "name": "Churning",
+    "aliases": [],
+    "domain": "Market abuse and ethics",
+    "definition": "Excessive trading of a customer account by a person who controls the account (typically a broker with discretion or de facto control), done for the purpose of generating commissions or fees while disregarding the customer's interests. FINRA's quantitative-suitability doctrine reaches the same conduct even without formal discretion when the broker effectively controls the account.",
+    "intuition": "The broker trades your account like a hamster wheel — every spin pays them a commission, whether or not any of it makes sense for you.",
+    "mechanics": "Proof typically requires (1) broker control over the account, (2) excessive trading measured by turnover rate, cost-to-equity ratio, and in-and-out frequency relative to the customer's objectives, and (3) scienter. Annualized turnover above roughly 6x or a cost-to-equity ratio above ~20% are common judicial benchmarks, though no single test is dispositive.",
+    "formula": "Turnover ratio = total purchases in period / average account equity; Cost-to-equity ratio = annualized total commissions and fees / average account equity. High values of either support (but do not alone establish) excessiveness.",
+    "relationships": ["Suitability", "Fiduciary duty", "Best-interest obligation", "Trade surveillance"],
+    "failure_modes": "Excessiveness depends on the customer's profile: high turnover can be appropriate for an aggressive trader, so quantitative screens flag many false positives; conversely, churning via markups, fees, or zero-commission payment-for-order-flow economics can evade commission-based detection.",
+    "misconceptions": "Churning does not require that every trade lose money — an account can show gains while still being churned if the trading was excessive relative to its objectives; and frequent trading requested and directed by the customer is not churning because the control element is missing.",
+    "example": "A broker flips a retiree's $200,000 conservative account 40 times in a year, generating $18,000 in commissions on a cost-to-equity ratio near 9% per quarter; FINRA finds churning and orders restitution.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/ConsumerProtection/EducationCenter/CFTCGlossary/index.htm",
+        "section": "Entry: Churning",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "FINRA Rule 2111 (Suitability), via Internet Archive snapshot of finra.org",
+        "url": "https://web.archive.org/web/2024/https://www.finra.org/rules-guidance/rulebooks/finra-rules/2111",
+        "section": "Supplementary Material .05(c) Quantitative Suitability",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "FINRA's live rulebook page blocks automated access (HTTP 403); the archived snapshot of the same rule text was fetched instead.",
+    "master_index": 297
+  },
+  {
+    "id": "market-abuse-and-ethics/cornering-the-market",
+    "name": "Cornering the market",
+    "aliases": ["market corner", "corner"],
+    "domain": "Market abuse and ethics",
+    "definition": "Securing such relative control of a commodity or its deliverable supply that its price can be manipulated at the cornerer's will — in the extreme, holding contracts requiring delivery of more of the commodity than is available for delivery. A successful corner forces shorts to cover or settle at prices dictated by the cornerer.",
+    "intuition": "You quietly buy up nearly everything there is to deliver, so when the sellers must come to market to fulfill their contracts, you're the only shop in town and you name the price.",
+    "mechanics": "The cornerer accumulates dominant long futures positions approaching delivery while simultaneously controlling the physical deliverable supply. Shorts who cannot find deliverable supply must either buy back futures from the cornerer at inflated prices or pay to acquire the physical commodity from them, producing an artificial price spike.",
+    "formula": "",
+    "relationships": ["Market manipulation", "Position limit", "Large trader reporting", "Short and distort"],
+    "failure_modes": "Corners fail when regulators or exchanges intervene (forced liquidation, limits on price moves), when new deliverable supply appears, or when the cornerer's financing costs overwhelm the squeeze; alleged corners also collapse into ordinary squeezes when the scarcity proves genuine rather than engineered.",
+    "misconceptions": "A large long position is not itself a corner — dominance plus control of deliverable supply and intent to dictate price are required; likewise, not every short squeeze is a corner, since squeezes can arise naturally from genuine scarcity.",
+    "example": "The Hunt brothers' 1979-80 accumulation of silver futures and bullion took prices from ~$6 to nearly $50/oz before COMEX rule changes and margin calls broke the corner and prices collapsed.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/ConsumerProtection/EducationCenter/CFTCGlossary/index.htm",
+        "section": "Entry: Corner",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 298
+  },
+  {
+    "id": "market-abuse-and-ethics/short-and-distort",
+    "name": "Short and distort",
+    "aliases": [],
+    "domain": "Market abuse and ethics",
+    "definition": "An illegal manipulation scheme that is the bearish mirror image of a pump and dump: the perpetrator establishes a short position in a stock, then spreads false or unsubstantiated negative rumors to drive the price down, and covers the short at the lower price for a profit. Spreading false information to move a price and manipulative short selling violate the antifraud provisions of the securities laws.",
+    "intuition": "Bet that a stock will fall, then poison the well with scary lies so it actually falls, and buy back cheap while everyone else panics.",
+    "mechanics": "The manipulator shorts the stock (sometimes using naked short sales), then disseminates fabricated negative claims — fake lawsuits, earnings warnings, regulatory actions — through social media, message boards, spam, or instant messages to traders. As the price falls on the false news, the short is covered profitably before the story is debunked.",
+    "formula": "",
+    "relationships": ["Pump and dump", "Bear raid", "Market manipulation", "Reg SHO"],
+    "failure_modes": "Legitimate short-seller research (e.g., critical reports by activist funds) sits close to the line: negative claims that turn out wrong but were made in good faith are not fraud, so cases hinge on proving falsity and intent; anonymity of online posts makes attribution difficult.",
+    "misconceptions": "Short selling combined with publishing negative opinions is not automatically short and distort — the scheme requires false or misleading statements; truthful bearish analysis, even aggressive, is lawful speech and often valuable price discovery.",
+    "example": "In 2008 the SEC charged trader Paul Berliner with securities fraud for spreading a false rumor via instant messages that the Blackstone-Alliance Data Systems deal was being renegotiated lower, while he held a short position in ADS; he settled with a $130,000 penalty and an industry bar.",
+    "citations": [
+      {
+        "source": "Investopedia, Short and Distort definition",
+        "url": "https://www.investopedia.com/terms/s/shortanddistort.asp",
+        "section": "What Is Short and Distort?",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "SEC Office of Investor Education and Assistance, Key Points About Regulation SHO",
+        "url": "https://www.sec.gov/investor/pubs/regsho.htm",
+        "section": "Section I.D (manipulative short sales prohibited)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "The term is market vernacular; primary regulators describe the conduct (manipulative short selling, false rumors) rather than the label, hence the secondary-source citation alongside the SEC page.",
+    "master_index": 299
+  },
+  {
+    "id": "market-abuse-and-ethics/bear-raid",
+    "name": "Bear raid",
+    "aliases": [],
+    "domain": "Market abuse and ethics",
+    "definition": "A market term for concerted heavy short selling of a stock, typically combined with spreading negative rumors about the company, intended to drive the price down quickly so the short sellers profit when covering at lower prices. When the selling is collusive or the rumors false, a bear raid constitutes market manipulation; heavy short selling based on genuine analysis is lawful.",
+    "intuition": "A pack of short sellers attacks a vulnerable company all at once — selling hard and whispering bad news — hoping to start a stampede they can ride to profit.",
+    "mechanics": "Participants quietly build large short positions in a target already under stress, then sell aggressively while circulating damaging claims (accounting fraud, imminent default, regulatory probes). Panic selling by other holders accelerates the decline; the raiders cover into the washout. The practice dates to the pre-1934 pool era and motivated early short-sale regulation such as the uptick rule.",
+    "formula": "",
+    "relationships": ["Short and distort", "Market manipulation", "Short-sale restriction", "Reg SHO"],
+    "failure_modes": "Falling prices are routinely blamed on bear raids when the real cause is bad fundamentals — distinguishing an attack from justified selling is often impossible in real time; collusion is usually only provable long after the fact through communications evidence.",
+    "misconceptions": "Not every coordinated-looking selloff or high short interest is a bear raid — short sellers frequently identify real problems, and lawful, independently motivated short selling plus truthful criticism is not manipulation; the illegal version requires collusion and/or false information.",
+    "example": "During the 2008 crisis, regulators examined whether concentrated short selling of Lehman Brothers and other financial stocks, coupled with false rumors of imminent collapse, amounted to bear raids — contributing to the SEC's temporary ban on short selling financial stocks that September.",
+    "citations": [
+      {
+        "source": "Investopedia, Bear Raid definition",
+        "url": "https://www.investopedia.com/terms/b/bearraid.asp",
+        "section": "What Is a Bear Raid?",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "No regulator glossary defines the term; the citation is a recognized secondary source, consistent with the rule that secondary sources may be used where primary sources are silent.",
+    "master_index": 300
+  },
+  {
+    "id": "market-abuse-and-ethics/trade-surveillance",
+    "name": "Trade surveillance",
+    "aliases": ["market surveillance"],
+    "domain": "Market abuse and ethics",
+    "definition": "The monitoring of order, trade, and position data by exchanges, self-regulatory organizations, and regulators to detect potentially violative conduct such as manipulation, spoofing, wash trading, insider trading, and rule breaches, and to enforce compliance with exchange rules and securities laws. At NYSE, for example, the Surveillance and Investigations group surveils and preliminarily investigates members for market- and trading-related violations.",
+    "intuition": "It's the market's referee system: software and analysts watch every order and trade for patterns that look like cheating, then flag them for investigation.",
+    "mechanics": "Surveillance systems ingest full order-book and execution data, apply pattern-recognition alerts (e.g., high cancel rates, concentrated closing-period trading, cross-account self-trades, pre-news trading), and reconstruct audit trails. Alerts are triaged by analysts, escalated to investigations, and referred to enforcement (FINRA, SEC, CFTC) or handled through SRO disciplinary processes.",
+    "formula": "",
+    "relationships": ["Market manipulation", "Spoofing", "Wash trading", "Large trader reporting"],
+    "failure_modes": "Alert-based systems generate high false-positive rates because abusive and legitimate strategies share surface patterns; novel manipulation techniques and cross-market fragmentation can outpace detection models, and surveillance is only as good as the underlying data quality and consolidation.",
+    "misconceptions": "Surveillance does not catch manipulation in real time as it happens — most enforcement follows retrospective reconstruction of trading data; and being flagged by surveillance is not a finding of wrongdoing, only a trigger for review.",
+    "example": "An exchange surveillance alert flags an account whose orders average 400-millisecond lifetimes with a 98% cancel rate and repeated opposite-side fills; investigators build a spoofing case and refer it to the CFTC.",
+    "citations": [
+      {
+        "source": "NYSE Regulation (intercontinental Exchange, Inc.)",
+        "url": "https://www.nyse.com/regulation",
+        "section": "Market Regulation — Surveillance and Investigations",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 301
+  },
+  {
+    "id": "market-abuse-and-ethics/know-your-customer",
+    "name": "Know your customer",
+    "aliases": ["KYC", "customer identification program (CIP)"],
+    "domain": "Market abuse and ethics",
+    "definition": "The set of procedures by which financial institutions verify the identity of customers and understand the nature of their activities, anchored in the U.S. by Section 326 of the USA PATRIOT Act (31 U.S.C. § 5318(l)), which requires minimum standards for verifying the identity of persons opening accounts, maintaining verification records, and screening against government lists of known or suspected terrorists.",
+    "intuition": "Before a firm lets you move money or trade, it must actually know who you are — name, address, ID documents — so criminals can't hide behind anonymous accounts.",
+    "mechanics": "At account opening the institution collects identifying information (name, date of birth, address, identification number), verifies it through documents or non-documentary methods, keeps the records, and checks the customer against government watchlists. KYC is supplemented by customer due diligence (CDD), including beneficial-ownership identification for legal entities and ongoing monitoring proportionate to risk.",
+    "formula": "",
+    "relationships": ["Anti-money-laundering controls", "Suitability", "Trade surveillance"],
+    "failure_modes": "Verification relies on documents and databases that can be forged or stale, and shell structures can obscure beneficial owners; overly rigid KYC also excludes legitimate customers lacking standard IDs, and box-ticking programs can pass exams while missing genuinely suspicious relationships.",
+    "misconceptions": "KYC is not a one-time ID check at signup — regulators expect ongoing due diligence and monitoring commensurate with customer risk; nor is it merely a brokerage rule — it is a statutory Bank Secrecy Act obligation across financial institutions.",
+    "example": "A broker-dealer opening an account for a new customer collects her passport and Social Security number, verifies them against a database, screens her against OFAC lists, and records the verification before enabling trading.",
+    "citations": [
+      {
+        "source": "31 U.S.C. § 5318 — Compliance, exemptions, and summons authority (U.S. Code, GPO)",
+        "url": "https://www.govinfo.gov/content/pkg/USCODE-2023-title31/html/USCODE-2023-title31-subtitleIV-chap53-subchapII-sec5318.htm",
+        "section": "Subsection (l) Identification and Verification of Accountholders",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 302
+  },
+  {
+    "id": "market-abuse-and-ethics/anti-money-laundering-controls",
+    "name": "Anti-money-laundering controls",
+    "aliases": ["AML controls", "AML/CFT program", "BSA/AML program"],
+    "domain": "Market abuse and ethics",
+    "definition": "The program of internal policies, procedures, and controls that financial institutions must establish to guard against money laundering and the financing of terrorism. Under 31 U.S.C. § 5318(h) each financial institution must maintain an AML program including, at a minimum, internal policies/procedures/controls, a designated compliance officer, ongoing employee training, and an independent audit function, applied on a risk basis.",
+    "intuition": "Banks and brokers must build a filter that makes it hard to wash dirty money through the financial system — and prove to examiners that the filter actually works.",
+    "mechanics": "An AML program combines the four statutory pillars (controls, compliance officer, training, independent testing) with customer due diligence/KYC, transaction monitoring, suspicious activity reporting (SARs under § 5318(g)), currency transaction reporting, and recordkeeping under the Bank Secrecy Act. Institutions must direct more resources to higher-risk customers and activities and face examination by their functional regulators.",
+    "formula": "",
+    "relationships": ["Know your customer", "Trade surveillance"],
+    "failure_modes": "Controls calibrated to catch known typologies miss novel laundering methods (trade-based laundering, crypto mixing, nested correspondent accounts); programs also drown analysts in low-quality alerts, and institutions sometimes de-risk entire customer categories rather than manage the risk.",
+    "misconceptions": "AML compliance is not just filing SARs — the statute requires a risk-based program with governance, training, and independent testing; and it applies beyond banks to broker-dealers, futures commission merchants, mutual funds, and money services businesses.",
+    "example": "A broker-dealer's monitoring system flags a customer who wires in $900,000 from a high-risk jurisdiction and immediately buys and liquidates securities with minimal trading rationale; the firm investigates and files a SAR with FinCEN.",
+    "citations": [
+      {
+        "source": "31 U.S.C. § 5318 — Compliance, exemptions, and summons authority (U.S. Code, GPO)",
+        "url": "https://www.govinfo.gov/content/pkg/USCODE-2023-title31/html/USCODE-2023-title31-subtitleIV-chap53-subchapII-sec5318.htm",
+        "section": "Subsection (h) Anti-Money Laundering Programs",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "FinCEN (Financial Crimes Enforcement Network, U.S. Treasury) — What We Do",
+        "url": "https://www.fincen.gov/what-we-do",
+        "section": "Mission statement",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 303
+  },
+  {
+    "id": "market-abuse-and-ethics/suitability",
+    "name": "Suitability",
+    "aliases": ["suitability obligation"],
+    "domain": "Market abuse and ethics",
+    "definition": "The FINRA Rule 2111 obligation that a broker-dealer or associated person have a reasonable basis to believe that a recommended transaction or investment strategy is suitable for the customer, based on reasonable diligence to ascertain the customer's investment profile — including age, other investments, financial situation and needs, tax status, objectives, experience, time horizon, liquidity needs, and risk tolerance. For retail customers, suitability has been superseded by Regulation Best Interest (SEA Rule 15l-1), to which Rule 2111 no longer applies.",
+    "intuition": "A broker can't sell you just anything that isn't fraudulent — the recommendation has to fit who you are, what you can afford, and what you're trying to do.",
+    "mechanics": "The rule has three components: reasonable-basis suitability (the product must be suitable for at least some investors, based on understood risks and rewards), customer-specific suitability (it must fit this customer's profile), and quantitative suitability (a series of trades must not be excessive taken together). Institutional accounts may qualify for an exemption if they can evaluate risks independently and affirmatively exercise independent judgment.",
+    "formula": "",
+    "relationships": ["Best-interest obligation", "Fiduciary duty", "Churning", "Know your customer"],
+    "failure_modes": "Suitability is judged at the recommendation point, so a 'suitable' product can still be a poor investment; profiles built on customer self-reporting can be gamed (e.g., inflated risk tolerance to permit risky sales), and the standard historically allowed conflicted recommendations that met the floor but served the broker's compensation.",
+    "misconceptions": "Suitability never meant 'best available' or guaranteed performance — it was a minimum-fit standard, which is precisely why Reg BI replaced it for retail recommendations; and it applied only to recommendations, not to unsolicited trades a customer directs.",
+    "example": "Recommending a leveraged inverse ETF as a long-term hold to a 70-year-old widow with a conservative profile and short liquidity horizon would violate customer-specific suitability even if the ETF is a legitimate product.",
+    "citations": [
+      {
+        "source": "FINRA Rule 2111 (Suitability), via Internet Archive snapshot of finra.org",
+        "url": "https://web.archive.org/web/2024/https://www.finra.org/rules-guidance/rulebooks/finra-rules/2111",
+        "section": "Rule text (a)-(b) and Supplementary Material .05",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "FINRA's live rulebook page blocks automated access (HTTP 403); the archived snapshot of the same rule text was fetched instead. Rule 2111.08 confirms Reg BI displaces Rule 2111 for covered retail recommendations.",
+    "master_index": 304
+  },
+  {
+    "id": "market-abuse-and-ethics/fiduciary-duty",
+    "name": "Fiduciary duty",
+    "aliases": ["fiduciary standard"],
+    "domain": "Market abuse and ethics",
+    "definition": "The obligation, owed under the Investment Advisers Act of 1940 by an investment adviser to its client, to act in the client's best interest; per the SEC's 2019 interpretation it comprises a duty of care (including advice in the client's best interest, best execution, and advice and monitoring over the relationship) and a duty of loyalty (not subordinating the client's interests to the adviser's own, with full and fair disclosure of material conflicts).",
+    "intuition": "A fiduciary must run your money the way a careful, honest trustee would — putting your interests first, telling you about conflicts, and never secretly profiting at your expense.",
+    "mechanics": "The duty is enforceable through the Advisers Act's antifraud provisions (Section 206) and applies to the ongoing advisory relationship, with its specific content shaped by the scope of the engagement. Duty-of-care failures include unsuitable advice or poor execution; duty-of-loyalty failures include undisclosed conflicts such as revenue sharing or proprietary-product preferences.",
+    "formula": "",
+    "relationships": ["Best-interest obligation", "Suitability", "Insider trading", "Front running"],
+    "failure_modes": "Disclosure-based loyalty compliance can devolve into buried boilerplate clients never read; the duty's scope varies with the relationship (a one-time plan vs. continuous management), creating ambiguity; and dual registrants switching hats between adviser and broker roles blur which standard applies when.",
+    "misconceptions": "Not all financial professionals are fiduciaries — brokers historically owed suitability (now Reg BI best-interest) duties rather than the Advisers Act fiduciary duty; and fiduciary status doesn't eliminate conflicts, it requires managing and disclosing them rather than hiding them.",
+    "example": "An adviser that sweeps client cash into its affiliate's low-yield money market fund while a higher-yield equivalent exists, without disclosing the affiliation and revenue benefit, breaches its duty of loyalty even if the fund is 'suitable.'",
+    "citations": [
+      {
+        "source": "SEC, Commission Interpretation Regarding Standard of Conduct for Investment Advisers, Investment Advisers Act Release No. 5248, 84 FR 33669",
+        "url": "https://www.federalregister.gov/documents/full_text/text/2019/07/12/2019-12208.txt",
+        "section": "Section II: Investment Advisers' Fiduciary Duty",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "Cited URL is the official Federal Register full-text rendition of the release, fetched directly; the HTML version is at /documents/2019/07/12/2019-12208/.",
+    "master_index": 305
+  },
+  {
+    "id": "market-abuse-and-ethics/best-interest-obligation",
+    "name": "Best-interest obligation",
+    "aliases": ["Regulation Best Interest", "Reg BI"],
+    "domain": "Market abuse and ethics",
+    "definition": "The standard of conduct established by the SEC's Regulation Best Interest (Exchange Act Rule 15l-1, adopted 2019) requiring a broker-dealer, when making a recommendation of a securities transaction or investment strategy to a retail customer, to act in the retail customer's best interest without placing its own financial or other interests ahead of the customer's. It is implemented through disclosure, care, conflict-of-interest, and compliance obligations.",
+    "intuition": "When a broker recommends something to a retail customer, they must recommend what's good for the customer — not what's lucrative for the broker — and prove their house rules back that up.",
+    "mechanics": "The care obligation requires reasonable diligence, care, and skill to understand the recommendation's risks/rewards/costs, have a reasonable basis for the recommendation to the particular customer, and avoid excessive trading. The disclosure obligation requires revealing material facts about the relationship and conflicts; the conflict obligation requires policies to identify, disclose, and mitigate or eliminate conflicts (with some sales-contest conflicts required to be eliminated).",
+    "formula": "",
+    "relationships": ["Suitability", "Fiduciary duty", "Churning"],
+    "failure_modes": "Reg BI expressly is not a fiduciary duty and permits conflicts to be managed by disclosure and mitigation, so conflicted advice can remain compliant if disclosed; 'best interest' is not judicially defined transaction-by-transaction, making the standard's practical bite dependent on SEC/FINRA examinations.",
+    "misconceptions": "Reg BI did not make brokers fiduciaries — the SEC deliberately crafted a distinct, enhanced standard above suitability but below the Advisers Act fiduciary duty; and 'best interest' does not mean the cheapest product, since cost is one factor among risks and rewards.",
+    "example": "A broker recommending one of two similar mutual funds must consider the costs of each; choosing the higher-commission share class without a justification in the customer's interest violates Reg BI's care and conflict obligations.",
+    "citations": [
+      {
+        "source": "SEC, Regulation Best Interest, Form CRS and Related Interpretations",
+        "url": "https://www.sec.gov/regulation-best-interest",
+        "section": "Overview of the 2019 standards-of-conduct rulemaking package",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 306
+  },
+  {
+    "id": "market-abuse-and-ethics/position-limit",
+    "name": "Position limit",
+    "aliases": ["speculative position limit"],
+    "domain": "Market abuse and ethics",
+    "definition": "The maximum position, net long or net short, in one commodity future (or option) or in all futures (or options) of one commodity combined, that may be held or controlled by one person (other than a person eligible for a hedge exemption), as prescribed by an exchange and/or the CFTC. A position limit (in the strict sense) is a speculative position limit whose exceedance violates exchange rules and triggers predefined penalties.",
+    "intuition": "It's a speed limit on market size: no single trader may pile up a futures position so big that they can bully the price or endanger delivery.",
+    "mechanics": "Limits are set per contract and often vary by period (spot-month limits are tightest to protect the delivery process). Positions owned or controlled by one trader — or a group acting in concert — are aggregated for compliance, and bona fide hedgers can obtain exemptions. Breaching a limit is a rule violation subject to fines, liquidation orders, or worse.",
+    "formula": "",
+    "relationships": ["Accountability level", "Large trader reporting", "Cornering the market", "Market manipulation"],
+    "failure_modes": "Limits set too low impair hedging and liquidity and push activity to exempt or offshore venues; set too high they fail to deter manipulation; look-alike OTC and swaps exposure can circumvent futures-only caps, which is why Dodd-Frank extended limits to economically equivalent swaps.",
+    "misconceptions": "Position limits do not cap how much money a trader can make or how many trades they can do in a day — they cap the net open position held at a point in time; and hedgers with genuine commercial exposure are not barred from exceeding them once exempted.",
+    "example": "CME's spot-month limit for a grain future might be 600 contracts: a speculator holding 610 net long contracts into the delivery period without a hedge exemption violates the limit and can be ordered to liquidate the excess.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/ConsumerProtection/EducationCenter/CFTCGlossary/index.htm",
+        "section": "Entries: Speculative Position Limit; Position Limit; Aggregation",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 307
+  },
+  {
+    "id": "market-abuse-and-ethics/accountability-level",
+    "name": "Accountability level",
+    "aliases": ["position accountability level"],
+    "domain": "Market abuse and ethics",
+    "definition": "A position threshold set by an exchange which, when exceeded, triggers a notification to the exchange and gives it authority to inquire into, limit, or order a reduction of the trader's position — but which, unlike a position limit, is not itself a violation of exchange rules when exceeded.",
+    "intuition": "It's a tripwire rather than a fence: crossing it doesn't break a rule, but it tells the exchange 'watch this trader' and lets them demand answers or cuts if the position looks dangerous.",
+    "mechanics": "Exchanges use accountability levels mainly in financially settled contracts where hard limits are less practical. Once a trader exceeds the level, the exchange may request information about the position's nature and hedging rationale, and may direct the trader not to increase, or to reduce, the position; refusing to comply can then become a rule violation.",
+    "formula": "",
+    "relationships": ["Position limit", "Large trader reporting", "Cornering the market"],
+    "failure_modes": "Because exceeding the level carries no automatic penalty, its effectiveness depends on exchange follow-through; traders may also split positions across related accounts or venues, requiring aggregation rules and cross-market information sharing to keep the tripwire meaningful.",
+    "misconceptions": "An accountability level is not a soft violation or a grace threshold before penalties — exceeding it is expressly not a rule breach; consequences arise only from ignoring subsequent exchange directives.",
+    "example": "NYMEX sets a 10,000-contract accountability level for a natural gas future; a fund holding 12,000 contracts must respond to exchange inquiries about its strategy and could be ordered to trim, but it has not violated any rule by holding that size.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/ConsumerProtection/EducationCenter/CFTCGlossary/index.htm",
+        "section": "Entry: Position Limit (contrast with position accountability level)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 308
+  },
+  {
+    "id": "market-abuse-and-ethics/large-trader-reporting",
+    "name": "Large trader reporting",
+    "aliases": ["large trader reporting program", "LTR"],
+    "domain": "Market abuse and ethics",
+    "definition": "The CFTC's reporting system under which futures commission merchants, clearing members, foreign brokers, and traders must report positions at or above CFTC-set reporting levels — sizes of positions set by the exchanges and/or the CFTC at or above which traders or brokers must make daily reports of position size by commodity and delivery month and whether the position is controlled by a commercial or non-commercial trader.",
+    "intuition": "Once your position gets big enough to matter to the whole market, you can no longer stay anonymous — the regulator gets a daily look at exactly what you hold.",
+    "mechanics": "Clearing members and FCMs file daily large-trader reports for every account at or above the reporting level in a contract; traders themselves file identifying information (CFTC Form 40) on demand. The data feed market surveillance, position-limit enforcement, and the aggregated Commitments of Traders reports, and parallel regimes exist at the SEC (Rule 13h-1 Form 13H) for securities.",
+    "formula": "",
+    "relationships": ["Position limit", "Accountability level", "Trade surveillance", "Cornering the market"],
+    "failure_modes": "Reporting levels are set per contract and can lag market growth, and accounts split across multiple FCMs or affiliates require aggregation to avoid undercounting; the system reports positions, not intent, so surveillance still must infer manipulation from the data.",
+    "misconceptions": "Large trader reports are confidential regulatory data, not public disclosures of individual positions — the public sees only aggregated Commitments of Traders figures; and the obligation binds the reporting firms as well as the traders, not just one side.",
+    "example": "A hedge fund holding 30,000 live-cattle futures across two FCMs exceeds the CFTC reporting level; both FCMs report the positions daily, and the fund files Form 40 identifying its controllers when asked.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/ConsumerProtection/EducationCenter/CFTCGlossary/index.htm",
+        "section": "Entry: Reporting Level (see Large Trader Reporting Program)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 309
+  },
+  {
+    "id": "market-abuse-and-ethics/short-sale-restriction",
+    "name": "Short-sale restriction",
+    "aliases": ["Rule 201", "short sale price test circuit breaker"],
+    "domain": "Market abuse and ethics",
+    "definition": "A rule limiting when or at what price short sales may be executed, the current U.S. form being Rule 201 of Regulation SHO: when a stock's price falls at least 10% from the prior day's close, trading centers must prevent the execution or display of short-sale orders at prices at or below the national best bid for the rest of that day and the following day.",
+    "intuition": "When a stock is already crashing, this rule makes short sellers wait their turn above the bid so they can't keep hammering the price down tick after tick.",
+    "mechanics": "Rule 201 aims to let long sellers sell first on declining days and to prevent short selling — including potentially abusive short selling — from accelerating a severe intraday decline. Exchanges and trading centers maintain policies to block covered short sales at impermissible prices once the circuit breaker triggers; orders properly marked 'short exempt' are excepted.",
+    "formula": "Trigger: current price <= 0.90 x prior day's closing price; once triggered, short-sale orders may not execute or be displayed at a price <= national best bid for the remainder of the day and the next trading day.",
+    "relationships": ["Reg SHO", "Bear raid", "Locate requirement", "Market manipulation"],
+    "failure_modes": "Studies of price tests (including the repealed uptick rule) found limited effect on declines, and restrictions can impair liquidity and price discovery in the very stocks under stress; determined sellers can route around the intent via options or exempt market-making channels.",
+    "misconceptions": "Rule 201 does not ban short selling in a declining stock — short sales remain permitted at prices above the bid; nor does a triggered restriction mean the stock is being manipulated, since it triggers mechanically on a 10% move.",
+    "example": "XYZ closes at $50 on Monday and trades down to $44.80 intraday Tuesday, triggering Rule 201; for the rest of Tuesday and all of Wednesday, short sales can only execute above the national best bid.",
+    "citations": [
+      {
+        "source": "SEC Office of Investor Education and Assistance, Key Points About Regulation SHO",
+        "url": "https://www.sec.gov/investor/pubs/regsho.htm",
+        "section": "Section III: Rule 201 — Short Sale Price Test Circuit Breaker",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 310
+  },
+  {
+    "id": "market-abuse-and-ethics/locate-requirement",
+    "name": "Locate requirement",
+    "aliases": ["Rule 203(b)(1) locate"],
+    "domain": "Market abuse and ethics",
+    "definition": "The Regulation SHO requirement (Rule 203(b)(1)-(2)) that, before effecting a short sale in any equity security, a broker-dealer must have reasonable grounds to believe the security can be borrowed so that it can be delivered on the date delivery is due, and must document that 'locate' before executing the short sale.",
+    "intuition": "Before you sell shares you don't own, your broker must point to a real, borrowable source of those shares — no selling into thin air.",
+    "mechanics": "The broker-dealer identifies a source of borrowable shares (its own inventory, a stock-loan desk, or an 'easy to borrow' list) and records the locate prior to the short sale; reliance on blanket assurances without reasonable grounds is prohibited. Bona fide market making is excepted from the locate requirement, though not from close-out and pre-borrow obligations.",
+    "formula": "",
+    "relationships": ["Reg SHO", "Short-sale restriction", "Short and distort", "Bear raid"],
+    "failure_modes": "Locates are typically arranged before settlement, so located stock can be recalled or used elsewhere by settlement day, producing failures to deliver despite compliance; 'easy to borrow' lists can be stale, and sham locates (e.g., repeatedly relying on the same exhausted source) have been the subject of SEC enforcement.",
+    "misconceptions": "A locate is not the same as an actual borrow or a guarantee of delivery — it is a reasonable-grounds belief documented in advance; and failing to deliver later is not per se proof the locate was improper, since legitimate delays occur.",
+    "example": "A trader wants to short 10,000 shares of a small-cap; her broker's loan desk confirms 50,000 shares are borrowable from a lender, records the locate with source and quantity, and only then routes the short-sale order.",
+    "citations": [
+      {
+        "source": "SEC Office of Investor Education and Assistance, Key Points About Regulation SHO",
+        "url": "https://www.sec.gov/investor/pubs/regsho.htm",
+        "section": "Section III: Rule 203(b)(1) and (2) — Locate Requirement",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 311
+  },
+  {
+    "id": "market-abuse-and-ethics/reg-sho",
+    "name": "Reg SHO",
+    "aliases": ["Regulation SHO"],
+    "domain": "Market abuse and ethics",
+    "definition": "The SEC's short-sale regulation (Rules 200-204 under the Exchange Act), adopted in 2004 with compliance beginning January 3, 2005, to update short-sale regulation and address abusive naked short selling and persistent failures to deliver. Its four pillars are order marking (Rule 200), the short-sale price test circuit breaker (Rule 201), the locate requirement (Rule 203(b)), and close-out requirements for fails to deliver (Rules 204 and 203(b)(3)).",
+    "intuition": "It's the rulebook that keeps short selling honest: mark your orders correctly, don't pile onto crashing stocks, line up shares before you sell, and actually deliver what you sold.",
+    "mechanics": "Rule 200 requires sale orders to be marked 'long,' 'short,' or 'short exempt.' Rule 201 imposes a bid-based price test for a stock down 10% intraday. Rule 203(b) requires a documented locate before shorting and a 13-day close-out for threshold securities; Rule 204 requires clearing-agency participants to close out fails to deliver by the start of the next settlement day (short sales) or third settlement day (long sales/bona fide market making), with pre-borrow penalties otherwise.",
+    "formula": "",
+    "relationships": ["Locate requirement", "Short-sale restriction", "Bear raid", "Short and distort"],
+    "failure_modes": "Fails to deliver persist for legitimate reasons (processing delays, hard-to-borrow names), so threshold-list inclusion does not prove abuse; the rules also cannot fully prevent manipulation executed through options, offshore venues, or deceptive conduct addressed instead by antifraud Rule 10b-21.",
+    "misconceptions": "Naked short selling is not categorically illegal under Reg SHO — market makers in bona fide market making may short without a locate; nor does appearing on a threshold securities list brand a company or its stock as manipulated.",
+    "example": "A broker-dealer that fails to deliver shares from a short sale must buy or borrow like-kind securities to close out the fail by the opening of trading on the next settlement day, or it and its introducing brokers are barred from further short sales in that stock without a pre-borrow.",
+    "citations": [
+      {
+        "source": "SEC Office of Investor Education and Assistance, Key Points About Regulation SHO",
+        "url": "https://www.sec.gov/investor/pubs/regsho.htm",
+        "section": "Section III: Regulation SHO (Rules 200-204)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 312
+  },
+  {
+    "id": "market-abuse-and-ethics/pattern-day-trader-rule",
+    "name": "Pattern day trader rule",
+    "aliases": ["PDT rule"],
+    "domain": "Market abuse and ethics",
+    "definition": "The FINRA margin rule regime under which a customer who executes four or more day trades within five business days in a margin account (a day trade being the purchase and sale, or sale and purchase, of the same security on the same day) is designated a 'pattern day trader' and becomes subject to special margin requirements, historically a $25,000 minimum equity requirement.",
+    "intuition": "If you day trade frequently with borrowed money, regulators make you keep a serious cash cushion in the account so a bad day doesn't sink the broker too.",
+    "mechanics": "Day trades are counted per margin account across a rolling five-business-day window; once designated, the account historically had to maintain at least $25,000 in equity and was limited in day-trading buying power, with violations triggering restrictions to cash-only trading. FINRA has since adopted new intraday margin requirements replacing the former day-trading margin requirements, so the precise margin mechanics are in transition.",
+    "formula": "Designation trigger: day trades >= 4 within 5 business days in a margin account; classic requirement: minimum account equity >= $25,000.",
+    "relationships": ["Suitability", "Trade surveillance"],
+    "failure_modes": "The five-day counting window and per-account application confuse retail traders, who inadvertently trigger the designation; the rule has also been criticized for pushing small accounts toward options, offshore brokers, or cash-account settlement workarounds (good faith violations) rather than reducing risk.",
+    "misconceptions": "The rule is a margin requirement, not a ban on day trading, and it does not apply to cash accounts (which face separate free-riding/settlement constraints); holding a position overnight and selling the next day is not a day trade.",
+    "example": "A trader buys and sells AAPL three times on Monday and does one more round trip on Thursday in her margin account; with four day trades in five business days she is designated a pattern day trader and must meet the applicable minimum equity rules to keep day trading.",
+    "citations": [
+      {
+        "source": "Investor.gov Glossary (SEC Office of Investor Education and Advocacy)",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Entries: Pattern Day Trader; Day Trade",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "The SEC glossary notes FINRA has adopted new intraday margin requirements replacing the prior day-trading margin requirements; the $25,000 minimum equity figure reflects the longstanding rule 4210 regime and may be superseded by the new requirements.",
+    "master_index": 313
+  },
+  {
+    "id": "market-abuse-and-ethics/wash-sale-rule",
+    "name": "Wash-sale rule",
+    "aliases": ["wash sale (tax)", "IRC section 1091"],
+    "domain": "Market abuse and ethics",
+    "definition": "The U.S. tax rule (IRC section 1091, detailed in IRS Publication 550) that disallows a loss deduction when stock or securities are sold at a loss and substantially identical stock or securities are bought (or an option or contract to buy them is acquired) within 30 days before or after the sale; the disallowed loss is added to the basis of the replacement position.",
+    "intuition": "You can't sell a stock for a tax loss on Friday and buy it right back on Monday — the IRS treats that as never having really sold, so the loss waits until you truly exit.",
+    "mechanics": "The 61-day window runs from 30 days before to 30 days after the loss sale. If triggered, the disallowed loss is added to the cost basis of the new shares, and the holding period of the old shares tacks onto the new, deferring (not destroying) the loss. Acquisitions by a spouse, a controlled corporation, or into an IRA also trigger the rule — with the IRA variant permanently forfeiting the loss.",
+    "formula": "Adjusted basis of replacement shares = purchase price of replacement shares + disallowed wash-sale loss; window = sale date ± 30 days.",
+    "relationships": ["Capital gain", "Capital loss", "Wash trading"],
+    "failure_modes": "The rule is often triggered accidentally by dividend reinvestment plans, rebalancing across taxable and retirement accounts, or algorithmic tax-loss harvesting that re-buys too soon; 'substantially identical' is undefined for many instruments (e.g., different share classes, options), creating gray areas.",
+    "misconceptions": "The rule does not make the loss vanish in a taxable account — it defers the loss via basis adjustment (the IRA exception is the permanent trap); and it applies only to losses — gains realized and immediately re-established are simply taxed, not deferred.",
+    "example": "You buy 100 shares of X for $1,000, sell them for $750, and repurchase 100 shares two weeks later for $800; the $250 loss is disallowed and your basis in the new shares becomes $1,050.",
+    "citations": [
+      {
+        "source": "IRS Publication 550, Investment Income and Expenses",
+        "url": "https://www.irs.gov/publications/p550",
+        "section": "Chapter 4 — Sales and Trades of Investment Property: Wash Sales",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 314
+  },
+  {
+    "id": "market-abuse-and-ethics/capital-gain",
+    "name": "Capital gain",
+    "aliases": [],
+    "domain": "Market abuse and ethics",
+    "definition": "The profit realized when a capital asset — such as stocks or bonds held as investments — is sold for more than its adjusted basis; per the IRS, a capital gain is the excess of the amount realized on sale over the asset's adjusted basis. Gains are classified as short-term (asset held one year or less) or long-term (held more than one year), with long-term net gains generally taxed at preferential rates.",
+    "intuition": "Buy low, sell high — the positive difference between what you paid (your basis) and what you sold for is your capital gain, and the tax rate depends on how long you held it.",
+    "mechanics": "Gain is computed per disposition as amount realized minus adjusted basis (generally cost, with adjustments). Short-term gains net against short-term losses and are taxed as ordinary income; long-term gains net against long-term losses and most net long-term gain is taxed at 0%, 15%, or 20% depending on taxable income, with special rates for collectibles and certain real-estate gain. Sales are reported on Form 8949 and summarized on Schedule D.",
+    "formula": "Capital gain = amount realized - adjusted basis (when amount realized > adjusted basis); long-term if holding period > 1 year, short-term if <= 1 year.",
+    "relationships": ["Capital loss", "Wash-sale rule"],
+    "failure_modes": "Basis errors (neglecting reinvested dividends, wash-sale adjustments, corporate actions) produce misreported gains; the one-year holding boundary and trade-date settlement conventions cause classification mistakes, and unrealized gains create no tax event until disposition.",
+    "misconceptions": "A capital gain is not income received while holding the asset — dividends and interest are separate; nor are all investment gains 'capital' — dealer property, inventory, and certain hedging transactions produce ordinary income regardless of price appreciation.",
+    "example": "You buy 100 shares at $30 ($3,000 basis) and sell them 14 months later at $45 ($4,500 realized): the $1,500 long-term capital gain is taxed at the preferential long-term rate for your income bracket.",
+    "citations": [
+      {
+        "source": "IRS Topic No. 409, Capital Gains and Losses",
+        "url": "https://www.irs.gov/taxtopics/tc409",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Investor.gov Glossary (SEC Office of Investor Education and Advocacy)",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Entry: Capital Gain",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 315
+  },
+  {
+    "id": "market-abuse-and-ethics/capital-loss",
+    "name": "Capital loss",
+    "aliases": [],
+    "domain": "Market abuse and ethics",
+    "definition": "The loss realized when a capital asset is sold for less than its adjusted basis; per the IRS, you have a capital loss if you sell the asset for less than your adjusted basis. Capital losses offset capital gains, and if losses exceed gains, up to $3,000 ($1,500 if married filing separately) of the excess is deductible against ordinary income per year, with the remainder carried forward.",
+    "intuition": "Sell for less than you paid and you have a capital loss — painful, but it can shrink your tax bill by canceling out gains and a limited slice of ordinary income each year.",
+    "mechanics": "Losses are classified short-term or long-term by the same one-year holding rule as gains, then netted within and across categories on Schedule D. Net losses above the annual $3,000/$1,500 limit carry forward to later years indefinitely; losses on personal-use property (home, car) are not deductible, and losses on investment property repurchased within the 30-day window are deferred by the wash-sale rule.",
+    "formula": "Capital loss = adjusted basis - amount realized (when amount realized < adjusted basis); annual ordinary-income offset limit = lesser of $3,000 ($1,500 MFS) or total net loss.",
+    "relationships": ["Capital gain", "Wash-sale rule"],
+    "failure_modes": "Taxpayers lose deductions by triggering wash sales, misclassifying holding periods, or failing to track carryovers across years; losses between related parties can be disallowed entirely, and the $3,000 annual cap means large realized losses may take many years to absorb.",
+    "misconceptions": "Capital losses cannot generally offset ordinary income beyond $3,000 per year — a $100,000 net loss does not wipe out $100,000 of salary; and losses on personal-use assets like your car or main home are never deductible.",
+    "example": "You sell stock bought for $10,000 for $6,000, realizing a $4,000 capital loss; with no gains that year you deduct $3,000 against ordinary income and carry $1,000 forward to the next year.",
+    "citations": [
+      {
+        "source": "IRS Topic No. 409, Capital Gains and Losses",
+        "url": "https://www.irs.gov/taxtopics/tc409",
+        "section": "Limit on the deduction and carryover of losses",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification swarm v1",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 316
+  }
+]

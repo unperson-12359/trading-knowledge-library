@@ -1,0 +1,1944 @@
+[
+  {
+    "id": "microstructure/bid",
+    "name": "Bid",
+    "aliases": [],
+    "domain": "Microstructure",
+    "definition": "The price at which a participant is willing to buy a stated quantity.",
+    "intuition": "",
+    "mechanics": "",
+    "formula": "",
+    "relationships": [],
+    "failure_modes": "",
+    "misconceptions": "",
+    "example": "",
+    "citations": [],
+    "source_hint": "BIS",
+    "status": "reviewed",
+    "reviewed_by": "master_v1 import",
+    "review_date": "2026-08-06",
+    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "master_index": 19
+  },
+  {
+    "id": "microstructure/ask",
+    "name": "Ask",
+    "aliases": [],
+    "domain": "Microstructure",
+    "definition": "The price at which a participant is willing to sell a stated quantity.",
+    "intuition": "",
+    "mechanics": "",
+    "formula": "",
+    "relationships": [],
+    "failure_modes": "",
+    "misconceptions": "",
+    "example": "",
+    "citations": [],
+    "source_hint": "BIS",
+    "status": "reviewed",
+    "reviewed_by": "master_v1 import",
+    "review_date": "2026-08-06",
+    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "master_index": 20
+  },
+  {
+    "id": "microstructure/bid-ask-spread",
+    "name": "Bid-ask spread",
+    "aliases": [],
+    "domain": "Microstructure",
+    "definition": "The difference between the best quoted ask and best quoted bid.",
+    "intuition": "",
+    "mechanics": "",
+    "formula": "",
+    "relationships": [],
+    "failure_modes": "",
+    "misconceptions": "",
+    "example": "",
+    "citations": [],
+    "source_hint": "BIS",
+    "status": "reviewed",
+    "reviewed_by": "master_v1 import",
+    "review_date": "2026-08-06",
+    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "master_index": 21
+  },
+  {
+    "id": "microstructure/liquidity",
+    "name": "Liquidity",
+    "aliases": [],
+    "domain": "Microstructure",
+    "definition": "The ability to transact desired size promptly, at low cost, with limited price impact.",
+    "intuition": "",
+    "mechanics": "",
+    "formula": "",
+    "relationships": [],
+    "failure_modes": "",
+    "misconceptions": "",
+    "example": "",
+    "citations": [],
+    "source_hint": "BIS",
+    "status": "reviewed",
+    "reviewed_by": "master_v1 import",
+    "review_date": "2026-08-06",
+    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "master_index": 22
+  },
+  {
+    "id": "microstructure/quoted-spread",
+    "name": "Quoted spread",
+    "aliases": [
+      "inside spread",
+      "quoted bid-ask spread"
+    ],
+    "domain": "Microstructure",
+    "definition": "The difference between the best (lowest) quoted offer and the best (highest) quoted bid for a security at a point in time, i.e. the round-trip cost of immediacy at displayed prices. SEC Rule 600(b)(12) of Regulation NMS defines the average quoted spread as the share-weighted average of the national best offer minus the national best bid at the time of order receipt.",
+    "intuition": "It measures how far apart the best standing buy and sell prices are; the narrower the gap, the cheaper it is to trade immediately in small size.",
+    "mechanics": "Computed from the inside market (best bid and offer, or the NBBO nationally) each time quotes update; expressed in absolute currency terms or relative to the quote midpoint. It reflects posted liquidity only and changes continuously with order submissions, cancellations, and executions.",
+    "formula": "QS = A - B, where A is the best ask and B the best bid; relative quoted spread = (A - B) / M with midpoint M = (A + B) / 2.",
+    "relationships": [
+      "Bid-ask spread",
+      "Midpoint",
+      "Best bid",
+      "Best ask",
+      "Effective spread",
+      "Tightness"
+    ],
+    "failure_modes": "It says nothing about available depth or hidden liquidity, so it can look deceptively tight when displayed size is tiny or when the minimum tick constrains prices. It also overstates the cost actually paid when executions receive price improvement inside the quotes.",
+    "misconceptions": "The quoted spread is not the transaction cost actually incurred; realized costs are captured by the effective spread and can be lower after price improvement or higher after market impact on large orders.",
+    "example": "With a national best bid of $100.00 and national best offer of $100.02, the quoted spread is $0.02, or about 2 basis points of the $100.01 midpoint.",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraph (b)(12) Average quoted spread",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 236
+  },
+  {
+    "id": "microstructure/effective-spread",
+    "name": "Effective spread",
+    "aliases": [
+      "effective transaction cost"
+    ],
+    "domain": "Microstructure",
+    "definition": "A measure of the execution cost actually paid, defined relative to the midpoint of the national best bid and offer at the time of order receipt: for buy orders, twice the difference between the execution price and the midpoint; for sell orders, twice the difference between the midpoint and the execution price (SEC Rule 600(b)(8)).",
+    "intuition": "It captures what a liquidity demander really paid against the pre-trade benchmark price, so price improvement inside the quotes shows up as a smaller spread.",
+    "mechanics": "Computed per execution using the NBBO midpoint at order receipt, then share-weighted across executions (average effective spread); dividing by the midpoint gives the percentage effective spread. It is a standard output of SEC Rule 605 execution-quality reports.",
+    "formula": "ES_buy = 2(P_exec - M); ES_sell = 2(M - P_exec), where M is the NBBO midpoint at the time of order receipt.",
+    "relationships": [
+      "Quoted spread",
+      "Realized spread",
+      "Midpoint",
+      "National best bid and offer",
+      "Price improvement"
+    ],
+    "failure_modes": "The midpoint benchmark can be stale or misleading in fast markets and wide-spread stocks, and the measure depends on the order-receipt time convention. It also ignores the market impact of large orders that walk the book and the opportunity cost of unfilled orders.",
+    "misconceptions": "A low effective spread does not mean trading was free; it excludes commissions, fees, delay costs, and impact beyond the first execution.",
+    "example": "NBBO midpoint is $100.01 at order receipt; a buy executes at $100.02, giving an effective spread of $0.02, equal to the quoted spread; execution at $100.01 gives $0.00.",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraph (b)(8) Average effective spread",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 237
+  },
+  {
+    "id": "microstructure/realized-spread",
+    "name": "Realized spread",
+    "aliases": [
+      "post-trade spread"
+    ],
+    "domain": "Microstructure",
+    "definition": "The execution cost measure recomputed with the NBBO midpoint at a specified interval after execution rather than at order receipt: for buys, twice the execution price minus the later midpoint; for sells, twice the later midpoint minus the execution price (SEC Rule 600(b)(13)). It estimates what a liquidity provider retains after prices adjust to the trade.",
+    "intuition": "It separates the liquidity provider's compensation from its losses to better-informed traders: if the price moves against the provider after the trade, the realized spread shrinks below the effective spread.",
+    "mechanics": "Computed like the effective spread but with the midpoint at a fixed post-trade horizon (e.g. minutes later); the gap between effective and realized spread approximates the price impact or information content of the trade.",
+    "formula": "RS_buy = 2(P_exec - M_{t+D}); RS_sell = 2(M_{t+D} - P_exec), where M_{t+D} is the NBBO midpoint at a specified interval D after execution.",
+    "relationships": [
+      "Effective spread",
+      "Quoted spread",
+      "Adverse selection",
+      "Price impact",
+      "Midpoint"
+    ],
+    "failure_modes": "Results are highly sensitive to the choice of horizon D, and unrelated news arriving during the interval contaminates the measurement. A negative realized spread can reflect general market movement rather than counterparty informativeness.",
+    "misconceptions": "The realized spread is not the market maker's profit; it ignores hedging costs, inventory risk, fees, rebates, and operating costs.",
+    "example": "A buy executes at $100.02 with a $100.01 midpoint at receipt (effective spread $0.02); five minutes later the midpoint is $100.015, so the realized spread is $0.01 - half the effective spread was given back to adverse price movement.",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraph (b)(13) Average realized spread",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 238
+  },
+  {
+    "id": "microstructure/midpoint",
+    "name": "Midpoint",
+    "aliases": [
+      "mid-quote",
+      "mid price"
+    ],
+    "domain": "Microstructure",
+    "definition": "The arithmetic mean of the best bid and best offer, conventionally computed from the NBBO; Regulation NMS uses the NBBO midpoint as the reference price for effective and realized spread calculations. It is the standard benchmark for the unobserved transaction-cost-free value of a security between trades.",
+    "intuition": "It is the neutral point splitting the spread - neither side's concession - so it serves as the default fair-value reference for measuring execution quality.",
+    "mechanics": "Recomputed on every change to the best bid or offer; used as the peg for midpoint orders, as the benchmark in spread and price-improvement statistics, and as the reference in trade-classification rules such as the quote rule.",
+    "formula": "M = (B + A) / 2, where B is the best (national best) bid and A the best (national best) offer.",
+    "relationships": [
+      "Quoted spread",
+      "Effective spread",
+      "National best bid and offer",
+      "Microprice",
+      "Quote rule"
+    ],
+    "failure_modes": "When the spread is wide, one side is thin, or prices are tick-constrained, the midpoint is a poor value estimate; it also ignores the size imbalance between bid and ask, which the microprice corrects.",
+    "misconceptions": "The midpoint is a benchmark, not a tradable price and not necessarily the market's true valuation; executions at the midpoint are a convention, not a law.",
+    "example": "With the NBBO at $100.00 x $100.04, the midpoint is $100.02; a buy executed at $100.03 shows $0.02 of effective spread (2 x (100.03 - 100.02)).",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraphs (b)(8)-(b)(13), spread definitions referencing the NBBO midpoint",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 239
+  },
+  {
+    "id": "microstructure/last-traded-price",
+    "name": "Last traded price",
+    "aliases": [
+      "last sale",
+      "last price"
+    ],
+    "domain": "Microstructure",
+    "definition": "The price of the most recently reported transaction in a security. Regulation NMS defines last sale data as price and volume data associated with a transaction, and consolidated last sale information as the price, volume, and market identification of the most recent transaction report disseminated under a national market system plan.",
+    "intuition": "It records where the asset last changed hands - a fact about the past, not a commitment about the price at which the next trade will occur.",
+    "mechanics": "Every executed trade is reported to the consolidated tape under transaction reporting plans, and quote displays update the 'last' field accordingly. In illiquid securities the last trade can be minutes or hours old, and in fast markets it lags the current quotes.",
+    "formula": "",
+    "relationships": [
+      "Bid",
+      "Ask",
+      "Midpoint",
+      "Transaction report",
+      "Consolidated market data"
+    ],
+    "failure_modes": "Using it as a value estimate fails in illiquid or fast-moving markets, where it can be far from the currently executable bid and ask; opening, closing, and block prints can also differ systematically from continuous-market prices.",
+    "misconceptions": "The last traded price is not the price at which a new order will execute; market orders transact at the current bid or ask, not at the last print.",
+    "example": "A stock last printed at $50.10, but news has moved the quotes to $50.00 x $50.20; a market buy executes near $50.20, not $50.10.",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraphs (b)(23) Consolidated last sale information and (b)(50) Last sale data",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 240
+  },
+  {
+    "id": "microstructure/best-bid",
+    "name": "Best bid",
+    "aliases": [
+      "highest bid",
+      "inside bid"
+    ],
+    "domain": "Microstructure",
+    "definition": "The highest-priced bid currently quoted for a security; at the level of a single venue it is that market's best bid, and aggregated across protected venues it forms the national best bid. Regulation NMS Rule 600(b)(15) defines best bid and best offer as the highest priced bid and the lowest priced offer.",
+    "intuition": "It is the most any displayed buyer is currently willing to pay - the price a seller can execute against immediately, up to the quoted size.",
+    "mechanics": "Sits at the top of the bid side of the order book with an associated displayed size; it changes whenever a better bid is posted, the existing best bid is cancelled, or it is executed. Under Rule 600(b)(60), ties between identical bids from different market centers are ranked by size, then by time.",
+    "formula": "",
+    "relationships": [
+      "Best ask",
+      "National best bid and offer",
+      "Bid",
+      "Top of book",
+      "Order book"
+    ],
+    "failure_modes": "The displayed best bid may be backed by very small size or may flicker in and out within milliseconds, and hidden or iceberg interest means the best truly executable bid can differ from the displayed one.",
+    "misconceptions": "The best bid is a firm price only for its quoted size; a seller of larger size will walk down the book and receive progressively worse prices.",
+    "example": "Bids rest at $100.00 for 300 shares and $99.99 for 2,000 shares; the best bid is $100.00, available for only 300 shares.",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraph (b)(15) Best bid and best offer",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 241
+  },
+  {
+    "id": "microstructure/best-ask",
+    "name": "Best ask",
+    "aliases": [
+      "best offer",
+      "lowest offer",
+      "inside ask"
+    ],
+    "domain": "Microstructure",
+    "definition": "The lowest-priced offer currently quoted for a security; at the level of a single venue it is that market's best offer, and aggregated across protected venues it forms the national best offer. Regulation NMS Rule 600(b)(15) defines best bid and best offer as the highest priced bid and the lowest priced offer.",
+    "intuition": "It is the least any displayed seller is currently willing to accept - the price a buyer can execute against immediately, up to the quoted size.",
+    "mechanics": "Sits at the top of the offer side of the order book with an associated displayed size; it moves as better offers arrive, are cancelled, or are lifted. Under Rule 600(b)(60), identical offers from different market centers are ranked by size, then by time.",
+    "formula": "",
+    "relationships": [
+      "Best bid",
+      "National best bid and offer",
+      "Ask",
+      "Top of book",
+      "Order book"
+    ],
+    "failure_modes": "Displayed size at the best offer can be minimal or fleeting, and reserve or hidden selling interest means the effective best offer can differ from what the tape shows.",
+    "misconceptions": "The best ask guarantees the price only for the displayed quantity; larger buys execute through successively higher offer levels.",
+    "example": "Offers rest at $100.02 for 200 shares and $100.03 for 1,500 shares; the best ask is $100.02 for 200 shares only.",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraph (b)(15) Best bid and best offer",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 242
+  },
+  {
+    "id": "microstructure/national-best-bid-and-offer",
+    "name": "National best bid and offer",
+    "aliases": [
+      "NBBO"
+    ],
+    "domain": "Microstructure",
+    "definition": "The highest protected bid and the lowest protected offer for an NMS stock across all national securities exchanges, calculated and disseminated on a current and continuing basis under Regulation NMS; when market centers transmit identical bids or offers, they are ranked first by size, then by time (Rule 600(b)(60)).",
+    "intuition": "It is the single national reference for the best available displayed prices in a fragmented market where the same stock trades on many venues.",
+    "mechanics": "Computed from the protected (automated, accessible) quotations of exchanges and associations by the plan processor, competing consolidators, or self-aggregators. It anchors the Rule 611 order-protection obligation and the Rule 605 execution-quality statistics.",
+    "formula": "NBB = max of protected bids across venues; NBO = min of protected offers across venues.",
+    "relationships": [
+      "Best bid",
+      "Best ask",
+      "Trade-through",
+      "Protected quotation",
+      "Midpoint",
+      "Regulation NMS"
+    ],
+    "failure_modes": "The consolidated NBBO lags direct exchange data feeds, historically excluded odd lots, and may reference sizes too small to be economically accessible; during locked or crossed conditions it ceases to represent an orderly market.",
+    "misconceptions": "The NBBO is not the totality of available liquidity - it excludes book depth beyond the inside, hidden orders, and dark-pool interest.",
+    "example": "NYSE quotes $100.00 x $100.03 and Nasdaq quotes $100.01 x $100.02; the NBBO is $100.01 x $100.02, drawing each side from a different venue.",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraph (b)(60) National best bid and national best offer",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 243
+  },
+  {
+    "id": "microstructure/order-book",
+    "name": "Order book",
+    "aliases": [
+      "book"
+    ],
+    "domain": "Microstructure",
+    "definition": "The collection of unexecuted buy and sell orders for a security maintained by a trading venue, organized by price level and priority. Its state evolves through order book events - limit-order submissions, market orders, and cancellations - which together drive short-horizon price changes (Cont, Kukanov and Stoikov, 2014).",
+    "intuition": "It is the visible queue of supply and demand waiting to trade: who wants to buy, who wants to sell, at what prices, and how much.",
+    "mechanics": "Limit orders rest in the book until matched, cancelled, or expired; incoming marketable orders execute against the best opposing prices, removing liquidity. Data feeds disseminate the book as snapshots and event updates, from which quantities like imbalance and depth are derived.",
+    "formula": "",
+    "relationships": [
+      "Limit order book",
+      "Top of book",
+      "Depth of market",
+      "Order-flow imbalance",
+      "Queue position"
+    ],
+    "failure_modes": "The displayed book understates true liquidity because of hidden, reserve, and off-exchange interest, and snapshot data miss intra-event dynamics. Book liquidity can also evaporate in stress as quotes are cancelled en masse.",
+    "misconceptions": "Size visible in the book is not committed liquidity; orders can be cancelled in milliseconds, so the book is an offer to trade, not a guarantee.",
+    "example": "A book shows five price levels per side; a 10,000-share market buy consumes the best offer and the two levels above it, moving the price up two ticks.",
+    "citations": [
+      {
+        "source": "Cont, Kukanov and Stoikov, 'The Price Impact of Order Book Events', Journal of Financial Econometrics 12(1):47-88 (arXiv preprint)",
+        "url": "https://arxiv.org/abs/1011.6402",
+        "section": "Abstract and introduction",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 244
+  },
+  {
+    "id": "microstructure/limit-order-book",
+    "name": "Limit order book",
+    "aliases": [
+      "LOB"
+    ],
+    "domain": "Microstructure",
+    "definition": "An order book composed of limit orders ranked by price and by a secondary priority rule (time, size, or pro rata), against which incoming marketable orders are continuously matched - the operating mechanism of a continuous double auction on modern electronic exchanges.",
+    "intuition": "It is a standing electronic auction: unfilled limit orders wait in line, and anyone demanding immediacy trades against the front of the opposite queue.",
+    "mechanics": "Price priority dominates - the best-priced orders match first; the exchange's matching algorithm (e.g. FIFO or pro rata on CME Globex) then allocates among orders at the same price. Orders lose queue priority when amended in price, increased in quantity, or changed in account.",
+    "formula": "",
+    "relationships": [
+      "Order book",
+      "Price-time priority",
+      "Pro rata allocation",
+      "Central limit order book",
+      "Queue position"
+    ],
+    "failure_modes": "Resting orders face adverse selection from better-informed or faster traders, and displayed depth can vanish in volatile periods precisely when it is most needed. Reconstructed books from data feeds can diverge from the exchange's true state.",
+    "misconceptions": "The limit order book is not a complete map of market liquidity: iceberg reserve size, hidden orders, and off-book venues all escape it.",
+    "example": "On CME Globex, an incoming 250-lot buy at 9711 executes against resting offers at that price in the sequence set by the product's matching algorithm, e.g. FIFO or pro rata.",
+    "citations": [
+      {
+        "source": "CME Group Client Systems Wiki, 'Supported Matching Algorithms'",
+        "url": "https://cmegroupclientsite.atlassian.net/wiki/spaces/EPICSANDBOX/pages/457218479",
+        "section": "FIFO; Pro-Rata",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 245
+  },
+  {
+    "id": "microstructure/central-limit-order-book",
+    "name": "Central limit order book",
+    "aliases": [
+      "CLOB"
+    ],
+    "domain": "Microstructure",
+    "definition": "A market structure in which order flow in an instrument is centralized in a single transparent electronic limit order book at one venue, where a matching engine automatically matches orders to buy and sell under uniform priority rules, providing a single point of price discovery and queue priority.",
+    "intuition": "Instead of liquidity being scattered across many venues, every order joins one consolidated queue, so all participants see and compete in the same book.",
+    "mechanics": "Participants route orders through standardized messaging to the venue's matching engine, which applies the product's matching algorithm (e.g. FIFO or pro rata) and disseminates a market feed to all participants simultaneously. Futures markets such as CME Group's DCMs operate this way, in contrast to fragmented US equity trading across exchanges, ATSs, and internalizers.",
+    "formula": "",
+    "relationships": [
+      "Limit order book",
+      "Price-time priority",
+      "Matching engine",
+      "Displayed liquidity",
+      "Fragmentation"
+    ],
+    "failure_modes": "Centralization creates a single point of technological failure and a venue monopoly over fees and market data; even CLOB markets retain off-book liquidity in blocks and RFQ protocols. Consolidated depth can still vanish in stress events.",
+    "misconceptions": "A central limit order book does not guarantee deep or stable liquidity, and it does not eliminate hidden trading interest or latency advantages among participants.",
+    "example": "E-mini S&P 500 futures trade overwhelmingly on CME Globex's single central limit order book, whereas a US-listed stock trades across a dozen exchanges and dozens of off-exchange venues.",
+    "citations": [
+      {
+        "source": "CFTC, Concept Release on Risk Controls and System Safeguards for Automated Trading Environments, 78 FR 56542",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2013-09-12/html/2013-22185.htm",
+        "section": "Part II.A.1 Automated Order Generation and Execution (DCM matching engines)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 246
+  },
+  {
+    "id": "microstructure/top-of-book",
+    "name": "Top of book",
+    "aliases": [
+      "inside market",
+      "level 1",
+      "BBO"
+    ],
+    "domain": "Microstructure",
+    "definition": "The best bid and best offer of an order book, together with their displayed sizes - the first price level on each side. Regulation NMS treats the best bid and best offer of each venue (and the NBBO across venues) as core market data elements.",
+    "intuition": "It is the headline of the book: the prices at which a small market order would execute right now.",
+    "mechanics": "Top-of-book (Level 1) data update on every order event that changes the inside price or size. Matching engines fill aggressor orders first against quantity at the best opposite price, and spread, midpoint, and imbalance metrics are computed from these two levels.",
+    "formula": "",
+    "relationships": [
+      "Best bid",
+      "Best ask",
+      "Order book",
+      "Depth of market",
+      "National best bid and offer"
+    ],
+    "failure_modes": "Top-of-book sizes are often tiny and flicker with high-frequency quoting, so the inside market can misrepresent the cost of executing meaningful size; hidden orders further distort the picture.",
+    "misconceptions": "Top-of-book liquidity is only the first slice of executable liquidity; judging a market by the inside alone ignores the depth below it.",
+    "example": "A book shows $100.00 bid for 500 shares and $100.02 offered for 300 shares; that single line is the top of book.",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraphs (b)(15) Best bid and best offer, (b)(26) Core data",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 247
+  },
+  {
+    "id": "microstructure/depth-of-market",
+    "name": "Depth of market",
+    "aliases": [
+      "DOM",
+      "market by price",
+      "level 2"
+    ],
+    "domain": "Microstructure",
+    "definition": "The quantities of orders displayed at price levels beyond the best bid and offer - the size available as one moves away from the inside market. Regulation NMS Rule 600(b)(31) defines depth of book data as the quotation sizes at each venue at each of the next five prices below the national best bid and above the national best offer.",
+    "intuition": "It shows how much size the book can absorb before the price has to move a given distance.",
+    "mechanics": "Disseminated as Level 2 / market-by-price feeds that aggregate displayed size at each price level per venue; traders use it to estimate the price impact of walking the book and to gauge support and resistance from resting orders.",
+    "formula": "",
+    "relationships": [
+      "Market depth",
+      "Order book",
+      "Top of book",
+      "Displayed liquidity",
+      "Market impact"
+    ],
+    "failure_modes": "Displayed depth is cancelable within milliseconds and tends to withdraw precisely during volatility spikes, so pre-stress snapshots overstate executable liquidity; iceberg and hidden orders are invisible to it.",
+    "misconceptions": "Total displayed depth is not committed liquidity - much of it is rapidly repriced market-making inventory rather than firm intent to trade.",
+    "example": "The DOM shows 2,000 shares bid across the three levels below the NBB, so a 5,000-share market sell would execute through several ticks of the book.",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraph (b)(31) Depth of book data",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 248
+  },
+  {
+    "id": "microstructure/displayed-liquidity",
+    "name": "Displayed liquidity",
+    "aliases": [
+      "visible liquidity",
+      "lit liquidity"
+    ],
+    "domain": "Microstructure",
+    "definition": "Trading interest that is visible to the public before execution - quotations and displayed orders included in consolidated quotation data. The SEC's equity market structure concept release classifies registered exchanges and ECNs as displayed trading centers, which executed about 74.6% of NMS share volume in late 2009.",
+    "intuition": "It is the liquidity everyone can see quoted before deciding to trade.",
+    "mechanics": "Exchange members and market makers communicate their best-priced bids and offers to their SROs under Rule 602, which disseminate them to vendors; displayed orders generally receive execution priority over undisplayed interest at the same price, and maker-taker pricing rewards posting displayed orders.",
+    "formula": "",
+    "relationships": [
+      "Hidden liquidity",
+      "Order book",
+      "National best bid and offer",
+      "Displayed quotation",
+      "Pre-trade transparency"
+    ],
+    "failure_modes": "Displayed size has shrunk with algorithmic and high-frequency quoting, and flickering quotes mean a share of displayed liquidity is practically inaccessible; relying on it alone misjudges true market capacity.",
+    "misconceptions": "Displayed liquidity is not the whole market: dark pools, internalizers, reserve size, and iceberg orders add a large undisplayed component.",
+    "example": "A 500-share bid displayed at the NBB is displayed liquidity; the same order's 5,000-share reserve balance is not.",
+    "citations": [
+      {
+        "source": "SEC, Concept Release on Equity Market Structure, Release No. 34-61358, 75 FR 3594",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2010-01-21/html/2010-1045.htm",
+        "section": "Part III.A Trading Centers (displayed vs undisplayed trading centers)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 249
+  },
+  {
+    "id": "microstructure/hidden-liquidity",
+    "name": "Hidden liquidity",
+    "aliases": [
+      "undisplayed liquidity",
+      "dark liquidity",
+      "non-displayed liquidity"
+    ],
+    "domain": "Microstructure",
+    "definition": "Trading interest that is available for execution at a trading center but is not included in the consolidated quotation data disseminated to the public - encompassing reserve (iceberg) size, fully undisplayed order types, dark pool matching interest, and broker-dealer internalization (SEC Concept Release on Equity Market Structure).",
+    "intuition": "It is liquidity you discover only by executing against it: the orders are real but not advertised in the public quotes.",
+    "mechanics": "Reserve orders display a tip and hold the balance in reserve, refreshing as the tip executes; dark ATSs match orders at reference prices (often the NBBO midpoint) with no pre-trade transparency; undisplayed interest generally yields priority to displayed orders at the same price.",
+    "formula": "",
+    "relationships": [
+      "Displayed liquidity",
+      "Dark pool",
+      "Order book",
+      "Internalization",
+      "Pre-trade transparency"
+    ],
+    "failure_modes": "Heavy migration to undisplayed venues can weaken public price discovery and fairness of access, a core concern flagged by the SEC; for users, hidden liquidity offers no queue visibility and uncertain fills.",
+    "misconceptions": "Hidden does not mean inaccessible or illicit: undisplayed interest executes continuously against incoming orders, and reserve orders are a standard exchange order type.",
+    "example": "A seller enters a 20,000-share reserve order displaying 500 shares; each time the tip fills, another 500 shares refresh from the hidden balance.",
+    "citations": [
+      {
+        "source": "SEC, Concept Release on Equity Market Structure, Release No. 34-61358, 75 FR 3594",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2010-01-21/html/2010-1045.htm",
+        "section": "Parts III.A.3-4 and IV.C Undisplayed Liquidity",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 250
+  },
+  {
+    "id": "microstructure/price-time-priority",
+    "name": "Price-time priority",
+    "aliases": [
+      "FIFO",
+      "price/time priority"
+    ],
+    "domain": "Microstructure",
+    "definition": "The order-matching rule under which orders at a better price execute first, and among orders at the same price the earliest-submitted order executes first. CME Group's FIFO algorithm uses price and time as the only criteria for filling an order.",
+    "intuition": "You earn execution priority by offering a better price or by getting in line earlier.",
+    "mechanics": "Resting orders are ranked by price and then by timestamp; an incoming order fills against the front of the queue until exhausted. An order loses its time priority and is re-queued if its price is changed, its quantity is increased, or its account number is changed.",
+    "formula": "",
+    "relationships": [
+      "Limit order book",
+      "Queue position",
+      "Pro rata allocation",
+      "Matching algorithm",
+      "Central limit order book"
+    ],
+    "failure_modes": "It rewards speed, fueling latency arms races to reach the front of the queue, and it gives no extra share to large displayed size, which can discourage posting size. Under one-tick spreads, time priority dominates and queues grow long.",
+    "misconceptions": "Being first at a price guarantees fills only up to your order's size against incoming flow; it does not protect against the price moving away before any aggressor arrives.",
+    "example": "A 3-lot bid entered at 14:47 and a 5-lot bid at 15:05, both at 9330: under FIFO the 3-lot matches first when a seller arrives.",
+    "citations": [
+      {
+        "source": "CME Group Client Systems Wiki, 'Supported Matching Algorithms'",
+        "url": "https://cmegroupclientsite.atlassian.net/wiki/spaces/EPICSANDBOX/pages/457218479",
+        "section": "FIFO",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 251
+  },
+  {
+    "id": "microstructure/pro-rata-allocation",
+    "name": "Pro rata allocation",
+    "aliases": [
+      "pro rata",
+      "pro-rata matching",
+      "allocation algorithm"
+    ],
+    "domain": "Microstructure",
+    "definition": "An order-matching rule that divides an incoming order among the resting orders at the best price in proportion to their sizes, subject to rounding, minimum allocations, and often top-order or FIFO components. Under CME's Pro-Rata algorithm, an order's allocation percentage equals its quantity divided by the total quantity at that price.",
+    "intuition": "Everyone posting at the front price gets a slice of the incoming order, sized by how much they posted.",
+    "mechanics": "The aggressor's quantity is multiplied by each resting order's pro-rated percentage; fills are rounded down (with minimums such as two lots at CME) and residual lots are allocated FIFO. Variants add priority for the order that bettered the market (top order) or for lead market makers.",
+    "formula": "Allocation_i = Q_incoming x (Q_i / Q_total at price), rounded down to the nearest lot, subject to minimums; residuals allocated FIFO.",
+    "relationships": [
+      "Price-time priority",
+      "Matching algorithm",
+      "Limit order book",
+      "Market depth",
+      "Queue position"
+    ],
+    "failure_modes": "It rewards posting inflated size to capture a larger share, overstating true depth and exposing posters to larger-than-intended fills; it also dilutes the incentive to be first at a new price, which exchanges offset with top-order priority.",
+    "misconceptions": "Real-world pro rata is rarely purely proportional: minimums, rounding, top-order, and market-maker allocations materially change the distribution of fills.",
+    "example": "Resting bids of 50, 25, and 10 lots at the best price meet a 50-lot sell: pro rata allocates approximately 29, 14, and 5 lots after any top order is filled.",
+    "citations": [
+      {
+        "source": "CME Group Client Systems Wiki, 'Supported Matching Algorithms'",
+        "url": "https://cmegroupclientsite.atlassian.net/wiki/spaces/EPICSANDBOX/pages/457218479",
+        "section": "Pro-Rata; Pro-Rata Allocation Matching Examples",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 252
+  },
+  {
+    "id": "microstructure/size-time-priority",
+    "name": "Size-time priority",
+    "aliases": [],
+    "domain": "Microstructure",
+    "definition": "A working label for an order-matching priority scheme in which resting orders at the same price are ranked by size (larger orders first), with time of entry breaking ties; intended to reward the display of large size more than pure price-time priority.",
+    "intuition": "Bigger orders get served before smaller ones at the same price, and equally big orders stand in time order.",
+    "mechanics": "At each price level the matching engine sorts resting orders primarily by quantity and secondarily by timestamp; an incoming aggressor fills the largest resting order first. This contrasts with FIFO (time only), pro rata (size-proportional sharing), and time-pro-rata hybrids documented on major venues.",
+    "formula": "",
+    "relationships": [
+      "Price-time priority",
+      "Pro rata allocation",
+      "Queue position",
+      "Matching algorithm"
+    ],
+    "failure_modes": "Ranking by size invites posting of oversized, weakly committed orders and can starve small orders of fills; as a distinct named scheme it is not documented among the standard matching algorithms of major exchanges.",
+    "misconceptions": "Size-based priority should not be confused with pro rata allocation, which shares each fill proportionally rather than ranking orders strictly by size.",
+    "example": "At the best bid, a 1,000-lot order posted at 10:00 and a 100-lot order posted at 09:59: under size-time priority the 1,000-lot order would match first despite arriving later.",
+    "citations": [],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "provisional",
+    "reviewed_by": "",
+    "review_date": "",
+    "review_note": "Working definition written, but no authoritative fetchable source was located documenting 'size-time priority' as a distinct named matching scheme on major venues (documented schemes are price-time/FIFO, pro rata, time-pro-rata, top-order and LMM variants, and random allocation). Left provisional pending a primary source.",
+    "master_index": 253
+  },
+  {
+    "id": "microstructure/random-allocation",
+    "name": "Random allocation",
+    "aliases": [
+      "random selection for service",
+      "lottery allocation"
+    ],
+    "domain": "Microstructure",
+    "definition": "An order-matching scheme in which the resting order(s) at the eligible price selected to trade with an incoming order are chosen at random rather than by time or size priority. Exchange system documentation (e.g. Euronext/Borsa Italiana migration guides to the Optiq platform) describes a random allocation scheme applied consistently with pro rata allocation or with a minimum allocation lot, and market-design literature has proposed randomized matching as an alternative to FIFO and pro rata.",
+    "intuition": "Instead of rewarding the earliest or largest order, the engine holds a lottery among eligible resting orders.",
+    "mechanics": "Eligible orders at the best price enter a random draw; selection probabilities may be uniform or weighted (e.g. consistent with pro rata shares), and residuals follow fallback rules. Randomized components appear mainly in specific allocation and uncrossing contexts rather than in continuous matching on the largest venues.",
+    "formula": "",
+    "relationships": [
+      "Price-time priority",
+      "Pro rata allocation",
+      "Matching algorithm",
+      "Queue position"
+    ],
+    "failure_modes": "Removing time priority weakens the reward for posting early and tight, which can reduce displayed liquidity; randomness also complicates execution modeling and backtesting because fills are probabilistic.",
+    "misconceptions": "Random allocation is not the norm on major continuous order books; it appears in particular allocation mechanisms and in market-design proposals, not as the standard FIFO replacement in production equity or futures matching.",
+    "example": "In an uncrossing with residual quantity to distribute, the engine selects among eligible same-price orders at random, consistent with their pro rata shares, rather than strictly by timestamp.",
+    "citations": [
+      {
+        "source": "Euronext / Borsa Italiana, 'Guide to Trading System - Borsa Italiana Migration to Optiq - Functional Changes v3.2'",
+        "url": "https://connect2.euronext.com/sites/default/files/it-documentation/Guide%20to%20Trading%20System%20-%20Borsa%20Italiana%20Migration%20to%20Optiq%20-%20Functional%20Changes%20v.3.2_0.pdf",
+        "section": "Matching allocation schemes (random allocation scheme)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 254
+  },
+  {
+    "id": "microstructure/market-breadth",
+    "name": "Market breadth",
+    "aliases": [
+      "breadth"
+    ],
+    "domain": "Microstructure",
+    "definition": "One of the classical dimensions of market liquidity identified by Sarr and Lybek (IMF, 2002): the presence of large-volume orders such that sizable trades can be executed with only a negligible effect on prices. In microstructure it denotes order-size capacity, distinct from the technical-analysis usage (advancers versus decliners).",
+    "intuition": "It answers: how wide is the river - can a whale trade without making a splash?",
+    "mechanics": "Assessed through the size of orders quoted at and behind the best prices, volume and turnover statistics, and price-impact-per-volume measures; broad markets absorb large orders near current quotes.",
+    "formula": "",
+    "relationships": [
+      "Market depth",
+      "Tightness",
+      "Market resiliency",
+      "Immediacy",
+      "Liquidity"
+    ],
+    "failure_modes": "Breadth is state-dependent and can evaporate in stress when large resting orders are cancelled; displayed size overstates true capacity because of cancellations and hidden-interest dynamics.",
+    "misconceptions": "As a liquidity dimension, breadth is unrelated to advance/decline 'market breadth' indicators used in technical analysis; the shared name is a collision of terminologies.",
+    "example": "A market in which a 50,000-share order executes within a cent of the midpoint without exhausting the inside quotes is broad.",
+    "citations": [
+      {
+        "source": "Sarr and Lybek, 'Measuring Liquidity in Financial Markets', IMF Working Paper WP/02/232",
+        "url": "https://www.elibrary.imf.org/view/journals/001/2002/232/001.2002.issue-232-en.xml",
+        "section": "Abstract (tightness, immediacy, depth, breadth, resiliency)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 255
+  },
+  {
+    "id": "microstructure/market-depth",
+    "name": "Market depth",
+    "aliases": [
+      "book depth"
+    ],
+    "domain": "Microstructure",
+    "definition": "The volume of orders available in the book at or near the best prices - the size that can be executed with only limited price concession. It is one of the liquidity dimensions catalogued by Sarr and Lybek (IMF, 2002), and Cont, Kukanov and Stoikov (2014) show the price response to order-flow imbalance is inversely proportional to it.",
+    "intuition": "It answers: how much can I trade before my own trading moves the price against me?",
+    "mechanics": "Measured as cumulative displayed size at successive price levels (Regulation NMS depth of book data covers the five price levels beyond the NBBO per venue) or as the price concession per unit volume traded. Empirically, deeper books show smaller price changes for a given order-flow imbalance.",
+    "formula": "",
+    "relationships": [
+      "Depth of market",
+      "Market breadth",
+      "Order-flow imbalance",
+      "Displayed liquidity",
+      "Liquidity"
+    ],
+    "failure_modes": "Depth is endogenous and withdraws during volatility spikes, so it is least available exactly when most needed; displayed depth also excludes hidden and reserve size and can be inflated by spoofed orders.",
+    "misconceptions": "Large size at the best bid and offer alone does not imply a deep market; genuine depth requires substantial size across multiple price levels.",
+    "example": "One stock offers $5 million of displayed size within two ticks of the midpoint while another offers $200,000; a $1 million market order moves the first barely and the second several ticks.",
+    "citations": [
+      {
+        "source": "Sarr and Lybek, 'Measuring Liquidity in Financial Markets', IMF Working Paper WP/02/232",
+        "url": "https://www.elibrary.imf.org/view/journals/001/2002/232/001.2002.issue-232-en.xml",
+        "section": "Abstract (liquidity dimensions)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Cont, Kukanov and Stoikov, 'The Price Impact of Order Book Events', Journal of Financial Econometrics 12(1):47-88 (arXiv preprint)",
+        "url": "https://arxiv.org/abs/1011.6402",
+        "section": "Abstract (slope inversely proportional to market depth)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 256
+  },
+  {
+    "id": "microstructure/market-resiliency",
+    "name": "Market resiliency",
+    "aliases": [
+      "resiliency",
+      "resilience"
+    ],
+    "domain": "Microstructure",
+    "definition": "The speed at which prices and order-book liquidity return toward equilibrium after a trade or shock displaces them - one of the liquidity dimensions identified by Sarr and Lybek (IMF, 2002), who describe resiliency as the promptness with which price impacts from transactions are corrected.",
+    "intuition": "It measures how fast the market heals after being hit by a large order or news.",
+    "mechanics": "Gauged by the time for spreads and displayed depth to replenish and for transitory price impact to decay after large trades; empirically estimated from quote-replenishment rates and impact-decay dynamics following order-flow shocks.",
+    "formula": "",
+    "relationships": [
+      "Liquidity",
+      "Market depth",
+      "Tightness",
+      "Price impact",
+      "Market breadth"
+    ],
+    "failure_modes": "Resiliency collapses in correlated stress: during the May 2010 Flash Crash liquidity was withdrawn faster than it could be replenished. It is also inherently difficult to measure ex ante rather than after the fact.",
+    "misconceptions": "A market that has historically bounced back quickly offers no guarantee of doing so in the next stress event; resiliency is regime-dependent, not a fixed property.",
+    "example": "A block sale knocks a stock down 0.3%; in a resilient market new bids refill the book and the price recovers most of the drop within seconds.",
+    "citations": [
+      {
+        "source": "Sarr and Lybek, 'Measuring Liquidity in Financial Markets', IMF Working Paper WP/02/232",
+        "url": "https://www.elibrary.imf.org/view/journals/001/2002/232/001.2002.issue-232-en.xml",
+        "section": "Abstract (liquidity dimensions)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 257
+  },
+  {
+    "id": "microstructure/immediacy",
+    "name": "Immediacy",
+    "aliases": [],
+    "domain": "Microstructure",
+    "definition": "The ability to execute a transaction promptly at or near current prices - the time dimension of market liquidity in the Sarr and Lybek (IMF, 2002) framework, and the service for which liquidity demanders compensate liquidity providers through the spread.",
+    "intuition": "It answers: how fast can I get this trade done right now, and what do I pay for that speed?",
+    "mechanics": "Reflected in execution speed for marketable orders (the SEC notes average execution speed for small marketable orders on NYSE fell from 10.1 seconds in January 2005 to 0.7 seconds in October 2009) and in the price concession - half-spread plus impact - required for immediate execution versus patient order placement.",
+    "formula": "",
+    "relationships": [
+      "Liquidity",
+      "Tightness",
+      "Bid-ask spread",
+      "Market order",
+      "Latency"
+    ],
+    "failure_modes": "In fast markets immediacy can be illusory: quotes may move between order routing and execution (slippage), and during halts or fast-market conditions immediate execution may be unavailable at any displayed price.",
+    "misconceptions": "Immediacy is not free or guaranteed; its price is the spread plus market impact, and demanding it in size during stress can be prohibitively expensive.",
+    "example": "A market order in a large-cap stock executes in milliseconds at the national best offer, while the same order in a thin small-cap may take seconds and move the price.",
+    "citations": [
+      {
+        "source": "Sarr and Lybek, 'Measuring Liquidity in Financial Markets', IMF Working Paper WP/02/232",
+        "url": "https://www.elibrary.imf.org/view/journals/001/2002/232/001.2002.issue-232-en.xml",
+        "section": "Abstract (liquidity dimensions)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "SEC, Concept Release on Equity Market Structure, Release No. 34-61358, 75 FR 3594",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2010-01-21/html/2010-1045.htm",
+        "section": "Part I, Figure 2 (average execution speed of marketable orders)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 258
+  },
+  {
+    "id": "microstructure/tightness",
+    "name": "Tightness",
+    "aliases": [],
+    "domain": "Microstructure",
+    "definition": "The cost dimension of market liquidity in the Sarr and Lybek (IMF, 2002) framework: the ability to trade at low transaction cost, conventionally measured by the narrowness of the bid-ask spread, which compensates liquidity providers for offering immediacy in executing buy and sell orders.",
+    "intuition": "It answers: how little do I lose by buying and immediately selling again - the tightness of the round trip.",
+    "mechanics": "Measured by quoted, effective, or realized spreads in absolute terms or relative to the quote midpoint; tighter markets feature smaller spreads for a given size, reflecting lower order-processing, inventory, and adverse-selection costs.",
+    "formula": "Relative tightness proxy: (A - B) / M, where A and B are the best ask and bid and M = (A + B) / 2.",
+    "relationships": [
+      "Quoted spread",
+      "Effective spread",
+      "Bid-ask spread",
+      "Liquidity",
+      "Immediacy"
+    ],
+    "failure_modes": "A tight spread for 100 shares says little about the cost of trading institutional size; minimum tick sizes can also artificially compress or mask the true economic spread.",
+    "misconceptions": "Tightness is not synonymous with overall liquidity - a market can be tight but shallow, so large orders still move the price substantially.",
+    "example": "A penny-wide spread on a $100 stock implies a round-trip quoted cost of about 1 basis point - a very tight market at small size.",
+    "citations": [
+      {
+        "source": "Sarr and Lybek, 'Measuring Liquidity in Financial Markets', IMF Working Paper WP/02/232",
+        "url": "https://www.elibrary.imf.org/view/journals/001/2002/232/001.2002.issue-232-en.xml",
+        "section": "Abstract (tightness (costs) among liquidity dimensions)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 259
+  },
+  {
+    "id": "microstructure/information-asymmetry",
+    "name": "Information asymmetry",
+    "aliases": [
+      "asymmetric information"
+    ],
+    "domain": "Microstructure",
+    "definition": "The condition in which some market participants possess payoff-relevant information that others lack. It is the foundational friction of market microstructure theory - in Kyle (1985) prices respond to the net order flow of an informed trader, and in Glosten and Milgrom (1985) the bid-ask spread exists because the specialist cannot distinguish informed from uninformed traders.",
+    "intuition": "When a dealer cannot tell whether the counterparty knows something, every trade is partly a gamble - so the dealer charges everyone a premium upfront.",
+    "mechanics": "Informed order flow correlates with future prices, so liquidity providers set quotes to break even against a mixture of informed and uninformed flow and revise quotes as trades reveal information; the spread and price impact are the equilibrium prices of this asymmetry.",
+    "formula": "",
+    "relationships": [
+      "Adverse selection",
+      "Price discovery",
+      "Signed volume",
+      "Order-flow imbalance",
+      "Kyle lambda"
+    ],
+    "failure_modes": "Information asymmetry cannot be observed directly, so empirical proxies (PIN-type estimates, spread decompositions) are model-dependent and can disagree; it also varies sharply around news events, defeating static estimates.",
+    "misconceptions": "Information asymmetry is not limited to illegal insider trading; superior analysis, faster data, or knowledge of one's own large parent order all create it.",
+    "example": "A trader who knows an earnings surprise is imminent sells aggressively; market makers lose on those sales and recoup the loss by quoting wider spreads to all traders.",
+    "citations": [
+      {
+        "source": "Kyle, 'Continuous Auctions and Insider Trading', Econometrica 53(6):1315-1335 (Crossref record DOI 10.2307/1913210)",
+        "url": "https://api.crossref.org/works/10.2307/1913210",
+        "section": "Bibliographic record",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Glosten and Milgrom, 'Bid, Ask and Transaction Prices in a Specialist Market with Heterogeneously Informed Traders', Journal of Financial Economics 14(1):71-100 (Semantic Scholar record, DOI 10.1016/0304-405X(85)90044-3)",
+        "url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/0304-405X(85)90044-3?fields=title,abstract,authors,year,venue,externalIds",
+        "section": "Bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 260
+  },
+  {
+    "id": "microstructure/adverse-selection",
+    "name": "Adverse selection",
+    "aliases": [
+      "adverse selection risk"
+    ],
+    "domain": "Microstructure",
+    "definition": "The risk liquidity providers bear that their counterparties are better informed, so that executed trades systematically precede price moves against the provider. In Glosten and Milgrom (1985), the specialist sets bid and ask prices that are conditional expectations of value given the trade's direction, and the spread compensates for expected losses to informed traders.",
+    "intuition": "If you tend to get filled exactly when you are wrong, you must charge for that tendency before it happens.",
+    "mechanics": "Providers widen quotes as the estimated share of informed flow rises and update quotes after each trade direction; ex post it appears as a realized spread below the effective spread and as post-trade price drift in the direction of the initiator.",
+    "formula": "",
+    "relationships": [
+      "Information asymmetry",
+      "Realized spread",
+      "Effective spread",
+      "Inventory risk",
+      "Bid-ask spread"
+    ],
+    "failure_modes": "Empirical decompositions attributing shares of the spread to adverse selection are sensitive to model specification and trade-classification error, and no method can identify which individual trades are informed.",
+    "misconceptions": "Adverse selection is not cheating by counterparties; it is an equilibrium cost of offering liquidity to a market that includes better-informed traders.",
+    "example": "Quotes sit at $100.00 x $100.02; a burst of aggressive buying lifts the offer to $100.04 as the market maker updates the probability that buyers know something.",
+    "citations": [
+      {
+        "source": "Glosten and Milgrom, 'Bid, Ask and Transaction Prices in a Specialist Market with Heterogeneously Informed Traders', Journal of Financial Economics 14(1):71-100 (Semantic Scholar record, DOI 10.1016/0304-405X(85)90044-3)",
+        "url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/0304-405X(85)90044-3?fields=title,abstract,authors,year,venue,externalIds",
+        "section": "Bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 261
+  },
+  {
+    "id": "microstructure/inventory-risk",
+    "name": "Inventory risk",
+    "aliases": [
+      "inventory holding risk",
+      "position risk"
+    ],
+    "domain": "Microstructure",
+    "definition": "The price risk a market maker bears on positions accumulated while quoting both sides of the market, because bids and offers are hit asymmetrically before price moves. In the Ho-Stoll lineage formalized by Avellaneda-Stoikov and solved under inventory constraints by Gueant, Lehalle and Fernandez-Tapia (2013), the market maker's P&L from the spread is challenged by the price risk borne on inventory.",
+    "intuition": "Earning the spread means repeatedly holding stock you did not choose to hold; if the price moves while you hold it, the spread income can be overwhelmed.",
+    "mechanics": "Buy and sell orders arrive at rates that depend on quote placement, so inventory wanders from target; optimal quotes shift downward when long and upward when short to attract offsetting flow, with the skew increasing in volatility, risk aversion, and remaining horizon.",
+    "formula": "",
+    "relationships": [
+      "Adverse selection",
+      "Order arrival rate",
+      "Bid-ask spread",
+      "Market maker",
+      "Realized spread"
+    ],
+    "failure_modes": "In one-way markets inventory control breaks down and providers widen or withdraw entirely, amplifying liquidity crises; capital and margin constraints further limit inventory absorption in stress.",
+    "misconceptions": "Market makers are not automatically direction-neutral - neutrality is actively and imperfectly managed, and residual inventory exposure is a core cost of liquidity provision.",
+    "example": "A market maker accumulates a 10,000-share long position in a falling market and shades both quotes two cents lower to attract buyers and slow further accumulation.",
+    "citations": [
+      {
+        "source": "Gueant, Lehalle and Fernandez-Tapia, 'Dealing with the Inventory Risk: A Solution to the Market Making Problem', Mathematics and Financial Economics 7(4):477-507 (arXiv preprint)",
+        "url": "https://arxiv.org/abs/1105.3115",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 262
+  },
+  {
+    "id": "microstructure/order-flow-imbalance",
+    "name": "Order-flow imbalance",
+    "aliases": [
+      "OFI",
+      "order imbalance"
+    ],
+    "domain": "Microstructure",
+    "definition": "The net excess of demand over supply at the best bid and ask, defined by Cont, Kukanov and Stoikov (2014) from all order book events - limit orders, market orders, and cancellations - at the best prices. They show short-horizon price changes are largely driven by this imbalance, with an approximately linear relation whose slope is inversely proportional to market depth.",
+    "intuition": "Prices move on the net pressure of orders arriving and leaving the inside market, not on raw trade counts.",
+    "mechanics": "Each order book event contributes positively when it adds bid-side or removes ask-side quantity and negatively otherwise; the cumulative imbalance over an interval is then related to the contemporaneous mid-price change. Unlike signed trade volume, OFI incorporates quote updates and cancellations.",
+    "formula": "OFI = sum over events e_n, with e_n = +Dq_b for bid-side quantity increases, -Dq_b for bid-side decreases, and symmetric negative contributions for ask-side events (Cont, Kukanov and Stoikov convention).",
+    "relationships": [
+      "Signed volume",
+      "Queue imbalance",
+      "Market depth",
+      "Price impact",
+      "Order book"
+    ],
+    "failure_modes": "The linear relation is a short-horizon statistical regularity that breaks down around news jumps and requires full order-event data; estimates degrade when depth is manipulated or rapidly cancelled.",
+    "misconceptions": "Order-flow imbalance is not just signed trade volume: limit-order submissions and cancellations at the inside move it as much as executed trades do.",
+    "example": "Over one second, 3,000 net shares are added at the best bid while the ask queue thins; the mid-price typically ticks up by an amount inversely proportional to book depth.",
+    "citations": [
+      {
+        "source": "Cont, Kukanov and Stoikov, 'The Price Impact of Order Book Events', Journal of Financial Econometrics 12(1):47-88 (arXiv preprint)",
+        "url": "https://arxiv.org/abs/1011.6402",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 263
+  },
+  {
+    "id": "microstructure/signed-volume",
+    "name": "Signed volume",
+    "aliases": [
+      "signed trade volume",
+      "order flow"
+    ],
+    "domain": "Microstructure",
+    "definition": "Trade volume classified by the direction of the initiating side: positive for buyer-initiated and negative for seller-initiated trades. It is the basic input to order-flow analysis, and Hasbrouck (1991) uses signed-volume innovations to measure the information content of stock trades from their impact on subsequent quote revisions.",
+    "intuition": "A trade at the ask is someone choosing to buy and a trade at the bid is someone choosing to sell; adding up these signs tracks net buying or selling pressure.",
+    "mechanics": "Each trade is signed by a classification rule (quote rule, tick rule, or the combined Lee-Ready algorithm), then volumes are aggregated with their signs over an interval; the relation between signed flow and price change measures private information and price impact.",
+    "formula": "SV_t = sum_i s_i v_i over trades i in interval t, where s_i = +1 for buyer-initiated and -1 for seller-initiated trades and v_i is trade size.",
+    "relationships": [
+      "Order-flow imbalance",
+      "Lee-Ready algorithm",
+      "Trade initiation",
+      "Tick rule",
+      "Price impact"
+    ],
+    "failure_modes": "Classification error - especially for midpoint trades, trades matched to stale quotes, and delayed or bulked reports - biases signed measures; errors can systematically correlate with trade size and volatility.",
+    "misconceptions": "Signed volume is an inference, not an observation: public trade reports contain price and volume but not the aggressor's identity.",
+    "example": "Five trades totaling 50,000 shares are classified as +40,000 buyer-initiated and -10,000 seller-initiated, giving signed volume of +30,000 shares for the interval.",
+    "citations": [
+      {
+        "source": "Hasbrouck, 'Measuring the Information Content of Stock Trades', Journal of Finance 46(1):179-207 (Crossref record DOI 10.1111/j.1540-6261.1991.tb03749.x)",
+        "url": "https://api.crossref.org/works/10.1111/j.1540-6261.1991.tb03749.x",
+        "section": "Bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 264
+  },
+  {
+    "id": "microstructure/trade-initiation",
+    "name": "Trade initiation",
+    "aliases": [
+      "trade signing",
+      "aggressor side"
+    ],
+    "domain": "Microstructure",
+    "definition": "The identification of which side of a transaction demanded immediacy - buyer-initiated trades execute at or near the ask, seller-initiated trades at or near the bid. Because public data record price and volume but not the aggressor, initiation is inferred by classification algorithms such as those of Lee and Ready (1991).",
+    "intuition": "The party who crosses the spread is the one who started the trade; initiation asks who that was.",
+    "mechanics": "Trades are classified by comparing the trade price with the prevailing quote midpoint (quote rule) or with the previous trade price (tick rule), with the Lee-Ready algorithm combining both; the resulting signs drive order-flow and price-impact measurement.",
+    "formula": "",
+    "relationships": [
+      "Tick rule",
+      "Quote rule",
+      "Lee-Ready algorithm",
+      "Signed volume",
+      "Bid-ask spread"
+    ],
+    "failure_modes": "Classification degrades for midpoint trades, in fast markets where quotes change between trade and report, and under reporting delays; validation studies find material error rates that bias downstream order-flow measures.",
+    "misconceptions": "Trade initiation is not recorded in the tape - it is a statistical inference whose accuracy varies by market, period, and trade type.",
+    "example": "With the market at $100.00 x $100.02, a print at $100.02 is classified as buyer-initiated; a print at $100.00 as seller-initiated.",
+    "citations": [
+      {
+        "source": "Lee and Ready, 'Inferring Trade Direction from Intraday Data', Journal of Finance 46(2):733-746 (course-hosted copy)",
+        "url": "https://www.acsu.buffalo.edu/~keechung/MGF743/Readings/Inferring%20trade%20direction%20from%20intraday%20data.pdf",
+        "section": "Full text",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 265
+  },
+  {
+    "id": "microstructure/tick-rule",
+    "name": "Tick rule",
+    "aliases": [
+      "tick test",
+      "tick classification"
+    ],
+    "domain": "Microstructure",
+    "definition": "A trade-classification heuristic that signs a trade as buyer-initiated if its price is above the previous trade price (uptick) and seller-initiated if below (downtick), carrying the sign of the last nonzero price change through zero ticks. It is one of the component rules evaluated in Lee and Ready (1991).",
+    "intuition": "Rising prints suggest buyers are pushing the price up; falling prints suggest sellers are pushing it down.",
+    "mechanics": "Compare each trade price to the previous one: an uptick signs the trade positive, a downtick negative, and an unchanged price inherits the sign of the most recent nonzero change. It requires only the trade price series, not quote data.",
+    "formula": "s_t = sign(P_t - P_{t-1}); if P_t = P_{t-1}, s_t = s_{last nonzero change}.",
+    "relationships": [
+      "Quote rule",
+      "Lee-Ready algorithm",
+      "Trade initiation",
+      "Signed volume"
+    ],
+    "failure_modes": "It misclassifies trades that move within the quote range (bid-ask bounce reversals) and cannot see where a trade sits relative to the spread; Lee and Ready find quote-based classification generally more accurate.",
+    "misconceptions": "An uptick does not prove a market buy occurred - a trade can tick up while executing inside a rising quote range, so tick signs are noisy proxies for aggressor direction.",
+    "example": "Prints of 50.00, 50.01, 50.01, and 49.99 are signed +1, +1 (zero tick inherits), and -1.",
+    "citations": [
+      {
+        "source": "Lee and Ready, 'Inferring Trade Direction from Intraday Data', Journal of Finance 46(2):733-746 (course-hosted copy)",
+        "url": "https://www.acsu.buffalo.edu/~keechung/MGF743/Readings/Inferring%20trade%20direction%20from%20intraday%20data.pdf",
+        "section": "Tick test discussion",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 266
+  },
+  {
+    "id": "microstructure/quote-rule",
+    "name": "Quote rule",
+    "aliases": [
+      "quote test",
+      "midpoint rule"
+    ],
+    "domain": "Microstructure",
+    "definition": "A trade-classification heuristic that signs trades above the prevailing quote midpoint as buyer-initiated and trades below it as seller-initiated; trades exactly at the midpoint require a tie-breaking rule such as the tick test. It is the primary component of the Lee and Ready (1991) classification procedure.",
+    "intuition": "Paying more than the middle of the market means you were the buyer; receiving less means you were the seller.",
+    "mechanics": "Each trade is matched to the bid-ask quote in effect when it executed - Lee and Ready allow for a reporting lag of about five seconds on NYSE-era data - and the trade price is compared to that quote's midpoint.",
+    "formula": "s_t = +1 if P_t > M_t, -1 if P_t < M_t, where M_t is the prevailing quote midpoint; if P_t = M_t, defer to the tick test.",
+    "relationships": [
+      "Tick rule",
+      "Lee-Ready algorithm",
+      "Midpoint",
+      "Trade initiation",
+      "Signed volume"
+    ],
+    "failure_modes": "Quote-trade misalignment from reporting delays and fast quote updates corrupts the comparison, midpoint trades are left unsigned without a tie-break, and locked or crossed quotes distort the reference.",
+    "misconceptions": "The quote stamped at the trade's report time is not necessarily the quote in effect at execution; failing to model the reporting lag systematically misclassifies trades.",
+    "example": "With quotes at $100.00 x $100.02 (midpoint $100.01), a print at $100.02 is a buy and a print at $100.01 falls back to the tick test.",
+    "citations": [
+      {
+        "source": "Lee and Ready, 'Inferring Trade Direction from Intraday Data', Journal of Finance 46(2):733-746 (course-hosted copy)",
+        "url": "https://www.acsu.buffalo.edu/~keechung/MGF743/Readings/Inferring%20trade%20direction%20from%20intraday%20data.pdf",
+        "section": "Quote rule and midpoint tie-breaking",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 267
+  },
+  {
+    "id": "microstructure/lee-ready-algorithm",
+    "name": "Lee-Ready algorithm",
+    "aliases": [
+      "Lee-Ready classification",
+      "Lee-Ready trade signing"
+    ],
+    "domain": "Microstructure",
+    "definition": "The standard trade-classification procedure of Lee and Ready (1991) for inferring trade direction from intraday data: sign trades by the quote rule relative to the prevailing midpoint, sign midpoint trades by the tick rule, and match trades to quotes with an allowance for trade-reporting delay.",
+    "intuition": "Combine quote information with tick information to make the best guess about who initiated each trade.",
+    "mechanics": "Trades are aligned to the quotes in effect just before the report (a lag of roughly five seconds in their NYSE sample); prices above the midpoint are buys, below are sells, and midpoint trades inherit the sign of the last nonzero price change.",
+    "formula": "",
+    "relationships": [
+      "Tick rule",
+      "Quote rule",
+      "Trade initiation",
+      "Signed volume",
+      "Effective spread"
+    ],
+    "failure_modes": "Accuracy degrades in modern fast markets where quotes update far faster than trades are reported, for trades executed inside the spread, and for large or ECN-executed trades; validation studies on proprietary data find error rates around 20 percent in historical samples and higher in fast markets.",
+    "misconceptions": "Lee-Ready signs are estimates with material error rates, not ground truth about the aggressor; treating them as exact biases measures such as signed volume and price impact.",
+    "example": "A trade prints at the $50.005 midpoint after two consecutive upticks; Lee-Ready classifies it as buyer-initiated via the tick-test fallback.",
+    "citations": [
+      {
+        "source": "Lee and Ready, 'Inferring Trade Direction from Intraday Data', Journal of Finance 46(2):733-746 (course-hosted copy)",
+        "url": "https://www.acsu.buffalo.edu/~keechung/MGF743/Readings/Inferring%20trade%20direction%20from%20intraday%20data.pdf",
+        "section": "Full text (Journal of Finance 46(2), 733-746)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 268
+  },
+  {
+    "id": "microstructure/order-arrival-rate",
+    "name": "Order arrival rate",
+    "aliases": [
+      "order arrival intensity",
+      "message rate"
+    ],
+    "domain": "Microstructure",
+    "definition": "The frequency per unit time at which new orders of a given type or side reach a trading venue. It is a core primitive of queueing-based microstructure and market-making models - in the Avellaneda-Stoikov lineage formalized by Gueant, Lehalle and Fernandez-Tapia (2013), arrival rates of liquidity-consuming orders depend on the distance of the quote from the reference price.",
+    "intuition": "It measures how busy the order flow is - how many new orders show up each second at each price.",
+    "mechanics": "Estimated empirically as counts of order events per interval by side and price level, and modeled as Poisson or self-exciting (Hawkes) intensities; arrival rates jointly determine fill probabilities, queue dynamics, and optimal quote placement.",
+    "formula": "lambda = N_orders / Dt (orders per unit time); in market-making models, fill intensity lambda(delta) decreases with the distance delta of the quote from the reference price.",
+    "relationships": [
+      "Cancellation rate",
+      "Order-to-trade ratio",
+      "Queue position",
+      "Inventory risk",
+      "Order book"
+    ],
+    "failure_modes": "Arrival rates are strongly time-varying (U-shaped intraday patterns, news bursts) and clustered, so stationary Poisson calibrations fail out of sample; venue-specific message throttles also truncate observed rates.",
+    "misconceptions": "A high order arrival rate does not imply high traded volume: in automated markets most messages are small orders that are cancelled before execution.",
+    "example": "A liquid future sees 500 limit-order submissions per second at the inside prices but only 50 per second three ticks away.",
+    "citations": [
+      {
+        "source": "Gueant, Lehalle and Fernandez-Tapia, 'Dealing with the Inventory Risk: A Solution to the Market Making Problem', Mathematics and Financial Economics 7(4):477-507 (arXiv preprint)",
+        "url": "https://arxiv.org/abs/1105.3115",
+        "section": "Abstract (arrival rates of liquidity-consuming orders)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 269
+  },
+  {
+    "id": "microstructure/cancellation-rate",
+    "name": "Cancellation rate",
+    "aliases": [
+      "cancel rate",
+      "quote cancellation rate"
+    ],
+    "domain": "Microstructure",
+    "definition": "The rate or fraction at which resting orders are cancelled before execution. In automated markets the large majority of displayed orders are cancelled rather than executed - the SEC notes that high-frequency liquidity providers cancel a very high percentage of their orders, and the CFTC lists cancel-to-fill ratios among the objective measures of high message rates.",
+    "intuition": "Most quotes are withdrawn, not traded; the cancellation rate tells you how quickly the visible book evaporates and renews.",
+    "mechanics": "Computed as cancellations per unit time or as cancels relative to cancels plus executions, per participant, instrument, or venue; together with arrival rates it determines queue-position dynamics and the fill probability of resting orders.",
+    "formula": "Cancellation rate = N_cancels / (N_cancels + N_executions) over an interval, or cancels per second.",
+    "relationships": [
+      "Cancel-to-trade ratio",
+      "Order arrival rate",
+      "Flickering quote",
+      "Queue position",
+      "Displayed liquidity"
+    ],
+    "failure_modes": "When cancellation rates are extreme, displayed depth becomes a weak proxy for executable liquidity; spikes in cancellations also accompany stress episodes and manipulative quoting schemes.",
+    "misconceptions": "High cancellation is mostly normal risk management by market makers repricing to new information - it is not inherently evidence of spoofing or phantom liquidity.",
+    "example": "Of 1,000 lots a market maker posts in a minute, 950 are cancelled unfilled, a 95 percent cancellation rate typical of active electronic quoting.",
+    "citations": [
+      {
+        "source": "CFTC, Concept Release on Risk Controls and System Safeguards for Automated Trading Environments, 78 FR 56542",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2013-09-12/html/2013-22185.htm",
+        "section": "Part II.A.1 (cancel-to-fill ratios as message-rate measures)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 270
+  },
+  {
+    "id": "microstructure/cancel-to-trade-ratio",
+    "name": "Cancel-to-trade ratio",
+    "aliases": [
+      "cancel-to-fill ratio",
+      "cancellation-to-execution ratio"
+    ],
+    "domain": "Microstructure",
+    "definition": "The ratio of cancelled orders (or cancelled quantity) to executed trades over a period - a standard metric of messaging intensity. The CFTC's Technology Advisory Committee working group listed cancel-to-fill ratios among the objective forms of measurement for the recurring high message rates characteristic of high-frequency trading.",
+    "intuition": "It counts how many quotes die for every trade that actually prints.",
+    "mechanics": "Computed per participant, instrument, or whole market over a session; exchanges and regulators monitor it to gauge system load, characterize quoting behavior, and detect potentially abusive messaging patterns.",
+    "formula": "CTR = N_cancelled orders / N_executed trades (or cancelled volume / traded volume) over a period.",
+    "relationships": [
+      "Cancellation rate",
+      "Order-to-trade ratio",
+      "Flickering quote",
+      "High-frequency trading"
+    ],
+    "failure_modes": "Appropriate levels vary enormously by asset class, venue, and strategy, so cross-market comparisons mislead; the ratio alone cannot distinguish benign market making from manipulative quote stuffing.",
+    "misconceptions": "A high cancel-to-trade ratio is not per se evidence of manipulation - passive electronic market making mechanically generates high cancel rates as quotes track a moving market.",
+    "example": "A firm cancels 40,000 orders and is filled on 800 in a session, a cancel-to-trade ratio of 50 to 1.",
+    "citations": [
+      {
+        "source": "CFTC, Concept Release on Risk Controls and System Safeguards for Automated Trading Environments, 78 FR 56542",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2013-09-12/html/2013-22185.htm",
+        "section": "Part II.A.1, TAC working group HFT attributes (cancel-to-fill ratios)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 271
+  },
+  {
+    "id": "microstructure/order-to-trade-ratio",
+    "name": "Order-to-trade ratio",
+    "aliases": [
+      "OTR",
+      "order-to-execution ratio"
+    ],
+    "domain": "Microstructure",
+    "definition": "The ratio of order messages (submissions, modifications, and cancellations) to executed trades, computed in count or volume terms over a period. Exchanges use it to calibrate messaging load - for example Eurex computes order-to-trade ratios per product under its Excessive System Usage Fee framework, charging fees when a participant's ratio exceeds calibrated limits.",
+    "intuition": "It measures how much messaging chatter a participant generates for each actual transaction.",
+    "mechanics": "The venue tallies order entries, modifications, and deletions against executions per participant and product (often monthly); ratios above predefined thresholds - which vary with the product's liquidity and the participant's quoting role - trigger graduated excessive-usage fees.",
+    "formula": "OTR = N_order entries + modifications + deletions / N_trades (or volume-based equivalent), per participant per product over the measurement period.",
+    "relationships": [
+      "Cancel-to-trade ratio",
+      "Cancellation rate",
+      "Order arrival rate",
+      "High-frequency trading"
+    ],
+    "failure_modes": "Legitimate market making can breach thresholds in volatile periods when repricing is intense, and rigid caps can reduce displayed liquidity; participants may also restructure messaging to game the metric.",
+    "misconceptions": "Order-to-trade ratio limits are infrastructure-load and fairness tools, not judgments that high quoting activity is manipulative.",
+    "example": "A participant enters or modifies 2 million orders in a product with 5,000 trades in a month, an OTR of 400, and pays an excessive system usage fee on the portion above the product's limit.",
+    "citations": [
+      {
+        "source": "Eurex, 'Excessive System Usage Fee' (Rules and Regulations)",
+        "url": "https://www.eurex.com/ex-en/rules-regs/regulations/excessive-system-usage-fee",
+        "section": "Order-to-Trade Ratio",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 272
+  },
+  {
+    "id": "microstructure/queue-position",
+    "name": "Queue position",
+    "aliases": [
+      "place in queue",
+      "book priority"
+    ],
+    "domain": "Microstructure",
+    "definition": "An order's rank in the priority sequence of resting orders at its price level, which determines how much incoming volume must trade (or cancel) ahead of it before it is executed. Under FIFO matching - where, per CME Group, the first order at a price level is the first matched - position is set by arrival time and lost if the order's price is changed, quantity increased, or account changed.",
+    "intuition": "It is your place in line at the front of the book.",
+    "mechanics": "Position improves as orders ahead execute or are cancelled, and resets to the back on priority-losing amendments; the probability and timing of a fill depend on the size ahead in the queue relative to incoming trade and cancellation flow.",
+    "formula": "",
+    "relationships": [
+      "Price-time priority",
+      "Order book",
+      "Cancellation rate",
+      "Order arrival rate",
+      "Limit order book"
+    ],
+    "failure_modes": "Queue models break down when size ahead is iceberg or hidden, when matching includes pro rata or top-order components that reorder priority, or when cancellations ahead accelerate unpredictably in fast markets.",
+    "misconceptions": "Joining a long queue is not necessarily hopeless - cancellations ahead of an order advance its position without any trades occurring, so the effective queue is often shorter than the displayed one.",
+    "example": "5,000 shares rest ahead of your bid at the NBB; after 3,000 cancel and 1,000 trade, your position improves to 1,000 shares from the front.",
+    "citations": [
+      {
+        "source": "CME Group Client Systems Wiki, 'Supported Matching Algorithms'",
+        "url": "https://cmegroupclientsite.atlassian.net/wiki/spaces/EPICSANDBOX/pages/457218479",
+        "section": "FIFO (priority and re-queuing rules)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 273
+  },
+  {
+    "id": "microstructure/queue-imbalance",
+    "name": "Queue imbalance",
+    "aliases": [
+      "book imbalance",
+      "top-of-book imbalance"
+    ],
+    "domain": "Microstructure",
+    "definition": "The normalized difference between the displayed size at the best bid and the best ask, a short-horizon predictor of mid-price movements: when one side of the inside market is heavier, the price tends to move toward the lighter side. It is the state variable underlying Stoikov's (2018) micro-price and relates to the order-flow imbalance of Cont, Kukanov and Stoikov.",
+    "intuition": "A heavy bid queue and a thin ask queue mean sellers face little resistance - the price is more likely to tick up than down.",
+    "mechanics": "Computed from top-of-book sizes at each order book event; positive imbalance predicts upticks with a probability that Stoikov estimates from transition matrices of imbalance and spread states, and its information decays within milliseconds to seconds.",
+    "formula": "QI = (Q_bid - Q_ask) / (Q_bid + Q_ask), in [-1, 1], where Q_bid and Q_ask are displayed sizes at the best bid and ask.",
+    "relationships": [
+      "Microprice",
+      "Order-flow imbalance",
+      "Top of book",
+      "Midpoint",
+      "Market depth"
+    ],
+    "failure_modes": "Predictive power collapses when displayed size is cancelable or spoofed, around news jumps, and when the spread is wide; the signal is also crowded and degrades after latency and fees.",
+    "misconceptions": "Queue imbalance is a weak, short-lived statistical signal, not a standalone profitable trading rule; its in-sample edge typically fails to survive execution costs and queue-position realities.",
+    "example": "With 2,000 shares bid and 500 offered at the inside, QI = (2000-500)/(2000+500) = +0.6, tilting the microprice toward the ask.",
+    "citations": [
+      {
+        "source": "Stoikov, 'The Micro-Price: A High-Frequency Estimator of Future Prices', Quantitative Finance 18(12):1959-1966 (Crossref record DOI 10.1080/14697688.2018.1489139)",
+        "url": "https://api.crossref.org/works/10.1080/14697688.2018.1489139",
+        "section": "Bibliographic record",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Cont, Kukanov and Stoikov, 'The Price Impact of Order Book Events', Journal of Financial Econometrics 12(1):47-88 (arXiv preprint)",
+        "url": "https://arxiv.org/abs/1011.6402",
+        "section": "Abstract (imbalance between supply and demand at the best bid and ask)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 274
+  },
+  {
+    "id": "microstructure/microprice",
+    "name": "Microprice",
+    "aliases": [
+      "micro-price",
+      "weighted mid-price"
+    ],
+    "domain": "Microstructure",
+    "definition": "A size-weighted price between the bid and the ask that adjusts the midpoint for the imbalance of displayed quantities; Stoikov (2018) defines the micro-price as a high-frequency estimator of the short-horizon future price and shows empirically that it predicts near-term prices better than the mid-price or the weighted mid-price.",
+    "intuition": "If the bid queue is heavy relative to the ask, the fair price leans toward the ask - the microprice quantifies that lean.",
+    "mechanics": "The first-order form weights the ask by bid size and the bid by ask size; Stoikov derives refinements by modeling the mid-price as a Markov chain in imbalance and spread states and taking the expected limiting price. It updates on every change to top-of-book prices or sizes.",
+    "formula": "P_micro = (A x Q_bid + B x Q_ask) / (Q_bid + Q_ask), where B and A are the best bid and ask and Q_bid, Q_ask their sizes.",
+    "relationships": [
+      "Midpoint",
+      "Queue imbalance",
+      "Order-flow imbalance",
+      "Top of book",
+      "Quoted spread"
+    ],
+    "failure_modes": "The estimator assumes a stationary imbalance-transition structure, so it degrades under regime shifts, hidden size, and wide spreads; as a predictor it is useful only at high frequency and horizons of ticks, not minutes.",
+    "misconceptions": "The microprice is an estimate of the near-future transaction price, not a fundamental fair value and not a price at which one can necessarily trade.",
+    "example": "With the book at $100.00 bid for 1,000 shares and $100.02 offered for 250 shares, the microprice is (100.02 x 1000 + 100.00 x 250)/1250 = $100.016, above the $100.01 midpoint.",
+    "citations": [
+      {
+        "source": "Stoikov, 'The Micro-Price: A High-Frequency Estimator of Future Prices', Quantitative Finance 18(12):1959-1966 (Crossref record DOI 10.1080/14697688.2018.1489139)",
+        "url": "https://api.crossref.org/works/10.1080/14697688.2018.1489139",
+        "section": "Bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 275
+  },
+  {
+    "id": "microstructure/trade-through",
+    "name": "Trade-through",
+    "aliases": [
+      "trade through"
+    ],
+    "domain": "Microstructure",
+    "definition": "An execution at a price inferior to a protected quotation displayed by another trading center - Regulation NMS Rule 600(b)(105) defines a trade-through as the purchase or sale of an NMS stock during regular trading hours at a price lower than a protected bid or higher than a protected offer. Rule 611 (the Order Protection Rule) requires trading centers to maintain policies reasonably designed to prevent trade-throughs.",
+    "intuition": "It is trading at a worse price while a better displayed price is available somewhere else in the national market system.",
+    "mechanics": "Trading centers prevent trade-throughs by routing to better-priced protected quotations (e.g. via intermarket sweep orders) before executing locally; Rule 611 lists exceptions, including executions during crossed markets, ISO routings, stopped orders, and quotes that flickered to an inferior price within one second prior.",
+    "formula": "",
+    "relationships": [
+      "National best bid and offer",
+      "Protected quotation",
+      "Locked market",
+      "Crossed market",
+      "Best execution"
+    ],
+    "failure_modes": "Consolidated-feed latency can make a quote appear tradeable when it is already gone (or vice versa), so mechanical trade-through protection can force routing to trivially small or stale protected quotes; the rule protects only top-of-book displayed prices, not depth.",
+    "misconceptions": "Rule 611 does not guarantee best execution for institutional size - it protects only the displayed protected quotation, and it applies to trading centers, which is distinct from a broker's broader best-execution duty.",
+    "example": "The NBO is $100.01 on NYSE; a trade executes at $100.03 on another venue without routing to NYSE first - a trade-through of the protected offer, absent an exception.",
+    "citations": [
+      {
+        "source": "17 CFR 242.611 - Order protection rule (Regulation NMS Rule 611)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.611",
+        "section": "Full section (trade-through prevention and exceptions)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraph (b)(105) Trade-through",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 276
+  },
+  {
+    "id": "microstructure/locked-market",
+    "name": "Locked market",
+    "aliases": [
+      "locked quotations"
+    ],
+    "domain": "Microstructure",
+    "definition": "A market state in which the national best bid equals the national best offer, so the displayed spread is zero. Regulation NMS Rule 610(e) requires exchanges and associations to maintain rules requiring members reasonably to avoid displaying quotations that lock any protected quotation and to assure the reconciliation of locked quotations.",
+    "intuition": "A buyer and a seller publicly agree on price, but their quotes sit on different venues and do not automatically interact.",
+    "mechanics": "Locks arise from fragmentation and latency when a bid on one venue reaches the price of an offer on another; Rule 610(e) obliges market participants to avoid, and venues to reconcile, locking quotations, with routing exceptions (such as intermarket sweep orders) permitting resolution.",
+    "formula": "",
+    "relationships": [
+      "Crossed market",
+      "National best bid and offer",
+      "Trade-through",
+      "Regulation NMS",
+      "Quoted spread"
+    ],
+    "failure_modes": "During a lock the quoted spread signals free immediacy that may not be deliverable across venues, and persistent locks indicate linkage or latency problems between markets; quote-based analytics misbehave when the spread is zero.",
+    "misconceptions": "A locked market is not a trading halt - trading continues, but displaying quotations that lock protected quotes is restricted and repeated locking is a prohibited pattern.",
+    "example": "The NBB is $100.01 on NYSE and the NBO is $100.01 on Nasdaq; the NBBO is locked at $100.01 until one side executes, cancels, or reprices.",
+    "citations": [
+      {
+        "source": "17 CFR 242.610 - Access to quotations (Regulation NMS Rule 610)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.610",
+        "section": "paragraph (e) Locking or crossing quotations",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 277
+  },
+  {
+    "id": "microstructure/crossed-market",
+    "name": "Crossed market",
+    "aliases": [
+      "crossed quotations"
+    ],
+    "domain": "Microstructure",
+    "definition": "A market state in which the best bid exceeds the best offer, producing a negative displayed spread. Regulation NMS Rule 610(e) requires exchange rules that members reasonably avoid displaying quotations that cross protected quotations, and Rule 611(b)(4) excepts from trade-through liability executions occurring while a protected bid is priced higher than a protected offer.",
+    "intuition": "Someone is publicly bidding more than someone else is asking - arbitrage on its face, usually an artifact of timing rather than a real opportunity.",
+    "mechanics": "Crosses are typically transient states caused by latency and feed delays across fragmented venues during fast price moves; they resolve through quote reconciliation, routing, or cancellation, often within microseconds to seconds.",
+    "formula": "",
+    "relationships": [
+      "Locked market",
+      "Stale quote",
+      "Latency",
+      "National best bid and offer",
+      "Trade-through"
+    ],
+    "failure_modes": "A crossed consolidated quote usually reflects a stale or slow data feed rather than an executable arbitrage; attempting to trade the apparent cross generally finds the quote already gone.",
+    "misconceptions": "A crossed NBBO almost never means free money - the crossing quotation is typically stale, inaccessible, or already executed by faster participants.",
+    "example": "During a rapid sell-off the consolidated feed briefly shows NBB $100.03 and NBO $100.02; within a few hundred microseconds the stale offer is updated and the cross disappears.",
+    "citations": [
+      {
+        "source": "17 CFR 242.610 - Access to quotations (Regulation NMS Rule 610)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.610",
+        "section": "paragraph (e) Locking or crossing quotations",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 278
+  },
+  {
+    "id": "microstructure/latency",
+    "name": "Latency",
+    "aliases": [
+      "trading latency"
+    ],
+    "domain": "Microstructure",
+    "definition": "The time delay between a market event and a participant's ability to observe and act on it - quoted in the CFTC's automated-trading concept release from Hasbrouck and Saar as the time it takes to learn about an event (e.g., a change in the bid), generate a response, and have the exchange act on the response.",
+    "intuition": "It is the lag between something happening in the market and your reaction actually landing at the exchange.",
+    "mechanics": "Latency decomposes into market-data dissemination, network transit, decision logic, and exchange processing; participants reduce it through co-location, direct exchange data feeds, microwave networks, and streamlined code, with competitive levels now in microseconds.",
+    "formula": "",
+    "relationships": [
+      "Round-trip latency",
+      "Co-location",
+      "Stale quote",
+      "Flickering quote",
+      "High-frequency trading"
+    ],
+    "failure_modes": "Latency differentials let faster participants pick off slower resting orders after price moves, and average latency figures hide the tail spikes that dominate adverse outcomes in fast markets.",
+    "misconceptions": "Minimal latency matters mainly for market making, arbitrage, and aggressive execution strategies; most investors are economically indifferent to microsecond differences.",
+    "example": "A trader whose system reacts 100 microseconds slower than competitors is systematically picked off when a correlated instrument moves first.",
+    "citations": [
+      {
+        "source": "CFTC, Concept Release on Risk Controls and System Safeguards for Automated Trading Environments, 78 FR 56542",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2013-09-12/html/2013-22185.htm",
+        "section": "Part II.A.2 Advances in High-Speed Communication Networks and Reductions in Latency (incl. note 18, Hasbrouck-Saar definition)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 279
+  },
+  {
+    "id": "microstructure/round-trip-latency",
+    "name": "Round-trip latency",
+    "aliases": [
+      "roundtrip time",
+      "order-to-ack latency"
+    ],
+    "domain": "Microstructure",
+    "definition": "The elapsed time for an order message to travel from a participant's system to the exchange matching engine and for the acknowledgment or execution response to return. The CFTC's concept release cites industry data showing roundtrip trade times on one exchange group falling from 127 milliseconds in 2004 to 4.2 milliseconds in 2011.",
+    "intuition": "It is the order-to-answer time: send an order, and measure how long until the exchange confirms what happened.",
+    "mechanics": "Measured end-to-end from timestamps on the outbound order and the inbound acknowledgment, spanning gateways, the matching engine, and the return path; exchanges and firms monitor it as a key infrastructure and competitiveness metric.",
+    "formula": "Round-trip latency = t(acknowledgment received) - t(order sent).",
+    "relationships": [
+      "Latency",
+      "Co-location",
+      "Direct market access",
+      "Matching engine"
+    ],
+    "failure_modes": "Jitter and tail behavior matter more than averages - a venue with a fast mean but heavy-tailed round trips can be worse for time-critical strategies; published figures may exclude client-side network segments and are not comparable across venues.",
+    "misconceptions": "Exchange-published round-trip times cover only the measured segment (often inside the data center); they understate the full latency a remote participant experiences.",
+    "example": "An order is sent at 12:00:00.000000 and the exchange acknowledgment arrives at 12:00:00.000850, a round-trip latency of 850 microseconds.",
+    "citations": [
+      {
+        "source": "CFTC, Concept Release on Risk Controls and System Safeguards for Automated Trading Environments, 78 FR 56542",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2013-09-12/html/2013-22185.htm",
+        "section": "Part II.A.2 (roundtrip trade times, notes 19-20)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 280
+  },
+  {
+    "id": "microstructure/co-location",
+    "name": "Co-location",
+    "aliases": [
+      "colocation",
+      "colo",
+      "proximity hosting"
+    ],
+    "domain": "Microstructure",
+    "definition": "The placement of a firm's trading servers in or near the exchange's own data center to minimize network latency to the matching engine; the CFTC defines co-location as connectivity solutions hosted by the exchange itself, with third-party equivalents termed proximity hosting.",
+    "intuition": "Physically sit your computers next to the exchange's computers so your messages arrive before everyone else's.",
+    "mechanics": "Exchanges rent rack space and cross-connects, typically with equalized cable lengths to equalize latency among co-located customers; regulators require such services to be offered on fair, uniform, and non-discriminatory terms (CFTC co-location rulemaking; SEC oversight of exchange co-location services).",
+    "formula": "",
+    "relationships": [
+      "Latency",
+      "Round-trip latency",
+      "Direct market access",
+      "High-frequency trading"
+    ],
+    "failure_modes": "Co-location creates a two-tier speed structure between co-located and remote participants and feeds a costly latency arms race whose social value is contested; it shortens only the last network segment, not decision time or cross-market links.",
+    "misconceptions": "Co-location is not an unfair secret advantage but a regulated, fee-based exchange service open to all customers on non-discriminatory terms - the debate is about its systemic costs, not its legality.",
+    "example": "A market-making firm hosts its quoting engines in CME Group's Aurora data center, shaving the network hop between its systems and the Globex matching engine to microseconds.",
+    "citations": [
+      {
+        "source": "CFTC, Concept Release on Risk Controls and System Safeguards for Automated Trading Environments, 78 FR 56542",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2013-09-12/html/2013-22185.htm",
+        "section": "Part II.A.2 (co-location and proximity hosting definitions, note 23)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "SEC, Concept Release on Equity Market Structure, Release No. 34-61358, 75 FR 3594",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2010-01-21/html/2010-1045.htm",
+        "section": "Parts III.A.1 and IV.B.2.a Co-Location",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 281
+  },
+  {
+    "id": "microstructure/direct-market-access",
+    "name": "Direct market access",
+    "aliases": [
+      "DMA"
+    ],
+    "domain": "Microstructure",
+    "definition": "A connection arrangement that enables a market participant, often a broker's or clearing firm's client, to transmit orders directly to a trading platform without re-entry or prior review by the intermediary's systems; per the CFTC's concept release, DMA implies the participant's order flow is not routed through its clearing firm before reaching the platform.",
+    "intuition": "The client's orders ride the member's connection to the exchange at wire speed, without a human or broker system touching each order first.",
+    "mechanics": "The exchange or a third-party provider supplies connectivity under the member's credentials; because DMA removes the intermediary's workflow, regulators mandate automated pre-trade risk controls instead - CFTC Rule 1.73 requires pre-screening of DMA client orders against risk limits, and SEC Rule 15c3-5 governs the analogous securities-market access.",
+    "formula": "",
+    "relationships": [
+      "Sponsored access",
+      "Latency",
+      "Co-location",
+      "Market access rule"
+    ],
+    "failure_modes": "Removing the intermediary check lets errant algorithms reach the market instantly - the 2012 Knight Capital incident, cited in the CFTC release, sent erroneous orders swinging nearly 150 securities; weak or misconfigured automated controls are the main failure point.",
+    "misconceptions": "DMA is not unregulated naked access: current rules require automated pre-trade financial and regulatory checks, so 'direct' describes the workflow, not the absence of controls.",
+    "example": "A hedge fund's execution algorithm sends child orders straight to the futures exchange under its clearing firm's connection, with automated credit and size filters screening each order.",
+    "citations": [
+      {
+        "source": "CFTC, Concept Release on Risk Controls and System Safeguards for Automated Trading Environments, 78 FR 56542",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2013-09-12/html/2013-22185.htm",
+        "section": "Part II.A.2 (DMA definition and Rule 1.73, note 25)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 282
+  },
+  {
+    "id": "microstructure/sponsored-access",
+    "name": "Sponsored access",
+    "aliases": [
+      "sponsored market access"
+    ],
+    "domain": "Microstructure",
+    "definition": "A form of market access in which a customer or other person trades on an exchange or alternative trading system through the use of a broker-dealer's market participant identifier. SEC Rule 15c3-5 (the Market Access Rule) requires brokers providing such access to maintain, under their direct and exclusive control, risk management controls that prevent orders exceeding pre-set credit or capital thresholds and erroneous orders.",
+    "intuition": "The customer trades under the sponsoring broker's name and clearing umbrella, so the broker must police every order at the gateway.",
+    "mechanics": "Orders flow to the venue under the sponsor's MPID through automated pre-trade financial and regulatory filters; the sponsor must document and annually review the controls, with CEO certification, and may allocate only certain regulatory controls to broker-dealer customers by written contract after due diligence.",
+    "formula": "",
+    "relationships": [
+      "Direct market access",
+      "Market access rule",
+      "Latency",
+      "Erroneous order"
+    ],
+    "failure_modes": "Misconfigured filters, or impermissible delegation of control, can let erroneous or uncreditworthy orders reach the market at full speed; regulatory responsibility remains with the sponsoring broker-dealer regardless of allocation arrangements.",
+    "misconceptions": "Sponsored access is not unfiltered 'naked' access - since Rule 15c3-5, unfiltered access arrangements are prohibited in US securities markets.",
+    "example": "A proprietary trading firm routes orders to an exchange via its sponsor broker's MPID; the broker's gateway rejects any order that would breach the firm's pre-set capital threshold.",
+    "citations": [
+      {
+        "source": "17 CFR 240.15c3-5 - Risk management controls for brokers or dealers with market access",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-240/subject-group-ECFRc8401dcba174f73/section-240.15c3-5",
+        "section": "Full section (market access definition and required controls)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 283
+  },
+  {
+    "id": "microstructure/stale-quote",
+    "name": "Stale quote",
+    "aliases": [
+      "stale quotation"
+    ],
+    "domain": "Microstructure",
+    "definition": "A displayed quotation that no longer reflects current market value because prices have moved without the quote being updated, leaving it executable at an obsolete price. Bartlett and McCrary analyze how such stale quotes arise and how faster traders can arbitrage them when venues or feed systems update slowly.",
+    "intuition": "It is yesterday's price still posted in today's market - an offer to trade at terms the quoter would no longer choose.",
+    "mechanics": "Staleness arises from slow quote updates, data-feed and processing latency (e.g. consolidated feeds lagging direct exchange feeds), or venue malfunctions; low-latency participants monitor correlated instruments and lift or hit stale quotes before they are repriced.",
+    "formula": "",
+    "relationships": [
+      "Flickering quote",
+      "Latency",
+      "Crossed market",
+      "Adverse selection",
+      "Locked market"
+    ],
+    "failure_modes": "Analyses based on displayed quotes can be systematically biased in fast markets because the quotes lag faster data sources; conversely, apparent stale-quote arbitrage is often unexecutable because the quote is cancelled or amended before an order arrives.",
+    "misconceptions": "A stale-looking quote on a slow feed is rarely a real free lunch - by the time an order reaches the venue, the quote has usually been updated or already picked off by faster participants.",
+    "example": "Index futures drop 0.5 percent; an ETF's displayed offer at the old level is lifted within microseconds by low-latency traders before the market maker reprices it.",
+    "citations": [
+      {
+        "source": "Bartlett and McCrary, 'Does SEC Enforcement Policy Encourage Stale Quote Arbitrage?' (UC Berkeley working paper; published version: 'How Rigged Are Stock Markets? Evidence from Microsecond Timestamps', Journal of Financial Economics)",
+        "url": "https://eml.berkeley.edu/~jmccrary/bartlett_mccrary2016b.pdf",
+        "section": "Full text",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 284
+  },
+  {
+    "id": "microstructure/flickering-quote",
+    "name": "Flickering quote",
+    "aliases": [
+      "fleeting quote",
+      "flickering quotation"
+    ],
+    "domain": "Microstructure",
+    "definition": "A quotation that appears and disappears on extremely short timescales, produced by millisecond-lived limit orders that are cancelled almost immediately. Hasbrouck and Saar document such fleeting order and quoting behavior as a hallmark of low-latency trading, and Regulation NMS Rule 611(b)(8) accommodates it via the one-second flickering-quote exception to trade-through liability.",
+    "intuition": "These are quotes that blink in and out faster than slower participants can react to them.",
+    "mechanics": "High-frequency market makers continuously update and cancel quotes to manage inventory and avoid adverse selection, so a large share of displayed liquidity lives for only milliseconds; consolidated feeds may never fully capture the fastest flickers.",
+    "formula": "",
+    "relationships": [
+      "Cancellation rate",
+      "Stale quote",
+      "Latency",
+      "Displayed liquidity",
+      "Cancel-to-trade ratio"
+    ],
+    "failure_modes": "Quote-based liquidity metrics overstate accessible liquidity when much of it flickers, and flickering undermines the reliability of quote-midpoint benchmarks used for best-execution and trade-classification analysis.",
+    "misconceptions": "Flickering quotes are not necessarily phantom or spoofed orders; most are bona fide but very short-lived quotes reflecting legitimate high-frequency risk management.",
+    "example": "A 100-share offer at the NBO exists for 3 milliseconds before being cancelled and reposted one tick away, repeating hundreds of times per second.",
+    "citations": [
+      {
+        "source": "Hasbrouck and Saar, 'Low-Latency Trading', Journal of Financial Markets 16(4):646-679 (author-hosted copy)",
+        "url": "https://pages.stern.nyu.edu/~jhasbrou/Research/lowLatencyTrading/lowLatencyTradingHasbrouckSaarJFM.pdf",
+        "section": "Full text (fleeting orders and flickering quotes)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "17 CFR 242.611 - Order protection rule (Regulation NMS Rule 611)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.611",
+        "section": "paragraph (b)(8), one-second flickering-quote exception",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch microstructure",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 285
+  }
+]

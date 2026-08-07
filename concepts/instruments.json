@@ -1,0 +1,1724 @@
+[
+  {
+    "id": "instruments/spot-transaction",
+    "name": "Spot transaction",
+    "aliases": [],
+    "domain": "Instruments",
+    "definition": "A purchase or sale for prompt delivery and settlement under market conventions.",
+    "intuition": "",
+    "mechanics": "",
+    "formula": "",
+    "relationships": [],
+    "failure_modes": "",
+    "misconceptions": "",
+    "example": "",
+    "citations": [],
+    "source_hint": "CFTC",
+    "status": "reviewed",
+    "reviewed_by": "master_v1 import",
+    "review_date": "2026-08-06",
+    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "master_index": 9
+  },
+  {
+    "id": "instruments/forward-contract",
+    "name": "Forward contract",
+    "aliases": [],
+    "domain": "Instruments",
+    "definition": "A bilateral agreement to buy or sell an underlying at a specified future date and price.",
+    "intuition": "",
+    "mechanics": "",
+    "formula": "",
+    "relationships": [],
+    "failure_modes": "",
+    "misconceptions": "",
+    "example": "",
+    "citations": [],
+    "source_hint": "CFTC",
+    "status": "reviewed",
+    "reviewed_by": "master_v1 import",
+    "review_date": "2026-08-06",
+    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "master_index": 10
+  },
+  {
+    "id": "instruments/futures-contract",
+    "name": "Futures contract",
+    "aliases": [],
+    "domain": "Instruments",
+    "definition": "A standardized exchange-traded agreement for future delivery or financial settlement.",
+    "intuition": "",
+    "mechanics": "",
+    "formula": "",
+    "relationships": [],
+    "failure_modes": "",
+    "misconceptions": "",
+    "example": "",
+    "citations": [],
+    "source_hint": "CFTC / CME",
+    "status": "reviewed",
+    "reviewed_by": "master_v1 import",
+    "review_date": "2026-08-06",
+    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "master_index": 11
+  },
+  {
+    "id": "instruments/option",
+    "name": "Option",
+    "aliases": [],
+    "domain": "Instruments",
+    "definition": "A contract giving its holder a right, but not an obligation, to buy or sell an underlying under specified terms.",
+    "intuition": "",
+    "mechanics": "",
+    "formula": "",
+    "relationships": [],
+    "failure_modes": "",
+    "misconceptions": "",
+    "example": "",
+    "citations": [],
+    "source_hint": "OCC",
+    "status": "reviewed",
+    "reviewed_by": "master_v1 import",
+    "review_date": "2026-08-06",
+    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "master_index": 12
+  },
+  {
+    "id": "instruments/cash-market",
+    "name": "Cash market",
+    "aliases": [
+      "Spot market",
+      "Physical market",
+      "Actuals"
+    ],
+    "domain": "Instruments",
+    "definition": "The market for the physical or cash commodity (or asset) itself, as contrasted with futures or other derivative contracts on it. It may take the form of an organized central market, a decentralized over-the-counter market, or a local organization serving a small region, and trades settle with prompt delivery and payment through customary market channels.",
+    "intuition": "The cash market is where the actual thing changes hands now, not a promise about the future. Its price is the reference point to which futures and forward prices are compared.",
+    "mechanics": "Buyer pays seller and delivery occurs within the market's standard settlement period (immediate for spot commodities, T+1/T+2 for most securities). Cash prices are often quoted relative to futures as a basis (e.g., cents over or under a futures month), and cash and futures prices tend to converge as the delivery month approaches.",
+    "formula": "",
+    "relationships": [
+      "Spot transaction",
+      "Futures contract",
+      "Forward contract",
+      "Commodity",
+      "Basis"
+    ],
+    "failure_modes": "Cash prices can be thin, local, or grade-specific, so they may not match the standardized grade underlying a futures contract, creating basis risk. Storage, transport, and delivery frictions can also keep cash and futures prices apart longer than convergence arguments suggest.",
+    "misconceptions": "That the cash market is a single centralized exchange; for many commodities it is a decentralized web of dealers, elevators, and processors. Also, 'cash' does not mean payment in banknotes — it contrasts with 'futures', not with credit.",
+    "example": "A grain elevator buys corn from a farmer at the local cash price quoted as 10 cents under December futures; the farmer delivers physical corn and is paid promptly.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Cash Market; Cash Commodity",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 90
+  },
+  {
+    "id": "instruments/perpetual-futures-contract",
+    "name": "Perpetual futures contract",
+    "aliases": [
+      "Perpetual swap",
+      "Perp"
+    ],
+    "domain": "Instruments",
+    "definition": "A futures-style derivative contract, predominant in cryptoasset markets, that has no expiry or settlement date, so a position can be held indefinitely. Its price is kept anchored to an underlying spot index price through periodic funding payments exchanged between long and short position holders.",
+    "intuition": "A perpetual is a futures contract you never have to roll. A funding fee paid by the more crowded side keeps its price tethered to spot.",
+    "mechanics": "Positions are leveraged against initial and maintenance margin, marked to a mark price derived from a spot index price, and liquidated if collateral falls below maintenance margin. Funding is paid at fixed intervals (e.g., every 8 hours): when the funding rate is positive, longs pay shorts, and when negative, shorts pay longs; exchanges maintain insurance funds and, as a last resort, auto-deleveraging to absorb bankrupt accounts.",
+    "formula": "Funding payment = position notional x funding rate; the funding rate is typically composed of an interest rate component plus a premium index measuring the perp's deviation from the spot index price.",
+    "relationships": [
+      "Futures contract",
+      "Cryptoasset",
+      "Margin",
+      "Basis"
+    ],
+    "failure_modes": "Funding rates can become extremely expensive in one-sided markets, turning a correct directional view into a losing carry trade. In extreme volatility, liquidation engines and insurance funds can be overwhelmed, triggering auto-deleveraging that socializes losses onto profitable traders.",
+    "misconceptions": "That having no expiry means there is no cost of carry — funding is a recurring carry cost that substitutes for the futures roll. Also, the contract price can still deviate from spot under stress; the anchor is an incentive, not a guarantee.",
+    "example": "A BTCUSDT perpetual trading above its spot index shows a positive funding rate, so every 8 hours long position holders pay shorts a small percentage of their notional, pushing the contract price back toward spot.",
+    "citations": [
+      {
+        "source": "Binance Academy: What Are Perpetual Futures Contracts?",
+        "url": "https://academy.binance.com/en/articles/what-are-perpetual-futures-contracts",
+        "section": "What is a perpetual futures contract?; What is the funding rate?",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 91
+  },
+  {
+    "id": "instruments/swap",
+    "name": "Swap",
+    "aliases": [
+      "OTC swap",
+      "Swap agreement"
+    ],
+    "domain": "Instruments",
+    "definition": "A derivative in which two counterparties agree to exchange streams of cash flows over a specified period, computed by applying agreed rates, prices, or formulas to a notional amount. Under the detailed statutory definition in the Commodity Exchange Act (as amended by the Dodd-Frank Act), the term includes interest rate swaps, commodity swaps, currency swaps, equity swaps, and credit default swaps.",
+    "intuition": "A swap lets two parties trade one kind of payment obligation for another — for example, exchanging a fixed interest bill for a floating one — without trading the underlying asset itself.",
+    "mechanics": "Cash flows are typically netted on each payment date against a notional principal that is usually not exchanged. Swaps are documented under ISDA master agreements; post-Dodd-Frank, many standardized swaps must be centrally cleared through a derivatives clearing organization, executed on swap execution facilities, and reported to swap data repositories.",
+    "formula": "Net payment on a payment date = Notional x (rate paid - rate received) x day-count fraction.",
+    "relationships": [
+      "Interest rate swap",
+      "Currency swap",
+      "Credit default swap",
+      "Total return swap",
+      "Variance swap",
+      "Forward contract"
+    ],
+    "failure_modes": "Uncleared swaps carry bilateral counterparty credit risk over long tenors. Hedged exposures can mismatch the swap's terms (basis risk), and benchmark transitions (e.g., LIBOR cessation) can strand legacy contracts.",
+    "misconceptions": "That the notional principal changes hands — in most swaps it never does and exists only to compute payments. Also, swaps are often seen as exotic speculation, but their most common use is routine balance-sheet hedging.",
+    "example": "A company with floating-rate debt enters a five-year pay-fixed/receive-floating interest rate swap on $50 million notional, converting its interest expense to a fixed rate.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Swap",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 92
+  },
+  {
+    "id": "instruments/interest-rate-swap",
+    "name": "Interest rate swap",
+    "aliases": [
+      "IRS",
+      "Plain vanilla swap"
+    ],
+    "domain": "Instruments",
+    "definition": "A swap in which the two counterparties agree to exchange interest rate cash flows on a specified notional principal. In the standard plain-vanilla form, one party pays a fixed rate and the other pays a floating rate tied to a reference rate on a series of payment dates; the principal itself is not exchanged.",
+    "intuition": "Two parties swap the character of their interest payments — fixed for floating — so each ends up with the rate exposure it wants.",
+    "mechanics": "Each leg accrues interest on the same notional using its own rate and day-count convention, and payments are netted on each date. The fixed (swap) rate is set at inception so that the present value of the fixed leg equals the present value of the expected floating leg; thereafter the swap's mark-to-market moves with rates. Standardized IRS are now largely centrally cleared.",
+    "formula": "Fixed leg payment = N x R_fixed x alpha; floating leg payment = N x R_float x alpha, where N is notional and alpha the day-count fraction. At inception, the swap rate sets PV(fixed leg) = PV(floating leg).",
+    "relationships": [
+      "Swap",
+      "Forward rate agreement",
+      "Interest rate future",
+      "Currency swap"
+    ],
+    "failure_modes": "Benchmark reform (LIBOR to SOFR and other risk-free rates) changed floating-leg economics for legacy contracts. Rising rates create large negative mark-to-market for fixed-rate payers, generating collateral calls on cleared or margined swaps.",
+    "misconceptions": "That counterparties exchange principal — they do not; the notional only scales interest payments. Also, a swap does not create new borrowing; it transforms the rate exposure of existing obligations.",
+    "example": "On $100 million of 5-year notional, Party A pays 4% fixed semiannually and receives compounded SOFR; if SOFR averages 4.6% over a period, A receives the net 0.6% on the notional for that period.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Interest Rate Swap",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 93
+  },
+  {
+    "id": "instruments/currency-swap",
+    "name": "Currency swap",
+    "aliases": [
+      "Cross-currency swap"
+    ],
+    "domain": "Instruments",
+    "definition": "A swap that involves the exchange of one currency for another on a specified schedule. Counterparties typically exchange principal amounts in two currencies at inception, exchange interest payments in each currency during the life of the contract, and re-exchange the principals at maturity at the pre-agreed rate.",
+    "intuition": "Each party borrows in the currency where it has an advantage, then swaps the proceeds and the interest obligations, so each ends up servicing debt in the currency it actually needs.",
+    "mechanics": "Principals are exchanged at the spot rate at inception and re-exchanged at the same (or a contracted) rate at maturity, while periodic interest flows — fixed or floating — in the two currencies are paid in between. This structure hedges both interest rate and exchange rate exposure over the contract's life.",
+    "formula": "",
+    "relationships": [
+      "Swap",
+      "Interest rate swap",
+      "Currency pair",
+      "Forward contract",
+      "FX future"
+    ],
+    "failure_modes": "Because principals are re-exchanged at a fixed rate, a large exchange-rate move creates substantial mark-to-market exposure to the counterparty over long tenors. Cross-currency basis can also move against hedgers, making synthetic funding more expensive than direct funding.",
+    "misconceptions": "That a currency swap is the same as an FX swap (a spot purchase plus an offsetting forward); a currency swap exchanges ongoing interest payments as well as principal. Also, unlike an interest rate swap, principal typically is exchanged here.",
+    "example": "A U.S. firm swaps $100 million for euros with a European firm at inception, pays euro interest and receives dollar interest for seven years, then re-exchanges the same principal amounts at maturity.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Currency Swap",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 94
+  },
+  {
+    "id": "instruments/total-return-swap",
+    "name": "Total return swap",
+    "aliases": [
+      "TRS",
+      "TRORS"
+    ],
+    "domain": "Instruments",
+    "definition": "A swap in which one party (the total return payer) transfers the full economic performance of a reference asset — its income plus any price appreciation or depreciation — to the other party, which in return pays a financing rate (a reference rate plus a spread) on the notional. It transfers the asset's returns without transferring ownership and is classed among the common credit derivatives.",
+    "intuition": "A total return swap lets you collect everything a stock, bond, or index pays and earns — as if you owned it — while posting only a fraction of its value as margin and paying a financing charge.",
+    "mechanics": "On each payment date the payer passes through coupons or dividends plus the mark-to-market change in the reference asset; if the asset fell, the receiver pays the loss. The receiver thus holds leveraged synthetic exposure, while the payer (often a dealer that owns or hedges the asset) sheds its price risk.",
+    "formula": "Total return payment = income received on the reference asset + (P_end - P_start) x notional quantity; financing leg = notional x (reference rate + spread) x day-count fraction.",
+    "relationships": [
+      "Swap",
+      "Credit default swap",
+      "Synthetic asset",
+      "Contract for difference"
+    ],
+    "failure_modes": "The receiver bears the full downside of the reference asset plus counterparty risk, and the embedded leverage is largely invisible on the balance sheet — the 2021 Archegos collapse was built on equity total return swaps. Financing spreads can also widen or financing be withdrawn in stress.",
+    "misconceptions": "That receiving total return confers shareholder rights — it transfers economics only, not voting or ownership. Also, dealers are not betting against the client by default; they typically hedge the reference asset.",
+    "example": "A fund receives the total return on $50 million notional of an equity basket and pays SOFR plus 60 basis points quarterly; a 4% rise in the basket over a quarter nets it roughly $2 million minus financing.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Credit Derivative (lists total return swaps among common credit derivatives)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 95
+  },
+  {
+    "id": "instruments/credit-default-swap",
+    "name": "Credit default swap",
+    "aliases": [
+      "CDS",
+      "Credit swap"
+    ],
+    "domain": "Instruments",
+    "definition": "A bilateral over-the-counter credit derivative in which the protection seller agrees to make a payment to the protection buyer in the event of a specified credit event (such as a default or bankruptcy) of a reference entity, in exchange for a fixed payment or series of fixed payments. It is the most common type of credit derivative.",
+    "intuition": "A CDS works like default insurance on a borrower: you pay a periodic premium, and if the borrower suffers a credit event, you are compensated for the loss in value of its debt.",
+    "mechanics": "The buyer pays a periodic spread on the notional until maturity or a credit event. After a credit event is determined by the ISDA determinations committee, the contract settles either physically (the buyer delivers defaulted debt and receives par) or in cash at an auction-determined recovery value (the seller pays par minus recovery).",
+    "formula": "Premium leg approximately N x spread x day-count fraction per period; protection leg approximately N x (1 - recovery rate) on a credit event.",
+    "relationships": [
+      "Swap",
+      "Total return swap",
+      "Corporate bond",
+      "Government bond"
+    ],
+    "failure_modes": "The CDS-bond basis can diverge, so hedges are imperfect. Concentrated seller exposure can transmit losses across the system (AIG in 2008), and disputes over what constitutes a credit event can delay or reduce payouts.",
+    "misconceptions": "That the buyer must own the reference entity's bonds — 'naked' CDS positions are permitted, so open CDS notional can exceed the debt outstanding. Also, a CDS is not legally an insurance contract and carries no insurable-interest requirement.",
+    "example": "An investor buys 5-year CDS protection on $10 million of XYZ Corp at a 200 basis point spread, paying about $200,000 per year; if XYZ defaults and the auction recovery is 40%, the seller pays roughly $6 million.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Credit Default Swap",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 96
+  },
+  {
+    "id": "instruments/contract-for-difference",
+    "name": "Contract for difference",
+    "aliases": [
+      "CFD"
+    ],
+    "domain": "Instruments",
+    "definition": "A leveraged over-the-counter derivative between a client and a provider in which the parties exchange the difference between the opening and closing price of an underlying asset — a share, index, currency, or commodity — without either party owning the underlying. The FCA classifies CFDs as complex, high-risk products that carry a considerable risk of substantial losses.",
+    "intuition": "A CFD is a cash-settled bet on a price move: you gain or lose the full change in the asset's price while posting only a fraction of its value as margin.",
+    "mechanics": "A position is opened with initial margin; profit or loss equals the price change times position size, and long positions pay daily financing on the full notional. Regulators such as the FCA restrict retail leverage (between 30:1 and 2:1 depending on the underlying), mandate margin close-out, and provide negative balance protection for retail clients.",
+    "formula": "PnL (long) = (P_close - P_open) x quantity, minus financing and any commissions.",
+    "relationships": [
+      "Total return swap",
+      "Margin",
+      "Futures contract",
+      "Forward contract"
+    ],
+    "failure_modes": "High leverage means small adverse moves can wipe out the deposit quickly; a large majority of retail CFD accounts lose money. The client also bears provider counterparty risk, and overnight financing charges erode positions held for long periods.",
+    "misconceptions": "That a CFD confers ownership or voting rights in the underlying — it is purely a price-difference contract. Also, stop-losses do not guarantee an exit price in gapping markets.",
+    "example": "Buying 1,000 share CFDs at GBP 10.00 with 20% margin requires GBP 2,000; if the price rises to GBP 10.50, the gain is GBP 500 minus financing — a 25% return on margin from a 5% price move, with symmetric downside.",
+    "citations": [
+      {
+        "source": "UK Financial Conduct Authority, press release: FCA warns investors in CFDs risk losing out on protections",
+        "url": "https://www.fca.org.uk/news/press-releases/fca-warns-investors-cfds-risk-losing-out-protections",
+        "section": "Notes to editors: definition and risk characterization of CFDs",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 97
+  },
+  {
+    "id": "instruments/exchange-traded-fund",
+    "name": "Exchange-traded fund",
+    "aliases": [
+      "ETF"
+    ],
+    "domain": "Instruments",
+    "definition": "An exchange-traded investment product that must register with the SEC as an open-end investment company (or sometimes as a unit investment trust). It pools investor money into a portfolio of assets and its shares trade on a national securities exchange throughout the day at market prices, like a stock.",
+    "intuition": "An ETF packages a whole portfolio into a single share you can buy or sell any time the market is open, combining mutual-fund-style pooling with stock-style trading.",
+    "mechanics": "Large broker-dealers called authorized participants create and redeem ETF shares in large blocks (creation units, typically 50,000 shares or more), usually in exchange for baskets of the underlying securities in-kind. This creation/redemption arbitrage keeps the ETF's market price close to its net asset value.",
+    "formula": "",
+    "relationships": [
+      "Mutual fund",
+      "Closed-end fund",
+      "Exchange-traded note",
+      "Market index"
+    ],
+    "failure_modes": "In stressed markets the ETF's price can trade at a premium or discount to NAV, and the liquidity of the underlying assets may be much thinner than the ETF's own trading liquidity suggests. Tracking error, fees, and, for leveraged or inverse ETFs, daily-reset compounding can produce returns far from the index multiple investors expect.",
+    "misconceptions": "That all ETFs are cheap, passive index trackers — the wrapper also wraps leveraged, inverse, actively managed, and single-commodity products with very different risks. Also, ETF shares are not redeemed for cash by ordinary investors; they are sold on the exchange.",
+    "example": "An investor buys 100 shares of an S&P 500 ETF on an exchange at 10:30 a.m. at the prevailing market price, gaining diversified index exposure in one intraday trade.",
+    "citations": [
+      {
+        "source": "SEC Investor.gov Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Exchange-Traded Fund (ETF); Authorized Participants; Creation Unit",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 98
+  },
+  {
+    "id": "instruments/exchange-traded-note",
+    "name": "Exchange-traded note",
+    "aliases": [
+      "ETN"
+    ],
+    "domain": "Instruments",
+    "definition": "An unsecured, senior debt obligation of a financial institution that trades on a national securities exchange and whose payment terms are linked to the performance of a reference index or benchmark. Unlike an ETF, an ETN holds no underlying assets, so investors bear the issuer's credit risk, and ETNs can result in the loss of the entire investment.",
+    "intuition": "An ETN is essentially a promise from a bank to pay you the return of an index. You get index-linked payoff with bond-like exposure to the bank's solvency.",
+    "mechanics": "The issuer commits to pay at maturity (or on early redemption) an amount based on the reference index level, minus fees; an intraday indicative value is published. ETNs trade on exchanges like stocks, but their market price can deviate from indicative value, and issuers may call, accelerate, or suspend new issuance, which can drive prices to large premia.",
+    "formula": "",
+    "relationships": [
+      "Exchange-traded fund",
+      "Corporate bond",
+      "Market index",
+      "Structured note"
+    ],
+    "failure_modes": "Issuer default or downgrade reduces the ETN's value regardless of index performance — ETN holders are unsecured creditors. Suspension of issuance can decouple price from indicative value, and maturity calls or delistings can force realization at inopportune times, as seen in volatility-linked ETN collapses.",
+    "misconceptions": "That ETNs own the underlying assets like ETFs — they are pure credit exposure plus an index-linked payoff formula. Also, 'exchange-traded' does not imply investment-company protections; ETNs are not registered under the Investment Company Act.",
+    "example": "An ETN linked to a commodity index drops in price when the issuing bank's credit spreads widen, even on a day the index itself is unchanged.",
+    "citations": [
+      {
+        "source": "SEC Investor.gov Glossary: Exchange-Traded Products (ETPs)",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/exchange-traded-products-etps",
+        "section": "Exchange-traded notes (ETNs)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 99
+  },
+  {
+    "id": "instruments/mutual-fund",
+    "name": "Mutual fund",
+    "aliases": [
+      "Open-end fund",
+      "Open-end investment company"
+    ],
+    "domain": "Instruments",
+    "definition": "An SEC-registered open-end investment company that pools money from many investors and invests it in stocks, bonds, short-term money-market instruments, other securities, or assets. Its shares are redeemable: investors can sell them back to the fund on any business day at the fund's next-computed net asset value.",
+    "intuition": "A mutual fund is a shared portfolio: many investors chip in, a manager runs the money to a stated objective, and each investor owns a slice priced once a day.",
+    "mechanics": "Shares are bought from and redeemed by the fund itself at the net asset value computed after each market close; funds generally must pay redemption proceeds within seven days. Funds may charge sales loads, redemption fees, and ongoing distribution (12b-1) and management fees, all disclosed in the prospectus.",
+    "formula": "NAV per share = (total value of fund assets - liabilities) / shares outstanding.",
+    "relationships": [
+      "Exchange-traded fund",
+      "Closed-end fund",
+      "Expense ratio",
+      "Portfolio"
+    ],
+    "failure_modes": "Fees and sales loads compound against returns over time. In stressed markets, heavy redemptions can force asset sales into falling prices, and strong past performance frequently reverts, so performance-chasing is unreliable.",
+    "misconceptions": "That 'no-load' means no fees — no-load funds still charge management and operating expenses. Also, mutual fund shares are not exchange-traded intraday; they transact only at the end-of-day NAV.",
+    "example": "An investor redeems 500 shares of an equity mutual fund at the day's closing NAV of $24.10 and receives $12,050 within the settlement period.",
+    "citations": [
+      {
+        "source": "SEC Investor.gov Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Mutual Funds; Mutual Fund Redemptions; Net Asset Value",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 100
+  },
+  {
+    "id": "instruments/closed-end-fund",
+    "name": "Closed-end fund",
+    "aliases": [
+      "CEF"
+    ],
+    "domain": "Instruments",
+    "definition": "A closed-end investment company — one of the three basic types of investment company — that issues a fixed number of shares in a one-time public offering. The shares then trade on an exchange at market prices determined by supply and demand, which can be above (a premium) or below (a discount) the fund's net asset value.",
+    "intuition": "A closed-end fund is a sealed pool of money: after the initial offering, the only way in or out is to trade the fund's shares with other investors, so the share price can drift away from the value of what the fund holds.",
+    "mechanics": "The fund does not continuously issue or redeem shares, so the manager invests a stable pool of capital, often using leverage. Share price is set by the market, while NAV is set by the portfolio; the gap between them is the premium or discount. Many CEFs pay regular distributions that can include return of capital.",
+    "formula": "Premium/discount = (market price - NAV) / NAV.",
+    "relationships": [
+      "Mutual fund",
+      "Exchange-traded fund",
+      "Net asset value"
+    ],
+    "failure_modes": "Discounts can persist or widen for years, so buying at a discount is not a reliable source of return. Leverage amplifies losses and can force distribution cuts in rising-rate or falling-asset environments.",
+    "misconceptions": "That a CEF trading below NAV is automatically a bargain — discounts often reflect fees, leverage costs, tax structures, or governance. Also, investors generally cannot redeem CEF shares at NAV the way they can mutual fund shares.",
+    "example": "A CEF holds a bond portfolio worth $20 per share but its shares trade at $18 — a 10% discount — because investors demand a yield cushion against its leverage.",
+    "citations": [
+      {
+        "source": "SEC Investor.gov Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Closed-end Funds; Discount; Premium",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 101
+  },
+  {
+    "id": "instruments/common-stock",
+    "name": "Common stock",
+    "aliases": [
+      "Ordinary shares",
+      "Equities",
+      "Shares"
+    ],
+    "domain": "Instruments",
+    "definition": "A security representing a share of ownership in a company. Common stock entitles its owners to vote at shareholder meetings and to receive dividends when declared, and it represents the residual claim on the company's assets after creditors and preferred stockholders.",
+    "intuition": "Common stock is the basic unit of company ownership: you get a vote, a shot at dividends, and whatever value is left after everyone with a senior claim has been paid.",
+    "mechanics": "Companies issue common stock to raise capital, and the shares trade on exchanges or over the counter. Returns come from price appreciation and dividends, both uncertain; in a liquidation, bondholders are paid first, then preferred stockholders, and common stockholders receive whatever remains, which may be nothing.",
+    "formula": "",
+    "relationships": [
+      "Preferred stock",
+      "Depositary receipt",
+      "Exchange-traded fund",
+      "Equity index future"
+    ],
+    "failure_modes": "Common stockholders are last in line in bankruptcy and can lose the entire investment. Prices fluctuate with company-specific and market-wide events, and issuance of new shares can dilute existing holders.",
+    "misconceptions": "That dividends on common stock are guaranteed — the board can raise, cut, or omit them at its discretion. Also, owning shares does not give a claim on any specific corporate asset.",
+    "example": "Buying 200 shares of a listed company gives the investor 200 votes at the annual meeting and any per-share dividend the board declares.",
+    "citations": [
+      {
+        "source": "SEC Investor.gov: Stocks",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/stocks",
+        "section": "What kinds of stocks are there?; What are the benefits and risks of stocks?",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 102
+  },
+  {
+    "id": "instruments/preferred-stock",
+    "name": "Preferred stock",
+    "aliases": [
+      "Preferreds",
+      "Preference shares"
+    ],
+    "domain": "Instruments",
+    "definition": "A class of stock whose holders usually do not have voting rights but receive dividend payments before common stockholders and have priority over common stockholders if the company goes bankrupt and its assets are liquidated. Dividends are typically set at a fixed rate on a stated par value.",
+    "intuition": "Preferred stock trades away voting power and unlimited upside for a senior, more bond-like income stream.",
+    "mechanics": "Preferreds pay a stated dividend that may be cumulative (missed payments accrue and must be paid before common dividends) or non-cumulative. Issues are often callable by the issuer and sometimes convertible into common stock; in the capital structure they rank below all debt but above common equity.",
+    "formula": "",
+    "relationships": [
+      "Common stock",
+      "Convertible bond",
+      "Corporate bond"
+    ],
+    "failure_modes": "Dividends can be suspended (in non-cumulative issues, skipped payments are lost), and fixed-rate preferreds behave like long-duration bonds, falling when interest rates rise. Holders have no vote to influence management and rank behind every creditor in distress.",
+    "misconceptions": "That 'preferred' means safer than bonds — preferreds are junior to all debt and their dividends are discretionary. Also, the fixed dividend is not an interest obligation, so skipping it is not a default.",
+    "example": "A $25 par preferred with a 6% rate pays $1.50 per year, and that dividend must be paid in full before any common stock dividend can be declared.",
+    "citations": [
+      {
+        "source": "SEC Investor.gov: Stocks",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/stocks",
+        "section": "What kinds of stocks are there?",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 103
+  },
+  {
+    "id": "instruments/depositary-receipt",
+    "name": "Depositary receipt",
+    "aliases": [
+      "ADR",
+      "American Depositary Receipt",
+      "GDR",
+      "DR"
+    ],
+    "domain": "Instruments",
+    "definition": "A negotiable security issued by a depositary bank that represents an ownership interest in shares of a (typically foreign) company held in custody by the bank. American Depositary Receipts let shares of foreign companies trade in U.S. markets in U.S. dollars, with each receipt representing one or more shares, or a fraction of a share, of the foreign stock.",
+    "intuition": "A depositary receipt is a stand-in certificate: the foreign shares sit in a bank's vault abroad, and you trade the bank-issued receipt at home in your own currency and market hours.",
+    "mechanics": "The depositary bank holds the underlying shares, issues and cancels receipts as they are created or redeemed, converts and passes through dividends, and handles corporate actions. The receipt price tracks the home-market share price adjusted for the receipt ratio and the exchange rate.",
+    "formula": "",
+    "relationships": [
+      "Common stock",
+      "Currency pair",
+      "Exchange-traded fund"
+    ],
+    "failure_modes": "Holders still bear the foreign company's business risk, its home-market risk, and currency risk, plus depositary fees. Some receipts are thinly traded, and prices can gap when the home market moves while the U.S. market is closed.",
+    "misconceptions": "That buying an ADR eliminates foreign exchange risk — the receipt's dollar price fully reflects moves in the foreign currency. Also, ADR holders may have limited or indirect voting rights compared with direct shareholders.",
+    "example": "One ADR of a European company equals one ordinary share held by the depositary bank and trades in U.S. dollars on the NYSE, with dividends converted from euros.",
+    "citations": [
+      {
+        "source": "SEC Investor.gov Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "American Depositary Receipts (ADRs)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 104
+  },
+  {
+    "id": "instruments/corporate-bond",
+    "name": "Corporate bond",
+    "aliases": [
+      "Corporate note",
+      "Credit bond"
+    ],
+    "domain": "Instruments",
+    "definition": "A bond issued by a company to raise money for purposes such as funding operations or expansion. The issuer promises to pay interest (the coupon) and repay the principal at maturity, and corporate bonds span credit qualities from investment grade to high yield.",
+    "intuition": "A corporate bond is an IOU from a company: you lend it money, it pays you interest on schedule, and it owes you your principal back at maturity — if it stays solvent.",
+    "mechanics": "Bonds pay fixed or floating coupons (typically semiannually in the U.S.) and may be secured or unsecured (debentures backed only by the issuer's general credit). Prices move inversely with yields and with the issuer's perceived creditworthiness; credit rating agencies grade default risk, and bonds can be called or default.",
+    "formula": "Current yield = annual coupon payment / current market price.",
+    "relationships": [
+      "Government bond",
+      "Convertible bond",
+      "Credit default swap",
+      "Zero-coupon bond"
+    ],
+    "failure_modes": "Default risk is the core exposure, and recovery in default is uncertain. Prices also fall when market rates rise (interest-rate risk), callable issues can be redeemed away when rates fall, and many corporate bonds are illiquid when sold before maturity.",
+    "misconceptions": "That holding to maturity eliminates risk — default, inflation, and reinvestment risk remain. Also, a high coupon is not free money; it usually compensates for credit or call risk.",
+    "example": "A $1,000 face-value corporate bond with a 5% annual coupon and 10-year maturity pays $25 every six months and returns $1,000 at maturity if the issuer does not default.",
+    "citations": [
+      {
+        "source": "SEC Investor.gov Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Bonds, Corporate; Debentures; High-yield Bond",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 105
+  },
+  {
+    "id": "instruments/government-bond",
+    "name": "Government bond",
+    "aliases": [
+      "Sovereign bond"
+    ],
+    "domain": "Instruments",
+    "definition": "A debt security issued by a national government to finance its operations. U.S. Treasury securities are backed by the full faith and credit of the United States government and span marketable instruments from short-term bills to notes and long-term bonds.",
+    "intuition": "A government bond is a loan to the state, repaid out of its taxing and money-issuing power, which is why its yield in its own currency is treated as the benchmark 'risk-free' rate.",
+    "mechanics": "Governments sell bonds by auction to dealers and investors; the bonds then trade in deep secondary markets. Coupon-bearing issues pay interest (U.S. notes and bonds pay semiannually) and return face value at maturity; yields set the reference curve off which mortgages, corporate bonds, and other credit are priced.",
+    "formula": "",
+    "relationships": [
+      "Treasury bill",
+      "Treasury note",
+      "Treasury bond",
+      "Inflation-linked bond",
+      "Corporate bond"
+    ],
+    "failure_modes": "Own-currency default risk is low for issuers like the U.S., but prices still fall as yields rise, and long-maturity issues can lose substantial market value. Inflation erodes real returns, and governments borrowing in foreign currency can and do default.",
+    "misconceptions": "That 'risk-free' means the price cannot fall — it refers only to (near-zero) credit default risk in the issuer's own currency, not to interest-rate or inflation risk.",
+    "example": "The 10-year U.S. Treasury note's yield serves as the benchmark off which U.S. mortgage rates and investment-grade corporate spreads are set.",
+    "citations": [
+      {
+        "source": "U.S. TreasuryDirect: Marketable Securities",
+        "url": "https://www.treasurydirect.gov/marketable-securities/",
+        "section": "Types of Treasury Marketable Securities",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 106
+  },
+  {
+    "id": "instruments/treasury-bill",
+    "name": "Treasury bill",
+    "aliases": [
+      "T-bill"
+    ],
+    "domain": "Instruments",
+    "definition": "A short-term U.S. Treasury marketable security with terms from 4 weeks up to 52 weeks. Bills are sold at face value or at a discount from face value and pay no periodic interest; the investor is paid the face value at maturity.",
+    "intuition": "A T-bill is a short-term loan to the U.S. government where the interest is built into the discount: you pay a bit less than face value now and collect the full face value in a few weeks or months.",
+    "mechanics": "Bills are auctioned regularly as zero-coupon-style discount instruments and quoted on a bank-discount basis. The return is the difference between purchase price and face value, and because maturities are under a year, price sensitivity to rate moves is small; bills are a core money-market and cash-management instrument.",
+    "formula": "Bank discount yield = ((face value - purchase price) / face value) x (360 / days to maturity).",
+    "relationships": [
+      "Treasury note",
+      "Treasury bond",
+      "Government bond",
+      "Commercial paper",
+      "Zero-coupon bond"
+    ],
+    "failure_modes": "The main exposures are reinvestment risk (proceeds may roll into lower rates) and inflation risk. In extreme flight-to-quality episodes, bill yields can approach or fall below zero.",
+    "misconceptions": "That T-bills pay coupons like notes and bonds — they are discount instruments with a single payment at maturity. Also, the bank discount yield understates the true annualized return because it uses face value and a 360-day year.",
+    "example": "An investor buys a 26-week bill for $9,900 and receives $10,000 at maturity; the $100 difference is the interest.",
+    "citations": [
+      {
+        "source": "U.S. TreasuryDirect: Marketable Securities",
+        "url": "https://www.treasurydirect.gov/marketable-securities/",
+        "section": "Treasury Bills",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 107
+  },
+  {
+    "id": "instruments/treasury-note",
+    "name": "Treasury note",
+    "aliases": [
+      "T-note"
+    ],
+    "domain": "Instruments",
+    "definition": "A U.S. Treasury marketable security issued with maturities of 2, 3, 5, 7, or 10 years. Notes pay interest every six months and repay the face value at maturity.",
+    "intuition": "A Treasury note is the middle of the government yield curve: multi-year lending to the U.S. government with a steady semiannual coupon.",
+    "mechanics": "Notes are auctioned on a regular schedule, pay a fixed coupon semiannually, and trade in one of the world's deepest secondary markets. The 10-year note's yield is a global benchmark for mortgage rates, corporate borrowing costs, and asset valuation discount rates.",
+    "formula": "",
+    "relationships": [
+      "Treasury bill",
+      "Treasury bond",
+      "Government bond",
+      "Interest rate future"
+    ],
+    "failure_modes": "Notes carry duration risk: prices fall when yields rise, roughly in proportion to maturity. Inflation erodes the real value of the fixed coupons, and sellers before maturity receive the market price, not face value.",
+    "misconceptions": "That a Treasury note cannot lose money — its market price fluctuates daily, and an investor who sells after yields rise realizes a loss. Safety of principal applies only when held to maturity, in nominal terms.",
+    "example": "A 5-year Treasury note with a 4% coupon pays $20 every six months per $1,000 of face value and returns the $1,000 at maturity.",
+    "citations": [
+      {
+        "source": "U.S. TreasuryDirect: Marketable Securities",
+        "url": "https://www.treasurydirect.gov/marketable-securities/",
+        "section": "Treasury Notes",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 108
+  },
+  {
+    "id": "instruments/treasury-bond",
+    "name": "Treasury bond",
+    "aliases": [
+      "T-bond",
+      "Long bond"
+    ],
+    "domain": "Instruments",
+    "definition": "A long-term U.S. Treasury marketable security — historically a 30-year investment and now offered in 20-year terms as well — that pays interest every six months and is backed by the full faith and credit of the U.S. government.",
+    "intuition": "A Treasury bond is the longest-term loan to the U.S. government: decades of fixed semiannual coupons, which makes its price the most rate-sensitive of the marketable Treasuries.",
+    "mechanics": "Bonds are auctioned, pay fixed semiannual coupons, and mature at 20 or 30 years. Their long duration means small yield moves produce large price swings; the long end of the Treasury curve anchors pension discount rates, mortgage pricing, and term-premium analysis.",
+    "formula": "",
+    "relationships": [
+      "Treasury note",
+      "Treasury bill",
+      "Government bond",
+      "Interest rate future",
+      "Zero-coupon bond"
+    ],
+    "failure_modes": "Long duration amplifies interest-rate risk — a 100 basis point rise in yields can erase roughly a fifth of a 30-year bond's market value. Over long horizons, inflation is the dominant real-return risk.",
+    "misconceptions": "That Treasury bonds are the same as U.S. savings bonds — savings bonds are non-marketable retail products that cannot be sold or transferred, while Treasury bonds are marketable securities. Also, 'full faith and credit' does not protect the market price before maturity.",
+    "example": "A 30-year Treasury bond bought at par with a 4.5% coupon pays $22.50 per $1,000 face every six months until 2055, when the principal is returned.",
+    "citations": [
+      {
+        "source": "U.S. TreasuryDirect: Marketable Securities",
+        "url": "https://www.treasurydirect.gov/marketable-securities/",
+        "section": "Treasury Bonds; Treasury Non-marketable Securities",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 109
+  },
+  {
+    "id": "instruments/inflation-linked-bond",
+    "name": "Inflation-linked bond",
+    "aliases": [
+      "TIPS",
+      "Linker",
+      "Index-linked bond"
+    ],
+    "domain": "Instruments",
+    "definition": "A bond whose principal is adjusted for changes in a price index so that its payments keep pace with inflation. U.S. Treasury Inflation-Protected Securities (TIPS) are marketable securities whose principal is adjusted by changes in the Consumer Price Index; they pay interest every six months and are issued in terms of 5, 10, and 30 years.",
+    "intuition": "An inflation-linked bond grows your principal with the cost of living, so the fixed coupon you receive is paid on an ever-adjusting, inflation-protected base.",
+    "mechanics": "The principal accretes (or falls) with the reference price index, and each semiannual coupon equals the fixed rate times the current adjusted principal. At maturity the investor receives the adjusted principal or the original principal, whichever is greater (a deflation floor). The gap between nominal and inflation-linked yields is the market's breakeven inflation rate.",
+    "formula": "Semiannual interest payment = (fixed coupon rate / 2) x CPI-adjusted principal.",
+    "relationships": [
+      "Government bond",
+      "Treasury note",
+      "Treasury bond",
+      "Zero-coupon bond"
+    ],
+    "failure_modes": "Market prices fall when real yields rise, so TIPS can lose money over periods of rising real rates even as they protect against realized inflation. Index adjustments lag current inflation, and deflation shrinks coupon payments (though the principal floor protects at maturity).",
+    "misconceptions": "That TIPS cannot lose money — the inflation protection applies to principal at maturity, not to the market price before it. Also, they hedge realized CPI inflation, not any individual's personal cost-of-living increase.",
+    "example": "A $10,000 TIPS sees CPI rise 3%, adjusting its principal to $10,300; its 1% coupon then pays $103 per year instead of $100.",
+    "citations": [
+      {
+        "source": "U.S. TreasuryDirect: Marketable Securities",
+        "url": "https://www.treasurydirect.gov/marketable-securities/",
+        "section": "Treasury Inflation-Protected Securities (TIPS)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 110
+  },
+  {
+    "id": "instruments/zero-coupon-bond",
+    "name": "Zero-coupon bond",
+    "aliases": [
+      "Zero",
+      "Discount bond",
+      "Accrual bond"
+    ],
+    "domain": "Instruments",
+    "definition": "A bond that pays no periodic interest; it is issued or created at a deep discount to face value, and the investor's entire return comes from accretion to the full face value at maturity. U.S. Treasury STRIPS create zero-coupon securities by separately trading the individual interest and principal components of Treasury notes, bonds, and TIPS.",
+    "intuition": "A zero-coupon bond bundles all its interest into the purchase discount: you pay a fraction of face value today and receive one certain payment on one known future date.",
+    "mechanics": "The price is the present value of face value at the bond's yield, and the implied interest compounds internally until maturity. With all cash flow at maturity, a zero's duration equals its maturity, making it highly sensitive to rate changes; in taxable accounts, the accrued interest is generally taxable annually even though nothing is paid out ('phantom income').",
+    "formula": "Price = F / (1 + y)^T, where F is face value, y the yield per period, and T the number of periods.",
+    "relationships": [
+      "Treasury bill",
+      "Treasury bond",
+      "Government bond",
+      "Corporate bond"
+    ],
+    "failure_modes": "Zeros carry the maximum duration for their maturity, so rising rates produce outsized price losses. Phantom-income taxation creates cash-flow drag, and corporate zeros add credit risk on a single distant payment.",
+    "misconceptions": "That no coupon means no interest — the discount embodies the full interest. Also, while zeros have no reinvestment risk, they are not low-risk: their price volatility is higher than any coupon bond of the same maturity.",
+    "example": "A 10-year zero-coupon bond yielding 5% costs about $613.91 per $1,000 face value and pays exactly $1,000 at maturity.",
+    "citations": [
+      {
+        "source": "U.S. TreasuryDirect: Marketable Securities",
+        "url": "https://www.treasurydirect.gov/marketable-securities/",
+        "section": "Separate Trading of Registered Interest and Principal of Securities (STRIPS)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "STRIPS (allows the creation of zero coupon Treasury securities)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 111
+  },
+  {
+    "id": "instruments/convertible-bond",
+    "name": "Convertible bond",
+    "aliases": [
+      "Convertible",
+      "CB"
+    ],
+    "domain": "Instruments",
+    "definition": "A security — usually a bond or preferred stock — that can be converted into a different security, typically shares of the issuing company's common stock, at the holder's option under preset terms. A convertible bond combines fixed-income coupon payments with an embedded equity conversion option.",
+    "intuition": "A convertible is a bond with a stock option stapled to it: you collect coupons with downside seniority, but if the stock runs, you can swap the bond for shares.",
+    "mechanics": "The conversion ratio (shares received per bond) is set at issue via a conversion price above the stock price at issuance, and the embedded option is why convertibles carry lower coupons than straight debt. Issuers often retain a call right to force conversion once the stock trades well above the conversion price.",
+    "formula": "Conversion ratio = par value / conversion price; conversion value = conversion ratio x current share price.",
+    "relationships": [
+      "Corporate bond",
+      "Preferred stock",
+      "Common stock",
+      "Option"
+    ],
+    "failure_modes": "If the stock collapses, the equity option becomes worthless and the 'busted' convertible trades as distressed debt, exposing holders to credit losses. Convertibles blend equity, rate, and credit risk, and forced conversions or calls cap the upside path.",
+    "misconceptions": "That the 'bond floor' is a guaranteed minimum value — the floor is only the issuer's debt value, which falls if its credit deteriorates. Also, conversion creates new shares, diluting existing shareholders.",
+    "example": "A $1,000 convertible bond with a $50 conversion price converts into 20 shares; conversion becomes attractive when the stock trades above $50.",
+    "citations": [
+      {
+        "source": "SEC Investor.gov Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Convertible Securities",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 112
+  },
+  {
+    "id": "instruments/commercial-paper",
+    "name": "Commercial paper",
+    "aliases": [
+      "CP"
+    ],
+    "domain": "Instruments",
+    "definition": "Short-term promissory notes issued in bearer form by large corporations, with maturities typically ranging from 5 to 270 days. Because the notes are unsecured, the commercial paper market is generally dominated by large corporations with strong credit ratings.",
+    "intuition": "Commercial paper is how big, blue-chip companies borrow for a few weeks or months at money-market rates instead of drawing a bank loan.",
+    "mechanics": "CP is issued at a discount (zero-coupon style) and generally rolls over at maturity, effectively providing continuous working-capital funding. U.S. issues with maturities of 270 days or less are exempt from SEC registration; dealers distribute paper to money market funds and other institutional investors.",
+    "formula": "",
+    "relationships": [
+      "Treasury bill",
+      "Certificate of deposit",
+      "Corporate bond",
+      "Repurchase agreement"
+    ],
+    "failure_modes": "Rollover risk is the structural weakness: if the CP market seizes up, as in September 2008, even sound issuers can face a funding cliff. Ratings downgrades can shut an issuer out of the market, and CP is unsecured and not deposit-insured.",
+    "misconceptions": "That unsecured means broadly unsafe — top-tier CP is among the safest money-market paper, but it still carries issuer default risk and no FDIC insurance. Also, CP is a wholesale institutional instrument, not a retail savings product.",
+    "example": "A corporation issues $25 million of 90-day commercial paper at a discount to fund seasonal inventory, planning to roll it over at maturity.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Commercial Paper",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 113
+  },
+  {
+    "id": "instruments/certificate-of-deposit",
+    "name": "Certificate of deposit",
+    "aliases": [
+      "CD",
+      "Time deposit"
+    ],
+    "domain": "Instruments",
+    "definition": "A time deposit with a specific maturity, traditionally evidenced by a certificate: the depositor commits a fixed amount for a fixed period — such as six months, one year, or five years — and in exchange the issuing bank or credit union pays a stated rate of interest. Large-denomination CDs are typically negotiable and can trade in secondary markets.",
+    "intuition": "A CD is a locked savings box: you lend the bank a fixed sum for a fixed term at a fixed rate, and you pay a penalty if you break the lock early.",
+    "mechanics": "Retail CDs pay interest to maturity, are typically FDIC-insured up to statutory limits, and impose early-withdrawal penalties. Callable CDs give the issuing bank — not the holder — the right to redeem early, usually exercised when rates fall; negotiable (jumbo) CDs trade among institutions like other money-market paper.",
+    "formula": "",
+    "relationships": [
+      "Commercial paper",
+      "Treasury bill",
+      "Repurchase agreement",
+      "Government bond"
+    ],
+    "failure_modes": "Early withdrawal triggers penalties or forfeited interest; callable CDs are redeemed away precisely when reinvestment rates have fallen; balances above deposit-insurance limits are exposed to bank failure; and fixed rates lose purchasing power under inflation.",
+    "misconceptions": "That a 'one-year non-callable' CD matures in one year — the non-call period is how long the bank cannot redeem it, which can be much shorter than the actual maturity. Also, CDs and negotiable CDs differ: the latter trade and fluctuate in price.",
+    "example": "A saver places $10,000 in a one-year CD at 4.5% APY and receives $10,450 at maturity; withdrawing after six months would forfeit roughly three months of interest.",
+    "citations": [
+      {
+        "source": "SEC Investor.gov Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Certificate of Deposit; Callable CDs; CD Call Period; Early Withdrawal",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Certificate of Deposit (CD)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 114
+  },
+  {
+    "id": "instruments/repurchase-agreement",
+    "name": "Repurchase agreement",
+    "aliases": [
+      "Repo",
+      "RP"
+    ],
+    "domain": "Instruments",
+    "definition": "A transaction in which one party sells securities to another while agreeing to repurchase them at a later date at an agreed price. A repo is economically similar to a loan collateralized by securities, with the interest rate — the repo rate — implied by the difference between the sale and repurchase prices.",
+    "intuition": "A repo is a pawnshop loan for securities: hand over your bonds today for cash, buy them back tomorrow for slightly more — the difference is the interest.",
+    "mechanics": "The cash borrower transfers securities (typically Treasuries, agency debt, or agency MBS) against cash, often at a haircut, and repurchases them at the agreed price on the settlement date, which is usually overnight but can be term. The New York Fed's Open Market Desk conducts repo operations to add reserves and help keep the federal funds rate within its target range.",
+    "formula": "Repurchase price = sale price x (1 + repo rate x days / 360).",
+    "relationships": [
+      "Reverse repurchase agreement",
+      "Treasury bond",
+      "Money market",
+      "Secured lending"
+    ],
+    "failure_modes": "Repos roll constantly, so funding can vanish abruptly: haircuts spike and lenders pull back in stress, as in the 2008 run on repo, forcing fire sales of collateral. The borrower also bears counterparty and collateral-value risk if the lender fails to return the securities.",
+    "misconceptions": "That a repo is a true sale of the securities — legally structured as a sale and repurchase, it functions economically as secured borrowing. Also, the collateral does not eliminate risk; haircut and mark-to-market gaps remain.",
+    "example": "A dealer finances a $100 million Treasury position via overnight repo at 5.40%, receiving $100 million today and repurchasing the bonds tomorrow for $100 million x (1 + 0.054/360), about $15,000 more.",
+    "citations": [
+      {
+        "source": "Federal Reserve Bank of New York: Repo and Reverse Repo Agreements",
+        "url": "https://www.newyorkfed.org/markets/domestic-market-operations/monetary-policy-implementation/repo-reverse-repo-agreements",
+        "section": "Repo transactions",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Repo or Repurchase Agreement",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 115
+  },
+  {
+    "id": "instruments/reverse-repurchase-agreement",
+    "name": "Reverse repurchase agreement",
+    "aliases": [
+      "Reverse repo",
+      "RRP",
+      "ON RRP"
+    ],
+    "domain": "Instruments",
+    "definition": "A reverse repurchase agreement is the mirror side of a repo: one party buys securities from a counterparty subject to an agreement to resell them at a later date at an agreed price. It is economically similar to lending cash collateralized by securities; the New York Fed's Overnight Reverse Repo (ON RRP) facility temporarily reduces reserve balances and helps provide a floor under overnight interest rates.",
+    "intuition": "In a reverse repo you are the lender: you take securities as collateral, hand over cash overnight, and get your cash back with interest the next day.",
+    "mechanics": "The cash lender buys the securities and resells them at the contracted higher price, earning the implied rate. At the Fed, ON RRP operations are conducted each business day at an FOMC-set offering rate with primary dealers, banks, money market funds, and GSEs, giving institutions ineligible for interest on reserve balances a risk-free investment that puts a floor under money market rates.",
+    "formula": "Resale price = purchase price x (1 + RRP rate x days / 360).",
+    "relationships": [
+      "Repurchase agreement",
+      "Money market",
+      "Federal funds rate",
+      "Treasury bill"
+    ],
+    "failure_modes": "For tri-party Treasury reverse repos the residual risks (collateral, settlement, counterparty) are small but nonzero. For policy, heavy ON RRP usage can drain reserves faster than expected, contributing to money-market rate pressures at quarter-ends or when bill supply shifts.",
+    "misconceptions": "That a reverse repo is a different instrument from a repo — it is the same contract viewed from the cash lender's side; every repo is someone's reverse repo. Also, ON RRP usage is not 'money leaving the economy' in a harmful sense; it is a rate-floor tool.",
+    "example": "A money market fund invests $500 million overnight in the Fed's ON RRP facility at 5.30% and receives $500 million plus one day's interest (about $73,600) the next morning.",
+    "citations": [
+      {
+        "source": "Federal Reserve Bank of New York: Repo and Reverse Repo Agreements",
+        "url": "https://www.newyorkfed.org/markets/domestic-market-operations/monetary-policy-implementation/repo-reverse-repo-agreements",
+        "section": "Reverse repo transactions; Overnight Reverse Repo Operations",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 116
+  },
+  {
+    "id": "instruments/commodity",
+    "name": "Commodity",
+    "aliases": [
+      "Physical commodity",
+      "Cash commodity"
+    ],
+    "domain": "Instruments",
+    "definition": "As defined in the Commodity Exchange Act, the agricultural commodities enumerated in Section 1a(9) plus all other goods and articles (onions excepted) and all services, rights, and interests in which contracts for future delivery are presently or in the future dealt in. In everyday market usage, a physical commodity is a fungible raw good — an agricultural product, metal, or energy product — traded in standardized grades, as opposed to a financial instrument.",
+    "intuition": "A commodity is a standardized raw input: one bushel of No. 2 yellow corn or one troy ounce of gold is interchangeable with another, which is what makes them tradeable in bulk.",
+    "mechanics": "Commodities trade in cash (spot) markets and through futures, forwards, options, and swaps on designated contract markets and OTC. Prices are driven by production, inventories, weather, geopolitics, and the costs of storage, insurance, and financing (the cost of carry), which shape the futures curve into contango or backwardation.",
+    "formula": "",
+    "relationships": [
+      "Cash market",
+      "Commodity future",
+      "Futures contract",
+      "Spot transaction"
+    ],
+    "failure_modes": "Physical supply shocks, storage and transport constraints, and delivery bottlenecks can produce extreme price moves, squeezes, or even negative prices. For hedgers, the legal definition is broader than the everyday one — interest rates and stock indexes are also 'commodities' under the CEA — which catches the unwary in regulatory scope questions.",
+    "misconceptions": "That 'commodity' means only physical raw materials; under the Commodity Exchange Act it includes virtually anything on which futures trade, including financial benchmarks. Also, commodity prices are not determined by futures markets alone — cash supply and demand anchor them.",
+    "example": "No. 2 yellow corn is a fungible commodity: a farmer sells 5,000 bushels at the local elevator's cash price, while a processor hedges future purchases with corn futures.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Commodity; Cash Commodity",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 117
+  },
+  {
+    "id": "instruments/currency-pair",
+    "name": "Currency pair",
+    "aliases": [
+      "FX pair",
+      "Currency cross",
+      "Cross rate"
+    ],
+    "domain": "Instruments",
+    "definition": "The quotation convention of the foreign exchange market, in which an exchange rate expresses how much of one currency (the quote or counter currency) is needed to buy one unit of another (the base currency). Every FX transaction simultaneously buys one currency and sells the other, so currencies always trade in pairs; a pair quoted via a third country's market convention is a cross rate.",
+    "intuition": "You can never buy 'a currency' outright — you always pay for it with another currency, so every FX price is a ratio of two monies.",
+    "mechanics": "Pairs are quoted as base/quote (EUR/USD = 1.08 means one euro costs 1.08 U.S. dollars). The OTC forex market runs 24 hours through dealers and electronic platforms, with the major pairs (those including the U.S. dollar) the most liquid; changes in the rate reflect relative interest rates, flows, and macro conditions in the two currency areas.",
+    "formula": "",
+    "relationships": [
+      "Currency swap",
+      "FX future",
+      "Forward contract",
+      "Cryptoasset"
+    ],
+    "failure_modes": "Quote conventions (direct vs. indirect) are a classic source of sign and inversion errors. Retail forex is typically highly leveraged, so small adverse moves can exceed the margin posted, and prices can gap over weekends when the market reopens.",
+    "misconceptions": "That buying EUR/USD acquires euros without selling anything — the position is simultaneously short dollars. Also, a rising pair does not mean the base currency 'strengthened' in isolation; the move is always relative.",
+    "example": "EUR/USD rises from 1.0800 to 1.0900: the euro has appreciated about 0.93% against the dollar, and each euro now buys one more U.S. cent.",
+    "citations": [
+      {
+        "source": "SEC Investor.gov Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Foreign currency exchange (forex)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Cross Rate",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 118
+  },
+  {
+    "id": "instruments/cryptoasset",
+    "name": "Cryptoasset",
+    "aliases": [
+      "Crypto-asset",
+      "Cryptocurrency",
+      "Digital asset",
+      "Virtual currency"
+    ],
+    "domain": "Instruments",
+    "definition": "A type of private-sector digital asset that depends primarily on cryptography and distributed ledger technology (or similar technology) as part of its perceived or inherent value — the working definition used by the FSB and fellow standard-setting bodies. The category spans unbacked assets such as bitcoin as well as tokens used for platform access or in decentralized finance, and is distinguished from stablecoins by the absence of a stabilization mechanism.",
+    "intuition": "A cryptoasset is digital value secured by cryptography and recorded on a shared ledger rather than by an issuer's promise — its worth rests on what the network and its users make of it.",
+    "mechanics": "Cryptoassets are issued and transferred on distributed ledgers, with ownership controlled by private keys and transactions validated by the network's consensus mechanism. They trade on crypto-asset platforms around the clock; unbacked assets like bitcoin have no redemption claim, so price is set entirely by supply and demand.",
+    "formula": "",
+    "relationships": [
+      "Stablecoin",
+      "Wrapped token",
+      "Synthetic asset",
+      "Perpetual futures contract",
+      "Currency pair"
+    ],
+    "failure_modes": "Prices are extremely volatile, and the market has repeatedly seen platform failures, custody losses, fraud, and contagion (the 2022 crypto-asset market collapse). Regulatory treatment is fragmented across jurisdictions, and interconnections with the wider financial system create channels for spillovers.",
+    "misconceptions": "That 'crypto' is one homogeneous asset class — the FSB framework distinguishes unbacked crypto-assets from stablecoins by function and risk. Also, holding a cryptoasset on a platform is not the same as holding the keys; platform balances are claims on an intermediary.",
+    "example": "Bitcoin is an unbacked cryptoasset: it transfers on its own blockchain between pseudonymous addresses, carries no issuer's redemption promise, and its dollar price floats freely.",
+    "citations": [
+      {
+        "source": "FSB: High-level Recommendations for the Regulation, Supervision and Oversight of Crypto-asset Activities and Markets: Final report",
+        "url": "https://www.fsb.org/2023/07/high-level-recommendations-for-the-regulation-supervision-and-oversight-of-crypto-asset-activities-and-markets-final-report/",
+        "section": "Recommendations overview (FSB crypto-asset framework and definition family)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 119
+  },
+  {
+    "id": "instruments/stablecoin",
+    "name": "Stablecoin",
+    "aliases": [
+      "Global stablecoin (GSC)",
+      "Pegged token"
+    ],
+    "domain": "Instruments",
+    "definition": "A crypto-asset that aims to maintain a stable value relative to a specified asset — typically a fiat currency such as the U.S. dollar — or a pool or basket of assets, using a stabilization mechanism such as reserve backing. A 'global stablecoin' (GSC) is a stablecoin with potential reach and adoption across multiple jurisdictions.",
+    "intuition": "A stablecoin tries to be the steady dollar of the crypto world: a token engineered to be worth the same tomorrow as today, usually by backing each token with reserves.",
+    "mechanics": "Fiat-backed stablecoins hold reserve assets (cash, deposits, T-bills) and offer redemption at par; crypto-collateralized designs hold overcollateralized on-chain positions; algorithmic designs adjust supply incentives without full backing. The FSB's high-level recommendations call for a robust legal claim for users, timely redemption at par for single-fiat GSCs, an effective stabilization mechanism, and prudential requirements to mitigate run risk.",
+    "formula": "",
+    "relationships": [
+      "Cryptoasset",
+      "Wrapped token",
+      "Currency pair",
+      "Synthetic asset"
+    ],
+    "failure_modes": "Stablecoins can depeg and suffer runs when reserves are doubted or redemption is impaired — from the March 2023 USDC depeg during the banking stress to the total collapse of the uncollateralized TerraUSD in 2022. Reserve opacity, concentration in the banking system, and redemption gates are recurring vulnerabilities.",
+    "misconceptions": "That all stablecoins are equivalently stable — mechanisms range from fully reserved fiat-backed designs to purely algorithmic ones with no redemption claim, and only the mechanism and reserve quality underpin the peg. Also, 'stable value' is an objective, not a guarantee.",
+    "example": "A USD stablecoin issuer holds roughly $1 of Treasury bills and deposits for every token outstanding and honors same-day redemption at $1.00 per token.",
+    "citations": [
+      {
+        "source": "FSB: High-level Recommendations for the Regulation, Supervision and Oversight of Global Stablecoin Arrangements: Final report",
+        "url": "https://www.fsb.org/2023/07/high-level-recommendations-for-the-regulation-supervision-and-oversight-of-global-stablecoin-arrangements-final-report/",
+        "section": "Recommendation 9: Redemption rights, stabilisation, and prudential requirements",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 120
+  },
+  {
+    "id": "instruments/wrapped-token",
+    "name": "Wrapped token",
+    "aliases": [
+      "Wrapped asset",
+      "Bridged token"
+    ],
+    "domain": "Instruments",
+    "definition": "A token on one blockchain that represents, and is intended to be backed one-for-one by, a crypto-asset locked with a custodian or smart contract, so the underlying asset can be used in environments where it does not natively exist. Wrapped bitcoin (wBTC), for example, makes bitcoin usable as collateral in Ethereum-based DeFi protocols.",
+    "intuition": "A wrapped token is a coat-check ticket for a coin from another blockchain: you lock the original, get a ticket that circulates elsewhere, and redeem the ticket to get the original back.",
+    "mechanics": "A custodian (or bridge smart contract) takes custody of the underlying asset and mints an equivalent amount of the wrapped token; burning the wrapped token redeems the underlying. The wrapped token's price tracks the underlying through this mint/redeem arbitrage, and its safety depends entirely on the integrity of the custody or bridge mechanism.",
+    "formula": "",
+    "relationships": [
+      "Cryptoasset",
+      "Stablecoin",
+      "Synthetic asset",
+      "Depositary receipt"
+    ],
+    "failure_modes": "The peg fails if the custodian or bridge is compromised — bridge exploits are among the largest thefts in DeFi history. Custodial designs reintroduce exactly the centralized counterparty risk that the underlying asset was designed to avoid.",
+    "misconceptions": "That a wrapped token is the same asset as the original — it is a claim whose value depends on the wrapper's solvency and code, much as a depositary receipt depends on its depositary bank. Also, 'trustless' bridging is an aspiration; most wraps involve some trusted party or validator set.",
+    "example": "A user deposits 1 BTC with the wBTC custodian, which mints 1 wBTC on Ethereum; the user posts the wBTC as collateral in an Ethereum lending protocol and later burns it to reclaim the BTC.",
+    "citations": [
+      {
+        "source": "Werner, Perez, Gudgeon, Klages-Mundt, Harz, Knottenbelt: SoK: Decentralized Finance (DeFi), arXiv:2101.08778",
+        "url": "https://arxiv.org/abs/2101.08778",
+        "section": "DEX primitives section (wrapped tokens such as wBTC)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 121
+  },
+  {
+    "id": "instruments/synthetic-asset",
+    "name": "Synthetic asset",
+    "aliases": [
+      "Synth",
+      "Synthetic position",
+      "Replicating portfolio"
+    ],
+    "domain": "Instruments",
+    "definition": "An instrument constructed to replicate the payoff of another asset without holding it. In traditional finance this is a replicating portfolio of derivatives and cash instruments (e.g., a long call plus a short put at the same strike and expiry creates a synthetic long futures position); in DeFi, synthetic assets are collateral-backed on-chain tokens whose oracle-driven prices track off-chain assets such as the U.S. dollar or equities (as in Maker or Synthetix).",
+    "intuition": "A synthetic asset fakes exposure to something you don't own: combine the right building blocks — options, collateral, oracles — and you get the target's price behavior without the asset itself.",
+    "mechanics": "Traditional synthetics rely on put-call parity: identical-strike calls and puts combine into forward-like payoffs, and a portfolio of the underlying plus bonds can replicate an option. DeFi synthetics mint tokens against overcollateralized debt positions, with price feeds from oracles and automatic liquidations when collateral ratios fall below thresholds.",
+    "formula": "Synthetic long forward payoff = long call - short put (same strike and expiry); equivalently, put-call parity: C - P = S - K x e^(-rT).",
+    "relationships": [
+      "Option",
+      "Futures contract",
+      "Total return swap",
+      "Wrapped token",
+      "Stablecoin"
+    ],
+    "failure_modes": "Replication breaks when its assumptions fail — borrow costs, funding, jumps, or liquidity gaps. DeFi synthetics add oracle-manipulation and liquidation-cascade risk, and under extreme moves the collateral backing can prove insufficient.",
+    "misconceptions": "That a synthetic has the same risk as the real asset — it stacks counterparty, oracle, smart-contract, or model risk on top of the target's market risk. Also, put-call parity gives the payoff at expiry, not identical margin or funding treatment along the way.",
+    "example": "A DeFi user locks $150 of ETH as collateral and mints $100 of a synthetic USD token; if ETH falls and the collateral ratio breaches 120%, the position is liquidated to protect the peg.",
+    "citations": [
+      {
+        "source": "Werner, Perez, Gudgeon, Klages-Mundt, Harz, Knottenbelt: SoK: Decentralized Finance (DeFi), arXiv:2101.08778",
+        "url": "https://arxiv.org/abs/2101.08778",
+        "section": "Derivatives section: synthetic assets in DeFi (Maker, Synthetix)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Synthetic Futures; Replicating Portfolio",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 122
+  },
+  {
+    "id": "instruments/binary-option",
+    "name": "Binary option",
+    "aliases": [
+      "Digital option",
+      "All-or-nothing option",
+      "Fixed-return option"
+    ],
+    "domain": "Instruments",
+    "definition": "A type of option whose payoff is either a fixed amount or zero, depending on the outcome of a yes/no proposition — typically whether the price of an asset will be above or below a strike at a specified time. It is also called a digital option.",
+    "intuition": "A binary option is a fixed-odds bet on a market event: pick the right side of the line and you collect the full payout; pick wrong and you get nothing.",
+    "mechanics": "A cash-or-nothing call pays a fixed cash amount if the underlying finishes above the strike and zero otherwise (asset-or-nothing variants pay the asset). Because the payout is fixed, the option's price — between zero and the payout — reflects the market-implied probability of the event, discounted.",
+    "formula": "Cash-or-nothing call payoff = Q if S_T > K, else 0, where Q is the fixed payout, S_T the underlying price at expiry, and K the strike.",
+    "relationships": [
+      "Option",
+      "Barrier option",
+      "Asian option",
+      "Lookback option"
+    ],
+    "failure_modes": "The all-or-nothing payoff forfeits the entire premium on a narrow miss, and discontinuous payoffs near the strike make hedging unstable (gamma explosion at expiry). The retail binary-options industry has been riddled with unregistered platforms and outright fraud, prompting repeated SEC and CFTC warnings.",
+    "misconceptions": "That binaries are a simple, low-risk way to trade — typical retail terms embed negative expected value, and the fixed payout caps gains while losses take the whole stake. Also, a binary's price is not 'the probability'; it approximates a discounted, risk-adjusted probability.",
+    "example": "A binary option pays $100 if EUR/USD closes above 1.0900 on Friday and $0 otherwise; a market price of $42 for the option implies roughly a 42% assessed probability of finishing above the strike.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Binary Option",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "SEC Investor.gov Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Binary options",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 123
+  },
+  {
+    "id": "instruments/barrier-option",
+    "name": "Barrier option",
+    "aliases": [
+      "Knock-in option",
+      "Knock-out option"
+    ],
+    "domain": "Instruments",
+    "definition": "A path-dependent exotic option that either comes into existence (knock-in) or ceases to exist (knock-out) if the underlying's price reaches a specified barrier level during the option's life. In standard FX market documentation, 'Barrier Option' means a knock-in option or a knock-out option, with a designated barrier determination agent deciding whether the trigger event occurred.",
+    "intuition": "A barrier option is a regular option with a tripwire: cross the price barrier and the option is either switched on or killed outright, which makes it cheaper than a plain option.",
+    "mechanics": "The contract specifies the barrier level, the barrier period (typically trade date to expiry), and the monitoring style (continuous or discrete fixings). Variants are named by barrier position and effect — up-and-out, down-and-in, and so on. Knock-out options extinguish immediately upon a trigger regardless of where the price goes afterward.",
+    "formula": "In-out parity: knock-in + knock-out (same strike, barrier, and expiry) = the corresponding vanilla option.",
+    "relationships": [
+      "Option",
+      "Binary option",
+      "Asian option",
+      "Lookback option"
+    ],
+    "failure_modes": "Gap moves through the barrier leave hedges mismatched, and the discontinuous payoff near the barrier produces extreme Greeks that are hard to hedge. Large barrier positions can also incentivize 'barrier hunting' — attempts to push the underlying through the trigger.",
+    "misconceptions": "That a knock-out behaves like a stop-loss on a position — the option is permanently extinguished at the trigger and cannot recover if the price reverses. Also, cheaper does not mean better: the discount buys the risk of losing the protection entirely.",
+    "example": "A 3-month EUR/USD call struck at 1.08 with a 1.15 knock-out expires worthless the moment EUR/USD touches 1.15, even if the pair later falls back below 1.08.",
+    "citations": [
+      {
+        "source": "Federal Reserve Bank of New York, Foreign Exchange Committee: Example of Confirmation for an FX Knock-In/Knock-Out Option (1995 Annual Report)",
+        "url": "https://www.newyorkfed.org/medialibrary/microsites/fxc/files/annualreports/ar1995/fxar95ko.pdf",
+        "section": "Section 1, Definitions: Barrier Option, Barrier Determination Agent, Barrier Period",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 124
+  },
+  {
+    "id": "instruments/asian-option",
+    "name": "Asian option",
+    "aliases": [
+      "Average price option",
+      "Average rate option"
+    ],
+    "domain": "Instruments",
+    "definition": "An exotic option whose payoff depends on the average price of the underlying asset during some portion of the life of the option, rather than on the underlying's price at a single date.",
+    "intuition": "An Asian option pays on the average price over time instead of the price on one day, smoothing out spikes and dips — useful when your real exposure is to an average cost or rate.",
+    "mechanics": "An average-price call pays max(A - K, 0), where A is the average of the underlying over the contracted fixing schedule (daily, weekly, monthly; arithmetic or geometric); average-strike variants use A as the strike. Averaging reduces volatility of the payoff determinant, so Asian options are generally cheaper than comparable vanillas, and they hedge exposures to average prices, such as monthly commodity purchases.",
+    "formula": "Average-price call payoff = max(A - K, 0) with A = (1/n) x sum of S_i over the n fixings (arithmetic) or A = (product of S_i)^(1/n) (geometric).",
+    "relationships": [
+      "Option",
+      "Lookback option",
+      "Barrier option",
+      "Commodity future"
+    ],
+    "failure_modes": "Averaging mutes exactly the extreme moves an option buyer may want to capture; a late price spike barely moves the payoff. Arithmetic-average Asians have no simple closed-form price under standard models, and contracts referencing few fixings are vulnerable to fixing-window manipulation.",
+    "misconceptions": "That the lower premium makes an Asian option a better deal — the discount reflects a genuinely smaller payoff distribution. Also, the 'average' is of prices on scheduled fixing dates, not of every traded price.",
+    "example": "An airline buys a 12-month average-price call on monthly jet fuel fixings to cap its average annual fuel cost rather than any single month's price.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Asian Option; Exotic Options",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 125
+  },
+  {
+    "id": "instruments/lookback-option",
+    "name": "Lookback option",
+    "aliases": [
+      "Hindsight option"
+    ],
+    "domain": "Instruments",
+    "definition": "An exotic option whose payoff depends on the minimum or maximum price of the underlying asset during some portion of the life of the option, allowing the buyer to pay or receive the most favorable underlying price observed during the lookback period.",
+    "intuition": "A lookback option gives you perfect hindsight: it settles as if you had traded at the best price the market offered during the option's life.",
+    "mechanics": "A fixed-strike lookback call pays max(S_max - K, 0), where S_max is the highest underlying price over the lookback period; a floating-strike lookback call pays S_T - S_min, effectively buying at the period's low. Because the payoff embeds the most favorable extreme, lookbacks are expensive and their prices are highly sensitive to volatility assumptions.",
+    "formula": "Fixed-strike lookback call payoff = max(S_max - K, 0); floating-strike lookback call payoff = S_T - S_min.",
+    "relationships": [
+      "Option",
+      "Asian option",
+      "Barrier option"
+    ],
+    "failure_modes": "The rich premium can consume the hindsight advantage: realized payoffs often fail to recoup the upfront cost. Payoffs are hostage to brief, possibly unrepresentative price spikes, and pricing is model-dependent because the extreme-value distribution is hard to estimate.",
+    "misconceptions": "That a lookback lets you 'buy low, sell high' for free — the privilege of perfect hindsight is fully priced into the premium at inception. Also, the extremum is taken over observed prices in the lookback window as defined in the contract, not over any price you remember seeing.",
+    "example": "A floating-strike lookback call on a stock that traded as low as $40 and ended at $55 pays $55 - $40 = $15, as if the holder had bought at the period's lowest price.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Lookback Option",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 126
+  },
+  {
+    "id": "instruments/variance-swap",
+    "name": "Variance swap",
+    "aliases": [
+      "Var swap"
+    ],
+    "domain": "Instruments",
+    "definition": "An over-the-counter forward contract on the realized variance of an underlying's returns: at maturity one party pays the difference between the variance realized over the contract period and a pre-agreed variance strike, scaled by the variance notional. It gives pure exposure to realized variance without directional exposure to the underlying.",
+    "intuition": "A variance swap is a bet on how violently an asset will actually move, settled on measured squared daily moves — no view on direction needed.",
+    "mechanics": "Realized variance is computed from the squared log returns of daily closes over the contract period (annualized). Because a static strip of options across strikes, dynamically hedged, replicates realized variance under diffusion assumptions, the fair strike is linked to the implied volatility skew — the central result of the canonical Goldman Sachs treatment by Demeterfi, Derman, Kamal, and Zou (1999).",
+    "formula": "Payoff = N_var x (sigma_R^2 - K_var), where sigma_R^2 = (252/n) x sum of ln^2(S_i / S_{i-1}) is realized variance, K_var the variance strike, and N_var the variance notional (payoff per variance point).",
+    "relationships": [
+      "Volatility swap",
+      "Option",
+      "Swap",
+      "VIX"
+    ],
+    "failure_modes": "Price jumps and discrete sampling break the log-contract replication, so the hedge can diverge sharply from realized variance in crashes. Realized-variance spikes dominate P&L because the payoff is quadratic, and quoted strikes embed the skew, which itself moves.",
+    "misconceptions": "That a variance swap is a bet on future implied volatility — it settles on realized variance over the life of the contract, whatever implieds do. Also, variance strikes are quoted in volatility terms (e.g., '20'), but the contract's strike is that number squared.",
+    "example": "A 1-year S&P 500 variance swap is struck at (20%)^2 = 400 variance points with $100,000 of variance notional; if realized variance over the year is (25%)^2 = 625, the buyer receives (625 - 400) x $100,000 = $22.5 million.",
+    "citations": [
+      {
+        "source": "Demeterfi, Derman, Kamal, Zou: More Than You Ever Wanted to Know About Volatility Swaps, Goldman Sachs Quantitative Strategies Research Notes, March 1999",
+        "url": "https://emanuelderman.com/wp-content/uploads/1999/02/gs-volatility_swaps.pdf",
+        "section": "Variance Swaps; Replicating Variance Swaps",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 127
+  },
+  {
+    "id": "instruments/volatility-swap",
+    "name": "Volatility swap",
+    "aliases": [
+      "Vol swap"
+    ],
+    "domain": "Instruments",
+    "definition": "A forward contract on realized volatility — the standard deviation of an underlying's returns — settling at maturity on the difference between realized volatility and a pre-agreed volatility strike, times the vega notional. Because its payoff is linear in volatility rather than variance, it is described in the canonical literature as the cleanest and easiest way to trade volatility.",
+    "intuition": "A volatility swap is a pure bet on how much an asset will move, measured in plain volatility points rather than squared ones.",
+    "mechanics": "At maturity the contract pays the notional times (realized volatility minus the volatility strike), with realized volatility computed as the square root of realized variance from daily returns. The square-root payoff makes the contract concave in variance, so it cannot be replicated exactly by a static option strip; its fair strike sits below the variance-swap-implied volatility by a convexity adjustment.",
+    "formula": "Payoff = N_vega x (sigma_R - K_vol), where sigma_R = sqrt(realized variance) and K_vol is the volatility strike.",
+    "relationships": [
+      "Variance swap",
+      "Option",
+      "Swap",
+      "VIX"
+    ],
+    "failure_modes": "There is no exact static replication, so hedging is model-dependent and the convexity adjustment must be estimated; errors in it shift fair value materially. The result is also sensitive to the realized-volatility calculation conventions (sampling frequency, mean subtraction), and jumps distort the estimate.",
+    "misconceptions": "That a volatility swap is interchangeable with a variance swap — the vol swap's strike is lower than the var swap's implied volatility because of Jensen's inequality (the convexity adjustment), and its hedging is harder. Also, it trades realized, not implied, volatility.",
+    "example": "A trader sells a 6-month volatility swap on an index at a 22 strike with $100,000 vega notional; realized volatility comes in at 18, so the seller receives (22 - 18) x $100,000 = $400,000.",
+    "citations": [
+      {
+        "source": "Demeterfi, Derman, Kamal, Zou: More Than You Ever Wanted to Know About Volatility Swaps, Goldman Sachs Quantitative Strategies Research Notes, March 1999",
+        "url": "https://emanuelderman.com/wp-content/uploads/1999/02/gs-volatility_swaps.pdf",
+        "section": "Volatility Swaps; hedging volatility swaps with variance swaps",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 128
+  },
+  {
+    "id": "instruments/forward-rate-agreement",
+    "name": "Forward rate agreement",
+    "aliases": [
+      "FRA"
+    ],
+    "domain": "Instruments",
+    "definition": "An OTC forward contract on a short-term interest rate. The buyer of a FRA is a notional borrower who commits to pay a fixed rate of interest on a notional amount that is never actually exchanged, while the seller agrees notionally to lend; settlement exchanges the value of the difference between the contracted rate and the realized reference rate.",
+    "intuition": "A FRA locks in today the interest rate on a loan you will take (or make) in the future — only the rate difference ever changes hands, never the principal.",
+    "mechanics": "FRAs are quoted by start and end of the notional period, e.g., a '3x6 FRA' covers a 3-month rate beginning in 3 months. Because payment is made at the start of the notional period rather than the end, the settlement amount is discounted at the realized reference rate. FRAs are building blocks for the money-market yield curve and hedges for future borrowing or lending.",
+    "formula": "Settlement = N x (R_ref - R_FRA) x (d/360) / (1 + R_ref x (d/360)), where N is notional, R_ref the realized reference rate, R_FRA the contracted rate, and d the days in the notional period.",
+    "relationships": [
+      "Interest rate swap",
+      "Interest rate future",
+      "Forward contract",
+      "Swap"
+    ],
+    "failure_modes": "Benchmark reform stranded the LIBOR-based FRA market, migrating activity to risk-free-rate futures and swaps. FRAs also carry a convexity difference versus short-rate futures, and uncleared FRAs leave bilateral counterparty exposure on the settlement amount.",
+    "misconceptions": "That a FRA involves lending or borrowing the notional — no principal moves; only the discounted rate differential settles. Also, the quoted dates describe the notional loan period, not when the contract is traded.",
+    "example": "A treasurer expecting to borrow $10 million in 3 months buys a 3x6 FRA at 5.0%; if the 3-month reference rate fixes at 5.6%, she receives the discounted value of 0.6% on $10 million for 90 days, offsetting the higher borrowing cost.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Forward Rate Agreement (FRA)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 129
+  },
+  {
+    "id": "instruments/interest-rate-future",
+    "name": "Interest rate future",
+    "aliases": [
+      "STIR future",
+      "Financial future"
+    ],
+    "domain": "Instruments",
+    "definition": "A standardized, exchange-traded futures contract whose underlying is an interest rate or an interest-bearing instrument — such as U.S. Treasury, SOFR, or Fed Funds futures — used to hedge or express views on interest rates at maturities from one week to 30 years.",
+    "intuition": "An interest rate future lets you lock in or bet on where rates will be months or years from now, in a standardized, centrally cleared contract.",
+    "mechanics": "Contracts are margined and marked to market daily with central clearing. Short-term interest rate (STIR) futures are quoted on an index basis as 100 minus the implied forward rate; Treasury futures are settled by delivery of eligible bonds or notes, with exchange-published conversion factors making a range of maturities deliverable and creating a cheapest-to-deliver.",
+    "formula": "STIR futures price (IMM index convention) = 100 - implied forward rate. Treasury futures invoice price = contract size x futures settlement price x conversion factor + accrued interest.",
+    "relationships": [
+      "Futures contract",
+      "Forward rate agreement",
+      "Interest rate swap",
+      "Treasury note",
+      "Treasury bond"
+    ],
+    "failure_modes": "STIR futures carry a convexity bias relative to FRAs and swaps, so naive rate readings are off. Treasury futures hedges face basis and cheapest-to-deliver shifts, and daily marking generates margin calls in fast-moving rate markets.",
+    "misconceptions": "That a rising STIR futures price means rising rates — under the 100-minus-rate convention it means the opposite. Also, buying a Treasury future is not buying a specific bond; the short chooses which eligible bond to deliver.",
+    "example": "A pension manager sells 10-year Treasury futures to shorten portfolio duration ahead of an expected rate rise, offsetting losses on its cash bond holdings.",
+    "citations": [
+      {
+        "source": "CME Group: Interest Rate futures and options",
+        "url": "https://www.cmegroup.com/markets/interest-rates.html",
+        "section": "Product overview (U.S. Treasuries, SOFR, Fed Funds)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Conversion Factor; Cheapest to Deliver",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 130
+  },
+  {
+    "id": "instruments/equity-index-future",
+    "name": "Equity index future",
+    "aliases": [
+      "Stock index future",
+      "Index future",
+      "E-mini"
+    ],
+    "domain": "Instruments",
+    "definition": "A standardized, exchange-traded futures contract on a stock index — such as the S&P 500 or Nasdaq-100 — that provides cash-settled exposure to the index level without holding any of the constituent stocks.",
+    "intuition": "An equity index future is the whole stock market in one leveraged ticket: you gain or lose the index's move times a fixed multiplier, cash-settled, with no shares ever changing hands.",
+    "mechanics": "Contract value equals the index level times a fixed multiplier (e.g., $50 per index point for the E-mini S&P 500). Positions are margined and marked to market daily, trade nearly around the clock, and settle in cash to the index value at expiry; rolling from one quarterly expiry to the next maintains continuous exposure.",
+    "formula": "Contract notional = index level x multiplier (e.g., E-mini S&P 500: $50 x index level).",
+    "relationships": [
+      "Futures contract",
+      "Common stock",
+      "Exchange-traded fund",
+      "Market index",
+      "Variance swap"
+    ],
+    "failure_modes": "Leverage magnifies losses, and prices can gap outside cash-market hours, so positions move when the underlying stock market is closed. Rolling expiring contracts incurs basis costs, and index concentration means a handful of large constituents can dominate the exposure.",
+    "misconceptions": "That an index future holds the underlying stocks — it is pure cash-settled price exposure with no ownership, dividends, or voting rights. Also, the futures price is not a forecast of where the index will be; it reflects spot plus financing minus expected dividends.",
+    "example": "Buying one E-mini S&P 500 future at an index level of 6,000 controls $300,000 of exposure; a 100-point index rise earns 100 x $50 = $5,000.",
+    "citations": [
+      {
+        "source": "CME Group: Equity futures and options",
+        "url": "https://www.cmegroup.com/markets/equities.html",
+        "section": "Product overview (S&P, Nasdaq, Russell, Dow Jones index futures)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 131
+  },
+  {
+    "id": "instruments/commodity-future",
+    "name": "Commodity future",
+    "aliases": [
+      "Physical commodity future"
+    ],
+    "domain": "Instruments",
+    "definition": "A futures contract on a physical commodity: a standardized, exchange-traded agreement to buy or sell a specified quantity and grade of an agricultural product, metal, or energy product at a price set at initiation, for delivery or cash settlement in a specified future month.",
+    "intuition": "A commodity future locks in today the price of wheat, oil, or gold for a future month, letting producers and users shift price risk to those willing to bear it.",
+    "mechanics": "Contracts specify quantity, grade, delivery points, and delivery month, are margined with daily settlement, and most positions are offset before delivery rather than delivered. Futures prices reflect the spot price plus the cost of carry (storage, insurance, financing), producing contango (rising curve) or backwardation (falling curve) term structures.",
+    "formula": "Carrying-charge approximation: F approximately S x (1 + cost of carry), where S is the spot price and the cost of carry includes storage, insurance, and interest.",
+    "relationships": [
+      "Commodity",
+      "Futures contract",
+      "Cash market",
+      "Forward contract",
+      "Basis"
+    ],
+    "failure_modes": "Delivery squeezes and corners can dislocate prices, and storage or transport constraints can even drive prices negative (WTI, April 2020). Hedgers face basis risk between their local cash market and the contract's delivery grade and location, and volatile markets trigger heavy margin calls.",
+    "misconceptions": "That futures traders usually take or make delivery — the vast majority of positions are offset before expiry. Also, the futures price is not a pure forecast of the future spot price; it embeds carrying costs and risk premia.",
+    "example": "A wheat farmer sells December wheat futures at $6.50 per bushel to lock in a harvest-time price; if harvest cash prices fall to $6.00, the futures gain offsets the lower crop revenue.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Futures Contract; Contract Grades; Carrying Charge",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CME Group: Introduction to Futures (course)",
+        "url": "https://www.cmegroup.com/education/courses/introduction-to-futures.html",
+        "section": "Course overview: contract specifications, expiration and settlement, margin",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 132
+  },
+  {
+    "id": "instruments/fx-future",
+    "name": "FX future",
+    "aliases": [
+      "Currency future"
+    ],
+    "domain": "Instruments",
+    "definition": "A standardized, centrally cleared futures contract on the exchange rate between two currencies, traded on a regulated FX marketplace. It fixes today the rate at which one currency will be exchanged for another on a specified future settlement date, offering a cleared, transparent alternative to over-the-counter forwards.",
+    "intuition": "An FX future is a currency forward repackaged as an exchange product: standard sizes, standard dates, a clearinghouse guarantee, and a public price.",
+    "mechanics": "Contracts have fixed sizes and standardized quarterly settlement dates; they are margined and marked to market daily and are mostly offset or cash-settled rather than delivered. Because the clearinghouse interposes itself between buyer and seller, counterparty risk is mutualized, unlike bilateral forwards.",
+    "formula": "",
+    "relationships": [
+      "Currency pair",
+      "Futures contract",
+      "Forward contract",
+      "Currency swap"
+    ],
+    "failure_modes": "Fixed contract sizes and dates can mismatch the exact exposure being hedged, leaving basis risk. Daily marking produces margin calls on adverse moves, and the futures-forward basis means the locked rate differs slightly from OTC forward rates.",
+    "misconceptions": "That FX futures and FX forwards are the same instrument — forwards are bilateral, customizable, and settle once at maturity, while futures are standardized, cleared, and settled daily. Also, retail spot forex is not the futures market: it is a separate, dealer-intermediated market.",
+    "example": "A U.S. importer owing 375,000 euros in three months buys three CME EUR/USD futures (125,000 euros each), fixing the dollar cost of the payment regardless of where the spot rate moves.",
+    "citations": [
+      {
+        "source": "CME Group: FX futures and options",
+        "url": "https://www.cmegroup.com/markets/fx.html",
+        "section": "Product overview (G10 and emerging-market currency futures, central clearing)",
+        "accessed": "2026-08-06"
+      }
+    ],
+    "source_hint": "Authoritative domain source / exact citation pending",
+    "status": "reviewed",
+    "reviewed_by": "verification batch instruments",
+    "review_date": "2026-08-06",
+    "review_note": "",
+    "master_index": 133
+  }
+]
