@@ -4,20 +4,31 @@
     "name": "Market order",
     "aliases": [],
     "domain": "Orders and execution",
-    "definition": "An instruction to buy or sell promptly at the best prices currently available.",
-    "intuition": "",
-    "mechanics": "",
+    "definition": "An instruction to buy or sell immediately at the best prices available when the order reaches the market, without a specified execution-price limit.",
+    "intuition": "It is an instruction controlling how an attempt to buy or sell may interact with available liquidity.",
+    "mechanics": "The order consumes eligible opposite-side quotes in priority order until filled or liquidity is exhausted, so a large order may execute at several prices.",
     "formula": "",
-    "relationships": [],
-    "failure_modes": "",
-    "misconceptions": "",
-    "example": "",
-    "citations": [],
+    "relationships": [
+      "Limit order",
+      "Slippage",
+      "Market impact"
+    ],
+    "failure_modes": "Fast prices, thin depth, venue trigger conventions, and partial fills can produce execution or non-execution different from the displayed quote.",
+    "misconceptions": "An order's trigger or limit constrains its behavior; it does not guarantee both execution and a particular price.",
+    "example": "A 1,000-share buy finds 400 shares at $10.00 and 600 at $10.05, giving a $10.03 average fill.",
+    "citations": [
+      {
+        "source": "SEC Office of Investor Education, Trading Basics",
+        "url": "https://www.investor.gov/sites/default/files/trading101basics.pdf",
+        "section": "Market, limit, stop, and stop-limit orders, pp. 1-2",
+        "accessed": "2026-08-09"
+      }
+    ],
     "source_hint": "SEC",
     "status": "reviewed",
-    "reviewed_by": "master_v1 import",
-    "review_date": "2026-08-06",
-    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "reviewed_by": "Codex Phase 1 completion pass",
+    "review_date": "2026-08-09",
+    "review_note": "Definition and required fields verified against the cited source during the Phase 1 completion pass.",
     "master_index": 15
   },
   {
@@ -25,20 +36,31 @@
     "name": "Limit order",
     "aliases": [],
     "domain": "Orders and execution",
-    "definition": "An instruction to buy or sell only at a specified price or better.",
-    "intuition": "",
-    "mechanics": "",
+    "definition": "An instruction to buy only at a stated price or lower, or sell only at a stated price or higher.",
+    "intuition": "It is an instruction controlling how an attempt to buy or sell may interact with available liquidity.",
+    "mechanics": "If immediately marketable it executes against eligible prices within the limit; otherwise it rests subject to venue priority until filled, canceled, or expired.",
     "formula": "",
-    "relationships": [],
-    "failure_modes": "",
-    "misconceptions": "",
-    "example": "",
-    "citations": [],
+    "relationships": [
+      "Market order",
+      "Price-time priority",
+      "Partial fill"
+    ],
+    "failure_modes": "Fast prices, thin depth, venue trigger conventions, and partial fills can produce execution or non-execution different from the displayed quote.",
+    "misconceptions": "An order's trigger or limit constrains its behavior; it does not guarantee both execution and a particular price.",
+    "example": "A buy limit at $10 can fill at $9.98 or $10.00 but cannot fill at $10.01; it may never fill.",
+    "citations": [
+      {
+        "source": "SEC Office of Investor Education, Trading Basics",
+        "url": "https://www.investor.gov/sites/default/files/trading101basics.pdf",
+        "section": "Market, limit, stop, and stop-limit orders, pp. 1-2",
+        "accessed": "2026-08-09"
+      }
+    ],
     "source_hint": "SEC",
     "status": "reviewed",
-    "reviewed_by": "master_v1 import",
-    "review_date": "2026-08-06",
-    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "reviewed_by": "Codex Phase 1 completion pass",
+    "review_date": "2026-08-09",
+    "review_note": "Definition and required fields verified against the cited source during the Phase 1 completion pass.",
     "master_index": 16
   },
   {
@@ -46,20 +68,31 @@
     "name": "Stop order",
     "aliases": [],
     "domain": "Orders and execution",
-    "definition": "An order that becomes a market order when its trigger condition is reached.",
-    "intuition": "",
-    "mechanics": "",
+    "definition": "An instruction that activates when a specified stop condition is met and then becomes a market order.",
+    "intuition": "It is an instruction controlling how an attempt to buy or sell may interact with available liquidity.",
+    "mechanics": "The broker or venue monitors the applicable trade or quote trigger; after activation, the released market order executes at available prices rather than the stop price.",
     "formula": "",
-    "relationships": [],
-    "failure_modes": "",
-    "misconceptions": "",
-    "example": "",
-    "citations": [],
+    "relationships": [
+      "Stop-limit order",
+      "Market order",
+      "Trigger price"
+    ],
+    "failure_modes": "Fast prices, thin depth, venue trigger conventions, and partial fills can produce execution or non-execution different from the displayed quote.",
+    "misconceptions": "An order's trigger or limit constrains its behavior; it does not guarantee both execution and a particular price.",
+    "example": "A sell stop at $20 triggers during a gap and the resulting market order first fills at $18.75.",
+    "citations": [
+      {
+        "source": "SEC Office of Investor Education, Trading Basics",
+        "url": "https://www.investor.gov/sites/default/files/trading101basics.pdf",
+        "section": "Market, limit, stop, and stop-limit orders, pp. 1-2",
+        "accessed": "2026-08-09"
+      }
+    ],
     "source_hint": "SEC",
     "status": "reviewed",
-    "reviewed_by": "master_v1 import",
-    "review_date": "2026-08-06",
-    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "reviewed_by": "Codex Phase 1 completion pass",
+    "review_date": "2026-08-09",
+    "review_note": "Definition and required fields verified against the cited source during the Phase 1 completion pass.",
     "master_index": 17
   },
   {
@@ -67,20 +100,31 @@
     "name": "Stop-limit order",
     "aliases": [],
     "domain": "Orders and execution",
-    "definition": "An order that becomes a limit order when its trigger condition is reached.",
-    "intuition": "",
-    "mechanics": "",
+    "definition": "An instruction that becomes a limit order after its stop condition is met, combining a trigger price with an execution-price boundary.",
+    "intuition": "It is an instruction controlling how an attempt to buy or sell may interact with available liquidity.",
+    "mechanics": "On trigger, activate the stated buy or sell limit; it may execute at the limit or better, rest unfilled, or expire according to its time in force.",
     "formula": "",
-    "relationships": [],
-    "failure_modes": "",
-    "misconceptions": "",
-    "example": "",
-    "citations": [],
+    "relationships": [
+      "Stop order",
+      "Limit order",
+      "Trigger price"
+    ],
+    "failure_modes": "Fast prices, thin depth, venue trigger conventions, and partial fills can produce execution or non-execution different from the displayed quote.",
+    "misconceptions": "An order's trigger or limit constrains its behavior; it does not guarantee both execution and a particular price.",
+    "example": "A sell stop-limit with stop $20 and limit $19.50 triggers at $20 but does not fill if the market gaps directly to $19.",
+    "citations": [
+      {
+        "source": "SEC Office of Investor Education, Trading Basics",
+        "url": "https://www.investor.gov/sites/default/files/trading101basics.pdf",
+        "section": "Market, limit, stop, and stop-limit orders, pp. 1-2",
+        "accessed": "2026-08-09"
+      }
+    ],
     "source_hint": "SEC",
     "status": "reviewed",
-    "reviewed_by": "master_v1 import",
-    "review_date": "2026-08-06",
-    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "reviewed_by": "Codex Phase 1 completion pass",
+    "review_date": "2026-08-09",
+    "review_note": "Definition and required fields verified against the cited source during the Phase 1 completion pass.",
     "master_index": 18
   },
   {
@@ -88,20 +132,31 @@
     "name": "Market impact",
     "aliases": [],
     "domain": "Orders and execution",
-    "definition": "Price movement associated with submitting or executing an order.",
-    "intuition": "",
-    "mechanics": "",
+    "definition": "The change in execution prices or subsequent market prices attributable to the strategy's own order interacting with finite liquidity.",
+    "intuition": "It is an instruction controlling how an attempt to buy or sell may interact with available liquidity.",
+    "mechanics": "Compare execution and post-trade prices with a pre-trade benchmark while controlling for market movement; model temporary and persistent components as functions of size, liquidity, volatility, and time.",
     "formula": "",
-    "relationships": [],
-    "failure_modes": "",
-    "misconceptions": "",
-    "example": "",
-    "citations": [],
+    "relationships": [
+      "Slippage",
+      "Liquidity",
+      "Market-impact model"
+    ],
+    "failure_modes": "Fast prices, thin depth, venue trigger conventions, and partial fills can produce execution or non-execution different from the displayed quote.",
+    "misconceptions": "An order's trigger or limit constrains its behavior; it does not guarantee both execution and a particular price.",
+    "example": "A buy equal to 15% of interval volume lifts several ask levels and fills 30 basis points above the arrival midpoint.",
+    "citations": [
+      {
+        "source": "QuantConnect LEAN documentation, Slippage Models",
+        "url": "https://www.quantconnect.com/docs/v2/writing-algorithms/reality-modeling/slippage/supported-models",
+        "section": "Constant, volume-share, and market-impact models",
+        "accessed": "2026-08-09"
+      }
+    ],
     "source_hint": "BIS",
     "status": "reviewed",
-    "reviewed_by": "master_v1 import",
-    "review_date": "2026-08-06",
-    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "reviewed_by": "Codex Phase 1 completion pass",
+    "review_date": "2026-08-09",
+    "review_note": "Definition and required fields verified against the cited source during the Phase 1 completion pass.",
     "master_index": 23
   },
   {
@@ -109,20 +164,31 @@
     "name": "Slippage",
     "aliases": [],
     "domain": "Orders and execution",
-    "definition": "The difference between an expected or benchmark price and the actual execution price.",
-    "intuition": "",
-    "mechanics": "",
-    "formula": "",
-    "relationships": [],
-    "failure_modes": "",
-    "misconceptions": "",
-    "example": "",
-    "citations": [],
+    "definition": "The difference between an intended or reference price and the actual execution price, signed so adverse execution is a cost.",
+    "intuition": "It is an instruction controlling how an attempt to buy or sell may interact with available liquidity.",
+    "mechanics": "Choose a decision, arrival, or quote benchmark; compare each fill with it; weight by executed quantity; and separate spread, delay, and impact where possible.",
+    "formula": "Buy slippage = fill price - reference price; sell slippage = reference price - fill price",
+    "relationships": [
+      "Market impact",
+      "Transaction cost",
+      "Execution simulator"
+    ],
+    "failure_modes": "Fast prices, thin depth, venue trigger conventions, and partial fills can produce execution or non-execution different from the displayed quote.",
+    "misconceptions": "An order's trigger or limit constrains its behavior; it does not guarantee both execution and a particular price.",
+    "example": "A buy decided at $100 that fills at $100.12 has $0.12, or 12 basis points, of adverse slippage.",
+    "citations": [
+      {
+        "source": "QuantConnect LEAN documentation, Slippage Models",
+        "url": "https://www.quantconnect.com/docs/v2/writing-algorithms/reality-modeling/slippage/supported-models",
+        "section": "Constant, volume-share, and market-impact models",
+        "accessed": "2026-08-09"
+      }
+    ],
     "source_hint": "BIS",
     "status": "reviewed",
-    "reviewed_by": "master_v1 import",
-    "review_date": "2026-08-06",
-    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "reviewed_by": "Codex Phase 1 completion pass",
+    "review_date": "2026-08-09",
+    "review_note": "Definition and required fields verified against the cited source during the Phase 1 completion pass.",
     "master_index": 24
   },
   {

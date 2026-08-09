@@ -4,20 +4,31 @@
     "name": "Margin",
     "aliases": [],
     "domain": "Risk and performance",
-    "definition": "Collateral or financial resources required to support a leveraged or credit-exposed position.",
-    "intuition": "",
-    "mechanics": "",
+    "definition": "Collateral or account equity required to support leveraged positions or credit exposure, rather than the full notional value of the position.",
+    "intuition": "It links the capital posted by a trader to the larger exposure and credit risk carried in the account.",
+    "mechanics": "The broker or clearinghouse values positions and collateral, applies current requirements, posts gains and losses, and demands more collateral or liquidates when equity is insufficient.",
     "formula": "",
-    "relationships": [],
-    "failure_modes": "",
-    "misconceptions": "",
-    "example": "",
-    "citations": [],
+    "relationships": [
+      "Initial margin",
+      "Maintenance margin",
+      "Leverage"
+    ],
+    "failure_modes": "House requirements can rise without notice, prices can gap, and forced liquidation or interest can make losses exceed the initial capital posted.",
+    "misconceptions": "Margin is collateral or account equity, not a fixed maximum loss; leverage magnifies gains and losses on the trader's equity.",
+    "example": "Posting $5,000 to support $10,000 of margin stock leaves a $5,000 broker loan and exposes the investor to the full price movement.",
+    "citations": [
+      {
+        "source": "FINRA, Brokerage Accounts",
+        "url": "https://www.finra.org/investors/investing/investment-accounts/brokerage-accounts",
+        "section": "Margin accounts, initial margin, maintenance margin, and leverage",
+        "accessed": "2026-08-09"
+      }
+    ],
     "source_hint": "CME / CFTC",
     "status": "reviewed",
-    "reviewed_by": "master_v1 import",
-    "review_date": "2026-08-06",
-    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "reviewed_by": "Codex Phase 1 completion pass",
+    "review_date": "2026-08-09",
+    "review_note": "Definition and required fields verified against the cited source during the Phase 1 completion pass.",
     "master_index": 26
   },
   {
@@ -25,20 +36,31 @@
     "name": "Initial margin",
     "aliases": [],
     "domain": "Risk and performance",
-    "definition": "Collateral required when a position or cleared exposure is opened.",
-    "intuition": "",
-    "mechanics": "",
-    "formula": "",
-    "relationships": [],
-    "failure_modes": "",
-    "misconceptions": "",
-    "example": "",
-    "citations": [],
+    "definition": "The minimum collateral or equity required when a new leveraged position is opened, under the applicable regulatory, exchange, clearing, and house rules.",
+    "intuition": "It links the capital posted by a trader to the larger exposure and credit risk carried in the account.",
+    "mechanics": "Before accepting the position, calculate required initial margin from purchase value or risk model and compare it with eligible account collateral.",
+    "formula": "Initial margin ratio = required initial equity / position market value",
+    "relationships": [
+      "Margin",
+      "Maintenance margin",
+      "Buying power"
+    ],
+    "failure_modes": "House requirements can rise without notice, prices can gap, and forced liquidation or interest can make losses exceed the initial capital posted.",
+    "misconceptions": "Margin is collateral or account equity, not a fixed maximum loss; leverage magnifies gains and losses on the trader's equity.",
+    "example": "At a 50% initial requirement, buying $10,000 of eligible stock requires $5,000 of initial equity.",
+    "citations": [
+      {
+        "source": "FINRA, Brokerage Accounts",
+        "url": "https://www.finra.org/investors/investing/investment-accounts/brokerage-accounts",
+        "section": "Margin accounts, initial margin, maintenance margin, and leverage",
+        "accessed": "2026-08-09"
+      }
+    ],
     "source_hint": "CME",
     "status": "reviewed",
-    "reviewed_by": "master_v1 import",
-    "review_date": "2026-08-06",
-    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "reviewed_by": "Codex Phase 1 completion pass",
+    "review_date": "2026-08-09",
+    "review_note": "Definition and required fields verified against the cited source during the Phase 1 completion pass.",
     "master_index": 27
   },
   {
@@ -46,20 +68,31 @@
     "name": "Maintenance margin",
     "aliases": [],
     "domain": "Risk and performance",
-    "definition": "The minimum collateral level that must be maintained.",
-    "intuition": "",
-    "mechanics": "",
-    "formula": "",
-    "relationships": [],
-    "failure_modes": "",
-    "misconceptions": "",
-    "example": "",
-    "citations": [],
+    "definition": "The minimum equity that must remain in a margin account after a leveraged position is established.",
+    "intuition": "It links the capital posted by a trader to the larger exposure and credit risk carried in the account.",
+    "mechanics": "Continuously or periodically mark positions to market, subtract the loan, compare equity with the maintenance requirement, and call for funds or liquidate if deficient.",
+    "formula": "Margin equity = asset market value - margin loan",
+    "relationships": [
+      "Initial margin",
+      "Margin call",
+      "Forced liquidation"
+    ],
+    "failure_modes": "House requirements can rise without notice, prices can gap, and forced liquidation or interest can make losses exceed the initial capital posted.",
+    "misconceptions": "Margin is collateral or account equity, not a fixed maximum loss; leverage magnifies gains and losses on the trader's equity.",
+    "example": "A $60,000 position with a $50,000 loan has $10,000 equity, below a 25% requirement of $15,000.",
+    "citations": [
+      {
+        "source": "FINRA, Brokerage Accounts",
+        "url": "https://www.finra.org/investors/investing/investment-accounts/brokerage-accounts",
+        "section": "Margin accounts, initial margin, maintenance margin, and leverage",
+        "accessed": "2026-08-09"
+      }
+    ],
     "source_hint": "CME",
     "status": "reviewed",
-    "reviewed_by": "master_v1 import",
-    "review_date": "2026-08-06",
-    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "reviewed_by": "Codex Phase 1 completion pass",
+    "review_date": "2026-08-09",
+    "review_note": "Definition and required fields verified against the cited source during the Phase 1 completion pass.",
     "master_index": 28
   },
   {
@@ -67,20 +100,31 @@
     "name": "Leverage",
     "aliases": [],
     "domain": "Risk and performance",
-    "definition": "Use of borrowing, margin, or derivatives to obtain exposure larger than committed capital.",
-    "intuition": "",
-    "mechanics": "",
-    "formula": "",
-    "relationships": [],
-    "failure_modes": "",
-    "misconceptions": "",
-    "example": "",
-    "citations": [],
+    "definition": "Exposure to an asset or portfolio relative to the investor's equity or capital, created through borrowing, derivatives, or embedded financing.",
+    "intuition": "It links the capital posted by a trader to the larger exposure and credit risk carried in the account.",
+    "mechanics": "Divide gross or net exposure by the chosen equity base, state the convention, and update the ratio as prices, cash, and requirements change.",
+    "formula": "Gross leverage = gross exposure / equity",
+    "relationships": [
+      "Margin",
+      "Gross exposure",
+      "Risk"
+    ],
+    "failure_modes": "House requirements can rise without notice, prices can gap, and forced liquidation or interest can make losses exceed the initial capital posted.",
+    "misconceptions": "Margin is collateral or account equity, not a fixed maximum loss; leverage magnifies gains and losses on the trader's equity.",
+    "example": "A $100,000 position funded with $50,000 equity has 2.0 times gross leverage; a 10% asset loss is 20% of starting equity before costs.",
+    "citations": [
+      {
+        "source": "FINRA, Brokerage Accounts",
+        "url": "https://www.finra.org/investors/investing/investment-accounts/brokerage-accounts",
+        "section": "Margin accounts, initial margin, maintenance margin, and leverage",
+        "accessed": "2026-08-09"
+      }
+    ],
     "source_hint": "CFTC",
     "status": "reviewed",
-    "reviewed_by": "master_v1 import",
-    "review_date": "2026-08-06",
-    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "reviewed_by": "Codex Phase 1 completion pass",
+    "review_date": "2026-08-09",
+    "review_note": "Definition and required fields verified against the cited source during the Phase 1 completion pass.",
     "master_index": 29
   },
   {
@@ -88,20 +132,31 @@
     "name": "Volatility",
     "aliases": [],
     "domain": "Risk and performance",
-    "definition": "The degree of variation in prices or returns over time under a specified estimator.",
-    "intuition": "",
-    "mechanics": "",
-    "formula": "",
-    "relationships": [],
-    "failure_modes": "",
-    "misconceptions": "",
-    "example": "",
-    "citations": [],
+    "definition": "The degree of variation in an asset's returns, commonly estimated by the standard deviation of returns over a stated sampling interval and window.",
+    "intuition": "It links the capital posted by a trader to the larger exposure and credit risk carried in the account.",
+    "mechanics": "Compute consistently sampled returns, estimate dispersion under a stated convention, and annualize only with an explicit scaling assumption.",
+    "formula": "Sample volatility = sqrt(sum((r_i - mean return)^2)/(n-1)); annualized estimate = periodic volatility times sqrt(periods per year)",
+    "relationships": [
+      "Standard deviation",
+      "Realized volatility",
+      "Risk"
+    ],
+    "failure_modes": "House requirements can rise without notice, prices can gap, and forced liquidation or interest can make losses exceed the initial capital posted.",
+    "misconceptions": "Margin is collateral or account equity, not a fixed maximum loss; leverage magnifies gains and losses on the trader's equity.",
+    "example": "Daily return standard deviation of 1% annualizes to about 15.9% using sqrt(252), assuming the scaling convention is appropriate.",
+    "citations": [
+      {
+        "source": "CFA Institute Research Foundation, Investment Model Validation",
+        "url": "https://rpc.cfainstitute.org/research/foundation/2024/investment-model-validation",
+        "section": "Overview and model-validation framework",
+        "accessed": "2026-08-09"
+      }
+    ],
     "source_hint": "NIST / canonical finance literature",
     "status": "reviewed",
-    "reviewed_by": "master_v1 import",
-    "review_date": "2026-08-06",
-    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "reviewed_by": "Codex Phase 1 completion pass",
+    "review_date": "2026-08-09",
+    "review_note": "Definition and required fields verified against the cited source during the Phase 1 completion pass.",
     "master_index": 30
   },
   {

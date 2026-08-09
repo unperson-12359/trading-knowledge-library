@@ -4,20 +4,31 @@
     "name": "Bid",
     "aliases": [],
     "domain": "Microstructure",
-    "definition": "The price at which a participant is willing to buy a stated quantity.",
-    "intuition": "",
-    "mechanics": "",
+    "definition": "A displayed or communicated offer to buy a specified quantity at a stated price.",
+    "intuition": "It describes the immediately available terms and ease of trading in an order-driven market.",
+    "mechanics": "Buy orders are aggregated by venue and price; the best bid is the highest eligible displayed buy price, while its quoted size indicates only displayed quantity.",
     "formula": "",
-    "relationships": [],
-    "failure_modes": "",
-    "misconceptions": "",
-    "example": "",
-    "citations": [],
+    "relationships": [
+      "Ask",
+      "Bid-ask spread",
+      "Quote"
+    ],
+    "failure_modes": "Displayed quotes and depth can cancel, fragment across venues, or vanish under stress, so snapshots can overstate executable liquidity.",
+    "misconceptions": "A quote or narrow spread is not a guarantee that a large order can trade at that price without delay or impact.",
+    "example": "A quote of $49.95 bid for 500 means a buyer currently offers $49.95 for up to the displayed 500 shares.",
+    "citations": [
+      {
+        "source": "CFTC Futures Glossary",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Entries for spot, forward contract, futures contract, option, bid, ask, and bid-ask spread",
+        "accessed": "2026-08-09"
+      }
+    ],
     "source_hint": "BIS",
     "status": "reviewed",
-    "reviewed_by": "master_v1 import",
-    "review_date": "2026-08-06",
-    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "reviewed_by": "Codex Phase 1 completion pass",
+    "review_date": "2026-08-09",
+    "review_note": "Definition and required fields verified against the cited source during the Phase 1 completion pass.",
     "master_index": 19
   },
   {
@@ -25,20 +36,31 @@
     "name": "Ask",
     "aliases": [],
     "domain": "Microstructure",
-    "definition": "The price at which a participant is willing to sell a stated quantity.",
-    "intuition": "",
-    "mechanics": "",
+    "definition": "A displayed or communicated offer to sell a specified quantity at a stated price, also called an offer.",
+    "intuition": "It describes the immediately available terms and ease of trading in an order-driven market.",
+    "mechanics": "Sell orders are aggregated by venue and price; the best ask is the lowest eligible displayed sell price, subject to its available quantity and priority.",
     "formula": "",
-    "relationships": [],
-    "failure_modes": "",
-    "misconceptions": "",
-    "example": "",
-    "citations": [],
+    "relationships": [
+      "Bid",
+      "Bid-ask spread",
+      "Quote"
+    ],
+    "failure_modes": "Displayed quotes and depth can cancel, fragment across venues, or vanish under stress, so snapshots can overstate executable liquidity.",
+    "misconceptions": "A quote or narrow spread is not a guarantee that a large order can trade at that price without delay or impact.",
+    "example": "A quote of $50.05 ask for 300 means a seller currently offers up to the displayed 300 shares at $50.05.",
+    "citations": [
+      {
+        "source": "CFTC Futures Glossary",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Entries for spot, forward contract, futures contract, option, bid, ask, and bid-ask spread",
+        "accessed": "2026-08-09"
+      }
+    ],
     "source_hint": "BIS",
     "status": "reviewed",
-    "reviewed_by": "master_v1 import",
-    "review_date": "2026-08-06",
-    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "reviewed_by": "Codex Phase 1 completion pass",
+    "review_date": "2026-08-09",
+    "review_note": "Definition and required fields verified against the cited source during the Phase 1 completion pass.",
     "master_index": 20
   },
   {
@@ -46,20 +68,31 @@
     "name": "Bid-ask spread",
     "aliases": [],
     "domain": "Microstructure",
-    "definition": "The difference between the best quoted ask and best quoted bid.",
-    "intuition": "",
-    "mechanics": "",
-    "formula": "",
-    "relationships": [],
-    "failure_modes": "",
-    "misconceptions": "",
-    "example": "",
-    "citations": [],
+    "definition": "The difference between the best available ask price and best available bid price for the same instrument and quotation conditions.",
+    "intuition": "It describes the immediately available terms and ease of trading in an order-driven market.",
+    "mechanics": "Read synchronized best bid and ask quotes and subtract bid from ask; express the result in price units, ticks, or relative basis points.",
+    "formula": "Spread = best ask - best bid",
+    "relationships": [
+      "Bid",
+      "Ask",
+      "Liquidity"
+    ],
+    "failure_modes": "Displayed quotes and depth can cancel, fragment across venues, or vanish under stress, so snapshots can overstate executable liquidity.",
+    "misconceptions": "A quote or narrow spread is not a guarantee that a large order can trade at that price without delay or impact.",
+    "example": "A $49.95 bid and $50.05 ask produce a $0.10 spread, or about 20 basis points relative to the $50 midpoint.",
+    "citations": [
+      {
+        "source": "CFTC Futures Glossary",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Entries for spot, forward contract, futures contract, option, bid, ask, and bid-ask spread",
+        "accessed": "2026-08-09"
+      }
+    ],
     "source_hint": "BIS",
     "status": "reviewed",
-    "reviewed_by": "master_v1 import",
-    "review_date": "2026-08-06",
-    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "reviewed_by": "Codex Phase 1 completion pass",
+    "review_date": "2026-08-09",
+    "review_note": "Definition and required fields verified against the cited source during the Phase 1 completion pass.",
     "master_index": 21
   },
   {
@@ -67,20 +100,31 @@
     "name": "Liquidity",
     "aliases": [],
     "domain": "Microstructure",
-    "definition": "The ability to transact desired size promptly, at low cost, with limited price impact.",
-    "intuition": "",
-    "mechanics": "",
+    "definition": "The ability to buy or sell an asset promptly in meaningful size without causing a substantial adverse price change or incurring unusually high cost.",
+    "intuition": "It describes the immediately available terms and ease of trading in an order-driven market.",
+    "mechanics": "Assess spread, depth, turnover, resilience, venue access, and size-dependent impact rather than relying on one quote or volume statistic.",
     "formula": "",
-    "relationships": [],
-    "failure_modes": "",
-    "misconceptions": "",
-    "example": "",
-    "citations": [],
+    "relationships": [
+      "Bid-ask spread",
+      "Market impact",
+      "Depth"
+    ],
+    "failure_modes": "Displayed quotes and depth can cancel, fragment across venues, or vanish under stress, so snapshots can overstate executable liquidity.",
+    "misconceptions": "A quote or narrow spread is not a guarantee that a large order can trade at that price without delay or impact.",
+    "example": "Selling 100 shares moves a liquid stock negligibly, while selling the same fraction of a thin issue consumes several price levels.",
+    "citations": [
+      {
+        "source": "Investor.gov, Liquidity (or Marketability)",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/liquidity-or-marketability",
+        "section": "Liquidity and liquidity risk",
+        "accessed": "2026-08-09"
+      }
+    ],
     "source_hint": "BIS",
     "status": "reviewed",
-    "reviewed_by": "master_v1 import",
-    "review_date": "2026-08-06",
-    "review_note": "Reviewed in master_v1 against source family; exact citation pending.",
+    "reviewed_by": "Codex Phase 1 completion pass",
+    "review_date": "2026-08-09",
+    "review_note": "Definition and required fields verified against the cited source during the Phase 1 completion pass.",
     "master_index": 22
   },
   {
@@ -718,25 +762,31 @@
     "name": "Size-time priority",
     "aliases": [],
     "domain": "Microstructure",
-    "definition": "A working label for an order-matching priority scheme in which resting orders at the same price are ranked by size (larger orders first), with time of entry breaking ties; intended to reward the display of large size more than pure price-time priority.",
-    "intuition": "Bigger orders get served before smaller ones at the same price, and equally big orders stand in time order.",
-    "mechanics": "At each price level the matching engine sorts resting orders primarily by quantity and secondarily by timestamp; an incoming aggressor fills the largest resting order first. This contrasts with FIFO (time only), pro rata (size-proportional sharing), and time-pro-rata hybrids documented on major venues.",
+    "definition": "An order-matching priority in which size influences ranking among eligible orders and time breaks or contributes to the ranking, as used in specified non-displayed venue books.",
+    "intuition": "It describes the immediately available terms and ease of trading in an order-driven market.",
+    "mechanics": "After price and any participant tier are resolved, rank eligible resting orders using the venue's size-time rule; exact weighting or tie-breaking is venue-specific.",
     "formula": "",
     "relationships": [
       "Price-time priority",
-      "Pro rata allocation",
-      "Queue position",
-      "Matching algorithm"
+      "Matching algorithm",
+      "Queue position"
     ],
-    "failure_modes": "Ranking by size invites posting of oversized, weakly committed orders and can starve small orders of fills; as a distinct named scheme it is not documented among the standard matching algorithms of major exchanges.",
-    "misconceptions": "Size-based priority should not be confused with pro rata allocation, which shares each fill proportionally rather than ranking orders strictly by size.",
-    "example": "At the best bid, a 1,000-lot order posted at 10:00 and a 100-lot order posted at 09:59: under size-time priority the 1,000-lot order would match first despite arriving later.",
-    "citations": [],
+    "failure_modes": "Displayed quotes and depth can cancel, fragment across venues, or vanish under stress, so snapshots can overstate executable liquidity.",
+    "misconceptions": "A quote or narrow spread is not a guarantee that a large order can trade at that price without delay or impact.",
+    "example": "In a simple largest-first rule, a resting 1,000-share order ranks ahead of a 500-share order at the same eligible price, with arrival time breaking equal-size ties.",
+    "citations": [
+      {
+        "source": "SIX Swiss Exchange, SwissAtMid",
+        "url": "https://www.six-group.com/en/products-services/the-swiss-stock-exchange/trading/markets/swissatmid.html",
+        "section": "Mid-Point Order Book size-time priority",
+        "accessed": "2026-08-09"
+      }
+    ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "provisional",
-    "reviewed_by": "",
-    "review_date": "",
-    "review_note": "Working definition written, but no authoritative fetchable source was located documenting 'size-time priority' as a distinct named matching scheme on major venues (documented schemes are price-time/FIFO, pro rata, time-pro-rata, top-order and LMM variants, and random allocation). Left provisional pending a primary source.",
+    "status": "reviewed",
+    "reviewed_by": "Codex Phase 1 completion pass",
+    "review_date": "2026-08-09",
+    "review_note": "Definition and required fields verified against the cited source during the Phase 1 completion pass.",
     "master_index": 253
   },
   {
