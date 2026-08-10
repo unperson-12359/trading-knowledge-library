@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/yield-spread",
+  "canonical_sha256": "649446de9e0449f887037fbf0c7084391304d7febc5fbb9e654f08ee77e803c7",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/yield-spread",
+    "name": "Yield spread",
+    "aliases": [
+      "spread",
+      "yield differential"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "The difference between two yields, typically expressed in basis points. Depending on context it may compare maturities on the same curve (term spread, e.g. 10-year minus 2-year Treasury), or securities of different credit quality at the same maturity (credit spread).",
+    "intuition": "It is the extra (or lesser) yield one instrument offers relative to another, summarizing how the market prices the difference in time, risk, or liquidity between them.",
+    "mechanics": "Computed as a simple subtraction of yields at matched or specified maturities; e.g. FRED's T10Y2Y is the 10-year Treasury constant maturity yield minus the 2-year, and term or credit spreads widen or narrow as relative yields move.",
+    "formula": "s = y_A − y_B, quoted in basis points (1 bp = 0.01 percentage point).",
+    "relationships": [
+      "Credit spread",
+      "Option-adjusted spread",
+      "Z-spread",
+      "Swap spread",
+      "Yield curve",
+      "Basis point"
+    ],
+    "failure_modes": "A raw yield spread ignores differences in maturity, coupon, embedded options, and compounding conventions, so comparing spreads across unlike instruments can mislead; spreads also mix risk, liquidity, and tax effects.",
+    "misconceptions": "A wider spread does not automatically mean a bond is 'cheap'; it may simply reflect genuinely higher expected losses or worse liquidity.",
+    "example": "If a 10-year corporate bond yields 5.6% and the 10-year Treasury yields 4.3%, the yield spread is 130 basis points.",
+    "citations": [
+      {
+        "source": "FRED, 10-Year Treasury Constant Maturity Minus 2-Year Treasury Constant Maturity [T10Y2Y]",
+        "url": "https://fred.stlouisfed.org/series/T10Y2Y",
+        "section": "Notes",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

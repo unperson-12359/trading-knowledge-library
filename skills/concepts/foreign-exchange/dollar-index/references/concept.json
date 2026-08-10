@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/dollar-index",
+  "canonical_sha256": "e0df3ff16e956594a01de33c8e10bff103508bb9818d5a560d04e34a95291125",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/dollar-index",
+    "name": "Dollar index",
+    "aliases": [
+      "U.S. Dollar Index",
+      "USDX",
+      "DXY"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "A proprietary index, designed and published by ICE Data Indices, measuring the value of the US dollar as a weighted geometric mean against a fixed basket of six currencies: euro (57.6%), yen (13.6%), pound sterling (11.9%), Canadian dollar (9.1%), Swedish krona (4.2%) and Swiss franc (3.6%). Set at 100.000 at its March 1973 start, it rises when the dollar strengthens against the basket; futures on the index trade on ICE.",
+    "intuition": "DXY is the standard single number summarizing how strong the dollar is overall against other major currencies.",
+    "mechanics": "The index is a geometric average with fixed weights applied to the six bilateral rates, with EUR and GBP entering with negative exponents (they are quoted as dollars per unit of currency) and the others with positive exponents. The basket composition has been revised only once, when euro-area currencies were subsumed by the euro in 1999; the Federal Reserve's broader trade-weighted dollar index is a separate measure.",
+    "formula": "USDX = 50.14348112 x EURUSD^(-0.576) x USDJPY^0.136 x GBPUSD^(-0.119) x USDCAD^0.091 x USDSEK^0.042 x USDCHF^0.036.",
+    "relationships": [
+      "Nominal effective exchange rate",
+      "Real effective exchange rate",
+      "Base currency"
+    ],
+    "failure_modes": "The 1970s-era basket omits major current US trade partners (China, Mexico, Korea, Brazil) while retaining Sweden and Switzerland, and the euro dominates with a 57.6% weight, so DXY moves often reflect EUR/USD more than broad dollar strength; it is not a trade-representative effective exchange rate.",
+    "misconceptions": "DXY is not an official or trade-weighted measure of the dollar — it is a commercial futures-underlying index — and a rising DXY says little about the dollar against emerging-market currencies.",
+    "example": "A sharp EUR/USD sell-off from 1.10 to 1.05 lifts DXY mechanically because of the euro's 57.6% weight, even if the dollar is flat against most Asian and Latin American currencies.",
+    "citations": [
+      {
+        "source": "ICE Futures U.S. — U.S. Dollar Index Futures (product page)",
+        "url": "https://www.theice.com/products/194/US-Dollar-Index-Futures",
+        "section": "product page (ICE ownership/trademark of the index)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia — U.S. Dollar Index",
+        "url": "https://en.wikipedia.org/wiki/U.S._Dollar_Index",
+        "section": "lead, weights and calculation formula",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/fx-triangular-arbitrage",
+  "canonical_sha256": "3974dc6aa279433fc0d566efea9869630bab9c5e8682fc86e22e7fb2516d1973",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/fx-triangular-arbitrage",
+    "name": "FX triangular arbitrage",
+    "aliases": [
+      "triangular arbitrage",
+      "cross currency arbitrage",
+      "three-point arbitrage"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "The practice of exploiting a pricing discrepancy among three currencies by executing three trades — exchanging an initial currency for a second, the second for a third, and the third back into the initial — when the quoted cross exchange rate diverges from the implicit cross rate derived from the other two pairs. High-frequency studies find such opportunities are rare, small (often ~1 basis point) and fleeting (mostly lasting seconds or less).",
+    "intuition": "If EUR/USD and USD/JPY imply one EUR/JPY rate but a bank quotes another, you can cycle through the three pairs and end up with more than you started.",
+    "mechanics": "The arbitrageur computes the implicit cross rate S(a/b) = S(a/$) x S($/b) from quoted rates and compares it with the market cross quote, accounting for bid and ask on each leg. A profitable cycle exists only if the discrepancy exceeds transaction costs; electronic trading systems detect and exhaust such gaps in milliseconds, which is why opportunity incidence fell as algorithmic trading spread.",
+    "formula": "Implicit cross rate S(a/b) = S(a/$) x S($/b); a no-arbitrage condition requires the quoted cross to equal the implicit cross (within bid-ask bounds).",
+    "relationships": [
+      "Cross rate",
+      "FX spot",
+      "Covered interest parity"
+    ],
+    "failure_modes": "Execution risk dominates: even millisecond delays between identifying the gap and filling all three legs mean one leg can re-price, leaving the arbitrageur with an unwanted position and a close-out cost equal to the price move that killed the gap. Fees, latency and competition from faster systems erode the thin margins.",
+    "misconceptions": "Triangular arbitrage is not an easy retail strategy: executable opportunities at sizes above a basis point or two are essentially competed away by professional low-latency systems before slower participants can act.",
+    "example": "If dealers quote EUR/USD 0.8171 (euros per dollar) and GBP/USD 1.4650, the implicit EUR/GBP is 1.1971; a bank offering pounds at EUR 1.1910 lets an arbitrageur cycle $5m through the three pairs for about $25,400 profit before costs.",
+    "citations": [
+      {
+        "source": "Wikipedia — Triangular arbitrage",
+        "url": "https://en.wikipedia.org/wiki/Triangular_arbitrage",
+        "section": "whole article (mechanics, worked example, Fenn et al. 2009 evidence)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

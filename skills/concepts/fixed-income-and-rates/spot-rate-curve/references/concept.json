@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/spot-rate-curve",
+  "canonical_sha256": "8e62cd8d22c6d14d393371f8eb2c0dc3d763ed922cc6e2ffaa00f9b03ec991cc",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/spot-rate-curve",
+    "name": "Spot rate curve",
+    "aliases": [
+      "zero-coupon yield curve",
+      "zero curve"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "The curve of yields on zero-coupon instruments across maturities — the set of rates at which a single future cash flow is discounted to today. It is built by bootstrapping coupon-bearing bond prices so that each instrument is repriced without error, and it is the curve used for present-value calculations.",
+    "intuition": "Instead of one blended yield per bond, the spot curve gives a separate 'pure' interest rate for every single future date, like a price tag for money delivered at each point in time.",
+    "mechanics": "Starting from the shortest maturity, each bond's price is decomposed into its cash flows; the discount rate that prices each successive maturity's cash flow exactly (given already-solved shorter rates) is the spot rate for that maturity. The U.S. Treasury bootstraps instantaneous forward rates from on-the-run prices, which equivalently determines the spot curve; Treasury does not publish a daily zero-coupon curve itself.",
+    "formula": "P = sum over t of CF_t / (1 + z_t)^t, where z_t is the t-year spot (zero-coupon) rate, CF_t the cash flow at time t, and P the bond's price.",
+    "relationships": [
+      "Yield curve",
+      "Zero-coupon rate",
+      "Discount factor",
+      "Forward rate curve",
+      "Par yield"
+    ],
+    "failure_modes": "The bootstrapped curve depends on the fitting/interpolation method and the input securities chosen, so different constructions give different spot rates, especially between quoted maturities and at the long end.",
+    "misconceptions": "Spot rates are not directly observable in coupon-bond markets and are not the same as par yields; the par yield curve and the spot curve differ whenever the curve is not flat.",
+    "example": "If the 2-year spot rate is 4.2%, a single $100 payment due in exactly 2 years is worth 100 / (1.042)^2 ≈ $92.10 today.",
+    "citations": [
+      {
+        "source": "U.S. Department of the Treasury, Treasury Yield Curve Methodology",
+        "url": "https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics/treasury-yield-curve-methodology",
+        "section": "Bootstrapping and monotone convex interpolation description",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "U.S. Department of the Treasury, Interest Rates — Frequently Asked Questions",
+        "url": "https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics/interest-rates-frequently-asked-questions",
+        "section": "Does the par yield curve assume semiannual interest payments or is it a zero-coupon curve?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

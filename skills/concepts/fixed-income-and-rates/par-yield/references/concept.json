@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/par-yield",
+  "canonical_sha256": "456457716564b19936ea173d548c8ae655b5cb81d90098da8a848a04271e9025",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/par-yield",
+    "name": "Par yield",
+    "aliases": [
+      "par rate",
+      "par coupon rate"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "The coupon rate at which a hypothetical bond of a given maturity would price exactly at par (100% of face value), given the current discount function. The U.S. Treasury's official daily yield curve is a par yield curve, and its constant-maturity (CMT) rates are par yields read from that curve.",
+    "intuition": "It is the coupon a brand-new bond of a given maturity would have to pay today for investors to accept it at full face value.",
+    "mechanics": "Treasury converts indicative bid-side price quotations on the most recently auctioned securities to yields, bootstraps forward rates, and applies monotone convex interpolation to construct a curve of true par rates; CMT yields are then read at fixed maturities and quoted as semiannual bond-equivalent yields.",
+    "formula": "Par coupon c solves 100 = Σ_t (c/2) × DF(t) + 100 × DF(T), where DF(t) are discount factors and T is maturity (semiannual coupons).",
+    "relationships": [
+      "Yield curve",
+      "Spot rate curve",
+      "Zero-coupon rate",
+      "Discount factor"
+    ],
+    "failure_modes": "CMT par yields are read from a fitted curve and may not match the actual yield of any specific traded security; the curve also depends on the fitting methodology, which Treasury has changed over time.",
+    "misconceptions": "A par yield is not the same as the spot rate for that maturity, and a CMT rate is not the yield on an actual outstanding bond of exactly that maturity.",
+    "example": "If the fitted 10-year par yield is 4.30%, a new theoretical 10-year bond with a 4.30% coupon would be worth exactly 100.",
+    "citations": [
+      {
+        "source": "U.S. Department of the Treasury, Treasury Yield Curve Methodology",
+        "url": "https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics/treasury-yield-curve-methodology",
+        "section": "Full methodology description",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "U.S. Department of the Treasury, Interest Rates — Frequently Asked Questions",
+        "url": "https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics/interest-rates-frequently-asked-questions",
+        "section": "What is the difference between the Daily Treasury Long-Term Rates and the Daily Treasury Par Yield Curve Rates?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

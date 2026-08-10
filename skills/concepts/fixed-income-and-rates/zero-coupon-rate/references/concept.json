@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/zero-coupon-rate",
+  "canonical_sha256": "61d7793a42d397e482bd9fed010f139eb9f9ea54bb87867e8bf01d043bc8665c",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/zero-coupon-rate",
+    "name": "Zero-coupon rate",
+    "aliases": [
+      "spot rate",
+      "zero rate"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "The yield earned on an investment that makes a single payment at maturity with no intermediate coupons, for a specific maturity. It is the building block of the spot (zero-coupon) curve used to discount individual future cash flows.",
+    "intuition": "It is the pure interest rate for money delivered at one exact future date, with nothing paid in between — like the rate on a Treasury bill or a STRIP.",
+    "mechanics": "For a zero-coupon instrument the rate follows directly from price and face value; for coupon-bearing markets the zero-coupon rates are bootstrapped from bond prices so all input securities price without error. The U.S. Treasury notes its published par yield curve is a semiannual bond-equivalent curve and that it does not publish daily zero-coupon curve rates.",
+    "formula": "z_t = (F / P)^(1/t) − 1, where P is the price today, F the single payment at maturity, and t the time in years.",
+    "relationships": [
+      "Spot rate curve",
+      "Discount factor",
+      "Forward rate curve",
+      "Par yield"
+    ],
+    "failure_modes": "Zero-coupon rates are model-derived rather than directly quoted for most maturities, so they inherit bootstrapping and interpolation assumptions; liquidity differences between coupon bonds and STRIPS can also create small inconsistencies.",
+    "misconceptions": "The zero-coupon rate for maturity t is not the yield of the t-year coupon bond; confusing par yields with spot rates produces systematic valuation errors when the curve is sloped.",
+    "example": "A 2-year zero-coupon bond priced at 92.10 per 100 face implies a 2-year zero rate of (100/92.10)^(1/2) − 1 ≈ 4.2%.",
+    "citations": [
+      {
+        "source": "U.S. Department of the Treasury, Interest Rates — Frequently Asked Questions",
+        "url": "https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics/interest-rates-frequently-asked-questions",
+        "section": "Does the par yield curve assume semiannual interest payments or is it a zero-coupon curve?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

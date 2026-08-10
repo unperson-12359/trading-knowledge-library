@@ -2,7 +2,7 @@
   "$schema": "../schemas/skill-manifest.schema.json",
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 1020,
+  "completed_count": 1040,
   "skills": [
     {
       "$schema": "../../../../schemas/concept-skill.schema.json",
@@ -82635,6 +82635,1601 @@
         "foreign-exchange/forward-points",
         "foreign-exchange/fx-swap",
         "foreign-exchange/fx-forward"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-uncovered-interest-parity",
+      "concept_id": "foreign-exchange/uncovered-interest-parity",
+      "display_name": "Uncovered interest parity",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Uncovered interest parity using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Uncovered interest parity",
+        "UIP",
+        "uncovered interest rate parity",
+        "UIRP",
+        "explain Uncovered interest parity",
+        "apply Uncovered interest parity to a trading question",
+        "common misconception about Uncovered interest parity"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/foreign-exchange/uncovered-interest-parity",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "4b4bdccbdb1de99441fab6af88580fd7b4ec31045eaa1a48f2ea094c431ce7aa"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/interest-rate-parity",
+        "foreign-exchange/covered-interest-parity",
+        "foreign-exchange/currency-carry-trade",
+        "foreign-exchange/forward-discount"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-cross-rate",
+      "concept_id": "foreign-exchange/cross-rate",
+      "display_name": "Cross rate",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Cross rate using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Cross rate",
+        "cross rate",
+        "currency cross",
+        "cross",
+        "explain Cross rate",
+        "apply Cross rate to a trading question",
+        "common misconception about Cross rate"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/foreign-exchange/cross-rate",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "1e01ecf139e5a782abf387347dc9ff0733872a083eb0387fdd8b9e1729e9f7af"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/base-currency",
+        "foreign-exchange/quote-currency",
+        "foreign-exchange/fx-triangular-arbitrage",
+        "foreign-exchange/fx-spot"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-fx-triangular-arbitrage",
+      "concept_id": "foreign-exchange/fx-triangular-arbitrage",
+      "display_name": "FX triangular arbitrage",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply FX triangular arbitrage using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "FX triangular arbitrage",
+        "triangular arbitrage",
+        "cross currency arbitrage",
+        "three-point arbitrage",
+        "explain FX triangular arbitrage",
+        "apply FX triangular arbitrage to a trading question",
+        "common misconception about FX triangular arbitrage"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/foreign-exchange/fx-triangular-arbitrage",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "3974dc6aa279433fc0d566efea9869630bab9c5e8682fc86e22e7fb2516d1973"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/fx-spot",
+        "foreign-exchange/covered-interest-parity"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-dollar-index",
+      "concept_id": "foreign-exchange/dollar-index",
+      "display_name": "Dollar index",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Dollar index using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Dollar index",
+        "U.S. Dollar Index",
+        "USDX",
+        "DXY",
+        "explain Dollar index",
+        "apply Dollar index to a trading question",
+        "common misconception about Dollar index"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/foreign-exchange/dollar-index",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "e0df3ff16e956594a01de33c8e10bff103508bb9818d5a560d04e34a95291125"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/nominal-effective-exchange-rate",
+        "foreign-exchange/real-effective-exchange-rate",
+        "foreign-exchange/base-currency"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-real-effective-exchange-rate",
+      "concept_id": "foreign-exchange/real-effective-exchange-rate",
+      "display_name": "Real effective exchange rate",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Real effective exchange rate using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Real effective exchange rate",
+        "REER",
+        "explain Real effective exchange rate",
+        "apply Real effective exchange rate to a trading question",
+        "common misconception about Real effective exchange rate"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/foreign-exchange/real-effective-exchange-rate",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "6c80572976e2b94bfec3f4b3c9e0189fe4a419dc37e1669ace33b1a192c6fcf4"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/nominal-effective-exchange-rate",
+        "foreign-exchange/dollar-index",
+        "foreign-exchange/fx-spot"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-nominal-effective-exchange-rate",
+      "concept_id": "foreign-exchange/nominal-effective-exchange-rate",
+      "display_name": "Nominal effective exchange rate",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Nominal effective exchange rate using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Nominal effective exchange rate",
+        "NEER",
+        "explain Nominal effective exchange rate",
+        "apply Nominal effective exchange rate to a trading question",
+        "common misconception about Nominal effective exchange rate"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/foreign-exchange/nominal-effective-exchange-rate",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "839069ff7b2f72d205e55a01a6e7c47a37db5d9d6a1bf8f24dd459f28fe4edb5"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/real-effective-exchange-rate",
+        "foreign-exchange/dollar-index"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-value-date",
+      "concept_id": "foreign-exchange/value-date",
+      "display_name": "Value date",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Value date using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Value date",
+        "settlement date (FX context)",
+        "explain Value date",
+        "apply Value date to a trading question",
+        "common misconception about Value date"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/foreign-exchange/value-date",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "642d6106a35f5081365f0068eebb1d332beb49b9233000bc3fc8632c39472b3c"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/fx-spot",
+        "foreign-exchange/tom-next-swap",
+        "foreign-exchange/fx-forward",
+        "foreign-exchange/fx-swap"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-tom-next-swap",
+      "concept_id": "foreign-exchange/tom-next-swap",
+      "display_name": "Tom-next swap",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Tom-next swap using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Tom-next swap",
+        "tom-next",
+        "tomorrow-next",
+        "T/N swap",
+        "explain Tom-next swap",
+        "apply Tom-next swap to a trading question",
+        "common misconception about Tom-next swap"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/foreign-exchange/tom-next-swap",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "d09805ad1b71789c28076add03681955bd10af1b87b12ab1b64d1d1be1352cb6"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/fx-swap",
+        "foreign-exchange/value-date",
+        "foreign-exchange/fx-spot",
+        "foreign-exchange/currency-carry-trade",
+        "foreign-exchange/forward-points"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-fixing",
+      "concept_id": "foreign-exchange/fixing",
+      "display_name": "Fixing",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Fixing using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Fixing",
+        "FX fixing",
+        "fix",
+        "benchmark fixing",
+        "explain Fixing",
+        "apply Fixing to a trading question",
+        "common misconception about Fixing"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/foreign-exchange/fixing",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "ddb90b81a7ce5f07c66a3b64e369ca6d47647809c0f29fe625b78c3d15a3f33d"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/london-4-p-m-fix",
+        "foreign-exchange/fx-spot"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-london-4-p-m-fix",
+      "concept_id": "foreign-exchange/london-4-p-m-fix",
+      "display_name": "London 4 p.m. fix",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply London 4 p.m. fix using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "London 4 p.m. fix",
+        "WM/Reuters 4pm fix",
+        "WMR 4pm fix",
+        "London fix",
+        "explain London 4 p.m. fix",
+        "apply London 4 p.m. fix to a trading question",
+        "common misconception about London 4 p.m. fix"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/foreign-exchange/london-4-p-m-fix",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "bafe365fe47e7b2ac92d0ace16dfbd7d01b4d450c6baf17b421f1203563e7a0c"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/fixing",
+        "foreign-exchange/fx-spot",
+        "foreign-exchange/fx-forward"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-yield-curve",
+      "concept_id": "fixed-income-and-rates/yield-curve",
+      "display_name": "Yield curve",
+      "domain": "Fixed income and rates",
+      "description": "Explain, compare, or apply Yield curve using the library's structured Fixed income and rates reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Yield curve",
+        "term structure of interest rates",
+        "explain Yield curve",
+        "apply Yield curve to a trading question",
+        "common misconception about Yield curve"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/fixed-income-and-rates/yield-curve",
+      "canonical": {
+        "source_path": "concepts/fixed-income-and-rates.json",
+        "sha256": "1e39041b63e560d4b3173f3de22479aeb5de04c0c118cf2a04f3c1f270f41aa0"
+      },
+      "related_concept_ids": [
+        "fixed-income-and-rates/normal-yield-curve",
+        "fixed-income-and-rates/flat-yield-curve",
+        "fixed-income-and-rates/spot-rate-curve",
+        "fixed-income-and-rates/par-yield",
+        "fixed-income-and-rates/yield-spread"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-normal-yield-curve",
+      "concept_id": "fixed-income-and-rates/normal-yield-curve",
+      "display_name": "Normal yield curve",
+      "domain": "Fixed income and rates",
+      "description": "Explain, compare, or apply Normal yield curve using the library's structured Fixed income and rates reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Normal yield curve",
+        "upward-sloping yield curve",
+        "positive yield curve",
+        "explain Normal yield curve",
+        "apply Normal yield curve to a trading question",
+        "common misconception about Normal yield curve"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/fixed-income-and-rates/normal-yield-curve",
+      "canonical": {
+        "source_path": "concepts/fixed-income-and-rates.json",
+        "sha256": "bfd5fcd34e7825438a85953323b40320eaf372275bc2037babe97d53a87f5ac4"
+      },
+      "related_concept_ids": [
+        "fixed-income-and-rates/yield-curve",
+        "fixed-income-and-rates/flat-yield-curve",
+        "fixed-income-and-rates/term-premium",
+        "fixed-income-and-rates/yield-spread"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-inverted-yield-curve",
+      "concept_id": "fixed-income-and-rates/inverted-yield-curve",
+      "display_name": "Inverted yield curve",
+      "domain": "Fixed income and rates",
+      "description": "Explain, compare, or apply Inverted yield curve using the library's structured Fixed income and rates reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Inverted yield curve",
+        "negative yield curve",
+        "explain Inverted yield curve",
+        "apply Inverted yield curve to a trading question",
+        "common misconception about Inverted yield curve"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/fixed-income-and-rates/inverted-yield-curve",
+      "canonical": {
+        "source_path": "concepts/fixed-income-and-rates.json",
+        "sha256": "2b0d6ce7787dc9cef6ab89221c48069210d0f18334e31439c56135b901fa6512"
+      },
+      "related_concept_ids": [
+        "fixed-income-and-rates/yield-curve",
+        "fixed-income-and-rates/normal-yield-curve",
+        "fixed-income-and-rates/flat-yield-curve",
+        "fixed-income-and-rates/yield-spread",
+        "fixed-income-and-rates/policy-rate",
+        "fixed-income-and-rates/term-premium"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-flat-yield-curve",
+      "concept_id": "fixed-income-and-rates/flat-yield-curve",
+      "display_name": "Flat yield curve",
+      "domain": "Fixed income and rates",
+      "description": "Explain, compare, or apply Flat yield curve using the library's structured Fixed income and rates reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Flat yield curve",
+        "explain Flat yield curve",
+        "apply Flat yield curve to a trading question",
+        "common misconception about Flat yield curve"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/fixed-income-and-rates/flat-yield-curve",
+      "canonical": {
+        "source_path": "concepts/fixed-income-and-rates.json",
+        "sha256": "c1493f686ab87f57f213ef64ee34f15d4fb795bc371dcf4ecfb4b45dc44e5422"
+      },
+      "related_concept_ids": [
+        "fixed-income-and-rates/yield-curve",
+        "fixed-income-and-rates/normal-yield-curve",
+        "fixed-income-and-rates/yield-spread"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-spot-rate-curve",
+      "concept_id": "fixed-income-and-rates/spot-rate-curve",
+      "display_name": "Spot rate curve",
+      "domain": "Fixed income and rates",
+      "description": "Explain, compare, or apply Spot rate curve using the library's structured Fixed income and rates reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Spot rate curve",
+        "zero-coupon yield curve",
+        "zero curve",
+        "explain Spot rate curve",
+        "apply Spot rate curve to a trading question",
+        "common misconception about Spot rate curve"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/fixed-income-and-rates/spot-rate-curve",
+      "canonical": {
+        "source_path": "concepts/fixed-income-and-rates.json",
+        "sha256": "8e62cd8d22c6d14d393371f8eb2c0dc3d763ed922cc6e2ffaa00f9b03ec991cc"
+      },
+      "related_concept_ids": [
+        "fixed-income-and-rates/yield-curve",
+        "fixed-income-and-rates/zero-coupon-rate",
+        "fixed-income-and-rates/discount-factor",
+        "fixed-income-and-rates/forward-rate-curve",
+        "fixed-income-and-rates/par-yield"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-forward-rate-curve",
+      "concept_id": "fixed-income-and-rates/forward-rate-curve",
+      "display_name": "Forward rate curve",
+      "domain": "Fixed income and rates",
+      "description": "Explain, compare, or apply Forward rate curve using the library's structured Fixed income and rates reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Forward rate curve",
+        "implied forward curve",
+        "explain Forward rate curve",
+        "apply Forward rate curve to a trading question",
+        "common misconception about Forward rate curve"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/fixed-income-and-rates/forward-rate-curve",
+      "canonical": {
+        "source_path": "concepts/fixed-income-and-rates.json",
+        "sha256": "3ef2dca83bda3ff9686b41ff66a5de482cd570bab29f47fc27c57b613e08df93"
+      },
+      "related_concept_ids": [
+        "fixed-income-and-rates/spot-rate-curve",
+        "fixed-income-and-rates/zero-coupon-rate",
+        "fixed-income-and-rates/discount-factor",
+        "fixed-income-and-rates/yield-curve"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-discount-factor",
+      "concept_id": "fixed-income-and-rates/discount-factor",
+      "display_name": "Discount factor",
+      "domain": "Fixed income and rates",
+      "description": "Explain, compare, or apply Discount factor using the library's structured Fixed income and rates reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Discount factor",
+        "present value factor",
+        "price of a zero-coupon bond",
+        "explain Discount factor",
+        "apply Discount factor to a trading question",
+        "common misconception about Discount factor"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/fixed-income-and-rates/discount-factor",
+      "canonical": {
+        "source_path": "concepts/fixed-income-and-rates.json",
+        "sha256": "f2173c0c354f47630361afe46b399b9d233b40d75928b4c13780e4674e7eab94"
+      },
+      "related_concept_ids": [
+        "fixed-income-and-rates/spot-rate-curve",
+        "fixed-income-and-rates/zero-coupon-rate",
+        "fixed-income-and-rates/forward-rate-curve"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-zero-coupon-rate",
+      "concept_id": "fixed-income-and-rates/zero-coupon-rate",
+      "display_name": "Zero-coupon rate",
+      "domain": "Fixed income and rates",
+      "description": "Explain, compare, or apply Zero-coupon rate using the library's structured Fixed income and rates reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Zero-coupon rate",
+        "spot rate",
+        "zero rate",
+        "explain Zero-coupon rate",
+        "apply Zero-coupon rate to a trading question",
+        "common misconception about Zero-coupon rate"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/fixed-income-and-rates/zero-coupon-rate",
+      "canonical": {
+        "source_path": "concepts/fixed-income-and-rates.json",
+        "sha256": "61d7793a42d397e482bd9fed010f139eb9f9ea54bb87867e8bf01d043bc8665c"
+      },
+      "related_concept_ids": [
+        "fixed-income-and-rates/spot-rate-curve",
+        "fixed-income-and-rates/discount-factor",
+        "fixed-income-and-rates/forward-rate-curve",
+        "fixed-income-and-rates/par-yield"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-par-yield",
+      "concept_id": "fixed-income-and-rates/par-yield",
+      "display_name": "Par yield",
+      "domain": "Fixed income and rates",
+      "description": "Explain, compare, or apply Par yield using the library's structured Fixed income and rates reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Par yield",
+        "par rate",
+        "par coupon rate",
+        "explain Par yield",
+        "apply Par yield to a trading question",
+        "common misconception about Par yield"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/fixed-income-and-rates/par-yield",
+      "canonical": {
+        "source_path": "concepts/fixed-income-and-rates.json",
+        "sha256": "456457716564b19936ea173d548c8ae655b5cb81d90098da8a848a04271e9025"
+      },
+      "related_concept_ids": [
+        "fixed-income-and-rates/yield-curve",
+        "fixed-income-and-rates/spot-rate-curve",
+        "fixed-income-and-rates/zero-coupon-rate",
+        "fixed-income-and-rates/discount-factor"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-yield-spread",
+      "concept_id": "fixed-income-and-rates/yield-spread",
+      "display_name": "Yield spread",
+      "domain": "Fixed income and rates",
+      "description": "Explain, compare, or apply Yield spread using the library's structured Fixed income and rates reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Yield spread",
+        "spread",
+        "yield differential",
+        "explain Yield spread",
+        "apply Yield spread to a trading question",
+        "common misconception about Yield spread"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 52,
+      "package_path": "skills/concepts/fixed-income-and-rates/yield-spread",
+      "canonical": {
+        "source_path": "concepts/fixed-income-and-rates.json",
+        "sha256": "649446de9e0449f887037fbf0c7084391304d7febc5fbb9e654f08ee77e803c7"
+      },
+      "related_concept_ids": [
+        "fixed-income-and-rates/credit-spread",
+        "fixed-income-and-rates/option-adjusted-spread",
+        "fixed-income-and-rates/z-spread",
+        "fixed-income-and-rates/swap-spread",
+        "fixed-income-and-rates/yield-curve",
+        "fixed-income-and-rates/basis-point"
       ]
     }
   ]

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/uncovered-interest-parity",
+  "canonical_sha256": "4b4bdccbdb1de99441fab6af88580fd7b4ec31045eaa1a48f2ea094c431ce7aa",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/uncovered-interest-parity",
+    "name": "Uncovered interest parity",
+    "aliases": [
+      "UIP",
+      "uncovered interest rate parity",
+      "UIRP"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "The hypothesis that the interest rate differential between two currencies equals the expected change in their exchange rate, so that the higher-yielding currency is expected to depreciate just enough to offset its yield advantage for an unhedged investor. Empirically UIP fails: high-interest-rate currencies tend to appreciate rather than depreciate, a puzzle that underlies carry-trade profitability.",
+    "intuition": "UIP says there's no free lunch from chasing higher foreign interest rates — the exchange rate should move to cancel the extra yield. In practice it often doesn't.",
+    "mechanics": "Unlike covered parity, UIP cannot be enforced by arbitrage because the future spot rate is unknown; it is a joint hypothesis about expectations and risk neutrality. Research links its failure to funding-liquidity constraints on carry traders: exchange-rate moves between high- and low-rate currencies are negatively skewed, and controlling for liquidity helps explain the uncovered interest-rate puzzle.",
+    "formula": "E[S_T] / S = (1 + r_q x T) / (1 + r_b x T), equivalently the expected percentage change in the spot rate ~= r_b - r_q over the tenor; S = spot in quote per base currency.",
+    "relationships": [
+      "Interest rate parity",
+      "Covered interest parity",
+      "Currency carry trade",
+      "Forward discount"
+    ],
+    "failure_modes": "UIP fails systematically (the forward premium puzzle): since the 1990s high-rate currencies characteristically appreciated, so unhedged carry positions earned excess returns punctuated by crash episodes when funding liquidity dried up.",
+    "misconceptions": "UIP is not an arbitrage condition that 'must' hold — it is a falsifiable expectations hypothesis, and treating the forward rate as an unbiased forecast of the future spot rate is empirically wrong.",
+    "example": "If Australian rates exceed Japanese rates by 4%, UIP predicts the AUD should depreciate about 4% against the JPY over the year; historically AUD/JPY instead appreciated for long stretches, rewarding carry traders until sharp reversals.",
+    "citations": [
+      {
+        "source": "NBER Working Paper 14473 — Carry Trades and Currency Crashes (Brunnermeier, Nagel, Pedersen)",
+        "url": "https://www.nber.org/papers/w14473",
+        "section": "abstract",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia — Exchange rate",
+        "url": "https://en.wikipedia.org/wiki/Exchange_rate",
+        "section": "Uncovered interest rate parity model",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

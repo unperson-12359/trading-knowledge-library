@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/cross-rate",
+  "canonical_sha256": "1e01ecf139e5a782abf387347dc9ff0733872a083eb0387fdd8b9e1729e9f7af",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/cross-rate",
+    "name": "Cross rate",
+    "aliases": [
+      "cross rate",
+      "currency cross",
+      "cross"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "An exchange rate between two currencies that does not directly involve the home reference currency — in market practice, a pair not involving the US dollar (e.g. EUR/GBP, GBP/JPY). Because most currencies are quoted primarily against the dollar, cross rates are typically derived by multiplying or dividing the two currencies' dollar rates.",
+    "intuition": "A cross rate is the exchange rate between two 'non-anchor' currencies, usually computed through their rates against the dollar.",
+    "mechanics": "The derived (implicit) cross rate is obtained as S(a/b) = S(a/$) x S($/b) using the quoted dollar pairs. Dealers quote liquid crosses directly, but the bid-ask of the implicit cross disciplines market makers: if a directly quoted cross diverges from the implicit value, triangular arbitrage becomes possible. The dollar's vehicle-currency role (on one side of 88% of all FX trades in 2022) is why crosses route through it.",
+    "formula": "S(a/b) = S(a/$) x S($/b); for quotes sharing the same base, divide: EUR/GBP = EUR/USD / GBP/USD.",
+    "relationships": [
+      "Base currency",
+      "Quote currency",
+      "FX triangular arbitrage",
+      "FX spot"
+    ],
+    "failure_modes": "Derived crosses inherit the spreads and stale prices of both dollar legs, so in fast or illiquid markets the implicit cross can be wrong; thin crosses have wide spreads and limited depth compared with dollar pairs.",
+    "misconceptions": "Cross rates are not independent prices: arbitrage keeps them aligned with the constituent dollar pairs, so a 'mispriced cross' is usually just a fleeting inconsistency, not a distinct market view.",
+    "example": "With EUR/USD at 1.0850 and USD/JPY at 150.00, the implicit EUR/JPY cross is 1.0850 x 150.00 = 162.75.",
+    "citations": [
+      {
+        "source": "Wikipedia — Currency pair",
+        "url": "https://en.wikipedia.org/wiki/Currency_pair",
+        "section": "Syntax and quotation (currency crosses)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "BIS — OTC foreign exchange turnover in April 2022 (Triennial Central Bank Survey)",
+        "url": "https://www.bis.org/statistics/rpfx22_fx.htm",
+        "section": "Turnover by currency and currency pairs (US dollar on one side of 88% of trades)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

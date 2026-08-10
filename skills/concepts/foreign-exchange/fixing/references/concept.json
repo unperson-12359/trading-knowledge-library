@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/fixing",
+  "canonical_sha256": "ddb90b81a7ce5f07c66a3b64e369ca6d47647809c0f29fe625b78c3d15a3f33d",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/fixing",
+    "name": "Fixing",
+    "aliases": [
+      "FX fixing",
+      "fix",
+      "benchmark fixing"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "A reference exchange rate determined at a set time each trading day from market transactions and orders around a fixing window, used to value portfolios, settle contracts and execute customer 'fix orders' at a common published price. The most prominent is the London WM/Reuters 4 p.m. fixing in the interbank forex market.",
+    "intuition": "A fixing is the market's agreed 'official' exchange rate for a given moment each day, so that funds and contracts everywhere can be valued on the same number.",
+    "mechanics": "A benchmark administrator computes the rate from trades and order-book data captured during a short window around the fixing time (the WM/Reuters 4 p.m. window was widened from one to five minutes in the 2015 reform). Banks accept customer orders guaranteed to execute at the fix price, which concentrates volume into the window; investigations found banks had colluded around the window, leading to penalties and the 2015 reform of the London fixing.",
+    "formula": "",
+    "relationships": [
+      "London 4 p.m. fix",
+      "FX spot"
+    ],
+    "failure_modes": "Fixings create manipulation incentives: dealers holding guaranteed fix orders profit by moving the window price, and the 2013-15 FX scandal showed collusive behavior around the London fix. Post-reform, price anomalies around the window and passive execution strategies still generate predictable price patterns.",
+    "misconceptions": "The fix is not a transaction price anyone can always trade at — it is a computed reference from a short window, and large fix orders are typically executed by dealers over time rather than all at the fix print.",
+    "example": "An index fund rebalancing at month-end instructs its bank to execute a large currency conversion 'at the 4 p.m. fix'; the bank's execution and hedging flows concentrate into the fixing window.",
+    "citations": [
+      {
+        "source": "NBER Working Paper 23327 — Did the Reform Fix the London Fix Problem? (Ito and Yamada)",
+        "url": "https://www.nber.org/papers/w23327",
+        "section": "abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/flat-yield-curve",
+  "canonical_sha256": "c1493f686ab87f57f213ef64ee34f15d4fb795bc371dcf4ecfb4b45dc44e5422",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/flat-yield-curve",
+    "name": "Flat yield curve",
+    "aliases": [],
+    "domain": "Fixed income and rates",
+    "definition": "A yield curve configuration in which yields are approximately equal across maturities, so the term spread is near zero. It typically appears as a transitional state between an upward-sloping (normal) curve and an inverted curve, or vice versa.",
+    "intuition": "The market is charging roughly the same rate to borrow for one year as for ten years — a sign that expectations about the future are unusually uncertain or in transition.",
+    "mechanics": "Identified when the spread between long- and short-maturity constant-maturity yields (e.g. 10-year minus 2-year Treasury) is close to zero; flattening occurs when short rates rise toward long rates (bear flattener) or long rates fall toward short rates (bull flattener).",
+    "formula": "Flat when |y(long) − y(short)| ≈ 0.",
+    "relationships": [
+      "Yield curve",
+      "Normal yield curve",
+      "Inverted yield curve",
+      "Yield spread"
+    ],
+    "failure_modes": "A flat curve carries little standalone signal: it can precede steepening or inversion, and 'flatness' has no precise threshold, so classification is judgment-dependent.",
+    "misconceptions": "A flat curve is not a neutral or 'no information' state in a predictive sense, and it is not a distinct market regime with proven consequences — it is simply a descriptive shape.",
+    "example": "If the 2-year Treasury yields 4.20% and the 10-year yields 4.25%, the 2s10s segment is essentially flat at 5 basis points.",
+    "citations": [
+      {
+        "source": "U.S. Department of the Treasury, Interest Rates — Frequently Asked Questions",
+        "url": "https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics/interest-rates-frequently-asked-questions",
+        "section": "Par yield curve and CMT rates discussion",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "FRED, 10-Year Treasury Constant Maturity Minus 2-Year Treasury Constant Maturity [T10Y2Y]",
+        "url": "https://fred.stlouisfed.org/series/T10Y2Y",
+        "section": "Notes",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

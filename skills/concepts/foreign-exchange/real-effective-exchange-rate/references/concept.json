@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/real-effective-exchange-rate",
+  "canonical_sha256": "6c80572976e2b94bfec3f4b3c9e0189fe4a419dc37e1669ace33b1a192c6fcf4",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/real-effective-exchange-rate",
+    "name": "Real effective exchange rate",
+    "aliases": [
+      "REER"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "A trade-weighted index of a currency's value against a basket of partner currencies, adjusted for relative price levels — in the BIS methodology, derived by adjusting the nominal effective exchange rate by relative consumer prices. An increase in the REER indicates a real appreciation of the currency, interpreted as a loss of price competitiveness.",
+    "intuition": "The REER tells you whether your currency is really getting more expensive abroad, after accounting for inflation differences — not just what the nominal rate says.",
+    "mechanics": "The BIS computes NEER as a geometric trade-weighted average of bilateral rates and then adjusts by relative consumer price indices to obtain the REER. Weights derive from manufacturing trade flows, double-weighted to capture both direct bilateral trade and third-market competition, and are time-varying on a three-year basis; BIS broad indices cover 64 economies. REER changes thus reflect both nominal exchange-rate moves and the inflation differential against trading partners.",
+    "formula": "REER = NEER adjusted by relative consumer prices: REER_t ~ Product over i of [S_i,t x (P_t / P_i,t*)]^(w_i), where S_i are bilateral rates, w_i trade weights (sum to 1), P home and P_i* partner consumer price indices.",
+    "relationships": [
+      "Nominal effective exchange rate",
+      "Dollar index",
+      "FX spot"
+    ],
+    "failure_modes": "REER indices are sensitive to the choice of price deflator (CPI vs unit labour costs vs GDP deflator), weighting scheme and base period, so different providers' REERs can give different competitiveness readings; they are indices relative to a base year and carry no absolute 'fair value'.",
+    "misconceptions": "A rising REER does not by itself prove overvaluation or predict depreciation — it is a competitiveness statistic relative to a chosen base period, not an equilibrium benchmark.",
+    "example": "If a country's nominal effective rate is flat but its inflation runs well above its trading partners', its BIS REER appreciates, signalling eroding export price competitiveness.",
+    "citations": [
+      {
+        "source": "BIS — Effective exchange rate indices (about/methodology)",
+        "url": "https://www.bis.org/statistics/eer.htm",
+        "section": "About (NEER/REER definitions) and Methodology",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

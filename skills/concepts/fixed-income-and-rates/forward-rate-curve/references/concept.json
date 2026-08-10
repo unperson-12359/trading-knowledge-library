@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/forward-rate-curve",
+  "canonical_sha256": "3ef2dca83bda3ff9686b41ff66a5de482cd570bab29f47fc27c57b613e08df93",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/forward-rate-curve",
+    "name": "Forward rate curve",
+    "aliases": [
+      "implied forward curve"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "The curve of interest rates implied today for borrowing or lending over future periods, derived from the spot (zero-coupon) curve so that investing to a long horizon equals rolling over at the shorter rate plus the forward rate. The U.S. Treasury's curve construction bootstraps instantaneous forward rates at input maturities as an intermediate step.",
+    "intuition": "If you know the 1-year rate and the 2-year rate, the market is implicitly quoting a rate for year two alone — the forward curve is the set of all such implied future-period rates.",
+    "mechanics": "Forward rates are extracted from spot rates by no-arbitrage: chaining the short spot rate with the forward rate over the remaining period must reproduce the long spot rate. Treasury derives instantaneous forward rates so that input securities are sequentially priced without error.",
+    "formula": "(1 + z_T)^T = (1 + z_t)^t × (1 + f(t,T))^(T−t), so f(t,T) = [ (1 + z_T)^T / (1 + z_t)^t ]^(1/(T−t)) − 1, where z_t, z_T are spot rates and f(t,T) is the forward rate from t to T.",
+    "relationships": [
+      "Spot rate curve",
+      "Zero-coupon rate",
+      "Discount factor",
+      "Yield curve"
+    ],
+    "failure_modes": "Forward rates embed term and risk premia, so they are biased predictors of realized future rates; empirically the expectations hypothesis performs poorly, especially at longer horizons.",
+    "misconceptions": "An implied forward rate is not a market forecast agreed by participants; it is an arithmetic consequence of today's spot curve plus premia, not a prediction.",
+    "example": "If the 1-year spot rate is 4.0% and the 2-year spot rate is 4.5%, the implied 1-year forward rate one year ahead is (1.045^2 / 1.04) − 1 ≈ 5.0%.",
+    "citations": [
+      {
+        "source": "U.S. Department of the Treasury, Treasury Yield Curve Methodology",
+        "url": "https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics/treasury-yield-curve-methodology",
+        "section": "Bootstrapping of instantaneous forward rates",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

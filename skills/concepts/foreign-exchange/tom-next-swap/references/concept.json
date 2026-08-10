@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/tom-next-swap",
+  "canonical_sha256": "d09805ad1b71789c28076add03681955bd10af1b87b12ab1b64d1d1be1352cb6",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/tom-next-swap",
+    "name": "Tom-next swap",
+    "aliases": [
+      "tom-next",
+      "tomorrow-next",
+      "T/N swap"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "A short-dated FX swap used to roll a currency position forward by one day: the holder buys (or sells) a foreign currency amount settling tomorrow and simultaneously does the opposite transaction settling the day after (the spot value date). Institutions use tom-next swaps at the end of each day to close out and re-institute foreign balances, thereby collecting or paying the overnight interest differential (cost of carry) without holding an open FX position.",
+    "intuition": "Tom-next is the daily 'roll' that keeps a spot FX position from ever settling, in exchange for paying or receiving one day of the interest-rate gap.",
+    "mechanics": "The near leg settles on the tomorrow date (T+1) and the far leg on the spot date (T+2), shifting the position's value date by one day. The price, in swap points, reflects the one-day interest rate differential between the two currencies (with extra days priced over weekends and holidays); retail platforms implement the same economics as the daily rollover or swap charge on open positions.",
+    "formula": "Tom-next swap points ~ S x (r_q - r_b) x (days / 360 or 365 by convention), where S = spot rate and r_q, r_b = quote- and base-currency overnight rates.",
+    "relationships": [
+      "FX swap",
+      "Value date",
+      "FX spot",
+      "Currency carry trade",
+      "Forward points"
+    ],
+    "failure_modes": "Tom-next pricing turns on overnight rates and day counts, so costs jump over weekends (three days) and quarter/ year-ends when funding rates spike; traders ignoring the roll can see carry economics dominate returns on long-held leveraged positions.",
+    "misconceptions": "A tom-next roll is not a new directional trade and not a fee set arbitrarily by the broker — it is the market-priced interest differential for deferring settlement by one day.",
+    "example": "A desk long EUR/USD over value date Tuesday executes a tom-next swap: it sells EUR settling Wednesday and buys it back settling Thursday, paying or earning one day of the EUR-USD rate differential.",
+    "citations": [
+      {
+        "source": "Wikipedia — Foreign exchange swap",
+        "url": "https://en.wikipedia.org/wiki/Foreign_exchange_swap",
+        "section": "Uses (tom-next rolls and cost of carry) and Pricing",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

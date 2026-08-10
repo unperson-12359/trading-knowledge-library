@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/yield-curve",
+  "canonical_sha256": "1e39041b63e560d4b3173f3de22479aeb5de04c0c118cf2a04f3c1f270f41aa0",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/yield-curve",
+    "name": "Yield curve",
+    "aliases": [
+      "term structure of interest rates"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "A curve that plots the yields of bonds of the same credit quality (typically government securities) against their times to maturity at a given point in time. The U.S. Treasury's official version is a par yield curve relating the par yield on a Treasury security to its time to maturity, derived daily from market price quotations.",
+    "intuition": "It is a snapshot of what it costs to borrow money for different lengths of time, showing how the market prices time, risk, and expectations about future rates.",
+    "mechanics": "Market prices of on-the-run securities are converted to yields, and a curve-fitting method (Treasury uses bootstrapping of forward rates plus monotone convex interpolation) produces a continuous curve from which constant-maturity yields are read.",
+    "formula": "",
+    "relationships": [
+      "Normal yield curve",
+      "Inverted yield curve",
+      "Flat yield curve",
+      "Spot rate curve",
+      "Par yield",
+      "Yield spread"
+    ],
+    "failure_modes": "Curve shapes mix expected future rates, term premia, and supply/demand effects, so the curve alone cannot identify which driver dominates. Fitted curves are also model-dependent: different fitting methods produce slightly different yields at the same maturities.",
+    "misconceptions": "A common mistake is treating the yield curve as a forecast of future rates; Treasury itself states that the curve indicates what rates were and are, not what they will be.",
+    "example": "On a day when the 2-year Treasury yields 4.0% and the 10-year yields 4.3%, the 2s10s segment of the curve is upward sloping by 30 basis points.",
+    "citations": [
+      {
+        "source": "U.S. Department of the Treasury, Interest Rate Statistics (Daily Treasury Par Yield Curve Rates)",
+        "url": "https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics",
+        "section": "Daily Treasury PAR Yield Curve Rates",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

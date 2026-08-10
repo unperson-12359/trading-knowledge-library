@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/value-date",
+  "canonical_sha256": "642d6106a35f5081365f0068eebb1d332beb49b9233000bc3fc8632c39472b3c",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/value-date",
+    "name": "Value date",
+    "aliases": [
+      "settlement date (FX context)"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "The date on which the counterparties to a foreign exchange trade actually exchange the funds, i.e. when the traded amounts become effective (delivered). For a spot FX transaction the value date is normally two business days after the trade is agreed (T+2); for forwards and swaps it is the agreed future delivery date of each leg.",
+    "intuition": "The trade date is when you agree the deal; the value date is when the money actually changes hands.",
+    "mechanics": "The value date determines when interest accrues and when currency deliveries occur; it rolls forward over weekends and currency holidays under modified-following conventions. Interest rate differentials between the two currencies are earned or paid for each day a position's value date is shifted, which is what tom-next and other short-dated swaps price. Forward rates are derived by adjusting the spot rate for the interest carry between the spot value date and the forward value date.",
+    "formula": "",
+    "relationships": [
+      "FX spot",
+      "Tom-next swap",
+      "FX forward",
+      "FX swap"
+    ],
+    "failure_modes": "Holidays in either currency's center push the value date and change the number of interest days, so quotes around month-ends, year-ends and holidays embed extra carry; assuming a fixed 'T+2 = 2 days of interest' misprices rollovers (e.g. Wednesday spot rolls three days).",
+    "misconceptions": "The value date is not the trade date and not necessarily two calendar days later — it is counted in good business days for both currency centers.",
+    "example": "A EUR/USD spot trade agreed on Thursday 3 August has a T+2 value date of Monday 7 August (skipping the weekend), so the interest carry covers three calendar days.",
+    "citations": [
+      {
+        "source": "Wikipedia — Value date",
+        "url": "https://en.wikipedia.org/wiki/Value_date",
+        "section": "lead (spot FX settles normally two days after the transaction is agreed)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

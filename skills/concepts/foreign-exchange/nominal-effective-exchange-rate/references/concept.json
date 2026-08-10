@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/nominal-effective-exchange-rate",
+  "canonical_sha256": "839069ff7b2f72d205e55a01a6e7c47a37db5d9d6a1bf8f24dd459f28fe4edb5",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/nominal-effective-exchange-rate",
+    "name": "Nominal effective exchange rate",
+    "aliases": [
+      "NEER"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "A trade-weighted index of a currency's nominal value against a basket of trading-partner currencies — in the BIS methodology, calculated as a geometric trade-weighted average of bilateral exchange rates. An increase in the NEER indicates a nominal appreciation of the currency; it is the building block from which the real effective exchange rate is derived by adjusting for relative prices.",
+    "intuition": "The NEER collapses a currency's many bilateral exchange rates into one number weighted by how much you trade with each partner.",
+    "mechanics": "Bilateral rates are combined as a weighted geometric mean using weights derived from manufacturing trade flows, double-weighted to capture direct bilateral trade and third-market competition; weights are time-varying on a three-year basis. BIS broad NEER indices cover 64 economies (narrow indices 26) and use published US dollar exchange rates as inputs where possible.",
+    "formula": "NEER_t = Product over i of S_i,t^(w_i), where S_i,t is the bilateral exchange-rate index against partner i and w_i are trade weights summing to 1 (geometric trade-weighted average).",
+    "relationships": [
+      "Real effective exchange rate",
+      "Dollar index",
+      "Cross rate"
+    ],
+    "failure_modes": "NEER ignores inflation differentials, so a country with high inflation can show a stable NEER while losing real competitiveness; results also depend on the weighting scheme and base period, limiting cross-provider comparability.",
+    "misconceptions": "The NEER is not a forecast or an equilibrium measure — it is a descriptive weighted average, and its level is meaningful only relative to the index base year.",
+    "example": "If the euro appreciates against the dollar and yen but weakens against sterling, the BIS euro NEER moves by the trade-weighted net of those changes rather than by any single pair.",
+    "citations": [
+      {
+        "source": "BIS — Effective exchange rate indices (about/methodology)",
+        "url": "https://www.bis.org/statistics/eer.htm",
+        "section": "About (NEER/REER definitions) and Methodology",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
