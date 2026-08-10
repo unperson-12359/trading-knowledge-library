@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/value-at-risk",
+  "canonical_sha256": "2b4db342bebf2143ffce84ae9b01c98af84631fb86b7101810721cda553599f3",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/value-at-risk",
+    "name": "Value at risk",
+    "aliases": [
+      "VaR"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A quantile-based measure of portfolio loss: for a given confidence level and horizon, the loss level that will not be exceeded with that probability under stated assumptions — a one-day 95% VaR of $1M means a 5% chance of losing more than $1M in a day. Formalized at J.P. Morgan in the early 1990s and embedded in bank capital regulation by the 1996 Basel market-risk amendment.",
+    "intuition": "It compresses the whole loss distribution into one sentence: on 19 days out of 20, we expect to lose no more than this.",
+    "mechanics": "Estimated parametrically (variance-covariance), by historical simulation, or by Monte Carlo, over a fixed horizon (one day, ten days) and tail probability (1%, 5%). VaR systems are validated by backtesting: the long-run frequency of breaches — losses beyond VaR — should match the specified tail probability.",
+    "formula": "VaR_alpha(X) = -inf{ x : F_X(x) > alpha } = F_Y^{-1}(1 - alpha), where X is P/L with distribution F_X and Y = -X is the loss; i.e. the (1 - alpha) quantile of the loss distribution.",
+    "relationships": [
+      "Expected shortfall",
+      "Tail risk",
+      "Market risk",
+      "Stress testing",
+      "Volatility",
+      "Model risk"
+    ],
+    "failure_modes": "VaR says nothing about severity beyond the quantile — a 99% VaR is silent on whether the 1% day costs 1.1x or 50x VaR — and it is not subadditive, so a combined portfolio's VaR can exceed the sum of its parts. Normality assumptions, stale windows, and illiquid marks understate it in exactly the crises it is meant to capture.",
+    "misconceptions": "VaR is not the maximum you can lose: it marks the boundary of normal days, and institutions can and do lose multiples of it. A small VaR does not mean small risk when the tail beyond it is fat.",
+    "example": "A one-day 95% VaR of $1M means a loss of $1M or more is expected about one day in twenty; it is silent on whether that bad day loses $1.1M or $10M, which is what expected shortfall adds.",
+    "citations": [
+      {
+        "source": "Wikipedia: Value at risk",
+        "url": "https://en.wikipedia.org/wiki/Value_at_risk",
+        "section": "Definition; Mathematical definition; Criticism",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "BCBS: Amendment to the Capital Accord to incorporate market risks",
+        "url": "https://www.bis.org/publ/bcbs24.htm",
+        "section": "Overview (internal models approach for market risk)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

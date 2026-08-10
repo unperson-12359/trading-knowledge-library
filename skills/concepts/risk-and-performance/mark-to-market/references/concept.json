@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/mark-to-market",
+  "canonical_sha256": "25bf869bf0f151ffad3d7590f4eb37857adc8fa39f5d0519bc3dbc52abe57632",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/mark-to-market",
+    "name": "Mark-to-market",
+    "aliases": [
+      "MTM",
+      "fair value accounting",
+      "M2M"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The practice of valuing positions and accounts at current market prices (fair value) rather than historical cost, recognizing gains and losses as prices change; in futures markets it is performed daily or more often and drives variation margin flows.",
+    "intuition": "Your account reflects what positions are worth now, not what you paid: profits and losses become real every day, not just when you sell.",
+    "mechanics": "At each settlement the clearinghouse reprices positions to the current settlement price and credits or debits the change; accounts whose balance falls below maintenance margin must be topped up. In accounting, fair-value frameworks (FAS 157 / ASC 820, IFRS 13) formalize exit-price valuation with a hierarchy of input reliability.",
+    "formula": "Daily P/L credited = (settlement_t - settlement_{t-1}) * multiplier * contracts; account equity_t = equity_{t-1} + daily P/L.",
+    "relationships": [
+      "Variation margin",
+      "Margin call",
+      "Liquidation price",
+      "Equity curve",
+      "Model risk"
+    ],
+    "failure_modes": "For illiquid or model-priced instruments the 'market' mark is really a model mark (mark-to-model), which can flatter risk metrics and collapse on revaluation; in crises, marking to distressed fire-sale prices forces write-downs and margin calls that feed the spiral — the core of the 2008 fair-value debate.",
+    "misconceptions": "Mark-to-market does not create losses — it reveals them on schedule rather than at sale — and marking an illiquid asset 'to market' can embed significant estimation discretion despite the name.",
+    "example": "A trader long a contract marked up 10 points at settlement sees the gain credited in cash that day; a 10-point mark-down the next day is debited, and if the balance then breaches maintenance margin, a margin call follows.",
+    "citations": [
+      {
+        "source": "Wikipedia: Mark-to-market accounting",
+        "url": "https://en.wikipedia.org/wiki/Mark-to-market_accounting",
+        "section": "History and development; Marking-to-market a derivatives position",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

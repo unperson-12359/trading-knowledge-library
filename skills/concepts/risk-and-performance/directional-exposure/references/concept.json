@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/directional-exposure",
+  "canonical_sha256": "936f84f6dfb0e2abc18afae0cf2ceca1eb8a0a2f9a5fd2e8c36c1541ea454859",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/directional-exposure",
+    "name": "Directional exposure",
+    "aliases": [
+      "market direction exposure",
+      "delta exposure (book level)"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The portion of a portfolio's exposure that profits or loses with the direction of the underlying market — the signed, unhedged sensitivity to price moves, as distinct from offsetting relative-value exposure.",
+    "intuition": "It answers 'which way does this book need the market to go?': the residual bet left after hedges and offsets are accounted for.",
+    "mechanics": "Estimated as net exposure or, more refined, beta-adjusted net exposure: signed position values divided by capital, weighting each position by its beta or factor sensitivity so that a high-beta long and a low-beta short are not treated as offsetting one-for-one.",
+    "formula": "Directional (beta-adjusted) exposure = sum_i ( w_i * beta_i ), where w_i is the signed position weight and beta_i its sensitivity to the reference market; the simple form is net exposure = (longs - shorts) / NAV.",
+    "relationships": [
+      "Net exposure",
+      "Gross exposure",
+      "Market risk",
+      "Basis risk",
+      "Effective leverage"
+    ],
+    "failure_modes": "Beta-adjusted versions inherit estimation error in betas, which are unstable and regime-dependent, while simple net-exposure versions miss factor tilts entirely. In dislocations, correlations converge and previously 'nondirectional' books reveal hidden directionality.",
+    "misconceptions": "Directional exposure is not the same as position count or gross size: a large two-sided book can carry little directional risk, while a modest unhedged position can be entirely directional.",
+    "example": "Long $1M of a broad index portfolio and short $200k of a large constituent: the short trims the book's directional (net) exposure by $200k against the index.",
+    "citations": [
+      {
+        "source": "Investopedia: Net Exposure",
+        "url": "https://www.investopedia.com/terms/n/net-exposure.asp",
+        "section": "How Net Exposure Influences Hedge Fund Strategies",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

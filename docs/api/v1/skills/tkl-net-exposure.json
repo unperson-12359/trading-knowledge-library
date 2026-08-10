@@ -1,0 +1,80 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-net-exposure",
+  "concept_id": "risk-and-performance/net-exposure",
+  "display_name": "Net exposure",
+  "domain": "Risk and performance",
+  "description": "Explain, compare, or apply Net exposure using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Net exposure",
+    "net market exposure",
+    "net long/short exposure",
+    "explain Net exposure",
+    "apply Net exposure to a trading question",
+    "common misconception about Net exposure"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 27,
+  "package_path": "skills/concepts/risk-and-performance/net-exposure",
+  "canonical": {
+    "source_path": "concepts/risk-and-performance.json",
+    "sha256": "350c3ab208759299aea9ec1ec3b4e1bf4772e7f46650c210053446582836ba1e"
+  },
+  "related_concept_ids": [
+    "risk-and-performance/gross-exposure",
+    "risk-and-performance/directional-exposure",
+    "risk-and-performance/effective-leverage",
+    "portfolio-management/beta"
+  ]
+}

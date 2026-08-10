@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/gross-exposure",
+  "canonical_sha256": "512a8e556898c845a80a9d1bb856a8b85f20c52380a800273ea0372ada50c972",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/gross-exposure",
+    "name": "Gross exposure",
+    "aliases": [
+      "gross leverage (usage)",
+      "total exposure"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The total absolute value of a portfolio's long and short positions, conventionally expressed as a percentage of capital: long exposure plus short exposure, without netting. Values above 100% indicate the use of leverage.",
+    "intuition": "It measures how much exposure the fund is carrying in total — the gross weight on the scale, regardless of how the bets offset each other.",
+    "mechanics": "Sum the absolute market values of all long and short positions and divide by net asset value. Gross exposure is the usual base for management-fee calculation and the direct gauge of how much capital is at work and how levered the book is.",
+    "formula": "Gross exposure = (|long positions| + |short positions|) / net asset value * 100%.",
+    "relationships": [
+      "Net exposure",
+      "Effective leverage",
+      "Directional exposure",
+      "Leverage",
+      "Position sizing"
+    ],
+    "failure_modes": "Gross exposure says nothing about direction or hedging quality: a 250% gross book may be tightly hedged or one basis trade from disaster. It also treats all positions alike, ignoring their individual volatilities and correlations.",
+    "misconceptions": "Low net exposure does not mean low risk if gross exposure is high — a 0% net, 300% gross fund can lose heavily when longs and shorts move adversely at once — and gross above 100% by definition means leverage is in use.",
+    "example": "A fund with $200M capital holding $350M long and $150M short has gross exposure of $500M, or 250% of capital.",
+    "citations": [
+      {
+        "source": "Investopedia: Gross Exposure",
+        "url": "https://www.investopedia.com/terms/g/gross-exposure.asp",
+        "section": "What is Gross Exposure; Gross vs. Net Exposure",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

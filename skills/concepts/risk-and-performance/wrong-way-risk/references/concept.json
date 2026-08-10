@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/wrong-way-risk",
+  "canonical_sha256": "4b0f713d132e5031b3a91f2c0a3985460524dc88171ea5ccf08d446a1f1bd38d",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/wrong-way-risk",
+    "name": "Wrong-way risk",
+    "aliases": [
+      "WWR",
+      "adverse correlation risk"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The risk that exposure to a counterparty is adversely correlated with that counterparty's credit quality — exposure grows precisely as the counterparty's probability of default rises. It is divided into specific wrong-way risk (a direct link through the nature of the transactions, e.g. collateral issued by the counterparty itself) and general wrong-way risk (correlation through broad market factors).",
+    "intuition": "The worst kind of counterparty risk: the bigger your claim on them, the less likely they are to be able to pay it.",
+    "mechanics": "It arises when the trade's driver also drives the counterparty's credit — a producer selling its own commodity forward to a bank, or protection bought from a bank correlated with the reference entity. CVA and exposure models that assume independence between exposure and default probability systematically understate expected loss; Basel/CRR frameworks require identification, monitoring, and capital treatment of specific WWR.",
+    "formula": "Conceptual: expected loss = E[EE * PD * LGD], which exceeds E[EE] * E[PD] * LGD when exposure (EE) and default probability (PD) are positively dependent.",
+    "relationships": [
+      "Counterparty risk",
+      "Concentration risk",
+      "Settlement risk",
+      "Tail risk"
+    ],
+    "failure_modes": "WWR hides in structures that look collateralized or hedged: the collateral's value falls with the counterparty, so the protection evaporates in exactly the default state it was meant for. The dependence is hardest to measure in the tail where it bites, and general WWR emerges from macro correlations that no single-trade review catches.",
+    "misconceptions": "Netting and collateral do not cure wrong-way risk when the collateral or exposure driver is linked to the counterparty's credit — the classic error is counting self-referential collateral (a firm's own shares or bonds) at face value.",
+    "example": "A bank lends to an oil producer against oil-linked collateral, or buys protection on it from an oil-correlated bank: when oil collapses, exposure and default probability spike together — the 2014-16 energy downturn made this concrete.",
+    "citations": [
+      {
+        "source": "Natixis: Risk and Pillar III Report (counterparty risk chapter)",
+        "url": "https://natixis.groupebpce.com/wp-content/uploads/2022/08/natixis_risk_report_pillar_iii.pdf",
+        "section": "Counterparty risk (wrong-way risk definitions, specific and general)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

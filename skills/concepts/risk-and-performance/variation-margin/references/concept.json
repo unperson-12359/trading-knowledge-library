@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/variation-margin",
+  "canonical_sha256": "288ecb141022284c1fab4061d12278d78a664ca03a13e2c506dc5971cceabd58",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/variation-margin",
+    "name": "Variation margin",
+    "aliases": [
+      "VM",
+      "daily settlement amount"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The daily (or intraday) cash settlement of gains and losses on a margined derivatives position: as positions are marked to market, losers pay winners through the clearing system so that gains and losses are realized incrementally rather than at expiry.",
+    "intuition": "Instead of letting P/L accumulate as an IOU until the end, the clearinghouse settles up every day: yesterday's loss is today's cash payment.",
+    "mechanics": "At each settlement the change in the position's mark-to-market value is credited or debited to the margin account; if the balance falls below maintenance margin, the holder must restore it to the initial margin level (a margin call). This daily cash exchange is what keeps counterparty exposure near zero on cleared futures markets.",
+    "formula": "Variation margin_t = (settlement price_t - settlement price_{t-1}) * contract multiplier * number of contracts, credited to winners and debited from losers.",
+    "relationships": [
+      "Mark-to-market",
+      "Margin call",
+      "Maintenance margin",
+      "Initial margin",
+      "Settlement risk"
+    ],
+    "failure_modes": "Variation margin demands intraday liquidity: even a hedged or ultimately profitable position can force ruinous cash calls during violent moves (the 2022 LME nickel episode is the canonical case). Procyclical variation-margin flows can force fire sales that deepen the move itself.",
+    "misconceptions": "Variation margin is not an extra cost or fee — it is the settlement of accrued P/L — and it differs from initial margin, which is collateral posted against future moves, not payment for past ones.",
+    "example": "Long one futures contract with a $50 multiplier: an 8-point rise in the settlement price credits $400 that day; a 10-point fall the next day debits $500 from the margin account.",
+    "citations": [
+      {
+        "source": "Wikipedia: Mark-to-market accounting",
+        "url": "https://en.wikipedia.org/wiki/Mark-to-market_accounting",
+        "section": "History and development (futures daily marking and margin flows)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

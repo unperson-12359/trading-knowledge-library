@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/gap-risk",
+  "canonical_sha256": "824df9fd2c908da26dc30f5deae36baeef9767ed0d259afbd8cae87d3a4b7696",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/gap-risk",
+    "name": "Gap risk",
+    "aliases": [
+      "jump risk",
+      "overnight gap risk"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The risk that a position's price jumps discontinuously from one trade to the next — typically between sessions, over weekends, or on sudden news — with no opportunity to transact at intermediate prices, so stops and risk limits execute far from their intended levels.",
+    "intuition": "Your stop at $48 doesn't help when the market closes at $50 and opens at $40: the loss is realized at the gap price, not the stop price.",
+    "mechanics": "Gaps form when news or events arrive while markets are closed (earnings, macro releases, geopolitics), concentrating repricing into the next opening print. Exposure is managed by cutting size into known events, hedging with options, or avoiding holding through closures; 24/7 crypto trading reduces session gaps but not jump risk.",
+    "formula": "No canonical formula; measured as P/L impact = (fill price - intended exit price) * size, which can be a multiple of planned per-trade risk (R).",
+    "relationships": [
+      "Event risk",
+      "Tail risk",
+      "Stop-loss level",
+      "Liquidity risk",
+      "R-multiple"
+    ],
+    "failure_modes": "All stop-based risk control degrades exactly in gaps: realized losses exceed planned 1R by large multiples, corrupting R-multiple statistics and breaching daily loss limits in one print. Leveraged positions can gap straight through the liquidation price into negative equity.",
+    "misconceptions": "Gap risk is not eliminated by stop-loss orders — they guarantee execution, not price — nor by diversification within one market that closes at the same time; and the claim that 'gaps always get filled' is folklore, not a rule.",
+    "example": "Buying 100 shares at $50 before an earnings miss that gaps the open to $40 realizes a $1,000 loss — twice the planned risk if the stop was at $45.",
+    "citations": [
+      {
+        "source": "Investopedia: Gap Risk",
+        "url": "https://www.investopedia.com/terms/g/gaprisk.asp",
+        "section": "What Is Gap Risk; Gap Risk in Action",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

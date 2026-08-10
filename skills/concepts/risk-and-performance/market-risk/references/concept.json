@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/market-risk",
+  "canonical_sha256": "4370e0483f48587a7fdbf05f587a6fa7459d34d07acaefa9da6e4fa9cf8b5119",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/market-risk",
+    "name": "Market risk",
+    "aliases": [
+      "price risk"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The risk of losses in on- and off-balance-sheet positions arising from movements in market prices — interest rates, equities, foreign exchange, commodities, credit spreads, and volatilities. It is the risk class for which the Basel market-risk framework (FRTB) sets trading-book capital requirements.",
+    "intuition": "It is the risk that the market itself moves against you: the everyday exposure of any open position to prices, rates, and spreads.",
+    "mechanics": "Measured with sensitivities (delta, vega, basis-point value), VaR, and expected shortfall; capitalized under the Basel standardized or internal-models approaches, which in the revised framework use expected shortfall models, a defined trading-book/banking-book boundary, and separate charges for non-modellable risk factors.",
+    "formula": "Regulatory framing: capital is a function of expected shortfall at the 97.5% level over stressed horizons plus non-modellable risk factor charges; practically, P/L approximates sum_i (sensitivity_i * factor move_i).",
+    "relationships": [
+      "Value at risk",
+      "Expected shortfall",
+      "Volatility",
+      "Directional exposure",
+      "Basis risk",
+      "Tail risk"
+    ],
+    "failure_modes": "Market-risk models assume continuity and measurable distributions; jumps, gaps, and correlation breakdowns violate both. Capital frameworks lag product innovation, and measures calibrated on quiet data underestimate stress-period co-movement.",
+    "misconceptions": "Market risk is not just 'the market going down' for a long-only book: short, hedged, and option books carry market risk in both directions and in second-order quantities (volatility, correlation, basis) that price level alone misses.",
+    "example": "A trading desk holding equity index futures loses in proportion to its delta on a 3% index drop; under the revised Basel framework its internal-models capital is set from expected shortfall at the trading-desk level.",
+    "citations": [
+      {
+        "source": "BCBS: Minimum capital requirements for market risk (revised standard)",
+        "url": "https://www.bis.org/bcbs/publ/d457.htm",
+        "section": "Overview of core features",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

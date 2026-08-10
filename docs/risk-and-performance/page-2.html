@@ -273,6 +273,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="gross-exposure"><h3>Gross exposure <a class="anchor" href="#gross-exposure">#</a></h3>
 <div class="field">The total absolute value of a portfolio&#x27;s long and short positions, conventionally expressed as a percentage of capital: long exposure plus short exposure, without netting. Values above 100% indicate the use of leverage.</div>
+<div class="skill-links"><a href="../skills/tkl-gross-exposure/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It measures how much exposure the fund is carrying in total — the gross weight on the scale, regardless of how the bets offset each other.</div>
 <div class="field"><span class="label">Mechanics:</span> Sum the absolute market values of all long and short positions and divide by net asset value. Gross exposure is the usual base for management-fee calculation and the direct gauge of how much capital is at work and how levered the book is.</div>
 <div class="field"><span class="label">Failure modes:</span> Gross exposure says nothing about direction or hedging quality: a 250% gross book may be tightly hedged or one basis trade from disaster. It also treats all positions alike, ignoring their individual volatilities and correlations.</div>
@@ -285,6 +286,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="net-exposure"><h3>Net exposure <a class="anchor" href="#net-exposure">#</a></h3>
 <div class="field">The difference between a portfolio&#x27;s long and short exposures, expressed as a percentage of capital: long exposure minus short exposure. It measures net directional sensitivity to broad market moves.</div>
+<div class="skill-links"><a href="../skills/tkl-net-exposure/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the portfolio&#x27;s lean: net long books gain when markets rise, net short books gain when they fall, and zero net is directionally market-neutral.</div>
 <div class="field"><span class="label">Mechanics:</span> Subtract total short market value from total long market value and divide by net asset value. Managers adjust net exposure with their outlook; it is the first-order determinant of how the fund responds to a market-wide move, though it hides leverage, which gross exposure reveals.</div>
 <div class="field"><span class="label">Failure modes:</span> Net exposure assumes longs and shorts respond to &#x27;the market&#x27; symmetrically; when they decouple — crowded shorts squeezing while longs fall — a low-net book can still bleed heavily. It ignores factor, sector, and beta mismatches between the legs.</div>
@@ -297,6 +299,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="directional-exposure"><h3>Directional exposure <a class="anchor" href="#directional-exposure">#</a></h3>
 <div class="field">The portion of a portfolio&#x27;s exposure that profits or loses with the direction of the underlying market — the signed, unhedged sensitivity to price moves, as distinct from offsetting relative-value exposure.</div>
+<div class="skill-links"><a href="../skills/tkl-directional-exposure/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It answers &#x27;which way does this book need the market to go?&#x27;: the residual bet left after hedges and offsets are accounted for.</div>
 <div class="field"><span class="label">Mechanics:</span> Estimated as net exposure or, more refined, beta-adjusted net exposure: signed position values divided by capital, weighting each position by its beta or factor sensitivity so that a high-beta long and a low-beta short are not treated as offsetting one-for-one.</div>
 <div class="field"><span class="label">Failure modes:</span> Beta-adjusted versions inherit estimation error in betas, which are unstable and regime-dependent, while simple net-exposure versions miss factor tilts entirely. In dislocations, correlations converge and previously &#x27;nondirectional&#x27; books reveal hidden directionality.</div>
@@ -323,6 +326,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="variation-margin"><h3>Variation margin <a class="anchor" href="#variation-margin">#</a></h3>
 <div class="field">The daily (or intraday) cash settlement of gains and losses on a margined derivatives position: as positions are marked to market, losers pay winners through the clearing system so that gains and losses are realized incrementally rather than at expiry.</div>
+<div class="skill-links"><a href="../skills/tkl-variation-margin/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Instead of letting P/L accumulate as an IOU until the end, the clearinghouse settles up every day: yesterday&#x27;s loss is today&#x27;s cash payment.</div>
 <div class="field"><span class="label">Mechanics:</span> At each settlement the change in the position&#x27;s mark-to-market value is credited or debited to the margin account; if the balance falls below maintenance margin, the holder must restore it to the initial margin level (a margin call). This daily cash exchange is what keeps counterparty exposure near zero on cleared futures markets.</div>
 <div class="field"><span class="label">Failure modes:</span> Variation margin demands intraday liquidity: even a hedged or ultimately profitable position can force ruinous cash calls during violent moves (the 2022 LME nickel episode is the canonical case). Procyclical variation-margin flows can force fire sales that deepen the move itself.</div>
@@ -335,6 +339,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="margin-call"><h3>Margin call <a class="anchor" href="#margin-call">#</a></h3>
 <div class="field">A demand by the broker or clearinghouse to deposit additional funds, or reduce positions, when account equity falls below the maintenance margin requirement, restoring the account to the initial margin level.</div>
+<div class="skill-links"><a href="../skills/tkl-margin-call/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the lender&#x27;s alarm bell: your cushion is gone, so top it up now or positions start getting sold for you.</div>
 <div class="field"><span class="label">Mechanics:</span> Positions are marked to market; when the account balance drops below maintenance margin, the call is issued for the shortfall back up to initial margin. If the call is not met, the broker may reduce or liquidate positions unilaterally to bring the account back into compliance.</div>
 <div class="field"><span class="label">Failure modes:</span> In gap moves the account can jump straight past the margin-call stage to negative equity, leaving the client owing the broker; calls cluster in selloffs, forcing synchronized deleveraging that worsens the move (a margin spiral).</div>
@@ -375,6 +380,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="deleveraging"><h3>Deleveraging <a class="anchor" href="#deleveraging">#</a></h3>
 <div class="field">The reduction of leverage — paying down debt or shrinking positions relative to equity — by a trader, firm, or, in aggregate, an economy; at the portfolio level it means cutting gross exposure to lower the amplification of gains and losses.</div>
+<div class="skill-links"><a href="../skills/tkl-deleveraging/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Leverage multiplies both ways; deleveraging is deliberately shrinking the multiplier, usually after losses, in order to survive.</div>
 <div class="field"><span class="label">Mechanics:</span> Raise cash by selling assets or reducing derivatives notionals and use it to repay borrowing or release margin. Forced deleveraging after drawdowns or margin hikes is self-reinforcing across participants: everyone selling into falling markets pushes prices lower, triggering further deleveraging in loss and margin spirals.</div>
 <div class="field"><span class="label">Failure modes:</span> Synchronized deleveraging is a systemic amplifier: asset sales depress prices, which erodes equity, which forces more sales — the dynamic formalized in liquidity-spiral models. Individually, deleveraging locks in losses and forfeits the recovery.</div>

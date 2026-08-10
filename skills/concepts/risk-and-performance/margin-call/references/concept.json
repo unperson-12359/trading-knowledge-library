@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/margin-call",
+  "canonical_sha256": "df82ec409df73ee989fbe80a479ec5b28775b06a3b697bd408301cbda4671a35",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/margin-call",
+    "name": "Margin call",
+    "aliases": [
+      "margin demand",
+      "maintenance call"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A demand by the broker or clearinghouse to deposit additional funds, or reduce positions, when account equity falls below the maintenance margin requirement, restoring the account to the initial margin level.",
+    "intuition": "It is the lender's alarm bell: your cushion is gone, so top it up now or positions start getting sold for you.",
+    "mechanics": "Positions are marked to market; when the account balance drops below maintenance margin, the call is issued for the shortfall back up to initial margin. If the call is not met, the broker may reduce or liquidate positions unilaterally to bring the account back into compliance.",
+    "formula": "Call amount = initial margin requirement - current account equity, issued when equity < maintenance margin.",
+    "relationships": [
+      "Maintenance margin",
+      "Initial margin",
+      "Variation margin",
+      "Forced liquidation",
+      "Leverage",
+      "Mark-to-market"
+    ],
+    "failure_modes": "In gap moves the account can jump straight past the margin-call stage to negative equity, leaving the client owing the broker; calls cluster in selloffs, forcing synchronized deleveraging that worsens the move (a margin spiral).",
+    "misconceptions": "Meeting a margin call does not recover the loss that triggered it — it merely restores collateral — and a margin call is not a suggestion: failing it hands the broker the right to liquidate without consent.",
+    "example": "With initial margin $8,000 and maintenance margin $6,500, an account falling to $4,200 triggers a call to deposit $3,800 back to the initial level or face liquidation (CME's worked example).",
+    "citations": [
+      {
+        "source": "CME Group: Understanding Margin (Introduction to Futures)",
+        "url": "https://www.cmegroup.com/education/courses/introduction-to-futures/margin-know-what-is-needed.html",
+        "section": "Types of Futures Margin",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

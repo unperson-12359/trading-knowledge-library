@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/model-risk",
+  "canonical_sha256": "927f4bb4c890ed3bb875a4f8297e6893fa1bf763bfef4c649040055a301e1c97",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/model-risk",
+    "name": "Model risk",
+    "aliases": [
+      "model uncertainty"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The potential for adverse consequences — financial loss, poor business decisions, reputational damage — from decisions based on model outputs that are incorrect or misused. Per Federal Reserve SR 11-7, model risk arises primarily when a model has fundamental errors or when it is used incorrectly or without regard for its limitations and assumptions.",
+    "intuition": "Every model is a simplified map of reality; model risk is what happens when you drive off the edge of the map while trusting it.",
+    "mechanics": "Managed through a model risk management framework: sound development and documentation, independent validation (conceptual soundness, ongoing monitoring, outcomes analysis such as back-testing), 'effective challenge' by informed parties, model inventories, and senior-management governance. Risk grows with model complexity, input uncertainty, breadth of use, and potential impact.",
+    "formula": "No single-quantity formula; SR 11-7 frames the sources as (1) fundamental model error and (2) incorrect or inappropriate use.",
+    "relationships": [
+      "Operational risk",
+      "Value at risk",
+      "Stress testing",
+      "Mark-to-market"
+    ],
+    "failure_modes": "Validation lags usage: models calibrated in benign regimes get trusted in stressed ones, and back-tests share the model's own assumptions. Widely used models create systemic crowding, with everyone de-risking on the same signal and amplifying the event the model failed to foresee.",
+    "misconceptions": "Passing validation does not make a model 'true': SR 11-7 stresses that all models are imperfect representations requiring conservative adjustments and informed use, and a precise-looking output is not an accurate one.",
+    "example": "A VaR model assuming normal returns understates tail losses in a crash; positions sized off its output suffer losses far beyond the reported number — the classic model-risk failure SR 11-7 warns about.",
+    "citations": [
+      {
+        "source": "Federal Reserve / OCC: SR 11-7, Supervisory Guidance on Model Risk Management",
+        "url": "https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm",
+        "section": "Definition of model and model risk; Model validation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/counterparty-risk",
+  "canonical_sha256": "1f9aa1fc319908abcacb8f811261200bad2f835ec62d4371a839f081741567b9",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/counterparty-risk",
+    "name": "Counterparty risk",
+    "aliases": [
+      "counterparty credit risk",
+      "CCR"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The risk that the other side of a contract — a bond issuer, derivative counterparty, or insurer — fails to meet its obligations, including default before final settlement of the transaction's cash flows. For derivatives it is termed counterparty credit risk and is managed with collateral, netting, and central clearing.",
+    "intuition": "A contract is only as good as the entity standing behind it: if your counterparty fails, your winning trade becomes an unsecured claim in bankruptcy.",
+    "mechanics": "Exposure is measured as the replacement cost (mark-to-market) of the contract plus potential future exposure; mitigants include margining, netting agreements, credit insurance, and central counterparties. Regulatory capital is computed under frameworks such as SA-CCR, the standardized approach for counterparty credit risk.",
+    "formula": "Exposure (conceptually) = max(V, 0) + potential future exposure, where V is the current mark-to-market value of the netting set.",
+    "relationships": [
+      "Settlement risk",
+      "Wrong-way risk",
+      "Concentration risk",
+      "Mark-to-market",
+      "Variation margin"
+    ],
+    "failure_modes": "Exposure grows exactly when the counterparty weakens if the trade is correlated with their credit (wrong-way risk); collateral protects against price moves but not gaps, and central clearing concentrates rather than eliminates the risk into the CCP itself.",
+    "misconceptions": "Counterparty risk is not only about outright default on a loan: a mark-to-market gain on an OTC derivative is an unsecured exposure every day it remains unsettled, and collateral reduces but does not zero it because of margining lags and disputes.",
+    "example": "A bank long an interest-rate swap with a dealer sees the swap move $5M in the money; if the dealer defaults before settling, the bank holds a $5M claim in the bankruptcy estate rather than cash.",
+    "citations": [
+      {
+        "source": "Wikipedia: Credit risk",
+        "url": "https://en.wikipedia.org/wiki/Credit_risk",
+        "section": "Counterparty risk",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

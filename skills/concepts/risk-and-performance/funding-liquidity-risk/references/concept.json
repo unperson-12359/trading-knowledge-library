@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/funding-liquidity-risk",
+  "canonical_sha256": "d350dd4aa09e64fe8dc34c159475b1ca0f36f7af901dc71718d625793c6728a7",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/funding-liquidity-risk",
+    "name": "Funding liquidity risk",
+    "aliases": [
+      "funding risk",
+      "rollover risk (funding)"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The risk that a trader or institution cannot obtain or roll over the funding — cash, credit, or margin — needed to carry its positions, forcing sales or default even when the positions are economically sound. It is distinct from market liquidity (the ease of trading the asset), with which it interacts in liquidity spirals.",
+    "intuition": "It's not that your position is wrong — it's that the money carrying it gets pulled: when the funding disappears, the position dies with it.",
+    "mechanics": "Positions are financed through collateralized borrowing against margins and haircuts; when lenders raise haircuts or withdraw credit, the trader must post capital or sell. Brunnermeier and Pedersen model the feedback: tighter funding reduces market liquidity, which raises volatility and margins, which tightens funding further — the margin spiral and loss spiral.",
+    "formula": "Constraint: sum over positions of margin_j(position_j) <= capital W; funding stress binds the constraint as margins and haircuts rise or credit lines are cut.",
+    "relationships": [
+      "Liquidity risk",
+      "Deleveraging",
+      "Margin call",
+      "Forced liquidation",
+      "Leverage"
+    ],
+    "failure_modes": "Funding terms can change faster than positions can be unwound, and margin and haircut increases are procyclical — highest in crashes — so funding liquidity risk materializes simultaneously with market losses, the worst possible correlation (LTCM 1998; the August 2007 quant crisis).",
+    "misconceptions": "Solvency is not protection: a fund can be right on every position and still die from a funding run, and short positions still require margin capital — shorting does not free up funding.",
+    "example": "A levered basis trade financed at a 2% haircut is forced to sell into an illiquid market when the prime broker raises the haircut to 10%, crystallizing losses that mark-to-market alone never implied.",
+    "citations": [
+      {
+        "source": "Brunnermeier, M. and Pedersen, L.: Market Liquidity and Funding Liquidity (Review of Financial Studies)",
+        "url": "https://www.princeton.edu/~markus/research/papers/liquidity.pdf",
+        "section": "Introduction; funding constraints and liquidity spirals",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
