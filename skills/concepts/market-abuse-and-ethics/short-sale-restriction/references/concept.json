@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-abuse-and-ethics/short-sale-restriction",
+  "canonical_sha256": "d1380452c154794367efabd50d32a48e066c65e5c42c5b844c78e1a1e28918d3",
+  "source_path": "concepts/market-abuse-and-ethics.json",
+  "concept": {
+    "id": "market-abuse-and-ethics/short-sale-restriction",
+    "name": "Short-sale restriction",
+    "aliases": [
+      "Rule 201",
+      "short sale price test circuit breaker"
+    ],
+    "domain": "Market abuse and ethics",
+    "definition": "A rule limiting when or at what price short sales may be executed, the current U.S. form being Rule 201 of Regulation SHO: when a stock's price falls at least 10% from the prior day's close, trading centers must prevent the execution or display of short-sale orders at prices at or below the national best bid for the rest of that day and the following day.",
+    "intuition": "When a stock is already crashing, this rule makes short sellers wait their turn above the bid so they can't keep hammering the price down tick after tick.",
+    "mechanics": "Rule 201 aims to let long sellers sell first on declining days and to prevent short selling — including potentially abusive short selling — from accelerating a severe intraday decline. Exchanges and trading centers maintain policies to block covered short sales at impermissible prices once the circuit breaker triggers; orders properly marked 'short exempt' are excepted.",
+    "formula": "Trigger: current price <= 0.90 x prior day's closing price; once triggered, short-sale orders may not execute or be displayed at a price <= national best bid for the remainder of the day and the next trading day.",
+    "relationships": [
+      "Reg SHO",
+      "Bear raid",
+      "Locate requirement",
+      "Market manipulation"
+    ],
+    "failure_modes": "Studies of price tests (including the repealed uptick rule) found limited effect on declines, and restrictions can impair liquidity and price discovery in the very stocks under stress; determined sellers can route around the intent via options or exempt market-making channels.",
+    "misconceptions": "Rule 201 does not ban short selling in a declining stock — short sales remain permitted at prices above the bid; nor does a triggered restriction mean the stock is being manipulated, since it triggers mechanically on a 10% move.",
+    "example": "XYZ closes at $50 on Monday and trades down to $44.80 intraday Tuesday, triggering Rule 201; for the rest of Tuesday and all of Wednesday, short sales can only execute above the national best bid.",
+    "citations": [
+      {
+        "source": "SEC Office of Investor Education and Assistance, Key Points About Regulation SHO",
+        "url": "https://www.sec.gov/investor/pubs/regsho.htm",
+        "section": "Section III: Rule 201 — Short Sale Price Test Circuit Breaker",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/high-price",
+  "canonical_sha256": "5d8bc1cc6c870bbe8c820dd84f9748efb99c33e6b17e3616f0e2239c860eae13",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/high-price",
+    "name": "High price",
+    "aliases": [
+      "high",
+      "session high",
+      "period high"
+    ],
+    "domain": "Market data",
+    "definition": "The high price is the highest price at which any trade executed during a given period. It marks the upper extreme of the period's traded range and forms the top of an OHLC bar or candlestick wick.",
+    "intuition": "The high is the most anyone paid during the period — the peak of the price excursion.",
+    "mechanics": "Computed as the maximum of all executed trade prices within the aggregation interval; in charting it is rendered as the top of the vertical line (OHLC bar) or the upper shadow (candlestick).",
+    "formula": "H = max(p_i) over all trades i in the period.",
+    "relationships": [
+      "Low price",
+      "OHLC bar",
+      "True range",
+      "Rolling maximum"
+    ],
+    "failure_modes": "A single outlier or erroneous print (bad tick) can set a spurious high that distorts range-based indicators and stop levels; data vendors apply filters, but conventions differ. The high says nothing about how long price stayed near it.",
+    "misconceptions": "The high is not a resistance level by construction — it is just the maximum print; treating it as meaningful support/resistance requires additional analysis.",
+    "example": "If a stock trades between $50.10 and $51.80 during the day, the daily high is $51.80 even if only one lot traded there.",
+    "citations": [
+      {
+        "source": "Wikipedia: Open-high-low-close chart",
+        "url": "https://en.wikipedia.org/wiki/Open-high-low-close_chart",
+        "section": "Lead section (price range definition)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

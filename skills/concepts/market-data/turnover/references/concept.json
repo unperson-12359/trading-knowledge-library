@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/turnover",
+  "canonical_sha256": "742897bb3c772971896db48cedc331ada99fb630608a2a8b39f934c9c10cf6c8",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/turnover",
+    "name": "Turnover",
+    "aliases": [
+      "share turnover",
+      "share turnover ratio",
+      "velocity"
+    ],
+    "domain": "Market data",
+    "definition": "Share turnover is a liquidity measure computed by dividing the total number of shares traded over a period by the number of shares outstanding during that period. It expresses how many times the share base effectively changed hands, indicating the relative ease of buying or selling the stock.",
+    "intuition": "Turnover normalizes volume by company size: trading 1 million shares is frenetic for a firm with 5 million shares outstanding but trivial for one with 5 billion.",
+    "mechanics": "Compute trading volume over the period and divide by shares outstanding (some practitioners use free float or average shares outstanding instead). Higher ratios indicate more liquid, actively traded stocks; lower ratios suggest thinner trading.",
+    "formula": "Turnover = (total shares traded over period) / (shares outstanding during period), often expressed as a percentage.",
+    "relationships": [
+      "Trading volume",
+      "Dollar volume",
+      "Free float"
+    ],
+    "failure_modes": "The ratio says nothing about price performance or business quality, and results depend on whether total shares outstanding or free float is used in the denominator. Turnover spikes around corporate events reflect one-off repositioning, not durable liquidity.",
+    "misconceptions": "A high turnover ratio does not mean the stock is a good investment — it only means its shares trade actively. It is also not the same as mutual fund portfolio turnover, which measures how often a fund replaces its holdings.",
+    "example": "A company with 100 million shares outstanding that trades 5 million shares in a day has a daily share turnover of 5%.",
+    "citations": [
+      {
+        "source": "The Economic Times: Definition of Share Turnover",
+        "url": "https://economictimes.indiatimes.com/definition/share-turnover",
+        "section": "Definition and formula",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

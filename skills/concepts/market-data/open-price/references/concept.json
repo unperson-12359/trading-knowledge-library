@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/open-price",
+  "canonical_sha256": "098110c53091039e25c92a8d07ba3b7ecdba100a6ee78110eea2d075d998c411",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/open-price",
+    "name": "Open price",
+    "aliases": [
+      "opening price",
+      "open"
+    ],
+    "domain": "Market data",
+    "definition": "The open price is the price of the first trade of an instrument within a given period — for a daily bar, the first transaction of the trading session, on many exchanges determined by an opening auction. It anchors one end of the bar's price path.",
+    "intuition": "The open is where trading started for the period. It summarizes where overnight or pre-period information got priced in at the first print.",
+    "mechanics": "Recorded as the first executed price in the aggregation interval; on exchanges with opening auctions (e.g., NYSE, Nasdaq), the daily open is the auction clearing price rather than an arbitrary first tick. Together with high, low, and close it defines the OHLC bar.",
+    "formula": "",
+    "relationships": [
+      "OHLC bar",
+      "Close price",
+      "High price",
+      "Low price",
+      "Opening auction"
+    ],
+    "failure_modes": "The first print can be unrepresentative because opening auctions concentrate overnight order flow and are prone to gaps and elevated volatility. Comparing today's open to yesterday's close conflates auction dynamics with continuous trading.",
+    "misconceptions": "The open is not necessarily close to the previous close — overnight gaps are common — and it is not a consensus 'fair value', just the first executed price.",
+    "example": "If a stock's first trade of the session executes at $102.40 after a positive earnings surprise, the daily open is $102.40 regardless of where it traded for the rest of the day.",
+    "citations": [
+      {
+        "source": "Wikipedia: Open-high-low-close chart",
+        "url": "https://en.wikipedia.org/wiki/Open-high-low-close_chart",
+        "section": "Lead section (definition of opening price tick)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

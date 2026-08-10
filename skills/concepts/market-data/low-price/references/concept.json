@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/low-price",
+  "canonical_sha256": "eed165939043fd799a24840e11fe807254308fdff6a1ac27699767520fc7838b",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/low-price",
+    "name": "Low price",
+    "aliases": [
+      "low",
+      "session low",
+      "period low"
+    ],
+    "domain": "Market data",
+    "definition": "The low price is the lowest price at which any trade executed during a given period. It marks the lower extreme of the period's traded range and forms the bottom of an OHLC bar or candlestick wick.",
+    "intuition": "The low is the least anyone received (or paid) for the asset during the period — the trough of the price excursion.",
+    "mechanics": "Computed as the minimum of all executed trade prices within the aggregation interval; rendered as the bottom of the vertical line (OHLC bar) or lower shadow (candlestick).",
+    "formula": "L = min(p_i) over all trades i in the period.",
+    "relationships": [
+      "High price",
+      "OHLC bar",
+      "True range",
+      "Rolling minimum"
+    ],
+    "failure_modes": "Erroneous prints or illiquid spikes can create false lows, which matters for stop-loss placement and range computations. The low carries no information about the volume traded at that extreme.",
+    "misconceptions": "The low is not automatically a support level — it is merely the minimum executed price of the period.",
+    "example": "If a stock's trades during the day range from $48.25 to $50.00, the daily low is $48.25 even if price immediately bounced from that print.",
+    "citations": [
+      {
+        "source": "Wikipedia: Open-high-low-close chart",
+        "url": "https://en.wikipedia.org/wiki/Open-high-low-close_chart",
+        "section": "Lead section (price range definition)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

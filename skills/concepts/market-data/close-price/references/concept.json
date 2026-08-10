@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/close-price",
+  "canonical_sha256": "946235695dfb07c6389e595f38303ea4f64d6617cf777aee6cf045db2e30d764",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/close-price",
+    "name": "Close price",
+    "aliases": [
+      "closing price",
+      "close",
+      "last price"
+    ],
+    "domain": "Market data",
+    "definition": "The close price is generally the last price at which a stock trades during a regular trading session (e.g., 9:30 a.m. to 4:00 p.m. Eastern for U.S. markets), often set by a closing auction. It is the most widely used single price for performance measurement, marking-to-market, and indicator input.",
+    "intuition": "The close is the market's final word for the period — the price at which the last trade printed before the session ended.",
+    "mechanics": "Recorded as the last executed price in the aggregation interval; for daily U.S. equity data the close is typically the closing-auction price on the primary listing exchange, while consolidated feeds may use the last trade across venues. It anchors return calculations (r_t = C_t/C_{t-1} − 1).",
+    "formula": "",
+    "relationships": [
+      "OHLC bar",
+      "Open price",
+      "Adjusted close",
+      "Closing auction"
+    ],
+    "failure_modes": "Closing prices are vulnerable to 'marking the close' manipulation because so much referencing (NAVs, benchmarks, margin) keys off them. Different venues and vendors can report different 'closes' (auction vs last consolidated print vs extended-hours print).",
+    "misconceptions": "The close is not necessarily the price you could have traded at in size — closing auctions have their own liquidity profile. Nor is the 4:00 p.m. print comparable to after-hours prices, which trade in thinner conditions.",
+    "example": "If the NYSE closing auction for a stock clears at $87.55 at 4:00 p.m., that is the official daily close used for the day's return calculation.",
+    "citations": [
+      {
+        "source": "SEC Investor.gov Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Closing Price",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

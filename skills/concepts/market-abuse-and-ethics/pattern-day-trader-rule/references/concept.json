@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-abuse-and-ethics/pattern-day-trader-rule",
+  "canonical_sha256": "cd5e348e326a67cb96aa560676f11ddd2382b91aa51e67e554767552fd778fcc",
+  "source_path": "concepts/market-abuse-and-ethics.json",
+  "concept": {
+    "id": "market-abuse-and-ethics/pattern-day-trader-rule",
+    "name": "Pattern day trader rule",
+    "aliases": [
+      "PDT rule"
+    ],
+    "domain": "Market abuse and ethics",
+    "definition": "The FINRA margin rule regime under which a customer who executes four or more day trades within five business days in a margin account (a day trade being the purchase and sale, or sale and purchase, of the same security on the same day) is designated a 'pattern day trader' and becomes subject to special margin requirements, historically a $25,000 minimum equity requirement.",
+    "intuition": "If you day trade frequently with borrowed money, regulators make you keep a serious cash cushion in the account so a bad day doesn't sink the broker too.",
+    "mechanics": "Day trades are counted per margin account across a rolling five-business-day window; once designated, the account historically had to maintain at least $25,000 in equity and was limited in day-trading buying power, with violations triggering restrictions to cash-only trading. FINRA has since adopted new intraday margin requirements replacing the former day-trading margin requirements, so the precise margin mechanics are in transition.",
+    "formula": "Designation trigger: day trades >= 4 within 5 business days in a margin account; classic requirement: minimum account equity >= $25,000.",
+    "relationships": [
+      "Suitability",
+      "Trade surveillance"
+    ],
+    "failure_modes": "The five-day counting window and per-account application confuse retail traders, who inadvertently trigger the designation; the rule has also been criticized for pushing small accounts toward options, offshore brokers, or cash-account settlement workarounds (good faith violations) rather than reducing risk.",
+    "misconceptions": "The rule is a margin requirement, not a ban on day trading, and it does not apply to cash accounts (which face separate free-riding/settlement constraints); holding a position overnight and selling the next day is not a day trade.",
+    "example": "A trader buys and sells AAPL three times on Monday and does one more round trip on Thursday in her margin account; with four day trades in five business days she is designated a pattern day trader and must meet the applicable minimum equity rules to keep day trading.",
+    "citations": [
+      {
+        "source": "Investor.gov Glossary (SEC Office of Investor Education and Advocacy)",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Entries: Pattern Day Trader; Day Trade",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

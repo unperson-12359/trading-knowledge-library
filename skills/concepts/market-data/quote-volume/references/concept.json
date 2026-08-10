@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/quote-volume",
+  "canonical_sha256": "759c2b57c66b29117cb087d9fec9ae35cc445144cc78ba469f10e8d45752370c",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/quote-volume",
+    "name": "Quote volume",
+    "aliases": [
+      "quote asset volume",
+      "quote currency volume"
+    ],
+    "domain": "Market data",
+    "definition": "Quote volume is trading volume denominated in the quote currency of a trading pair, i.e., the sum over trades of price times quantity. It is the standard volume field in crypto exchange data (e.g., Binance klines report base-asset volume and quote-asset volume side by side).",
+    "intuition": "Instead of counting how many units traded, quote volume tells you how much money (in the pair's pricing currency) changed hands.",
+    "mechanics": "For each trade, multiply the execution price by the executed quantity and sum over the period; the result is expressed in the quote asset (e.g., USDT for BTC/USDT). Exchanges report it as a per-bar field alongside base volume and trade count.",
+    "formula": "QV = Σ_i p_i · q_i, where p_i is the trade price in quote currency and q_i is the quantity in base units.",
+    "relationships": [
+      "Trading volume",
+      "Dollar volume",
+      "OHLCV bar"
+    ],
+    "failure_modes": "Comparing quote volumes across pairs denominated in different quote currencies (e.g., USDT vs EUR) is invalid without FX conversion. Quote volume inherits any wash-trading inflation present in the underlying trade data.",
+    "misconceptions": "Quote volume is not the number of price quotes (bid/ask updates) issued during a period — that is quote message traffic, a different concept.",
+    "example": "A BTC/USDT hourly bar with 100 BTC traded at an average price of 60,000 USDT has base volume 100 BTC and quote volume of roughly 6,000,000 USDT.",
+    "citations": [
+      {
+        "source": "Binance Spot API documentation (rest-api.md)",
+        "url": "https://raw.githubusercontent.com/binance/binance-spot-api-docs/master/rest-api.md",
+        "section": "Kline/Candlestick data — response fields (Quote asset volume)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

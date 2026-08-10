@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-abuse-and-ethics/wash-sale-rule",
+  "canonical_sha256": "583c097775e8fdd3502bcca1eb088cdef3b2cf79c92287cf46e25c3e01154d43",
+  "source_path": "concepts/market-abuse-and-ethics.json",
+  "concept": {
+    "id": "market-abuse-and-ethics/wash-sale-rule",
+    "name": "Wash-sale rule",
+    "aliases": [
+      "wash sale (tax)",
+      "IRC section 1091"
+    ],
+    "domain": "Market abuse and ethics",
+    "definition": "The U.S. tax rule (IRC section 1091, detailed in IRS Publication 550) that disallows a loss deduction when stock or securities are sold at a loss and substantially identical stock or securities are bought (or an option or contract to buy them is acquired) within 30 days before or after the sale; the disallowed loss is added to the basis of the replacement position.",
+    "intuition": "You can't sell a stock for a tax loss on Friday and buy it right back on Monday — the IRS treats that as never having really sold, so the loss waits until you truly exit.",
+    "mechanics": "The 61-day window runs from 30 days before to 30 days after the loss sale. If triggered, the disallowed loss is added to the cost basis of the new shares, and the holding period of the old shares tacks onto the new, deferring (not destroying) the loss. Acquisitions by a spouse, a controlled corporation, or into an IRA also trigger the rule — with the IRA variant permanently forfeiting the loss.",
+    "formula": "Adjusted basis of replacement shares = purchase price of replacement shares + disallowed wash-sale loss; window = sale date ± 30 days.",
+    "relationships": [
+      "Capital gain",
+      "Capital loss",
+      "Wash trading"
+    ],
+    "failure_modes": "The rule is often triggered accidentally by dividend reinvestment plans, rebalancing across taxable and retirement accounts, or algorithmic tax-loss harvesting that re-buys too soon; 'substantially identical' is undefined for many instruments (e.g., different share classes, options), creating gray areas.",
+    "misconceptions": "The rule does not make the loss vanish in a taxable account — it defers the loss via basis adjustment (the IRA exception is the permanent trap); and it applies only to losses — gains realized and immediately re-established are simply taxed, not deferred.",
+    "example": "You buy 100 shares of X for $1,000, sell them for $750, and repurchase 100 shares two weeks later for $800; the $250 loss is disallowed and your basis in the new shares becomes $1,050.",
+    "citations": [
+      {
+        "source": "IRS Publication 550, Investment Income and Expenses",
+        "url": "https://www.irs.gov/publications/p550",
+        "section": "Chapter 4 — Sales and Trades of Investment Property: Wash Sales",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

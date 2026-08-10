@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/adjusted-close",
+  "canonical_sha256": "615c89f3e3d11b6b958c921f831ae4dfca49e7837017ebdb80a78e63cdf33627",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/adjusted-close",
+    "name": "Adjusted close",
+    "aliases": [
+      "adjusted closing price",
+      "adjusted price"
+    ],
+    "domain": "Market data",
+    "definition": "The adjusted close is the closing price amended to reflect the effects of corporate actions — stock splits and dividend distributions — so that the historical price series is internally comparable. Data vendors compute it by applying split and dividend adjustment factors to the as-traded close.",
+    "intuition": "A 2-for-1 split halves the share price overnight without making holders poorer; the adjusted close rewrites history so the chart and return calculations show continuity instead of a fake 50% crash.",
+    "mechanics": "For each corporate action, an adjustment factor is applied to all prices before the ex-date: prices are divided by the split ratio for splits and multiplied by (1 − dividend/pre-ex price) for dividends. Vendors such as Alpha Vantage publish raw OHLC alongside adjusted close and the underlying split/dividend events.",
+    "formula": "AdjClose_t = Close_t × F_t, where F_t is the cumulative product of split and dividend adjustment factors for all corporate actions after date t.",
+    "relationships": [
+      "Close price",
+      "Stock split",
+      "Dividend",
+      "Total return"
+    ],
+    "failure_modes": "Adjusted closes are revised whenever new corporate actions occur, so historical adjusted values are not stable across data snapshots. Dividend adjustment implicitly assumes reinvestment, and different vendors apply different conventions, so cross-vendor adjusted series can disagree.",
+    "misconceptions": "The adjusted close was never a tradable price — placing a backtest order at an adjusted price distorts share counts and cash flows unless the adjustment is handled consistently.",
+    "example": "If a stock trading at $100 pays a $2 dividend, pre-ex adjusted closes are multiplied by 0.98; a $100 pre-ex close becomes $98.00 in the adjusted series.",
+    "citations": [
+      {
+        "source": "Alpha Vantage API Documentation",
+        "url": "https://www.alphavantage.co/documentation/",
+        "section": "TIME_SERIES_DAILY_ADJUSTED (adjusted close values and historical split/dividend events)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

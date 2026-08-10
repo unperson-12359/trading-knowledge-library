@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/dollar-volume",
+  "canonical_sha256": "f0b0a374209499ec685caa3b07d6e3f5e0544964b7596b5fade1f795a8c41c54",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/dollar-volume",
+    "name": "Dollar volume",
+    "aliases": [
+      "dollar-volume liquidity",
+      "value traded",
+      "turnover value"
+    ],
+    "domain": "Market data",
+    "definition": "Dollar volume is the total monetary value of shares traded during a period, computed as price multiplied by share volume. It measures how much capital actually changed hands and is the standard way to compare trading activity across instruments of different prices.",
+    "intuition": "A $5 stock trading 10 million shares moves less money ($50M) than a $200 stock trading 500,000 shares ($100M) — dollar volume captures that difference; share counts do not.",
+    "mechanics": "Sum price times quantity over all trades in the period (often approximated as average price times total share volume for daily data). Institutions use minimum average daily dollar volume thresholds to ensure orders can be filled without moving the market.",
+    "formula": "DV = Σ_i p_i · q_i, where p_i is the trade price and q_i the shares in trade i; approximated as DV ≈ P_avg · V for daily bars.",
+    "relationships": [
+      "Trading volume",
+      "Quote volume",
+      "Turnover",
+      "Dollar bar"
+    ],
+    "failure_modes": "A single large block print can inflate one period's dollar volume without sustained interest, and dark-pool or off-exchange prints may be missing from some intraday feeds. Equal dollar volume does not imply equal execution cost — spread width and book depth still differ.",
+    "misconceptions": "High share volume in a penny stock does not imply meaningful liquidity; dollar volume can be tiny. Dollar volume is a necessary but not sufficient liquidity test.",
+    "example": "A stock closing at $20 that traded 1.5 million shares has a daily dollar volume of roughly $30 million; a fund requiring $25M minimum average daily dollar volume would consider it borderline tradable.",
+    "citations": [
+      {
+        "source": "Trade Ideas Learning Center: Dollar Volume Explained",
+        "url": "https://www.trade-ideas.com/learning-center/technical-indicators/dollar-volume-explained/",
+        "section": "Opening definition",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

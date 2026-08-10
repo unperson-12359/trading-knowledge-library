@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/trading-volume",
+  "canonical_sha256": "e72e081b901e214d405fb7ab21a498d1088a0ca90a5bed1522a16dbae81f1454",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/trading-volume",
+    "name": "Trading volume",
+    "aliases": [
+      "volume",
+      "share volume",
+      "turnover volume"
+    ],
+    "domain": "Market data",
+    "definition": "Trading volume is the total number of units of a security (shares, contracts, or coins) that changed hands in executed trades during a given period. It is the standard measure of market activity and is reported per instrument, per venue, or consolidated across venues.",
+    "intuition": "Volume counts how much of an asset actually traded. It tells you how active and liquid the market was, not which direction prices moved.",
+    "mechanics": "Each executed trade contributes its quantity to the period total; volume is typically aggregated per bar (e.g., daily) and reported alongside OHLC prices. Average volume over a longer window is total volume divided by the number of periods.",
+    "formula": "V = Σ_i q_i, where q_i is the quantity of trade i executed during the period. Average volume = Σ V_t / N over N periods.",
+    "relationships": [
+      "Quote volume",
+      "Dollar volume",
+      "Turnover",
+      "OHLCV bar",
+      "Tick data"
+    ],
+    "failure_modes": "Volume can be inflated by wash trading (especially on unregulated crypto venues) and understated when off-exchange or dark-pool prints are excluded from a feed. Raw volume says nothing about direction, so a high-volume day can coincide with either a rally or a crash.",
+    "misconceptions": "High volume does not mean the price rose or will rise — it only means many units changed hands. Comparing share volume across stocks of different prices is meaningless without converting to dollar volume.",
+    "example": "If 2.1 million shares of AAPL trade on a given day, that day's volume is 2.1 million shares; if the 30-day average is 55 million shares, the day was unusually quiet.",
+    "citations": [
+      {
+        "source": "Wikipedia: Volume (finance)",
+        "url": "https://en.wikipedia.org/wiki/Volume_(finance)",
+        "section": "Lead section",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
