@@ -29,7 +29,7 @@ verified on GitHub Pages before the next checkpoint begins.
 |---|---|
 | Research and document the router-plus-catalog architecture | Complete |
 | Add router, schemas, generator, validation, API, and review catalog | Complete |
-| Generate all concept packages in core-first batches of 20 | See `skills/progress.json` |
+| Generate all 1,500 concept packages in core-first groups of 20 | Complete (1,500/1,500) |
 
 The authoritative live checkpoint is `skills/progress.json`. Every completed
 batch contains exactly 20 packages, a batch manifest, and retrieval evaluation
