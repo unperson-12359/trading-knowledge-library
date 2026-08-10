@@ -284,6 +284,10 @@ def main():
         json.loads(path.read_text(encoding="utf-8"))
         for path in sorted((ROOT / "research" / "specs").glob("*.json"))
     ]
+    dataset_manifests = [
+        json.loads(path.read_text(encoding="utf-8"))
+        for path in sorted((ROOT / "research" / "datasets").glob("*/dataset-manifest.json"))
+    ]
     taxonomy = json.loads((ROOT / "regimes" / "taxonomy.json").read_text(encoding="utf-8"))
     core_collection = json.loads(
         (ROOT / "collections" / "core-perps.json").read_text(encoding="utf-8")
@@ -535,6 +539,11 @@ def main():
     (api_dir / "research-specs.json").write_text(
         json.dumps(research_specs, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
+    (api_dir / "dataset-manifests.json").write_text(
+        json.dumps(dataset_manifests, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    if (ROOT / "research" / "datasets").exists():
+        shutil.copytree(ROOT / "research" / "datasets", api_dir / "datasets")
     core_ids = set(core_collection["concept_ids"])
     public_concepts = []
     resolved_relationship_count = 0
@@ -573,11 +582,11 @@ def main():
     manifest = {
         "schema_version": 1,
         "generated": date.today().isoformat(),
-        "counts": {"concepts": total, "core_concepts": len(core_ids), "playbooks": len(playbooks), "research_specs": len(research_specs)},
+        "counts": {"concepts": total, "core_concepts": len(core_ids), "playbooks": len(playbooks), "research_specs": len(research_specs), "datasets": len(dataset_manifests)},
         "endpoints": {
             "concepts": "concepts.json", "core_perps": "core-perps.json",
             "regimes": "regimes.json", "playbooks": "playbooks.json",
-            "research_specs": "research-specs.json"
+            "research_specs": "research-specs.json", "datasets": "dataset-manifests.json"
         },
         "relationship_resolution": {
             "total_references": relationship_count,

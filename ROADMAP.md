@@ -16,8 +16,8 @@ knowledge rollout.
 | Checkpoint | State |
 |---|---|
 | Add research schemas and frozen ATR-breakout specification | Complete |
-| Add Hyperliquid adapter and immutable BTC/ETH dataset snapshot | In progress |
-| Add deterministic engine and canonical research results | Pending |
+| Add Hyperliquid adapter and immutable BTC/ETH dataset snapshot | Complete |
+| Add deterministic engine and canonical research results | In progress |
 | Generate report/API and deploy the completed research slice | Pending |
 
 Every completed checkpoint is validated, committed to `main`, pushed, and

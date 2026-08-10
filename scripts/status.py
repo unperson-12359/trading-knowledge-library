@@ -5,6 +5,7 @@ Usage: python scripts/status.py
 The command exits non-zero when the catalog is structurally incomplete,
 contains a placeholder, lacks required content, or has malformed citations.
 """
+import hashlib
 import json
 import sys
 from datetime import date
@@ -352,6 +353,54 @@ def main():
             failures.append(f"{spec_path.name}: invalid timeframes")
         if spec.get("warning") != RESEARCH_WARNING:
             failures.append(f"{spec_path.name}: required research warning is missing or changed")
+
+    dataset_manifests = sorted((ROOT / "research" / "datasets").glob("*/dataset-manifest.json"))
+    if len(dataset_manifests) != 1:
+        failures.append(f"expected exactly 1 immutable research dataset, found {len(dataset_manifests)}")
+    for manifest_path in dataset_manifests:
+        try:
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"{manifest_path}: invalid JSON: {exc}")
+            continue
+        if manifest.get("dataset_id") != manifest_path.parent.name:
+            failures.append(f"{manifest_path}: dataset_id must match directory")
+        if manifest.get("assets") != ["BTC", "ETH"]:
+            failures.append(f"{manifest_path}: assets must be BTC and ETH")
+        quality = manifest.get("quality")
+        if (not isinstance(quality, dict) or quality.get("valid") is not True
+                or quality.get("closed_candles_only") is not True
+                or any(quality.get(field) != 0 for field in ("duplicates", "missing_intervals", "funding_gaps"))):
+            failures.append(f"{manifest_path}: dataset quality gate is not clean")
+        files = manifest.get("files")
+        verified_hashes = []
+        if not isinstance(files, list) or len(files) != 4:
+            failures.append(f"{manifest_path}: dataset must contain four data files")
+            continue
+        for item in sorted(files, key=lambda value: value.get("path", "")):
+            relative = item.get("path")
+            if not isinstance(relative, str) or Path(relative).name != relative:
+                failures.append(f"{manifest_path}: invalid dataset file path")
+                continue
+            data_path = manifest_path.parent / relative
+            if not data_path.exists():
+                failures.append(f"{manifest_path}: missing data file {relative}")
+                continue
+            digest = hashlib.sha256(data_path.read_bytes()).hexdigest()
+            verified_hashes.append(digest)
+            if digest != item.get("sha256"):
+                failures.append(f"{manifest_path}: hash mismatch for {relative}")
+            try:
+                document = json.loads(data_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                failures.append(f"{data_path}: invalid JSON: {exc}")
+                continue
+            rows = document.get("candles") if item.get("kind") == "candles" else document.get("funding")
+            if not isinstance(rows, list) or len(rows) != item.get("rows"):
+                failures.append(f"{manifest_path}: row-count mismatch for {relative}")
+        aggregate_hash = hashlib.sha256("\n".join(verified_hashes).encode("ascii")).hexdigest()
+        if aggregate_hash != manifest.get("dataset_sha256"):
+            failures.append(f"{manifest_path}: aggregate dataset hash mismatch")
 
     placeholders = sum(
         1 for entry in entries

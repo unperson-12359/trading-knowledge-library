@@ -44,6 +44,7 @@ collections/             focused operational concept collections
 regimes/taxonomy.json    controlled market-state vocabulary
 playbooks/                five untested research-hypothesis templates
 research/specs/           frozen machine-executable research contracts
+research/datasets/        immutable normalized market-data snapshots
 schemas/                  machine-readable structured-data schemas
 scripts/status.py       validate the complete catalog
 scripts/export_master.py generate exports/master_v2.txt
@@ -77,6 +78,8 @@ Versioned JSON endpoints live in `docs/api/v1/`:
   collection and its research layer.
 - `research-specs.json` exposes frozen executable rules separately from the
   conceptual playbooks.
+- `dataset-manifests.json` and `datasets/<dataset-id>/` expose hashed,
+  AI-readable market-data snapshots used by published research.
 
 Unambiguous relationship names and aliases become internal links. Ambiguous or
 unresolved terms remain visible as plain text and are reported in the manifest.
@@ -89,4 +92,5 @@ Edit canonical JSON, then validate and regenerate outputs:
 python scripts/status.py
 python scripts/export_master.py
 python scripts/build_site.py
+python scripts/research.py fetch
 ```

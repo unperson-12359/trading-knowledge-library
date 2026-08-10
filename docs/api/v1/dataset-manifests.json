@@ -1,0 +1,118 @@
+[
+  {
+    "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/dataset-manifest.schema.json",
+    "dataset_id": "hyperliquid-mainnet-btc-eth-15m-20260810T0259Z",
+    "schema_version": 1,
+    "provider": "Hyperliquid",
+    "network": "mainnet",
+    "retrieved_at": "2026-08-10T03:02:14Z",
+    "effective_start": 1781830800000,
+    "effective_end": 1786330799999,
+    "assets": [
+      "BTC",
+      "ETH"
+    ],
+    "files": [
+      {
+        "asset": "BTC",
+        "kind": "candles",
+        "path": "btc-15m-candles.json",
+        "rows": 5000,
+        "sha256": "bcb8aa907dfbaf86646c82abbd6aaabb4ea62265bd6e7154de4e45dd07269413"
+      },
+      {
+        "asset": "BTC",
+        "kind": "funding",
+        "path": "btc-funding.json",
+        "rows": 1250,
+        "sha256": "f6c79c876fd565538ea81f983dd3e8d67d96f376f721c7ab8fc64a0977bdcf19"
+      },
+      {
+        "asset": "ETH",
+        "kind": "candles",
+        "path": "eth-15m-candles.json",
+        "rows": 5000,
+        "sha256": "abedc4b5e4f041460e72b5dd6b8e2cc5c942faf476d072b607c453741131effd"
+      },
+      {
+        "asset": "ETH",
+        "kind": "funding",
+        "path": "eth-funding.json",
+        "rows": 1250,
+        "sha256": "70d5ece871054b026a209a576d3a4af8f27ebab9d00133087db59648e966c53f"
+      }
+    ],
+    "requests": [
+      {
+        "request_type": "candleSnapshot",
+        "asset": "BTC",
+        "start_time": 1781830800000,
+        "end_time": 1786330799999,
+        "source_url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "request_type": "fundingHistory",
+        "asset": "BTC",
+        "start_time": 1781830800000,
+        "end_time": 1786330799999,
+        "source_url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "request_type": "fundingHistory",
+        "asset": "BTC",
+        "start_time": 1783627200027,
+        "end_time": 1786330799999,
+        "source_url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "request_type": "fundingHistory",
+        "asset": "BTC",
+        "start_time": 1785427200041,
+        "end_time": 1786330799999,
+        "source_url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "request_type": "candleSnapshot",
+        "asset": "ETH",
+        "start_time": 1781830800000,
+        "end_time": 1786330799999,
+        "source_url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "request_type": "fundingHistory",
+        "asset": "ETH",
+        "start_time": 1781830800000,
+        "end_time": 1786330799999,
+        "source_url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "request_type": "fundingHistory",
+        "asset": "ETH",
+        "start_time": 1783627200027,
+        "end_time": 1786330799999,
+        "source_url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "request_type": "fundingHistory",
+        "asset": "ETH",
+        "start_time": 1785427200041,
+        "end_time": 1786330799999,
+        "source_url": "https://api.hyperliquid.xyz/info"
+      }
+    ],
+    "quality": {
+      "valid": true,
+      "closed_candles_only": true,
+      "duplicates": 0,
+      "missing_intervals": 0,
+      "funding_gaps": 0,
+      "notes": [
+        "The official candle endpoint is limited to the most recent 5000 candles.",
+        "Missing market intervals are not forward-filled.",
+        "Funding timestamps may differ from the exact hour by a small publication delay."
+      ]
+    },
+    "dataset_sha256": "2cbb2246a498deaabb654f7faf43ba06237491f20ec640b3eadf67f301151253",
+    "warning": "Hyperliquid exposes only the most recent 5000 candles. This snapshot is preliminary and does not represent a full market cycle."
+  }
+]
