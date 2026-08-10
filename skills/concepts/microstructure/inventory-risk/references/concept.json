@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/inventory-risk",
+  "canonical_sha256": "031fa7053c7c1e72d58049d0f2460b18248922818d4d25187236ed8c33413c90",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/inventory-risk",
+    "name": "Inventory risk",
+    "aliases": [
+      "inventory holding risk",
+      "position risk"
+    ],
+    "domain": "Microstructure",
+    "definition": "The price risk a market maker bears on positions accumulated while quoting both sides of the market, because bids and offers are hit asymmetrically before price moves. In the Ho-Stoll lineage formalized by Avellaneda-Stoikov and solved under inventory constraints by Gueant, Lehalle and Fernandez-Tapia (2013), the market maker's P&L from the spread is challenged by the price risk borne on inventory.",
+    "intuition": "Earning the spread means repeatedly holding stock you did not choose to hold; if the price moves while you hold it, the spread income can be overwhelmed.",
+    "mechanics": "Buy and sell orders arrive at rates that depend on quote placement, so inventory wanders from target; optimal quotes shift downward when long and upward when short to attract offsetting flow, with the skew increasing in volatility, risk aversion, and remaining horizon.",
+    "formula": "",
+    "relationships": [
+      "Adverse selection",
+      "Order arrival rate",
+      "Bid-ask spread",
+      "Market maker",
+      "Realized spread"
+    ],
+    "failure_modes": "In one-way markets inventory control breaks down and providers widen or withdraw entirely, amplifying liquidity crises; capital and margin constraints further limit inventory absorption in stress.",
+    "misconceptions": "Market makers are not automatically direction-neutral - neutrality is actively and imperfectly managed, and residual inventory exposure is a core cost of liquidity provision.",
+    "example": "A market maker accumulates a 10,000-share long position in a falling market and shades both quotes two cents lower to attract buyers and slow further accumulation.",
+    "citations": [
+      {
+        "source": "Gueant, Lehalle and Fernandez-Tapia, 'Dealing with the Inventory Risk: A Solution to the Market Making Problem', Mathematics and Financial Economics 7(4):477-507 (arXiv preprint)",
+        "url": "https://arxiv.org/abs/1105.3115",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

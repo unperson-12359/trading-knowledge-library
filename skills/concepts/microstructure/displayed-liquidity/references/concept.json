@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/displayed-liquidity",
+  "canonical_sha256": "1d2115a3d41618f56e1fb2dd5ceba76b52aa81f665e5ba0efa385337f4221d8c",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/displayed-liquidity",
+    "name": "Displayed liquidity",
+    "aliases": [
+      "visible liquidity",
+      "lit liquidity"
+    ],
+    "domain": "Microstructure",
+    "definition": "Trading interest that is visible to the public before execution - quotations and displayed orders included in consolidated quotation data. The SEC's equity market structure concept release classifies registered exchanges and ECNs as displayed trading centers, which executed about 74.6% of NMS share volume in late 2009.",
+    "intuition": "It is the liquidity everyone can see quoted before deciding to trade.",
+    "mechanics": "Exchange members and market makers communicate their best-priced bids and offers to their SROs under Rule 602, which disseminate them to vendors; displayed orders generally receive execution priority over undisplayed interest at the same price, and maker-taker pricing rewards posting displayed orders.",
+    "formula": "",
+    "relationships": [
+      "Hidden liquidity",
+      "Order book",
+      "National best bid and offer",
+      "Displayed quotation",
+      "Pre-trade transparency"
+    ],
+    "failure_modes": "Displayed size has shrunk with algorithmic and high-frequency quoting, and flickering quotes mean a share of displayed liquidity is practically inaccessible; relying on it alone misjudges true market capacity.",
+    "misconceptions": "Displayed liquidity is not the whole market: dark pools, internalizers, reserve size, and iceberg orders add a large undisplayed component.",
+    "example": "A 500-share bid displayed at the NBB is displayed liquidity; the same order's 5,000-share reserve balance is not.",
+    "citations": [
+      {
+        "source": "SEC, Concept Release on Equity Market Structure, Release No. 34-61358, 75 FR 3594",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2010-01-21/html/2010-1045.htm",
+        "section": "Part III.A Trading Centers (displayed vs undisplayed trading centers)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

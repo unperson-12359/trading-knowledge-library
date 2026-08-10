@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/random-allocation",
+  "canonical_sha256": "7374e226c1ece172cb826f54e07afb434399700b0b92b477002cb82c7e63a171",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/random-allocation",
+    "name": "Random allocation",
+    "aliases": [
+      "random selection for service",
+      "lottery allocation"
+    ],
+    "domain": "Microstructure",
+    "definition": "An order-matching scheme in which the resting order(s) at the eligible price selected to trade with an incoming order are chosen at random rather than by time or size priority. Exchange system documentation (e.g. Euronext/Borsa Italiana migration guides to the Optiq platform) describes a random allocation scheme applied consistently with pro rata allocation or with a minimum allocation lot, and market-design literature has proposed randomized matching as an alternative to FIFO and pro rata.",
+    "intuition": "Instead of rewarding the earliest or largest order, the engine holds a lottery among eligible resting orders.",
+    "mechanics": "Eligible orders at the best price enter a random draw; selection probabilities may be uniform or weighted (e.g. consistent with pro rata shares), and residuals follow fallback rules. Randomized components appear mainly in specific allocation and uncrossing contexts rather than in continuous matching on the largest venues.",
+    "formula": "",
+    "relationships": [
+      "Price-time priority",
+      "Pro rata allocation",
+      "Matching algorithm",
+      "Queue position"
+    ],
+    "failure_modes": "Removing time priority weakens the reward for posting early and tight, which can reduce displayed liquidity; randomness also complicates execution modeling and backtesting because fills are probabilistic.",
+    "misconceptions": "Random allocation is not the norm on major continuous order books; it appears in particular allocation mechanisms and in market-design proposals, not as the standard FIFO replacement in production equity or futures matching.",
+    "example": "In an uncrossing with residual quantity to distribute, the engine selects among eligible same-price orders at random, consistent with their pro rata shares, rather than strictly by timestamp.",
+    "citations": [
+      {
+        "source": "Euronext / Borsa Italiana, 'Guide to Trading System - Borsa Italiana Migration to Optiq - Functional Changes v3.2'",
+        "url": "https://connect2.euronext.com/sites/default/files/it-documentation/Guide%20to%20Trading%20System%20-%20Borsa%20Italiana%20Migration%20to%20Optiq%20-%20Functional%20Changes%20v.3.2_0.pdf",
+        "section": "Matching allocation schemes (random allocation scheme)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

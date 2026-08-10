@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/size-time-priority",
+  "canonical_sha256": "64879a1ba838506b4097645a1c02f4e73e8124dc5959e30fdb80e586c211c6e1",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/size-time-priority",
+    "name": "Size-time priority",
+    "aliases": [],
+    "domain": "Microstructure",
+    "definition": "An order-matching priority in which size influences ranking among eligible orders and time breaks or contributes to the ranking, as used in specified non-displayed venue books.",
+    "intuition": "It describes the immediately available terms and ease of trading in an order-driven market.",
+    "mechanics": "After price and any participant tier are resolved, rank eligible resting orders using the venue's size-time rule; exact weighting or tie-breaking is venue-specific.",
+    "formula": "",
+    "relationships": [
+      "Price-time priority",
+      "Matching algorithm",
+      "Queue position"
+    ],
+    "failure_modes": "Displayed quotes and depth can cancel, fragment across venues, or vanish under stress, so snapshots can overstate executable liquidity.",
+    "misconceptions": "A quote or narrow spread is not a guarantee that a large order can trade at that price without delay or impact.",
+    "example": "In a simple largest-first rule, a resting 1,000-share order ranks ahead of a 500-share order at the same eligible price, with arrival time breaking equal-size ties.",
+    "citations": [
+      {
+        "source": "SIX Swiss Exchange, SwissAtMid",
+        "url": "https://www.six-group.com/en/products-services/the-swiss-stock-exchange/trading/markets/swissatmid.html",
+        "section": "Mid-Point Order Book size-time priority",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

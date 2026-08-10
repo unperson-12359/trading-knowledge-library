@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/price-time-priority",
+  "canonical_sha256": "03051515be5de25b2b91907216113906d050700f246da8825733a0e3e249503f",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/price-time-priority",
+    "name": "Price-time priority",
+    "aliases": [
+      "FIFO",
+      "price/time priority"
+    ],
+    "domain": "Microstructure",
+    "definition": "The order-matching rule under which orders at a better price execute first, and among orders at the same price the earliest-submitted order executes first. CME Group's FIFO algorithm uses price and time as the only criteria for filling an order.",
+    "intuition": "You earn execution priority by offering a better price or by getting in line earlier.",
+    "mechanics": "Resting orders are ranked by price and then by timestamp; an incoming order fills against the front of the queue until exhausted. An order loses its time priority and is re-queued if its price is changed, its quantity is increased, or its account number is changed.",
+    "formula": "",
+    "relationships": [
+      "Limit order book",
+      "Queue position",
+      "Pro rata allocation",
+      "Matching algorithm",
+      "Central limit order book"
+    ],
+    "failure_modes": "It rewards speed, fueling latency arms races to reach the front of the queue, and it gives no extra share to large displayed size, which can discourage posting size. Under one-tick spreads, time priority dominates and queues grow long.",
+    "misconceptions": "Being first at a price guarantees fills only up to your order's size against incoming flow; it does not protect against the price moving away before any aggressor arrives.",
+    "example": "A 3-lot bid entered at 14:47 and a 5-lot bid at 15:05, both at 9330: under FIFO the 3-lot matches first when a seller arrives.",
+    "citations": [
+      {
+        "source": "CME Group Client Systems Wiki, 'Supported Matching Algorithms'",
+        "url": "https://cmegroupclientsite.atlassian.net/wiki/spaces/EPICSANDBOX/pages/457218479",
+        "section": "FIFO",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

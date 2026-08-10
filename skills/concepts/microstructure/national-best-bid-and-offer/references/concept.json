@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/national-best-bid-and-offer",
+  "canonical_sha256": "4b1c352b9c7ffc868ad90fed86c1244a00142f2fe81098f5a83903a898dd9dc0",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/national-best-bid-and-offer",
+    "name": "National best bid and offer",
+    "aliases": [
+      "NBBO"
+    ],
+    "domain": "Microstructure",
+    "definition": "The highest protected bid and the lowest protected offer for an NMS stock across all national securities exchanges, calculated and disseminated on a current and continuing basis under Regulation NMS; when market centers transmit identical bids or offers, they are ranked first by size, then by time (Rule 600(b)(60)).",
+    "intuition": "It is the single national reference for the best available displayed prices in a fragmented market where the same stock trades on many venues.",
+    "mechanics": "Computed from the protected (automated, accessible) quotations of exchanges and associations by the plan processor, competing consolidators, or self-aggregators. It anchors the Rule 611 order-protection obligation and the Rule 605 execution-quality statistics.",
+    "formula": "NBB = max of protected bids across venues; NBO = min of protected offers across venues.",
+    "relationships": [
+      "Best bid",
+      "Best ask",
+      "Trade-through",
+      "Protected quotation",
+      "Midpoint",
+      "Regulation NMS"
+    ],
+    "failure_modes": "The consolidated NBBO lags direct exchange data feeds, historically excluded odd lots, and may reference sizes too small to be economically accessible; during locked or crossed conditions it ceases to represent an orderly market.",
+    "misconceptions": "The NBBO is not the totality of available liquidity - it excludes book depth beyond the inside, hidden orders, and dark-pool interest.",
+    "example": "NYSE quotes $100.00 x $100.03 and Nasdaq quotes $100.01 x $100.02; the NBBO is $100.01 x $100.02, drawing each side from a different venue.",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraph (b)(60) National best bid and national best offer",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

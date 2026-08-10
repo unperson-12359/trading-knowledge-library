@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/depth-of-market",
+  "canonical_sha256": "1d18415ddfcee9cbe8bcfac18b6529dec49f781ab199946eef69e512beecb425",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/depth-of-market",
+    "name": "Depth of market",
+    "aliases": [
+      "DOM",
+      "market by price",
+      "level 2"
+    ],
+    "domain": "Microstructure",
+    "definition": "The quantities of orders displayed at price levels beyond the best bid and offer - the size available as one moves away from the inside market. Regulation NMS Rule 600(b)(31) defines depth of book data as the quotation sizes at each venue at each of the next five prices below the national best bid and above the national best offer.",
+    "intuition": "It shows how much size the book can absorb before the price has to move a given distance.",
+    "mechanics": "Disseminated as Level 2 / market-by-price feeds that aggregate displayed size at each price level per venue; traders use it to estimate the price impact of walking the book and to gauge support and resistance from resting orders.",
+    "formula": "",
+    "relationships": [
+      "Market depth",
+      "Order book",
+      "Top of book",
+      "Displayed liquidity",
+      "Market impact"
+    ],
+    "failure_modes": "Displayed depth is cancelable within milliseconds and tends to withdraw precisely during volatility spikes, so pre-stress snapshots overstate executable liquidity; iceberg and hidden orders are invisible to it.",
+    "misconceptions": "Total displayed depth is not committed liquidity - much of it is rapidly repriced market-making inventory rather than firm intent to trade.",
+    "example": "The DOM shows 2,000 shares bid across the three levels below the NBB, so a 5,000-share market sell would execute through several ticks of the book.",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraph (b)(31) Depth of book data",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

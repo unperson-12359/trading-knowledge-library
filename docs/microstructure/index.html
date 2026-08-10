@@ -209,6 +209,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="national-best-bid-and-offer"><h3>National best bid and offer <a class="anchor" href="#national-best-bid-and-offer">#</a></h3>
 <div class="field">The highest protected bid and the lowest protected offer for an NMS stock across all national securities exchanges, calculated and disseminated on a current and continuing basis under Regulation NMS; when market centers transmit identical bids or offers, they are ranked first by size, then by time (Rule 600(b)(60)).</div>
+<div class="skill-links"><a href="../skills/tkl-national-best-bid-and-offer/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the single national reference for the best available displayed prices in a fragmented market where the same stock trades on many venues.</div>
 <div class="field"><span class="label">Mechanics:</span> Computed from the protected (automated, accessible) quotations of exchanges and associations by the plan processor, competing consolidators, or self-aggregators. It anchors the Rule 611 order-protection obligation and the Rule 605 execution-quality statistics.</div>
 <div class="field"><span class="label">Failure modes:</span> The consolidated NBBO lags direct exchange data feeds, historically excluded odd lots, and may reference sizes too small to be economically accessible; during locked or crossed conditions it ceases to represent an orderly market.</div>
@@ -234,6 +235,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="limit-order-book"><h3>Limit order book <a class="anchor" href="#limit-order-book">#</a></h3>
 <div class="field">An order book composed of limit orders ranked by price and by a secondary priority rule (time, size, or pro rata), against which incoming marketable orders are continuously matched - the operating mechanism of a continuous double auction on modern electronic exchanges.</div>
+<div class="skill-links"><a href="../skills/tkl-limit-order-book/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is a standing electronic auction: unfilled limit orders wait in line, and anyone demanding immediacy trades against the front of the opposite queue.</div>
 <div class="field"><span class="label">Mechanics:</span> Price priority dominates - the best-priced orders match first; the exchange&#x27;s matching algorithm (e.g. FIFO or pro rata on CME Globex) then allocates among orders at the same price. Orders lose queue priority when amended in price, increased in quantity, or changed in account.</div>
 <div class="field"><span class="label">Failure modes:</span> Resting orders face adverse selection from better-informed or faster traders, and displayed depth can vanish in volatile periods precisely when it is most needed. Reconstructed books from data feeds can diverge from the exchange&#x27;s true state.</div>
@@ -245,6 +247,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="central-limit-order-book"><h3>Central limit order book <a class="anchor" href="#central-limit-order-book">#</a></h3>
 <div class="field">A market structure in which order flow in an instrument is centralized in a single transparent electronic limit order book at one venue, where a matching engine automatically matches orders to buy and sell under uniform priority rules, providing a single point of price discovery and queue priority.</div>
+<div class="skill-links"><a href="../skills/tkl-central-limit-order-book/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Instead of liquidity being scattered across many venues, every order joins one consolidated queue, so all participants see and compete in the same book.</div>
 <div class="field"><span class="label">Mechanics:</span> Participants route orders through standardized messaging to the venue&#x27;s matching engine, which applies the product&#x27;s matching algorithm (e.g. FIFO or pro rata) and disseminates a market feed to all participants simultaneously. Futures markets such as CME Group&#x27;s DCMs operate this way, in contrast to fragmented US equity trading across exchanges, ATSs, and internalizers.</div>
 <div class="field"><span class="label">Failure modes:</span> Centralization creates a single point of technological failure and a venue monopoly over fees and market data; even CLOB markets retain off-book liquidity in blocks and RFQ protocols. Consolidated depth can still vanish in stress events.</div>
@@ -256,6 +259,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="top-of-book"><h3>Top of book <a class="anchor" href="#top-of-book">#</a></h3>
 <div class="field">The best bid and best offer of an order book, together with their displayed sizes - the first price level on each side. Regulation NMS treats the best bid and best offer of each venue (and the NBBO across venues) as core market data elements.</div>
+<div class="skill-links"><a href="../skills/tkl-top-of-book/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the headline of the book: the prices at which a small market order would execute right now.</div>
 <div class="field"><span class="label">Mechanics:</span> Top-of-book (Level 1) data update on every order event that changes the inside price or size. Matching engines fill aggressor orders first against quantity at the best opposite price, and spread, midpoint, and imbalance metrics are computed from these two levels.</div>
 <div class="field"><span class="label">Failure modes:</span> Top-of-book sizes are often tiny and flicker with high-frequency quoting, so the inside market can misrepresent the cost of executing meaningful size; hidden orders further distort the picture.</div>
@@ -267,6 +271,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="depth-of-market"><h3>Depth of market <a class="anchor" href="#depth-of-market">#</a></h3>
 <div class="field">The quantities of orders displayed at price levels beyond the best bid and offer - the size available as one moves away from the inside market. Regulation NMS Rule 600(b)(31) defines depth of book data as the quotation sizes at each venue at each of the next five prices below the national best bid and above the national best offer.</div>
+<div class="skill-links"><a href="../skills/tkl-depth-of-market/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It shows how much size the book can absorb before the price has to move a given distance.</div>
 <div class="field"><span class="label">Mechanics:</span> Disseminated as Level 2 / market-by-price feeds that aggregate displayed size at each price level per venue; traders use it to estimate the price impact of walking the book and to gauge support and resistance from resting orders.</div>
 <div class="field"><span class="label">Failure modes:</span> Displayed depth is cancelable within milliseconds and tends to withdraw precisely during volatility spikes, so pre-stress snapshots overstate executable liquidity; iceberg and hidden orders are invisible to it.</div>
@@ -278,6 +283,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="displayed-liquidity"><h3>Displayed liquidity <a class="anchor" href="#displayed-liquidity">#</a></h3>
 <div class="field">Trading interest that is visible to the public before execution - quotations and displayed orders included in consolidated quotation data. The SEC&#x27;s equity market structure concept release classifies registered exchanges and ECNs as displayed trading centers, which executed about 74.6% of NMS share volume in late 2009.</div>
+<div class="skill-links"><a href="../skills/tkl-displayed-liquidity/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the liquidity everyone can see quoted before deciding to trade.</div>
 <div class="field"><span class="label">Mechanics:</span> Exchange members and market makers communicate their best-priced bids and offers to their SROs under Rule 602, which disseminate them to vendors; displayed orders generally receive execution priority over undisplayed interest at the same price, and maker-taker pricing rewards posting displayed orders.</div>
 <div class="field"><span class="label">Failure modes:</span> Displayed size has shrunk with algorithmic and high-frequency quoting, and flickering quotes mean a share of displayed liquidity is practically inaccessible; relying on it alone misjudges true market capacity.</div>
@@ -289,6 +295,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="hidden-liquidity"><h3>Hidden liquidity <a class="anchor" href="#hidden-liquidity">#</a></h3>
 <div class="field">Trading interest that is available for execution at a trading center but is not included in the consolidated quotation data disseminated to the public - encompassing reserve (iceberg) size, fully undisplayed order types, dark pool matching interest, and broker-dealer internalization (SEC Concept Release on Equity Market Structure).</div>
+<div class="skill-links"><a href="../skills/tkl-hidden-liquidity/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is liquidity you discover only by executing against it: the orders are real but not advertised in the public quotes.</div>
 <div class="field"><span class="label">Mechanics:</span> Reserve orders display a tip and hold the balance in reserve, refreshing as the tip executes; dark ATSs match orders at reference prices (often the NBBO midpoint) with no pre-trade transparency; undisplayed interest generally yields priority to displayed orders at the same price.</div>
 <div class="field"><span class="label">Failure modes:</span> Heavy migration to undisplayed venues can weaken public price discovery and fairness of access, a core concern flagged by the SEC; for users, hidden liquidity offers no queue visibility and uncertain fills.</div>
@@ -300,6 +307,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="price-time-priority"><h3>Price-time priority <a class="anchor" href="#price-time-priority">#</a></h3>
 <div class="field">The order-matching rule under which orders at a better price execute first, and among orders at the same price the earliest-submitted order executes first. CME Group&#x27;s FIFO algorithm uses price and time as the only criteria for filling an order.</div>
+<div class="skill-links"><a href="../skills/tkl-price-time-priority/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> You earn execution priority by offering a better price or by getting in line earlier.</div>
 <div class="field"><span class="label">Mechanics:</span> Resting orders are ranked by price and then by timestamp; an incoming order fills against the front of the queue until exhausted. An order loses its time priority and is re-queued if its price is changed, its quantity is increased, or its account number is changed.</div>
 <div class="field"><span class="label">Failure modes:</span> It rewards speed, fueling latency arms races to reach the front of the queue, and it gives no extra share to large displayed size, which can discourage posting size. Under one-tick spreads, time priority dominates and queues grow long.</div>
@@ -311,6 +319,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="pro-rata-allocation"><h3>Pro rata allocation <a class="anchor" href="#pro-rata-allocation">#</a></h3>
 <div class="field">An order-matching rule that divides an incoming order among the resting orders at the best price in proportion to their sizes, subject to rounding, minimum allocations, and often top-order or FIFO components. Under CME&#x27;s Pro-Rata algorithm, an order&#x27;s allocation percentage equals its quantity divided by the total quantity at that price.</div>
+<div class="skill-links"><a href="../skills/tkl-pro-rata-allocation/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Everyone posting at the front price gets a slice of the incoming order, sized by how much they posted.</div>
 <div class="field"><span class="label">Mechanics:</span> The aggressor&#x27;s quantity is multiplied by each resting order&#x27;s pro-rated percentage; fills are rounded down (with minimums such as two lots at CME) and residual lots are allocated FIFO. Variants add priority for the order that bettered the market (top order) or for lead market makers.</div>
 <div class="field"><span class="label">Failure modes:</span> It rewards posting inflated size to capture a larger share, overstating true depth and exposing posters to larger-than-intended fills; it also dilutes the incentive to be first at a new price, which exchanges offset with top-order priority.</div>
@@ -323,6 +332,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="size-time-priority"><h3>Size-time priority <a class="anchor" href="#size-time-priority">#</a></h3>
 <div class="field">An order-matching priority in which size influences ranking among eligible orders and time breaks or contributes to the ranking, as used in specified non-displayed venue books.</div>
+<div class="skill-links"><a href="../skills/tkl-size-time-priority/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It describes the immediately available terms and ease of trading in an order-driven market.</div>
 <div class="field"><span class="label">Mechanics:</span> After price and any participant tier are resolved, rank eligible resting orders using the venue&#x27;s size-time rule; exact weighting or tie-breaking is venue-specific.</div>
 <div class="field"><span class="label">Failure modes:</span> Displayed quotes and depth can cancel, fragment across venues, or vanish under stress, so snapshots can overstate executable liquidity.</div>
@@ -333,6 +343,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="random-allocation"><h3>Random allocation <a class="anchor" href="#random-allocation">#</a></h3>
 <div class="field">An order-matching scheme in which the resting order(s) at the eligible price selected to trade with an incoming order are chosen at random rather than by time or size priority. Exchange system documentation (e.g. Euronext/Borsa Italiana migration guides to the Optiq platform) describes a random allocation scheme applied consistently with pro rata allocation or with a minimum allocation lot, and market-design literature has proposed randomized matching as an alternative to FIFO and pro rata.</div>
+<div class="skill-links"><a href="../skills/tkl-random-allocation/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Instead of rewarding the earliest or largest order, the engine holds a lottery among eligible resting orders.</div>
 <div class="field"><span class="label">Mechanics:</span> Eligible orders at the best price enter a random draw; selection probabilities may be uniform or weighted (e.g. consistent with pro rata shares), and residuals follow fallback rules. Randomized components appear mainly in specific allocation and uncrossing contexts rather than in continuous matching on the largest venues.</div>
 <div class="field"><span class="label">Failure modes:</span> Removing time priority weakens the reward for posting early and tight, which can reduce displayed liquidity; randomness also complicates execution modeling and backtesting because fills are probabilistic.</div>
@@ -344,6 +355,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="market-breadth"><h3>Market breadth <a class="anchor" href="#market-breadth">#</a></h3>
 <div class="field">One of the classical dimensions of market liquidity identified by Sarr and Lybek (IMF, 2002): the presence of large-volume orders such that sizable trades can be executed with only a negligible effect on prices. In microstructure it denotes order-size capacity, distinct from the technical-analysis usage (advancers versus decliners).</div>
+<div class="skill-links"><a href="../skills/tkl-market-breadth/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It answers: how wide is the river - can a whale trade without making a splash?</div>
 <div class="field"><span class="label">Mechanics:</span> Assessed through the size of orders quoted at and behind the best prices, volume and turnover statistics, and price-impact-per-volume measures; broad markets absorb large orders near current quotes.</div>
 <div class="field"><span class="label">Failure modes:</span> Breadth is state-dependent and can evaporate in stress when large resting orders are cancelled; displayed size overstates true capacity because of cancellations and hidden-interest dynamics.</div>

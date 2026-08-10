@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/trade-initiation",
+  "canonical_sha256": "e7ceb8dde0382042a1e66a0c11bf56d9e5b880475167bd5f00eb9a8d224f93a2",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/trade-initiation",
+    "name": "Trade initiation",
+    "aliases": [
+      "trade signing",
+      "aggressor side"
+    ],
+    "domain": "Microstructure",
+    "definition": "The identification of which side of a transaction demanded immediacy - buyer-initiated trades execute at or near the ask, seller-initiated trades at or near the bid. Because public data record price and volume but not the aggressor, initiation is inferred by classification algorithms such as those of Lee and Ready (1991).",
+    "intuition": "The party who crosses the spread is the one who started the trade; initiation asks who that was.",
+    "mechanics": "Trades are classified by comparing the trade price with the prevailing quote midpoint (quote rule) or with the previous trade price (tick rule), with the Lee-Ready algorithm combining both; the resulting signs drive order-flow and price-impact measurement.",
+    "formula": "",
+    "relationships": [
+      "Tick rule",
+      "Quote rule",
+      "Lee-Ready algorithm",
+      "Signed volume",
+      "Bid-ask spread"
+    ],
+    "failure_modes": "Classification degrades for midpoint trades, in fast markets where quotes change between trade and report, and under reporting delays; validation studies find material error rates that bias downstream order-flow measures.",
+    "misconceptions": "Trade initiation is not recorded in the tape - it is a statistical inference whose accuracy varies by market, period, and trade type.",
+    "example": "With the market at $100.00 x $100.02, a print at $100.02 is classified as buyer-initiated; a print at $100.00 as seller-initiated.",
+    "citations": [
+      {
+        "source": "Lee and Ready, 'Inferring Trade Direction from Intraday Data', Journal of Finance 46(2):733-746 (course-hosted copy)",
+        "url": "https://www.acsu.buffalo.edu/~keechung/MGF743/Readings/Inferring%20trade%20direction%20from%20intraday%20data.pdf",
+        "section": "Full text",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

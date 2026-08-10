@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/limit-order-book",
+  "canonical_sha256": "ec5392d10fe34f7698c367622b87964dafc6d5c45efe49ed25f1bb4eb52e22c4",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/limit-order-book",
+    "name": "Limit order book",
+    "aliases": [
+      "LOB"
+    ],
+    "domain": "Microstructure",
+    "definition": "An order book composed of limit orders ranked by price and by a secondary priority rule (time, size, or pro rata), against which incoming marketable orders are continuously matched - the operating mechanism of a continuous double auction on modern electronic exchanges.",
+    "intuition": "It is a standing electronic auction: unfilled limit orders wait in line, and anyone demanding immediacy trades against the front of the opposite queue.",
+    "mechanics": "Price priority dominates - the best-priced orders match first; the exchange's matching algorithm (e.g. FIFO or pro rata on CME Globex) then allocates among orders at the same price. Orders lose queue priority when amended in price, increased in quantity, or changed in account.",
+    "formula": "",
+    "relationships": [
+      "Order book",
+      "Price-time priority",
+      "Pro rata allocation",
+      "Central limit order book",
+      "Queue position"
+    ],
+    "failure_modes": "Resting orders face adverse selection from better-informed or faster traders, and displayed depth can vanish in volatile periods precisely when it is most needed. Reconstructed books from data feeds can diverge from the exchange's true state.",
+    "misconceptions": "The limit order book is not a complete map of market liquidity: iceberg reserve size, hidden orders, and off-book venues all escape it.",
+    "example": "On CME Globex, an incoming 250-lot buy at 9711 executes against resting offers at that price in the sequence set by the product's matching algorithm, e.g. FIFO or pro rata.",
+    "citations": [
+      {
+        "source": "CME Group Client Systems Wiki, 'Supported Matching Algorithms'",
+        "url": "https://cmegroupclientsite.atlassian.net/wiki/spaces/EPICSANDBOX/pages/457218479",
+        "section": "FIFO; Pro-Rata",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/adverse-selection",
+  "canonical_sha256": "99e95a491ecc4cd941d78e78c6cf8c8cd51bffc1e302989e2e44128ff70d18c4",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/adverse-selection",
+    "name": "Adverse selection",
+    "aliases": [
+      "adverse selection risk"
+    ],
+    "domain": "Microstructure",
+    "definition": "The risk liquidity providers bear that their counterparties are better informed, so that executed trades systematically precede price moves against the provider. In Glosten and Milgrom (1985), the specialist sets bid and ask prices that are conditional expectations of value given the trade's direction, and the spread compensates for expected losses to informed traders.",
+    "intuition": "If you tend to get filled exactly when you are wrong, you must charge for that tendency before it happens.",
+    "mechanics": "Providers widen quotes as the estimated share of informed flow rises and update quotes after each trade direction; ex post it appears as a realized spread below the effective spread and as post-trade price drift in the direction of the initiator.",
+    "formula": "",
+    "relationships": [
+      "Information asymmetry",
+      "Realized spread",
+      "Effective spread",
+      "Inventory risk",
+      "Bid-ask spread"
+    ],
+    "failure_modes": "Empirical decompositions attributing shares of the spread to adverse selection are sensitive to model specification and trade-classification error, and no method can identify which individual trades are informed.",
+    "misconceptions": "Adverse selection is not cheating by counterparties; it is an equilibrium cost of offering liquidity to a market that includes better-informed traders.",
+    "example": "Quotes sit at $100.00 x $100.02; a burst of aggressive buying lifts the offer to $100.04 as the market maker updates the probability that buyers know something.",
+    "citations": [
+      {
+        "source": "Glosten and Milgrom, 'Bid, Ask and Transaction Prices in a Specialist Market with Heterogeneously Informed Traders', Journal of Financial Economics 14(1):71-100 (Semantic Scholar record, DOI 10.1016/0304-405X(85)90044-3)",
+        "url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/0304-405X(85)90044-3?fields=title,abstract,authors,year,venue,externalIds",
+        "section": "Bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

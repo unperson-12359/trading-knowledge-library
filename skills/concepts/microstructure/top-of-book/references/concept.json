@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/top-of-book",
+  "canonical_sha256": "6030430ea0b35e5c3083f62476cb02864ee1fac1cd8bfa9e70a1217ecdf3427e",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/top-of-book",
+    "name": "Top of book",
+    "aliases": [
+      "inside market",
+      "level 1",
+      "BBO"
+    ],
+    "domain": "Microstructure",
+    "definition": "The best bid and best offer of an order book, together with their displayed sizes - the first price level on each side. Regulation NMS treats the best bid and best offer of each venue (and the NBBO across venues) as core market data elements.",
+    "intuition": "It is the headline of the book: the prices at which a small market order would execute right now.",
+    "mechanics": "Top-of-book (Level 1) data update on every order event that changes the inside price or size. Matching engines fill aggressor orders first against quantity at the best opposite price, and spread, midpoint, and imbalance metrics are computed from these two levels.",
+    "formula": "",
+    "relationships": [
+      "Best bid",
+      "Best ask",
+      "Order book",
+      "Depth of market",
+      "National best bid and offer"
+    ],
+    "failure_modes": "Top-of-book sizes are often tiny and flicker with high-frequency quoting, so the inside market can misrepresent the cost of executing meaningful size; hidden orders further distort the picture.",
+    "misconceptions": "Top-of-book liquidity is only the first slice of executable liquidity; judging a market by the inside alone ignores the depth below it.",
+    "example": "A book shows $100.00 bid for 500 shares and $100.02 offered for 300 shares; that single line is the top of book.",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraphs (b)(15) Best bid and best offer, (b)(26) Core data",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

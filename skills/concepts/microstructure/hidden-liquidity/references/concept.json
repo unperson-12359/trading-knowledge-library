@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/hidden-liquidity",
+  "canonical_sha256": "8b9e3673dc3e760807edebd6d2b5df3ef75d603a25ec072d98798bdbd310e2dc",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/hidden-liquidity",
+    "name": "Hidden liquidity",
+    "aliases": [
+      "undisplayed liquidity",
+      "dark liquidity",
+      "non-displayed liquidity"
+    ],
+    "domain": "Microstructure",
+    "definition": "Trading interest that is available for execution at a trading center but is not included in the consolidated quotation data disseminated to the public - encompassing reserve (iceberg) size, fully undisplayed order types, dark pool matching interest, and broker-dealer internalization (SEC Concept Release on Equity Market Structure).",
+    "intuition": "It is liquidity you discover only by executing against it: the orders are real but not advertised in the public quotes.",
+    "mechanics": "Reserve orders display a tip and hold the balance in reserve, refreshing as the tip executes; dark ATSs match orders at reference prices (often the NBBO midpoint) with no pre-trade transparency; undisplayed interest generally yields priority to displayed orders at the same price.",
+    "formula": "",
+    "relationships": [
+      "Displayed liquidity",
+      "Dark pool",
+      "Order book",
+      "Internalization",
+      "Pre-trade transparency"
+    ],
+    "failure_modes": "Heavy migration to undisplayed venues can weaken public price discovery and fairness of access, a core concern flagged by the SEC; for users, hidden liquidity offers no queue visibility and uncertain fills.",
+    "misconceptions": "Hidden does not mean inaccessible or illicit: undisplayed interest executes continuously against incoming orders, and reserve orders are a standard exchange order type.",
+    "example": "A seller enters a 20,000-share reserve order displaying 500 shares; each time the tip fills, another 500 shares refresh from the hidden balance.",
+    "citations": [
+      {
+        "source": "SEC, Concept Release on Equity Market Structure, Release No. 34-61358, 75 FR 3594",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2010-01-21/html/2010-1045.htm",
+        "section": "Parts III.A.3-4 and IV.C Undisplayed Liquidity",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

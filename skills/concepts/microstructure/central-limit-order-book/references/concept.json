@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/central-limit-order-book",
+  "canonical_sha256": "a3721874f47b6b7cd2b8fa9dd6997a25f2c2e09fbd836cf18a5c4bb901801ec3",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/central-limit-order-book",
+    "name": "Central limit order book",
+    "aliases": [
+      "CLOB"
+    ],
+    "domain": "Microstructure",
+    "definition": "A market structure in which order flow in an instrument is centralized in a single transparent electronic limit order book at one venue, where a matching engine automatically matches orders to buy and sell under uniform priority rules, providing a single point of price discovery and queue priority.",
+    "intuition": "Instead of liquidity being scattered across many venues, every order joins one consolidated queue, so all participants see and compete in the same book.",
+    "mechanics": "Participants route orders through standardized messaging to the venue's matching engine, which applies the product's matching algorithm (e.g. FIFO or pro rata) and disseminates a market feed to all participants simultaneously. Futures markets such as CME Group's DCMs operate this way, in contrast to fragmented US equity trading across exchanges, ATSs, and internalizers.",
+    "formula": "",
+    "relationships": [
+      "Limit order book",
+      "Price-time priority",
+      "Matching engine",
+      "Displayed liquidity",
+      "Fragmentation"
+    ],
+    "failure_modes": "Centralization creates a single point of technological failure and a venue monopoly over fees and market data; even CLOB markets retain off-book liquidity in blocks and RFQ protocols. Consolidated depth can still vanish in stress events.",
+    "misconceptions": "A central limit order book does not guarantee deep or stable liquidity, and it does not eliminate hidden trading interest or latency advantages among participants.",
+    "example": "E-mini S&P 500 futures trade overwhelmingly on CME Globex's single central limit order book, whereas a US-listed stock trades across a dozen exchanges and dozens of off-exchange venues.",
+    "citations": [
+      {
+        "source": "CFTC, Concept Release on Risk Controls and System Safeguards for Automated Trading Environments, 78 FR 56542",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2013-09-12/html/2013-22185.htm",
+        "section": "Part II.A.1 Automated Order Generation and Execution (DCM matching engines)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

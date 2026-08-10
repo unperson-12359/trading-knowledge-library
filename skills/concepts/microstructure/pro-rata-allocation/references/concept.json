@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/pro-rata-allocation",
+  "canonical_sha256": "a0ed2091723c20659e5dd7922ecb481cc657f2307e7c98aed5744c27b92216ba",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/pro-rata-allocation",
+    "name": "Pro rata allocation",
+    "aliases": [
+      "pro rata",
+      "pro-rata matching",
+      "allocation algorithm"
+    ],
+    "domain": "Microstructure",
+    "definition": "An order-matching rule that divides an incoming order among the resting orders at the best price in proportion to their sizes, subject to rounding, minimum allocations, and often top-order or FIFO components. Under CME's Pro-Rata algorithm, an order's allocation percentage equals its quantity divided by the total quantity at that price.",
+    "intuition": "Everyone posting at the front price gets a slice of the incoming order, sized by how much they posted.",
+    "mechanics": "The aggressor's quantity is multiplied by each resting order's pro-rated percentage; fills are rounded down (with minimums such as two lots at CME) and residual lots are allocated FIFO. Variants add priority for the order that bettered the market (top order) or for lead market makers.",
+    "formula": "Allocation_i = Q_incoming x (Q_i / Q_total at price), rounded down to the nearest lot, subject to minimums; residuals allocated FIFO.",
+    "relationships": [
+      "Price-time priority",
+      "Matching algorithm",
+      "Limit order book",
+      "Market depth",
+      "Queue position"
+    ],
+    "failure_modes": "It rewards posting inflated size to capture a larger share, overstating true depth and exposing posters to larger-than-intended fills; it also dilutes the incentive to be first at a new price, which exchanges offset with top-order priority.",
+    "misconceptions": "Real-world pro rata is rarely purely proportional: minimums, rounding, top-order, and market-maker allocations materially change the distribution of fills.",
+    "example": "Resting bids of 50, 25, and 10 lots at the best price meet a 50-lot sell: pro rata allocates approximately 29, 14, and 5 lots after any top order is filled.",
+    "citations": [
+      {
+        "source": "CME Group Client Systems Wiki, 'Supported Matching Algorithms'",
+        "url": "https://cmegroupclientsite.atlassian.net/wiki/spaces/EPICSANDBOX/pages/457218479",
+        "section": "Pro-Rata; Pro-Rata Allocation Matching Examples",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
