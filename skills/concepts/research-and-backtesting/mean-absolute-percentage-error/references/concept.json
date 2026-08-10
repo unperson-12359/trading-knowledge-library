@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/mean-absolute-percentage-error",
+  "canonical_sha256": "2d75ad6cef3f7bf90bab4b797b8d9baecd65c521955dee81f93a5648222295c5",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/mean-absolute-percentage-error",
+    "name": "Mean absolute percentage error",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "The average absolute forecast error divided by the absolute observed value, expressed as a ratio or percentage under a stated zero-value convention.",
+    "intuition": "It summarizes one aspect of prediction error or decision quality in a number or curve.",
+    "mechanics": "For nonzero targets, divide each absolute residual by the absolute target and average; explicitly handle or exclude zero and near-zero denominators.",
+    "formula": "MAPE = mean(abs((y - prediction) / y))",
+    "relationships": [
+      "Mean absolute error",
+      "Regression task",
+      "Forecast error"
+    ],
+    "failure_modes": "Class imbalance, threshold choice, unequal error costs, outliers, and dependence can make the summary inappropriate or unstable.",
+    "misconceptions": "No single metric captures economic utility, turnover, risk, calibration, and trading costs at once.",
+    "example": "Actual values 100 and 200 with forecasts 90 and 220 yield MAPE = (10%+10%)/2 = 10%.",
+    "citations": [
+      {
+        "source": "scikit-learn API, metrics",
+        "url": "https://scikit-learn.org/stable/api/sklearn.metrics.html",
+        "section": "Classification, ranking, probabilistic, and regression metrics",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

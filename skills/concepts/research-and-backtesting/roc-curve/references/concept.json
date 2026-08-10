@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/roc-curve",
+  "canonical_sha256": "d1641f8306f22c227862dcd3382e4ccd7967342483e9f2c419f3e30082e3f8e3",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/roc-curve",
+    "name": "ROC curve",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A threshold curve plotting true-positive rate against false-positive rate for a binary score.",
+    "intuition": "It summarizes one aspect of prediction error or decision quality in a number or curve.",
+    "mechanics": "Sort distinct score thresholds, classify observations at each threshold, and plot recall against one minus specificity.",
+    "formula": "TPR = TP/(TP+FN); FPR = FP/(FP+TN)",
+    "relationships": [
+      "Area under ROC curve",
+      "Recall",
+      "Specificity"
+    ],
+    "failure_modes": "Class imbalance, threshold choice, unequal error costs, outliers, and dependence can make the summary inappropriate or unstable.",
+    "misconceptions": "No single metric captures economic utility, turnover, risk, calibration, and trading costs at once.",
+    "example": "Lowering a threshold raises TPR from 0.60 to 0.80 while FPR rises from 0.10 to 0.25, adding a point to the ROC curve.",
+    "citations": [
+      {
+        "source": "scikit-learn API, metrics",
+        "url": "https://scikit-learn.org/stable/api/sklearn.metrics.html",
+        "section": "Classification, ranking, probabilistic, and regression metrics",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

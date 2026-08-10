@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/brier-score",
+  "canonical_sha256": "579b2a185826bf09f6831a35da2b8d831eec65173918aed2c258be38fb421e78",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/brier-score",
+    "name": "Brier score",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "The mean squared error of probabilistic forecasts for binary outcomes, and more generally the summed squared probability error across classes under a stated convention.",
+    "intuition": "It summarizes one aspect of prediction error or decision quality in a number or curve.",
+    "mechanics": "Subtract each binary outcome from its forecast probability, square the error, and average over held-out cases.",
+    "formula": "Brier = mean((p - y)^2)",
+    "relationships": [
+      "Calibration",
+      "Log loss",
+      "Probability forecast"
+    ],
+    "failure_modes": "Class imbalance, threshold choice, unequal error costs, outliers, and dependence can make the summary inappropriate or unstable.",
+    "misconceptions": "No single metric captures economic utility, turnover, risk, calibration, and trading costs at once.",
+    "example": "Forecasts 0.8 and 0.3 for outcomes 1 and 0 give Brier = (0.04 + 0.09)/2 = 0.065.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide, Probability calibration",
+        "url": "https://scikit-learn.org/stable/modules/calibration.html",
+        "section": "Calibration curves and proper scoring rules",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

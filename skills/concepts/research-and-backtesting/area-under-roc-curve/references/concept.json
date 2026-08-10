@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/area-under-roc-curve",
+  "canonical_sha256": "03c1efefb185ed998c501ba78fa48cbce94d92f0e3d585ef1dcd32f8bf6e1d70",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/area-under-roc-curve",
+    "name": "Area under ROC curve",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "The area beneath the ROC curve, equivalently the probability that a randomly selected positive receives a higher score than a randomly selected negative, with tie handling.",
+    "intuition": "It summarizes one aspect of prediction error or decision quality in a number or curve.",
+    "mechanics": "Compute the ROC curve across thresholds and numerically integrate true-positive rate with respect to false-positive rate.",
+    "formula": "AUC = integral of TPR with respect to FPR",
+    "relationships": [
+      "ROC curve",
+      "Classification",
+      "Ranking"
+    ],
+    "failure_modes": "Class imbalance, threshold choice, unequal error costs, outliers, and dependence can make the summary inappropriate or unstable.",
+    "misconceptions": "No single metric captures economic utility, turnover, risk, calibration, and trading costs at once.",
+    "example": "An AUC of 0.70 means a random positive outranks a random negative about 70% of the time under the metric's tie convention.",
+    "citations": [
+      {
+        "source": "scikit-learn API, metrics",
+        "url": "https://scikit-learn.org/stable/api/sklearn.metrics.html",
+        "section": "Classification, ranking, probabilistic, and regression metrics",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

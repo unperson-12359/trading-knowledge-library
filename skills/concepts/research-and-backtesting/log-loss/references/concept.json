@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/log-loss",
+  "canonical_sha256": "569a704161f4773025aa0fb34eaa51356f52d7b54c6f362eeaf94e5072d03146",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/log-loss",
+    "name": "Log loss",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A proper scoring loss equal to the negative log probability assigned to the observed class, averaged across observations.",
+    "intuition": "It summarizes one aspect of prediction error or decision quality in a number or curve.",
+    "mechanics": "Clip probabilities away from zero for numerical safety, select the probability of each observed class, take negative logs, and average.",
+    "formula": "Binary log loss = -mean(y log p + (1-y) log(1-p))",
+    "relationships": [
+      "Brier score",
+      "Calibration",
+      "Objective function"
+    ],
+    "failure_modes": "Class imbalance, threshold choice, unequal error costs, outliers, and dependence can make the summary inappropriate or unstable.",
+    "misconceptions": "No single metric captures economic utility, turnover, risk, calibration, and trading costs at once.",
+    "example": "A 0.8 forecast for an event that occurs incurs loss -log(0.8), about 0.223.",
+    "citations": [
+      {
+        "source": "scikit-learn API, metrics",
+        "url": "https://scikit-learn.org/stable/api/sklearn.metrics.html",
+        "section": "Classification, ranking, probabilistic, and regression metrics",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}
