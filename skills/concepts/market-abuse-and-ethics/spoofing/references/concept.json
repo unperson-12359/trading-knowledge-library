@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-abuse-and-ethics/spoofing",
+  "canonical_sha256": "d57db1715fbc4d18e809a756b822b41aea2e57bce246489019f3908a2764f808",
+  "source_path": "concepts/market-abuse-and-ethics.json",
+  "concept": {
+    "id": "market-abuse-and-ethics/spoofing",
+    "name": "Spoofing",
+    "aliases": [
+      "spoof orders"
+    ],
+    "domain": "Market abuse and ethics",
+    "definition": "Bidding or offering with the intent to cancel the bid or offer before execution, an explicitly prohibited disruptive trading practice under CEA section 4c(a)(5)(C) as added by the Dodd-Frank Act. The spoofer places visible orders it never intends to fill in order to deceive other participants about supply or demand and profit from the induced price movement.",
+    "intuition": "You wave a huge fake buy order in front of the market so prices tick up, then you sell into the move and yank the fake order before anyone can hit it.",
+    "mechanics": "A trader enters a large, visible order on one side of the book (the spoof order) while holding or entering a genuine smaller order on the opposite side. The spoof order shifts the quoted imbalance, nudging price toward the genuine order, which executes; the spoof order is then cancelled. Violation requires intent to cancel before execution, as shown by patterns of placement and cancellation.",
+    "formula": "",
+    "relationships": [
+      "Quote stuffing",
+      "Layering",
+      "Market manipulation",
+      "Trade surveillance"
+    ],
+    "failure_modes": "Because violation turns on intent to cancel, legitimate rapid order modification by market makers can resemble spoofing in surveillance data; regulators distinguish the two using order lifetime, fill ratios, and opposite-side trading patterns, and enforcement has faced acquittals where intent was not proven.",
+    "misconceptions": "Cancelling orders is not itself illegal — markets depend on cancellation; spoofing requires entering the order with the intent to cancel it before execution in order to mislead others.",
+    "example": "A trader places a 2,000-lot offer in E-mini S&P futures 2 ticks above market, causing the price to dip into their resting 50-lot bid; once filled, the large offer is cancelled in under a second — the pattern prosecuted in cases like U.S. v. Coscia.",
+    "citations": [
+      {
+        "source": "CFTC, Antidisruptive Practices Authority (Interpretive Guidance), 78 FR 31890",
+        "url": "https://www.federalregister.gov/documents/2013/05/28/2013-12365/antidisruptive-practices-authority",
+        "section": "Interpretation of CEA section 4c(a)(5)(C) (spoofing)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/ConsumerProtection/EducationCenter/CFTCGlossary/index.htm",
+        "section": "Entries: Disruptive Practices; Spoofing",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

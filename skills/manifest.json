@@ -2,7 +2,7 @@
   "$schema": "../schemas/skill-manifest.schema.json",
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 320,
+  "completed_count": 340,
   "skills": [
     {
       "$schema": "../../../../schemas/concept-skill.schema.json",
@@ -25955,6 +25955,1584 @@
         "microstructure/latency",
         "microstructure/displayed-liquidity",
         "microstructure/cancel-to-trade-ratio"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-quote-stuffing",
+      "concept_id": "market-abuse-and-ethics/quote-stuffing",
+      "display_name": "Quote stuffing",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Quote stuffing using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Quote stuffing",
+        "explain Quote stuffing",
+        "apply Quote stuffing to a trading question",
+        "common misconception about Quote stuffing"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/quote-stuffing",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "5f419d8252148d32efc740006bd6005d9415f72796eaefd02c32801ba28c1437"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/spoofing",
+        "market-abuse-and-ethics/layering",
+        "market-abuse-and-ethics/market-manipulation",
+        "market-abuse-and-ethics/trade-surveillance"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-spoofing",
+      "concept_id": "market-abuse-and-ethics/spoofing",
+      "display_name": "Spoofing",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Spoofing using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Spoofing",
+        "spoof orders",
+        "explain Spoofing",
+        "apply Spoofing to a trading question",
+        "common misconception about Spoofing"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/spoofing",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "d57db1715fbc4d18e809a756b822b41aea2e57bce246489019f3908a2764f808"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/quote-stuffing",
+        "market-abuse-and-ethics/layering",
+        "market-abuse-and-ethics/market-manipulation",
+        "market-abuse-and-ethics/trade-surveillance"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-layering",
+      "concept_id": "market-abuse-and-ethics/layering",
+      "display_name": "Layering",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Layering using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Layering",
+        "explain Layering",
+        "apply Layering to a trading question",
+        "common misconception about Layering"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/layering",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "c8c74196df702199de7e921a0a12629c2311bc7c0c50dff7b83d03fea2efc29b"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/spoofing",
+        "market-abuse-and-ethics/quote-stuffing",
+        "market-abuse-and-ethics/market-manipulation",
+        "market-abuse-and-ethics/trade-surveillance"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-wash-trading",
+      "concept_id": "market-abuse-and-ethics/wash-trading",
+      "display_name": "Wash trading",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Wash trading using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Wash trading",
+        "wash sale (manipulative sense)",
+        "round trip trading",
+        "explain Wash trading",
+        "apply Wash trading to a trading question",
+        "common misconception about Wash trading"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/wash-trading",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "0109376b5db5d21a7c5f104527f0602687b8416c6dc0d5002bce5afe81148f04"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/painting-the-tape",
+        "market-abuse-and-ethics/market-manipulation",
+        "market-abuse-and-ethics/wash-sale-rule",
+        "market-abuse-and-ethics/trade-surveillance"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-front-running",
+      "concept_id": "market-abuse-and-ethics/front-running",
+      "display_name": "Front running",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Front running using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Front running",
+        "trading ahead",
+        "explain Front running",
+        "apply Front running to a trading question",
+        "common misconception about Front running"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/front-running",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "ba1b74b4187ca4acf8fff755505a36525a4fdaad57edc66b60c627b69037e08d"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/insider-trading",
+        "market-abuse-and-ethics/material-nonpublic-information",
+        "market-abuse-and-ethics/market-manipulation",
+        "market-abuse-and-ethics/fiduciary-duty"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-marking-the-close",
+      "concept_id": "market-abuse-and-ethics/marking-the-close",
+      "display_name": "Marking the close",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Marking the close using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Marking the close",
+        "banging the close",
+        "explain Marking the close",
+        "apply Marking the close to a trading question",
+        "common misconception about Marking the close"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/marking-the-close",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "81048b40e14d05cf66906a3d819cb4aff0dc826d96e9aef9b28971712ec1212f"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/painting-the-tape",
+        "market-abuse-and-ethics/market-manipulation",
+        "market-abuse-and-ethics/spoofing",
+        "market-abuse-and-ethics/trade-surveillance"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-painting-the-tape",
+      "concept_id": "market-abuse-and-ethics/painting-the-tape",
+      "display_name": "Painting the tape",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Painting the tape using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Painting the tape",
+        "explain Painting the tape",
+        "apply Painting the tape to a trading question",
+        "common misconception about Painting the tape"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/painting-the-tape",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "4f8b371efcfeeecdcfad12a2c0aeff4124338f8be27dab3f287df8880d9ded8e"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/wash-trading",
+        "market-abuse-and-ethics/pump-and-dump",
+        "market-abuse-and-ethics/market-manipulation",
+        "market-abuse-and-ethics/marking-the-close"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-insider-trading",
+      "concept_id": "market-abuse-and-ethics/insider-trading",
+      "display_name": "Insider trading",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Insider trading using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Insider trading",
+        "illegal insider trading",
+        "explain Insider trading",
+        "apply Insider trading to a trading question",
+        "common misconception about Insider trading"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/insider-trading",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "74e4a03932b2ac3eecfe606443b2e6db216a3037c40a964e708faaed1668dcb8"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/material-nonpublic-information",
+        "market-abuse-and-ethics/fiduciary-duty",
+        "market-abuse-and-ethics/front-running",
+        "market-abuse-and-ethics/market-manipulation"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-material-nonpublic-information",
+      "concept_id": "market-abuse-and-ethics/material-nonpublic-information",
+      "display_name": "Material nonpublic information",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Material nonpublic information using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Material nonpublic information",
+        "MNPI",
+        "explain Material nonpublic information",
+        "apply Material nonpublic information to a trading question",
+        "common misconception about Material nonpublic information"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/material-nonpublic-information",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "dd19afa9dca6c5a0f63ac13e45b53e56092041aa32ba3e0bc9b5ff9574626cb0"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/insider-trading",
+        "market-abuse-and-ethics/front-running",
+        "market-abuse-and-ethics/fiduciary-duty"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-market-manipulation",
+      "concept_id": "market-abuse-and-ethics/market-manipulation",
+      "display_name": "Market manipulation",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Market manipulation using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Market manipulation",
+        "price manipulation",
+        "explain Market manipulation",
+        "apply Market manipulation to a trading question",
+        "common misconception about Market manipulation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/market-manipulation",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "720c25505ac9132ca59931d422d991c973948bdede73f2976665993b6443914e"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/wash-trading",
+        "market-abuse-and-ethics/spoofing",
+        "market-abuse-and-ethics/painting-the-tape",
+        "market-abuse-and-ethics/marking-the-close",
+        "market-abuse-and-ethics/cornering-the-market",
+        "market-abuse-and-ethics/pump-and-dump",
+        "market-abuse-and-ethics/trade-surveillance"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-pump-and-dump",
+      "concept_id": "market-abuse-and-ethics/pump-and-dump",
+      "display_name": "Pump and dump",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Pump and dump using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Pump and dump",
+        "pump-and-dump scheme",
+        "explain Pump and dump",
+        "apply Pump and dump to a trading question",
+        "common misconception about Pump and dump"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/pump-and-dump",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "28a49f05101e88343bf550b11358806e9d1b544f328afaba23d3c903d24832fb"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/market-manipulation",
+        "market-abuse-and-ethics/painting-the-tape",
+        "market-abuse-and-ethics/short-and-distort",
+        "market-abuse-and-ethics/wash-trading"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-churning",
+      "concept_id": "market-abuse-and-ethics/churning",
+      "display_name": "Churning",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Churning using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Churning",
+        "explain Churning",
+        "apply Churning to a trading question",
+        "common misconception about Churning"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/churning",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "b93fe3a06781f73868f5e643e5a927971c32682f7f765bc34d08a3da1d86327f"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/suitability",
+        "market-abuse-and-ethics/fiduciary-duty",
+        "market-abuse-and-ethics/best-interest-obligation",
+        "market-abuse-and-ethics/trade-surveillance"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-cornering-the-market",
+      "concept_id": "market-abuse-and-ethics/cornering-the-market",
+      "display_name": "Cornering the market",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Cornering the market using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Cornering the market",
+        "market corner",
+        "corner",
+        "explain Cornering the market",
+        "apply Cornering the market to a trading question",
+        "common misconception about Cornering the market"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/cornering-the-market",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "d50f70b015f6637804d16cee97f2825caf0b761dfe32062e3d81bdf1c2568523"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/market-manipulation",
+        "market-abuse-and-ethics/position-limit",
+        "market-abuse-and-ethics/large-trader-reporting",
+        "market-abuse-and-ethics/short-and-distort"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-short-and-distort",
+      "concept_id": "market-abuse-and-ethics/short-and-distort",
+      "display_name": "Short and distort",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Short and distort using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Short and distort",
+        "explain Short and distort",
+        "apply Short and distort to a trading question",
+        "common misconception about Short and distort"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/short-and-distort",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "6e2044c19e85a6fdc457e02d41e2e60340d25e82c75b47ccbc61fc877168991c"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/pump-and-dump",
+        "market-abuse-and-ethics/bear-raid",
+        "market-abuse-and-ethics/market-manipulation",
+        "market-abuse-and-ethics/reg-sho"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-bear-raid",
+      "concept_id": "market-abuse-and-ethics/bear-raid",
+      "display_name": "Bear raid",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Bear raid using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Bear raid",
+        "explain Bear raid",
+        "apply Bear raid to a trading question",
+        "common misconception about Bear raid"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/bear-raid",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "bdebd2967cf8f251bc03cbbc8bc51d8d4c3d82e5662cea9dc889d558f8c9d5ef"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/short-and-distort",
+        "market-abuse-and-ethics/market-manipulation",
+        "market-abuse-and-ethics/short-sale-restriction",
+        "market-abuse-and-ethics/reg-sho"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-trade-surveillance",
+      "concept_id": "market-abuse-and-ethics/trade-surveillance",
+      "display_name": "Trade surveillance",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Trade surveillance using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Trade surveillance",
+        "market surveillance",
+        "explain Trade surveillance",
+        "apply Trade surveillance to a trading question",
+        "common misconception about Trade surveillance"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/trade-surveillance",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "349c64c0403f64b61fdf666e14a3c6f2162e4f5a975932c516d8b2ec77ff9bd9"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/market-manipulation",
+        "market-abuse-and-ethics/spoofing",
+        "market-abuse-and-ethics/wash-trading",
+        "market-abuse-and-ethics/large-trader-reporting"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-know-your-customer",
+      "concept_id": "market-abuse-and-ethics/know-your-customer",
+      "display_name": "Know your customer",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Know your customer using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Know your customer",
+        "KYC",
+        "customer identification program (CIP)",
+        "explain Know your customer",
+        "apply Know your customer to a trading question",
+        "common misconception about Know your customer"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/know-your-customer",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "ed79980cdba47490a06082b7ab6d9ef8d4743e9b7e2c1793dc2df9dd82f9f014"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/anti-money-laundering-controls",
+        "market-abuse-and-ethics/suitability",
+        "market-abuse-and-ethics/trade-surveillance"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-anti-money-laundering-controls",
+      "concept_id": "market-abuse-and-ethics/anti-money-laundering-controls",
+      "display_name": "Anti-money-laundering controls",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Anti-money-laundering controls using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Anti-money-laundering controls",
+        "AML controls",
+        "AML/CFT program",
+        "BSA/AML program",
+        "explain Anti-money-laundering controls",
+        "apply Anti-money-laundering controls to a trading question",
+        "common misconception about Anti-money-laundering controls"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/anti-money-laundering-controls",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "914fb00a54a40e0c2dbb8a65dba85c6c99844089ac394870153b0c1c14437089"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/know-your-customer",
+        "market-abuse-and-ethics/trade-surveillance"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-suitability",
+      "concept_id": "market-abuse-and-ethics/suitability",
+      "display_name": "Suitability",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Suitability using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Suitability",
+        "suitability obligation",
+        "explain Suitability",
+        "apply Suitability to a trading question",
+        "common misconception about Suitability"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/suitability",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "9871ddbef2a5c43186b3af536687e7b381567991c6fe21f4e04d03381329dff9"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/best-interest-obligation",
+        "market-abuse-and-ethics/fiduciary-duty",
+        "market-abuse-and-ethics/churning",
+        "market-abuse-and-ethics/know-your-customer"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-fiduciary-duty",
+      "concept_id": "market-abuse-and-ethics/fiduciary-duty",
+      "display_name": "Fiduciary duty",
+      "domain": "Market abuse and ethics",
+      "description": "Explain, compare, or apply Fiduciary duty using the library's structured Market abuse and ethics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Fiduciary duty",
+        "fiduciary standard",
+        "explain Fiduciary duty",
+        "apply Fiduciary duty to a trading question",
+        "common misconception about Fiduciary duty"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 17,
+      "package_path": "skills/concepts/market-abuse-and-ethics/fiduciary-duty",
+      "canonical": {
+        "source_path": "concepts/market-abuse-and-ethics.json",
+        "sha256": "fd5f0dc267018044da06adba6dd544d5345470890ffde4715c54f126c8c8a60a"
+      },
+      "related_concept_ids": [
+        "market-abuse-and-ethics/best-interest-obligation",
+        "market-abuse-and-ethics/suitability",
+        "market-abuse-and-ethics/insider-trading",
+        "market-abuse-and-ethics/front-running"
       ]
     }
   ]

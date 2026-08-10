@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-abuse-and-ethics/quote-stuffing",
+  "canonical_sha256": "5f419d8252148d32efc740006bd6005d9415f72796eaefd02c32801ba28c1437",
+  "source_path": "concepts/market-abuse-and-ethics.json",
+  "concept": {
+    "id": "market-abuse-and-ethics/quote-stuffing",
+    "name": "Quote stuffing",
+    "aliases": [],
+    "domain": "Market abuse and ethics",
+    "definition": "A disruptive order-book practice in which a trader rapidly submits and cancels very large numbers of bids or offers to overload a trading venue's quotation system, delay other participants' market data or executions, or create misleading impressions of market activity. The CFTC has described submitting or cancelling bids or offers to overload a registered entity's quotation system as conduct 'of the character of' spoofing, which Dodd-Frank made unlawful as a disruptive practice under CEA section 4c(a)(5).",
+    "intuition": "Imagine shouting thousands of fake orders into a market every second and instantly retracting them, just so everyone else's screens and systems choke on the noise while you exploit the confusion.",
+    "mechanics": "An algorithm floods the order book with quotes that are cancelled within milliseconds, inflating message traffic and quote-to-trade ratios. The burst can slow data feeds and matching engines, widen apparent depth, and obscure the true book, giving the stuffer a latency or informational edge over slower participants.",
+    "formula": "",
+    "relationships": [
+      "Spoofing",
+      "Layering",
+      "Market manipulation",
+      "Trade surveillance"
+    ],
+    "failure_modes": "High message rates also arise from legitimate market making and aggressive re-quoting in volatile markets, so detection based purely on quote-to-trade ratios produces false positives; the prohibited element is the disruptive intent or effect, not speed itself.",
+    "misconceptions": "It is not simply 'posting many quotes' — high quote traffic from bona fide market makers is lawful; quote stuffing specifically involves orders not intended to trade, used to jam or mislead the market.",
+    "example": "An HFT firm fires 5,000 orders per second into an equity's book and cancels 99.9% of them within 10 milliseconds, causing consolidated-feed latency that slows rival algorithms while the firm trades on the faster direct feed.",
+    "citations": [
+      {
+        "source": "CFTC, Antidisruptive Practices Authority (Interpretive Guidance), 78 FR 31890",
+        "url": "https://www.federalregister.gov/documents/2013/05/28/2013-12365/antidisruptive-practices-authority",
+        "section": "Discussion of CEA section 4c(a)(5)(C) and proposed spoofing description (footnote 25)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

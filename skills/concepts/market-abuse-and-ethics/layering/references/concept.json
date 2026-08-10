@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-abuse-and-ethics/layering",
+  "canonical_sha256": "c8c74196df702199de7e921a0a12629c2311bc7c0c50dff7b83d03fea2efc29b",
+  "source_path": "concepts/market-abuse-and-ethics.json",
+  "concept": {
+    "id": "market-abuse-and-ethics/layering",
+    "name": "Layering",
+    "aliases": [],
+    "domain": "Market abuse and ethics",
+    "definition": "A variant of spoofing in which a trader submits multiple non-bona fide orders at successively different price levels on one side of the order book to create a false appearance of market depth and pressure, thereby moving the price so that a genuine order on the opposite side can execute advantageously. The CFTC's description of spoofing-type conduct includes submitting or cancelling multiple bids or offers to create an appearance of false market depth.",
+    "intuition": "Instead of one big fake order, you stack a whole staircase of fake orders at different prices so the book looks deep on one side and the market walks straight into your real trade on the other side.",
+    "mechanics": "The trader places several visible limit orders at progressively worse prices away from the touch on one side, amplifying apparent supply or demand. As other participants reprice in response, the trader's genuine smaller order on the opposite side fills, after which the layered orders are cancelled.",
+    "formula": "",
+    "relationships": [
+      "Spoofing",
+      "Quote stuffing",
+      "Market manipulation",
+      "Trade surveillance"
+    ],
+    "failure_modes": "Legitimate laddered order placement (scaling into a position at multiple price levels) looks similar in order data; enforcement hinges on evidence that the layered orders were never intended to trade, which is hard to prove from book data alone.",
+    "misconceptions": "Layering is not a distinct statute but a named pattern of the spoofing-type conduct prohibited as entering bids or offers with intent to cancel before execution; placing orders at multiple levels is lawful when they are bona fide.",
+    "example": "A trader layers five sell orders of 500 lots each at successively higher prices in a Treasury future, creating apparent selling pressure that drives the price down into their genuine 100-lot bid, then cancels all five layers.",
+    "citations": [
+      {
+        "source": "CFTC, Antidisruptive Practices Authority (Interpretive Guidance), 78 FR 31890",
+        "url": "https://www.federalregister.gov/documents/2013/05/28/2013-12365/antidisruptive-practices-authority",
+        "section": "Proposed spoofing description: multiple bids or offers creating false market depth (footnote 25)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
