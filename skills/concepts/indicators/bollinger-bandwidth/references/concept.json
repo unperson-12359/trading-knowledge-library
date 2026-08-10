@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/bollinger-bandwidth",
+  "canonical_sha256": "e0b485dbf2ad0d0448fff106acaa0bdfb24ef7b9b7974006f1bd1fd3c7bbd916",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/bollinger-bandwidth",
+    "name": "Bollinger bandwidth",
+    "aliases": [
+      "BandWidth",
+      "BBW",
+      "Bollinger BandWidth"
+    ],
+    "domain": "Indicators",
+    "definition": "A Bollinger-derived indicator measuring the percentage width between the upper and lower bands relative to the middle band, tracking volatility expansion and contraction on a normalized scale comparable across securities and timeframes.",
+    "intuition": "It turns the visual 'pinch' of the bands into a number: falling BandWidth means volatility is drying up; the famous Squeeze is BandWidth at the low end of its own historical range.",
+    "mechanics": "Compute (Upper - Lower) / Middle x 100 from the Bollinger Bands (default 20, 2). Narrowness is judged against the indicator's own 6-12 month range; the Squeeze alerts to coming volatility, and the direction comes from the subsequent band break.",
+    "formula": "BandWidth = ((UpperBand - LowerBand) / MiddleBand) x 100.",
+    "relationships": [
+      "Bollinger Bands",
+      "Percent B",
+      "Mass index",
+      "Average true range"
+    ],
+    "failure_modes": "'Narrow' is relative to each security's own history, so thresholds do not transfer between instruments; the Squeeze is directionless and the first band break after a squeeze can fail.",
+    "misconceptions": "A low BandWidth does not guarantee an imminent big move - volatility can stay compressed for months, and low-volatility securities always show lower BandWidth than volatile ones.",
+    "example": "Upper 53, lower 47, middle 50: BandWidth = (53-47)/50 x 100 = 12; StockCharts' Alaska Airlines squeeze triggered below a BandWidth of 10.",
+    "citations": [
+      {
+        "source": "Bollinger BandWidth | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/bollinger-bandwidth",
+        "section": "SharpCharts Bollinger BandWidth Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

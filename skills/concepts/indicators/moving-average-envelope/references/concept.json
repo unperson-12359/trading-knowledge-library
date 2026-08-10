@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/moving-average-envelope",
+  "canonical_sha256": "ea8ee9ed6b6b385e5dd15f91a8ce88e2960c6c34e2b91b84366536e4d01aabe2",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/moving-average-envelope",
+    "name": "Moving average envelope",
+    "aliases": [
+      "MA envelopes",
+      "Percentage envelope",
+      "Trading bands"
+    ],
+    "domain": "Indicators",
+    "definition": "Parallel bands set a fixed percentage above and below a simple or exponential moving average, creating a constant-width channel used for trend confirmation and, in flat markets, as overbought/oversold references.",
+    "intuition": "Unlike volatility-adaptive bands, the percentage offset never changes, so a touch of the envelope always means 'price is x% stretched from its average.'",
+    "mechanics": "Upper = MA x (1 + p), Lower = MA x (1 - p), e.g., a 20-day SMA with p = 2.5%. Parameters must be chosen per security volatility - indexes need narrow envelopes (2-3%), volatile stocks wide ones (5-10%).",
+    "formula": "Upper = MA(n) x (1 + p); Lower = MA(n) x (1 - p); e.g., MA = SMA(20), p = 0.025.",
+    "relationships": [
+      "Simple moving average",
+      "Bollinger Bands",
+      "Keltner Channel",
+      "Donchian Channel"
+    ],
+    "failure_modes": "The fixed width does not adapt: too narrow in volatility expansions (constant false breaks) and too wide in quiet periods (no signals at all); it also inherits the base average's lag.",
+    "misconceptions": "Envelope breaks in a strong trend are signs of strength, not fade setups; overbought/oversold logic applies mainly when the trend is flat.",
+    "example": "A 20-day SMA of 40 with 2.5% envelopes plots the upper band at 41.0 and the lower at 39.0.",
+    "citations": [
+      {
+        "source": "Moving Average Envelopes | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/moving-average-envelopes",
+        "section": "Moving Average Envelope Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

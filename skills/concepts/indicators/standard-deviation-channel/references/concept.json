@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/standard-deviation-channel",
+  "canonical_sha256": "e3230bb8b61d296652108788756b6d3188df5ff8ea75942e0ce10f751f9af2f0",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/standard-deviation-channel",
+    "name": "Standard deviation channel",
+    "aliases": [
+      "Linear regression channel",
+      "SDC"
+    ],
+    "domain": "Indicators",
+    "definition": "A channel built on a least-squares linear regression line through the last n closes, with parallel upper and lower lines plotted a set number of standard deviations (typically 2) of price away from the regression line.",
+    "intuition": "The regression line is the best-fit trend through the window and the bands mark statistically typical deviation around it - about two-thirds of observations within +/-1 sigma if deviations were normal.",
+    "mechanics": "Fit y = a + mx to the last n closes by least squares, compute the standard deviation of closes over the window, and plot the regression line with parallel lines offset by +/-k sigma (k = 2 default). The slope gives trend direction and the width gives volatility; it generates no signals by itself.",
+    "formula": "Center: y(x) = a + mx from the least-squares fit over n bars; Upper = y + k x sigma, Lower = y - k x sigma, sigma = standard deviation of the n closes, k typically 2.",
+    "relationships": [
+      "Bollinger Bands",
+      "Standard deviation",
+      "Keltner Channel",
+      "Moving average envelope"
+    ],
+    "failure_modes": "The channel is refit every bar, so historical channel lines repaint and backtests on drawn channels are unreliable; the symmetric deviation assumption fails in trending or fat-tailed markets.",
+    "misconceptions": "Unlike Bollinger Bands the center is a regression line, not a moving average, and price does not owe a return to it - in strong trends price rides one side of the channel.",
+    "example": "A 40-bar regression of closes gives y = 98 + 0.1x with sigma = 1.2; at the last bar the center is 102, the 2-sigma upper band 104.4 and the lower 99.6.",
+    "citations": [
+      {
+        "source": "Standard Deviation Channel - MotiveWave Studies",
+        "url": "https://www.motivewave.com/studies/standard_deviation_channel.htm",
+        "section": "Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

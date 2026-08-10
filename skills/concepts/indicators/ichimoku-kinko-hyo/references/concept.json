@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/ichimoku-kinko-hyo",
+  "canonical_sha256": "04574536e1b3cc03d096ae2660daedae8871fd3967b385546258e597fbf6c439",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/ichimoku-kinko-hyo",
+    "name": "Ichimoku Kinko Hyo",
+    "aliases": [
+      "Ichimoku Cloud",
+      "Ichimoku"
+    ],
+    "domain": "Indicators",
+    "definition": "Goichi Hosoda's 'one-look equilibrium chart' (published 1969): a five-line system of high-low midpoint averages - Conversion Line, Base Line, two Leading Spans forming the cloud (Kumo), and a Lagging Span - designed to show trend, momentum, and support/resistance at a glance.",
+    "intuition": "Price above the cloud means uptrend, below means downtrend, inside means no trend; the cloud projected ahead sketches where support or resistance is expected to lie.",
+    "mechanics": "Tenkan-sen = midpoint of the 9-period high-low; Kijun-sen = 26-period midpoint; Senkou A = average of the two, plotted 26 bars ahead; Senkou B = 52-period midpoint, also 26 ahead; Chikou = close plotted 26 back. Signals combine price/cloud position, cloud color (A vs B), Tenkan-Kijun crosses, and price-Kijun crosses.",
+    "formula": "Tenkan = (max(H,9)+min(L,9))/2; Kijun = (max(H,26)+min(L,26))/2; Senkou A = (Tenkan+Kijun)/2 shifted +26; Senkou B = (max(H,52)+min(L,52))/2 shifted +26; Chikou = Close shifted -26.",
+    "relationships": [
+      "Tenkan-sen",
+      "Kijun-sen",
+      "Senkou Span A",
+      "Senkou Span B",
+      "Chikou Span",
+      "Moving average crossover"
+    ],
+    "failure_modes": "Midpoint averages lag like all trend tools and whipsaw in ranges; the cloud shifted 'into the future' is computed entirely from past data and is not a forecast.",
+    "misconceptions": "Ichimoku is an analytical framework, not a proven predictive system - and the 9/26/52 defaults reflect the 1960s Japanese six-day trading week, not universal constants.",
+    "example": "9-day high 55, low 51: Tenkan-sen = 53; with a 26-day midpoint of 50, Senkou A plotted 26 days ahead = 51.5.",
+    "citations": [
+      {
+        "source": "Ichimoku Cloud | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/ichimoku-cloud",
+        "section": "Ichimoku Cloud Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

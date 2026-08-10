@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/positive-directional-indicator",
+  "canonical_sha256": "dd93dc484a5083866ae7f62fa817541f818d7df7ffc69c257fb699d7c3f0414e",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/positive-directional-indicator",
+    "name": "Positive directional indicator",
+    "aliases": [
+      "+DI",
+      "Plus DI",
+      "PDI"
+    ],
+    "domain": "Indicators",
+    "definition": "The positive half of Wilder's Directional Movement System: 100 times the ratio of smoothed positive directional movement (upward range expansion beyond the prior bar's high) to smoothed True Range over 14 periods, measuring the strength of upside directional movement.",
+    "intuition": "+DI tracks how much of the recent true-range movement was upside expansion; when +DI is above -DI, buyers hold the directional edge.",
+    "mechanics": "+DM = current high minus prior high when that exceeds the prior-low-minus-current-low move and is positive, else 0 (inside bars give 0). Smooth +DM and TR with Wilder's method; +DI = 100 x smoothed +DM / smoothed TR. Crosses of +DI above -DI are buy signals, conventionally filtered by ADX above 20-25.",
+    "formula": "+DI14 = 100 x (Wilder-smoothed +DM14) / (Wilder-smoothed TR14); +DM = max(High_t - High_{t-1}, 0) if High_t - High_{t-1} > Low_{t-1} - Low_t, else 0.",
+    "relationships": [
+      "Negative directional indicator",
+      "Average directional index",
+      "Average true range"
+    ],
+    "failure_modes": "Inside bars force +DM to zero and +DI/-DI crosses whipsaw badly in flat markets; Wilder's smoothing lag means crosses often come well after the move began.",
+    "misconceptions": "+DI measures relative directional movement, not the probability of further gains; a +DI > -DI cross without trend strength (ADX) is a weak signal - StockCharts notes many such crosses invalidate.",
+    "example": "Today's high 52 vs prior 50 (+2) while lows moved down only 0.5: +DM = 2; if the smoothed +DM is 20 against a smoothed TR of 100, +DI = 20.",
+    "citations": [
+      {
+        "source": "Average Directional Index (ADX) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/average-directional-index-adx",
+        "section": "Step by Step ADX Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

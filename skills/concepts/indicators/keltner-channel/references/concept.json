@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/keltner-channel",
+  "canonical_sha256": "665aa523ef46f8bfd5619f250ad02f83a7075278fc7949b33fe41d162ae2684c",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/keltner-channel",
+    "name": "Keltner Channel",
+    "aliases": [
+      "Keltner Channels",
+      "KC"
+    ],
+    "domain": "Indicators",
+    "definition": "Volatility envelopes around an exponential moving average, with channel lines set a multiple of Average True Range above and below the EMA; the modern version popularized by Linda Raschke replaces Chester Keltner's 1960 10-day typical-price SMA plus/minus high-low range with EMA plus/minus ATR.",
+    "intuition": "Like Bollinger Bands but built from ATR instead of standard deviation, Keltner Channels are smoother and more constant in width, which suits trend identification and breakout detection.",
+    "mechanics": "Middle line = EMA(20); upper = EMA + m x ATR(10), lower = EMA - m x ATR(10), with m = 2 by default. A close outside the channel signals extraordinary strength or weakness; a flat channel marks a range where the lines serve as overbought/oversold references.",
+    "formula": "Upper = EMA(P, 20) + 2 x ATR(10); Lower = EMA(P, 20) - 2 x ATR(10).",
+    "relationships": [
+      "Average true range",
+      "Exponential moving average",
+      "Bollinger Bands",
+      "Supertrend"
+    ],
+    "failure_modes": "Trend-following at heart, it lags and whipsaws in flat markets; original (SMA +/- range) and modern (EMA +/- ATR) versions differ, so values are not comparable across platforms without checking the convention.",
+    "misconceptions": "A close beyond the channel is not an automatic fade - it more often marks the start of a trend move than an exhaustion.",
+    "example": "EMA(20) = 100 and ATR(10) = 2: upper channel = 104, lower = 96; a close at 105 is an upside channel breakout.",
+    "citations": [
+      {
+        "source": "Keltner Channels | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/keltner-channels",
+        "section": "Keltner Channels Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

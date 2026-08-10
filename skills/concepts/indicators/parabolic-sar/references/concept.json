@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/parabolic-sar",
+  "canonical_sha256": "6a3f2e73b5b2a7c51e5599b1e7ce973d59267190f0eb32c39fa07e8202ccb7f4",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/parabolic-sar",
+    "name": "Parabolic SAR",
+    "aliases": [
+      "PSAR",
+      "SAR",
+      "Parabolic stop and reverse"
+    ],
+    "domain": "Indicators",
+    "definition": "Welles Wilder's stop-and-reverse system (New Concepts in Technical Trading Systems, 1978): a trailing stop plotted as dots below price in uptrends and above price in downtrends, accelerating toward price as the trend extends and flipping sides when price crosses it.",
+    "intuition": "It behaves like a trailing stop that tightens the longer a trend runs - the acceleration factor pulls the dots toward price, forcing an exit when momentum stalls.",
+    "mechanics": "SAR_{t+1} = SAR_t + AF x (EP - SAR_t) for uptrends (minus for downtrends), where EP is the trend's extreme point and AF starts at 0.02, stepping up 0.02 on each new extreme to a cap of 0.20. The SAR is clamped so it never enters the prior two bars' range; a price touch flips trend direction.",
+    "formula": "Rising: SAR_{t+1} = SAR_t + AF x (EP - SAR_t); Falling: SAR_{t+1} = SAR_t - AF x (SAR_t - EP); AF: start 0.02, +0.02 per new EP, max 0.20.",
+    "relationships": [
+      "Average true range",
+      "Average directional index",
+      "Supertrend"
+    ],
+    "failure_modes": "Wilder himself estimated markets trend only about 30% of the time; in ranges SAR whipsaws constantly, and its always-in-the-market design has no neutral state.",
+    "misconceptions": "SAR is a stop-and-reverse mechanism, not a prediction of reversal - a flip only says price crossed the trailing stop.",
+    "example": "Prior SAR 48.28, extreme point 49.20, AF 0.14: new SAR = 48.13 + 0.14 x (49.20 - 48.13) = 48.28 (StockCharts' worked example).",
+    "citations": [
+      {
+        "source": "Parabolic SAR | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/parabolic-sar",
+        "section": "Calculating the Parabolic SAR",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

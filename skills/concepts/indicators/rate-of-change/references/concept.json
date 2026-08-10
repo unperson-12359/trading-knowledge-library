@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/rate-of-change",
+  "canonical_sha256": "a8498096712cb1faa4dc75d407f5e348dff69d323903e2cd757f0621295170d8",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/rate-of-change",
+    "name": "Rate of change",
+    "aliases": [
+      "ROC",
+      "Price rate of change",
+      "PROC"
+    ],
+    "domain": "Indicators",
+    "definition": "A pure momentum oscillator measuring the percentage change between the current close and the close n periods ago, plotted as an unbounded line around zero; the StockCharts ROC page notes the indicator is also referred to simply as Momentum.",
+    "intuition": "It is rise over run for prices: positive while the price is higher than n periods ago, negative while lower, with distance from zero showing how fast the move is.",
+    "mechanics": "Compute (Close - Close n periods ago) / (Close n periods ago) x 100, default n = 12. Used for zero-line trend bias, security-specific overbought/oversold extremes (often +/-10%), and divergences.",
+    "formula": "ROC(n) = ((C_t - C_{t-n}) / C_{t-n}) x 100, where C_t is the current close.",
+    "relationships": [
+      "Momentum indicator",
+      "Know Sure Thing oscillator",
+      "Coppock curve",
+      "Relative strength index"
+    ],
+    "failure_modes": "Zero-line crosses whipsaw in ranges, and divergences fail often because strong trends frequently start with the sharpest ROC spike, printing a bearish divergence mid-advance.",
+    "misconceptions": "A falling ROC is not a falling price - price still rises as long as ROC is positive; it only means the advance is decelerating.",
+    "example": "Close today 55, close 12 days ago 50: ROC = (55-50)/50 x 100 = +10%.",
+    "citations": [
+      {
+        "source": "Rate of Change (ROC) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/rate-of-change-roc-and-momentum",
+        "section": "Rate of Change Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

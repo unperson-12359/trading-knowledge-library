@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/stochastic-rsi",
+  "canonical_sha256": "ce56b515d33ce08254dd10c772976edafbd7f5366363796239079c25d9d3944b",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/stochastic-rsi",
+    "name": "Stochastic RSI",
+    "aliases": [
+      "StochRSI"
+    ],
+    "domain": "Indicators",
+    "definition": "Chande and Kroll's oscillator (The New Technical Trader, 1994) that applies the stochastic formula to RSI values instead of price, measuring where the current RSI sits within its own high-low range over the look-back period; an indicator of an indicator, bounded between 0 and 1.",
+    "intuition": "RSI can drift between 80 and 20 for weeks without reaching its classic extremes; StochRSI restores sensitivity by tracking RSI's position within its recent range rather than its absolute level.",
+    "mechanics": "Compute n-period RSI, then take (RSI - lowest RSI over n) / (highest RSI over n - lowest RSI over n), with n typically 14. A value of 1 means RSI is at its n-period high, 0 at its low; some platforms scale it to 0-100 and smooth it with short moving averages.",
+    "formula": "StochRSI = (RSI - min(RSI, n)) / (max(RSI, n) - min(RSI, n)), with RSI and the range window typically both 14 periods.",
+    "relationships": [
+      "Relative strength index",
+      "Stochastic oscillator",
+      "Chande momentum oscillator"
+    ],
+    "failure_modes": "Two transformations removed from price, it is very jumpy and whipsaws frequently; in strong trends it pins at 0 or 1 for long stretches, issuing repeated false reversal alerts.",
+    "misconceptions": "An overbought StochRSI reading is not a sell signal by itself - Chande and Kroll used 0.80/0.20 extremes within a trend context, and readings can stay extreme while the trend continues.",
+    "example": "If 14-day RSI has ranged from 30 to 70 over the last 14 days and current RSI is 50, StochRSI = (50-30)/(70-30) = 0.5.",
+    "citations": [
+      {
+        "source": "StochRSI | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/stochrsi",
+        "section": "What Is the StochRSI? / How To Calculate StochRSI",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

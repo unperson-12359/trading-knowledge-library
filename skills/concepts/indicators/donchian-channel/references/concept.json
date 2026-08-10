@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/donchian-channel",
+  "canonical_sha256": "2056c914ce679488006dc895bb977d1940af9a7cc3f16c1640fcbf6d90d0d0eb",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/donchian-channel",
+    "name": "Donchian Channel",
+    "aliases": [
+      "Donchian Channels",
+      "Price channel"
+    ],
+    "domain": "Indicators",
+    "definition": "Richard Donchian's price channel plotting the highest high and lowest low of the last n periods (commonly 20) as upper and lower bands, with an optional midline at their average; the basis of classic breakout systems such as the Turtle Traders' rules.",
+    "intuition": "The channel shows the extremes of the recent trading range; a close outside it is by definition a new n-period high or low, which breakout traders treat as trend initiation.",
+    "mechanics": "Upper = max(High, n); Lower = min(Low, n); Middle = (Upper + Lower)/2. Breakouts beyond the bands generate trend-following signals, and the channel width reads volatility; the bands also serve as trailing stop and support/resistance references.",
+    "formula": "UC = max(High, N); LC = min(Low, N); Middle = (UC + LC)/2, typically N = 20.",
+    "relationships": [
+      "Bollinger Bands",
+      "Keltner Channel",
+      "Moving average envelope"
+    ],
+    "failure_modes": "False breakouts are common in sideways markets where price repeatedly pokes the bands; as a purely lagging construction it gives no warning before the breakout occurs.",
+    "misconceptions": "Touching the upper band is not 'overbought' - it is a new n-period high, the exact condition trend-followers buy; the channel records extremes, it does not predict them.",
+    "example": "20-day high 105, low 95: upper band 105, lower 95, midline 100; a close at 106 is an upside breakout.",
+    "citations": [
+      {
+        "source": "Understanding Donchian Channels - Investopedia",
+        "url": "https://www.investopedia.com/terms/d/donchianchannels.asp",
+        "section": "Donchian Channels Formula Explained",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

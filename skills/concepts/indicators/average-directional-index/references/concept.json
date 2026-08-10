@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/average-directional-index",
+  "canonical_sha256": "e1b8ee6128791f4a14f7aedc77e4656079c8baf4d073e32d58394e195609e7ac",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/average-directional-index",
+    "name": "Average directional index",
+    "aliases": [
+      "ADX",
+      "Average directional movement index"
+    ],
+    "domain": "Indicators",
+    "definition": "Welles Wilder's trend-strength gauge (New Concepts in Technical Trading Systems, 1978): the Wilder-smoothed average of the Directional Movement Index (DX), which measures the spread between +DI and -DI relative to their sum; ADX quantifies trend strength on a 0-100 scale regardless of direction.",
+    "intuition": "ADX answers 'is the market trending at all?', not which way - Wilder suggested readings above 25 indicate a strong trend and below 20 the absence of one.",
+    "mechanics": "Compute +DM, -DM and True Range, smooth each with Wilder's technique over 14 periods, derive +DI and -DI, then DX = 100 x |+DI - -DI| / (+DI + -DI); ADX is the 14-period Wilder-smoothed average of DX. Roughly 150 periods of data are needed for stable values.",
+    "formula": "DX = 100 x |+DI14 - -DI14| / (+DI14 + -DI14); first ADX = 14-period average of DX, then ADX_t = ((ADX_{t-1} x 13) + DX_t) / 14.",
+    "relationships": [
+      "Positive directional indicator",
+      "Negative directional indicator",
+      "Average true range",
+      "Parabolic SAR"
+    ],
+    "failure_modes": "Heavy double smoothing makes ADX very laggy - it often confirms a trend only near its end; it cannot distinguish up from down, and in flat markets it offers no usable signal.",
+    "misconceptions": "A rising ADX does not mean prices are rising - ADX also rises in strong downtrends; and a falling ADX means the trend is weakening, not that it has reversed.",
+    "example": "If +DI = 32 and -DI = 12, DX = 100 x 20/44 ~ 45.5; sustained DX values near this level push ADX above 25, Wilder's strong-trend threshold.",
+    "citations": [
+      {
+        "source": "Average Directional Index (ADX) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/average-directional-index-adx",
+        "section": "Step by Step ADX Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

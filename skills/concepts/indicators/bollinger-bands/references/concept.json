@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/bollinger-bands",
+  "canonical_sha256": "bfacdb752c280988b25621c48d3f1bf401cdd30536525a1c73e18ca606b1fe0f",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/bollinger-bands",
+    "name": "Bollinger Bands",
+    "aliases": [
+      "BB",
+      "Bollinger Bands (20,2)"
+    ],
+    "domain": "Indicators",
+    "definition": "John Bollinger's volatility bands: a 20-period simple moving average flanked by upper and lower bands set k standard deviations (default 2) of price above and below it, so the envelope widens as volatility rises and contracts as it falls.",
+    "intuition": "The bands define 'relatively high' and 'relatively low' statistically: price at the upper band is high relative to recent volatility, at the lower band relatively low - without implying a reversal by itself.",
+    "mechanics": "Middle band = SMA(20); upper = middle + k x sigma(20), lower = middle - k x sigma(20), where sigma is the 20-period standard deviation of price (same window as the SMA). Bollinger suggests k = 2.1 for 50-period and 1.9 for 10-period settings. Used for band tags, M-top/W-bottom confirmation, and the Squeeze via BandWidth.",
+    "formula": "Middle = SMA(P, 20); Upper = Middle + k x StdDev(P, 20); Lower = Middle - k x StdDev(P, 20); k = 2 by default.",
+    "relationships": [
+      "Bollinger bandwidth",
+      "Percent B",
+      "Keltner Channel",
+      "Standard deviation channel",
+      "Simple moving average"
+    ],
+    "failure_modes": "Band touches are 'tags', not signals: in strong trends price walks the band for long stretches, and the SMA base lags; squeezes flag volatility compression but give no direction, and post-squeeze breaks can be head-fakes.",
+    "misconceptions": "A tag of the upper band is not an automatic sell - 'relatively high' is not 'about to fall'; nor do the bands contain a normal distribution's 95% of prices, since returns are not normal (Bollinger cites 88-89% empirically).",
+    "example": "SMA(20) = 50 with sigma = 1.5: upper band = 53, lower = 47; a close at 53.4 is above the band - a tag, not a signal.",
+    "citations": [
+      {
+        "source": "Bollinger Bands | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/bollinger-bands",
+        "section": "Bollinger Bands Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

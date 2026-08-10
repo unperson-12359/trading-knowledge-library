@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/momentum-indicator",
+  "canonical_sha256": "f64e236ad29e1b4c7b98a713b0927c3968e79937f9e716a1df0011cc341b4760",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/momentum-indicator",
+    "name": "Momentum indicator",
+    "aliases": [
+      "MTM",
+      "Momentum (points)"
+    ],
+    "domain": "Indicators",
+    "definition": "The simplest momentum measure: the absolute point difference between the current close and the close n periods ago, plotted as an unbounded oscillator around zero; the unscaled sibling of the rate-of-change, which expresses the same comparison as a percentage.",
+    "intuition": "It tracks how many points price gained or lost over the window, ignoring the price level, so its slope shows acceleration or deceleration of the move.",
+    "mechanics": "Compute Close - Close(n periods ago), conventionally with n around 10-14. Positive values show net gains over the window, negative values net losses; zero-line crosses define the momentum bias.",
+    "formula": "Momentum(n) = C_t - C_{t-n}; the percentage variant is ROC(n) = ((C_t - C_{t-n}) / C_{t-n}) x 100.",
+    "relationships": [
+      "Rate of change",
+      "Relative strength index",
+      "MACD line"
+    ],
+    "failure_modes": "Being unscaled in points, readings are not comparable across securities or across large price changes in one security; like ROC it whipsaws around zero in sideways markets.",
+    "misconceptions": "Momentum indicators describe past speed; a high positive reading can persist or reverse without warning and is not a prediction of continued gains.",
+    "example": "Close today 55, close 12 days ago 50: momentum = +5 points, whereas the rate of change is +10%.",
+    "citations": [
+      {
+        "source": "Rate of Change (ROC) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/rate-of-change-roc-and-momentum",
+        "section": "Rate of Change Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

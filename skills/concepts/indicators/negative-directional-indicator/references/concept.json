@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/negative-directional-indicator",
+  "canonical_sha256": "475a2d342c59d980e34f6647e0a2eb049cb867f9767e514067816e55efc892e7",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/negative-directional-indicator",
+    "name": "Negative directional indicator",
+    "aliases": [
+      "-DI",
+      "Minus DI",
+      "NDI",
+      "MDI"
+    ],
+    "domain": "Indicators",
+    "definition": "The negative half of Wilder's Directional Movement System: 100 times the ratio of smoothed negative directional movement (downward range expansion beyond the prior bar's low) to smoothed True Range over 14 periods, measuring the strength of downside directional movement.",
+    "intuition": "-DI tracks how much of the recent true-range movement was downside expansion; when -DI is above +DI, sellers hold the directional edge.",
+    "mechanics": "-DM = prior low minus current low when that exceeds the current-high-minus-prior-high move and is positive, else 0. Smooth -DM and TR with Wilder's method; -DI = 100 x smoothed -DM / smoothed TR. A cross of -DI above +DI signals downside control, conventionally filtered by ADX.",
+    "formula": "-DI14 = 100 x (Wilder-smoothed -DM14) / (Wilder-smoothed TR14); -DM = max(Low_{t-1} - Low_t, 0) if Low_{t-1} - Low_t > High_t - High_{t-1}, else 0.",
+    "relationships": [
+      "Positive directional indicator",
+      "Average directional index",
+      "Average true range"
+    ],
+    "failure_modes": "Same whipsaw and lag problems as +DI; volatile outside bars make the pair oscillate noisily, and many crosses fail without an ADX trend filter.",
+    "misconceptions": "A high -DI is not inherently bearish for future prices - it describes recent downside movement, and sharp declines can exhaust themselves exactly when -DI peaks.",
+    "example": "Prior low 48, current low 45 (-3) while highs rose only 1: -DM = 3; if smoothed -DM is 30 against smoothed TR of 100, -DI = 30, above a +DI of 20 - sellers in control.",
+    "citations": [
+      {
+        "source": "Average Directional Index (ADX) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/average-directional-index-adx",
+        "section": "Step by Step ADX Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

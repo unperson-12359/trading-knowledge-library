@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/supertrend",
+  "canonical_sha256": "2f243e41e5adf2857ebb16f13e86db360fe319dd0091f30e273e8623be3f74d2",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/supertrend",
+    "name": "Supertrend",
+    "aliases": [
+      "SuperTrend"
+    ],
+    "domain": "Indicators",
+    "definition": "An ATR-based trend-following overlay (Olivier Seban, 2009) that plots a single line below price in uptrends and above it in downtrends, at a distance of multiplier x ATR from the bar midpoint, flipping sides when price closes through the line.",
+    "intuition": "It is a volatility-adjusted trailing stop: wider when the market is volatile, tighter when calm, so ordinary noise does not stop you out but a genuine reversal does.",
+    "mechanics": "Basic upper band = (H+L)/2 + m x ATR(n), basic lower = (H+L)/2 - m x ATR(n), with common defaults n = 10, m = 3. Final bands are ratcheted - the upper band can only fall and the lower only rise - until a close crosses the active band, which flips the trend state.",
+    "formula": "Upper = (High + Low)/2 + Multiplier x ATR(n); Lower = (High + Low)/2 - Multiplier x ATR(n); ATR(n) = (ATR_prev x (n-1) + TR)/n (Wilder smoothing).",
+    "relationships": [
+      "Average true range",
+      "Parabolic SAR",
+      "Keltner Channel"
+    ],
+    "failure_modes": "Lagging by construction and whipsaw-prone in sideways markets; it signals direction only - not trend strength - and results are sensitive to the (period, multiplier) choice.",
+    "misconceptions": "A green (uptrend) line is not a standalone buy recommendation, and the plotted line is a stop level, not a price target.",
+    "example": "High 20.23, low 19.04, ATR 1.15, multiplier 1: upper band = 19.635 + 1.15 = 20.79, lower = 18.48 (Investopedia's worked example).",
+    "citations": [
+      {
+        "source": "Understanding the Supertrend Indicator - Investopedia",
+        "url": "https://www.investopedia.com/supertrend-indicator-7976167",
+        "section": "Calculating the Supertrend Indicator: Essential Formulas",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

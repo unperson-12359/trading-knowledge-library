@@ -306,6 +306,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="relative-strength-index"><h3>Relative strength index <a class="anchor" href="#relative-strength-index">#</a></h3>
 <div class="field">J. Welles Wilder&#x27;s momentum oscillator (New Concepts in Technical Trading Systems, 1978) comparing smoothed average gains to smoothed average losses over a look-back period (default 14), bounded between 0 and 100.</div>
+<div class="skill-links"><a href="../skills/tkl-relative-strength-index/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A speedometer for price: it shows how persistently and strongly the market has been closing up versus down.</div>
 <div class="field"><span class="label">Mechanics:</span> RS = Average Gain / Average Loss, with first values simple 14-period means and subsequent values Wilder-smoothed ((prior*13 + current)/14); RSI = 100 - 100/(1+RS). Wilder treated readings above 70 as overbought and below 30 as oversold; also used for divergences, failure swings, and centerline analysis.</div>
 <div class="field"><span class="label">Failure modes:</span> In strong trends RSI can stay above 70 or below 30 for extended periods, so fading overbought/oversold readings fails; bearish divergences can recur for months before any reversal.</div>
@@ -332,6 +333,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="stochastic-rsi"><h3>Stochastic RSI <a class="anchor" href="#stochastic-rsi">#</a></h3>
 <div class="field">Chande and Kroll&#x27;s oscillator (The New Technical Trader, 1994) that applies the stochastic formula to RSI values instead of price, measuring where the current RSI sits within its own high-low range over the look-back period; an indicator of an indicator, bounded between 0 and 1.</div>
+<div class="skill-links"><a href="../skills/tkl-stochastic-rsi/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> RSI can drift between 80 and 20 for weeks without reaching its classic extremes; StochRSI restores sensitivity by tracking RSI&#x27;s position within its recent range rather than its absolute level.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute n-period RSI, then take (RSI - lowest RSI over n) / (highest RSI over n - lowest RSI over n), with n typically 14. A value of 1 means RSI is at its n-period high, 0 at its low; some platforms scale it to 0-100 and smooth it with short moving averages.</div>
 <div class="field"><span class="label">Failure modes:</span> Two transformations removed from price, it is very jumpy and whipsaws frequently; in strong trends it pins at 0 or 1 for long stretches, issuing repeated false reversal alerts.</div>
@@ -344,6 +346,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="williams-percent-r"><h3>Williams percent R <a class="anchor" href="#williams-percent-r">#</a></h3>
 <div class="field">Larry Williams&#x27; momentum oscillator showing where the close sits relative to the highest high of the look-back period, plotted on an inverted 0 to -100 scale; mathematically the inverse of the fast stochastic %K line.</div>
+<div class="skill-links"><a href="../skills/tkl-williams-percent-r/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It answers &#x27;how close is the latest close to the top of the recent range?&#x27;: readings near 0 mean closes at the range top, readings near -100 mean closes at the bottom.</div>
 <div class="field"><span class="label">Mechanics:</span> Subtract the close from the highest high of the last n periods (default 14), divide by the high-low range, and multiply by -100. Readings from 0 to -20 are conventionally overbought, -80 to -100 oversold; the -50 centerline and momentum failures (failed retests of -20) give additional signals.</div>
 <div class="field"><span class="label">Failure modes:</span> Like all range-position oscillators it sticks at extremes during strong trends and whipsaws across the -50 centerline in choppy markets.</div>
@@ -356,6 +359,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="rate-of-change"><h3>Rate of change <a class="anchor" href="#rate-of-change">#</a></h3>
 <div class="field">A pure momentum oscillator measuring the percentage change between the current close and the close n periods ago, plotted as an unbounded line around zero; the StockCharts ROC page notes the indicator is also referred to simply as Momentum.</div>
+<div class="skill-links"><a href="../skills/tkl-rate-of-change/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is rise over run for prices: positive while the price is higher than n periods ago, negative while lower, with distance from zero showing how fast the move is.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute (Close - Close n periods ago) / (Close n periods ago) x 100, default n = 12. Used for zero-line trend bias, security-specific overbought/oversold extremes (often +/-10%), and divergences.</div>
 <div class="field"><span class="label">Failure modes:</span> Zero-line crosses whipsaw in ranges, and divergences fail often because strong trends frequently start with the sharpest ROC spike, printing a bearish divergence mid-advance.</div>
@@ -368,6 +372,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="momentum-indicator"><h3>Momentum indicator <a class="anchor" href="#momentum-indicator">#</a></h3>
 <div class="field">The simplest momentum measure: the absolute point difference between the current close and the close n periods ago, plotted as an unbounded oscillator around zero; the unscaled sibling of the rate-of-change, which expresses the same comparison as a percentage.</div>
+<div class="skill-links"><a href="../skills/tkl-momentum-indicator/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It tracks how many points price gained or lost over the window, ignoring the price level, so its slope shows acceleration or deceleration of the move.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute Close - Close(n periods ago), conventionally with n around 10-14. Positive values show net gains over the window, negative values net losses; zero-line crosses define the momentum bias.</div>
 <div class="field"><span class="label">Failure modes:</span> Being unscaled in points, readings are not comparable across securities or across large price changes in one security; like ROC it whipsaws around zero in sideways markets.</div>
@@ -380,6 +385,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="commodity-channel-index"><h3>Commodity channel index <a class="anchor" href="#commodity-channel-index">#</a></h3>
 <div class="field">Donald Lambert&#x27;s oscillator (Commodities magazine, 1980) measuring how far the typical price has deviated from its moving average, expressed in units of mean absolute deviation scaled by 0.015 so that roughly 70-80% of readings fall between -100 and +100.</div>
+<div class="skill-links"><a href="../skills/tkl-commodity-channel-index/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> CCI normalizes &#x27;how stretched is price from its own average?&#x27; - excursions beyond +/-100 mark statistically unusual strength or weakness that can flag a new trend or an extreme.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute the typical price TP = (H+L+C)/3, subtract its n-period SMA (default 20), and divide by 0.015 times the mean absolute deviation of TP from that SMA. Used for +/-100 trend-emergence signals, +/-200 extremes, and confirmed divergences.</div>
 <div class="field"><span class="label">Failure modes:</span> CCI is unbounded, so overbought/oversold levels are arbitrary and must be calibrated per security; zero-line crosses whipsaw, and in strong trends CCI stays beyond +/-100 while price keeps running.</div>

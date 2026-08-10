@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/williams-percent-r",
+  "canonical_sha256": "173b540ba38f6783ac8930cb926e220e780e2529e7aa40c633720dad27eceb52",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/williams-percent-r",
+    "name": "Williams percent R",
+    "aliases": [
+      "%R",
+      "Williams %R"
+    ],
+    "domain": "Indicators",
+    "definition": "Larry Williams' momentum oscillator showing where the close sits relative to the highest high of the look-back period, plotted on an inverted 0 to -100 scale; mathematically the inverse of the fast stochastic %K line.",
+    "intuition": "It answers 'how close is the latest close to the top of the recent range?': readings near 0 mean closes at the range top, readings near -100 mean closes at the bottom.",
+    "mechanics": "Subtract the close from the highest high of the last n periods (default 14), divide by the high-low range, and multiply by -100. Readings from 0 to -20 are conventionally overbought, -80 to -100 oversold; the -50 centerline and momentum failures (failed retests of -20) give additional signals.",
+    "formula": "%R = ((HighestHigh(n) - Close) / (HighestHigh(n) - LowestLow(n))) x -100, default n = 14.",
+    "relationships": [
+      "Stochastic oscillator",
+      "Rate of change",
+      "Ultimate oscillator"
+    ],
+    "failure_modes": "Like all range-position oscillators it sticks at extremes during strong trends and whipsaws across the -50 centerline in choppy markets.",
+    "misconceptions": "Overbought (above -20) does not mean sell: sustained closes near the top of the range signal persistent buying pressure, and %R can stay overbought through an entire uptrend.",
+    "example": "Highest high 110, lowest low 100, close 103: %R = ((110-103)/10) x -100 = -70; a close at 108 gives -20.",
+    "citations": [
+      {
+        "source": "Williams %R | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/williams-r",
+        "section": "Calculating the Williams %R",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

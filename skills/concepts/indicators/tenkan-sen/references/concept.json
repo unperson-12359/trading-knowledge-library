@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/tenkan-sen",
+  "canonical_sha256": "9ae78dc2146dea44616342f23ab5db9ce0312749f470153fd1f3d77439e9889a",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/tenkan-sen",
+    "name": "Tenkan-sen",
+    "aliases": [
+      "Conversion Line",
+      "Tenkan"
+    ],
+    "domain": "Indicators",
+    "definition": "The fastest Ichimoku line: the midpoint of the 9-period high-low range, (9-period high + 9-period low)/2, used as the short-term equilibrium level and the faster line in Ichimoku crossover signals.",
+    "intuition": "Rather than averaging closes, it averages the range extremes, so it sits at the center of recent price action and flattens immediately when the market goes quiet.",
+    "mechanics": "Compute (max(High,9) + min(Low,9))/2 each bar. A Tenkan cross above Kijun-sen is the classic bullish momentum signal (and below, bearish), conventionally filtered by price position relative to the cloud.",
+    "formula": "Tenkan-sen = (max(High, 9) + min(Low, 9)) / 2.",
+    "relationships": [
+      "Kijun-sen",
+      "Ichimoku Kinko Hyo",
+      "Senkou Span A"
+    ],
+    "failure_modes": "As a 9-period range midpoint it moves in steps whenever the extreme bar rolls out of the window, and it whipsaws around Kijun-sen in flat markets.",
+    "misconceptions": "It is not a 9-period moving average of closes - it tracks the range midpoint, so it behaves differently (steppy, bounded by extremes) from an SMA or EMA.",
+    "example": "If the last 9 bars posted a highest high of 108 and a lowest low of 100, Tenkan-sen = 104.",
+    "citations": [
+      {
+        "source": "Ichimoku Cloud | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/ichimoku-cloud",
+        "section": "Ichimoku Cloud Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/percent-b",
+  "canonical_sha256": "b15efd48f7282cc2e8481bc7b26173867d88bdc374f7ee6fac6c2e7d6f3192d9",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/percent-b",
+    "name": "Percent B",
+    "aliases": [
+      "%B",
+      "Percent b",
+      "Bollinger %B"
+    ],
+    "domain": "Indicators",
+    "definition": "A Bollinger-derived indicator expressing the close's position within the bands as a percentage of band width: 100 at the upper band, 0 at the lower band, 50 at the middle band, and beyond those values when price is outside the bands.",
+    "intuition": "%B states exactly where price sits inside the Bollinger envelope, making band tags, divergences and pattern confirmations quantifiable and comparable across securities.",
+    "mechanics": "Compute (Price - LowerBand) / (UpperBand - LowerBand) x 100 using the standard (20, 2) bands. Values above 100 mean closes above the upper band, below 0 below the lower band; used for walking-the-bands trend confirmation and W-bottom/M-top pattern work.",
+    "formula": "%B = ((P - LowerBand) / (UpperBand - LowerBand)) x 100, with bands from Bollinger Bands(20, 2) by default.",
+    "relationships": [
+      "Bollinger Bands",
+      "Bollinger bandwidth",
+      "Keltner Channel"
+    ],
+    "failure_modes": "Inherits the Bollinger SMA's lag, and readings above 100 can persist through an entire uptrend, so extremes are weak standalone timing signals.",
+    "misconceptions": "%B above 100 is not an automatic overbought-sell reading - upper-band tags in uptrends indicate strength; interpretation depends on trend and pattern context.",
+    "example": "Bands 47-53 with a close at 50: %B = (50-47)/(53-47) x 100 = 50; a close at 53.6 gives %B = 110.",
+    "citations": [
+      {
+        "source": "Percent B (%B) - Fidelity Investments",
+        "url": "https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/percent-b",
+        "section": "Description",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
