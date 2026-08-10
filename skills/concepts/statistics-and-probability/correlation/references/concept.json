@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/correlation",
+  "canonical_sha256": "a60c1fe4fc88d8e8dad4618c4bd729d7cb435e571b1e2fa3eb855e8d0b853093",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/correlation",
+    "name": "Correlation",
+    "aliases": [
+      "correlation coefficient"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "A statistical measure of the strength and direction of association between two variables, expressed as a dimensionless coefficient bounded in [-1, +1]. The most common form is the Pearson product-moment correlation coefficient, which measures linear association; rank-based variants (Spearman, Kendall) measure monotonic association.",
+    "intuition": "It tells you whether two series tend to move together (+1), in opposite directions (-1), or without any linear pattern (0). In markets it describes how strongly two assets' returns co-move, which is the statistical basis of diversification.",
+    "mechanics": "For the Pearson form, the covariance of the two variables is normalized by the product of their standard deviations, producing a unit-free coefficient in [-1, 1]. Rank correlations convert the observations to ranks before applying the same computation.",
+    "formula": "rho(X,Y) = Cov(X,Y) / (sigma_X * sigma_Y); sample estimate r = SUM[(x_i - x_bar)(y_i - y_bar)] / sqrt( SUM(x_i - x_bar)^2 * SUM(y_i - y_bar)^2 ), where x_bar and y_bar are the sample means.",
+    "relationships": [
+      "Covariance",
+      "Pearson correlation",
+      "Spearman rank correlation",
+      "Kendall rank correlation",
+      "Coefficient of determination"
+    ],
+    "failure_modes": "The Pearson coefficient only captures linear dependence, so r near 0 can coexist with a strong nonlinear relationship, and a single extreme observation can dominate the estimate. Financial return correlations are also unstable over time and tend to jump toward 1 during crises, exactly when diversification is most needed.",
+    "misconceptions": "Correlation does not imply causation: a high correlation between two assets or between an indicator and returns does not mean one drives the other. Nor does a high historical correlation guarantee that the relationship will persist out of sample.",
+    "example": "The daily returns of two large bank stocks over one year have r = 0.82, indicating strong co-movement; combining them in a portfolio delivers far less diversification than pairing a bank with a utility stock at r = 0.15.",
+    "citations": [
+      {
+        "source": "OpenStax, Introductory Statistics",
+        "url": "https://openstax.org/books/introductory-statistics/pages/12-3-the-regression-equation",
+        "section": "12.3, 'The Correlation Coefficient r'",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

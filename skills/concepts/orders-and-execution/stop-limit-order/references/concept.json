@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/stop-limit-order",
+  "canonical_sha256": "7e8f5b377a89d42250b73b58460a5bdc926524c95bbdd56531c3af9180b57d87",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/stop-limit-order",
+    "name": "Stop-limit order",
+    "aliases": [],
+    "domain": "Orders and execution",
+    "definition": "An instruction that becomes a limit order after its stop condition is met, combining a trigger price with an execution-price boundary.",
+    "intuition": "It is an instruction controlling how an attempt to buy or sell may interact with available liquidity.",
+    "mechanics": "On trigger, activate the stated buy or sell limit; it may execute at the limit or better, rest unfilled, or expire according to its time in force.",
+    "formula": "",
+    "relationships": [
+      "Stop order",
+      "Limit order",
+      "Trigger price"
+    ],
+    "failure_modes": "Fast prices, thin depth, venue trigger conventions, and partial fills can produce execution or non-execution different from the displayed quote.",
+    "misconceptions": "An order's trigger or limit constrains its behavior; it does not guarantee both execution and a particular price.",
+    "example": "A sell stop-limit with stop $20 and limit $19.50 triggers at $20 but does not fill if the market gaps directly to $19.",
+    "citations": [
+      {
+        "source": "SEC Office of Investor Education, Trading Basics",
+        "url": "https://www.investor.gov/sites/default/files/trading101basics.pdf",
+        "section": "Market, limit, stop, and stop-limit orders, pp. 1-2",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

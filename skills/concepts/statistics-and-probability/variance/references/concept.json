@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/variance",
+  "canonical_sha256": "372a18ccaf7f1c9e1339e30cfbfa6a7daa0fceb2a51d5cf478f99bc252a81232",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/variance",
+    "name": "Variance",
+    "aliases": [
+      "second central moment"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The average of the squared deviations of a variable from its mean; the canonical measure of dispersion around the mean. Population variance divides by the population size N, while the unbiased sample variance divides by n - 1 (Bessel's correction).",
+    "intuition": "It measures how spread out values are around their average, in squared units. Squaring means points far from the mean contribute disproportionately, so variance is dominated by extremes.",
+    "mechanics": "Compute the mean, subtract it from each observation, square the deviations, and average them. Squaring removes sign and amplifies tail observations; the square root of variance (standard deviation) restores the original units.",
+    "formula": "Population: sigma^2 = SUM(x_i - mu)^2 / N. Sample: s^2 = SUM(x_i - x_bar)^2 / (n - 1), where mu is the population mean, x_bar the sample mean, N the population size, and n the sample size.",
+    "relationships": [
+      "Standard deviation",
+      "Expected value",
+      "Sample variance",
+      "Covariance",
+      "Skewness",
+      "Kurtosis"
+    ],
+    "failure_modes": "Because deviations are squared, variance is highly sensitive to extreme values and tail behavior, and it does not exist for heavy-tailed distributions such as the Cauchy distribution. Its squared units also make raw variance hard to interpret economically.",
+    "misconceptions": "Variance is not identical to 'risk' in general: it treats upside and downside deviations symmetrically and says nothing about the shape or direction of losses. The n - 1 divisor in the sample formula is not arbitrary; it is the correction that makes the sample variance an unbiased estimator of the population variance.",
+    "example": "Daily stock returns of 0.02, -0.01, and 0.03 have mean 0.0133 and sample variance s^2 = [(0.0067)^2 + (-0.0233)^2 + (0.0167)^2] / 2 = 0.000433, so the sample standard deviation is about 0.0208 (2.1% per day).",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm",
+        "section": "1.3.5.6, 'Measures of Scale'",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

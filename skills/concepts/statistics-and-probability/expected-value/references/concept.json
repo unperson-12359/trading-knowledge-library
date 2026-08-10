@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/expected-value",
+  "canonical_sha256": "324bd7096b30709051c3b65a97de0466e36555690498ad80ac781cbe19d2cf7a",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/expected-value",
+    "name": "Expected value",
+    "aliases": [
+      "expectation",
+      "mean of a random variable",
+      "E[X]"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The probability-weighted average of all possible values of a random variable; the long-run mean outcome if the experiment is repeated indefinitely. It is the first moment of a probability distribution.",
+    "intuition": "It is the average you would converge to after many repetitions, not necessarily a value that can actually occur. A bet has positive expected value if the probability-weighted payouts exceed the stake over the long run.",
+    "mechanics": "For a discrete random variable, multiply each possible value by its probability and sum the products; for a continuous variable, integrate x times the density. Linearity of expectation (E[aX + bY] = aE[X] + bE[Y]) holds even when variables are dependent.",
+    "formula": "Discrete: E[X] = SUM x_i * P(x_i). Continuous: E[X] = integral of x * f(x) dx over the support, where f is the probability density function.",
+    "relationships": [
+      "Law of large numbers",
+      "Variance",
+      "Probability distribution",
+      "Arithmetic mean",
+      "Estimator bias"
+    ],
+    "failure_modes": "The expected value need not exist for heavy-tailed distributions (the Cauchy distribution has no mean), and it can be a misleading summary of a single risky decision when the distribution is skewed or the stakes are ruinous. Expectation ignores variance and path, so equal-mean bets can have wildly different risk.",
+    "misconceptions": "The expected value is not the most likely outcome (that is the mode) and need not be a possible value at all - a die's expected roll is 3.5. A positive-expectancy strategy can still lose over any finite horizon.",
+    "example": "A trade wins 10% with probability 0.55 and loses 8% with probability 0.45; E[return] = 0.55*0.10 + 0.45*(-0.08) = 0.019, or 1.9% per trade on average.",
+    "citations": [
+      {
+        "source": "OpenStax, Introductory Statistics",
+        "url": "https://openstax.org/books/introductory-statistics/pages/4-2-mean-or-expected-value-and-standard-deviation",
+        "section": "4.2",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

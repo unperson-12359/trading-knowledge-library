@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/put-option",
+  "canonical_sha256": "ea0c96ce40083ba2420d20d6a71b2de41f49278c486d93687f02487d1bd31b28",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/put-option",
+    "name": "Put option",
+    "aliases": [
+      "put"
+    ],
+    "domain": "Options",
+    "definition": "A put option is a contract that gives its buyer (holder) the right, but not the obligation, to sell a specified quantity of an underlying asset at a specified strike price on or before a specified expiration date. The put writer has the corresponding obligation to buy the underlying if the holder exercises.",
+    "intuition": "A put works like an insurance policy on an asset: you pay a premium for the right to sell at a guaranteed price, so a price collapse no longer hurts you beyond the premium.",
+    "mechanics": "The buyer pays a premium. At expiration a put is worth max(K - S, 0); beforehand it also carries time value. The put holder need not own the underlying and can exercise into a short position. American-style puts may be exercised early; deep in-the-money puts can be rational early-exercise candidates.",
+    "formula": "Payoff at expiration (long put) = max(K - S_T, 0); profit = max(K - S_T, 0) - premium, where K is the strike price and S_T the underlying price at expiration.",
+    "relationships": [
+      "Call option",
+      "Strike price",
+      "Moneyness",
+      "Protective put",
+      "Cash-secured put",
+      "Put-call parity",
+      "Delta"
+    ],
+    "failure_modes": "Long puts bleed time value while the underlying moves sideways, and puts bought as 'crash insurance' are chronically expensive because downside implied volatility is usually bid up (skew). Put writers can face losses up to the full strike value if the underlying goes to zero.",
+    "misconceptions": "A long put is not the same as shorting stock: risk is capped at the premium but the position decays and can expire worthless even if the stock eventually falls. Owning the stock is not required to buy or exercise a put.",
+    "example": "Buy one XYZ $100 put for a $2 premium. If XYZ falls to $90 by expiration, the put is worth $10 and profit is ($10 - $2) x 100 = $800; if XYZ stays at or above $100, the $200 premium is lost.",
+    "citations": [
+      {
+        "source": "SEC Investor.gov Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Options",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Option (finance) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Option_(finance)",
+        "section": "Basic trades (American style): Long put",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

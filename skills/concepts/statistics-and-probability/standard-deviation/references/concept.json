@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/standard-deviation",
+  "canonical_sha256": "12063f92cc571de4ba88190993f9341e6d58dfdf0bfec252b4904990982da3ca",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/standard-deviation",
+    "name": "Standard deviation",
+    "aliases": [
+      "SD",
+      "sigma"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The square root of the variance, restoring the measure of spread to the original units of the data. It is the most widely used single-number summary of variability and the standard proxy for volatility in finance.",
+    "intuition": "It is the typical distance of observations from their mean, expressed in the same units as the data. For a normal distribution, about 68% of values lie within one standard deviation of the mean and 95% within two.",
+    "mechanics": "Compute the variance as the average squared deviation from the mean (dividing by N for a population or n - 1 for a sample), then take the square root. In trading, the standard deviation of periodic returns is quoted as volatility and is usually annualized by multiplying by the square root of the number of periods per year.",
+    "formula": "s = sqrt( SUM(x_i - x_bar)^2 / (n - 1) ) for a sample; sigma = sqrt( SUM(x_i - mu)^2 / N ) for a population.",
+    "relationships": [
+      "Variance",
+      "Z-score",
+      "Standard error",
+      "Normal distribution",
+      "Volatility"
+    ],
+    "failure_modes": "Like variance, it is pulled strongly by tail outliers and is undefined for distributions without a finite second moment (e.g., Cauchy). It is a poor summary for skewed distributions, where the two sides of the mean have different spreads.",
+    "misconceptions": "The 68-95-99.7 rule only applies to bell-shaped, symmetric (approximately normal) data; applying it to skewed or fat-tailed return series misstates tail probabilities. A low historical standard deviation does not imply low forward risk when regimes change.",
+    "example": "If a fund's monthly returns have a standard deviation of 3%, its annualized volatility is commonly quoted as 3% * sqrt(12) = 10.4%.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm",
+        "section": "1.3.5.6, 'Measures of Scale'",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "OpenStax, Introductory Statistics",
+        "url": "https://openstax.org/books/introductory-statistics/pages/2-7-measures-of-the-spread-of-the-data",
+        "section": "2.7",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

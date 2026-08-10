@@ -1,0 +1,80 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-quote-driven-market",
+  "concept_id": "market-foundations/quote-driven-market",
+  "display_name": "Quote-driven market",
+  "domain": "Market foundations",
+  "description": "Explain, compare, or apply Quote-driven market using the library's structured Market foundations reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Quote-driven market",
+    "Price-driven market",
+    "Dealer quote market",
+    "explain Quote-driven market",
+    "apply Quote-driven market to a trading question",
+    "common misconception about Quote-driven market"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 4,
+  "package_path": "skills/concepts/market-foundations/quote-driven-market",
+  "canonical": {
+    "source_path": "concepts/market-foundations.json",
+    "sha256": "30d2ad719a3d9555ec2672f1fa2326487bb3c6c4e9f9aaa0267bb8056e097a1a"
+  },
+  "related_concept_ids": [
+    "market-foundations/dealer-market",
+    "market-foundations/order-driven-market",
+    "market-foundations/over-the-counter-market",
+    "market-foundations/hybrid-market"
+  ]
+}

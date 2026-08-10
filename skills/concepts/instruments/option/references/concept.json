@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/option",
+  "canonical_sha256": "ebb7d4f94ebc7d3693bcd3c72d650f0067985bf54713cce144205437832e30cd",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/option",
+    "name": "Option",
+    "aliases": [],
+    "domain": "Instruments",
+    "definition": "A contract giving its holder the right, but not the obligation, to buy or sell an underlying interest at a strike price by or at expiration, while the writer bears the corresponding obligation if exercised.",
+    "intuition": "It defines the legal and economic claim being traded, including who must perform and when.",
+    "mechanics": "The buyer pays premium; value depends on underlying price, strike, time, volatility, rates, and contract style; exercise or settlement follows the contract rules.",
+    "formula": "Call payoff at expiry = max(underlying price - strike, 0); put payoff = max(strike - underlying price, 0)",
+    "relationships": [
+      "Call option",
+      "Put option",
+      "Strike price"
+    ],
+    "failure_modes": "Counterparty, settlement, liquidity, exercise, basis, and leverage terms differ by venue and contract and can dominate the apparent payoff.",
+    "misconceptions": "Similar price exposure does not make spot, forwards, futures, and options operationally or legally interchangeable.",
+    "example": "A 100-strike call expires with $8 intrinsic value when the underlying settles at $108, before subtracting premium.",
+    "citations": [
+      {
+        "source": "CFTC Futures Glossary",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Entries for spot, forward contract, futures contract, option, bid, ask, and bid-ask spread",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

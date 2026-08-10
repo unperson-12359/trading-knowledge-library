@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/volatility",
+  "canonical_sha256": "a7e926d8072b7526a0b5417e95287747f4e17a7679bfc66e973d6b6d4454c427",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/volatility",
+    "name": "Volatility",
+    "aliases": [],
+    "domain": "Risk and performance",
+    "definition": "The degree of variation in an asset's returns, commonly estimated by the standard deviation of returns over a stated sampling interval and window.",
+    "intuition": "It links the capital posted by a trader to the larger exposure and credit risk carried in the account.",
+    "mechanics": "Compute consistently sampled returns, estimate dispersion under a stated convention, and annualize only with an explicit scaling assumption.",
+    "formula": "Sample volatility = sqrt(sum((r_i - mean return)^2)/(n-1)); annualized estimate = periodic volatility times sqrt(periods per year)",
+    "relationships": [
+      "Standard deviation",
+      "Realized volatility",
+      "Risk"
+    ],
+    "failure_modes": "House requirements can rise without notice, prices can gap, and forced liquidation or interest can make losses exceed the initial capital posted.",
+    "misconceptions": "Margin is collateral or account equity, not a fixed maximum loss; leverage magnifies gains and losses on the trader's equity.",
+    "example": "Daily return standard deviation of 1% annualizes to about 15.9% using sqrt(252), assuming the scaling convention is appropriate.",
+    "citations": [
+      {
+        "source": "CFA Institute Research Foundation, Investment Model Validation",
+        "url": "https://rpc.cfainstitute.org/research/foundation/2024/investment-model-validation",
+        "section": "Overview and model-validation framework",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

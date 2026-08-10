@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/call-option",
+  "canonical_sha256": "b221297db5040509b932231db74d51fff121627d864a469b0c1ef2bea4fe8551",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/call-option",
+    "name": "Call option",
+    "aliases": [
+      "call"
+    ],
+    "domain": "Options",
+    "definition": "A call option is a contract that gives its buyer (holder) the right, but not the obligation, to purchase a specified quantity of an underlying asset or to enter a long futures position at a specified strike price on or before a specified expiration date. The option writer (seller) has the corresponding obligation to sell the underlying if the holder exercises.",
+    "intuition": "Buying a call is like paying a small fee to lock in a purchase price: if the asset rises above that price you can buy it cheap, and if it doesn't you simply walk away, losing only the fee.",
+    "mechanics": "The buyer pays a premium to the writer. At expiration a call is worth its intrinsic value max(S - K, 0); before expiration it also carries time value reflecting volatility, time remaining, rates, and dividends. American-style calls may be exercised any time before expiry; European-style only at expiry.",
+    "formula": "Payoff at expiration (long call) = max(S_T - K, 0); profit = max(S_T - K, 0) - premium, where S_T is the underlying price at expiration and K is the strike price.",
+    "relationships": [
+      "Put option",
+      "Strike price",
+      "Moneyness",
+      "Covered call",
+      "Naked call",
+      "Put-call parity",
+      "Delta"
+    ],
+    "failure_modes": "Buyers routinely overpay for time value: even a correct directional view loses money if the move is smaller or later than the premium implies (volatility crush, time decay). Sellers face theoretically unlimited loss on uncovered calls.",
+    "misconceptions": "A call is not 'leveraged stock ownership': the holder has no voting rights or dividends and the contract can expire worthless. Nor is exercise the usual exit; most listed calls are closed by offsetting sale.",
+    "example": "Buy one XYZ $100 call for a $3 premium (contract = 100 shares, cost $300). If XYZ finishes at $110 at expiration, the call is worth $10 and profit is ($10 - $3) x 100 = $700; if XYZ finishes at or below $100, the loss is the full $300 premium.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Call",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "SEC Investor.gov Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Options",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

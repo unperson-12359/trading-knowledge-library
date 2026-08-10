@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-foundations/order-driven-market",
+  "canonical_sha256": "8f951b10d5588cf906858a179d4bc396166e80fc8a3a9f4c671151e1664a694d",
+  "source_path": "concepts/market-foundations.json",
+  "concept": {
+    "id": "market-foundations/order-driven-market",
+    "name": "Order-driven market",
+    "aliases": [
+      "Order book market",
+      "Central limit order book market",
+      "CLOB"
+    ],
+    "domain": "Market foundations",
+    "definition": "A market structure in which prices are formed by the interaction of participants' own orders: limit orders rest in a central order book and incoming orders execute against them by price-time priority, so no dealer intermediation is required. The CFTC describes the central limit order book as a single order book covering an entire market that accepts limit orders.",
+    "intuition": "The order book itself is the market — your limit order can become the best bid, and anyone in the world can trade against it.",
+    "mechanics": "Participants submit limit orders (which queue in the book and supply liquidity) and marketable orders (which cross the spread and take liquidity); the matching engine pairs them continuously by price, then time, priority and publishes the resulting trades.",
+    "formula": "",
+    "relationships": [
+      "Continuous auction",
+      "Auction market",
+      "Quote-driven market",
+      "Hybrid market",
+      "Exchange"
+    ],
+    "failure_modes": "Displayed liquidity can be fleeting: high-frequency participants cancel en masse in volatility, producing 'phantom liquidity'; thin books exaggerate price impact for large orders.",
+    "misconceptions": "The visible book is not the whole market — hidden, iceberg, and off-exchange interest mean displayed depth understates or distorts true supply and demand.",
+    "example": "On CME Globex, a resting limit order to buy 10 E-mini contracts at 5,500.00 sits in the book until an incoming sell order executes against it at that price.",
+    "citations": [
+      {
+        "source": "CFTC Futures Glossary",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Central Limit Order Book; Call Auction (order book format contrast)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Nasdaq, The Nasdaq Opening and Closing Crosses FAQ",
+        "url": "https://www.nasdaq.com/docs/2020/04/03/openclose_faqs.pdf",
+        "section": "Section 2 (the Nasdaq continuous book)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
