@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/iron-butterfly",
+  "canonical_sha256": "9942ae8e1338ccc4e770b7a0a741cce82308e7a3cf0c327b0bcaa618a0dd398e",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/iron-butterfly",
+    "name": "Iron butterfly",
+    "aliases": [
+      "ironfly",
+      "short iron butterfly"
+    ],
+    "domain": "Options",
+    "definition": "An iron butterfly is a four-leg, same-expiration strategy combining a short straddle at the middle strike (short call and short put at the same strike) with a long out-of-the-money strangle as wings (long lower-strike put, long higher-strike call). Entered for a net credit, it reaches maximum profit when the underlying finishes exactly at the middle strike.",
+    "intuition": "It is a short straddle with wings: you sell the at-the-money call and put for a large credit, then buy cheap far-out options to cap the damage if the stock runs.",
+    "mechanics": "Net credit = premiums sold minus premiums bought; maximum gain is the credit at the middle strike; maximum loss is the wing width minus the credit, realized beyond either long strike. It can be decomposed into a bull put spread and a bear call spread sharing the same short strike.",
+    "formula": "Max gain = net credit; max loss = (K_wing - K_body) - net credit; breakevens = K_body +/- net credit.",
+    "relationships": [
+      "Short straddle",
+      "Iron condor",
+      "Long call butterfly",
+      "Bull put spread",
+      "Bear call spread",
+      "Pin risk"
+    ],
+    "failure_modes": "Maximum profit requires the underlying to pin the body strike exactly, a low-probability outcome; the large credit accompanies steep short gamma near expiration, and assignment of an ITM short leg can leave a residual stock position.",
+    "misconceptions": "The large credit is not an edge over the iron condor — it reflects the narrower, lower-probability profit zone; on a risk-adjusted basis neither structure has an inherent advantage.",
+    "example": "With XYZ at $100: sell the $100 call and $100 put, buy the $90 put and $110 call for a $5.00 net credit. Max gain $500 at exactly $100; max loss $500 at or beyond $90 or $110; breakevens at $95 and $105.",
+    "citations": [
+      {
+        "source": "Options strategy — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Options_strategy",
+        "section": "Neutral or non-directional strategies (iron butterfly)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Iron condor — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Iron_condor",
+        "section": "Related strategies (short iron butterfly)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

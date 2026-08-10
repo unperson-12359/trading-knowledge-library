@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/short-strangle",
+  "canonical_sha256": "ccbbb9edde1b5f7607c2fbf9f28b08a2cda28697227ba2c9f07717014f34c46b",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/short-strangle",
+    "name": "Short strangle",
+    "aliases": [
+      "top vertical combination"
+    ],
+    "domain": "Options",
+    "definition": "A short strangle is the simultaneous sale of an out-of-the-money put (lower strike) and an out-of-the-money call (higher strike) on the same underlying with the same expiration date, collecting both premiums. It profits if the underlying stays between the strikes and carries unlimited loss above the call strike and large loss below the put strike.",
+    "intuition": "You sell insurance on both tails at once: you win small credits repeatedly as long as the stock stays in a range, but a breakout in either direction hurts.",
+    "mechanics": "Credit = call premium + put premium; breakevens at expiration are call strike + credit and put strike - credit. The position is short volatility with undefined risk on both sides; brokers require margin for the naked exposure.",
+    "formula": "Payoff at expiration = (C + P) - max(S_T - K_c, 0) - max(K_p - S_T, 0), where K_c > K_p; max gain = C + P.",
+    "relationships": [
+      "Long strangle",
+      "Short straddle",
+      "Iron condor",
+      "Naked call",
+      "Assignment risk",
+      "Pin risk"
+    ],
+    "failure_modes": "Short strangles win often but lose severely in gaps and trends; both legs are naked, so early assignment, dividend-driven call assignment, and expiration pin risk all apply. A stock pinned between the strikes near expiry can still whip through a strike in the final hour.",
+    "misconceptions": "A high probability of profit is not a margin of safety: the expected value after costs is what matters, and the rare full-range breakout can erase years of credits.",
+    "example": "With XYZ at $100, sell the $105 call for $1.50 and the $95 put for $1.20 (credit $2.70). If XYZ finishes between $95 and $105, keep $270; if XYZ falls to $85, lose ($10 - $2.70) x 100 = $730.",
+    "citations": [
+      {
+        "source": "Strangle (options) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Strangle_(options)",
+        "section": "Short strangles",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Combination",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

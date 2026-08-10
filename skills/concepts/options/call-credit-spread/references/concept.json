@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/call-credit-spread",
+  "canonical_sha256": "ca85d0c34b1d319543b7b6e1bbf6f3a2dd77b94ab7569f4bd0289aacabbaaba4",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/call-credit-spread",
+    "name": "Call credit spread",
+    "aliases": [
+      "bear call spread",
+      "short call spread",
+      "call vertical credit spread"
+    ],
+    "domain": "Options",
+    "definition": "A call credit spread is a vertical spread consisting of a short call at a lower strike and a long call at a higher strike, same underlying and same expiration, entered for a net credit. It is synonymous with the bear call spread: a moderately bearish-to-neutral position whose maximum gain is the credit received and whose maximum loss is the strike width minus the credit.",
+    "intuition": "You sell a call betting the stock stays below your strike, and buy a higher-strike call as a built-in stop so a rally cannot hurt you beyond a known amount.",
+    "mechanics": "The net credit is received at entry and kept in full if the underlying finishes at or below the short strike; the long call caps losses above the higher strike. The CFTC describes the call bear spread as purchasing the higher-strike call and selling the lower-strike call, same class and expiration.",
+    "formula": "Max gain = net credit; max loss = (K2 - K1) - net credit; breakeven = K1 + net credit, where K1 < K2 are the call strikes.",
+    "relationships": [
+      "Bear call spread",
+      "Call debit spread",
+      "Put credit spread",
+      "Iron condor",
+      "Call option",
+      "Vertical spread"
+    ],
+    "failure_modes": "Frequent small credits are punctuated by losses several times larger; gap-ups through both strikes realize maximum loss, and assignment of the short leg near expiration creates pin risk and possible residual stock positions.",
+    "misconceptions": "A high probability of keeping the credit is not the same as positive expectancy — the loss when wrong is a multiple of the credit, and the credit is payment for accepting that downside, not free income.",
+    "example": "Sell the XYZ $100 call for $4.00, buy the $105 call for $1.50: net credit $2.50. If XYZ finishes at or below $100, keep $250; at or above $105, lose $250.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Bear Spread",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Options strategy — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Options_strategy",
+        "section": "Credit and debit spreads",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

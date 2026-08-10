@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/bear-put-spread",
+  "canonical_sha256": "329d4915dfa5e24c650c887c35649b2f72394e8f8a5aebcc8f37bbd8c3e39885",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/bear-put-spread",
+    "name": "Bear put spread",
+    "aliases": [
+      "long put spread",
+      "put vertical debit spread"
+    ],
+    "domain": "Options",
+    "definition": "A bear put spread is a vertical spread consisting of a long put at a higher strike and a short put at a lower strike, same underlying and expiration, entered for a net debit. It profits from a moderate decline in the underlying, with both maximum gain and maximum loss fixed at entry.",
+    "intuition": "You buy downside protection/participation but sell away the extreme-crash part to make the bearish bet cheaper.",
+    "mechanics": "Net debit at entry; maximum loss = debit above the higher strike; maximum gain = (strike width - debit) at or below the lower strike. It is the debit-spread counterpart of the bear call spread.",
+    "formula": "Max loss = net debit; max gain = (K2 - K1) - net debit; breakeven = K2 - net debit, where K1 < K2 are the put strikes.",
+    "relationships": [
+      "Put debit spread",
+      "Bull put spread",
+      "Bear call spread",
+      "Put option",
+      "Protective put"
+    ],
+    "failure_modes": "Because of downside skew, the long higher-strike put is often expensively priced relative to the short leg, raising breakevens; the capped payoff misses the bulk of true crash payoffs that outright puts capture.",
+    "misconceptions": "A bear put spread is not equivalent to shorting stock with limited risk — it decays with time and needs the decline to happen before expiration to profit fully.",
+    "example": "Buy the XYZ $100 put for $4, sell the $95 put for $1.50: debit $2.50. At or below $95 the spread is worth $5 (gain $250); at or above $100 the debit is lost.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Bear Spread",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Options strategy — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Options_strategies",
+        "section": "Bearish options strategies (bear spreads)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

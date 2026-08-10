@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/short-straddle",
+  "canonical_sha256": "65ed767e11a26c7709c55d3ca6fdc6fd830a65df734f549587b8b475cfe2e537",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/short-straddle",
+    "name": "Short straddle",
+    "aliases": [
+      "straddle write",
+      "top straddle"
+    ],
+    "domain": "Options",
+    "definition": "A short straddle is the simultaneous sale of a call and a put on the same underlying, at the same strike price and the same expiration date, collecting both premiums. It profits most if the underlying finishes exactly at the strike and exposes the seller to unlimited loss above the strike and large loss below it.",
+    "intuition": "You are selling a big move: you keep both premiums if the stock goes nowhere, but a large swing in either direction costs you point-for-point past the breakevens.",
+    "mechanics": "Credit = call premium + put premium; breakevens at expiration are K +/- total credit. The position is short volatility and short gamma, with maximum gain equal to the credit and theoretically unlimited risk on the call side. Short straddle losses were a component of Nick Leeson's Barings Bank collapse.",
+    "formula": "Payoff at expiration = (C + P) - |S_T - K|, per share; max gain = C + P; breakevens = K +/- (C + P).",
+    "relationships": [
+      "Long straddle",
+      "Short strangle",
+      "Iron butterfly",
+      "Naked call",
+      "Assignment risk",
+      "Gamma"
+    ],
+    "failure_modes": "Gap moves produce losses far exceeding the credit before the seller can react; both legs are naked, so assignment risk, pin risk near expiration, and unlimited upside loss all apply simultaneously.",
+    "misconceptions": "A high win rate does not make short straddles safe: the occasional large loss dwarfs the accumulated credits. Selling both legs does not 'hedge' the position — the call and put cannot offset each other because only one side can finish in-the-money.",
+    "example": "With XYZ at $100, sell the $100 call for $3.00 and the $100 put for $2.50 (credit $5.50). If XYZ finishes at $100, keep $550; if XYZ gaps to $115, lose ($15 - $5.50) x 100 = $950.",
+    "citations": [
+      {
+        "source": "Straddle — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Straddle",
+        "section": "Short straddle",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Combination",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

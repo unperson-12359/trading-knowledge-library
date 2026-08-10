@@ -246,6 +246,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="naked-call"><h3>Naked call <a class="anchor" href="#naked-call">#</a></h3>
 <div class="field">A naked (uncovered) call is a short call option position where the writer does not hold the underlying asset or an offsetting position to cover the obligation; the CFTC defines a naked option as the sale of a call or put without holding an equal and opposite position in the underlying instrument.</div>
+<div class="skill-links"><a href="../skills/tkl-naked-call/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> You have sold someone the right to buy stock from you at a fixed price without owning the stock — if it soars, you must buy it at the market price to deliver, and there is no ceiling on that price.</div>
 <div class="field"><span class="label">Mechanics:</span> The writer collects the premium and posts substantial margin. If assigned, the writer must buy the underlying in the open market and deliver it at the strike. Because the underlying price is unbounded, potential loss is theoretically unlimited; brokers restrict naked call writing to high approval levels.</div>
 <div class="field"><span class="label">Failure modes:</span> Gap moves and short squeezes can produce losses far exceeding posted margin before the writer can react; buy-ins after assignment can compound losses. This is the classic structure behind blow-ups from unlimited-risk premium selling.</div>
@@ -259,6 +260,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="cash-secured-put"><h3>Cash-secured put <a class="anchor" href="#cash-secured-put">#</a></h3>
 <div class="field">A cash-secured put is a short put option position backed by enough cash in the account to buy the underlying at the strike price if assigned. The writer collects the premium and accepts the obligation to purchase the shares at the strike.</div>
+<div class="skill-links"><a href="../skills/tkl-cash-secured-put/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> You get paid a premium to place a limit-buy order: if the stock drops to the strike you buy it (at an effective discount of the premium), and if it doesn&#x27;t you keep the premium.</div>
 <div class="field"><span class="label">Mechanics:</span> Sell one put and set aside K x 100 in cash as security. By put-call parity, its payoff equals a covered call at the same strike. Maximum gain is the premium; maximum loss is (K - premium) x 100 if the stock goes to zero. The CBOE S&amp;P 500 PutWrite Index (PUT) benchmarks this strategy systematically.</div>
 <div class="field"><span class="label">Failure modes:</span> The &#x27;discount entry&#x27; framing fails when the stock falls far below the strike — the writer owns shares well above market. Assignment is likeliest exactly when the stock is collapsing, concentrating losses in bad states.</div>
@@ -272,6 +274,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="protective-put"><h3>Protective put <a class="anchor" href="#protective-put">#</a></h3>
 <div class="field">A protective put is a position long the underlying asset plus a long put option on it, which sets a floor on the position&#x27;s value: losses below the put strike are offset by gains in the put. It is the options-market analogue of buying insurance on a holding.</div>
+<div class="skill-links"><a href="../skills/tkl-protective-put/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> You keep all the upside of owning the stock but pay a premium so that, no matter how far it falls, you can always sell at the strike price.</div>
 <div class="field"><span class="label">Mechanics:</span> Hold (or buy) 100 shares and buy one put, typically at or below the current price. Maximum loss is limited to (S_0 - K) + premium per share; upside remains open, reduced by the premium. By put-call parity, long stock + long put equals a long call plus cash (a fiduciary call).</div>
 <div class="field"><span class="label">Failure modes:</span> Chronic put buying is expensive — downside implied volatility (skew) makes protective puts costly, so persistent hedging can erode returns more than the occasional crash would. Hedging only works to expiration; gaps after expiry are unprotected.</div>
@@ -284,6 +287,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="married-put"><h3>Married put <a class="anchor" href="#married-put">#</a></h3>
 <div class="field">A married put is a protective put in which the underlying shares and the put option are purchased simultaneously as a single package, rather than the put being added to a pre-existing stock holding. The put guarantees a minimum sale price for the shares until expiration.</div>
+<div class="skill-links"><a href="../skills/tkl-married-put/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is buying a stock and its insurance policy on the same ticket — you know your maximum possible loss on the combined position from day one.</div>
 <div class="field"><span class="label">Mechanics:</span> Buy 100 shares and one put at the same time. The payoff is identical to a protective put; the distinction is transactional (simultaneous purchase, which also matters for tax-lot identification in some jurisdictions). By put-call parity the position is equivalent to a long call plus discounted strike cash.</div>
 <div class="field"><span class="label">Failure modes:</span> Same as protective puts: the recurring premium drag compounds over time, and protection ends at expiration. Choosing strikes too far OTM leaves a large deductible; too far ITM makes the &#x27;insurance&#x27; cost prohibitive.</div>
@@ -296,6 +300,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="collar"><h3>Collar <a class="anchor" href="#collar">#</a></h3>
 <div class="field">A collar is a position long the underlying asset, long an out-of-the-money put (the floor), and short an out-of-the-money call (the cap) on the same underlying and expiration; the call premium finances part or all of the put. It brackets the position&#x27;s value between the two strikes.</div>
+<div class="skill-links"><a href="../skills/tkl-collar/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> You give up the big upside above the call strike to pay for protection against the big downside below the put strike — outcome is &#x27;collared&#x27; into a band.</div>
 <div class="field"><span class="label">Mechanics:</span> Hold 100 shares, buy a put at K1 below the price, sell a call at K2 above it. A &#x27;zero-cost collar&#x27; chooses strikes so the call premium equals the put premium. Value at expiration is bounded between K1 and K2 (plus net premium effects).</div>
 <div class="field"><span class="label">Failure modes:</span> The short cap creates regret and assignment risk in strong rallies, and the floor still leaves the band between strikes exposed. Zero-cost construction often forces an uncomfortably tight cap or a distant floor.</div>
@@ -308,6 +313,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="bull-call-spread"><h3>Bull call spread <a class="anchor" href="#bull-call-spread">#</a></h3>
 <div class="field">A bull call spread is a vertical spread consisting of a long call at a lower strike and a short call at a higher strike, same underlying and expiration, entered for a net debit. It profits from a moderate rise in the underlying, with both maximum gain and maximum loss fixed at entry.</div>
+<div class="skill-links"><a href="../skills/tkl-bull-call-spread/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> You buy upside participation but sell away the part above the higher strike to reduce the cost — a cheaper, capped way to be bullish.</div>
 <div class="field"><span class="label">Mechanics:</span> Net debit = premium paid - premium received. Maximum loss is the debit (below the lower strike); maximum gain is (strike width - debit) at or above the higher strike. The CFTC describes the call bull spread as buying the lower-strike (higher-delta) call and selling the higher-strike call.</div>
 <div class="field"><span class="label">Failure modes:</span> The capped upside badly lags outright call or stock ownership in large rallies; early assignment on the short ITM leg (especially before ex-dividend) can disrupt the spread and create an unintended stock position.</div>
@@ -321,6 +327,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="bear-call-spread"><h3>Bear call spread <a class="anchor" href="#bear-call-spread">#</a></h3>
 <div class="field">A bear call spread is a vertical spread consisting of a short call at a lower strike and a long call at a higher strike, same underlying and expiration, entered for a net credit. It profits if the underlying stays below the short strike, with fixed maximum gain (the credit) and maximum loss.</div>
+<div class="skill-links"><a href="../skills/tkl-bear-call-spread/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> You sell a call to bet the stock won&#x27;t rise past your strike, and buy a higher call as a stop-loss so a rally can&#x27;t hurt you beyond a known amount.</div>
 <div class="field"><span class="label">Mechanics:</span> Net credit received at entry. Maximum gain = credit if the underlying finishes at or below the short strike; maximum loss = (strike width - credit) above the long strike. The CFTC describes the call bear spread as purchasing the higher-strike call and selling the lower-strike call.</div>
 <div class="field"><span class="label">Failure modes:</span> Frequent small credits are punctuated by losses several times larger; assignment of the short leg near or after expiration can leave a residual stock position (pin risk). Selling calls into strong uptrends repeatedly loses.</div>
@@ -334,6 +341,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="bull-put-spread"><h3>Bull put spread <a class="anchor" href="#bull-put-spread">#</a></h3>
 <div class="field">A bull put spread is a vertical spread consisting of a short put at a higher strike and a long put at a lower strike, same underlying and expiration, entered for a net credit. It profits if the underlying stays above the short strike, with fixed maximum gain (credit) and maximum loss.</div>
+<div class="skill-links"><a href="../skills/tkl-bull-put-spread/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> You sell a put betting the stock stays up, and buy a cheaper lower put as insurance so a sell-off can&#x27;t cost more than a known amount.</div>
 <div class="field"><span class="label">Mechanics:</span> Net credit at entry; maximum gain = credit at or above the short strike; maximum loss = (strike width - credit) at or below the long strike. It is the credit-spread counterpart of the bull call spread, with nearly identical payoff at equivalent strikes.</div>
 <div class="field"><span class="label">Failure modes:</span> Gap-down moves can blow through both strikes and realize maximum loss with no chance to adjust; short-leg assignment before ex-dividend or at expiration can leave unwanted long stock.</div>
@@ -347,6 +355,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="bear-put-spread"><h3>Bear put spread <a class="anchor" href="#bear-put-spread">#</a></h3>
 <div class="field">A bear put spread is a vertical spread consisting of a long put at a higher strike and a short put at a lower strike, same underlying and expiration, entered for a net debit. It profits from a moderate decline in the underlying, with both maximum gain and maximum loss fixed at entry.</div>
+<div class="skill-links"><a href="../skills/tkl-bear-put-spread/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> You buy downside protection/participation but sell away the extreme-crash part to make the bearish bet cheaper.</div>
 <div class="field"><span class="label">Mechanics:</span> Net debit at entry; maximum loss = debit above the higher strike; maximum gain = (strike width - debit) at or below the lower strike. It is the debit-spread counterpart of the bear call spread.</div>
 <div class="field"><span class="label">Failure modes:</span> Because of downside skew, the long higher-strike put is often expensively priced relative to the short leg, raising breakevens; the capped payoff misses the bulk of true crash payoffs that outright puts capture.</div>
@@ -360,6 +369,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="call-debit-spread"><h3>Call debit spread <a class="anchor" href="#call-debit-spread">#</a></h3>
 <div class="field">A call debit spread is a vertical spread consisting of a long call at a lower strike and a short call at a higher strike, same underlying and same expiration, entered for a net debit because the lower-strike call costs more than the higher-strike call. It is synonymous with the bull call spread: a moderately bullish position with maximum gain and maximum loss both fixed at entry.</div>
+<div class="skill-links"><a href="../skills/tkl-call-debit-spread/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> You buy upside participation up to the higher strike and sell away everything above it to cut the cost — a cheaper, capped way to be bullish.</div>
 <div class="field"><span class="label">Mechanics:</span> Net debit = premium paid minus premium received. Below the lower strike both calls expire worthless and the debit is lost; above the higher strike the spread is worth the strike width. The CFTC describes the call bull spread as buying the lower-strike (higher-delta) call and selling the higher-strike call, same class and expiration.</div>
 <div class="field"><span class="label">Failure modes:</span> The capped upside lags outright calls badly in large rallies; early assignment on the short ITM leg (especially before an ex-dividend date) can leave an unintended stock position and disrupt the spread.</div>
@@ -373,6 +383,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="call-credit-spread"><h3>Call credit spread <a class="anchor" href="#call-credit-spread">#</a></h3>
 <div class="field">A call credit spread is a vertical spread consisting of a short call at a lower strike and a long call at a higher strike, same underlying and same expiration, entered for a net credit. It is synonymous with the bear call spread: a moderately bearish-to-neutral position whose maximum gain is the credit received and whose maximum loss is the strike width minus the credit.</div>
+<div class="skill-links"><a href="../skills/tkl-call-credit-spread/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> You sell a call betting the stock stays below your strike, and buy a higher-strike call as a built-in stop so a rally cannot hurt you beyond a known amount.</div>
 <div class="field"><span class="label">Mechanics:</span> The net credit is received at entry and kept in full if the underlying finishes at or below the short strike; the long call caps losses above the higher strike. The CFTC describes the call bear spread as purchasing the higher-strike call and selling the lower-strike call, same class and expiration.</div>
 <div class="field"><span class="label">Failure modes:</span> Frequent small credits are punctuated by losses several times larger; gap-ups through both strikes realize maximum loss, and assignment of the short leg near expiration creates pin risk and possible residual stock positions.</div>
@@ -386,6 +397,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="put-debit-spread"><h3>Put debit spread <a class="anchor" href="#put-debit-spread">#</a></h3>
 <div class="field">A put debit spread is a vertical spread consisting of a long put at a higher strike and a short put at a lower strike, same underlying and same expiration, entered for a net debit. It is synonymous with the bear put spread: a moderately bearish position with maximum gain and maximum loss both fixed at entry.</div>
+<div class="skill-links"><a href="../skills/tkl-put-debit-spread/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> You buy downside participation but sell away the extreme-crash part below the lower strike to make the bearish bet cheaper.</div>
 <div class="field"><span class="label">Mechanics:</span> Net debit = premium paid minus premium received. Above the higher strike both puts expire worthless and the debit is lost; at or below the lower strike the spread is worth the strike width. It is the put-side counterpart of the bull call spread at equivalent strikes.</div>
 <div class="field"><span class="label">Failure modes:</span> Downside skew often makes the long higher-strike put expensive relative to the short leg, raising the breakeven; the capped payoff misses the bulk of true crash payoffs that outright puts capture.</div>

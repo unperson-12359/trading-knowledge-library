@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/bull-put-spread",
+  "canonical_sha256": "a14ff00c1e6cf91ca1baaf90a10314a0bddfb8f896f5c9a4e81059fe20f8263f",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/bull-put-spread",
+    "name": "Bull put spread",
+    "aliases": [
+      "short put spread",
+      "put vertical credit spread"
+    ],
+    "domain": "Options",
+    "definition": "A bull put spread is a vertical spread consisting of a short put at a higher strike and a long put at a lower strike, same underlying and expiration, entered for a net credit. It profits if the underlying stays above the short strike, with fixed maximum gain (credit) and maximum loss.",
+    "intuition": "You sell a put betting the stock stays up, and buy a cheaper lower put as insurance so a sell-off can't cost more than a known amount.",
+    "mechanics": "Net credit at entry; maximum gain = credit at or above the short strike; maximum loss = (strike width - credit) at or below the long strike. It is the credit-spread counterpart of the bull call spread, with nearly identical payoff at equivalent strikes.",
+    "formula": "Max gain = net credit; max loss = (K2 - K1) - net credit; breakeven = K2 - net credit, where K1 < K2 are the put strikes.",
+    "relationships": [
+      "Put credit spread",
+      "Bear put spread",
+      "Cash-secured put",
+      "Iron condor",
+      "Put option"
+    ],
+    "failure_modes": "Gap-down moves can blow through both strikes and realize maximum loss with no chance to adjust; short-leg assignment before ex-dividend or at expiration can leave unwanted long stock.",
+    "misconceptions": "Choosing far-OTM strikes for a '90% win rate' does not create an edge: the credit shrinks toward the risk-free compensation for the residual tail risk, and one max-loss wipes out many wins.",
+    "example": "Sell the XYZ $100 put for $3, buy the $95 put for $1: credit $2. If XYZ stays at or above $100, keep $200; at or below $95, lose $300.",
+    "citations": [
+      {
+        "source": "Options strategy — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Options_strategies",
+        "section": "Spread combinations (bull put spread)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Bull Spread",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

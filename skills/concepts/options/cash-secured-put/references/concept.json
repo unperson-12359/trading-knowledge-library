@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/cash-secured-put",
+  "canonical_sha256": "8e668012f7ea5aa8d700b8027a5a12d991f1f43e41158087e22bf156337a03fc",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/cash-secured-put",
+    "name": "Cash-secured put",
+    "aliases": [
+      "cash-covered put"
+    ],
+    "domain": "Options",
+    "definition": "A cash-secured put is a short put option position backed by enough cash in the account to buy the underlying at the strike price if assigned. The writer collects the premium and accepts the obligation to purchase the shares at the strike.",
+    "intuition": "You get paid a premium to place a limit-buy order: if the stock drops to the strike you buy it (at an effective discount of the premium), and if it doesn't you keep the premium.",
+    "mechanics": "Sell one put and set aside K x 100 in cash as security. By put-call parity, its payoff equals a covered call at the same strike. Maximum gain is the premium; maximum loss is (K - premium) x 100 if the stock goes to zero. The CBOE S&P 500 PutWrite Index (PUT) benchmarks this strategy systematically.",
+    "formula": "Profit at expiration = premium - max(K - S_T, 0), per share; breakeven = K - premium.",
+    "relationships": [
+      "Put option",
+      "Option writer",
+      "Covered call",
+      "Put-call parity",
+      "Assignment risk",
+      "Bull put spread"
+    ],
+    "failure_modes": "The 'discount entry' framing fails when the stock falls far below the strike — the writer owns shares well above market. Assignment is likeliest exactly when the stock is collapsing, concentrating losses in bad states.",
+    "misconceptions": "It is not lower-risk than a covered call — put-call parity makes the two economically identical at the same strike. The cash security covers the purchase obligation, not the market loss on the resulting stock position.",
+    "example": "Sell one XYZ $45 put for $1.20, securing $4,500 in cash. If XYZ finishes at $47, keep the $120 premium; if assigned at $40, the effective cost basis is $43.80 and the position is already down $380.",
+    "citations": [
+      {
+        "source": "Put–call parity — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Put%E2%80%93call_parity",
+        "section": "Statement (cash-secured put / covered call equivalence)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Option (finance) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Option_(finance)",
+        "section": "Basic trades (American style): Short put",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

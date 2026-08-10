@@ -1,0 +1,80 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-bull-put-spread",
+  "concept_id": "options/bull-put-spread",
+  "display_name": "Bull put spread",
+  "domain": "Options",
+  "description": "Explain, compare, or apply Bull put spread using the library's structured Options reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Bull put spread",
+    "short put spread",
+    "put vertical credit spread",
+    "explain Bull put spread",
+    "apply Bull put spread to a trading question",
+    "common misconception about Bull put spread"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 46,
+  "package_path": "skills/concepts/options/bull-put-spread",
+  "canonical": {
+    "source_path": "concepts/options.json",
+    "sha256": "a14ff00c1e6cf91ca1baaf90a10314a0bddfb8f896f5c9a4e81059fe20f8263f"
+  },
+  "related_concept_ids": [
+    "options/put-credit-spread",
+    "options/cash-secured-put",
+    "options/iron-condor",
+    "options/put-option"
+  ]
+}

@@ -2,7 +2,7 @@
   "$schema": "../schemas/skill-manifest.schema.json",
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 900,
+  "completed_count": 920,
   "skills": [
     {
       "$schema": "../../../../schemas/concept-skill.schema.json",
@@ -72989,6 +72989,1609 @@
         "options/put-call-parity",
         "options/collar",
         "options/assignment-risk"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-naked-call",
+      "concept_id": "options/naked-call",
+      "display_name": "Naked call",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Naked call using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Naked call",
+        "uncovered call",
+        "explain Naked call",
+        "apply Naked call to a trading question",
+        "common misconception about Naked call"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/naked-call",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "9692328a90e86639c84bcab67197ff230066342a5adc6baede5465c4a0ae7554"
+      },
+      "related_concept_ids": [
+        "options/option-writer",
+        "options/call-option",
+        "options/covered-call",
+        "options/assignment-risk",
+        "risk-and-performance/margin",
+        "options/short-straddle"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-cash-secured-put",
+      "concept_id": "options/cash-secured-put",
+      "display_name": "Cash-secured put",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Cash-secured put using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Cash-secured put",
+        "cash-covered put",
+        "explain Cash-secured put",
+        "apply Cash-secured put to a trading question",
+        "common misconception about Cash-secured put"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/cash-secured-put",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "8e668012f7ea5aa8d700b8027a5a12d991f1f43e41158087e22bf156337a03fc"
+      },
+      "related_concept_ids": [
+        "options/put-option",
+        "options/option-writer",
+        "options/covered-call",
+        "options/put-call-parity",
+        "options/assignment-risk"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-protective-put",
+      "concept_id": "options/protective-put",
+      "display_name": "Protective put",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Protective put using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Protective put",
+        "portfolio insurance put",
+        "explain Protective put",
+        "apply Protective put to a trading question",
+        "common misconception about Protective put"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/protective-put",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "a45edb1ed7a26a23d5a31c96c3791497852bc150a1cb4962dfc0f1574f425771"
+      },
+      "related_concept_ids": [
+        "options/put-option",
+        "options/married-put",
+        "options/collar",
+        "options/put-call-parity",
+        "options/call-option"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-married-put",
+      "concept_id": "options/married-put",
+      "display_name": "Married put",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Married put using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Married put",
+        "explain Married put",
+        "apply Married put to a trading question",
+        "common misconception about Married put"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/married-put",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "1fff73cb648f59fd32dd13798c7712d2c0a6706e1351ea83681bbc6f56b7d424"
+      },
+      "related_concept_ids": [
+        "options/protective-put",
+        "options/put-option",
+        "options/put-call-parity",
+        "options/call-option"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-collar",
+      "concept_id": "options/collar",
+      "display_name": "Collar",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Collar using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Collar",
+        "fence",
+        "cap and floor hedge",
+        "explain Collar",
+        "apply Collar to a trading question",
+        "common misconception about Collar"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/collar",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "172406469371bb6ddb3bd626402a42ede7b6c264b8cea5ff878b1f38130a1c93"
+      },
+      "related_concept_ids": [
+        "options/protective-put",
+        "options/covered-call",
+        "options/risk-reversal",
+        "options/put-option",
+        "options/call-option"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-bull-call-spread",
+      "concept_id": "options/bull-call-spread",
+      "display_name": "Bull call spread",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Bull call spread using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Bull call spread",
+        "long call spread",
+        "call vertical debit spread",
+        "explain Bull call spread",
+        "apply Bull call spread to a trading question",
+        "common misconception about Bull call spread"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/bull-call-spread",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "8cda51ff9b5c3b9e28f1193903c59837b22e47759e73488131fc87f93b09ab1e"
+      },
+      "related_concept_ids": [
+        "options/call-debit-spread",
+        "options/call-option",
+        "options/moneyness"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-bear-call-spread",
+      "concept_id": "options/bear-call-spread",
+      "display_name": "Bear call spread",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Bear call spread using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Bear call spread",
+        "short call spread",
+        "call vertical credit spread",
+        "explain Bear call spread",
+        "apply Bear call spread to a trading question",
+        "common misconception about Bear call spread"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/bear-call-spread",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "6747c56c8daa446298b75a65912e2695757555829c3bf7428d99ffa76553216a"
+      },
+      "related_concept_ids": [
+        "options/call-credit-spread",
+        "options/iron-condor",
+        "options/call-option"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-bull-put-spread",
+      "concept_id": "options/bull-put-spread",
+      "display_name": "Bull put spread",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Bull put spread using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Bull put spread",
+        "short put spread",
+        "put vertical credit spread",
+        "explain Bull put spread",
+        "apply Bull put spread to a trading question",
+        "common misconception about Bull put spread"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/bull-put-spread",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "a14ff00c1e6cf91ca1baaf90a10314a0bddfb8f896f5c9a4e81059fe20f8263f"
+      },
+      "related_concept_ids": [
+        "options/put-credit-spread",
+        "options/cash-secured-put",
+        "options/iron-condor",
+        "options/put-option"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-bear-put-spread",
+      "concept_id": "options/bear-put-spread",
+      "display_name": "Bear put spread",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Bear put spread using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Bear put spread",
+        "long put spread",
+        "put vertical debit spread",
+        "explain Bear put spread",
+        "apply Bear put spread to a trading question",
+        "common misconception about Bear put spread"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/bear-put-spread",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "329d4915dfa5e24c650c887c35649b2f72394e8f8a5aebcc8f37bbd8c3e39885"
+      },
+      "related_concept_ids": [
+        "options/put-debit-spread",
+        "options/put-option",
+        "options/protective-put"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-call-debit-spread",
+      "concept_id": "options/call-debit-spread",
+      "display_name": "Call debit spread",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Call debit spread using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Call debit spread",
+        "bull call spread",
+        "long call spread",
+        "call vertical debit spread",
+        "explain Call debit spread",
+        "apply Call debit spread to a trading question",
+        "common misconception about Call debit spread"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/call-debit-spread",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "fc9a21f2aa477b245c313568531b4d5d8a16b773ecafd566fb7dc71156b073b6"
+      },
+      "related_concept_ids": [
+        "options/call-credit-spread",
+        "options/put-debit-spread",
+        "options/call-option",
+        "options/moneyness"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-call-credit-spread",
+      "concept_id": "options/call-credit-spread",
+      "display_name": "Call credit spread",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Call credit spread using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Call credit spread",
+        "bear call spread",
+        "short call spread",
+        "call vertical credit spread",
+        "explain Call credit spread",
+        "apply Call credit spread to a trading question",
+        "common misconception about Call credit spread"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/call-credit-spread",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "ca85d0c34b1d319543b7b6e1bbf6f3a2dd77b94ab7569f4bd0289aacabbaaba4"
+      },
+      "related_concept_ids": [
+        "options/call-debit-spread",
+        "options/put-credit-spread",
+        "options/iron-condor",
+        "options/call-option"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-put-debit-spread",
+      "concept_id": "options/put-debit-spread",
+      "display_name": "Put debit spread",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Put debit spread using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Put debit spread",
+        "bear put spread",
+        "long put spread",
+        "put vertical debit spread",
+        "explain Put debit spread",
+        "apply Put debit spread to a trading question",
+        "common misconception about Put debit spread"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/put-debit-spread",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "2584a92c519f2ecf52fd93df3c825b1fc7f2b2f9d87c20314d94669cdde82c56"
+      },
+      "related_concept_ids": [
+        "options/put-credit-spread",
+        "options/call-debit-spread",
+        "options/put-option",
+        "options/protective-put"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-put-credit-spread",
+      "concept_id": "options/put-credit-spread",
+      "display_name": "Put credit spread",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Put credit spread using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Put credit spread",
+        "bull put spread",
+        "short put spread",
+        "put vertical credit spread",
+        "explain Put credit spread",
+        "apply Put credit spread to a trading question",
+        "common misconception about Put credit spread"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/put-credit-spread",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "32ab0e7f3394fa21ed661f7d5ccc5b951805923a4a0ba0260ebaa2c2e84c399a"
+      },
+      "related_concept_ids": [
+        "options/put-debit-spread",
+        "options/call-credit-spread",
+        "options/cash-secured-put",
+        "options/iron-condor"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-long-straddle",
+      "concept_id": "options/long-straddle",
+      "display_name": "Long straddle",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Long straddle using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Long straddle",
+        "straddle purchase",
+        "bottom straddle",
+        "explain Long straddle",
+        "apply Long straddle to a trading question",
+        "common misconception about Long straddle"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/long-straddle",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "99bb9ea88001e5f875ffbe01703ceb9e82ad6641fb6d4a7881140405957e2e15"
+      },
+      "related_concept_ids": [
+        "options/short-straddle",
+        "options/long-strangle",
+        "options/at-the-money-option",
+        "risk-and-performance/implied-volatility",
+        "options/gamma",
+        "options/theta"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-short-straddle",
+      "concept_id": "options/short-straddle",
+      "display_name": "Short straddle",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Short straddle using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Short straddle",
+        "straddle write",
+        "top straddle",
+        "explain Short straddle",
+        "apply Short straddle to a trading question",
+        "common misconception about Short straddle"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/short-straddle",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "65ed767e11a26c7709c55d3ca6fdc6fd830a65df734f549587b8b475cfe2e537"
+      },
+      "related_concept_ids": [
+        "options/long-straddle",
+        "options/short-strangle",
+        "options/iron-butterfly",
+        "options/naked-call",
+        "options/assignment-risk",
+        "options/gamma"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-long-strangle",
+      "concept_id": "options/long-strangle",
+      "display_name": "Long strangle",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Long strangle using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Long strangle",
+        "bottom vertical combination",
+        "explain Long strangle",
+        "apply Long strangle to a trading question",
+        "common misconception about Long strangle"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/long-strangle",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "230ab8fd20e70220321fd3beed4fb4e5efa2cef370876aeb4ddccce50005987a"
+      },
+      "related_concept_ids": [
+        "options/long-straddle",
+        "options/short-strangle",
+        "options/out-of-the-money-option",
+        "risk-and-performance/implied-volatility",
+        "options/iron-condor"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-short-strangle",
+      "concept_id": "options/short-strangle",
+      "display_name": "Short strangle",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Short strangle using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Short strangle",
+        "top vertical combination",
+        "explain Short strangle",
+        "apply Short strangle to a trading question",
+        "common misconception about Short strangle"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/short-strangle",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "ccbbb9edde1b5f7607c2fbf9f28b08a2cda28697227ba2c9f07717014f34c46b"
+      },
+      "related_concept_ids": [
+        "options/long-strangle",
+        "options/short-straddle",
+        "options/iron-condor",
+        "options/naked-call",
+        "options/assignment-risk",
+        "options/pin-risk"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-iron-condor",
+      "concept_id": "options/iron-condor",
+      "display_name": "Iron condor",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Iron condor using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Iron condor",
+        "short iron condor",
+        "explain Iron condor",
+        "apply Iron condor to a trading question",
+        "common misconception about Iron condor"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/iron-condor",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "316b1a235a07f8312ba13b627f58db920350dcf3df0ad464319f1a955c3d7b52"
+      },
+      "related_concept_ids": [
+        "options/short-strangle",
+        "options/reverse-iron-condor",
+        "options/iron-butterfly",
+        "options/pin-risk"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-reverse-iron-condor",
+      "concept_id": "options/reverse-iron-condor",
+      "display_name": "Reverse iron condor",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Reverse iron condor using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Reverse iron condor",
+        "long iron condor",
+        "explain Reverse iron condor",
+        "apply Reverse iron condor to a trading question",
+        "common misconception about Reverse iron condor"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/reverse-iron-condor",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "a2d1a1d5306ba8a3d6bb51aad20637531639a6fb3e0bb80b32f83053ec3a77da"
+      },
+      "related_concept_ids": [
+        "options/iron-condor",
+        "options/long-strangle",
+        "risk-and-performance/implied-volatility"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-iron-butterfly",
+      "concept_id": "options/iron-butterfly",
+      "display_name": "Iron butterfly",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Iron butterfly using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Iron butterfly",
+        "ironfly",
+        "short iron butterfly",
+        "explain Iron butterfly",
+        "apply Iron butterfly to a trading question",
+        "common misconception about Iron butterfly"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 46,
+      "package_path": "skills/concepts/options/iron-butterfly",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "9942ae8e1338ccc4e770b7a0a741cce82308e7a3cf0c327b0bcaa618a0dd398e"
+      },
+      "related_concept_ids": [
+        "options/short-straddle",
+        "options/iron-condor",
+        "options/long-call-butterfly",
+        "options/pin-risk"
       ]
     }
   ]

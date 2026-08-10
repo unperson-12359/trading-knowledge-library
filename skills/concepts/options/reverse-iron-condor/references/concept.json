@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/reverse-iron-condor",
+  "canonical_sha256": "a2d1a1d5306ba8a3d6bb51aad20637531639a6fb3e0bb80b32f83053ec3a77da",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/reverse-iron-condor",
+    "name": "Reverse iron condor",
+    "aliases": [
+      "long iron condor"
+    ],
+    "domain": "Options",
+    "definition": "A reverse iron condor (long iron condor) is a four-leg, same-expiration strategy combining a bear put spread (long higher put, short lower put) and a bull call spread (long lower call, short higher call) — the mirror image of the standard iron condor, entered for a net debit. It profits when the underlying moves beyond either of the long inner strikes, with both maximum gain and loss fixed.",
+    "intuition": "It is a long strangle with the far tails sold off: you pay a smaller debit for a big-move bet, accepting a capped payoff instead of unlimited upside.",
+    "mechanics": "Net debit = premium paid minus premium received; maximum loss is the debit if the underlying finishes between the long inner strikes; maximum gain is the wing width minus the debit beyond either outer (short) strike. It is long volatility and long gamma between the inner strikes.",
+    "formula": "Max loss = net debit; max gain = wing width - net debit; breakevens = long put strike - debit and long call strike + debit.",
+    "relationships": [
+      "Iron condor",
+      "Long strangle",
+      "Bear put spread",
+      "Bull call spread",
+      "Implied volatility"
+    ],
+    "failure_modes": "The most likely outcome is losing the full debit, since the underlying must travel past the inner strikes before any payoff accrues; post-event implied-volatility collapses erode the position even when the directional view is right.",
+    "misconceptions": "It is not 'an iron condor with unlimited profit' — the outer short strikes cap the payoff, which is precisely what makes it a debit trade cheaper than a strangle.",
+    "example": "With XYZ at $100: sell $90 put, buy $95 put, buy $105 call, sell $110 call for a $2.00 net debit. Max loss $200 between $95 and $105; max gain $300 at or beyond $90 or $110.",
+    "citations": [
+      {
+        "source": "Iron condor — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Iron_condor",
+        "section": "Long iron condor",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/long-straddle",
+  "canonical_sha256": "99bb9ea88001e5f875ffbe01703ceb9e82ad6641fb6d4a7881140405957e2e15",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/long-straddle",
+    "name": "Long straddle",
+    "aliases": [
+      "straddle purchase",
+      "bottom straddle"
+    ],
+    "domain": "Options",
+    "definition": "A long straddle is the simultaneous purchase of a call and a put on the same underlying, at the same strike price (typically at-the-money) and the same expiration date. The position profits if the underlying moves far enough in either direction to overcome the combined premium paid.",
+    "intuition": "You are buying a big move without picking a direction: if the stock swings hard either way one leg pays off, and if it goes nowhere both legs decay.",
+    "mechanics": "Cost = call premium + put premium; breakevens at expiration are K +/- total premium. The position is long volatility and long gamma, with maximum loss limited to the premium paid if the underlying pins the strike at expiration.",
+    "formula": "Payoff at expiration = |S_T - K| - (C + P), per share, where C and P are the call and put premiums; breakevens = K + (C + P) and K - (C + P).",
+    "relationships": [
+      "Short straddle",
+      "Long strangle",
+      "At-the-money option",
+      "Implied volatility",
+      "Gamma",
+      "Theta"
+    ],
+    "failure_modes": "The market prices straddles to the expected move, so the buyer loses if realized volatility undershoots implied volatility — the classic post-earnings 'IV crush' loss even when the stock moves. Time decay is steepest for ATM straddles near expiration.",
+    "misconceptions": "A straddle does not profit from any move, only from moves larger than the premium implies; buying a straddle before a known event means paying an event-inflated premium that typically collapses when the news is out.",
+    "example": "With XYZ at $100, buy the $100 call for $3.00 and the $100 put for $2.50 (total $5.50). XYZ must finish above $105.50 or below $94.50 at expiration to profit; a finish at $100 loses the full $550.",
+    "citations": [
+      {
+        "source": "Straddle — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Straddle",
+        "section": "Long straddle",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Options strategy — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Options_strategy",
+        "section": "Neutral or non-directional strategies (straddle)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

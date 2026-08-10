@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/married-put",
+  "canonical_sha256": "1fff73cb648f59fd32dd13798c7712d2c0a6706e1351ea83681bbc6f56b7d424",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/married-put",
+    "name": "Married put",
+    "aliases": [],
+    "domain": "Options",
+    "definition": "A married put is a protective put in which the underlying shares and the put option are purchased simultaneously as a single package, rather than the put being added to a pre-existing stock holding. The put guarantees a minimum sale price for the shares until expiration.",
+    "intuition": "It is buying a stock and its insurance policy on the same ticket — you know your maximum possible loss on the combined position from day one.",
+    "mechanics": "Buy 100 shares and one put at the same time. The payoff is identical to a protective put; the distinction is transactional (simultaneous purchase, which also matters for tax-lot identification in some jurisdictions). By put-call parity the position is equivalent to a long call plus discounted strike cash.",
+    "formula": "Maximum loss = (S_0 - K) + premium, per share; profit = max(S_T, K) - S_0 - premium.",
+    "relationships": [
+      "Protective put",
+      "Put option",
+      "Put-call parity",
+      "Call option"
+    ],
+    "failure_modes": "Same as protective puts: the recurring premium drag compounds over time, and protection ends at expiration. Choosing strikes too far OTM leaves a large deductible; too far ITM makes the 'insurance' cost prohibitive.",
+    "misconceptions": "A married put is not a distinct payoff from a protective put — many texts use the terms interchangeably; the only real difference is the timing of the stock and put purchases. It does not make a falling-stock position safe, only loss-limited.",
+    "example": "Buy 100 shares of XYZ at $50 and simultaneously buy the $50 put for $2.50. Worst case at expiration is a $250 loss; if XYZ rises to $60 the net gain is ($10 - $2.50) x 100 = $750.",
+    "citations": [
+      {
+        "source": "Option (finance) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Option_(finance)",
+        "section": "Options strategies (protective put / married put)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Put–call parity — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Put%E2%80%93call_parity",
+        "section": "Statement (married put / fiduciary call)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

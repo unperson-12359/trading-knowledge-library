@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/put-debit-spread",
+  "canonical_sha256": "2584a92c519f2ecf52fd93df3c825b1fc7f2b2f9d87c20314d94669cdde82c56",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/put-debit-spread",
+    "name": "Put debit spread",
+    "aliases": [
+      "bear put spread",
+      "long put spread",
+      "put vertical debit spread"
+    ],
+    "domain": "Options",
+    "definition": "A put debit spread is a vertical spread consisting of a long put at a higher strike and a short put at a lower strike, same underlying and same expiration, entered for a net debit. It is synonymous with the bear put spread: a moderately bearish position with maximum gain and maximum loss both fixed at entry.",
+    "intuition": "You buy downside participation but sell away the extreme-crash part below the lower strike to make the bearish bet cheaper.",
+    "mechanics": "Net debit = premium paid minus premium received. Above the higher strike both puts expire worthless and the debit is lost; at or below the lower strike the spread is worth the strike width. It is the put-side counterpart of the bull call spread at equivalent strikes.",
+    "formula": "Max loss = net debit; max gain = (K2 - K1) - net debit; breakeven = K2 - net debit, where K1 < K2 are the put strikes.",
+    "relationships": [
+      "Bear put spread",
+      "Put credit spread",
+      "Call debit spread",
+      "Put option",
+      "Protective put",
+      "Vertical spread"
+    ],
+    "failure_modes": "Downside skew often makes the long higher-strike put expensive relative to the short leg, raising the breakeven; the capped payoff misses the bulk of true crash payoffs that outright puts capture.",
+    "misconceptions": "A put debit spread is not equivalent to shorting stock with limited risk — it decays with time and needs the decline to occur before expiration to reach full value.",
+    "example": "Buy the XYZ $100 put for $4.00, sell the $95 put for $1.50: net debit $2.50. At or below $95 the spread is worth $5 (gain $250); at or above $100 the $250 debit is lost.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Bear Spread",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Options strategy — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Options_strategy",
+        "section": "Credit and debit spreads",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

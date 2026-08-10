@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/iron-condor",
+  "canonical_sha256": "316b1a235a07f8312ba13b627f58db920350dcf3df0ad464319f1a955c3d7b52",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/iron-condor",
+    "name": "Iron condor",
+    "aliases": [
+      "short iron condor"
+    ],
+    "domain": "Options",
+    "definition": "An iron condor is a four-leg, same-expiration strategy combining an out-of-the-money bull put spread (long lower put, short higher put) and an out-of-the-money bear call spread (short lower call, long higher call), all at four different strikes. The standard ('short') iron condor is entered for a net credit and profits maximally when the underlying finishes between the two short strikes.",
+    "intuition": "It is a short strangle with the tails cut off: you sell options on both sides of the market but buy further-out options as wings, so your worst case is fixed.",
+    "mechanics": "Net credit = total premium sold minus premium bought; maximum gain is the credit between the short strikes; maximum loss is the wider wing width minus the credit, realized beyond either long strike. 'Iron' indicates the structure mixes calls and puts, unlike an all-call or all-put condor.",
+    "formula": "Max gain = net credit; max loss = wing width - net credit; breakevens = short put strike - credit and short call strike + credit.",
+    "relationships": [
+      "Short strangle",
+      "Bull put spread",
+      "Bear call spread",
+      "Reverse iron condor",
+      "Iron butterfly",
+      "Pin risk"
+    ],
+    "failure_modes": "Losses are a multiple of the credit, so a few full-wing losses erase many wins; with four legs, bid-ask slippage and commissions are material, and expiration pin risk on a short strike can leave an unwanted stock position over the weekend.",
+    "misconceptions": "Defined risk does not mean low risk of ruin: selling far-OTM wings for a 'high probability' condor still concentrates tail exposure. The credit is not income; it is the price of bearing the bounded loss.",
+    "example": "With XYZ at $100: buy $90 put, sell $95 put, sell $105 call, buy $110 call for a $1.80 net credit. Max gain $180 if XYZ finishes between $95 and $105; max loss $320 beyond either wing.",
+    "citations": [
+      {
+        "source": "Iron condor — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Iron_condor",
+        "section": "Short iron condor",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Options strategy — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Options_strategy",
+        "section": "Neutral or non-directional strategies (iron condor)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

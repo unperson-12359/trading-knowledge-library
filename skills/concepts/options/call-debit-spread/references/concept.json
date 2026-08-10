@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/call-debit-spread",
+  "canonical_sha256": "fc9a21f2aa477b245c313568531b4d5d8a16b773ecafd566fb7dc71156b073b6",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/call-debit-spread",
+    "name": "Call debit spread",
+    "aliases": [
+      "bull call spread",
+      "long call spread",
+      "call vertical debit spread"
+    ],
+    "domain": "Options",
+    "definition": "A call debit spread is a vertical spread consisting of a long call at a lower strike and a short call at a higher strike, same underlying and same expiration, entered for a net debit because the lower-strike call costs more than the higher-strike call. It is synonymous with the bull call spread: a moderately bullish position with maximum gain and maximum loss both fixed at entry.",
+    "intuition": "You buy upside participation up to the higher strike and sell away everything above it to cut the cost — a cheaper, capped way to be bullish.",
+    "mechanics": "Net debit = premium paid minus premium received. Below the lower strike both calls expire worthless and the debit is lost; above the higher strike the spread is worth the strike width. The CFTC describes the call bull spread as buying the lower-strike (higher-delta) call and selling the higher-strike call, same class and expiration.",
+    "formula": "Max loss = net debit; max gain = (K2 - K1) - net debit; breakeven = K1 + net debit, where K1 < K2 are the call strikes.",
+    "relationships": [
+      "Bull call spread",
+      "Call credit spread",
+      "Put debit spread",
+      "Call option",
+      "Moneyness",
+      "Vertical spread"
+    ],
+    "failure_modes": "The capped upside lags outright calls badly in large rallies; early assignment on the short ITM leg (especially before an ex-dividend date) can leave an unintended stock position and disrupt the spread.",
+    "misconceptions": "It is not 'free leverage': the lower cost comes from selling the tail upside, and limited risk does not mean likely profit — the debit can still be lost in full.",
+    "example": "Buy the XYZ $100 call for $4.00, sell the $105 call for $1.50: net debit $2.50. Above $105 the spread is worth $5 (gain $2.50); at or below $100 the $250 debit per spread is lost.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Bull Spread",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Options strategy — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Options_strategy",
+        "section": "Credit and debit spreads",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

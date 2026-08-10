@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/collar",
+  "canonical_sha256": "172406469371bb6ddb3bd626402a42ede7b6c264b8cea5ff878b1f38130a1c93",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/collar",
+    "name": "Collar",
+    "aliases": [
+      "fence",
+      "cap and floor hedge"
+    ],
+    "domain": "Options",
+    "definition": "A collar is a position long the underlying asset, long an out-of-the-money put (the floor), and short an out-of-the-money call (the cap) on the same underlying and expiration; the call premium finances part or all of the put. It brackets the position's value between the two strikes.",
+    "intuition": "You give up the big upside above the call strike to pay for protection against the big downside below the put strike — outcome is 'collared' into a band.",
+    "mechanics": "Hold 100 shares, buy a put at K1 below the price, sell a call at K2 above it. A 'zero-cost collar' chooses strikes so the call premium equals the put premium. Value at expiration is bounded between K1 and K2 (plus net premium effects).",
+    "formula": "Value at expiration per share = min(max(S_T, K1), K2) plus/minus net premium; K1 = put strike (floor), K2 = call strike (cap).",
+    "relationships": [
+      "Protective put",
+      "Covered call",
+      "Risk reversal",
+      "Put option",
+      "Call option"
+    ],
+    "failure_modes": "The short cap creates regret and assignment risk in strong rallies, and the floor still leaves the band between strikes exposed. Zero-cost construction often forces an uncomfortably tight cap or a distant floor.",
+    "misconceptions": "A collar is not a free hedge: the put is paid for by surrendered upside, which is a real economic cost. Nor does a zero-cost collar lock in current value — it only bounds the range of outcomes.",
+    "example": "Own XYZ at $100; buy the $90 put for $2 and sell the $110 call for $2 (zero cost). At expiration the position is worth between $90 and $110 per share no matter where XYZ trades.",
+    "citations": [
+      {
+        "source": "Options strategy — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Options_strategies",
+        "section": "Neutral or non-directional strategies (collar)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

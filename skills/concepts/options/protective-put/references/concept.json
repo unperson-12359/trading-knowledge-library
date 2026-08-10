@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/protective-put",
+  "canonical_sha256": "a45edb1ed7a26a23d5a31c96c3791497852bc150a1cb4962dfc0f1574f425771",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/protective-put",
+    "name": "Protective put",
+    "aliases": [
+      "portfolio insurance put"
+    ],
+    "domain": "Options",
+    "definition": "A protective put is a position long the underlying asset plus a long put option on it, which sets a floor on the position's value: losses below the put strike are offset by gains in the put. It is the options-market analogue of buying insurance on a holding.",
+    "intuition": "You keep all the upside of owning the stock but pay a premium so that, no matter how far it falls, you can always sell at the strike price.",
+    "mechanics": "Hold (or buy) 100 shares and buy one put, typically at or below the current price. Maximum loss is limited to (S_0 - K) + premium per share; upside remains open, reduced by the premium. By put-call parity, long stock + long put equals a long call plus cash (a fiduciary call).",
+    "formula": "Profit at expiration = max(S_T, K) - S_0 - premium, per share; maximum loss = (S_0 - K) + premium.",
+    "relationships": [
+      "Put option",
+      "Married put",
+      "Collar",
+      "Put-call parity",
+      "Call option"
+    ],
+    "failure_modes": "Chronic put buying is expensive — downside implied volatility (skew) makes protective puts costly, so persistent hedging can erode returns more than the occasional crash would. Hedging only works to expiration; gaps after expiry are unprotected.",
+    "misconceptions": "A protective put does not eliminate losses — it caps them at a level that already embeds the premium cost. It is also not 'free insurance' financed by anything; the cost is paid explicitly in premium.",
+    "example": "Own 100 shares of XYZ at $50 and buy the $48 put for $1. If XYZ collapses to $30, the total loss is capped at ($2 + $1) x 100 = $300 instead of $2,000.",
+    "citations": [
+      {
+        "source": "Option (finance) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Option_(finance)",
+        "section": "Options strategies (protective put)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

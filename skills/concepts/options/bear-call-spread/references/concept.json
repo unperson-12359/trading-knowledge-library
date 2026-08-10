@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/bear-call-spread",
+  "canonical_sha256": "6747c56c8daa446298b75a65912e2695757555829c3bf7428d99ffa76553216a",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/bear-call-spread",
+    "name": "Bear call spread",
+    "aliases": [
+      "short call spread",
+      "call vertical credit spread"
+    ],
+    "domain": "Options",
+    "definition": "A bear call spread is a vertical spread consisting of a short call at a lower strike and a long call at a higher strike, same underlying and expiration, entered for a net credit. It profits if the underlying stays below the short strike, with fixed maximum gain (the credit) and maximum loss.",
+    "intuition": "You sell a call to bet the stock won't rise past your strike, and buy a higher call as a stop-loss so a rally can't hurt you beyond a known amount.",
+    "mechanics": "Net credit received at entry. Maximum gain = credit if the underlying finishes at or below the short strike; maximum loss = (strike width - credit) above the long strike. The CFTC describes the call bear spread as purchasing the higher-strike call and selling the lower-strike call.",
+    "formula": "Max gain = net credit; max loss = (K2 - K1) - net credit; breakeven = K1 + net credit, where K1 < K2 are the call strikes.",
+    "relationships": [
+      "Call credit spread",
+      "Bull call spread",
+      "Bear put spread",
+      "Iron condor",
+      "Call option"
+    ],
+    "failure_modes": "Frequent small credits are punctuated by losses several times larger; assignment of the short leg near or after expiration can leave a residual stock position (pin risk). Selling calls into strong uptrends repeatedly loses.",
+    "misconceptions": "A high probability of keeping the credit is not the same as positive expectancy — the loss when wrong is a multiple of the credit. Credit received is not 'income'; it is payment for accepting bounded but real downside.",
+    "example": "Sell the XYZ $100 call for $4, buy the $105 call for $1.50: credit $2.50. If XYZ stays at or below $100, keep $250; above $105, lose $250.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Bear Spread",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Options strategy — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Options_strategies",
+        "section": "Credit and debit spreads",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

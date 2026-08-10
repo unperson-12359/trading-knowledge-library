@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/put-credit-spread",
+  "canonical_sha256": "32ab0e7f3394fa21ed661f7d5ccc5b951805923a4a0ba0260ebaa2c2e84c399a",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/put-credit-spread",
+    "name": "Put credit spread",
+    "aliases": [
+      "bull put spread",
+      "short put spread",
+      "put vertical credit spread"
+    ],
+    "domain": "Options",
+    "definition": "A put credit spread is a vertical spread consisting of a short put at a higher strike and a long put at a lower strike, same underlying and same expiration, entered for a net credit. It is synonymous with the bull put spread: a moderately bullish-to-neutral position whose maximum gain is the credit and whose maximum loss is the strike width minus the credit.",
+    "intuition": "You sell a put betting the stock stays above your strike, and buy a cheaper lower-strike put as insurance so a sell-off cannot cost more than a known amount.",
+    "mechanics": "The net credit is kept in full if the underlying finishes at or above the short strike; the long put caps losses below the lower strike. By put-call parity its payoff closely mirrors the call debit spread at equivalent strikes.",
+    "formula": "Max gain = net credit; max loss = (K2 - K1) - net credit; breakeven = K2 - net credit, where K1 < K2 are the put strikes.",
+    "relationships": [
+      "Bull put spread",
+      "Put debit spread",
+      "Call credit spread",
+      "Cash-secured put",
+      "Iron condor",
+      "Vertical spread"
+    ],
+    "failure_modes": "Gap-down moves can blow through both strikes and realize maximum loss with no chance to adjust; short-leg assignment near expiration or before ex-dividend can leave unwanted long stock.",
+    "misconceptions": "Choosing far-OTM strikes for a high win rate does not create an edge: the credit shrinks toward fair compensation for the residual tail risk, and one maximum loss erases many wins.",
+    "example": "Sell the XYZ $100 put for $3.00, buy the $95 put for $1.00: net credit $2.00. If XYZ stays at or above $100, keep $200; at or below $95, lose $300.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Bull Spread",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Options strategy — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Options_strategy",
+        "section": "Credit and debit spreads",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/long-strangle",
+  "canonical_sha256": "230ab8fd20e70220321fd3beed4fb4e5efa2cef370876aeb4ddccce50005987a",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/long-strangle",
+    "name": "Long strangle",
+    "aliases": [
+      "bottom vertical combination"
+    ],
+    "domain": "Options",
+    "definition": "A long strangle is the simultaneous purchase of an out-of-the-money put (lower strike) and an out-of-the-money call (higher strike) on the same underlying with the same expiration date. It is cheaper than a long straddle but requires a larger move in either direction to profit.",
+    "intuition": "You buy a cheaper ticket on a big move: the strikes are further apart so you pay less, but the stock has to travel further before either leg has value.",
+    "mechanics": "Cost = OTM call premium + OTM put premium; breakevens at expiration are call strike + total premium and put strike - total premium. Maximum loss is the combined premium if the underlying finishes between the strikes.",
+    "formula": "Payoff at expiration = max(S_T - K_c, 0) + max(K_p - S_T, 0) - (C + P), where K_c > K_p are the call and put strikes; breakevens = K_c + (C + P) and K_p - (C + P).",
+    "relationships": [
+      "Long straddle",
+      "Short strangle",
+      "Out-of-the-money option",
+      "Implied volatility",
+      "Iron condor"
+    ],
+    "failure_modes": "Because both legs are OTM, the most likely outcome is a total loss of premium; moves that are large but arrive late still lose to time decay, and event-driven buyers pay inflated implied volatility that collapses after the event.",
+    "misconceptions": "Cheaper than a straddle does not mean better value: the lower premium reflects a lower probability-weighted payoff, not a bargain.",
+    "example": "With XYZ at $100, buy the $105 call for $1.50 and the $95 put for $1.20 (total $2.70). XYZ must finish above $107.70 or below $92.30 to profit; anywhere between $95 and $105 loses the full $270.",
+    "citations": [
+      {
+        "source": "Strangle (options) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Strangle_(options)",
+        "section": "Long strangles",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Options strategy — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Options_strategy",
+        "section": "Neutral or non-directional strategies (strangle)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

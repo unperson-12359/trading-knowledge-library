@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/naked-call",
+  "canonical_sha256": "9692328a90e86639c84bcab67197ff230066342a5adc6baede5465c4a0ae7554",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/naked-call",
+    "name": "Naked call",
+    "aliases": [
+      "uncovered call"
+    ],
+    "domain": "Options",
+    "definition": "A naked (uncovered) call is a short call option position where the writer does not hold the underlying asset or an offsetting position to cover the obligation; the CFTC defines a naked option as the sale of a call or put without holding an equal and opposite position in the underlying instrument.",
+    "intuition": "You have sold someone the right to buy stock from you at a fixed price without owning the stock — if it soars, you must buy it at the market price to deliver, and there is no ceiling on that price.",
+    "mechanics": "The writer collects the premium and posts substantial margin. If assigned, the writer must buy the underlying in the open market and deliver it at the strike. Because the underlying price is unbounded, potential loss is theoretically unlimited; brokers restrict naked call writing to high approval levels.",
+    "formula": "Profit at expiration = premium - max(S_T - K, 0), per share; maximum gain = premium; maximum loss is unbounded.",
+    "relationships": [
+      "Option writer",
+      "Call option",
+      "Covered call",
+      "Assignment risk",
+      "Margin",
+      "Short straddle"
+    ],
+    "failure_modes": "Gap moves and short squeezes can produce losses far exceeding posted margin before the writer can react; buy-ins after assignment can compound losses. This is the classic structure behind blow-ups from unlimited-risk premium selling.",
+    "misconceptions": "High win rate does not imply positive expectancy: naked call sellers win the premium often but occasionally lose many multiples of all premiums collected. 'The odds are against exercise' is not a risk control.",
+    "example": "Write one XYZ $60 call for $2. If XYZ gaps to $90 on takeover news, the writer is assigned and loses ($30 - $2) x 100 = $2,800 on a $200 premium.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Naked Option",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Option (finance) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Option_(finance)",
+        "section": "Basic trades (American style): Short call",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

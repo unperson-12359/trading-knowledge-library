@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/bull-call-spread",
+  "canonical_sha256": "8cda51ff9b5c3b9e28f1193903c59837b22e47759e73488131fc87f93b09ab1e",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/bull-call-spread",
+    "name": "Bull call spread",
+    "aliases": [
+      "long call spread",
+      "call vertical debit spread"
+    ],
+    "domain": "Options",
+    "definition": "A bull call spread is a vertical spread consisting of a long call at a lower strike and a short call at a higher strike, same underlying and expiration, entered for a net debit. It profits from a moderate rise in the underlying, with both maximum gain and maximum loss fixed at entry.",
+    "intuition": "You buy upside participation but sell away the part above the higher strike to reduce the cost — a cheaper, capped way to be bullish.",
+    "mechanics": "Net debit = premium paid - premium received. Maximum loss is the debit (below the lower strike); maximum gain is (strike width - debit) at or above the higher strike. The CFTC describes the call bull spread as buying the lower-strike (higher-delta) call and selling the higher-strike call.",
+    "formula": "Max loss = net debit; max gain = (K2 - K1) - net debit; breakeven = K1 + net debit, where K1 < K2 are the call strikes.",
+    "relationships": [
+      "Call debit spread",
+      "Bear call spread",
+      "Bull put spread",
+      "Call option",
+      "Moneyness"
+    ],
+    "failure_modes": "The capped upside badly lags outright call or stock ownership in large rallies; early assignment on the short ITM leg (especially before ex-dividend) can disrupt the spread and create an unintended stock position.",
+    "misconceptions": "It is not 'free leverage': the reduced cost comes from selling the tail upside, and the probability-weighted expectancy still reflects the market's implied distribution. Limited risk does not mean likely profit.",
+    "example": "Buy the XYZ $100 call for $4, sell the $105 call for $1.50: debit $2.50. Above $105 the spread is worth $5, a $2.50 gain; below $100 the $250 debit is lost.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Bull Spread",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Options strategy — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Options_strategies",
+        "section": "Bullish options strategies (bull spreads)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
