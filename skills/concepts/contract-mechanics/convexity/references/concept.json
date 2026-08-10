@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/convexity",
+  "canonical_sha256": "13b7a38f5285e305fe67c08be4595609a3494e9693983c924f429ee4e4021073",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/convexity",
+    "name": "Convexity",
+    "aliases": [
+      "bond convexity",
+      "price convexity"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The curvature in the relationship between a bond's price and its yield: the second-order measure of how a bond's duration itself changes as yields change, quantifying the error in the linear duration approximation.",
+    "intuition": "Duration draws a straight line through a curved price-yield relationship; convexity measures the bend, and positive convexity means the bond falls less than duration predicts when rates rise and gains more when rates fall.",
+    "mechanics": "The price-yield curve is convex for plain-vanilla bonds, so the second-order approximation is dP/P ≈ -MD x dy + 0.5 x Convexity x (dy)^2. Convexity rises with maturity and falls with coupon size; callable and mortgage-backed bonds can exhibit negative convexity, where price appreciation is capped as yields fall because expected cash flows shorten.",
+    "formula": "dP/P ≈ -MD x dy + 0.5 x C x (dy)^2, where MD = modified duration, C = convexity = [sum_t CF_t x t x (t+1/m) / (1+y/m)^(t+2)] / P (m = payments per year), dy = change in yield.",
+    "relationships": [
+      "Modified duration",
+      "Duration",
+      "Yield to maturity",
+      "Callable bond"
+    ],
+    "failure_modes": "Ignoring convexity misestimates price changes for large rate moves and for long-duration, low-coupon bonds; assuming positive convexity fails for callable bonds and MBS, whose prepayment or call options flip the curvature negative near rate lows.",
+    "misconceptions": "Higher convexity is not a free lunch guaranteeing outperformance — it is a priced characteristic (investors pay for it via lower yield), and it only describes rate sensitivity, not credit or liquidity risk.",
+    "example": "For a 2% rate rise, a bond with MD 9 and convexity 0.8 is estimated to change by about -9 x 0.02 + 0.5 x 0.8 x 0.0004 = -17.98% instead of the -18% the duration-only estimate gives, a gap that widens with the size of the rate move.",
+    "citations": [
+      {
+        "source": "Fidelity Investments: Duration — Understanding the Relationship Between Bond Prices and Interest Rates",
+        "url": "https://www.fidelity.com/learning-center/investment-products/fixed-income-bonds/duration",
+        "section": "Using a bond's convexity to gauge interest rate risk",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

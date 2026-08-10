@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/good-till-date-order",
+  "canonical_sha256": "6f68f6f4c6212a7640e55812449bdaa8503a3aab931189fb903eff22d55332f6",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/good-till-date-order",
+    "name": "Good-till-date order",
+    "aliases": [
+      "GTD order",
+      "good-till-time order (GTT)"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An order that remains active until it is executed, canceled, or a trader-specified expiry date (or date-time) is reached, whichever comes first. It generalizes the day order and the GTC order by making the expiration explicit.",
+    "intuition": "It is a standing order with a calendar deadline: 'keep trying until Friday, then stop.'",
+    "mechanics": "The broker or venue carries the open balance across sessions; when the specified ExpireDate or ExpireTime is reached, any remaining quantity is expired (canceled) and reported back - in FIX with OrdStatus/ExecType = Expired. Each venue enforces its own maximum allowed lifetime.",
+    "formula": "",
+    "relationships": [
+      "Good-till-canceled order",
+      "Day order",
+      "Limit order"
+    ],
+    "failure_modes": "As with GTC orders, a resting GTD order can fill long after submission when market conditions have changed. Time-zone and session-boundary conventions for the expiry date differ across venues, so the order may die earlier or later than assumed.",
+    "misconceptions": "GTD does not expire at the start of the named date in all markets - some venues treat the order as valid through the end of that date's session, others at a specified time.",
+    "example": "Ahead of an earnings date you place a GTD limit buy at $40 expiring next Friday; it works all week, and any unfilled balance is canceled automatically when Friday's session ends.",
+    "citations": [
+      {
+        "source": "FIX 4.2 Execution Report (MsgType 8), FIX Dictionary (Onix Solutions)",
+        "url": "https://www.onixs.biz/fix-dictionary/4.2/msgType_8_8.html",
+        "section": "ExpireDate <432>/ExpireTime <126> and GT order expiry handling",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Cboe Titanium U.S. Equities BOE Specification",
+        "url": "https://www.cboe.com/document/tech-spec/document/technical-specifications/cboe-titanium-u.s.-equities-boe-specification",
+        "section": "Time in Force semantics (terminology aligned with FIX)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

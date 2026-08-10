@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/close-only-order",
+  "canonical_sha256": "bc7fed06556b45b21f2f6c6cb629da685f6e97c8cb87d6664f1de31ef4b02743",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/close-only-order",
+    "name": "Close-only order",
+    "aliases": [
+      "close on trigger",
+      "closing-only order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An order instruction restricting the order to closing (fully exiting or reducing) an open position, so that execution can never establish or add to a position. On derivatives platforms it appears both as a standalone close-position function and as a 'close on trigger' flag on conditional orders.",
+    "intuition": "Close-only means the order's only job is to get you out - it cannot turn into a new bet in the opposite direction.",
+    "mechanics": "The platform ties the order to the open position: quantity is bounded by the position size, and if the position no longer exists when the order triggers or arrives, the order is rejected or canceled. Close-on-trigger variants attach this behavior to stop/take-profit orders so a late trigger cannot open a reverse position.",
+    "formula": "",
+    "relationships": [
+      "Reduce-only order",
+      "Stop order",
+      "One-cancels-the-other order"
+    ],
+    "failure_modes": "A close-only order submitted after the position has already been closed is simply canceled, which can leave a hedge or paired leg unexpectedly live. During liquidation or margin stress the venue may prioritize, resize, or cancel closing orders in ways the trader did not anticipate.",
+    "misconceptions": "Close-only is often treated as identical to reduce-only; in practice close-only usually targets full position exit (and is rejected with no position), while reduce-only strictly bounds any execution to position-reducing size. Neither guarantees execution price.",
+    "example": "Short 5 ETH contracts, you place a close-only buy stop; when the trigger fires it buys back at most the 5 contracts needed to flatten, and if you already covered manually, the order is refused rather than opening a long.",
+    "citations": [
+      {
+        "source": "Bybit API Documentation: Place Order (POST /v5/order/create)",
+        "url": "https://bybit-exchange.github.io/docs/v5/order/create-order",
+        "section": "Position-closing order parameters (reduceOnly / close-on-trigger family)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

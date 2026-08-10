@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/modified-duration",
+  "canonical_sha256": "9dc3ecd6e78afada6336b33e4c881bafe58b89e815439dd46bd0a44afd821fea",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/modified-duration",
+    "name": "Modified duration",
+    "aliases": [
+      "yield duration",
+      "adjusted duration"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The Macaulay duration adjusted for the bond's yield, giving the approximate percentage change in a bond's full price for a one-percent (100 basis point) change in yield to maturity — the direct price-sensitivity measure used in practice.",
+    "intuition": "If duration is the weighted-average timing of cash flows, modified duration is the translation of that timing into an actual price-risk number: MD 5 means roughly 5% price change per 1% rate change.",
+    "mechanics": "Modified duration = Macaulay duration / (1 + y/m), where y is the yield to maturity and m the number of compounding periods per year. The first-order price approximation is dP/P ≈ -MD x dy; portfolio managers use MD (and its dollar version, DV01 = MD x price x 0.0001) to size interest-rate exposure.",
+    "formula": "MD = D_mac / (1 + y/m); dP/P ≈ -MD x dy, where D_mac = Macaulay duration, y = yield to maturity, m = payments per year, dy = change in yield.",
+    "relationships": [
+      "Duration",
+      "Convexity",
+      "Yield to maturity",
+      "DV01",
+      "Basis point"
+    ],
+    "failure_modes": "Being linear, MD overstates losses and understates gains for large yield moves (corrected by adding the convexity term); it presumes a parallel shift and fixed cash flows, so it misstates risk for callable, putable, or mortgage-backed securities and during non-parallel curve moves.",
+    "misconceptions": "Modified duration is not measured in years in the economic sense that matters for hedging — it is a percentage-sensitivity figure; and it does not predict price changes from credit-spread moves, only from yield changes.",
+    "example": "A bond with modified duration 8.87 would be expected to lose about 8.87% of value if yields rise 1%, and to gain roughly 18% if yields fall 2% (ignoring convexity).",
+    "citations": [
+      {
+        "source": "Fidelity Investments: Duration — Understanding the Relationship Between Bond Prices and Interest Rates",
+        "url": "https://www.fidelity.com/learning-center/investment-products/fixed-income-bonds/duration",
+        "section": "Using a bond's duration to gauge interest rate risk",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

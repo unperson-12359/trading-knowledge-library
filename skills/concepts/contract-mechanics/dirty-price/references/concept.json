@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/dirty-price",
+  "canonical_sha256": "0716e5650e87a58e55bbd2964c4ffa2b5fc41f0ce56bbadbca2a22329810689b",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/dirty-price",
+    "name": "Dirty price",
+    "aliases": [
+      "full price",
+      "invoice price",
+      "gross price"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The actual total amount paid for a bond at settlement, equal to the quoted (clean) price plus accrued interest since the last coupon date; also called the full or invoice price.",
+    "intuition": "The dirty price is the real check the buyer writes: the quoted price plus the seller's earned-but-unpaid slice of the next coupon.",
+    "mechanics": "Dirty price = clean price + accrued interest. It drifts upward between coupon dates as interest accrues and drops by roughly the coupon amount on payment dates, which is why markets quote the clean price for comparison but settle at the dirty price; bond-futures invoice prices likewise add accrued interest to the converted futures price.",
+    "formula": "Dirty price = clean price + accrued interest; bond-futures invoice price = contract size x futures settlement price x conversion factor + accrued interest.",
+    "relationships": [
+      "Clean price",
+      "Accrued interest",
+      "Coupon rate",
+      "Physical settlement"
+    ],
+    "failure_modes": "Charting or backtesting dirty prices without adjustment injects artificial sawtooth returns around coupon dates; total-cash mismatches arise when systems quote clean but settle dirty.",
+    "misconceptions": "The drop in a bond's full price on the coupon date is not a market loss — it is the mechanical detachment of the coupon just paid, which the clean-price convention exists to filter out.",
+    "example": "A bond quoted clean at 101.25 with 45 days of accrued interest of $0.75 per $100 face settles at a dirty price of $102.00 per $100 face.",
+    "citations": [
+      {
+        "source": "Hillier et al., Fundamentals of Corporate Finance, Chapter 6: Bond Valuation (McGraw-Hill sample chapter)",
+        "url": "https://highered.mheducation.com/sites/dl/free/0077149777/1013655/Sample_Chapter.pdf",
+        "section": "A Note about Bond Price Quotes",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Conversion Factors (invoice price formula)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

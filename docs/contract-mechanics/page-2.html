@@ -141,6 +141,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="accrued-interest"><h3>Accrued interest <a class="anchor" href="#accrued-interest">#</a></h3>
 <div class="field">Interest earned on a security but not yet paid to the investor; specifically, the portion of the next coupon payment that has accumulated since the last coupon date, which a bond buyer pays to the seller at settlement.</div>
+<div class="skill-links"><a href="../skills/tkl-accrued-interest/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Coupons arrive only on payment dates, but interest builds every day: accrued interest is the seller&#x27;s share of the coming coupon for the days they held the bond.</div>
 <div class="field"><span class="label">Mechanics:</span> Accrued interest = coupon payment x (days since last coupon / days in coupon period), using the market&#x27;s day-count convention (e.g., 30/360 for U.S. corporates, actual/actual for Treasuries). The buyer compensates the seller at settlement, then collects the full coupon on the next payment date; it is also an explicit component of futures invoice prices for deliverable bonds.</div>
 <div class="field"><span class="label">Failure modes:</span> Accrued interest depends on day-count conventions that differ across bond markets, so a single formula applied across markets miscalculates settlement amounts; it also creates small cash-flow mismatches when hedging coupon-paying bonds with derivatives.</div>
@@ -154,6 +155,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="clean-price"><h3>Clean price <a class="anchor" href="#clean-price">#</a></h3>
 <div class="field">The standard quoted market price of a bond, stated net of accrued interest — the price shown on screens and used for price comparison, as distinct from the full amount actually paid at settlement.</div>
+<div class="skill-links"><a href="../skills/tkl-clean-price/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The clean price strips out the mechanical day-count drift so price changes reflect real market moves, not just time passing between coupon dates.</div>
 <div class="field"><span class="label">Mechanics:</span> By market convention bonds are quoted clean; the amount the buyer actually pays is the dirty price = clean price + accrued interest. Quoting clean prevents the sawtooth pattern the dirty price would otherwise show as interest accrues and then drops at each coupon payment.</div>
 <div class="field"><span class="label">Failure modes:</span> Computing realized return or cash needs from the clean price alone understates the settlement cash outlay by the accrued interest; comparing yields from dirty cash flows against clean quotes without adjustment creates small pricing inconsistencies.</div>
@@ -166,6 +168,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="dirty-price"><h3>Dirty price <a class="anchor" href="#dirty-price">#</a></h3>
 <div class="field">The actual total amount paid for a bond at settlement, equal to the quoted (clean) price plus accrued interest since the last coupon date; also called the full or invoice price.</div>
+<div class="skill-links"><a href="../skills/tkl-dirty-price/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The dirty price is the real check the buyer writes: the quoted price plus the seller&#x27;s earned-but-unpaid slice of the next coupon.</div>
 <div class="field"><span class="label">Mechanics:</span> Dirty price = clean price + accrued interest. It drifts upward between coupon dates as interest accrues and drops by roughly the coupon amount on payment dates, which is why markets quote the clean price for comparison but settle at the dirty price; bond-futures invoice prices likewise add accrued interest to the converted futures price.</div>
 <div class="field"><span class="label">Failure modes:</span> Charting or backtesting dirty prices without adjustment injects artificial sawtooth returns around coupon dates; total-cash mismatches arise when systems quote clean but settle dirty.</div>
@@ -179,6 +182,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="yield-to-maturity"><h3>Yield to maturity <a class="anchor" href="#yield-to-maturity">#</a></h3>
 <div class="field">The annual rate of return an investor earns if a bond is bought at its current price and held to maturity, with all coupons reinvested at that same rate; equivalently, the single discount rate that equates the present value of the bond&#x27;s remaining cash flows to its current price.</div>
+<div class="skill-links"><a href="../skills/tkl-yield-to-maturity/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> YTM is the bond&#x27;s all-in interest rate: it folds the coupon stream and the gain or loss to par into one annualized number, letting different bonds be compared on equal footing.</div>
 <div class="field"><span class="label">Mechanics:</span> YTM is found by solving P = sum_t C_t/(1+y)^t + F/(1+y)^T for y given the price — in general only by trial and error or numerical solver. Price and YTM move inversely: when market rates rise, the price of a fixed-rate bond falls and its YTM rises. For semiannual-pay bonds, the periodic rate found is conventionally doubled to quote YTM (bond-equivalent basis).</div>
 <div class="field"><span class="label">Failure modes:</span> YTM overstates realized return when coupons cannot be reinvested at the same rate, and it is irrelevant for bonds not held to maturity; for callable bonds, YTM assumes a maturity that may never occur (yield-to-worst or yield-to-call is more appropriate).</div>
@@ -192,6 +196,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="current-yield"><h3>Current yield <a class="anchor" href="#current-yield">#</a></h3>
 <div class="field">The ratio of a bond&#x27;s annual interest (coupon) payments to its current market price, stated as a percentage — a simple income-on-price measure that ignores the gain or loss to par at maturity.</div>
+<div class="skill-links"><a href="../skills/tkl-current-yield/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Current yield answers only &#x27;how much income per dollar of price right now?&#x27; — like a dividend yield for bonds, with no regard for what you get back at the end.</div>
 <div class="field"><span class="label">Mechanics:</span> Current yield = annual coupon / current price. It exceeds the coupon rate when the bond trades below par and falls below it above par; for discount bonds it understates total return (missing the pull to par), and for premium bonds it overstates it.</div>
 <div class="field"><span class="label">Failure modes:</span> Because it ignores time value and the terminal capital gain or loss, current yield misranks bonds of different maturities or prices; it is especially misleading for deep-discount, premium, or callable bonds.</div>
@@ -205,6 +210,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="duration"><h3>Duration <a class="anchor" href="#duration">#</a></h3>
 <div class="field">A measure of a bond&#x27;s price sensitivity to changes in interest rates, expressed in years; formally, the Macaulay duration is the present-value-weighted average time to receipt of the bond&#x27;s cash flows, and it serves as the basis for the price-sensitivity (modified duration) measure.</div>
+<div class="skill-links"><a href="../skills/tkl-duration/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Duration compresses maturity, coupon, and yield into one number that approximates how many percent a bond&#x27;s price moves when rates move one percent — the bond&#x27;s interest-rate speedometer.</div>
 <div class="field"><span class="label">Mechanics:</span> Macaulay duration = sum over t of [t x PV(CF_t)] / price. Longer maturities and lower coupons raise duration; a zero-coupon bond&#x27;s duration equals its maturity, while coupon bonds always have duration below maturity. Approximate percentage price change = -duration (modified) x yield change.</div>
 <div class="field"><span class="label">Failure modes:</span> Duration is a linear (first-order) approximation that degrades for large rate moves (where convexity matters) and assumes parallel yield-curve shifts; for callable or mortgage-backed bonds, changing cash flows make static duration unreliable (effective duration is used instead).</div>
@@ -218,6 +224,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="modified-duration"><h3>Modified duration <a class="anchor" href="#modified-duration">#</a></h3>
 <div class="field">The Macaulay duration adjusted for the bond&#x27;s yield, giving the approximate percentage change in a bond&#x27;s full price for a one-percent (100 basis point) change in yield to maturity — the direct price-sensitivity measure used in practice.</div>
+<div class="skill-links"><a href="../skills/tkl-modified-duration/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> If duration is the weighted-average timing of cash flows, modified duration is the translation of that timing into an actual price-risk number: MD 5 means roughly 5% price change per 1% rate change.</div>
 <div class="field"><span class="label">Mechanics:</span> Modified duration = Macaulay duration / (1 + y/m), where y is the yield to maturity and m the number of compounding periods per year. The first-order price approximation is dP/P ≈ -MD x dy; portfolio managers use MD (and its dollar version, DV01 = MD x price x 0.0001) to size interest-rate exposure.</div>
 <div class="field"><span class="label">Failure modes:</span> Being linear, MD overstates losses and understates gains for large yield moves (corrected by adding the convexity term); it presumes a parallel shift and fixed cash flows, so it misstates risk for callable, putable, or mortgage-backed securities and during non-parallel curve moves.</div>
@@ -230,6 +237,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="convexity"><h3>Convexity <a class="anchor" href="#convexity">#</a></h3>
 <div class="field">The curvature in the relationship between a bond&#x27;s price and its yield: the second-order measure of how a bond&#x27;s duration itself changes as yields change, quantifying the error in the linear duration approximation.</div>
+<div class="skill-links"><a href="../skills/tkl-convexity/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Duration draws a straight line through a curved price-yield relationship; convexity measures the bend, and positive convexity means the bond falls less than duration predicts when rates rise and gains more when rates fall.</div>
 <div class="field"><span class="label">Mechanics:</span> The price-yield curve is convex for plain-vanilla bonds, so the second-order approximation is dP/P ≈ -MD x dy + 0.5 x Convexity x (dy)^2. Convexity rises with maturity and falls with coupon size; callable and mortgage-backed bonds can exhibit negative convexity, where price appreciation is capped as yields fall because expected cash flows shorten.</div>
 <div class="field"><span class="label">Failure modes:</span> Ignoring convexity misestimates price changes for large rate moves and for long-duration, low-coupon bonds; assuming positive convexity fails for callable bonds and MBS, whose prepayment or call options flip the curvature negative near rate lows.</div>

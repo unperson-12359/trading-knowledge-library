@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/market-if-touched-order",
+  "canonical_sha256": "1e1b32dbc5ac78eed454e3019dab5ec414e3f40622f65a6ada464f6f5b5151e6",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/market-if-touched-order",
+    "name": "Market-if-touched order",
+    "aliases": [
+      "MIT order",
+      "touch order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "A conditional order to buy below (or sell above) the current market price that becomes a market order once the specified trigger ('touch') price trades. It is the mirror image of a stop order: a buy MIT is placed below the market and a sell MIT above it.",
+    "intuition": "It lets you say 'if the price falls to X, buy me in immediately at whatever is available' - a way to enter on a pullback with certainty of execution rather than certainty of price.",
+    "mechanics": "The order rests off-book at the broker or venue until the trigger price is touched (trade or quote, depending on venue convention); it is then released as a market order and fills at the best available prices. On CME Globex the analogous triggered market behavior is a market order released upon trigger.",
+    "formula": "",
+    "relationships": [
+      "Stop order",
+      "Limit-if-touched order",
+      "Market order",
+      "Conditional order"
+    ],
+    "failure_modes": "Because it becomes a market order, a touch during a thin or fast market can fill at a price far worse than the trigger price. A one-tick touch can also trigger entry immediately before the move fails.",
+    "misconceptions": "Traders often confuse MIT orders with stop orders; the placement is inverted (buy MIT below the market vs. buy stop above it). Nor does the touch price guarantee the fill price.",
+    "example": "With stock at $50, you place a buy MIT at $48. When a trade prints at $48, the order converts to a market order and fills at the best offer, perhaps $48.02.",
+    "citations": [
+      {
+        "source": "IBKR Guides: Order Types (Trader Workstation)",
+        "url": "https://www.ibkrguides.com/traderworkstation/order-types.htm",
+        "section": "Market if Touched / Trailing Market if Touched",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

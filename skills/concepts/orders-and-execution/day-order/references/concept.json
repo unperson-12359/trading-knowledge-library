@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/day-order",
+  "canonical_sha256": "e1d11c77e3c6f6aa7d46378a1ad7187efe97e659675519096f0275fa999f3267",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/day-order",
+    "name": "Day order",
+    "aliases": [
+      "day limit order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An order with a time-in-force of one trading day: if it is not executed by the end of the trading session for which it was entered, it expires automatically. It is the default duration for orders when no other time frame is specified.",
+    "intuition": "A day order is 'live for today only' - you do not have to remember to cancel it tonight, because the market does it for you.",
+    "mechanics": "The order works in the order book during the session; at the close any unexecuted balance is canceled and does not carry into after-hours or the next trading day. In FIX and exchange protocols this is TimeInForce = Day (value 0), and absence of a time-in-force field generally implies Day.",
+    "formula": "",
+    "relationships": [
+      "Good-till-canceled order",
+      "Good-till-date order",
+      "Immediate-or-cancel order",
+      "Limit order"
+    ],
+    "failure_modes": "A resting day order placed early can be forgotten intraday and fill later at a price that no longer reflects the trader's intent after news or market moves. It also silently lapses, so a trader who wanted multi-day exposure must re-enter it.",
+    "misconceptions": "A day order is not canceled at the instant the regular session closes in all markets - the exact expiry follows each venue's session definition, and 'day' on a 23-hour futures market spans that market's full trading day.",
+    "example": "You place a limit order to buy 100 shares at $10 on Monday morning; if the price never dips to $10 by the close, the order expires Monday evening and is gone Tuesday.",
+    "citations": [
+      {
+        "source": "SEC Investor Bulletin: Understanding Order Types",
+        "url": "https://www.sec.gov/resources-for-investors/investor-alerts-bulletins/ib_ordertypes",
+        "section": "Timing Restrictions and Trading Instructions - Day",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "FIX 4.2 Execution Report (MsgType 8), FIX Dictionary (Onix Solutions)",
+        "url": "https://www.onixs.biz/fix-dictionary/4.2/msgType_8_8.html",
+        "section": "TimeInForce <59> - absence indicates Day order",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

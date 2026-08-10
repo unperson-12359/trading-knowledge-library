@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/immediate-or-cancel-order",
+  "canonical_sha256": "277e757637ac169923d79cc0ff6ff07189a5f0ad57eee90eed89a75de36b9602",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/immediate-or-cancel-order",
+    "name": "Immediate-or-cancel order",
+    "aliases": [
+      "IOC order",
+      "fill-and-kill (FAK, futures equivalent)"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An order that must be executed immediately, in whole or in part, against whatever liquidity is available at the moment it arrives; any unfilled remainder is canceled rather than posted. It sacrifices completion for zero resting exposure.",
+    "intuition": "An IOC is 'take what you can right now and walk away' - it never sits in the book waiting to be picked off.",
+    "mechanics": "The venue matches the order against the top of the book (and successive levels, up to any limit price), fills what is immediately available, and cancels the rest. Reg NMS defines an automated quotation in part by its ability to immediately execute IOC orders up to displayed size and immediately cancel the unexecuted portion.",
+    "formula": "",
+    "relationships": [
+      "Fill-or-kill order",
+      "Day order",
+      "Market order",
+      "Intermarket sweep order",
+      "Partial fill"
+    ],
+    "failure_modes": "In thin books most of the order can come back unfilled - an IOC 'fill' may be only a small fraction of the intended size. Sweeping multiple price levels with an IOC also pays the spread and impact at each level it consumes.",
+    "misconceptions": "IOC does not mean all-or-nothing - partial fills are explicitly allowed (that is what distinguishes it from fill-or-kill). Nor does an IOC guarantee any execution at all.",
+    "example": "You send an IOC limit order to buy 1,000 shares at $50.00; only 300 are offered at or below $50.00, so you get 300 shares immediately and the remaining 700 are canceled.",
+    "citations": [
+      {
+        "source": "SEC Investor Bulletin: Understanding Order Types",
+        "url": "https://www.sec.gov/resources-for-investors/investor-alerts-bulletins/ib_ordertypes",
+        "section": "Timing Restrictions and Trading Instructions - Immediate-Or-Cancel (IOC)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Regulation NMS, 17 CFR 242.600 (Cornell LII)",
+        "url": "https://www.law.cornell.edu/cfr/text/17/242.600",
+        "section": "(b)(6) Automated quotation - IOC handling",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

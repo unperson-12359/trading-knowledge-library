@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/duration",
+  "canonical_sha256": "139182722a5da6ef5f5bdaa06f46113383aabfaf4d95588f683fb1749af6eb11",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/duration",
+    "name": "Duration",
+    "aliases": [
+      "Macaulay duration",
+      "bond duration"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "A measure of a bond's price sensitivity to changes in interest rates, expressed in years; formally, the Macaulay duration is the present-value-weighted average time to receipt of the bond's cash flows, and it serves as the basis for the price-sensitivity (modified duration) measure.",
+    "intuition": "Duration compresses maturity, coupon, and yield into one number that approximates how many percent a bond's price moves when rates move one percent — the bond's interest-rate speedometer.",
+    "mechanics": "Macaulay duration = sum over t of [t x PV(CF_t)] / price. Longer maturities and lower coupons raise duration; a zero-coupon bond's duration equals its maturity, while coupon bonds always have duration below maturity. Approximate percentage price change = -duration (modified) x yield change.",
+    "formula": "Macaulay duration D = [ sum_t t x CF_t / (1+y)^t ] / P, where CF_t = cash flow at time t, y = yield per period, P = bond price.",
+    "relationships": [
+      "Modified duration",
+      "Convexity",
+      "Yield to maturity",
+      "Maturity date",
+      "Coupon rate"
+    ],
+    "failure_modes": "Duration is a linear (first-order) approximation that degrades for large rate moves (where convexity matters) and assumes parallel yield-curve shifts; for callable or mortgage-backed bonds, changing cash flows make static duration unreliable (effective duration is used instead).",
+    "misconceptions": "Duration is not the same as maturity: except for zero-coupon bonds it is shorter than maturity, and it is a risk measure, not a waiting period; nor is it constant — it drifts with time, yield, and coupon changes.",
+    "example": "A 10-year bond with a 5% coupon might have a duration near 8-9 years, so a 1% rise in rates implies roughly an 8-9% price decline, versus under 1% for a 6-month bond.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Duration",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Fidelity Investments: Duration — Understanding the Relationship Between Bond Prices and Interest Rates",
+        "url": "https://www.fidelity.com/learning-center/investment-products/fixed-income-bonds/duration",
+        "section": "Using a bond's duration to gauge interest rate risk",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

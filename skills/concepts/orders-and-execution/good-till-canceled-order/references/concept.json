@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/good-till-canceled-order",
+  "canonical_sha256": "4749bb593633a7bc15a7abdacafd412cbd1aae07158cc5c64054c7c5aff2391f",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/good-till-canceled-order",
+    "name": "Good-till-canceled order",
+    "aliases": [
+      "GTC order",
+      "good-till-cancelled order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An order that remains active until it is fully executed or explicitly canceled, persisting across trading days. In practice brokers and venues cap how long a GTC order can rest (commonly 30-90 days), so 'till canceled' is bounded by the firm's maximum order age.",
+    "intuition": "A GTC order is a standing instruction - set it once and it keeps working day after day until you pull it or it fills.",
+    "mechanics": "The unexecuted balance is carried forward each day by the broker/venue ('GT renewal' in FIX terms) and re-exposed to the market each session until filled, canceled, or aged out. Venues may adjust resting GTC orders for corporate actions such as stock splits.",
+    "formula": "",
+    "relationships": [
+      "Day order",
+      "Good-till-date order",
+      "Limit order"
+    ],
+    "failure_modes": "Forgotten GTC orders can fill weeks later into stale information - e.g., a GTC bid fills after bad news breaks but before the trader re-evaluates. Split or dividend adjustments can also leave the order at an unintended effective price.",
+    "misconceptions": "'Good till canceled' does not mean good forever: brokers impose maximum durations, and exchanges may purge resting orders at their own discretion or on corporate actions.",
+    "example": "You leave a GTC limit order to sell 500 shares at $25; three weeks later the stock rallies to $25 and the order executes without you having re-entered it.",
+    "citations": [
+      {
+        "source": "SEC Investor Bulletin: Understanding Order Types",
+        "url": "https://www.sec.gov/resources-for-investors/investor-alerts-bulletins/ib_ordertypes",
+        "section": "Timing Restrictions and Trading Instructions - Good-Til-Canceled (GTC)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "FIX 4.2 Execution Report (MsgType 8), FIX Dictionary (Onix Solutions)",
+        "url": "https://www.onixs.biz/fix-dictionary/4.2/msgType_8_8.html",
+        "section": "Handling of GT orders (GTC/GTD renewal and expiry)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

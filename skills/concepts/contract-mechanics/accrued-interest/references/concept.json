@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/accrued-interest",
+  "canonical_sha256": "4acff199d22fb9460be7a30619ae4c761fa9da37dd970a2a334ffe96f67a91b2",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/accrued-interest",
+    "name": "Accrued interest",
+    "aliases": [
+      "accrued coupon"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "Interest earned on a security but not yet paid to the investor; specifically, the portion of the next coupon payment that has accumulated since the last coupon date, which a bond buyer pays to the seller at settlement.",
+    "intuition": "Coupons arrive only on payment dates, but interest builds every day: accrued interest is the seller's share of the coming coupon for the days they held the bond.",
+    "mechanics": "Accrued interest = coupon payment x (days since last coupon / days in coupon period), using the market's day-count convention (e.g., 30/360 for U.S. corporates, actual/actual for Treasuries). The buyer compensates the seller at settlement, then collects the full coupon on the next payment date; it is also an explicit component of futures invoice prices for deliverable bonds.",
+    "formula": "AI = C x (d / D), where C = periodic coupon payment, d = days from last coupon date to settlement, D = days in the coupon period (per the applicable day-count convention).",
+    "relationships": [
+      "Clean price",
+      "Dirty price",
+      "Coupon rate",
+      "Par value"
+    ],
+    "failure_modes": "Accrued interest depends on day-count conventions that differ across bond markets, so a single formula applied across markets miscalculates settlement amounts; it also creates small cash-flow mismatches when hedging coupon-paying bonds with derivatives.",
+    "misconceptions": "Accrued interest is not an extra cost or fee: the buyer effectively recovers it in the next full coupon payment, so it is a transfer, not an expense, though it does affect cash outlay at settlement.",
+    "example": "Buying a $1,000 bond with a 6% annual coupon (semiannual $30) exactly one-third of the way through the coupon period means paying about $10 of accrued interest to the seller on top of the quoted price.",
+    "citations": [
+      {
+        "source": "Investor.gov Glossary (SEC Office of Investor Education and Advocacy)",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Accrued Interest",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Conversion Factors (invoice price includes accrued interest)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

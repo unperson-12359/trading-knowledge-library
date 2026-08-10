@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/post-only-order",
+  "canonical_sha256": "093c485710b708cddd8a0be6c46028aab75c91b1ebe31923abe4a56b3b09fed6",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/post-only-order",
+    "name": "Post-only order",
+    "aliases": [
+      "post-only limit order",
+      "maker-only order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "A limit order with an instruction that it may only add liquidity to the order book: if it would execute immediately against a resting order (i.e., would 'take' liquidity), it is instead canceled or repriced one tick away from the market. It guarantees the trader acts as a maker, avoiding taker fees and often earning liquidity rebates.",
+    "intuition": "Post-only is 'join the queue or don't trade at all' - you will never cross the spread, so you control fees and avoid paying for immediacy.",
+    "mechanics": "The venue checks the order's limit price against the opposite side of the book on arrival; a marketable post-only order is rejected/canceled or slid to a non-marketable price depending on venue rules. It then rests at its limit, earning maker treatment if executed against. On derivatives platforms (e.g., Bybit) it is expressed as timeInForce = PostOnly.",
+    "formula": "",
+    "relationships": [
+      "Maker-or-cancel order",
+      "Limit order",
+      "Rebate",
+      "Maker fee",
+      "Taker fee"
+    ],
+    "failure_modes": "In a fast-moving market the order may be canceled or slid repeatedly and never rest at an executable price, so the trader misses the move entirely. Repricing-by-venue variants can also post at a price different from the one intended.",
+    "misconceptions": "Post-only does not guarantee a fill or a rebate - it only guarantees that any execution that occurs will be as liquidity provider. Cancel-on-marketability and reprice-on-marketability are different venue behaviors, not one universal rule.",
+    "example": "With the book at $10.00 x $10.02, you submit a post-only buy at $10.02; because it would lift the offer immediately, the venue cancels it (or posts it at $10.01), ensuring you never pay the taker fee.",
+    "citations": [
+      {
+        "source": "Bybit API Documentation: Place Order (POST /v5/order/create)",
+        "url": "https://bybit-exchange.github.io/docs/v5/order/create-order",
+        "section": "timeInForce = PostOnly examples",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Cboe Titanium U.S. Equities BOE Specification",
+        "url": "https://www.cboe.com/document/tech-spec/document/technical-specifications/cboe-titanium-u.s.-equities-boe-specification",
+        "section": "Order instructions (Post Only / Book Only handling)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/limit-if-touched-order",
+  "canonical_sha256": "21adbce696695ea06916497fd65778ba897dee27ffd63c30034b5d72b357ef35",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/limit-if-touched-order",
+    "name": "Limit-if-touched order",
+    "aliases": [
+      "LIT order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "A conditional order that becomes a limit order at a specified limit price once a trigger ('touch') price is reached. It combines the trigger logic of a market-if-touched order with the price protection of a limit order.",
+    "intuition": "It is a standing instruction: 'if the market trades down to my trigger, work a limit order at my chosen price' - you get price control, at the cost of possibly not being filled.",
+    "mechanics": "The order is held by the broker or venue until the touch price trades; it is then submitted as a limit order at the preset limit price (for a sell LIT the limit is typically at or below the trigger, for a buy LIT at or above it). If the market moves away through the limit, the order rests unfilled.",
+    "formula": "",
+    "relationships": [
+      "Market-if-touched order",
+      "Stop-limit order",
+      "Limit order",
+      "Conditional order"
+    ],
+    "failure_modes": "If the market gaps through both the trigger and the limit price, the order triggers but never fills, leaving the intended entry or exit unexecuted exactly when it was most wanted.",
+    "misconceptions": "A LIT is not assured of execution once triggered - the limit price can prevent the fill. It is also not identical to a stop-limit order, whose trigger placement convention is the opposite (buy above / sell below the market).",
+    "example": "Stock trades at $50; you place a buy LIT with trigger $48 and limit $48.10. When $48 trades, a limit order to buy at $48.10 goes live and fills only at $48.10 or better.",
+    "citations": [
+      {
+        "source": "IBKR Guides: Order Types (Trader Workstation)",
+        "url": "https://www.ibkrguides.com/traderworkstation/order-types.htm",
+        "section": "Limit if Touched / Trailing Limit if Touched",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

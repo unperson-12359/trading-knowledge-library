@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/fill-or-kill-order",
+  "canonical_sha256": "622ee681ccf871b2b38c57820c8f766f03281c01985f13f93f69eeb007d7272f",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/fill-or-kill-order",
+    "name": "Fill-or-kill order",
+    "aliases": [
+      "FOK order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An order that must be executed immediately and in its entirety; if the full size cannot be filled at once at acceptable prices, the entire order is canceled with no partial execution.",
+    "intuition": "FOK is 'all of it, right now, or nothing' - used when a partial position is worthless or unwanted.",
+    "mechanics": "On arrival the venue checks whether the full order quantity is immediately executable within the limit price (or at the market); if yes it executes completely, otherwise the whole order is killed and nothing rests on the book.",
+    "formula": "",
+    "relationships": [
+      "Immediate-or-cancel order",
+      "All-or-none order",
+      "Market order"
+    ],
+    "failure_modes": "For sizes larger than displayed top-of-book liquidity, FOK orders are killed almost every time, so repeated FOK attempts can signal intent without ever transacting. In fast markets the available size can vanish between order construction and arrival.",
+    "misconceptions": "FOK is frequently confused with all-or-none: an AON order demands full size but may wait in the market for it, while FOK also demands immediacy. FOK does not guarantee a fill - it guarantees no partial fill.",
+    "example": "You submit a FOK order to buy 5,000 shares at $10. Only 4,200 are immediately available at $10 or better, so the entire order is canceled and no shares change hands.",
+    "citations": [
+      {
+        "source": "SEC Investor Bulletin: Understanding Order Types",
+        "url": "https://www.sec.gov/resources-for-investors/investor-alerts-bulletins/ib_ordertypes",
+        "section": "Timing Restrictions and Trading Instructions - Fill-Or-Kill (FOK)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

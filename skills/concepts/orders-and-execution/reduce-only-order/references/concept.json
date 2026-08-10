@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/reduce-only-order",
+  "canonical_sha256": "3f30a69c6a6b0e46d4f09e76f2f3300c2c594968d7fd1fba82689426c41e7994",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/reduce-only-order",
+    "name": "Reduce-only order",
+    "aliases": [
+      "reduce only",
+      "RO order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An order instruction, standard on derivatives and crypto exchanges, that permits the order to only reduce an existing open position: any portion that would increase or reverse the position is rejected or canceled. It is used to guarantee that stop-loss or take-profit orders cannot accidentally open a new position.",
+    "intuition": "Reduce-only is a safety latch: 'this order may shrink my position but must never grow it' - so a late-triggering exit order can't flip you long when you meant to be flat.",
+    "mechanics": "The venue checks the order against the current position before executing; if execution would increase the position (or none exists), the order is rejected or its quantity is clamped/canceled. On Bybit, for example, reduceOnly = true means the position can only reduce in size if the order is triggered, and reduce-only orders submitted with no open position are refused.",
+    "formula": "",
+    "relationships": [
+      "Close-only order",
+      "Stop order",
+      "Limit order",
+      "Conditional order"
+    ],
+    "failure_modes": "If the position was already closed by another order, the reduce-only exit order is canceled, which is intended - but traders relying on it as a stop can be left with a residual position if the reduce-only quantity was clamped below the full size. Venue-specific priority rules may cancel distant reduce-only orders under margin stress.",
+    "misconceptions": "Reduce-only is not itself an order type like limit or market; it is a modifier on another order. It also does not guarantee an exit at a particular price - only the direction of position change.",
+    "example": "You are long 2 BTC perpetuals and place a reduce-only sell limit for 2 BTC; if the position is closed manually first, the reduce-only order is canceled instead of opening a 2 BTC short.",
+    "citations": [
+      {
+        "source": "Bybit API Documentation: Place Order (POST /v5/order/create)",
+        "url": "https://bybit-exchange.github.io/docs/v5/order/create-order",
+        "section": "reduceOnly parameter - 'true means your position can only reduce in size if this order is triggered'",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

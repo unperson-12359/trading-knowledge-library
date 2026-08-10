@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/clean-price",
+  "canonical_sha256": "28d43ab8d162d477a9761b9fb976aac2f90e5d0506f0fc568be5bb1d511772a5",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/clean-price",
+    "name": "Clean price",
+    "aliases": [
+      "flat price",
+      "quoted price"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The standard quoted market price of a bond, stated net of accrued interest — the price shown on screens and used for price comparison, as distinct from the full amount actually paid at settlement.",
+    "intuition": "The clean price strips out the mechanical day-count drift so price changes reflect real market moves, not just time passing between coupon dates.",
+    "mechanics": "By market convention bonds are quoted clean; the amount the buyer actually pays is the dirty price = clean price + accrued interest. Quoting clean prevents the sawtooth pattern the dirty price would otherwise show as interest accrues and then drops at each coupon payment.",
+    "formula": "Clean price = dirty price - accrued interest.",
+    "relationships": [
+      "Dirty price",
+      "Accrued interest",
+      "Coupon rate",
+      "Yield to maturity"
+    ],
+    "failure_modes": "Computing realized return or cash needs from the clean price alone understates the settlement cash outlay by the accrued interest; comparing yields from dirty cash flows against clean quotes without adjustment creates small pricing inconsistencies.",
+    "misconceptions": "The clean price is not the price you pay: settlement always uses the dirty (full) price, so cash planning based on quoted prices alone will be short by the accrued amount.",
+    "example": "A bond quoted at 98.50 (clean) with $7.50 accrued interest per $100 face requires a payment of $106.00 per $100 face — the dirty price — at settlement.",
+    "citations": [
+      {
+        "source": "Hillier et al., Fundamentals of Corporate Finance, Chapter 6: Bond Valuation (McGraw-Hill sample chapter)",
+        "url": "https://highered.mheducation.com/sites/dl/free/0077149777/1013655/Sample_Chapter.pdf",
+        "section": "A Note about Bond Price Quotes",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

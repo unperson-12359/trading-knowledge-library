@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/all-or-none-order",
+  "canonical_sha256": "85c46c300603bb24ebb0e265524cbfe36d1882a28423de98cc17a21bcb0c8f74",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/all-or-none-order",
+    "name": "All-or-none order",
+    "aliases": [
+      "AON order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An order that may only be executed in its full specified quantity or not at all, but which - unlike a fill-or-kill order - may remain active until the full size can be executed or the order is canceled.",
+    "intuition": "AON is 'I want the whole block or nothing, and I am willing to wait' - it trades immediacy for a no-partial-fill guarantee.",
+    "mechanics": "The order is marked with a minimum-quantity-equal-to-size condition; it rests (or is worked by the broker) until a single execution or combination can satisfy the entire quantity. Some venues do not display AON interest, and Reg NMS execution-quality statistics exclude orders to be executed only at full size from 'covered orders'.",
+    "formula": "",
+    "relationships": [
+      "Fill-or-kill order",
+      "Minimum quantity order",
+      "Iceberg order"
+    ],
+    "failure_modes": "AON orders can sit unfilled for long periods because counterparties rarely show the full size at one price; the all-or-nothing constraint also removes the order from normal price-time priority on many venues, lowering fill probability.",
+    "misconceptions": "AON is not the same as FOK (no immediacy requirement), and 'all or none' does not prevent the order from being picked off in pieces over time on venues that allow it to rest - it prevents partial *executions*, not partial interest, only where venue rules enforce it.",
+    "example": "You place an AON order to sell 20,000 shares at $12; it remains working until a buyer (or matched crossing interest) can take the full 20,000 shares at $12 or better, otherwise it expires unfilled.",
+    "citations": [
+      {
+        "source": "SEC Investor Bulletin: Understanding Order Types",
+        "url": "https://www.sec.gov/resources-for-investors/investor-alerts-bulletins/ib_ordertypes",
+        "section": "Timing Restrictions and Trading Instructions - All-Or-None (AON)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Regulation NMS, 17 CFR 242.600 (Cornell LII)",
+        "url": "https://www.law.cornell.edu/cfr/text/17/242.600",
+        "section": "(b)(27) Covered order - exclusion of full-size-only orders",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
