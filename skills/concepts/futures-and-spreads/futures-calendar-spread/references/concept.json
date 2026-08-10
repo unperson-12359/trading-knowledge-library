@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "concept_id": "futures-and-spreads/futures-calendar-spread",
+  "canonical_sha256": "7c1f799cb70140d443b0c2e992c179349dff4b5a58a14b3eb2a476ad112e0850",
+  "source_path": "concepts/futures-and-spreads.json",
+  "concept": {
+    "id": "futures-and-spreads/futures-calendar-spread",
+    "name": "Futures calendar spread",
+    "aliases": [
+      "calendar spread",
+      "time spread",
+      "horizontal spread",
+      "interdelivery spread"
+    ],
+    "domain": "Futures and spreads",
+    "definition": "The simultaneous purchase of one delivery month of a futures contract and sale of a different delivery month of the same futures contract. The position is a bet on the change in the price relationship between the two months (the term structure) rather than on the outright direction of the market.",
+    "intuition": "Instead of betting on whether the price goes up or down, you bet on whether near delivery gets more expensive or cheaper relative to later delivery.",
+    "mechanics": "A long calendar spread buys the nearby month and sells the deferred month; it gains if the nearby outperforms (spread tightens or inverts). Prices are quoted as the difference between the two months, and exchanges list calendar spreads as single instruments to remove legging risk. Margin requirements are typically lower than for outright positions because the legs partially offset.",
+    "formula": "Spread price = F(nearby) - F(deferred); long-spread P&L = change in spread * contract multiplier.",
+    "relationships": [
+      "Intracommodity spread",
+      "Butterfly spread",
+      "Term structure",
+      "Roll yield",
+      "Contango",
+      "Backwardation"
+    ],
+    "failure_modes": "Spreads can move against the trader on factors that barely affect flat price — storage changes, delivery logistics, or position-limit liquidations in the expiring month. Liquidity in deferred months is thinner, so spread execution costs and slippage can be larger than quoted outright markets suggest.",
+    "misconceptions": "Calendar spreads are not 'low risk' in an absolute sense — old-crop/new-crop spreads or delivery squeezes can move as violently as outrights. Being long and short the same commodity does not make the position hedged; it makes it a relative-value position.",
+    "example": "A trader buys December corn futures at $6.00 and sells March corn at $6.15 (long the calendar spread at -$0.15); if the spread narrows to -$0.05, the position gains $0.10 per bushel.",
+    "citations": [
+      {
+        "source": "CFTC Futures Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Calendar Spread ('Also called a horizontal spread or time spread'); Interdelivery Spread",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

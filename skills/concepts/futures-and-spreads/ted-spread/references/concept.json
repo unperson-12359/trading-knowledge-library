@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "futures-and-spreads/ted-spread",
+  "canonical_sha256": "ed1133972a046c2029a4da910e086f29af3b3f7eb299a45aecb613b2c9f1b679",
+  "source_path": "concepts/futures-and-spreads.json",
+  "concept": {
+    "id": "futures-and-spreads/ted-spread",
+    "name": "TED spread",
+    "aliases": [
+      "Treasury-Eurodollar spread",
+      "TEDRATE"
+    ],
+    "domain": "Futures and spreads",
+    "definition": "The spread between the 3-month LIBOR based on US dollars and the 3-month US Treasury bill yield, historically used as a gauge of perceived credit risk in the interbank market versus risk-free government debt. The FRED series (TEDRATE) was discontinued in January 2022 when 3-month USD LIBOR ceased publication; SOFR-based spreads are the suggested modern analogue.",
+    "intuition": "It measures how much extra interest banks demand to lend to each other compared with what the US government pays — a fear gauge for bank credit risk.",
+    "mechanics": "Computed daily as TED = 3-month USD LIBOR minus 3-month T-bill rate. Widening signals rising interbank credit/liquidity stress (as in 2008, when it spiked from tens of basis points to over 450); narrowing signals normalizing bank credit conditions. Eurodollar futures on LIBOR were the futures-market leg of the original trade.",
+    "formula": "TED spread = r_3M_LIBOR - r_3M_Tbill, in percentage points (FRED series TEDRATE, daily, percent).",
+    "relationships": [
+      "Credit spread",
+      "Term structure",
+      "Futures curve"
+    ],
+    "failure_modes": "The measure died with its input: USD LIBOR was removed from FRED on January 31, 2022, so the classic TED spread no longer updates and historical comparisons must be spliced with SOFR-based spreads. Even historically, LIBOR was a survey-based rate subject to manipulation and thinning interbank volumes, distorting the signal.",
+    "misconceptions": "The TED spread was never a measure of stock-market or inflation risk — it specifically priced interbank unsecured credit versus sovereign risk. A low TED spread did not prove banks were healthy, only that measured LIBOR-Treasury differentials were narrow.",
+    "example": "In October 2008 the TED spread widened above 4.5 percentage points as LIBOR spiked on counterparty fear while T-bill yields collapsed on safe-haven demand — an extreme reading of interbank stress.",
+    "citations": [
+      {
+        "source": "FRED, Federal Reserve Bank of St. Louis: TED Spread (DISCONTINUED) [TEDRATE]",
+        "url": "https://fred.stlouisfed.org/series/TEDRATE",
+        "section": "Series notes (calculation and discontinuation)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

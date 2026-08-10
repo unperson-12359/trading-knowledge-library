@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "futures-and-spreads/butterfly-spread",
+  "canonical_sha256": "42caffaad94425a29396968907d4b39d6be8c8aad5d8356ae6f50202f0e7554f",
+  "source_path": "concepts/futures-and-spreads.json",
+  "concept": {
+    "id": "futures-and-spreads/butterfly-spread",
+    "name": "Butterfly spread",
+    "aliases": [
+      "futures butterfly",
+      "fly"
+    ],
+    "domain": "Futures and spreads",
+    "definition": "A three-month futures spread that combines a near-term spread and a longer-term spread: the trader buys two different delivery months and sells an intermediate month twice (or the reverse), in a 1:-2:1 ratio. The position expresses a view that the middle month — the 'whipping post' or belly — will underperform or outperform the two outer months (the wings).",
+    "intuition": "It bets on the curvature of the futures curve: whether the middle of the curve is too cheap or too rich relative to its neighbors, while largely cancelling out outright and simple calendar-spread exposure.",
+    "mechanics": "Constructed as long one near month, short two middle months, long one deferred month (or inverted). It can be decomposed into a bull spread plus a bear spread sharing the middle leg. Because it is long and short the same commodity in different months, it carries lower margin than outrights; profit depends on how the belly moves relative to the wings, not on the flat price level.",
+    "formula": "Butterfly value = F(T1) - 2 * F(T2) + F(T3), where T1 < T2 < T3 are delivery months; a long butterfly profits when this combination moves in the direction traded.",
+    "relationships": [
+      "Futures calendar spread",
+      "Intracommodity spread",
+      "Term structure",
+      "Steepener",
+      "Flattener"
+    ],
+    "failure_modes": "The spread has three points of exposure: if the curve shifts in parallel or as a simple twist rather than changing curvature, the butterfly may gain or lose little, or behave unlike the trader's view. Thin liquidity in some months magnifies execution risk across three legs, and exchange-listed butterfly instruments mitigate but do not eliminate slippage.",
+    "misconceptions": "The futures butterfly is not the options butterfly: there is no strike-price payoff diagram or bounded profit zone — P&L is linear in the month-to-month spread changes. Being 'long and short the same commodity' does not make it low-risk; old-crop/new-crop butterflies can be highly volatile.",
+    "example": "A corn trader buys July, sells September twice, and buys December, expecting the tight old-crop July and the new-crop December to strengthen against September; the position tracks the Jul-Sep and Sep-Dec calendar legs as one combined trade.",
+    "citations": [
+      {
+        "source": "StoneX: Futures Spread Techniques - Butterfly Futures Spread",
+        "url": "https://futures.stonex.com/blog/futures-spread-techniques-butterfly-futures-spread",
+        "section": "How the Butterfly Futures Spread works",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

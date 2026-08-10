@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "futures-and-spreads/flattener",
+  "canonical_sha256": "77fa84572fea7abe977f55fc196dbb0c8532876257e37e1eddd0714a038f7ded",
+  "source_path": "concepts/futures-and-spreads.json",
+  "concept": {
+    "id": "futures-and-spreads/flattener",
+    "name": "Flattener",
+    "aliases": [
+      "curve flattener",
+      "yield curve flattener"
+    ],
+    "domain": "Futures and spreads",
+    "definition": "A yield curve spread trade that gains when the yield differential between longer-maturity and shorter-maturity rates decreases (the curve flattens or inverts). It is executed short the front (shorter-maturity) leg and long the back (longer-maturity) leg, typically DV01-neutral using Treasury futures or cash bonds.",
+    "intuition": "You are betting the gap between long-term and short-term rates shrinks — again, independent of whether the overall rate level rises or falls.",
+    "mechanics": "Sell the spread: short the short-end instrument and long the long-end instrument. As with the steepener, legs are ratioed so the position is DV01-neutral, isolating the change in the yield differential; CME Group lists fixed-ratio curve spreads to remove legging risk and obtain margin offsets.",
+    "formula": "Curve spread = y_long_maturity - y_short_maturity; flattener P&L approx = -(change in spread in bp) * position DV01.",
+    "relationships": [
+      "Steepener",
+      "Bull flattener",
+      "Bear flattener",
+      "Intercommodity spread",
+      "Term structure"
+    ],
+    "failure_modes": "Flattening can stall for long periods, leaving the position exposed to negative carry and roll on the futures legs. DV01 neutrality does not protect against non-parallel kinks (e.g. the 5-year point moving independently) or against convexity differences between the two legs.",
+    "misconceptions": "A flattener does not require the curve to fully invert to profit — any narrowing of the spread helps. It is also not equivalent to simply shorting bonds: a parallel rise in yields is designed to wash out, leaving only the relative move.",
+    "example": "Ahead of expected Fed hikes, a trader shorts 2-year futures and buys 10-year futures DV01-neutral; as front-end yields rise faster than long-end yields and 2s10s narrows from 80 bp to 30 bp, the position gains roughly 50 bp times DV01.",
+    "citations": [
+      {
+        "source": "CME Group: Yield Curve Spread Trades - Opportunities & Applications",
+        "url": "https://www.cmegroup.com/content/dam/cmegroup/education/files/yield-curve-spread-trades.pdf",
+        "section": "Yield Curve Spread Flattener",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

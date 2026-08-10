@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "futures-and-spreads/crush-spread",
+  "canonical_sha256": "dd422dcf90052bdf8cf4c42a7a252cc63330b5fa4f40b6f42d16600dff9ad21e",
+  "source_path": "concepts/futures-and-spreads.json",
+  "concept": {
+    "id": "futures-and-spreads/crush-spread",
+    "name": "Crush spread",
+    "aliases": [
+      "soybean crush",
+      "board crush",
+      "gross processing margin"
+    ],
+    "domain": "Futures and spreads",
+    "definition": "In the soybean futures market, the simultaneous purchase of soybean futures and sale of soybean meal and soybean oil futures to establish a processing margin (the reverse — selling beans and buying products — is the reverse crush). It expresses the value added by crushing raw soybeans into meal and oil.",
+    "intuition": "It is the soybean processor's gross profit line turned into a trade: what meal and oil sell for, minus what the beans cost.",
+    "mechanics": "One soybean futures contract (5,000 bushels) crushes into roughly 44,000 lb of meal and 11,000 lb of oil, so product legs are sized to those conversion ratios. Processors use the crush to lock in margins; speculators trade views on the spread between input (beans) and outputs (meal, oil). Values must be converted to a common per-bushel basis.",
+    "formula": "Gross processing margin ($/bu) = (P_meal($/ton) * 0.022 + P_oil(cents/lb) * 0.11) - P_soybeans($/bu), where the coefficients convert 48 lb meal and 11 lb oil yields per 60-lb bushel into bushel equivalents.",
+    "relationships": [
+      "Intercommodity spread",
+      "Crack spread",
+      "Basis"
+    ],
+    "failure_modes": "Meal and oil legs have their own seasonal and demand drivers (livestock feed demand, biodiesel mandates), so the crush can move violently even when soybean prices are stable. Conversion ratios are approximate; actual plant yields differ, and delivery-calendar mismatches add basis risk.",
+    "misconceptions": "The crush margin is not the processor's profit — it excludes energy, labor, transport, and capital costs. A high board crush does not guarantee plant profitability, and a negative screen crush does not mean no plant will run, since plants hedge at different times and prices.",
+    "example": "With soybeans at $12.00/bu, meal at $360/ton, and oil at 50 cents/lb, the gross processing margin is 360*0.022 + 0.50*11 - 12.00 = $7.92 + $5.50 - $12.00 = $1.42 per bushel.",
+    "citations": [
+      {
+        "source": "CFTC Futures Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Crush Spread ('See Gross Processing Margin, Reverse Crush Spread')",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

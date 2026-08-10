@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "futures-and-spreads/spark-spread",
+  "canonical_sha256": "a597d7bb7eb6b82e3d3a3e6cf66055d27cc8e1a29f830e60b67a58ed7ba5c309",
+  "source_path": "concepts/futures-and-spreads.json",
+  "concept": {
+    "id": "futures-and-spreads/spark-spread",
+    "name": "Spark spread",
+    "aliases": [
+      "electricity-gas spread"
+    ],
+    "domain": "Futures and spreads",
+    "definition": "The difference between the price received by a generator for electricity produced and the cost of the natural gas needed to produce that electricity — a common metric for estimating the profitability of natural gas-fired generation. It is typically calculated from daily spot prices for power and gas at regional trading points, using a benchmark heat rate.",
+    "intuition": "It is the gas power plant's gross margin per megawatt-hour: the electricity price minus the fuel bill to generate it.",
+    "mechanics": "Computed as power price minus natural gas price times heat rate. The heat rate (e.g. 7,000 Btu/kWh for an efficient combined-cycle unit per EIA's benchmark) converts the gas cost into $/MWh. Traders and analysts track spark spreads across regions and time; forward spark spreads are traded OTC and on exchanges as power-versus-gas spread positions.",
+    "formula": "Spark spread ($/MWh) = P_power($/MWh) - P_gas($/mmBtu) * HR(mmBtu/MWh), where HR is the generator heat rate (EIA benchmark: 7,000 Btu/kWh = 7 mmBtu/MWh).",
+    "relationships": [
+      "Dark spread",
+      "Crack spread",
+      "Intercommodity spread"
+    ],
+    "failure_modes": "It excludes pipeline/transport costs, other variable costs like operations and maintenance, taxes, and fixed expenses, so it is an indicator of market conditions, not an exact measure of any one plant's profitability. Power prices are spiky and region-specific, so a benchmark heat rate can badly misrepresent older, less efficient units.",
+    "misconceptions": "A positive spark spread does not mean a plant is profitable overall — it only covers fuel. Negative spark spreads do occur and simply mean generating at market fuel cost loses money against the power price (EIA simply does not report negative values in some tables).",
+    "example": "With power at $45/MWh, natural gas at $3.00/mmBtu, and a 7,000 Btu/kWh heat rate, the spark spread is 45 - 3.00*7 = $24/MWh.",
+    "citations": [
+      {
+        "source": "U.S. Energy Information Administration, Today in Energy: An introduction to spark spreads",
+        "url": "https://www.eia.gov/todayinenergy/detail.php?id=9911",
+        "section": "Spark spread calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

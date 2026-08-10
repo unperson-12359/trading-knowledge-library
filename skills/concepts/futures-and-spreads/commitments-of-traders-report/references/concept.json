@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "futures-and-spreads/commitments-of-traders-report",
+  "canonical_sha256": "7f2dbc54d9bcea837f00b69c427b55dcb9a06b0f9cc3f218f9320b2538d540b2",
+  "source_path": "concepts/futures-and-spreads.json",
+  "concept": {
+    "id": "futures-and-spreads/commitments-of-traders-report",
+    "name": "Commitments of Traders report",
+    "aliases": [
+      "COT report",
+      "COT"
+    ],
+    "domain": "Futures and spreads",
+    "definition": "A weekly report published by the CFTC providing a breakdown of each Tuesday's open interest for markets in which 20 or more traders hold positions at or above CFTC-established reporting levels. The legacy report separates open interest into commercial, non-commercial, and non-reportable holdings; disaggregated and TFF variants provide finer categories.",
+    "intuition": "It is a weekly census of who is long and who is short in each major futures market — hedgers versus speculators versus small traders.",
+    "mechanics": "Compiled from confidential daily large-trader data collected under the CFTC's market surveillance program, published Fridays reflecting Tuesday positions. Available in futures-only and futures-and-options-combined formats, short and long formats; long-format reports add nonreportable positions, crop-year breakdowns, and concentration ratios for the largest four and eight traders.",
+    "formula": "",
+    "relationships": [
+      "Commercial trader",
+      "Noncommercial trader",
+      "Managed money",
+      "Producer merchant processor user",
+      "Swap dealer category",
+      "Open interest change"
+    ],
+    "failure_modes": "The data are three days stale at publication and classify traders, not trades — a 'commercial' position is not necessarily a hedge, and staff classification involves judgment. Categories can be reclassified over time, and historical disaggregated data were backcast using recent classifications, reducing accuracy further back in time.",
+    "misconceptions": "COT is not a real-time positioning feed, and 'noncommercial net position' is not 'the dumb money' — the category includes sophisticated macro funds. Extreme readings are not mechanical contrarian signals; large speculative positions can persist and grow for months in trending markets.",
+    "example": "The legacy COT for corn shows commercials net short 300,000 contracts and noncommercials net long 220,000; analysts track how these net positions shift week to week as a positioning indicator.",
+    "citations": [
+      {
+        "source": "CFTC: Disaggregated Commitments of Traders - Explanatory Notes",
+        "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/DisaggregatedExplanatoryNotes/index.htm",
+        "section": "Report scope, formats, and limitations",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Futures Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Commitments of Traders Report (COT)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

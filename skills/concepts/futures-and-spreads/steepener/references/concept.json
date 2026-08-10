@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "futures-and-spreads/steepener",
+  "canonical_sha256": "de1b914d4003667652e9f8cbfbcb92ed73ffb487e324432db9dae0f3291e0354",
+  "source_path": "concepts/futures-and-spreads.json",
+  "concept": {
+    "id": "futures-and-spreads/steepener",
+    "name": "Steepener",
+    "aliases": [
+      "curve steepener",
+      "yield curve steepener"
+    ],
+    "domain": "Futures and spreads",
+    "definition": "A yield curve spread trade that gains when the yield differential between longer-maturity and shorter-maturity rates increases (the curve steepens). It is executed long the front (shorter-maturity) leg and short the back (longer-maturity) leg, typically with Treasury futures or cash bonds weighted to be DV01-neutral.",
+    "intuition": "You are betting the gap between long-term and short-term interest rates widens — whatever happens to the overall level of rates.",
+    "mechanics": "Buy the spread: long the short-end instrument (e.g. 2-year Treasury futures) and short the long-end instrument (e.g. 10- or 30-year futures). Because the back leg has a larger DV01, a hedge ratio is computed so the position is DV01-neutral and P&L depends on the spread change rather than parallel rate moves; CME Group lists fixed-ratio yield curve spreads (e.g. NOB, TUF) for simplified execution.",
+    "formula": "Curve spread = y_long_maturity - y_short_maturity; steepener P&L approx = (change in spread in bp) * position DV01.",
+    "relationships": [
+      "Flattener",
+      "Bull steepener",
+      "Bear steepener",
+      "Intercommodity spread",
+      "Term structure"
+    ],
+    "failure_modes": "DV01-neutral construction still carries curve-shape (butterfly) and convexity risk, and the hedge ratio drifts as yields move, requiring rebalancing. Fixed-ratio exchange spreads simplify execution but leave residual ('tail') DV01 risk. Steepening driven by a violent bear move can inflict mark-to-market pain through margin even when the spread view is right.",
+    "misconceptions": "A steepener is not a bet that rates will rise or fall — it isolates the slope. 'Buy the spread' in steepener context means long front leg/short back leg, which is the opposite of buying the longer-maturity yield; quoting conventions ('net change') confuse newcomers.",
+    "example": "A trader buys 2-year Treasury futures and sells 10-year futures DV01-neutral when the 2s10s spread is -30 bp; if the spread widens to +20 bp, the position profits by roughly 50 bp times the position DV01.",
+    "citations": [
+      {
+        "source": "CME Group: Yield Curve Spread Trades - Opportunities & Applications",
+        "url": "https://www.cmegroup.com/content/dam/cmegroup/education/files/yield-curve-spread-trades.pdf",
+        "section": "Yield Curve Spread Steepener; Yield Curve Spread Trades Defined",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

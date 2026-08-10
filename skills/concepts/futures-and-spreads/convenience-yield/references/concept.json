@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "futures-and-spreads/convenience-yield",
+  "canonical_sha256": "8b2221d9b95648a7672896537e5fd756d62e14a4e0ad06104eaaddd0bee28a52",
+  "source_path": "concepts/futures-and-spreads.json",
+  "concept": {
+    "id": "futures-and-spreads/convenience-yield",
+    "name": "Convenience yield",
+    "aliases": [
+      "convenience return"
+    ],
+    "domain": "Futures and spreads",
+    "definition": "The implied benefit or return from physically holding a commodity inventory — for example, keeping a production process running or avoiding stockouts — rather than holding a futures contract on it. It is inversely related to inventory levels: when stocks are high the convenience yield is low, and when stocks are low it is high.",
+    "intuition": "Owning the actual barrel or bushel has an option value a paper contract does not: you can use it, sell it, or keep your plant running when supply is tight.",
+    "mechanics": "Enters futures pricing as an offset to the monetary cost of carry: F = S * e^((r + u - y) * T). It is not directly observable; it is backed out as the residual that reconciles the futures curve with spot price, financing, and storage costs. A convenience yield larger than r + u produces backwardation.",
+    "formula": "y = r + u - (1/T) * ln(F / S), derived from F = S * e^((r + u - y) * T); y = convenience yield, r = financing rate, u = storage cost rate, F = futures price, S = spot price, T = time to delivery.",
+    "relationships": [
+      "Cost of carry",
+      "Backwardation",
+      "Contango",
+      "Futures curve",
+      "Reverse cash-and-carry arbitrage"
+    ],
+    "failure_modes": "Because it is an unobserved residual, convenience yield estimates inherit every measurement error in spot prices, financing rates, and storage costs. During delivery squeezes the implied yield can spike to levels that reflect market dysfunction rather than genuine economic benefit.",
+    "misconceptions": "It is not a cash flow the inventory holder actually receives like a dividend; it is an implicit, state-dependent value that only materializes in scarcity. Assuming it is constant over time or across commodities leads to mispriced curve trades.",
+    "example": "A refiner holding crude inventory during a supply disruption can keep its units running while competitors scramble for spot cargoes; this flexibility is the convenience yield, and it is why spot crude can trade above deferred futures.",
+    "citations": [
+      {
+        "source": "CME Group, CME Institute: What is Contango and Backwardation",
+        "url": "https://www.cmegroup.com/education/courses/introduction-to-precious-metals/what-is-contango-and-backwardation.html",
+        "section": "Backwardation section (convenience yield definition and inverse relation to inventories)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

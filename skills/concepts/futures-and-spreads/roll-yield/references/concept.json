@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "futures-and-spreads/roll-yield",
+  "canonical_sha256": "3803cbc02de3251928d00001d9eca934f95c0eb39f300446fac17d9d7d0931da",
+  "source_path": "concepts/futures-and-spreads.json",
+  "concept": {
+    "id": "futures-and-spreads/roll-yield",
+    "name": "Roll yield",
+    "aliases": [
+      "roll return",
+      "roll return/yield"
+    ],
+    "domain": "Futures and spreads",
+    "definition": "The return generated when a futures position is rolled from a near-term expiring contract into a longer-dated contract, arising from the price difference between the two contracts as the near contract converges toward spot. It is positive for long positions in backwardation and negative in contango.",
+    "intuition": "Because a futures price must meet the spot price at expiry, holding and renewing a position earns (or costs) the gap between the expiring contract and the next one, even if the spot price never moves.",
+    "mechanics": "To stay exposed without taking delivery, a holder sells the expiring contract and buys the next month. In backwardation the expiring contract is sold at a higher price than the deferred contract bought, generating a positive roll yield; in contango the holder sells low and buys high, generating a negative roll yield. Roll yield plus spot-price change approximates the total return of a futures position.",
+    "formula": "Roll yield = (total change in futures prices) - (total change in spot price); equivalently for a single roll, approximately (F_near - F_deferred) / F_near for a long position.",
+    "relationships": [
+      "Contango",
+      "Backwardation",
+      "Futures curve",
+      "Futures calendar spread",
+      "Convergence"
+    ],
+    "failure_modes": "Roll yield is realized only if the curve shape persists through the roll window; a curve that flips between rolls turns an expected gain into a loss. It is also path-dependent: rolling on days of anomalous spread widening (e.g. ETF roll windows exploited by other traders) worsens realized roll relative to the quoted curve slope.",
+    "misconceptions": "Roll yield is not a guaranteed 'carry' return like bond coupon income; it is a consequence of curve shape that can change sign at any time. Commodity-index returns are not spot returns — long-run divergences between the two are largely roll yield, not management error.",
+    "example": "An investor long 100 crude contracts rolls each month while the market is backwardated by $1 per month: each roll re-establishes the position $1 per barrel cheaper, adding roughly that amount per month to returns even if spot prices are flat.",
+    "citations": [
+      {
+        "source": "Investopedia: Roll Yield",
+        "url": "https://www.investopedia.com/terms/r/roll-yield.asp",
+        "section": "What Is Roll Yield; Backwardation vs. Contango; How Do You Calculate Roll Yield",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

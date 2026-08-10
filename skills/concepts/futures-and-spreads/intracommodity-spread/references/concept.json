@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "futures-and-spreads/intracommodity-spread",
+  "canonical_sha256": "4dd4d4d7894a20abb7738df27b2816e783b8342004ba23465061664737d7b203",
+  "source_path": "concepts/futures-and-spreads.json",
+  "concept": {
+    "id": "futures-and-spreads/intracommodity-spread",
+    "name": "Intracommodity spread",
+    "aliases": [
+      "interdelivery spread",
+      "intra-market spread"
+    ],
+    "domain": "Futures and spreads",
+    "definition": "A spread involving two different delivery months of the same commodity — the CFTC glossary defines the interdelivery spread as exactly this and notes it is also called an intracommodity spread. It is functionally identical to the futures calendar spread: the trader is long one month and short another of the same contract.",
+    "intuition": "Same commodity, different months: you trade the shape of one market's own curve rather than its level.",
+    "mechanics": "Buy one delivery month and simultaneously sell another delivery month of the same futures contract. The position isolates the calendar-spread component of the term structure — carrying charges, storage economics, and seasonal supply — and is quoted and margined as a spread, often at reduced margin versus outrights.",
+    "formula": "Spread price = F(T1) - F(T2) for delivery months T1 != T2 of the same contract.",
+    "relationships": [
+      "Futures calendar spread",
+      "Intercommodity spread",
+      "Term structure",
+      "Cost of carry",
+      "Contango",
+      "Backwardation"
+    ],
+    "failure_modes": "The two months can decouple sharply around delivery events — first notice day, position-limit liquidations, or deliverable-supply squeezes can move the near leg violently while the deferred leg barely reacts. Low liquidity in back months raises execution risk on the spread.",
+    "misconceptions": "Because both legs are the same commodity, traders assume the position is nearly riskless; in reality old-crop/new-crop and front-month squeezes produce some of the largest moves in futures markets. 'Intracommodity' and 'calendar' spreads are the same structure, not distinct strategies.",
+    "example": "Buying July wheat and selling December wheat is an intracommodity spread: the position profits if July gains relative to December, e.g. when old-crop supplies tighten into summer.",
+    "citations": [
+      {
+        "source": "CFTC Futures Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Interdelivery Spread ('A spread involving two different months of the same commodity. Also called an intracommodity spread')",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

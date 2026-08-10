@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "futures-and-spreads/crack-spread",
+  "canonical_sha256": "1cdb0402269b0152eb8271c3a345c50824e76204ddd113dce58ceb3206f6b6f7",
+  "source_path": "concepts/futures-and-spreads.json",
+  "concept": {
+    "id": "futures-and-spreads/crack-spread",
+    "name": "Crack spread",
+    "aliases": [
+      "3-2-1 crack spread",
+      "refining margin spread"
+    ],
+    "domain": "Futures and spreads",
+    "definition": "In energy futures, the simultaneous purchase of crude oil futures and sale of petroleum product futures (or the reverse) to establish a refining margin; also the calculated theoretical market value of the refined products obtainable from a barrel of crude after it is 'cracked'. Common variants are the gasoline crack, heating oil crack, and the 3-2-1 crack spread of three crude contracts against two gasoline and one heating oil contract.",
+    "intuition": "It is the refinery's gross margin traded as an instrument: what you can sell the gasoline and diesel for, minus what the crude cost you.",
+    "mechanics": "The 3-2-1 ratio approximates the typical product yield from refining three barrels of crude into roughly two barrels of gasoline and one barrel of heating oil. Refiners hedge by buying crude and selling products (locking the margin); traders express margin views with the reverse. Prices must be converted to common units ($/barrel) before differencing.",
+    "formula": "3-2-1 crack spread ($/bbl) = (2 * P_gasoline + 1 * P_heating_oil) / 3 - P_crude, with gasoline and heating oil prices converted from $/gallon to $/barrel (x 42).",
+    "relationships": [
+      "Intercommodity spread",
+      "Crush spread",
+      "Spark spread",
+      "Basis"
+    ],
+    "failure_modes": "The 3-2-1 ratio is a stylized yield; actual refinery output varies by crude slate and configuration, so the traded spread does not perfectly hedge any single plant. Product and crude delivery months, grades, and locations differ, leaving timing and basis risk on each leg.",
+    "misconceptions": "The crack spread is not a forecast of crude prices — it measures the relative value of products to crude. A widening crack does not necessarily mean crude will fall or products will rise in absolute terms; both legs can move in the same direction.",
+    "example": "With crude at $80/bbl, gasoline at $2.50/gal ($105/bbl), and heating oil at $2.60/gal ($109.20/bbl), the 3-2-1 crack is (2*105 + 109.20)/3 - 80 = $26.40/bbl of gross refining margin.",
+    "citations": [
+      {
+        "source": "CFTC Futures Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Crack Spread",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

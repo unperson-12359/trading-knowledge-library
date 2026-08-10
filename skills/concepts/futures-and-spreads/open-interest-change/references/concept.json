@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "futures-and-spreads/open-interest-change",
+  "canonical_sha256": "a2639152c98d9ffc7ae5811c6fdf5486d911fc2289340c878bb751fbbc720acc",
+  "source_path": "concepts/futures-and-spreads.json",
+  "concept": {
+    "id": "futures-and-spreads/open-interest-change",
+    "name": "Open interest change",
+    "aliases": [
+      "change in open interest",
+      "delta OI"
+    ],
+    "domain": "Futures and spreads",
+    "definition": "The day-over-day (or period-over-period) change in open interest — the total number of futures contracts, long or short, in a delivery month or market that have been entered into and not yet liquidated by an offsetting transaction or fulfilled by delivery. Rising open interest indicates new positions being created; falling open interest indicates positions being closed.",
+    "intuition": "Volume counts how many contracts changed hands; the change in open interest tells you whether hands are entering or leaving the market.",
+    "mechanics": "Computed as OI_t - OI_{t-1} from exchange-published open interest. A trade between two new entrants increases OI by one; between two existing holders closing out, it decreases OI by one; between an entrant and an exiter, OI is unchanged. Analysts combine the sign of the OI change with price direction to infer whether money is flowing into or out of a move.",
+    "formula": "ΔOI = OI_t - OI_{t-1}, where OI = total open contracts (each counted once, either on the long or short side).",
+    "relationships": [
+      "Volume-open-interest analysis",
+      "Commitments of Traders report",
+      "Open interest"
+    ],
+    "failure_modes": "OI changes say nothing about who is trading or their intent — the same increase can be new speculative longs or new commercial shorts. Around contract roll periods, front-month OI mechanically falls while deferred OI rises, so contract-level changes mislead unless aggregated across the curve.",
+    "misconceptions": "Rising open interest does not mean 'more buyers than sellers' — every futures contract has both a buyer and a seller by construction. It also does not measure volume; high volume with flat OI indicates churn (day trading) rather than new positioning.",
+    "example": "Crude oil OI rises from 1.80 million to 1.85 million contracts (+50,000) while price rallies $2: new money is entering long and short, which analysts read as fresh positioning behind the move rather than short covering.",
+    "citations": [
+      {
+        "source": "CFTC Futures Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Open Interest",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
