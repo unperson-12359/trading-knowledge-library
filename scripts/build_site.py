@@ -4,6 +4,7 @@ Stdlib only. Generates:
   docs/index.html              dashboard + domain table + search
   docs/about.html              AI disclosure and project methodology
   docs/playbooks/              research playbook index + detail pages
+  docs/research/               executable research index + result reports
   docs/all.html                A-Z index of every concept
   docs/<slug>/index.html       domain page 1 (25 entries/page)
   docs/<slug>/page-N.html      further domain pages
@@ -21,7 +22,7 @@ import json
 import re
 import shutil
 import sys
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -67,6 +68,10 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 .tag{display:inline-block;background:#edf2f7;border-radius:999px;padding:.12rem .5rem;margin:.1rem;font-family:system-ui;font-size:.75rem}
 .playbook-card{border:1px solid #ddd;border-radius:6px;padding:.8rem 1rem;margin:.8rem 0}
 .playbook-card h2{margin:.1rem 0 .35rem;font-size:1.15rem}
+.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.65rem;margin:1rem 0}
+.metric{border:1px solid #ddd;border-radius:6px;padding:.65rem;background:#fafaf8;font-family:system-ui}
+.metric strong{display:block;font-size:1.15rem}.metric span{font-size:.72rem;color:#666}
+.negative{color:#a61b1b}.positive{color:#176b35}
 .json{white-space:pre-wrap;background:#f4f4f4;padding:.7rem;border-radius:4px;font-family:Consolas,monospace;font-size:.8rem}
 .query-controls{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:.55rem;margin:1rem 0;font-family:system-ui}
 .query-controls input,.query-controls select{width:100%;padding:.5rem;border:1px solid #bbb;border-radius:5px;background:#fff}
@@ -86,6 +91,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
  main{padding:1rem}
  .toc{columns:1}
  .query-controls{grid-template-columns:1fr 1fr}
+ .metric-grid{grid-template-columns:1fr 1fr}
 }
 """
 
@@ -193,7 +199,9 @@ def page(title, body, prefix, slug, domains, extra_head="", description=""):
            + (' class="active"' if slug == "query" else "")
            + f'>Structured query</a></li><li><a href="{prefix}playbooks/"'
            + (' class="active"' if slug == "playbooks" else "")
-           + f'>Research playbooks</a></li>{"".join(links)}</ul></details></nav>')
+           + f'>Research playbooks</a></li><li><a href="{prefix}research/"'
+           + (' class="active"' if slug == "research" else "")
+           + f'>Research results</a></li>{"".join(links)}</ul></details></nav>')
     desc = f'<meta name="description" content="{esc(description)}">' if description else ""
     return (f"<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'>"
             f"<meta name='viewport' content='width=device-width,initial-scale=1'>"
@@ -262,6 +270,118 @@ def render_playbook(playbook, prefix, concept_urls, concept_names):
         f'<h2>Failure modes</h2>{items(playbook["failure_modes"])}'
         f'<h2>Validation plan</h2>{items(playbook["validation_plan"])}'
         f'<h2>Linked concepts</h2><ul>{"".join(concept_links)}</ul>'
+    )
+
+
+def utc_time(milliseconds):
+    return datetime.fromtimestamp(
+        milliseconds / 1000, timezone.utc
+    ).strftime("%Y-%m-%d %H:%M UTC")
+
+
+def metric_value(value, digits=3):
+    return "n/a" if value is None else f"{value:.{digits}f}"
+
+
+def metric_card(label, value, css_class=""):
+    return (
+        f'<div class="metric"><strong class="{css_class}">{esc(value)}</strong>'
+        f'<span>{esc(label)}</span></div>'
+    )
+
+
+def research_report(result):
+    headline = next(item for item in result["scenarios"] if item["headline"])
+    metrics = headline["metrics"]
+    expectancy_class = "positive" if (metrics["net_expectancy_r"] or 0) > 0 else "negative"
+    cards = "".join([
+        metric_card("Trades", str(metrics["trade_count"])),
+        metric_card("Net expectancy", f'{metric_value(metrics["net_expectancy_r"])} R', expectancy_class),
+        metric_card("Win rate", f'{metric_value(metrics["win_rate"] * 100, 1)}%'),
+        metric_card("Maximum drawdown", f'{metric_value(metrics["maximum_drawdown_r"])} R', "negative"),
+    ])
+    scenario_rows = "".join(
+        "<tr>"
+        f'<td>{scenario["slippage_bps"]:.1f} bps{" (headline)" if scenario["headline"] else ""}</td>'
+        f'<td>{scenario["metrics"]["trade_count"]}</td>'
+        f'<td>{metric_value(scenario["metrics"]["gross_expectancy_r"])}</td>'
+        f'<td>{metric_value(scenario["metrics"]["net_expectancy_r"])}</td>'
+        f'<td>{metric_value(scenario["metrics"]["maximum_drawdown_r"])}</td>'
+        f'<td>{metric_value(scenario["metrics"]["holdout"]["net_expectancy_r"])}</td>'
+        "</tr>" for scenario in result["scenarios"]
+    )
+    split_rows = "".join(
+        f'<tr><td>{esc(label)}</td><td>{values["trade_count"]}</td>'
+        f'<td>{metric_value(values["net_expectancy_r"])}</td>'
+        f'<td>{metric_value(values["win_rate"] * 100, 1) + "%" if values["win_rate"] is not None else "n/a"}</td></tr>'
+        for label, values in [
+            ("BTC", metrics["asset_split"]["BTC"]),
+            ("ETH", metrics["asset_split"]["ETH"]),
+            ("Long", metrics["long_short_split"]["long"]),
+            ("Short", metrics["long_short_split"]["short"]),
+            ("Chronological holdout", metrics["holdout"]),
+        ]
+    )
+    segment_rows = "".join(
+        f'<tr><td>{utc_time(segment["start"])}</td><td>{utc_time(segment["end"])}</td>'
+        f'<td>{segment["trade_count"]}</td><td>{metric_value(segment["net_expectancy_r"])}</td>'
+        f'<td>{metric_value(segment["maximum_drawdown_r"])}</td></tr>'
+        for segment in metrics["seven_day_segments"]
+    )
+    if metrics["net_expectancy_r"] > 0:
+        interpretation = (
+            "The modeled net expectancy is positive in the headline scenario. "
+            "This remains preliminary and does not establish future profitability."
+        )
+    else:
+        interpretation = (
+            "The modeled net expectancy is negative in the headline scenario and in this "
+            "run's other slippage scenarios. This frozen configuration did not show "
+            "profitability in the sampled window."
+        )
+    warnings = "".join(f"<li>{esc(warning)}</li>" for warning in result["warnings"])
+    run_id = result["run_id"]
+    dataset_id = result["dataset"]["id"]
+    return (
+        f'<div class="crumbs"><a href="../index.html">Home</a> / '
+        f'<a href="./">Research results</a> / {esc(run_id)}</div>'
+        '<h1>ATR Volatility Breakout: first executable study</h1>'
+        f'<p class="warning"><strong>{esc(result["status"].title())} limited-window research.</strong> '
+        'Not validated, not financial advice, and not evidence of profitability.</p>'
+        f'<p class="meta">Run <code>{esc(run_id)}</code><br>'
+        f'Generated from immutable inputs on {esc(result["created_at"])}.</p>'
+        f'<div class="metric-grid">{cards}</div>'
+        '<h2>Plain-language result</h2>'
+        f'<p>{esc(interpretation)}</p>'
+        '<p>The rules were frozen before the market snapshot and canonical run were produced. '
+        'No parameter search was performed by this engine. Results use 15-minute bars, so '
+        'intrabar order sequence and historical order-book impact cannot be reconstructed.</p>'
+        '<h2>Dataset and run contract</h2>'
+        '<table><tr><th>Field</th><th>Value</th></tr>'
+        '<tr><td>Market data</td><td>Hyperliquid mainnet BTC and ETH perpetuals</td></tr>'
+        f'<tr><td>Window</td><td>{utc_time(result["dataset"]["effective_start"])} through '
+        f'{utc_time(result["dataset"]["effective_end"])}</td></tr>'
+        f'<tr><td>Dataset hash</td><td><code>{esc(result["dataset"]["sha256"])}</code></td></tr>'
+        f'<tr><td>Spec hash</td><td><code>{esc(result["spec"]["sha256"])}</code></td></tr>'
+        f'<tr><td>Headline costs</td><td>4.5 bps taker fee per side + '
+        f'{result["headline_scenario"]:.1f} bps slippage per side + historical funding</td></tr></table>'
+        '<h2>Cost sensitivity</h2>'
+        '<table><tr><th>Slippage / side</th><th>Trades</th><th>Gross exp. R</th>'
+        '<th>Net exp. R</th><th>Max DD R</th><th>Holdout exp. R</th></tr>'
+        f'{scenario_rows}</table>'
+        '<h2>Headline breakdown</h2>'
+        '<table><tr><th>Slice</th><th>Trades</th><th>Net exp. R</th><th>Win rate</th></tr>'
+        f'{split_rows}</table>'
+        '<h2>Seven-day stability segments</h2>'
+        '<table><tr><th>Start</th><th>End</th><th>Trades</th><th>Net exp. R</th>'
+        f'<th>Max DD R</th></tr>{segment_rows}</table>'
+        '<h2>Machine-readable evidence</h2><ul>'
+        f'<li><a href="../api/v1/results/{esc(run_id)}/result.json">Complete result JSON</a></li>'
+        f'<li><a href="../api/v1/results/{esc(run_id)}/trades.json">Headline trade log JSON</a></li>'
+        '<li><a href="../api/v1/research-specs.json">Frozen executable specification JSON</a></li>'
+        f'<li><a href="../api/v1/datasets/{esc(dataset_id)}/dataset-manifest.json">'
+        'Dataset manifest JSON</a></li></ul>'
+        f'<h2>Required caveats</h2><ul>{warnings}</ul>'
     )
 
 
@@ -412,6 +532,7 @@ def main():
         "<a href='about.html'>About &amp; Methodology</a> disclosure before using the material.</p>"
         "<p><a href='query.html'><strong>Open the structured query</strong></a> &middot; "
         "<a href='playbooks/'>Browse research playbooks</a> &middot; "
+        "<a href='research/'>View executable research</a> &middot; "
         "<a href='api/v1/manifest.json'>API manifest</a></p>"
         "<h2>Domains</h2>"
         "<table><tr><th>Domain</th><th>Concepts</th></tr>"
@@ -437,6 +558,9 @@ def main():
         "generated from that data. Entries emphasize mechanics, failure modes, misconceptions, "
         "worked examples, relationships, and direct citations. The structured query and static "
         "JSON API are dependency-free generated views of the same canonical material.</p>"
+        "<p>Executable studies keep frozen research specifications, immutable hashed datasets, "
+        "deterministic trade logs, and reported metrics as separate JSON records. Human-readable "
+        "research pages are generated from those same records and do not replace them.</p>"
         "<h2>Source policy</h2>"
         "<p>Direct regulatory, exchange, protocol, technical, and canonical research sources "
         "are preferred. Secondary sources are used when direct material is unavailable. A "
@@ -523,6 +647,49 @@ def main():
         encoding="utf-8"
     )
     written.add("playbooks/index.html")
+
+    # ---- executable research reports ----
+    research_dir = DOCS / "research"
+    research_dir.mkdir()
+    research_cards = []
+    for result in research_results:
+        headline = next(item for item in result["scenarios"] if item["headline"])
+        metrics = headline["metrics"]
+        detail_name = f'{result["run_id"]}.html'
+        research_cards.append(
+            f'<article class="playbook-card"><h2><a href="{esc(detail_name)}">'
+            'ATR Volatility Breakout: first executable study</a></h2>'
+            f'<p>{metrics["trade_count"]} trades; headline net expectancy '
+            f'{metric_value(metrics["net_expectancy_r"])} R after modeled fees, slippage, and funding.</p>'
+            f'<p class="meta">{esc(result["status"])} &middot; immutable dataset &middot; '
+            'deterministic trade log</p></article>'
+        )
+        (research_dir / detail_name).write_text(
+            page(
+                "ATR Volatility Breakout research result",
+                research_report(result), "../", "research", domains,
+                description="Preliminary executable BTC/ETH perpetual-futures research with complete JSON evidence.",
+            ),
+            encoding="utf-8",
+        )
+        written.add(f"research/{detail_name}")
+    research_body = (
+        '<div class="crumbs"><a href="../index.html">Home</a> / Research results</div>'
+        '<h1>Executable Research Results</h1>'
+        '<p class="warning">These are preliminary limited-window studies, not validated strategies, '
+        'trade recommendations, or evidence of future profitability.</p>'
+        '<p>Each report is generated from a frozen specification, an immutable hashed dataset, '
+        'a deterministic result object, and a machine-readable trade log.</p>'
+        + "".join(research_cards)
+    )
+    (research_dir / "index.html").write_text(
+        page(
+            "Executable research results", research_body, "../", "research", domains,
+            description="Reproducible preliminary trading research with machine-readable evidence.",
+        ),
+        encoding="utf-8",
+    )
+    written.add("research/index.html")
 
     # ---- search index + sitemap ----
     (DOCS / "search-index.json").write_text(

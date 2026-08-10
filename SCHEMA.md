@@ -64,6 +64,12 @@ manifests, trade logs, and research results each have their own JSON Schema so
 AI consumers can distinguish an idea, a runnable specification, its evidence,
 and its reported output.
 
+`research/results/<run-id>/result.json` contains the frozen spec and dataset
+hashes, classification, cost scenarios, aggregate and sliced metrics, data
+quality, and warnings. Its sibling `trades.json` contains the headline-cost
+scenario's event-level trades and cost decomposition. Generated HTML reports
+are projections of these JSON records, never the canonical evidence.
+
 ## Rules
 
 - Every entry must contain the full explanatory fields and at least one valid

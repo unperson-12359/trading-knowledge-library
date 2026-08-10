@@ -45,6 +45,7 @@ regimes/taxonomy.json    controlled market-state vocabulary
 playbooks/                five untested research-hypothesis templates
 research/specs/           frozen machine-executable research contracts
 research/datasets/        immutable normalized market-data snapshots
+research/results/         deterministic metrics and headline trade logs
 schemas/                  machine-readable structured-data schemas
 scripts/status.py       validate the complete catalog
 scripts/export_master.py generate exports/master_v2.txt
@@ -80,6 +81,9 @@ Versioned JSON endpoints live in `docs/api/v1/`:
   conceptual playbooks.
 - `dataset-manifests.json` and `datasets/<dataset-id>/` expose hashed,
   AI-readable market-data snapshots used by published research.
+- `research-results.json` and `results/<run-id>/` expose deterministic study
+  metrics and the headline-scenario trade log. The human-readable reports in
+  `docs/research/` are generated from these same JSON records.
 
 Unambiguous relationship names and aliases become internal links. Ambiguous or
 unresolved terms remain visible as plain text and are reported in the manifest.
@@ -93,4 +97,5 @@ python scripts/status.py
 python scripts/export_master.py
 python scripts/build_site.py
 python scripts/research.py fetch
+python scripts/research.py run
 ```
