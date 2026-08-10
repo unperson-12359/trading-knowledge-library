@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unperson-12359.github.io/trading-knowledge-library/schemas/citation-audit.schema.json",
+  "title": "Citation accessibility audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "generated_at", "policy", "summary", "citations"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": 1},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "policy": {"type": "object"},
+    "summary": {"type": "object"},
+    "citations": {"type": "array", "items": {"type": "object", "required": ["url", "source", "concept_ids", "citation_count", "authority_tier", "access_status"], "properties": {"url": {"type": "string", "format": "uri"}, "source": {"type": "string"}, "concept_ids": {"type": "array", "items": {"type": "string"}}, "citation_count": {"type": "integer", "minimum": 1}, "authority_tier": {"enum": ["primary", "canonical-technical", "secondary"]}, "access_status": {"enum": ["reachable", "access-blocked", "rate-limited", "transient-failure", "broken"]}}}}
+  }
+}

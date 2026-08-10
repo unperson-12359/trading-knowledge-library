@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unperson-12359.github.io/trading-knowledge-library/schemas/source-policy.schema.json",
+  "title": "Citation source policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "tiers", "host_tiers", "default_tier"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": 1},
+    "tiers": {"type": "array", "minItems": 3},
+    "host_tiers": {"type": "object", "additionalProperties": {"enum": ["primary", "canonical-technical", "secondary"]}},
+    "default_tier": {"const": "secondary"}
+  }
+}

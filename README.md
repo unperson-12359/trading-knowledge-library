@@ -65,6 +65,8 @@ scripts/build_site.py   generate the GitHub Pages site in docs/
 exports/                 generated text output
 docs/                    generated website
 sources/                 read-only import reference
+audits/                  committed machine-readable evidence-health ledger
+relationships/           typed external relationship vocabulary
 ```
 
 The generated regime API is available at `docs/api/v1/regimes.json` (and at
@@ -102,6 +104,9 @@ Versioned JSON endpoints live in `docs/api/v1/`:
 - `skills.json`, `concept-aliases.json`, and `skill-architecture.json` expose
   the installable skill catalog, compatibility mappings, and design decision.
   Individual profiles live under `skills/<skill-name>.json`.
+- `citation-audit.json`, `source-policy.json`, and `relationship-vocabulary.json`
+  expose citation accessibility, source-quality policy, and typed external
+  relationship terms for automated consumers.
 
 The former 2-period through 64-period simple-return concepts resolve to one
 `N-period simple return` concept with an explicit `periods` parameter. Alias
@@ -114,8 +119,9 @@ place to copyable usage, `SKILL.md`, `skill.json`, canonical `concept.json`, the
 packaged reference, and `agents/openai.yaml`. GitHub remains the canonical
 package source.
 
-Unambiguous relationship names and aliases become internal links. Ambiguous or
-unresolved terms remain visible as plain text and are reported in the manifest.
+Unambiguous relationship names and aliases become internal links. Other useful
+terms remain visible and are emitted as typed `external-term` references through
+the relationship vocabulary; they are not silently presented as missing links.
 
 ## Workflow
 
@@ -127,6 +133,7 @@ python scripts/build_skills.py build
 python scripts/build_skills.py validate
 python scripts/export_master.py
 python scripts/build_site.py
+python scripts/audit_citations.py
 python scripts/research.py fetch
 python scripts/research.py run
 ```

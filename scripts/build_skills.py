@@ -281,7 +281,7 @@ def write_package(profile, concept, root=ROOT):
         "canonical_sha256": profile["canonical"]["sha256"],
         "source_path": profile["canonical"]["source_path"],
         "concept": {key: value for key, value in concept.items()
-                    if key not in {"source_hint", "master_index"}},
+                    if key != "master_index"},
     }
     write_json(package / "references" / "concept.json", reference)
 

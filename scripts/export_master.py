@@ -62,8 +62,6 @@ def main():
                 for c in e["citations"]:
                     f.write(f"Citation: {c.get('source', '')} — {c.get('url', '')}"
                             f" ({c.get('section', '')})\n")
-            else:
-                f.write(f"Source authority: {e.get('source_hint', '')}\n")
         f.write("\n" + "=" * 60 + "\nEND OF MASTER\n")
 
     print(f"exported {len(entries)} entries to {out.name}")

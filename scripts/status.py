@@ -12,19 +12,22 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 
-from build_skills import validate_catalog
+try:
+    from build_skills import validate_catalog
+except ModuleNotFoundError:  # allows unit tests to import scripts.status as a package
+    from scripts.build_skills import validate_catalog
 
 ROOT = Path(__file__).resolve().parent.parent
 EXPECTED_CONCEPT_COUNT = 1438
 PLACEHOLDER = "A trading concept within"
 REQUIRED_TEXT = (
     "id", "name", "domain", "definition", "intuition", "mechanics",
-    "failure_modes", "misconceptions", "example", "source_hint",
+    "failure_modes", "misconceptions", "example",
 )
 REQUIRED_LISTS = ("aliases", "relationships", "citations")
 REQUIRED_CITATION = ("source", "url", "section", "accessed")
 REMOVED_PROVENANCE_FIELDS = {
-    "status", "reviewed_by", "review_date", "review_note",
+    "status", "reviewed_by", "review_date", "review_note", "source_hint",
 }
 EXPECTED_REGIME_DIMENSIONS = {
     "trend": {"uptrend", "downtrend", "range", "transition"},
@@ -152,6 +155,82 @@ def main():
             f"master_index must cover 1..{EXPECTED_CONCEPT_COUNT} exactly once"
         )
 
+    source_policy_path = ROOT / "sources" / "source-policy.json"
+    source_policy = None
+    if not source_policy_path.exists():
+        failures.append("sources/source-policy.json is required")
+    else:
+        try:
+            source_policy = json.loads(source_policy_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"sources/source-policy.json: invalid JSON: {exc}")
+        else:
+            allowed_tiers = {"primary", "canonical-technical", "secondary"}
+            if (source_policy.get("schema_version") != 1
+                    or source_policy.get("default_tier") not in allowed_tiers
+                    or not isinstance(source_policy.get("host_tiers"), dict)
+                    or not set(source_policy["host_tiers"].values()).issubset(allowed_tiers)):
+                failures.append("sources/source-policy.json has an invalid tier policy")
+
+    relationship_vocab_path = ROOT / "relationships" / "vocabulary.json"
+    if not relationship_vocab_path.exists():
+        failures.append("relationships/vocabulary.json is required")
+    else:
+        try:
+            relationship_vocab = json.loads(relationship_vocab_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"relationships/vocabulary.json: invalid JSON: {exc}")
+        else:
+            terms = relationship_vocab.get("terms")
+            if relationship_vocab.get("schema_version") != 1 or not isinstance(terms, list):
+                failures.append("relationships/vocabulary.json has an invalid structure")
+            else:
+                labels = [item.get("label") for item in terms if isinstance(item, dict)]
+                external_ids = [item.get("id") for item in terms if isinstance(item, dict)]
+                if (len(labels) != len(terms) or len(set(str(label).casefold() for label in labels)) != len(labels)
+                        or len(set(external_ids)) != len(external_ids)
+                        or any(not isinstance(item, dict) or item.get("kind") != "external-term"
+                               or not isinstance(item.get("id"), str) or not item["id"].startswith("external/")
+                               for item in terms)):
+                    failures.append("relationships/vocabulary.json has invalid external terms")
+                candidates = {}
+                for entry in entries:
+                    for term in [entry["name"], *entry.get("aliases", [])]:
+                        candidates.setdefault(term.casefold(), set()).add(entry["id"])
+                internal_terms = {term for term, candidate_ids in candidates.items() if len(candidate_ids) == 1}
+                missing_external = sorted({
+                    relationship for entry in entries for relationship in entry["relationships"]
+                    if relationship.casefold() not in internal_terms
+                    and relationship.casefold() not in {str(label).casefold() for label in labels}
+                })
+                if missing_external:
+                    failures.append("relationship vocabulary missing terms: " + ", ".join(missing_external))
+
+    citation_audit_path = ROOT / "audits" / "citation-audit.json"
+    if not citation_audit_path.exists():
+        failures.append("audits/citation-audit.json is required")
+    else:
+        try:
+            citation_audit = json.loads(citation_audit_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"audits/citation-audit.json: invalid JSON: {exc}")
+        else:
+            audited = citation_audit.get("citations")
+            current_urls = {
+                citation["url"] for entry in entries for citation in entry.get("citations", [])
+                if isinstance(citation, dict) and isinstance(citation.get("url"), str)
+            }
+            if citation_audit.get("schema_version") != 1 or not isinstance(audited, list):
+                failures.append("audits/citation-audit.json has an invalid structure")
+            else:
+                audited_urls = {item.get("url") for item in audited if isinstance(item, dict)}
+                broken = [item.get("url") for item in audited if isinstance(item, dict)
+                          and item.get("access_status") == "broken"]
+                if audited_urls != current_urls:
+                    failures.append("audits/citation-audit.json does not match canonical citation URLs")
+                if broken:
+                    failures.append("audits/citation-audit.json contains broken citations: " + ", ".join(broken))
+
     valid_regime_tags = set()
     taxonomy_path = ROOT / "regimes" / "taxonomy.json"
     if not taxonomy_path.exists():
@@ -218,6 +297,21 @@ def main():
                 ]
                 if shallow:
                     failures.append("core-perps concepts need at least two citations: " + ", ".join(shallow))
+                if source_policy:
+                    authoritative = []
+                    host_tiers = source_policy["host_tiers"]
+                    for concept_id in concept_ids:
+                        tiers = {
+                            host_tiers.get(urlparse(citation["url"]).netloc.casefold(), source_policy["default_tier"])
+                            for citation in by_id[concept_id]["citations"]
+                        }
+                        if tiers == {"secondary"}:
+                            authoritative.append(concept_id)
+                    if authoritative:
+                        failures.append(
+                            "core-perps concepts need a primary or canonical-technical citation: "
+                            + ", ".join(authoritative)
+                        )
 
                 annotations = collection.get("annotations")
                 if not isinstance(annotations, dict):
@@ -325,7 +419,8 @@ def main():
         "research-result.schema.json", "concept-skill.schema.json",
         "concept-aliases.schema.json", "skill-alias.schema.json",
         "skill-alias-catalog.schema.json", "skill-manifest.schema.json",
-        "skill-architecture.schema.json",
+        "skill-architecture.schema.json", "source-policy.schema.json",
+        "citation-audit.schema.json", "relationship-vocabulary.schema.json",
     }
     schema_paths = {path.name: path for path in (ROOT / "schemas").glob("*.json")}
     missing_schemas = sorted(required_schemas - set(schema_paths))
