@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/ordinary-least-squares",
+  "canonical_sha256": "380c05c185bc58f21fc9a54c98fc5ea21144e764e536c82071685057478aad46",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/ordinary-least-squares",
+    "name": "Ordinary least squares",
+    "aliases": [
+      "OLS",
+      "least squares"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The estimation method that chooses regression coefficients to minimize the sum of squared residuals between observed and fitted values, yielding the closed-form estimator beta_hat = (X'X)^{-1} X'y for the linear model. Under the Gauss-Markov assumptions it is the best linear unbiased estimator.",
+    "intuition": "Draw the line (or hyperplane) that makes the total of the squared vertical gaps between data and fit as small as possible; squaring punishes big misses and keeps the algebra tractable.",
+    "mechanics": "Minimizing ||y - X beta||^2 gives the normal equations X'X beta = X'y, solved as beta_hat = (X'X)^{-1} X'y when X has full column rank. Inference uses the residual variance s^2 = e'e/(n-k) and Var(beta_hat) = s^2 (X'X)^{-1}, with exact t- and F-tests under normal errors.",
+    "formula": "beta_hat = argmin_b sum_i (y_i - x_i' b)^2 = (X'X)^{-1} X'y, where X is the n x k design matrix and y the response vector.",
+    "relationships": [
+      "Linear regression",
+      "Multiple regression",
+      "Residual",
+      "R-squared",
+      "Multicollinearity",
+      "Heteroskedasticity"
+    ],
+    "failure_modes": "OLS is highly sensitive to outliers and high-leverage points, breaks down when X'X is near-singular from multicollinearity, and its standard errors are invalid under heteroskedasticity or autocorrelated errors. On unit-root data it produces spurious regressions.",
+    "misconceptions": "That minimizing squared error makes OLS optimal in general: its BLUE property requires exogeneity, linearity, and spherical errors, and outside those it can be dominated by GLS, ridge, or robust estimators.",
+    "example": "Regressing a stock's daily returns on the market's returns by OLS gives the slope minimizing squared return gaps, the standard CAPM beta estimate.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods, Section 4.1.4.1 Linear Least Squares Regression",
+        "url": "https://www.itl.nist.gov/div898/handbook/pmd/section1/pmd141.htm",
+        "section": "4.1.4.1",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

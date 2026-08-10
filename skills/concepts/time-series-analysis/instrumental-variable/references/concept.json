@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/instrumental-variable",
+  "canonical_sha256": "9dcdeb462a189e530f20f99b2ea69eb3371c8030935ab273bd26342ce3196ea0",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/instrumental-variable",
+    "name": "Instrumental variable",
+    "aliases": [
+      "IV",
+      "instrument",
+      "two-stage least squares (2SLS)"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A variable used to identify a causal effect when the regressor of interest is endogenous: a valid instrument is correlated with the endogenous regressor (relevance) and affects the outcome only through that regressor (exclusion restriction), isolating an exogenous source of variation.",
+    "intuition": "Find a lever that shifts the troublesome variable for reasons unrelated to everything else in the error term, then measure how the outcome responds to those lever-induced shifts only.",
+    "mechanics": "In two-stage least squares the endogenous x is regressed on the instrument z (first stage) and y on the fitted x (second stage); the just-identified IV estimand is Cov(y,z)/Cov(x,z), interpretable under monotonicity as a local average treatment effect (Angrist, Imbens and Rubin 1996). First-stage F-statistics check relevance; overidentification tests partially probe exclusion.",
+    "formula": "beta_IV = (Z'X)^{-1} Z'y; in the single-instrument, single-regressor case, beta_IV = Cov(z, y) / Cov(z, x).",
+    "relationships": [
+      "Endogeneity",
+      "Ordinary least squares",
+      "Multiple regression"
+    ],
+    "failure_modes": "Weak instruments (low first-stage F) leave the estimator biased toward OLS with non-normal finite-sample distributions, and the exclusion restriction is untestable in the just-identified case, so invalid instruments deliver consistent estimates of the wrong quantity.",
+    "misconceptions": "That any variable correlated with x works as an instrument: without a defensible exclusion restriction the estimate is meaningless, and the estimand is local (LATE), not a universal average effect.",
+    "example": "Angrist used the Vietnam-era draft lottery as an instrument for military service: lottery numbers shifted service probability essentially randomly, identifying the causal effect of service on later earnings.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1080/01621459.1996.10476902",
+        "url": "https://api.crossref.org/works/10.1080/01621459.1996.10476902",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/lasso-regression",
+  "canonical_sha256": "39d9cf7735c35136ff226e84cecb8948cb711573fdd831b47db8345b3dfada8b",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/lasso-regression",
+    "name": "Lasso regression",
+    "aliases": [
+      "lasso",
+      "L1 regularization"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "Least absolute shrinkage and selection operator: a regularized regression that penalizes the sum of absolute coefficient values, which both shrinks coefficients and sets some exactly to zero, performing continuous variable selection. Introduced by Tibshirani (1996).",
+    "intuition": "The L1 penalty has corners at zero, so as the penalty tightens the least useful coefficients are pushed exactly to zero and drop out: shrinkage and feature selection in one step.",
+    "mechanics": "beta_hat minimizes (1/2n) ||y - X beta||^2 + lambda ||beta||_1; there is no closed form, so the path is computed by coordinate descent or LARS with lambda chosen by cross-validation on standardized predictors. The selected model is often refit by OLS (relaxed lasso) to reduce shrinkage bias on the retained coefficients.",
+    "formula": "beta_hat = argmin_b { (1/2n) sum_i (y_i - x_i' b)^2 + lambda sum_j |b_j| }.",
+    "relationships": [
+      "Ridge regression",
+      "Elastic net",
+      "Ordinary least squares",
+      "Overfitting"
+    ],
+    "failure_modes": "With highly correlated predictors the lasso selects arbitrarily among them, making the selected set unstable across samples, and when p > n it can select at most n variables. Its aggressive selection can drop weak but real predictors.",
+    "misconceptions": "That lasso selection leaves usual inference intact: p-values computed after data-driven selection are invalid without selective-inference corrections.",
+    "example": "Screening 200 candidate anomaly signals for return prediction, the lasso path zeroes out all but about 15 signals as lambda decreases, isolating a sparse predictor set.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1111/j.2517-6161.1996.tb02080.x",
+        "url": "https://api.crossref.org/works/10.1111/j.2517-6161.1996.tb02080.x",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

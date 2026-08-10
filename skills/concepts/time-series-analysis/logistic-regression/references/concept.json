@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/logistic-regression",
+  "canonical_sha256": "ebe507c1e0dfa250849aa277ba634ca1c1add94f55c8c1a0e160baf1815e68d6",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/logistic-regression",
+    "name": "Logistic regression",
+    "aliases": [
+      "logit model",
+      "binary logistic model"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A regression model for a binary outcome that models the log-odds of the event as a linear function of the predictors, so predicted probabilities stay bounded between 0 and 1. Developed in its modern form by Cox (1958) and estimated by maximum likelihood rather than least squares.",
+    "intuition": "Instead of predicting the 0/1 outcome directly, predict the odds of the event on a log scale, where a straight line makes sense, then squash the result back to a probability with the logistic curve.",
+    "mechanics": "logit P(y=1|x) = beta_0 + x'beta, fitted by maximizing the Bernoulli log-likelihood; exponentiated coefficients give odds ratios per unit change in a predictor. Inference uses Wald, likelihood-ratio, or score tests, and fit is assessed with deviance and pseudo-R-squared measures.",
+    "formula": "P(y=1|x) = 1 / (1 + exp(-(beta_0 + beta_1 x_1 + ... + beta_k x_k))); the log-odds log(p/(1-p)) = beta_0 + x'beta.",
+    "relationships": [
+      "Linear regression",
+      "Maximum likelihood estimation",
+      "Likelihood function",
+      "R-squared"
+    ],
+    "failure_modes": "Complete or quasi-complete separation (a predictor perfectly splits the outcomes) makes the MLEs diverge, and rare events bias small-sample estimates. The linear-in-log-odds form misses interactions and nonlinearities unless they are added explicitly.",
+    "misconceptions": "That the coefficients are marginal effects on probability: they are effects on log-odds, and the probability effect varies with x, equal to beta_j p(1-p).",
+    "example": "Modeling whether a stock beats the index next month (1/0) from momentum and valuation z-scores: exp(beta) for momentum is the multiplicative change in the odds of outperformance per z-score unit.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1111/j.2517-6161.1958.tb00292.x",
+        "url": "https://api.crossref.org/works/10.1111/j.2517-6161.1958.tb00292.x",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

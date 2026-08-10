@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/elastic-net",
+  "canonical_sha256": "b516758812578e34f82c5512949d85011a55d61f0b334253d36f40391a2d3c73",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/elastic-net",
+    "name": "Elastic net",
+    "aliases": [
+      "elastic net regularization",
+      "L1/L2 penalty"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A regularized regression combining the L1 (lasso) and L2 (ridge) penalties, retaining the lasso's variable selection while adding a grouping effect that keeps strongly correlated predictors in or out of the model together. Introduced by Zou and Hastie (2005).",
+    "intuition": "Pure lasso tends to pick one variable out of a correlated cluster and drop the rest; mixing in ridge penalty makes the whole cluster share the coefficient, which is stabler when predictors travel in packs.",
+    "mechanics": "beta_hat minimizes (1/2n) ||y - X beta||^2 + lambda [alpha ||beta||_1 + (1-alpha) ||beta||^2 / 2], with alpha mixing lasso (alpha=1) and ridge (alpha=0); both hyperparameters are chosen by cross-validation and the fit is computed by coordinate descent. It is especially useful when p >> n, where lasso saturates at n selected variables.",
+    "formula": "beta_hat = argmin_b { (1/2n) ||y - Xb||^2 + lambda ( alpha ||b||_1 + (1 - alpha) ||b||^2 / 2 ) }.",
+    "relationships": [
+      "Lasso regression",
+      "Ridge regression",
+      "Multicollinearity",
+      "Overfitting"
+    ],
+    "failure_modes": "Two tuning parameters make selection costlier and more prone to validation overfitting, and as with lasso, naive post-selection inference is invalid.",
+    "misconceptions": "That elastic net always dominates lasso: with truly sparse, weakly correlated predictors plain lasso is simpler and comparably good; elastic net's advantage concentrates in grouped, collinear designs.",
+    "example": "Selecting among hundreds of correlated technical indicators, elastic net keeps whole families of similar momentum variants together instead of arbitrarily discarding all but one.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1111/j.1467-9868.2005.00503.x",
+        "url": "https://api.crossref.org/works/10.1111/j.1467-9868.2005.00503.x",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

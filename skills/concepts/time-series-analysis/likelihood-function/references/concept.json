@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/likelihood-function",
+  "canonical_sha256": "b90479c74ef8dd5bb18000235e5cbbfcbba31c9ad871f1c01587730684d35fa5",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/likelihood-function",
+    "name": "Likelihood function",
+    "aliases": [
+      "likelihood",
+      "log-likelihood"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The joint probability (density) of the observed data expressed as a function of the model parameters with the data held fixed, L(theta) = f(y_1,...,y_n; theta). It measures the relative plausibility of parameter values and is the object maximized in maximum likelihood estimation, introduced by Fisher (1922).",
+    "intuition": "The same formula as the probability of the data, read backwards: instead of asking what data these parameters might produce, ask how probable this dataset is under each candidate parameter.",
+    "mechanics": "For i.i.d. data L(theta) = prod f(y_i; theta), and the log-likelihood l(theta) = sum log f(y_i; theta) is used for numerical stability. The score (gradient of l) and the Fisher information (expected negative curvature) drive estimation and inference, and likelihood ratios compare nested models.",
+    "formula": "L(theta) = prod_{i=1}^n f(y_i; theta); l(theta) = sum_i log f(y_i; theta); the likelihood ratio for two values is L(theta_1)/L(theta_2).",
+    "relationships": [
+      "Maximum likelihood estimation",
+      "Bayesian inference",
+      "Posterior distribution",
+      "Logistic regression"
+    ],
+    "failure_modes": "The likelihood is only as meaningful as the assumed data-generating density; misspecification yields confident but wrong inference. Flat or ridged likelihoods indicate weak identification, and the likelihood alone carries no prior weighting.",
+    "misconceptions": "That the likelihood is a probability distribution over parameters: it is not normalized in theta and cannot be integrated as a probability without a prior.",
+    "example": "For ten independent Bernoulli trials with 7 successes, L(p) = p^7 (1-p)^3 is maximized at p = 0.7, so values near 0.7 are more likely explanations of the data than p = 0.5.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1098/rsta.1922.0009",
+        "url": "https://api.crossref.org/works/10.1098/rsta.1922.0009",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

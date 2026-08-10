@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/residual",
+  "canonical_sha256": "20c4978dcbb5153d3d0360f52b30dc5de870c8fbd196499a3a9a270f523aee9a",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/residual",
+    "name": "Residual",
+    "aliases": [
+      "regression residual",
+      "fitted error"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The difference between an observed response and the value fitted by a model, e_i = y_i - f(x_i; beta_hat). Residuals are the observable proxies for the unobservable error terms and the primary diagnostic for model adequacy.",
+    "intuition": "The leftover after the model has said its piece: if the model captured the structure, the leftovers should look like pure noise with nothing left to exploit.",
+    "mechanics": "Residuals are computed from the fitted model and examined graphically (against fitted values, regressors, and time order) for nonlinearity, non-constant variance, drift, autocorrelation, and non-normality; formal tests such as Breusch-Pagan or Ljung-Box complement the plots. Standardized and studentized versions flag outliers.",
+    "formula": "e_i = y_i - f(x_i; beta_hat); in OLS with an intercept the residuals satisfy sum e_i = 0 and X'e = 0.",
+    "relationships": [
+      "Ordinary least squares",
+      "Linear regression",
+      "Heteroskedasticity",
+      "R-squared",
+      "White noise"
+    ],
+    "failure_modes": "Structured residuals signal misspecification, but pattern-free residuals do not prove the model is right: they cannot reveal omitted variables uncorrelated with the included ones. In time series, ignored residual autocorrelation invalidates standard errors.",
+    "misconceptions": "That residuals are the same as the true errors: residuals are estimates constrained by the fit (they sum to zero and are mutually correlated), so their distribution only approximates that of the errors.",
+    "example": "After fitting an AR(1) to returns, the Ljung-Box test on squared residuals still shows correlation, meaning the variance structure remains unmodeled and motivating a GARCH extension.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods, Section 4.4.4 How can I tell if a model fits my data?",
+        "url": "https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd44.htm",
+        "section": "4.4.4",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

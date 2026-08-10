@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/posterior-distribution",
+  "canonical_sha256": "c01de3eec379d1bbffd20e8054249cc82fbe3f02d2dd99c1503340eb4a3569d2",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/posterior-distribution",
+    "name": "Posterior distribution",
+    "aliases": [
+      "posterior",
+      "posterior density"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The probability distribution of unknown parameters after conditioning on the observed data, obtained by Bayes's theorem as the normalized product of the likelihood and the prior. It is the central output of Bayesian inference.",
+    "intuition": "Your belief about the parameter after seeing the evidence, expressed as a full distribution rather than a single number, so it gives both a best guess and the remaining uncertainty.",
+    "mechanics": "p(theta|y) is proportional to f(y|theta) p(theta); with conjugate priors the posterior stays in the same family (Beta-Binomial, Normal-Normal) and updates analytically, otherwise it is approximated by MCMC or variational methods. Posterior means, medians, and credible intervals summarize it, and the posterior predictive propagates parameter uncertainty into forecasts.",
+    "formula": "p(theta | y) = f(y | theta) p(theta) / integral f(y | theta') p(theta') dtheta'.",
+    "relationships": [
+      "Prior distribution",
+      "Likelihood function",
+      "Bayesian inference",
+      "Monte Carlo simulation"
+    ],
+    "failure_modes": "The posterior inherits prior influence and model misspecification: with a wrong likelihood family it concentrates confidently on the wrong value as n grows. Multimodal or high-dimensional posteriors are hard to sample and summarize.",
+    "misconceptions": "That the posterior describes the sampling variability of an estimator: it is a direct probability statement about the parameter itself given this dataset.",
+    "example": "For a Normal mean with a Normal prior, the posterior mean is a precision-weighted average of the sample mean and the prior mean, with the data dominating as n grows.",
+    "citations": [
+      {
+        "source": "Downey, 'Think Bayes 2', Chapter 1 (Bayes's Theorem)",
+        "url": "https://allendowney.github.io/ThinkBayes2/chap01.html",
+        "section": "1.10.3 Theorem 3",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/maximum-likelihood-estimation",
+  "canonical_sha256": "8149e8c6788ac7abc7a88770b5db88d396a2c0052da58157116f266c8aa4c2cd",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/maximum-likelihood-estimation",
+    "name": "Maximum likelihood estimation",
+    "aliases": [
+      "MLE",
+      "maximum likelihood"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A general estimation principle that chooses parameter values maximizing the likelihood, the probability (density) of the observed data viewed as a function of the parameters, so the fitted model makes the observed sample as probable as possible. Fisher (1922) founded the method and established its consistency, efficiency, and asymptotic normality.",
+    "intuition": "Treat the data as fixed and ask which parameter values would have made this exact dataset most likely to occur; those are the estimates.",
+    "mechanics": "Form L(beta) = prod f(y_i; beta), or the log-likelihood l = sum log f, maximize it analytically or numerically, and take standard errors from the inverse observed information (negative Hessian). Under regularity conditions MLEs are consistent, asymptotically efficient, and asymptotically normal, enabling Wald, likelihood-ratio, and score tests.",
+    "formula": "beta_hat_MLE = argmax_beta sum_i log f(y_i; beta); asymptotically beta_hat ~ N(beta, I(beta)^{-1}), with I the Fisher information.",
+    "relationships": [
+      "Likelihood function",
+      "Logistic regression",
+      "GARCH model",
+      "Bayesian inference",
+      "Ordinary least squares"
+    ],
+    "failure_modes": "The good properties are asymptotic: small-sample MLEs can be biased (e.g., variance parameters), and everything rests on correct specification, with quasi-MLE corrections needed when the density is wrong. Numerical maximization can hit local optima or diverge, as with separation in logit models.",
+    "misconceptions": "That MLE finds the most probable parameter value: it maximizes the probability of the data given the parameter, not the probability of the parameter, which requires a prior (Bayesian inference).",
+    "example": "Fitting GARCH(1,1) to returns maximizes the product of conditional normal densities N(0, sigma_t^2) over (omega, alpha, beta), with standard errors from the Hessian of the log-likelihood.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1098/rsta.1922.0009",
+        "url": "https://api.crossref.org/works/10.1098/rsta.1922.0009",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

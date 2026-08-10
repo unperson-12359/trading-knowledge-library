@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/monte-carlo-simulation",
+  "canonical_sha256": "a37e1cc50543652d8772a3bea468250435d360a106d30d3198f58347ce0e2d32",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/monte-carlo-simulation",
+    "name": "Monte Carlo simulation",
+    "aliases": [
+      "Monte Carlo method",
+      "stochastic simulation"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The use of repeated random sampling to approximate quantities that are difficult to compute analytically, such as expectations, distributions of estimators, option prices, or the sampling variability of a trading rule, by generating many pseudo-random realizations and averaging. Named and systematized by Metropolis and Ulam (1949).",
+    "intuition": "If you cannot solve the probability problem on paper, play it out thousands of times with a random number generator and use the empirical frequencies as the answer.",
+    "mechanics": "Draw pseudo-random samples from the assumed model, compute the quantity of interest on each draw, and average; the Monte Carlo error falls as 1/sqrt(N), so accuracy is controlled by the replication count. Variance-reduction techniques (antithetic variates, control variates, importance sampling) improve efficiency.",
+    "formula": "E[g(X)] approximately (1/N) sum_{i=1}^N g(X_i) with X_i drawn from the target distribution; the standard error of the estimate is sd(g(X))/sqrt(N).",
+    "relationships": [
+      "Bootstrap",
+      "Permutation test",
+      "Stochastic volatility model",
+      "Bayesian inference"
+    ],
+    "failure_modes": "Answers are only as good as the model being simulated: Monte Carlo propagates rather than fixes wrong distributional assumptions, such as Gaussian draws understating tail risk. Rare-event estimates converge slowly without importance sampling.",
+    "misconceptions": "That a more sophisticated generator removes model risk: simulation explores the implications of assumed dynamics but does not validate them against reality.",
+    "example": "Estimating a path-dependent option price: simulate 100,000 price paths under the model, compute the discounted payoff on each, and average, with a standard error read from the spread of payoffs.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1080/01621459.1949.10483310",
+        "url": "https://api.crossref.org/works/10.1080/01621459.1949.10483310",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

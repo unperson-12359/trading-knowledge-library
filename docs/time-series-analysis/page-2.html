@@ -154,6 +154,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="state-space-model"><h3>State-space model <a class="anchor" href="#state-space-model">#</a></h3>
 <div class="field">A general time-series framework that represents observed data as noisy measurements of an unobserved state vector evolving through a transition (system) equation, separating the dynamics of the hidden process from measurement error. It subsumes ARMA models, structural time-series models, and time-varying-parameter regressions, and is estimated via the Kalman filter and maximum likelihood.</div>
+<div class="skill-links"><a href="../skills/tkl-state-space-model/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Split the world into what you cannot see (the true underlying state: trend, seasonal level, drifting coefficient) and what you measure (noisy data), then let filtering theory reconstruct the hidden part.</div>
 <div class="field"><span class="label">Mechanics:</span> A linear Gaussian state-space model pairs a transition equation x_t = F x_{t-1} + w_t with a measurement equation y_t = H x_t + v_t; ARMA, local-level, and local-linear-trend models are special cases with particular F and H. The Kalman filter produces one-step-ahead prediction errors whose Gaussian likelihood is maximized over the hyperparameters, and smoothing recovers the full state history.</div>
 <div class="field"><span class="label">Failure modes:</span> Noise-variance hyperparameters are often weakly identified, so different state decompositions fit equally well with different interpretations. Non-Gaussian or nonlinear models require approximate filters whose accuracy is hard to guarantee.</div>
@@ -166,6 +167,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="ordinary-least-squares"><h3>Ordinary least squares <a class="anchor" href="#ordinary-least-squares">#</a></h3>
 <div class="field">The estimation method that chooses regression coefficients to minimize the sum of squared residuals between observed and fitted values, yielding the closed-form estimator beta_hat = (X&#x27;X)^{-1} X&#x27;y for the linear model. Under the Gauss-Markov assumptions it is the best linear unbiased estimator.</div>
+<div class="skill-links"><a href="../skills/tkl-ordinary-least-squares/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Draw the line (or hyperplane) that makes the total of the squared vertical gaps between data and fit as small as possible; squaring punishes big misses and keeps the algebra tractable.</div>
 <div class="field"><span class="label">Mechanics:</span> Minimizing ||y - X beta||^2 gives the normal equations X&#x27;X beta = X&#x27;y, solved as beta_hat = (X&#x27;X)^{-1} X&#x27;y when X has full column rank. Inference uses the residual variance s^2 = e&#x27;e/(n-k) and Var(beta_hat) = s^2 (X&#x27;X)^{-1}, with exact t- and F-tests under normal errors.</div>
 <div class="field"><span class="label">Failure modes:</span> OLS is highly sensitive to outliers and high-leverage points, breaks down when X&#x27;X is near-singular from multicollinearity, and its standard errors are invalid under heteroskedasticity or autocorrelated errors. On unit-root data it produces spurious regressions.</div>
@@ -178,6 +180,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="linear-regression"><h3>Linear regression <a class="anchor" href="#linear-regression">#</a></h3>
 <div class="field">A statistical model relating a response variable to one or more explanatory variables through a function linear in the unknown parameters, y_i = beta_0 + beta_1 x_i + ... + epsilon_i, typically estimated by least squares. &#x27;Linear&#x27; refers to linearity in the parameters, so transformed or polynomial terms in the variables are permitted.</div>
+<div class="skill-links"><a href="../skills/tkl-linear-regression/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Summarize how y moves with x by a straight-line relationship plus noise: each coefficient reads as the expected change in y per unit change in its x, holding the others fixed.</div>
 <div class="field"><span class="label">Mechanics:</span> Specify the functional form, estimate coefficients (usually OLS), then validate: residual plots for functional form and constant variance, t-tests for individual coefficients, an F-test for overall fit, and R-squared for the share of variance explained. Predictions are x&#x27;beta_hat with intervals derived from the estimated covariance matrix.</div>
 <div class="field"><span class="label">Failure modes:</span> Misspecified functional form or omitted variables bias all coefficients, and influential outliers can dominate the fit. In time series, autocorrelated errors and trending data invalidate standard inference, up to spurious regression with unit roots.</div>
@@ -190,6 +193,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="multiple-regression"><h3>Multiple regression <a class="anchor" href="#multiple-regression">#</a></h3>
 <div class="field">Linear regression with two or more explanatory variables, y = X beta + epsilon, in which each coefficient measures the partial association between the response and one regressor holding the others constant. It is estimated by OLS as beta_hat = (X&#x27;X)^{-1} X&#x27;y.</div>
+<div class="skill-links"><a href="../skills/tkl-multiple-regression/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> With several predictors at once, each coefficient answers: what does this variable add given everything else already in the model? That is why coefficients can change sign when a correlated variable is added.</div>
 <div class="field"><span class="label">Mechanics:</span> Coefficients are estimated jointly by least squares and interpreted ceteris paribus. Overall fit is judged by R-squared and the F-test, individual contributions by t-tests or partial F-tests, and specification by residual analysis, adjusted R-squared, and information criteria.</div>
 <div class="field"><span class="label">Failure modes:</span> Multicollinearity inflates coefficient variances, making estimates unstable and sign-fragile, and adding irrelevant variables inflates in-sample R-squared without improving prediction (overfitting).</div>
@@ -202,6 +206,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="logistic-regression"><h3>Logistic regression <a class="anchor" href="#logistic-regression">#</a></h3>
 <div class="field">A regression model for a binary outcome that models the log-odds of the event as a linear function of the predictors, so predicted probabilities stay bounded between 0 and 1. Developed in its modern form by Cox (1958) and estimated by maximum likelihood rather than least squares.</div>
+<div class="skill-links"><a href="../skills/tkl-logistic-regression/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Instead of predicting the 0/1 outcome directly, predict the odds of the event on a log scale, where a straight line makes sense, then squash the result back to a probability with the logistic curve.</div>
 <div class="field"><span class="label">Mechanics:</span> logit P(y=1|x) = beta_0 + x&#x27;beta, fitted by maximizing the Bernoulli log-likelihood; exponentiated coefficients give odds ratios per unit change in a predictor. Inference uses Wald, likelihood-ratio, or score tests, and fit is assessed with deviance and pseudo-R-squared measures.</div>
 <div class="field"><span class="label">Failure modes:</span> Complete or quasi-complete separation (a predictor perfectly splits the outcomes) makes the MLEs diverge, and rare events bias small-sample estimates. The linear-in-log-odds form misses interactions and nonlinearities unless they are added explicitly.</div>
@@ -214,6 +219,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="ridge-regression"><h3>Ridge regression <a class="anchor" href="#ridge-regression">#</a></h3>
 <div class="field">A regularized least-squares estimator that shrinks coefficients toward zero by adding a penalty proportional to the sum of squared coefficients, trading a small bias for a large variance reduction when predictors are collinear. Introduced by Hoerl and Kennard (1970) for nonorthogonal problems.</div>
+<div class="skill-links"><a href="../skills/tkl-ridge-regression/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> When predictors are highly correlated, OLS coefficients swing wildly between samples; ridge charges a price for large coefficients, keeping them small and stable at the cost of a slight pull toward zero.</div>
 <div class="field"><span class="label">Mechanics:</span> beta_hat = (X&#x27;X + lambda I)^{-1} X&#x27;y minimizes ||y - X beta||^2 + lambda ||beta||^2, with lambda &gt;= 0 chosen by cross-validation and predictors standardized so the penalty treats them comparably. Ridge never sets coefficients exactly to zero: it shrinks all of them.</div>
 <div class="field"><span class="label">Failure modes:</span> The choice of lambda is critical and data-driven, and too much shrinkage underfits. Ridge keeps every variable in the model, so it does no variable selection when the truth is sparse.</div>
@@ -226,6 +232,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="lasso-regression"><h3>Lasso regression <a class="anchor" href="#lasso-regression">#</a></h3>
 <div class="field">Least absolute shrinkage and selection operator: a regularized regression that penalizes the sum of absolute coefficient values, which both shrinks coefficients and sets some exactly to zero, performing continuous variable selection. Introduced by Tibshirani (1996).</div>
+<div class="skill-links"><a href="../skills/tkl-lasso-regression/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The L1 penalty has corners at zero, so as the penalty tightens the least useful coefficients are pushed exactly to zero and drop out: shrinkage and feature selection in one step.</div>
 <div class="field"><span class="label">Mechanics:</span> beta_hat minimizes (1/2n) ||y - X beta||^2 + lambda ||beta||_1; there is no closed form, so the path is computed by coordinate descent or LARS with lambda chosen by cross-validation on standardized predictors. The selected model is often refit by OLS (relaxed lasso) to reduce shrinkage bias on the retained coefficients.</div>
 <div class="field"><span class="label">Failure modes:</span> With highly correlated predictors the lasso selects arbitrarily among them, making the selected set unstable across samples, and when p &gt; n it can select at most n variables. Its aggressive selection can drop weak but real predictors.</div>
@@ -238,6 +245,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="elastic-net"><h3>Elastic net <a class="anchor" href="#elastic-net">#</a></h3>
 <div class="field">A regularized regression combining the L1 (lasso) and L2 (ridge) penalties, retaining the lasso&#x27;s variable selection while adding a grouping effect that keeps strongly correlated predictors in or out of the model together. Introduced by Zou and Hastie (2005).</div>
+<div class="skill-links"><a href="../skills/tkl-elastic-net/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Pure lasso tends to pick one variable out of a correlated cluster and drop the rest; mixing in ridge penalty makes the whole cluster share the coefficient, which is stabler when predictors travel in packs.</div>
 <div class="field"><span class="label">Mechanics:</span> beta_hat minimizes (1/2n) ||y - X beta||^2 + lambda [alpha ||beta||_1 + (1-alpha) ||beta||^2 / 2], with alpha mixing lasso (alpha=1) and ridge (alpha=0); both hyperparameters are chosen by cross-validation and the fit is computed by coordinate descent. It is especially useful when p &gt;&gt; n, where lasso saturates at n selected variables.</div>
 <div class="field"><span class="label">Failure modes:</span> Two tuning parameters make selection costlier and more prone to validation overfitting, and as with lasso, naive post-selection inference is invalid.</div>
@@ -250,6 +258,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="residual"><h3>Residual <a class="anchor" href="#residual">#</a></h3>
 <div class="field">The difference between an observed response and the value fitted by a model, e_i = y_i - f(x_i; beta_hat). Residuals are the observable proxies for the unobservable error terms and the primary diagnostic for model adequacy.</div>
+<div class="skill-links"><a href="../skills/tkl-residual/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The leftover after the model has said its piece: if the model captured the structure, the leftovers should look like pure noise with nothing left to exploit.</div>
 <div class="field"><span class="label">Mechanics:</span> Residuals are computed from the fitted model and examined graphically (against fitted values, regressors, and time order) for nonlinearity, non-constant variance, drift, autocorrelation, and non-normality; formal tests such as Breusch-Pagan or Ljung-Box complement the plots. Standardized and studentized versions flag outliers.</div>
 <div class="field"><span class="label">Failure modes:</span> Structured residuals signal misspecification, but pattern-free residuals do not prove the model is right: they cannot reveal omitted variables uncorrelated with the included ones. In time series, ignored residual autocorrelation invalidates standard errors.</div>
@@ -262,6 +271,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="r-squared"><h3>R-squared <a class="anchor" href="#r-squared">#</a></h3>
 <div class="field">The coefficient of determination: the proportion of the total sample variation in the response accounted for by the regression model, computed as one minus the ratio of the residual to the total sum of squares. For OLS with an intercept it equals the squared correlation between observed and fitted values.</div>
+<div class="skill-links"><a href="../skills/tkl-r-squared/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A 0-to-1 score of how much of the ups and downs in y the model reproduces: R^2 = 0.7 means 70% of the variance is captured by the regressors and 30% is left in the noise.</div>
 <div class="field"><span class="label">Mechanics:</span> R^2 = 1 - SS_res/SS_tot with SS_res = sum e_i^2 and SS_tot = sum (y_i - y_bar)^2. Because adding regressors never decreases in-sample R^2, it cannot compare models with different parameter counts; adjusted R^2 or out-of-sample criteria serve that role, and without an intercept or out of sample R^2 can be negative.</div>
 <div class="field"><span class="label">Failure modes:</span> A high R^2 does not imply the model is correct, causal, or predictive out of sample; with trending time series, spurious regressions routinely show R^2 above 0.9.</div>
@@ -275,6 +285,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="adjusted-r-squared"><h3>Adjusted R-squared <a class="anchor" href="#adjusted-r-squared">#</a></h3>
 <div class="field">A degrees-of-freedom-corrected version of R^2 that penalizes model complexity, so it increases only when a new regressor improves fit more than would be expected by chance. The standard correction is due to Ezekiel.</div>
+<div class="skill-links"><a href="../skills/tkl-adjusted-r-squared/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> R^2 always rises when you add variables, even junk ones; adjusted R^2 charges a complexity tax per parameter so it only rises if the new variable genuinely earns its place.</div>
 <div class="field"><span class="label">Mechanics:</span> R-bar^2 = 1 - (1 - R^2)(n - 1)/(n - k - 1), replacing raw sums of squares by mean squares. It can decline when weak regressors are added and can be negative, and it is commonly used to compare nested candidate models with different k.</div>
 <div class="field"><span class="label">Failure modes:</span> It remains an in-sample criterion and does not protect against overfitting the way cross-validation does, and it is not an unbiased estimator of the population R^2 (the Olkin-Pratt estimator improves on it).</div>
@@ -287,6 +298,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="multicollinearity"><h3>Multicollinearity <a class="anchor" href="#multicollinearity">#</a></h3>
 <div class="field">A condition in regression in which two or more explanatory variables are highly linearly related, so the design matrix is nearly rank-deficient and individual coefficients cannot be estimated precisely, although the model as a whole may still predict well.</div>
+<div class="skill-links"><a href="../skills/tkl-multicollinearity/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> If two predictors move together, the data cannot tell which one deserves the credit: many different coefficient splits fit almost equally well, so each estimate has a huge standard error and can flip sign between samples.</div>
 <div class="field"><span class="label">Mechanics:</span> Diagnosed by high pairwise correlations, variance inflation factors VIF_j = 1/(1 - R_j^2) from regressing each predictor on the others, and the condition number of X&#x27;X. Remedies include dropping or combining variables, principal components, ridge regression, or accepting imprecise individual coefficients when only prediction matters.</div>
 <div class="field"><span class="label">Failure modes:</span> Perfect collinearity makes OLS non-unique (X&#x27;X singular), and near-collinearity inflates Var(beta_j) by the VIF and makes estimates hypersensitive to tiny data changes. It also undermines causal attribution within the collinear set.</div>
@@ -299,6 +311,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="endogeneity"><h3>Endogeneity <a class="anchor" href="#endogeneity">#</a></h3>
 <div class="field">The failure of the exogeneity condition E[epsilon | X] = 0 in a regression, i.e., a regressor correlated with the error term, arising from omitted variables, simultaneity (reverse causation), or measurement error. It renders OLS estimates biased and inconsistent.</div>
+<div class="skill-links"><a href="../skills/tkl-endogeneity/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The regressor and the leftover noise are tangled together, so the coefficient absorbs part of the noise&#x27;s influence and no longer isolates the variable&#x27;s own effect.</div>
 <div class="field"><span class="label">Mechanics:</span> Sources include omitted variables correlated with included regressors, simultaneous determination of y and x, and errors-in-variables (attenuation bias). Diagnosis uses Durbin-Wu-Hausman tests comparing OLS to IV estimates; remedies include instrumental variables, natural experiments, fixed effects, or control functions.</div>
 <div class="field"><span class="label">Failure modes:</span> Endogeneity cannot be detected from the regression output alone: it is a property of the data-generating process, so asserting exogeneity requires external argument. IV fixes are only as good as the instruments.</div>
@@ -311,6 +324,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="instrumental-variable"><h3>Instrumental variable <a class="anchor" href="#instrumental-variable">#</a></h3>
 <div class="field">A variable used to identify a causal effect when the regressor of interest is endogenous: a valid instrument is correlated with the endogenous regressor (relevance) and affects the outcome only through that regressor (exclusion restriction), isolating an exogenous source of variation.</div>
+<div class="skill-links"><a href="../skills/tkl-instrumental-variable/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Find a lever that shifts the troublesome variable for reasons unrelated to everything else in the error term, then measure how the outcome responds to those lever-induced shifts only.</div>
 <div class="field"><span class="label">Mechanics:</span> In two-stage least squares the endogenous x is regressed on the instrument z (first stage) and y on the fitted x (second stage); the just-identified IV estimand is Cov(y,z)/Cov(x,z), interpretable under monotonicity as a local average treatment effect (Angrist, Imbens and Rubin 1996). First-stage F-statistics check relevance; overidentification tests partially probe exclusion.</div>
 <div class="field"><span class="label">Failure modes:</span> Weak instruments (low first-stage F) leave the estimator biased toward OLS with non-normal finite-sample distributions, and the exclusion restriction is untestable in the just-identified case, so invalid instruments deliver consistent estimates of the wrong quantity.</div>
@@ -323,6 +337,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="maximum-likelihood-estimation"><h3>Maximum likelihood estimation <a class="anchor" href="#maximum-likelihood-estimation">#</a></h3>
 <div class="field">A general estimation principle that chooses parameter values maximizing the likelihood, the probability (density) of the observed data viewed as a function of the parameters, so the fitted model makes the observed sample as probable as possible. Fisher (1922) founded the method and established its consistency, efficiency, and asymptotic normality.</div>
+<div class="skill-links"><a href="../skills/tkl-maximum-likelihood-estimation/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Treat the data as fixed and ask which parameter values would have made this exact dataset most likely to occur; those are the estimates.</div>
 <div class="field"><span class="label">Mechanics:</span> Form L(beta) = prod f(y_i; beta), or the log-likelihood l = sum log f, maximize it analytically or numerically, and take standard errors from the inverse observed information (negative Hessian). Under regularity conditions MLEs are consistent, asymptotically efficient, and asymptotically normal, enabling Wald, likelihood-ratio, and score tests.</div>
 <div class="field"><span class="label">Failure modes:</span> The good properties are asymptotic: small-sample MLEs can be biased (e.g., variance parameters), and everything rests on correct specification, with quasi-MLE corrections needed when the density is wrong. Numerical maximization can hit local optima or diverge, as with separation in logit models.</div>
@@ -335,6 +350,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="bayesian-inference"><h3>Bayesian inference <a class="anchor" href="#bayesian-inference">#</a></h3>
 <div class="field">A framework for statistical inference in which unknown parameters are treated as random variables with prior distributions that are updated to posterior distributions via Bayes&#x27;s theorem as data arrive, so all conclusions are probability statements about parameters given the data.</div>
+<div class="skill-links"><a href="../skills/tkl-bayesian-inference/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Start with a belief, weigh it against the evidence the data carry, and come out with an updated belief: inference is the continuous revision of probabilities.</div>
 <div class="field"><span class="label">Mechanics:</span> The posterior is proportional to likelihood times prior, p(theta|y) proportional to f(y|theta) p(theta). Point summaries (posterior mean or mode), credible intervals, and posterior predictive checks replace classical estimates and p-values, with computation by conjugate updating, grid methods, or MCMC when no closed form exists.</div>
 <div class="field"><span class="label">Failure modes:</span> Results depend on the prior, especially with small samples or weakly identified parameters, where a poor prior can dominate the data. Posterior computation can be intractable and MCMC convergence is not guaranteed.</div>
@@ -347,6 +363,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="posterior-distribution"><h3>Posterior distribution <a class="anchor" href="#posterior-distribution">#</a></h3>
 <div class="field">The probability distribution of unknown parameters after conditioning on the observed data, obtained by Bayes&#x27;s theorem as the normalized product of the likelihood and the prior. It is the central output of Bayesian inference.</div>
+<div class="skill-links"><a href="../skills/tkl-posterior-distribution/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Your belief about the parameter after seeing the evidence, expressed as a full distribution rather than a single number, so it gives both a best guess and the remaining uncertainty.</div>
 <div class="field"><span class="label">Mechanics:</span> p(theta|y) is proportional to f(y|theta) p(theta); with conjugate priors the posterior stays in the same family (Beta-Binomial, Normal-Normal) and updates analytically, otherwise it is approximated by MCMC or variational methods. Posterior means, medians, and credible intervals summarize it, and the posterior predictive propagates parameter uncertainty into forecasts.</div>
 <div class="field"><span class="label">Failure modes:</span> The posterior inherits prior influence and model misspecification: with a wrong likelihood family it concentrates confidently on the wrong value as n grows. Multimodal or high-dimensional posteriors are hard to sample and summarize.</div>
@@ -359,6 +376,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="prior-distribution"><h3>Prior distribution <a class="anchor" href="#prior-distribution">#</a></h3>
 <div class="field">The probability distribution assigned to unknown parameters before observing the data, encoding pre-existing knowledge or deliberately weak information; it combines with the likelihood through Bayes&#x27;s theorem to form the posterior.</div>
+<div class="skill-links"><a href="../skills/tkl-prior-distribution/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> What you believe before the experiment: it can be an informed guess from past data or a deliberately vague statement, but it must be written down so its influence on the answer is visible.</div>
 <div class="field"><span class="label">Mechanics:</span> Priors range from informative (elicited from domain knowledge) through weakly informative to reference forms (uniform, Jeffreys). Conjugate priors keep the posterior in the same family for computational convenience, and sensitivity analysis reruns the analysis across priors to measure their influence.</div>
 <div class="field"><span class="label">Failure modes:</span> An overconfident informative prior can swamp the data and dictate conclusions, and ostensibly flat priors are not invariant to reparameterization and can be improper, risking improper posteriors.</div>
@@ -371,6 +389,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="likelihood-function"><h3>Likelihood function <a class="anchor" href="#likelihood-function">#</a></h3>
 <div class="field">The joint probability (density) of the observed data expressed as a function of the model parameters with the data held fixed, L(theta) = f(y_1,...,y_n; theta). It measures the relative plausibility of parameter values and is the object maximized in maximum likelihood estimation, introduced by Fisher (1922).</div>
+<div class="skill-links"><a href="../skills/tkl-likelihood-function/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The same formula as the probability of the data, read backwards: instead of asking what data these parameters might produce, ask how probable this dataset is under each candidate parameter.</div>
 <div class="field"><span class="label">Mechanics:</span> For i.i.d. data L(theta) = prod f(y_i; theta), and the log-likelihood l(theta) = sum log f(y_i; theta) is used for numerical stability. The score (gradient of l) and the Fisher information (expected negative curvature) drive estimation and inference, and likelihood ratios compare nested models.</div>
 <div class="field"><span class="label">Failure modes:</span> The likelihood is only as meaningful as the assumed data-generating density; misspecification yields confident but wrong inference. Flat or ridged likelihoods indicate weak identification, and the likelihood alone carries no prior weighting.</div>

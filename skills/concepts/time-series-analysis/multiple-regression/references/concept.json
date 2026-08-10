@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/multiple-regression",
+  "canonical_sha256": "1048aa5c2c792d8b7865753c52dbd2f2e2b5b374f6d2b24c3cb0823eb0e7b85d",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/multiple-regression",
+    "name": "Multiple regression",
+    "aliases": [
+      "multiple linear regression",
+      "multivariable regression"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "Linear regression with two or more explanatory variables, y = X beta + epsilon, in which each coefficient measures the partial association between the response and one regressor holding the others constant. It is estimated by OLS as beta_hat = (X'X)^{-1} X'y.",
+    "intuition": "With several predictors at once, each coefficient answers: what does this variable add given everything else already in the model? That is why coefficients can change sign when a correlated variable is added.",
+    "mechanics": "Coefficients are estimated jointly by least squares and interpreted ceteris paribus. Overall fit is judged by R-squared and the F-test, individual contributions by t-tests or partial F-tests, and specification by residual analysis, adjusted R-squared, and information criteria.",
+    "formula": "y_i = beta_0 + beta_1 x_{i1} + ... + beta_k x_{ik} + epsilon_i; beta_hat = (X'X)^{-1} X'y with Var(beta_hat) = sigma^2 (X'X)^{-1}.",
+    "relationships": [
+      "Linear regression",
+      "Ordinary least squares",
+      "Multicollinearity",
+      "Adjusted R-squared",
+      "R-squared"
+    ],
+    "failure_modes": "Multicollinearity inflates coefficient variances, making estimates unstable and sign-fragile, and adding irrelevant variables inflates in-sample R-squared without improving prediction (overfitting).",
+    "misconceptions": "That each coefficient shows the total effect of its variable: it is a partial effect conditional on the other regressors, and it changes when the regressor set changes.",
+    "example": "Modeling next-quarter earnings from revenue growth, margin, and a sector dummy: the revenue-growth coefficient measures its association with earnings after removing margin and sector effects.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods, Section 4.1.4.1 Linear Least Squares Regression",
+        "url": "https://www.itl.nist.gov/div898/handbook/pmd/section1/pmd141.htm",
+        "section": "4.1.4.1",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

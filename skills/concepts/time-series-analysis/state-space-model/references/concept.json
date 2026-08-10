@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/state-space-model",
+  "canonical_sha256": "072e25dcf7b5cafac35073c5459f9e67c3c6efbb20d1bb9710a70d0a09031986",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/state-space-model",
+    "name": "State-space model",
+    "aliases": [
+      "dynamic linear model",
+      "structural time-series model"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A general time-series framework that represents observed data as noisy measurements of an unobserved state vector evolving through a transition (system) equation, separating the dynamics of the hidden process from measurement error. It subsumes ARMA models, structural time-series models, and time-varying-parameter regressions, and is estimated via the Kalman filter and maximum likelihood.",
+    "intuition": "Split the world into what you cannot see (the true underlying state: trend, seasonal level, drifting coefficient) and what you measure (noisy data), then let filtering theory reconstruct the hidden part.",
+    "mechanics": "A linear Gaussian state-space model pairs a transition equation x_t = F x_{t-1} + w_t with a measurement equation y_t = H x_t + v_t; ARMA, local-level, and local-linear-trend models are special cases with particular F and H. The Kalman filter produces one-step-ahead prediction errors whose Gaussian likelihood is maximized over the hyperparameters, and smoothing recovers the full state history.",
+    "formula": "x_t = F_t x_{t-1} + w_t, w_t ~ (0, Q_t); y_t = H_t x_t + v_t, v_t ~ (0, R_t).",
+    "relationships": [
+      "Kalman filter",
+      "Hidden Markov model",
+      "ARMA model",
+      "Stochastic volatility model",
+      "Innovation"
+    ],
+    "failure_modes": "Noise-variance hyperparameters are often weakly identified, so different state decompositions fit equally well with different interpretations. Non-Gaussian or nonlinear models require approximate filters whose accuracy is hard to guarantee.",
+    "misconceptions": "That a state-space model is one specific model: it is a representation framework, and the empirical content comes entirely from the chosen state dynamics and measurement structure.",
+    "example": "A local-level model treats log price as a random-walk level plus observation noise; the Kalman filter estimates the level online, equivalent to an exponentially weighted average with data-driven smoothing.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1115/1.3662552",
+        "url": "https://api.crossref.org/works/10.1115/1.3662552",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

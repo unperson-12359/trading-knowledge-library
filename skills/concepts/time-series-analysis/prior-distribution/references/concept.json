@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/prior-distribution",
+  "canonical_sha256": "46021cf92017df606476b3fe78c139ffde49b7c4681bbcc4134e0a8e48ba62dc",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/prior-distribution",
+    "name": "Prior distribution",
+    "aliases": [
+      "prior",
+      "a priori distribution"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The probability distribution assigned to unknown parameters before observing the data, encoding pre-existing knowledge or deliberately weak information; it combines with the likelihood through Bayes's theorem to form the posterior.",
+    "intuition": "What you believe before the experiment: it can be an informed guess from past data or a deliberately vague statement, but it must be written down so its influence on the answer is visible.",
+    "mechanics": "Priors range from informative (elicited from domain knowledge) through weakly informative to reference forms (uniform, Jeffreys). Conjugate priors keep the posterior in the same family for computational convenience, and sensitivity analysis reruns the analysis across priors to measure their influence.",
+    "formula": "p(theta); the posterior is proportional to likelihood times prior: p(theta|y) proportional to f(y|theta) p(theta).",
+    "relationships": [
+      "Posterior distribution",
+      "Bayesian inference",
+      "Likelihood function"
+    ],
+    "failure_modes": "An overconfident informative prior can swamp the data and dictate conclusions, and ostensibly flat priors are not invariant to reparameterization and can be improper, risking improper posteriors.",
+    "misconceptions": "That a prior makes inference purely arbitrary: priors make assumptions explicit and checkable, and with enough data reasonable priors lead to similar posteriors (likelihood dominance).",
+    "example": "A trader puts a Normal(0, 1%) prior on a strategy's true daily alpha before seeing backtest results, so the posterior shrinks extreme backtest alphas toward zero.",
+    "citations": [
+      {
+        "source": "Downey, 'Think Bayes 2', Chapter 1 (Bayes's Theorem)",
+        "url": "https://allendowney.github.io/ThinkBayes2/chap01.html",
+        "section": "1.10.3 Theorem 3",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

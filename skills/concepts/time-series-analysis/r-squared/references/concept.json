@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/r-squared",
+  "canonical_sha256": "0e0aa82d271062f812deb411f91a0adcf9617891bdef0eddbc1d10c92efc6598",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/r-squared",
+    "name": "R-squared",
+    "aliases": [
+      "coefficient of determination",
+      "R^2"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The coefficient of determination: the proportion of the total sample variation in the response accounted for by the regression model, computed as one minus the ratio of the residual to the total sum of squares. For OLS with an intercept it equals the squared correlation between observed and fitted values.",
+    "intuition": "A 0-to-1 score of how much of the ups and downs in y the model reproduces: R^2 = 0.7 means 70% of the variance is captured by the regressors and 30% is left in the noise.",
+    "mechanics": "R^2 = 1 - SS_res/SS_tot with SS_res = sum e_i^2 and SS_tot = sum (y_i - y_bar)^2. Because adding regressors never decreases in-sample R^2, it cannot compare models with different parameter counts; adjusted R^2 or out-of-sample criteria serve that role, and without an intercept or out of sample R^2 can be negative.",
+    "formula": "R^2 = 1 - SS_res / SS_tot = 1 - sum (y_i - y_hat_i)^2 / sum (y_i - y_bar)^2.",
+    "relationships": [
+      "Adjusted R-squared",
+      "Ordinary least squares",
+      "Residual",
+      "Multiple regression",
+      "Overfitting"
+    ],
+    "failure_modes": "A high R^2 does not imply the model is correct, causal, or predictive out of sample; with trending time series, spurious regressions routinely show R^2 above 0.9.",
+    "misconceptions": "That R^2 measures predictive accuracy: it measures in-sample fit, and out-of-sample R^2 can be negative even when in-sample R^2 is high.",
+    "example": "A regression of a fund's monthly returns on the market factor gives R^2 = 0.85, meaning 85% of the fund's return variance co-moved with the market in the sample.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods, Section 4.4.4 How can I tell if a model fits my data?",
+        "url": "https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd44.htm",
+        "section": "4.4.4",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia, 'Coefficient of determination'",
+        "url": "https://en.wikipedia.org/wiki/Coefficient_of_determination",
+        "section": "definitions of R^2",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/adjusted-r-squared",
+  "canonical_sha256": "6cad061e777ca8c658e03e18f1987bdb5cb8beee7d433c5740fb33be035ef486",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/adjusted-r-squared",
+    "name": "Adjusted R-squared",
+    "aliases": [
+      "adjusted R^2",
+      "R-bar-squared"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A degrees-of-freedom-corrected version of R^2 that penalizes model complexity, so it increases only when a new regressor improves fit more than would be expected by chance. The standard correction is due to Ezekiel.",
+    "intuition": "R^2 always rises when you add variables, even junk ones; adjusted R^2 charges a complexity tax per parameter so it only rises if the new variable genuinely earns its place.",
+    "mechanics": "R-bar^2 = 1 - (1 - R^2)(n - 1)/(n - k - 1), replacing raw sums of squares by mean squares. It can decline when weak regressors are added and can be negative, and it is commonly used to compare nested candidate models with different k.",
+    "formula": "R-bar^2 = 1 - (1 - R^2)(n - 1)/(n - k - 1), where n is the sample size and k the number of regressors excluding the intercept.",
+    "relationships": [
+      "R-squared",
+      "Multiple regression",
+      "Overfitting",
+      "Ordinary least squares"
+    ],
+    "failure_modes": "It remains an in-sample criterion and does not protect against overfitting the way cross-validation does, and it is not an unbiased estimator of the population R^2 (the Olkin-Pratt estimator improves on it).",
+    "misconceptions": "That adjusted R^2 solves model selection: it is a rough penalty that ignores parameter uncertainty and out-of-sample performance.",
+    "example": "Adding a fifth factor to a return regression raises R^2 from 0.42 to 0.43 but lowers adjusted R^2 from 0.405 to 0.402, suggesting the new factor adds noise rather than signal.",
+    "citations": [
+      {
+        "source": "Wikipedia, 'Coefficient of determination'",
+        "url": "https://en.wikipedia.org/wiki/Coefficient_of_determination",
+        "section": "Adjusted R^2",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

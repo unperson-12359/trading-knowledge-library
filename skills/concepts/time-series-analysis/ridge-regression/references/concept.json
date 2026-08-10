@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/ridge-regression",
+  "canonical_sha256": "430fd7d6402b196badfa454a24722afbc741230cbbeef16b1b55d2e7a3f8649d",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/ridge-regression",
+    "name": "Ridge regression",
+    "aliases": [
+      "Tikhonov regularization",
+      "L2-regularized regression"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A regularized least-squares estimator that shrinks coefficients toward zero by adding a penalty proportional to the sum of squared coefficients, trading a small bias for a large variance reduction when predictors are collinear. Introduced by Hoerl and Kennard (1970) for nonorthogonal problems.",
+    "intuition": "When predictors are highly correlated, OLS coefficients swing wildly between samples; ridge charges a price for large coefficients, keeping them small and stable at the cost of a slight pull toward zero.",
+    "mechanics": "beta_hat = (X'X + lambda I)^{-1} X'y minimizes ||y - X beta||^2 + lambda ||beta||^2, with lambda >= 0 chosen by cross-validation and predictors standardized so the penalty treats them comparably. Ridge never sets coefficients exactly to zero: it shrinks all of them.",
+    "formula": "beta_hat = argmin_b { sum_i (y_i - x_i' b)^2 + lambda sum_j b_j^2 } = (X'X + lambda I)^{-1} X'y.",
+    "relationships": [
+      "Lasso regression",
+      "Elastic net",
+      "Ordinary least squares",
+      "Multicollinearity",
+      "Overfitting"
+    ],
+    "failure_modes": "The choice of lambda is critical and data-driven, and too much shrinkage underfits. Ridge keeps every variable in the model, so it does no variable selection when the truth is sparse.",
+    "misconceptions": "That ridge coefficients are unbiased shrunken versions of OLS: they are deliberately biased, and the method wins on mean-squared error, not unbiasedness.",
+    "example": "Predicting sector returns from 50 correlated macro factors: OLS loadings are unstable across samples, while ridge with cross-validated lambda gives stable loadings and better out-of-sample fit.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1080/00401706.1970.10488634",
+        "url": "https://api.crossref.org/works/10.1080/00401706.1970.10488634",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/linear-regression",
+  "canonical_sha256": "90cfe0250ebb4b26931008d8b10e0189dccd9be91bf9f34392309f442997adaf",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/linear-regression",
+    "name": "Linear regression",
+    "aliases": [
+      "least-squares regression",
+      "simple linear regression"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A statistical model relating a response variable to one or more explanatory variables through a function linear in the unknown parameters, y_i = beta_0 + beta_1 x_i + ... + epsilon_i, typically estimated by least squares. 'Linear' refers to linearity in the parameters, so transformed or polynomial terms in the variables are permitted.",
+    "intuition": "Summarize how y moves with x by a straight-line relationship plus noise: each coefficient reads as the expected change in y per unit change in its x, holding the others fixed.",
+    "mechanics": "Specify the functional form, estimate coefficients (usually OLS), then validate: residual plots for functional form and constant variance, t-tests for individual coefficients, an F-test for overall fit, and R-squared for the share of variance explained. Predictions are x'beta_hat with intervals derived from the estimated covariance matrix.",
+    "formula": "y_i = beta_0 + beta_1 x_{i1} + ... + beta_k x_{ik} + epsilon_i, with E[epsilon_i | X] = 0, estimated by minimizing the sum of squared residuals.",
+    "relationships": [
+      "Ordinary least squares",
+      "Multiple regression",
+      "Residual",
+      "R-squared",
+      "Ridge regression",
+      "Logistic regression"
+    ],
+    "failure_modes": "Misspecified functional form or omitted variables bias all coefficients, and influential outliers can dominate the fit. In time series, autocorrelated errors and trending data invalidate standard inference, up to spurious regression with unit roots.",
+    "misconceptions": "That a significant regression implies causation: regression measures conditional association, and a causal reading requires exogeneity, which is an assumption rather than a result of the fit.",
+    "example": "Regressing changes in 10-year yields on changes in the policy rate gives a slope near 0.4: on average a one-point policy move transmits as 0.4 points to long yields in the sample.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods, Section 4.1.4.1 Linear Least Squares Regression",
+        "url": "https://www.itl.nist.gov/div898/handbook/pmd/section1/pmd141.htm",
+        "section": "4.1.4.1",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

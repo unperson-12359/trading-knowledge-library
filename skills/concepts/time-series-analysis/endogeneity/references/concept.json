@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/endogeneity",
+  "canonical_sha256": "f64b0afeb67d7ff3ec4c756c9f96391a703f17b87bd2387d9b3d57afa9215191",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/endogeneity",
+    "name": "Endogeneity",
+    "aliases": [
+      "regressor-error correlation",
+      "simultaneity bias"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The failure of the exogeneity condition E[epsilon | X] = 0 in a regression, i.e., a regressor correlated with the error term, arising from omitted variables, simultaneity (reverse causation), or measurement error. It renders OLS estimates biased and inconsistent.",
+    "intuition": "The regressor and the leftover noise are tangled together, so the coefficient absorbs part of the noise's influence and no longer isolates the variable's own effect.",
+    "mechanics": "Sources include omitted variables correlated with included regressors, simultaneous determination of y and x, and errors-in-variables (attenuation bias). Diagnosis uses Durbin-Wu-Hausman tests comparing OLS to IV estimates; remedies include instrumental variables, natural experiments, fixed effects, or control functions.",
+    "formula": "In y = beta x + epsilon, endogeneity means Cov(x, epsilon) != 0, so plim beta_hat_OLS = beta + Cov(x, epsilon)/Var(x) != beta.",
+    "relationships": [
+      "Instrumental variable",
+      "Ordinary least squares",
+      "Multiple regression",
+      "Selection bias"
+    ],
+    "failure_modes": "Endogeneity cannot be detected from the regression output alone: it is a property of the data-generating process, so asserting exogeneity requires external argument. IV fixes are only as good as the instruments.",
+    "misconceptions": "That adding more controls always reduces endogeneity: controlling for variables that are themselves outcomes of x or of the error (bad controls, colliders) can create bias rather than remove it.",
+    "example": "Regressing asset returns on fund flows is contaminated because flows respond to past and anticipated returns, so flow is endogenous and the price-impact coefficient mixes in reverse causality.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1080/01621459.1996.10476902",
+        "url": "https://api.crossref.org/works/10.1080/01621459.1996.10476902",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

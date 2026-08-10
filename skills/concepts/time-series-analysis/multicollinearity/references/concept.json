@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/multicollinearity",
+  "canonical_sha256": "6fac2656c704297bbaf36337bff22f3f403c1bc598189c381b0793e6801d1b0e",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/multicollinearity",
+    "name": "Multicollinearity",
+    "aliases": [
+      "collinearity",
+      "ill-conditioned design matrix"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A condition in regression in which two or more explanatory variables are highly linearly related, so the design matrix is nearly rank-deficient and individual coefficients cannot be estimated precisely, although the model as a whole may still predict well.",
+    "intuition": "If two predictors move together, the data cannot tell which one deserves the credit: many different coefficient splits fit almost equally well, so each estimate has a huge standard error and can flip sign between samples.",
+    "mechanics": "Diagnosed by high pairwise correlations, variance inflation factors VIF_j = 1/(1 - R_j^2) from regressing each predictor on the others, and the condition number of X'X. Remedies include dropping or combining variables, principal components, ridge regression, or accepting imprecise individual coefficients when only prediction matters.",
+    "formula": "VIF_j = 1 / (1 - R_j^2), where R_j^2 is the R-squared from regressing predictor j on the other predictors; values above about 10 are commonly taken to indicate serious collinearity.",
+    "relationships": [
+      "Multiple regression",
+      "Ridge regression",
+      "Ordinary least squares",
+      "R-squared"
+    ],
+    "failure_modes": "Perfect collinearity makes OLS non-unique (X'X singular), and near-collinearity inflates Var(beta_j) by the VIF and makes estimates hypersensitive to tiny data changes. It also undermines causal attribution within the collinear set.",
+    "misconceptions": "That multicollinearity biases OLS or ruins prediction: estimates remain unbiased and fitted values are stable; only the precision and interpretability of individual coefficients suffer.",
+    "example": "Regressing house prices on both living area and room count, correlated at 0.9: both VIFs exceed 8 and neither coefficient is significant even though the joint F-test is highly significant.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1080/00401706.1970.10488634",
+        "url": "https://api.crossref.org/works/10.1080/00401706.1970.10488634",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

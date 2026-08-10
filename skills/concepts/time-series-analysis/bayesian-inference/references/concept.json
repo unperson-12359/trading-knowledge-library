@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/bayesian-inference",
+  "canonical_sha256": "91f33f2903881a6f0cd50c4178455fadcc71049b387e6f6b3075bee6d822551d",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/bayesian-inference",
+    "name": "Bayesian inference",
+    "aliases": [
+      "Bayesian updating",
+      "Bayesian statistics"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A framework for statistical inference in which unknown parameters are treated as random variables with prior distributions that are updated to posterior distributions via Bayes's theorem as data arrive, so all conclusions are probability statements about parameters given the data.",
+    "intuition": "Start with a belief, weigh it against the evidence the data carry, and come out with an updated belief: inference is the continuous revision of probabilities.",
+    "mechanics": "The posterior is proportional to likelihood times prior, p(theta|y) proportional to f(y|theta) p(theta). Point summaries (posterior mean or mode), credible intervals, and posterior predictive checks replace classical estimates and p-values, with computation by conjugate updating, grid methods, or MCMC when no closed form exists.",
+    "formula": "p(theta | y) = f(y | theta) p(theta) / p(y), i.e., posterior proportional to likelihood x prior, with p(y) = integral f(y|theta) p(theta) dtheta the normalizing evidence.",
+    "relationships": [
+      "Prior distribution",
+      "Posterior distribution",
+      "Likelihood function",
+      "Maximum likelihood estimation"
+    ],
+    "failure_modes": "Results depend on the prior, especially with small samples or weakly identified parameters, where a poor prior can dominate the data. Posterior computation can be intractable and MCMC convergence is not guaranteed.",
+    "misconceptions": "That Bayesian and frequentist intervals mean the same thing: a 95% credible interval contains the parameter with 95% posterior probability, whereas a 95% confidence interval covers the truth in 95% of repeated samples.",
+    "example": "Updating a belief about a coin's bias from a Beta(2,2) prior after 8 heads in 10 flips gives a Beta(10,4) posterior, shifting probability mass toward high bias values.",
+    "citations": [
+      {
+        "source": "Downey, 'Think Bayes 2', Chapter 1 (Bayes's Theorem)",
+        "url": "https://allendowney.github.io/ThinkBayes2/chap01.html",
+        "section": "1.10.3 Theorem 3",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
