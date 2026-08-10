@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unperson-12359.github.io/trading-knowledge-library/schemas/relationship-vocabulary.schema.json",
+  "title": "External relationship vocabulary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "terms"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": 1},
+    "terms": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["id", "label", "kind"], "properties": {"id": {"type": "string", "pattern": "^external/[a-z0-9-]+$"}, "label": {"type": "string"}, "kind": {"const": "external-term"}, "note": {"type": "string"}}}}
+  }
+}

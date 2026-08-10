@@ -46,7 +46,7 @@ def parse_master(path: Path):
             current = {"index": int(m.group(1)), "name": m.group(2).strip()}
         elif current is not None:
             for field, key in (("Domain", "domain"), ("Definition", "definition"),
-                               ("Source authority", "source_hint")):
+                               ("Source authority", "_legacy_source_hint")):
                 if line.startswith(f"{field}: "):
                     current[key] = line[len(field) + 2:].strip()
     if current:
@@ -72,7 +72,7 @@ def main(argv=None):
 
     domains = {}
     for e in raw_entries:
-        for key in ("domain", "definition", "source_hint"):
+        for key in ("domain", "definition"):
             assert key in e, f"entry {e['name']} missing {key}"
         domain = DOMAIN_MAP.get(e["domain"], e["domain"])
         entry = {
@@ -89,7 +89,6 @@ def main(argv=None):
             "misconceptions": "",
             "example": "",
             "citations": [],
-            "source_hint": e["source_hint"],
             "master_index": e["index"],
         }
         domains.setdefault(domain, []).append(entry)

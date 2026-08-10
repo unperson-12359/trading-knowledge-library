@@ -374,12 +374,21 @@ def main():
     core_collection = json.loads(
         (ROOT / "collections" / "core-perps.json").read_text(encoding="utf-8")
     )
+    relationship_vocabulary = json.loads(
+        (ROOT / "relationships" / "vocabulary.json").read_text(encoding="utf-8")
+    )
     skill_manifest = json.loads(
         (ROOT / "skills" / "manifest.json").read_text(encoding="utf-8")
     )
     compatibility_aliases = expand_aliases(ROOT)
     skill_architecture = json.loads(
         (ROOT / "skills" / "architecture.json").read_text(encoding="utf-8")
+    )
+    source_policy = json.loads(
+        (ROOT / "sources" / "source-policy.json").read_text(encoding="utf-8")
+    )
+    citation_audit = json.loads(
+        (ROOT / "audits" / "citation-audit.json").read_text(encoding="utf-8")
     )
     written = set()      # relative paths of generated pages, for the link checker
     redirects = set()    # compatibility pages excluded from the sitemap
@@ -422,11 +431,18 @@ def main():
         term: next(iter(ids_for_term))
         for term, ids_for_term in term_ids.items() if len(ids_for_term) == 1
     }
+    external_lookup = {
+        item["label"].casefold(): item for item in relationship_vocabulary["terms"]
+    }
     unresolved_relationships = sorted({
         relationship for _, data in domains for entry in data
         for relationship in entry.get("relationships", [])
-        if relationship.casefold() not in relationship_lookup
+        if (relationship.casefold() not in relationship_lookup
+            and relationship.casefold() not in external_lookup)
     })
+    assert not unresolved_relationships, (
+        "relationship vocabulary missing terms: " + ", ".join(unresolved_relationships)
+    )
 
     # ---- legacy domain URLs -> unified concept pages ----
     for slug, data in domains:
@@ -847,15 +863,25 @@ def main():
         for entry in data:
             public_entry = {
                 key: value for key, value in entry.items()
-                if key not in {"source_hint", "master_index"}
+                if key != "master_index"
             }
             relationship_ids = []
+            relationship_refs = []
             for relationship in entry.get("relationships", []):
                 relationship_count += 1
                 concept_id = relationship_lookup.get(relationship.casefold())
                 if concept_id:
                     relationship_ids.append(concept_id)
                     resolved_relationship_count += 1
+                    relationship_refs.append({
+                        "label": relationship, "kind": "internal", "concept_id": concept_id,
+                    })
+                else:
+                    vocabulary_term = external_lookup[relationship.casefold()]
+                    relationship_refs.append({
+                        "label": relationship, "kind": "external-term",
+                        "term_id": vocabulary_term["id"],
+                    })
             public_entry.update({
                 "type": "concept",
                 "url": concept_urls[entry["id"]],
@@ -864,6 +890,7 @@ def main():
                 "core": entry["id"] in core_ids,
                 "regime_annotation": core_collection["annotations"].get(entry["id"]),
                 "relationship_ids": relationship_ids,
+                "relationship_refs": relationship_refs,
             })
             public_concepts.append(public_entry)
     (api_dir / "concepts.json").write_text(
@@ -875,6 +902,19 @@ def main():
     }
     (api_dir / "core-perps.json").write_text(
         json.dumps(core_api, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    (api_dir / "relationship-vocabulary.json").write_text(
+        json.dumps(relationship_vocabulary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    public_source_policy = dict(source_policy)
+    public_source_policy["$schema"] = f"{BASE}/schemas/source-policy.schema.json"
+    (api_dir / "source-policy.json").write_text(
+        json.dumps(public_source_policy, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    public_citation_audit = dict(citation_audit)
+    public_citation_audit["$schema"] = f"{BASE}/schemas/citation-audit.schema.json"
+    (api_dir / "citation-audit.json").write_text(
+        json.dumps(public_citation_audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     public_skills = []
     skill_api_dir = api_dir / "skills"
@@ -951,14 +991,15 @@ def main():
             "regimes": "regimes.json", "playbooks": "playbooks.json",
             "research_specs": "research-specs.json", "datasets": "dataset-manifests.json",
             "research_results": "research-results.json", "skills": "skills.json",
-            "concept_aliases": "concept-aliases.json",
+            "concept_aliases": "concept-aliases.json", "relationship_vocabulary": "relationship-vocabulary.json",
+            "source_policy": "source-policy.json", "citation_audit": "citation-audit.json",
             "skill_architecture": "skill-architecture.json"
         },
         "relationship_resolution": {
             "total_references": relationship_count,
             "resolved_references": resolved_relationship_count,
-            "unresolved_references": relationship_count - resolved_relationship_count,
-            "unresolved_terms": unresolved_relationships,
+            "external_term_references": relationship_count - resolved_relationship_count,
+            "external_terms": relationship_vocabulary["terms"],
         },
         "ai_disclosure": "Built and maintained with AI systems; verify cited sources independently. Nothing here is financial advice or evidence of profitability."
     }

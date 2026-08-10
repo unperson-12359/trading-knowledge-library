@@ -1,0 +1,27 @@
+name: Citation accessibility audit
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 4 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/audit_citations.py --output audit-report.json
+        continue-on-error: true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: citation-audit
+          path: audit-report.json
+      - run: |
+          python -c "import json, sys; report=json.load(open('audit-report.json', encoding='utf-8')); sys.exit(bool(report['summary']['broken_urls']))"
