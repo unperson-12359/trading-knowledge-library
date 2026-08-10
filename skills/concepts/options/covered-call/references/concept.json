@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/covered-call",
+  "canonical_sha256": "3f05363613b9015d18dbb515a0a733ede4e406f834c3eb6ca9007da01d347fab",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/covered-call",
+    "name": "Covered call",
+    "aliases": [
+      "buy-write"
+    ],
+    "domain": "Options",
+    "definition": "A covered call is a position long the underlying asset and short a call option on it; the long asset 'covers' the writer's obligation to deliver if the call is exercised. It converts some upside potential into immediate premium income.",
+    "intuition": "You already own the stock and rent out the upside above the strike: you keep the premium, but if the stock rallies past the strike your shares get called away.",
+    "mechanics": "For each 100 shares held, the investor sells one call and collects the premium. By put-call parity, a covered call has the same payoff shape as a cash-secured short put at the same strike. Upside is capped at strike + premium; downside is the full stock decline less the premium.",
+    "formula": "Profit at expiration = (S_T - S_0) + premium - max(S_T - K, 0), per share, where S_0 is the stock purchase price and K the call strike. Max profit = (K - S_0) + premium.",
+    "relationships": [
+      "Call option",
+      "Option writer",
+      "Cash-secured put",
+      "Put-call parity",
+      "Collar",
+      "Assignment risk"
+    ],
+    "failure_modes": "The premium cushions only small declines — a large drop in the stock produces nearly the full stock loss, so it is not downside protection. Repeatedly capping winners while keeping losers can degrade long-run returns (opportunity cost in strong bull markets).",
+    "misconceptions": "A covered call is not a 'safe income' or low-risk strategy: its payoff is identical to a naked cash-secured short put, which regulators treat as a higher-risk position. Selling a call against stock does not lock in a gain.",
+    "example": "Own 100 shares of XYZ bought at $48; sell the $50 call for $1.50. If XYZ finishes at $55, shares are called away at $50 for a total profit of ($2.00 + $1.50) x 100 = $350; if XYZ falls to $40, the loss is ($8.00 - $1.50) x 100 = $650.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Covered Option",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Option (finance) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Option_(finance)",
+        "section": "Options strategies (covered call)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

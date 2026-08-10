@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/out-of-the-money-option",
+  "canonical_sha256": "55ddb0a3b6de52c39f4fbf8b332bccf79bdb0ff207a4e8946ec36dbe21398fa5",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/out-of-the-money-option",
+    "name": "Out-of-the-money option",
+    "aliases": [
+      "OTM option"
+    ],
+    "domain": "Options",
+    "definition": "An out-of-the-money (OTM) option is an option with no intrinsic value: a call whose strike is above the current underlying price, or a put whose strike is below it. Its premium consists entirely of time value, and it expires worthless if still OTM at expiration.",
+    "intuition": "An OTM option is a lottery-like claim: cheap, but it only pays if the underlying moves far enough before time runs out.",
+    "mechanics": "OTM options have small absolute deltas, lower premiums, and percentage-wise high sensitivity to volatility. The CFTC glossary example: a call with a $400 strike on gold trading at $390 is $10 out-of-the-money.",
+    "formula": "Intrinsic value = 0; premium = time value only.",
+    "relationships": [
+      "Moneyness",
+      "In-the-money option",
+      "Deep out-of-the-money option",
+      "Volatility smile",
+      "Delta"
+    ],
+    "failure_modes": "Most OTM options expire worthless, so repeated buying of cheap OTM options bleeds capital; conversely, OTM sellers face gap risk — a sudden large move can convert small premium income into large losses. Skew means OTM equity puts are often relatively expensive.",
+    "misconceptions": "'Cheap' OTM options are not necessarily good value: their price already embeds the market's implied probability of the required move, and the probability-weighted expected payoff is typically less than the premium after costs.",
+    "example": "With stock at $100, the $110 call is OTM and might trade at $0.40; unless the stock exceeds $110 at expiration it expires worthless and the buyer loses the $40 per contract.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Out-Of-The-Money",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Moneyness — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Moneyness",
+        "section": "Out of the money",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

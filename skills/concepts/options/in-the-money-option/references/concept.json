@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/in-the-money-option",
+  "canonical_sha256": "3c8cd7f66b566d21f1f9127eca5e749365113c90393bd83b9f1ab8c322e32eac",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/in-the-money-option",
+    "name": "In-the-money option",
+    "aliases": [
+      "ITM option"
+    ],
+    "domain": "Options",
+    "definition": "An in-the-money (ITM) option is an option with positive intrinsic value: a call whose strike is below the current underlying price, or a put whose strike is above it. Its premium equals intrinsic value plus any remaining time value.",
+    "intuition": "An ITM option is already 'winning' — exercising it immediately would capture real value, so most of its price moves one-for-one with the underlying.",
+    "mechanics": "Intrinsic value = max(S - K, 0) for calls and max(K - S, 0) for puts. ITM options have deltas approaching +1 (calls) or -1 (puts) and are the ones exercised (or automatically exercised) at expiration.",
+    "formula": "Intrinsic value: call = max(S - K, 0); put = max(K - S, 0). Total premium = intrinsic value + time value.",
+    "relationships": [
+      "Moneyness",
+      "At-the-money option",
+      "Out-of-the-money option",
+      "Deep in-the-money option",
+      "Exercise-by-exception",
+      "Delta"
+    ],
+    "failure_modes": "Deep ITM options are illiquid and wide bid-ask spreads can erode the apparent value; holders of ITM American options also carry early-assignment and dividend considerations. Time value can be negative for deep ITM European puts under discounting.",
+    "misconceptions": "Being ITM does not mean the trade is profitable — an option bought for $8 that is now $5 ITM is still a losing position. ITM short options can be assigned at any time (American style), not only at expiration.",
+    "example": "With stock at $55, the $50 call is $5 in-the-money; if it trades at $6.20, then $5 is intrinsic value and $1.20 is time value.",
+    "citations": [
+      {
+        "source": "Moneyness — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Moneyness",
+        "section": "In the money",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Intrinsic Value",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

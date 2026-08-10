@@ -103,6 +103,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="moneyness"><h3>Moneyness <a class="anchor" href="#moneyness">#</a></h3>
 <div class="field">Moneyness is the position of an underlying asset&#x27;s price relative to an option&#x27;s strike price, classifying the option as in-the-money (positive intrinsic value if exercised now), at-the-money (strike equals the current price), or out-of-the-money (zero intrinsic value). It can be measured against spot or against the forward price, and quantified numerically, e.g., by log-moneyness or by the option&#x27;s delta.</div>
+<div class="skill-links"><a href="../skills/tkl-moneyness/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Moneyness tells you whether an option would be worth anything if it expired right now, and roughly how much &#x27;cushion&#x27; it has.</div>
 <div class="field"><span class="label">Mechanics:</span> Simple moneyness is S/K (or its reciprocal); log-moneyness is ln(F/K); standardized moneyness divides ln(F/K) by sigma*sqrt(T) to express moneyness in standard deviations. Calls are ITM when S &gt; K, puts when S &lt; K. Delta is a common practical proxy for percent moneyness.</div>
 <div class="field"><span class="label">Failure modes:</span> Spot-based moneyness misclassifies options when carry is large (high rates or dividends); forward-based (ATMF) classification is then more meaningful. Delta-as-moneyness breaks down for long-dated or high-volatility options where delta diverges from the risk-neutral probability of finishing ITM.</div>
@@ -115,6 +116,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="in-the-money-option"><h3>In-the-money option <a class="anchor" href="#in-the-money-option">#</a></h3>
 <div class="field">An in-the-money (ITM) option is an option with positive intrinsic value: a call whose strike is below the current underlying price, or a put whose strike is above it. Its premium equals intrinsic value plus any remaining time value.</div>
+<div class="skill-links"><a href="../skills/tkl-in-the-money-option/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> An ITM option is already &#x27;winning&#x27; — exercising it immediately would capture real value, so most of its price moves one-for-one with the underlying.</div>
 <div class="field"><span class="label">Mechanics:</span> Intrinsic value = max(S - K, 0) for calls and max(K - S, 0) for puts. ITM options have deltas approaching +1 (calls) or -1 (puts) and are the ones exercised (or automatically exercised) at expiration.</div>
 <div class="field"><span class="label">Failure modes:</span> Deep ITM options are illiquid and wide bid-ask spreads can erode the apparent value; holders of ITM American options also carry early-assignment and dividend considerations. Time value can be negative for deep ITM European puts under discounting.</div>
@@ -128,6 +130,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="at-the-money-option"><h3>At-the-money option <a class="anchor" href="#at-the-money-option">#</a></h3>
 <div class="field">An at-the-money (ATM) option is an option whose strike price equals (or is nearest to) the current price of the underlying; in forward terms (ATMF) the strike equals the forward price. An ATM option has no intrinsic value — its entire premium is time value.</div>
+<div class="skill-links"><a href="../skills/tkl-at-the-money-option/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The ATM option is the coin-flip strike: it sits exactly at the boundary between finishing valuable and finishing worthless, which makes it the most sensitive to volatility and time.</div>
 <div class="field"><span class="label">Mechanics:</span> ATM options have delta near +0.5 (calls) or -0.5 (puts), the highest gamma and theta of the chain, and vega near its maximum. ATM implied volatility is the standard quoting benchmark from which skew/smile adjustments are measured.</div>
 <div class="field"><span class="label">Failure modes:</span> Because gamma and theta peak ATM, hedging errors and time-decay estimates are largest here, especially into expiration when tiny price moves flip the option between ITM and OTM (pin risk).</div>
@@ -140,6 +143,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="out-of-the-money-option"><h3>Out-of-the-money option <a class="anchor" href="#out-of-the-money-option">#</a></h3>
 <div class="field">An out-of-the-money (OTM) option is an option with no intrinsic value: a call whose strike is above the current underlying price, or a put whose strike is below it. Its premium consists entirely of time value, and it expires worthless if still OTM at expiration.</div>
+<div class="skill-links"><a href="../skills/tkl-out-of-the-money-option/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> An OTM option is a lottery-like claim: cheap, but it only pays if the underlying moves far enough before time runs out.</div>
 <div class="field"><span class="label">Mechanics:</span> OTM options have small absolute deltas, lower premiums, and percentage-wise high sensitivity to volatility. The CFTC glossary example: a call with a $400 strike on gold trading at $390 is $10 out-of-the-money.</div>
 <div class="field"><span class="label">Failure modes:</span> Most OTM options expire worthless, so repeated buying of cheap OTM options bleeds capital; conversely, OTM sellers face gap risk — a sudden large move can convert small premium income into large losses. Skew means OTM equity puts are often relatively expensive.</div>
@@ -153,6 +157,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="deep-in-the-money-option"><h3>Deep in-the-money option <a class="anchor" href="#deep-in-the-money-option">#</a></h3>
 <div class="field">A deep in-the-money option is an option whose strike is far enough inside the money that its time value is negligible and its price moves almost one-for-one with the underlying (delta near +1 for calls, -1 for puts). &#x27;Deep&#x27; is an informal descriptor with no fixed regulatory threshold.</div>
+<div class="skill-links"><a href="../skills/tkl-deep-in-the-money-option/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A deep ITM option behaves almost like a leveraged surrogate for the stock itself, with most of its value being intrinsic.</div>
 <div class="field"><span class="label">Mechanics:</span> Premium approximates intrinsic value plus minimal time value; gamma, vega, and theta are near zero. Deep ITM American calls on dividend stocks and deep ITM puts are the prime early-exercise candidates because remaining time value can fall below the value of capturing the dividend or strike interest.</div>
 <div class="field"><span class="label">Failure modes:</span> Deep ITM strikes are often illiquid with wide bid-ask spreads, so entry/exit costs can exceed the residual time value. Deep ITM European options can trade below intrinsic value due to discounting.</div>
@@ -165,6 +170,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="deep-out-of-the-money-option"><h3>Deep out-of-the-money option <a class="anchor" href="#deep-out-of-the-money-option">#</a></h3>
 <div class="field">A deep out-of-the-money option is an option whose strike is far from the current underlying price, so it has no intrinsic value, a very small delta, and a premium close to zero that consists only of time value. &#x27;Deep&#x27; is informal; no fixed threshold defines it.</div>
+<div class="skill-links"><a href="../skills/tkl-deep-out-of-the-money-option/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A deep OTM option is a cheap tail-risk ticket: it almost always expires worthless but can multiply in value during extreme moves.</div>
 <div class="field"><span class="label">Mechanics:</span> Price is dominated by the implied probability of a large move (fat tails and skew make these options systematically pricier than lognormal models suggest). Delta-based margin systems treat, e.g., ten deep OTM options with delta 0.20 as two futures-equivalent contracts.</div>
 <div class="field"><span class="label">Failure modes:</span> Black-Scholes-style models underprice deep OTM options when return distributions have fat tails — a key lesson of the 1987 crash. Deep OTM quotes are wide and stale, so mark-to-model and end-of-day pricing can be unreliable.</div>
@@ -177,6 +183,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="option-chain"><h3>Option chain <a class="anchor" href="#option-chain">#</a></h3>
 <div class="field">An option chain is a quotation display listing all available option series for a given underlying — typically every strike and expiration for both calls and puts — together with bids, asks, last prices, volume, open interest, and often implied volatility and Greeks.</div>
+<div class="skill-links"><a href="../skills/tkl-option-chain/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The option chain is the menu of every option available on a stock or index, laid out so you can compare strikes and expirations at a glance.</div>
 <div class="field"><span class="label">Mechanics:</span> Chains are organized by expiration date and strike, with calls and puts shown side by side. Traders read chains to select strikes for strategies, gauge liquidity via volume/open interest and bid-ask width, and compute implied volatilities across the surface.</div>
 <div class="field"><span class="label">Failure modes:</span> Displayed quotes can be stale or wide on illiquid series, and last-trade prices may be hours old; using last price instead of current bid/ask misstates fair value and strategy P&amp;L.</div>
@@ -189,6 +196,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="option-series"><h3>Option series <a class="anchor" href="#option-series">#</a></h3>
 <div class="field">An option series is the set of option contracts of the same type (all calls or all puts) on the same underlying instrument that share the same expiration date and the same strike (exercise) price — i.e., a single line of an option chain, such as &#x27;XYZ January 100 calls&#x27;.</div>
+<div class="skill-links"><a href="../skills/tkl-option-series/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> If the option chain is the menu, a series is one specific dish: one underlying, one expiry, one strike, one side (call or put).</div>
 <div class="field"><span class="label">Mechanics:</span> All contracts within a series are fungible: any long contract in the series can be offset by selling any contract in the same series. Exchanges list new series as the underlying price moves and as new expiration cycles approach; open interest and volume are reported per series.</div>
 <div class="field"><span class="label">Failure modes:</span> Off-the-run series (far dated, deep ITM/OTM) can have zero open interest and no active market maker quotes, making them practically untradable at fair prices.</div>
@@ -200,6 +208,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="option-class"><h3>Option class <a class="anchor" href="#option-class">#</a></h3>
 <div class="field">An option class is the set of all option contracts of the same type (calls or puts, but not both) covering the same underlying instrument — for example, all listed calls on XYZ stock across every strike and expiration.</div>
+<div class="skill-links"><a href="../skills/tkl-option-class/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A class is the whole family of calls (or puts) on one underlying; series are the individual family members.</div>
 <div class="field"><span class="label">Mechanics:</span> Classes are the unit at which exchanges organize listing, and they aggregate series across strikes and expirations. Position limits, exercise limits, and many spread definitions (e.g., spreads use options &#x27;of the same class&#x27;) are expressed per class.</div>
 <div class="field"><span class="label">Failure modes:</span> Confusing class with series leads to order-entry errors: a spread requires different series within the same class, while offsetting a position requires the identical series.</div>
@@ -211,6 +220,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="option-writer"><h3>Option writer <a class="anchor" href="#option-writer">#</a></h3>
 <div class="field">An option writer is the party that originates (sells to open) an option contract, receiving the premium and in return accepting the obligation to sell the underlying (call) or buy it (put) if the holder exercises. The CFTC glossary also lists &#x27;option grantor&#x27; as a synonym.</div>
+<div class="skill-links"><a href="../skills/tkl-option-writer/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The writer is like an insurance company: it collects the premium up front and must pay out if the insured event (exercise) happens.</div>
 <div class="field"><span class="label">Mechanics:</span> Writers post margin because their obligations can exceed the premium received. When a holder exercises, the clearing organization assigns the obligation to a writer of that series; writers can close by buying back the same series (offsetting).</div>
 <div class="field"><span class="label">Failure modes:</span> Writing naked options exposes the seller to losses many times the premium (unlimited for naked calls); even covered writers face assignment at inconvenient times, e.g., short ITM calls before ex-dividend dates.</div>
@@ -222,6 +232,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="covered-call"><h3>Covered call <a class="anchor" href="#covered-call">#</a></h3>
 <div class="field">A covered call is a position long the underlying asset and short a call option on it; the long asset &#x27;covers&#x27; the writer&#x27;s obligation to deliver if the call is exercised. It converts some upside potential into immediate premium income.</div>
+<div class="skill-links"><a href="../skills/tkl-covered-call/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> You already own the stock and rent out the upside above the strike: you keep the premium, but if the stock rallies past the strike your shares get called away.</div>
 <div class="field"><span class="label">Mechanics:</span> For each 100 shares held, the investor sells one call and collects the premium. By put-call parity, a covered call has the same payoff shape as a cash-secured short put at the same strike. Upside is capped at strike + premium; downside is the full stock decline less the premium.</div>
 <div class="field"><span class="label">Failure modes:</span> The premium cushions only small declines — a large drop in the stock produces nearly the full stock loss, so it is not downside protection. Repeatedly capping winners while keeping losers can degrade long-run returns (opportunity cost in strong bull markets).</div>

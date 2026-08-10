@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/option-class",
+  "canonical_sha256": "91ce8178c57e3d9a51db6933742e62df13cdcc0eb575ce843679e08e03d2f026",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/option-class",
+    "name": "Option class",
+    "aliases": [
+      "class of options"
+    ],
+    "domain": "Options",
+    "definition": "An option class is the set of all option contracts of the same type (calls or puts, but not both) covering the same underlying instrument — for example, all listed calls on XYZ stock across every strike and expiration.",
+    "intuition": "A class is the whole family of calls (or puts) on one underlying; series are the individual family members.",
+    "mechanics": "Classes are the unit at which exchanges organize listing, and they aggregate series across strikes and expirations. Position limits, exercise limits, and many spread definitions (e.g., spreads use options 'of the same class') are expressed per class.",
+    "formula": "",
+    "relationships": [
+      "Option series",
+      "Option chain",
+      "Calendar spread",
+      "Bull call spread"
+    ],
+    "failure_modes": "Confusing class with series leads to order-entry errors: a spread requires different series within the same class, while offsetting a position requires the identical series.",
+    "misconceptions": "Option 'class' has nothing to do with share classes of stock (Class A/B shares); it groups option contracts by type and underlying.",
+    "example": "All listed SPY puts — every strike and every expiration — together form the SPY put class; the Dec 480 put is one series within it.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Class (of Options)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

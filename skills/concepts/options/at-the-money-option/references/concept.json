@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/at-the-money-option",
+  "canonical_sha256": "7eee28a6fa07c273a50d69cec2fa03ff26d607edc08f3a16b749b3d4ae35decc",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/at-the-money-option",
+    "name": "At-the-money option",
+    "aliases": [
+      "ATM option"
+    ],
+    "domain": "Options",
+    "definition": "An at-the-money (ATM) option is an option whose strike price equals (or is nearest to) the current price of the underlying; in forward terms (ATMF) the strike equals the forward price. An ATM option has no intrinsic value — its entire premium is time value.",
+    "intuition": "The ATM option is the coin-flip strike: it sits exactly at the boundary between finishing valuable and finishing worthless, which makes it the most sensitive to volatility and time.",
+    "mechanics": "ATM options have delta near +0.5 (calls) or -0.5 (puts), the highest gamma and theta of the chain, and vega near its maximum. ATM implied volatility is the standard quoting benchmark from which skew/smile adjustments are measured.",
+    "formula": "",
+    "relationships": [
+      "Moneyness",
+      "In-the-money option",
+      "Out-of-the-money option",
+      "Long straddle",
+      "Gamma",
+      "Theta"
+    ],
+    "failure_modes": "Because gamma and theta peak ATM, hedging errors and time-decay estimates are largest here, especially into expiration when tiny price moves flip the option between ITM and OTM (pin risk).",
+    "misconceptions": "ATM does not mean a 50/50 real-world probability of profit — the buyer must overcome the premium, so the breakeven lies beyond the strike; also, 'ATM spot' and 'ATM forward' strikes differ when rates or dividends are material.",
+    "example": "With stock at $100.10, the $100 strike is treated as at-the-money; its call might trade at $2.50, entirely time value.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "At-the-Money",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Moneyness — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Moneyness",
+        "section": "At the money",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

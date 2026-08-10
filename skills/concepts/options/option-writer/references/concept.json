@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/option-writer",
+  "canonical_sha256": "89406d2500299088a4f740f1fd04a439f7f652aaf41b2853d2575f87f4b47abc",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/option-writer",
+    "name": "Option writer",
+    "aliases": [
+      "option seller",
+      "option grantor",
+      "option maker"
+    ],
+    "domain": "Options",
+    "definition": "An option writer is the party that originates (sells to open) an option contract, receiving the premium and in return accepting the obligation to sell the underlying (call) or buy it (put) if the holder exercises. The CFTC glossary also lists 'option grantor' as a synonym.",
+    "intuition": "The writer is like an insurance company: it collects the premium up front and must pay out if the insured event (exercise) happens.",
+    "mechanics": "Writers post margin because their obligations can exceed the premium received. When a holder exercises, the clearing organization assigns the obligation to a writer of that series; writers can close by buying back the same series (offsetting).",
+    "formula": "",
+    "relationships": [
+      "Call option",
+      "Put option",
+      "Assignment risk",
+      "Covered call",
+      "Naked call",
+      "Exercise-by-exception"
+    ],
+    "failure_modes": "Writing naked options exposes the seller to losses many times the premium (unlimited for naked calls); even covered writers face assignment at inconvenient times, e.g., short ITM calls before ex-dividend dates.",
+    "misconceptions": "Writing an option is not the same as shorting the underlying, and 'most options expire worthless' does not make writing free money — the tail losses on the minority that finish ITM are what the premium compensates.",
+    "example": "A trader writes one XYZ $50 put and collects $1.50 ($150). If XYZ falls to $45 and the holder exercises, the writer is assigned and must buy 100 shares at $50 — a $350 loss net of premium.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Option Writer",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

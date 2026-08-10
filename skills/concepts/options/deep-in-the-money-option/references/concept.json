@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/deep-in-the-money-option",
+  "canonical_sha256": "047f60c23be876dc403c704a44e9c60a84cf01714506559169e9bef5dcc0a487",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/deep-in-the-money-option",
+    "name": "Deep in-the-money option",
+    "aliases": [
+      "deep ITM option"
+    ],
+    "domain": "Options",
+    "definition": "A deep in-the-money option is an option whose strike is far enough inside the money that its time value is negligible and its price moves almost one-for-one with the underlying (delta near +1 for calls, -1 for puts). 'Deep' is an informal descriptor with no fixed regulatory threshold.",
+    "intuition": "A deep ITM option behaves almost like a leveraged surrogate for the stock itself, with most of its value being intrinsic.",
+    "mechanics": "Premium approximates intrinsic value plus minimal time value; gamma, vega, and theta are near zero. Deep ITM American calls on dividend stocks and deep ITM puts are the prime early-exercise candidates because remaining time value can fall below the value of capturing the dividend or strike interest.",
+    "formula": "",
+    "relationships": [
+      "In-the-money option",
+      "Moneyness",
+      "Delta",
+      "Early exercise",
+      "Dividend risk"
+    ],
+    "failure_modes": "Deep ITM strikes are often illiquid with wide bid-ask spreads, so entry/exit costs can exceed the residual time value. Deep ITM European options can trade below intrinsic value due to discounting.",
+    "misconceptions": "Deep ITM calls are not identical to owning stock: they receive no dividends, and holders must still act (sell or exercise) before expiration; brokers may also auto-exercise them, creating an unintended stock position.",
+    "example": "With stock at $150, the $100 call is deep ITM and might trade at $50.30 — $50 intrinsic value plus $0.30 time value, with delta near 1.0.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Delta Margining (deep out-of-the-money / futures-equivalent usage)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Moneyness — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Moneyness",
+        "section": "Intrinsic value and time value",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

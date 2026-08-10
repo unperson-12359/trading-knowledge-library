@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/deep-out-of-the-money-option",
+  "canonical_sha256": "4e0662580ca43b0b2123e8a84d5b4cf3c78f84b96ea28703b809c2f06947c6b4",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/deep-out-of-the-money-option",
+    "name": "Deep out-of-the-money option",
+    "aliases": [
+      "deep OTM option"
+    ],
+    "domain": "Options",
+    "definition": "A deep out-of-the-money option is an option whose strike is far from the current underlying price, so it has no intrinsic value, a very small delta, and a premium close to zero that consists only of time value. 'Deep' is informal; no fixed threshold defines it.",
+    "intuition": "A deep OTM option is a cheap tail-risk ticket: it almost always expires worthless but can multiply in value during extreme moves.",
+    "mechanics": "Price is dominated by the implied probability of a large move (fat tails and skew make these options systematically pricier than lognormal models suggest). Delta-based margin systems treat, e.g., ten deep OTM options with delta 0.20 as two futures-equivalent contracts.",
+    "formula": "",
+    "relationships": [
+      "Out-of-the-money option",
+      "Moneyness",
+      "Volatility smile",
+      "Delta",
+      "Backspread"
+    ],
+    "failure_modes": "Black-Scholes-style models underprice deep OTM options when return distributions have fat tails — a key lesson of the 1987 crash. Deep OTM quotes are wide and stale, so mark-to-model and end-of-day pricing can be unreliable.",
+    "misconceptions": "A near-zero price does not mean 'free optionality': the tiny premium reflects a tiny probability-weighted payoff, and repeatedly selling deep OTM options concentrates exposure to rare, severe losses (picking up pennies in front of a steamroller).",
+    "example": "With the S&P 500 at 5,000, a 30-day 4,000-strike put is deep OTM and may trade for a few cents, yet it is exactly the instrument that pays off in a crash.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Delta Margining (deep out-of-the-money example)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Black–Scholes model — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model",
+        "section": "Black–Scholes in practice (deep OTM underpricing)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
