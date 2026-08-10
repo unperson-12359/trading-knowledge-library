@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/synthetic-long-stock",
+  "canonical_sha256": "1f86d03ddfa7e50ead062b9d1ef5d806825700c2048170bbda0dbfb962f3fd40",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/synthetic-long-stock",
+    "name": "Synthetic long stock",
+    "aliases": [
+      "synthetic long",
+      "synthetic underlying"
+    ],
+    "domain": "Options",
+    "definition": "A synthetic long stock position is a long call and a short put at the same strike and expiration on the same underlying; by put-call parity its payoff replicates owning the underlying outright, gaining or losing point-for-point with the stock from the strike.",
+    "intuition": "You get the stock's payoff without buying the stock: above the strike you exercise into shares, below it the short put forces the purchase — either way you end up long at the strike.",
+    "mechanics": "At expiration the combined value equals S_T - K (plus any net premium adjustment), matching a forward purchase at K. The position requires no stock borrow and typically little capital upfront, but the short put carries full downside margin and assignment risk; unlike stock, the synthetic pays no dividends and confers no voting rights.",
+    "formula": "Value at expiration = max(S_T - K, 0) - max(K - S_T, 0) = S_T - K; initial cost C - P approximates S_0 - PV(K) by put-call parity.",
+    "relationships": [
+      "Put-call parity",
+      "Synthetic short stock",
+      "Risk reversal",
+      "Call option",
+      "Put option",
+      "Conversion"
+    ],
+    "failure_modes": "The short put leg is naked and margined, so a sharp decline generates losses and margin calls like leveraged stock ownership; early assignment on the ITM short put (e.g., deep ITM or rate-driven) collapses the synthetic into actual stock before expiration.",
+    "misconceptions": "A synthetic long is not free leverage: the position carries the full economic exposure of the stock minus dividends, and the apparent cheapness reflects deferred payment of the strike (financing), not a discount.",
+    "example": "With XYZ at $100, buy the $100 call for $4.50 and sell the $100 put for $4.00 (net debit $0.50). If XYZ finishes at $110, the position is worth $10 for a $9.50 gain — matching 100 shares bought at $100 plus a small financing difference.",
+    "citations": [
+      {
+        "source": "Synthetic position — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Synthetic_position",
+        "section": "Synthetic long/short underlying",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Put-call parity — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Put%E2%80%93call_parity",
+        "section": "Statement (long call + short put = forward)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

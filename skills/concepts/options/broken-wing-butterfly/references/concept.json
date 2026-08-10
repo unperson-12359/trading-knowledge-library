@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/broken-wing-butterfly",
+  "canonical_sha256": "7ddc11572d30c5b974f31a6854b9731b5dae9801ce8f9ff878456c1c90912e20",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/broken-wing-butterfly",
+    "name": "Broken-wing butterfly",
+    "aliases": [
+      "broken fly",
+      "skip-strike butterfly"
+    ],
+    "domain": "Options",
+    "definition": "A broken-wing butterfly is a butterfly variant in which the distances between the middle strike and the two wing strikes are unequal — typically the far wing is placed further away (or a strike is skipped), skewing the payoff so that risk is reduced or eliminated on one side at the cost of added exposure on the other.",
+    "intuition": "It is a butterfly bent out of symmetry: you give up the balanced payoff to create a trade that can profit, or at least not lose, on the side you fear less.",
+    "mechanics": "Construction remains 1 long - 2 short - 1 long in the same option type and expiration, but the wing widths differ (e.g., $5 on one side, $10 on the other). The asymmetric strikes shift the peak and can turn the position into a net-credit trade with no loss on one side and an embedded vertical-spread loss on the other.",
+    "formula": "Value at expiration (call version, strikes K1 < K2 < K3, K2 - K1 != K3 - K2) = max(S_T - K1, 0) - 2 x max(S_T - K2, 0) + max(S_T - K3, 0) - net premium.",
+    "relationships": [
+      "Long call butterfly",
+      "Long put butterfly",
+      "Ratio spread",
+      "Iron butterfly",
+      "Moneyness"
+    ],
+    "failure_modes": "The 'no risk on one side' property depends on entering for at least zero cost and breaks down after fees and slippage; the widened wing side carries a larger maximum loss than a symmetric butterfly, which traders underestimating the asymmetry can miss.",
+    "misconceptions": "It is not a defect-free butterfly — the broken wing trades one risk profile for another; calling it a 'free' directional bet ignores the embedded debit/credit spread exposure on the wide side.",
+    "example": "Buy the $95 call, sell two $100 calls, buy the $110 call (broken 5/10 wings) for a $0.20 credit. If XYZ finishes at or below $95, keep the $20 credit; the peak value is $5.20 at $100, and beyond $110 the embedded $5-wide spread loses.",
+    "citations": [
+      {
+        "source": "Butterfly (options) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Butterfly_(options)",
+        "section": "Butterfly variations (broken wings)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

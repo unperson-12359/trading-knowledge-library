@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/dividend-risk",
+  "canonical_sha256": "5d079bb7fd00b43be89a7b6395d631e49e1a94e13102581c0a968611e39b093a",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/dividend-risk",
+    "name": "Dividend risk",
+    "aliases": [
+      "dividend assignment risk"
+    ],
+    "domain": "Options",
+    "definition": "Dividend risk is the risk to a short call writer that the call is exercised early, just before the underlying's ex-dividend date, because the holder wants to own the stock in time to receive the dividend. It also refers more broadly to the effect of expected dividends on option prices — calls are cheaper and puts richer the larger the anticipated dividend.",
+    "intuition": "Options do not pay dividends, so the day before a payout, an in-the-money call holder may grab the stock (and its dividend) by exercising — leaving you, the writer, assigned and delivering shares plus the dividend's value.",
+    "mechanics": "A call holder is entitled to the dividend only if they exercise before the ex-dividend date; per OCC/OIC guidance, early exercise is rational when the dividend exceeds the call's remaining time value, so assignment probability on short ITM calls rises into ex-dates. Assigned writers must deliver stock and may be notified only after the ex-date, making the exposure invisible until it has happened.",
+    "formula": "Early-exercise trigger (rule of thumb): dividend > call time value remaining; with multiple dividends remaining, compare against time value of the earliest profitable exercise.",
+    "relationships": [
+      "Early exercise",
+      "Assignment risk",
+      "Covered call",
+      "Deep in-the-money option",
+      "Put-call parity"
+    ],
+    "failure_modes": "Covered-call and spread writers who ignore dividend calendars are assigned at the worst moment, losing stock before the dividend and breaking hedges; deep ITM short call legs of spreads are prime targets, and the residual long leg plus new short stock changes the account's risk profile overnight.",
+    "misconceptions": "Dividends are not 'extra return' for option holders — option strike prices are not adjusted for ordinary dividends, so the stock's ex-date drop mechanically transfers value from calls to puts, and only exercise before the ex-date captures the payment.",
+    "example": "XYZ pays $1.00 tomorrow (ex-date); the $45 call with stock at $50 trades at $5.05 ($0.05 time value). Since $1.00 > $0.05, holders exercise en masse, and writers of that call should expect assignment tonight.",
+    "citations": [
+      {
+        "source": "The Options Industry Council (OCC) — Options Exercise FAQ",
+        "url": "https://www.optionseducation.org/referencelibrary/faq/options-exercise",
+        "section": "Dividend capture / ex-date assignment",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "The Options Industry Council (OCC) — Exercising Options",
+        "url": "https://www.optionseducation.org/optionsoverview/exercising-options",
+        "section": "Early Exercise/Assignment",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

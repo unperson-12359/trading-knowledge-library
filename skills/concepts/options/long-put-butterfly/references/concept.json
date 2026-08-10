@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/long-put-butterfly",
+  "canonical_sha256": "fd90169998170d4bf3dfa8c9d86642d0d0a4bf332f22986abb715ddddc07d191",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/long-put-butterfly",
+    "name": "Long put butterfly",
+    "aliases": [
+      "put butterfly spread"
+    ],
+    "domain": "Options",
+    "definition": "A long put butterfly is a three-strike, same-expiration spread built from puts only: long one put at a higher strike, short two puts at a middle strike, and long one put at a lower strike, with the middle strike equidistant from the wings. Entered for a small net debit, its expiration payoff matches the long call butterfly at the same strikes, peaking when the underlying finishes at the middle strike.",
+    "intuition": "The same target bet as the call butterfly, assembled from puts instead — by put-call parity the two structures are economically equivalent at identical strikes.",
+    "mechanics": "Net debit = (higher put + lower put) - 2 x middle put; the position is worth zero outside the wings and peaks at the wing width at the body strike. It decomposes into a bear put spread plus a bull put spread sharing the short middle strike.",
+    "formula": "Value at expiration = max(0, min(K3 - S_T, S_T - K1)) when K2 - K1 = K3 - K2; max value = K3 - K2 at S_T = K2; max loss = net debit.",
+    "relationships": [
+      "Long call butterfly",
+      "Iron butterfly",
+      "Broken-wing butterfly",
+      "Bear put spread",
+      "Bull put spread",
+      "Put-call parity"
+    ],
+    "failure_modes": "Identical structural weaknesses to the call butterfly: a narrow profit zone, heavy relative transaction costs, and short-gamma whipsaw risk around the body strike near expiration; put-side skew can make the put version priced differently in practice.",
+    "misconceptions": "The call and put butterflies are not different bets — put-call parity makes their expiration payoffs identical at the same strikes, so the choice between them is about pricing and liquidity, not payoff shape.",
+    "example": "Buy the $105 put, sell two $100 puts, buy the $95 put for a $1.00 net debit. Max value $5.00 at $100; outside $95-$105 the debit is lost; breakevens at $96 and $104.",
+    "citations": [
+      {
+        "source": "Butterfly (options) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Butterfly_(options)",
+        "section": "Long butterfly (put construction via put-call parity)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Put-call parity — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Put%E2%80%93call_parity",
+        "section": "Statement",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

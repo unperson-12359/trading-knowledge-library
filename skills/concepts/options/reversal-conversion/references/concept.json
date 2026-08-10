@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/reversal-conversion",
+  "canonical_sha256": "f184abcd20a2ca65271da4a689666360ad89147f73f758266aafcd6cc6792b33",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/reversal-conversion",
+    "name": "Reversal conversion",
+    "aliases": [
+      "reverse conversion",
+      "reversal"
+    ],
+    "domain": "Options",
+    "definition": "A reversal (reverse conversion) is an arbitrage position consisting of short the underlying, short a put, and long a call at the same strike and expiration — short stock plus a synthetic long stock via options. It is the mirror image of the conversion, traded when the synthetic long is cheap relative to actual stock under put-call parity.",
+    "intuition": "You are short the stock and long its exact option-built replica; the two cancel into a fixed payoff, monetizing any small mispricing between the stock and its synthetic.",
+    "mechanics": "Short stock + short put + long call (same K, same expiry) has a constant expiration obligation/value of -K (the position is effectively short the strike). It is established when call-put prices imply a synthetic long cheaper than the actual stock; the position earns the deviation but requires borrowing the shares.",
+    "formula": "Expiration value = -S_T - max(K - S_T, 0) + max(S_T - K, 0) = -K; fair proceeds approximate PV(K) by put-call parity.",
+    "relationships": [
+      "Conversion",
+      "Put-call parity",
+      "Synthetic long stock",
+      "Box spread",
+      "Assignment risk"
+    ],
+    "failure_modes": "Stock-borrow recall or buy-ins break the hedge and can force unwinds at a loss; assignment on the short put and changes in borrow fees or rates can each consume the thin margin. These are market-maker trades with razor-thin edges.",
+    "misconceptions": "A reversal is not a directional short: the option legs neutralize the stock exposure, so P&L comes only from pricing deviation and carry, not from the stock falling.",
+    "example": "Short 100 XYZ shares at $100, sell the $100 put for $4.00, buy the $100 call for $3.40: net proceeds $100.60 against a fixed $100 obligation at expiration, locking in $0.60 before borrow and financing costs.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Conversion (See Reverse Conversion)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Put-call parity — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Put%E2%80%93call_parity",
+        "section": "Statement",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

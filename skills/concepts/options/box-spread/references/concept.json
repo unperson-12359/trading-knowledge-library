@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/box-spread",
+  "canonical_sha256": "330d01ceac789f6673bb6f3858fcaf72bcf69d2c5775a40a5d288051a2dfd7e4",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/box-spread",
+    "name": "Box spread",
+    "aliases": [
+      "box",
+      "long box / short box"
+    ],
+    "domain": "Options",
+    "definition": "A box spread is a four-leg, same-expiration position combining a bull call spread and a bear put spread at the same two strikes — equivalently, long call + short put at the lower strike and short call + long put at the upper strike. Constructed with European-style options it has a constant expiration payoff equal to the strike difference, making it a synthetic zero-coupon loan.",
+    "intuition": "A box is options-market lending: you pay a fixed price today for a guaranteed fixed payoff at expiration, so the only real variable is the implied interest rate.",
+    "mechanics": "Because the payoff is fixed at (K2 - K1), the fair price is the present value of that amount; paying less is effectively borrowing, paying more is effectively lending at the implied rate. With American-style index or equity options, early exercise of an ITM leg can break the box and convert it into directional exposure — the source of notorious catastrophic retail losses.",
+    "formula": "Payoff at expiration (long box) = K2 - K1, constant; fair value = (K2 - K1) * e^(-rT) under put-call parity.",
+    "relationships": [
+      "Bull call spread",
+      "Bear put spread",
+      "Put-call parity",
+      "Conversion",
+      "Early exercise",
+      "Risk-free rate"
+    ],
+    "failure_modes": "Early assignment on American-style legs destroys the fixed payoff and can produce losses vastly larger than the intended interest-like economics (the infamous 1R0NYMAN case, roughly a 2,000% loss on margin). Execution across four legs also invites slippage that erases the thin rate edge.",
+    "misconceptions": "A box spread is not 'free money' or riskless yield: with American options it embeds assignment tail risk, and the implied rate is only fair compensation for funding, not an arbitrage gift, once costs are included.",
+    "example": "A 40-50 box (long 40 call, short 50 call, long 50 put, short 40 put) always pays exactly $10 at expiration; paying $9.80 for it today implies earning roughly the risk-free rate to expiry — unless an American-style leg is assigned early.",
+    "citations": [
+      {
+        "source": "Options strategy — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Options_strategy",
+        "section": "Spread combinations (box spread)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Box Spread",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

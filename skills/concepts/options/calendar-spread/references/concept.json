@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/calendar-spread",
+  "canonical_sha256": "9db7cd8cb80723b846ebf5d2da740f8426bd80d4eaff3e7da5a6d03bd079064a",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/calendar-spread",
+    "name": "Calendar spread",
+    "aliases": [
+      "time spread",
+      "horizontal spread"
+    ],
+    "domain": "Options",
+    "definition": "A calendar spread is the simultaneous sale of an option at a given strike with a nearer expiration and purchase of the same type of option at the same strike with a later expiration, on the same underlying, entered for a net debit. The long calendar profits if the underlying is near the strike when the short leg expires, exploiting the faster time decay of the near-dated option.",
+    "intuition": "You sell the fast-decaying front month and buy the slow-decaying back month at the same strike, harvesting the difference in decay if the stock stays put.",
+    "mechanics": "Both legs share the strike; only expirations differ (a 'horizontal' spread). Maximum loss is the net debit; the maximum gain occurs with the underlying at the strike at the first expiration, when the short leg expires worthless while the long leg retains time value. The position is net long vega and net long theta.",
+    "formula": "Value at first expiration ~ V_long(T2 - T1 remaining) - net debit; exact value requires a model since the long leg still has time value.",
+    "relationships": [
+      "Diagonal spread",
+      "Theta",
+      "Vega",
+      "Option series",
+      "Covered call",
+      "Volatility term structure"
+    ],
+    "failure_modes": "A large move in either direction before the first expiration hurts both legs' relative value and can approach the full debit as a loss; a spike in near-term implied volatility (e.g., into earnings) inflates the short leg against the trader. Assignment of the short ITM leg leaves stock-plus-long-option exposure.",
+    "misconceptions": "A calendar is not a riskless theta harvest — it is a bet on the underlying staying near the strike and on the volatility term structure; losses to the full debit are possible well before the long leg's expiry.",
+    "example": "With XYZ at $100, sell the 30-day $100 call for $2.50 and buy the 60-day $100 call for $4.00: net debit $1.50. If XYZ is at $100 in 30 days, the short call expires worthless while the long call retains most of its value.",
+    "citations": [
+      {
+        "source": "Calendar spread — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Calendar_spread",
+        "section": "Uses",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Calendar Spread",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

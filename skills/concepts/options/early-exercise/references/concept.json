@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/early-exercise",
+  "canonical_sha256": "05a7c37317072063cf9da9c24f5e2ef02743614fc0c94ecb7db036d711cf5e36",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/early-exercise",
+    "name": "Early exercise",
+    "aliases": [
+      "premature exercise"
+    ],
+    "domain": "Options",
+    "definition": "Early exercise is the exercise of an American-style option before its expiration date. It is rational only in specific circumstances — principally calls on a stock just before an ex-dividend date (to capture the dividend) and deep in-the-money puts (to capture the strike's interest value) — because exercising otherwise destroys the option's remaining time value.",
+    "intuition": "Exercising early is like tearing up an insurance policy to claim it today: you get the intrinsic value but throw away the remaining time value, so it pays only when something specific (a dividend, interest on the strike) exceeds that sacrifice.",
+    "mechanics": "An American call on a non-dividend stock should never be exercised early (Merton's result): selling the option always yields at least as much. Before an ex-dividend date, exercising an ITM call is optimal when the dividend exceeds the remaining time value; deep ITM puts can be optimal to exercise early because the strike cash earns interest immediately. Writers face early assignment randomly through the OCC's allocation process.",
+    "formula": "Rule of thumb: early-exercise an ITM call before ex-date only if dividend > time value of the call; never early-exercise a call on a non-dividend-paying stock.",
+    "relationships": [
+      "Assignment risk",
+      "Dividend risk",
+      "Exercise-by-exception",
+      "Deep in-the-money option",
+      "Option writer"
+    ],
+    "failure_modes": "Retail holders routinely forfeit time value by exercising when selling would pay more; writers who ignore dividend calendars get assigned at the worst times and find their 'covered' position stripped of stock the day before ex-dividend.",
+    "misconceptions": "Early exercise is not generally 'taking profit early' — it usually leaves money on the table versus selling the option. The blanket rule 'never exercise early' is also wrong: dividends and deep ITM puts create legitimate exceptions.",
+    "example": "XYZ trades at $55 and goes ex-dividend tomorrow for $1.00; the $50 call trades at $5.10 ($5.00 intrinsic + $0.10 time value). Since the $1.00 dividend exceeds the $0.10 time value, exercising today to hold the stock over the ex-date is rational.",
+    "citations": [
+      {
+        "source": "The Options Industry Council (OCC) — Exercising Options",
+        "url": "https://www.optionseducation.org/optionsoverview/exercising-options",
+        "section": "Early Exercise/Assignment",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "The Options Industry Council (OCC) — Options Exercise FAQ",
+        "url": "https://www.optionseducation.org/referencelibrary/faq/options-exercise",
+        "section": "Dividend capture and early assignment",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

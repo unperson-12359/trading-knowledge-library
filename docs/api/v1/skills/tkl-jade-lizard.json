@@ -1,0 +1,78 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-jade-lizard",
+  "concept_id": "options/jade-lizard",
+  "display_name": "Jade lizard",
+  "domain": "Options",
+  "description": "Explain, compare, or apply Jade lizard using the library's structured Options reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Jade lizard",
+    "explain Jade lizard",
+    "apply Jade lizard to a trading question",
+    "common misconception about Jade lizard"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 47,
+  "package_path": "skills/concepts/options/jade-lizard",
+  "canonical": {
+    "source_path": "concepts/options.json",
+    "sha256": "81dce4472fc921466049ed1505669edc19f23a3af4b187d7f8d84378ee20d657"
+  },
+  "related_concept_ids": [
+    "options/short-strangle",
+    "options/big-lizard",
+    "options/cash-secured-put",
+    "options/iron-condor"
+  ]
+}

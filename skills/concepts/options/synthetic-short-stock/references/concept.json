@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/synthetic-short-stock",
+  "canonical_sha256": "02104a4d9f5a1668e91218327a5b824788db348f29b9907e847b84579dc7f9df",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/synthetic-short-stock",
+    "name": "Synthetic short stock",
+    "aliases": [
+      "synthetic short",
+      "synthetic short underlying"
+    ],
+    "domain": "Options",
+    "definition": "A synthetic short stock position is a short call and a long put at the same strike and expiration on the same underlying; by put-call parity its payoff replicates being short the underlying, losing or gaining point-for-point as the stock rises or falls from the strike.",
+    "intuition": "You get the payoff of a short sale without borrowing shares: below the strike the put pays, above it the short call obliges you to sell — either way you are effectively short from the strike.",
+    "mechanics": "At expiration the combined value equals K - S_T (plus any net premium adjustment), matching a forward sale at K. The structure avoids stock-borrow costs and hard-to-borrow constraints, but the short call is naked with theoretically unlimited risk, and no borrow means no rebate considerations but also margin on the call.",
+    "formula": "Value at expiration = max(K - S_T, 0) - max(S_T - K, 0) = K - S_T; initial credit P - C approximates PV(K) - S_0 by put-call parity.",
+    "relationships": [
+      "Put-call parity",
+      "Synthetic long stock",
+      "Risk reversal",
+      "Naked call",
+      "Reversal conversion"
+    ],
+    "failure_modes": "The naked short call has unlimited loss in a rally or short squeeze — worse than a stock short in that it cannot be 'covered' by holding shares; assignment on the ITM short call (especially before ex-dividend dates) can force delivery and create borrow needs the structure was meant to avoid.",
+    "misconceptions": "Avoiding the borrow does not avoid short-seller economics: the options market prices in borrow difficulty through put-call parity (expensive puts / cheap calls), so hard-to-borrow names simply shift the cost into the option prices.",
+    "example": "With XYZ at $100, sell the $100 call for $4.50 and buy the $100 put for $4.00 (net credit $0.50). If XYZ finishes at $85, the position gains $15, replicating a short sale from $100; above $100 losses are unlimited.",
+    "citations": [
+      {
+        "source": "Synthetic position — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Synthetic_position",
+        "section": "Synthetic long/short underlying",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Put-call parity — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Put%E2%80%93call_parity",
+        "section": "Statement",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

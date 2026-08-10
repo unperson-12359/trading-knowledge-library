@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/ratio-spread",
+  "canonical_sha256": "bd051f52e6fabd951ec241299f6f9c7ca17c4807a3e8c7041194210dc67c0158",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/ratio-spread",
+    "name": "Ratio spread",
+    "aliases": [
+      "ratio vertical spread"
+    ],
+    "domain": "Options",
+    "definition": "A ratio spread is a vertical-style spread in which more options are sold than bought at different strikes, same type and expiration — for example, long one call at a lower strike and short two calls at a higher strike. The extra short option(s) leave part of the position uncovered, giving the spread undefined or large risk beyond the short strikes.",
+    "intuition": "You finance a directional option purchase by selling two further-out options instead of one — cheap or free to enter, but the second short option is naked and can hurt badly in a big move.",
+    "mechanics": "Common ratios are 1x2 or 2x3. A 1x2 call ratio spread profits most if the underlying pins the short strike at expiration; beyond the upper breakeven the uncovered short call produces open-ended losses. Often established for a small debit, credit, or zero cost.",
+    "formula": "1x2 call ratio payoff = max(S_T - K1, 0) - 2 x max(S_T - K2, 0) - net premium; upper breakeven = 2*K2 - K1 +/- net premium adjustment.",
+    "relationships": [
+      "Backspread",
+      "Bull call spread",
+      "Naked call",
+      "Broken-wing butterfly",
+      "Assignment risk"
+    ],
+    "failure_modes": "The naked extra short leg converts a 'cheap' spread into an unlimited-risk position on the call side (or strike-sized risk on the put side); gap moves past the short strike realize losses that dwarf the initial outlay, and margin requirements reflect this.",
+    "misconceptions": "Zero-cost entry does not mean zero risk — the unpaid-for short option is exactly where the risk hides. Ratio spreads are not hedged spreads; they are spreads plus a naked option.",
+    "example": "With XYZ at $100, buy one $100 call for $4.00 and sell two $105 calls for $2.00 each (zero cost). Max gain $5.00 at $105; above $110 the uncovered short call loses point-for-point without limit.",
+    "citations": [
+      {
+        "source": "Options strategy — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Options_strategy",
+        "section": "Ratio spreads and backspreads",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Back Spread (ratio spread context)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/pin-risk",
+  "canonical_sha256": "2fd67c380f77fc11b53d8dd0ad343298fae7bb762c2c0ef1a35e302595b4b000",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/pin-risk",
+    "name": "Pin risk",
+    "aliases": [
+      "pinning risk"
+    ],
+    "domain": "Options",
+    "definition": "Pin risk is the uncertainty faced by an option writer when the underlying closes at or very near the short option's strike at expiration: the writer cannot predict whether the option will be exercised, so they cannot determine whether they will wake up after expiration with an unwanted long or short stock position.",
+    "intuition": "The stock finishes a cent away from your strike on expiration Friday, and you do not know whether you own 1,000 shares on Monday — that unknowable weekend exposure is pin risk.",
+    "mechanics": "Holders' exercise decisions depend on their own transaction costs, so slightly ITM options may go unexercised and slightly OTM or ATM options are occasionally exercised. Under OCC exercise-by-exception, options $0.01 or more ITM are auto-exercised absent contrary instructions, but exceptions and after-hours news leave the writer guessing. Spread traders face the amplified version: one leg assigned and the other not converts a defined-risk spread into naked stock over the weekend.",
+    "formula": "",
+    "relationships": [
+      "Exercise-by-exception",
+      "Assignment risk",
+      "Iron condor",
+      "Short straddle",
+      "At-the-money option"
+    ],
+    "failure_modes": "The standard failure is the Monday-morning gap: a short spread pinned at the short strike Friday leaves the trader long or short the underlying after partial assignment, and a weekend gap converts a 'defined-risk' trade into a loss far exceeding the spread width.",
+    "misconceptions": "Closing near the strike does not mean the option 'expires worthless safely' — ATM and even slightly OTM options are sometimes exercised deliberately. Letting defined-risk spreads expire rather than closing them is the classic way pin risk ambushes retail accounts.",
+    "example": "A trader is short the $50 put; XYZ closes Friday at $49.97. Only some holders exercise, so instead of being flat, the trader is long an unexpected 4,900 shares Monday and must cover a gap at the open.",
+    "citations": [
+      {
+        "source": "Pin risk — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Pin_risk",
+        "section": "Background; Example",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "The Options Industry Council (OCC) — Options Exercise FAQ",
+        "url": "https://www.optionseducation.org/referencelibrary/faq/options-exercise",
+        "section": "Exercise by exception",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

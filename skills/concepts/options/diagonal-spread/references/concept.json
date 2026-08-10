@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/diagonal-spread",
+  "canonical_sha256": "164abe3ed0ca4b68f48accedd5ccb5aec8dbd366548c68f27353cdf30aeab835",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/diagonal-spread",
+    "name": "Diagonal spread",
+    "aliases": [
+      "diagonal time spread"
+    ],
+    "domain": "Options",
+    "definition": "A diagonal spread is a spread between two calls or two puts on the same underlying that differ in both strike price and expiration date — typically long a longer-dated option at one strike and short a shorter-dated option at a different strike. It combines the directional character of a vertical spread with the time-decay differential of a calendar spread.",
+    "intuition": "It is a calendar spread tilted with a directional view: the different strikes add a bullish or bearish lean to the front-month decay harvest.",
+    "mechanics": "Legs differ in strike and expiry, so the payoff depends on both the underlying's level and the term structure of volatility. A common structure, the diagonal call spread (long a longer-dated ITM call, short a near-dated OTM call), behaves like a leveraged covered call; maximum loss is limited to the net debit for the debit variants.",
+    "formula": "",
+    "relationships": [
+      "Calendar spread",
+      "Bull call spread",
+      "Covered call",
+      "Theta",
+      "Volatility term structure"
+    ],
+    "failure_modes": "The dual dependence on price and time makes outcomes hard to bound intuitively: big early moves, term-structure shifts, or early assignment of the short leg (especially before ex-dividend dates) can each undermine the position. Rolling the short leg repeatedly converts defined plans into path-dependent outcomes.",
+    "misconceptions": "A diagonal is not simply a cheaper covered call — unlike stock, the long option decays and can expire worthless, so the 'poor man's covered call' framing hides the long leg's own theta and vega risks.",
+    "example": "With XYZ at $100, buy the 90-day $90 call for $12 and sell the 30-day $105 call for $1.50: net debit $10.50. If XYZ drifts to $104 by the short leg's expiry, the short call decays while the long call keeps most of its value.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Diagonal Spread",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Options strategy — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Options_strategy",
+        "section": "Options spreads (diagonal spreads)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/risk-reversal",
+  "canonical_sha256": "ddfe101a41acb9144f7a42b70465f2038298e25da62840960002703139510824",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/risk-reversal",
+    "name": "Risk reversal",
+    "aliases": [
+      "combo",
+      "risk flip"
+    ],
+    "domain": "Options",
+    "definition": "A risk reversal is an options position that is long an out-of-the-money call and short an out-of-the-money put (bullish form), or the reverse (bearish form), on the same underlying with the same expiration; the put premium finances the call. In volatility markets the same term denotes a skew quote: the implied volatility of a given-delta call minus that of the matching put.",
+    "intuition": "You swap away the downside tail to pay for the upside tail — a synthetic-like way to get leveraged directional exposure for little or no upfront premium.",
+    "mechanics": "The bullish risk reversal approximates a long forward: it gains as the underlying rises above the call strike and loses below the put strike, where the short put is naked. Dealers quote the 25-delta risk reversal as RR25 = IV(25d call) - IV(25d put), a standard market measure of skew; in equity markets it is usually negative (puts bid over calls).",
+    "formula": "RR(25-delta) = sigma_call(25d) - sigma_put(25d); position payoff at expiration = max(S_T - K_c, 0) - max(K_p - S_T, 0) - net premium.",
+    "relationships": [
+      "Synthetic long stock",
+      "Collar",
+      "Volatility skew",
+      "Short strangle",
+      "Delta"
+    ],
+    "failure_modes": "The financing short put is naked: a sharp decline produces losses that dwarf the zero-cost entry, and skew means the put sold is often the relatively expensive leg, so the 'free' upside is paid for by selling crash insurance. Early assignment on the short put adds path risk.",
+    "misconceptions": "A risk reversal is not a directional view with no cost — the cost is the accepted downside tail. Nor is a steep risk-reversal quote proof of informed positioning; it is a relative-pricing (skew) measure, not a forecast.",
+    "example": "With XYZ at $100, buy the $105 call for $1.50 and sell the $95 put for $1.50 (zero cost). Above $105 the position gains point-for-point; below $95 it loses point-for-point as if long stock from $95.",
+    "citations": [
+      {
+        "source": "Risk reversal — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Risk_reversal",
+        "section": "Risk reversal investment strategy; measure of vol-skew",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Options strategy — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Options_strategy",
+        "section": "Neutral or non-directional strategies (risk reversal)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

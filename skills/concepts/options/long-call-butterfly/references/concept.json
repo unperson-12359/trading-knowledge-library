@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/long-call-butterfly",
+  "canonical_sha256": "25db46d5afc4c2372a207de177fbe3c18658c0e700158227e58c5f6a2860123b",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/long-call-butterfly",
+    "name": "Long call butterfly",
+    "aliases": [
+      "call butterfly spread"
+    ],
+    "domain": "Options",
+    "definition": "A long call butterfly is a three-strike, same-expiration spread built from calls only: long one call at a lower strike, short two calls at a middle strike, and long one call at a higher strike, with the middle strike equidistant from the wings. Entered for a small net debit, it reaches maximum value when the underlying finishes exactly at the middle strike.",
+    "intuition": "You are buying a target: a cheap bet that the stock will land near the middle strike at expiration, with the wings defining your worst case.",
+    "mechanics": "Net debit = (lower call + upper call) - 2 x middle call; the position is worth zero outside the wings and peaks at the wing width at the body strike. It is a combination of a bull call spread and a bear call spread sharing the short middle strike, and it is short volatility between the wings.",
+    "formula": "Value at expiration = max(0, min(S_T - K1, K3 - S_T)) when K2 - K1 = K3 - K2; max value = K2 - K1 at S_T = K2; max loss = net debit.",
+    "relationships": [
+      "Long put butterfly",
+      "Iron butterfly",
+      "Broken-wing butterfly",
+      "Bull call spread",
+      "Bear call spread",
+      "Moneyness"
+    ],
+    "failure_modes": "The profit zone is narrow, so the small debit is lost in full most of the time; with three strikes and four contracts, transaction costs consume a large share of the theoretical edge, and short-gamma whipsaw near the body strike close to expiration is severe.",
+    "misconceptions": "A butterfly's high reward-to-risk ratio is not free money — the maximum payoff is attained only at one exact price, so probability-weighted value, not the peak, determines fairness.",
+    "example": "Buy the $95 call, sell two $100 calls, buy the $105 call for a $1.00 net debit. Max value $5.00 at $100 (gain $4.00); outside $95-$105 the $100 debit is lost; breakevens at $96 and $104.",
+    "citations": [
+      {
+        "source": "Butterfly (options) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Butterfly_(options)",
+        "section": "Long butterfly",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Butterfly Spread",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

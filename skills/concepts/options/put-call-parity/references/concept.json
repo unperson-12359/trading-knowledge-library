@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/put-call-parity",
+  "canonical_sha256": "667cf0de34d0ddbcbf4ec01ceffcfabc9236d57aacf92492d70f5d2c76c51253",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/put-call-parity",
+    "name": "Put-call parity",
+    "aliases": [
+      "put-call parity relation"
+    ],
+    "domain": "Options",
+    "definition": "Put-call parity is a no-arbitrage identity linking the prices of a European call and a European put at the same strike and expiration to the underlying's forward price: a long call plus a short put replicates a forward contract, so their price difference must equal the discounted difference between the forward price and the strike.",
+    "intuition": "Whether the stock finishes above or below the strike, one of the two options is exercised and you end up buying at the strike — exactly like a forward — so the two packages must cost the same today.",
+    "mechanics": "Formally C - P = D x (F - K), or in spot terms C - P = S - PV(K) for non-dividend stocks, extended to C - P = S - PV(K) - PV(dividends) when dividends are paid. The identity is model-free (static replication) and underlies synthetic positions, conversions/reversals, and the equivalence of covered calls to cash-secured puts; violations beyond transaction costs imply arbitrage.",
+    "formula": "C - P = S_0 - K*e^(-rT) - PV(dividends); equivalently C + PV(K) = P + S_0 (fiduciary call = married put).",
+    "relationships": [
+      "Synthetic long stock",
+      "Conversion",
+      "Reversal conversion",
+      "Box spread",
+      "Covered call",
+      "Cash-secured put",
+      "Moneyness"
+    ],
+    "failure_modes": "Parity holds exactly only for European options in frictionless markets; American early-exercise rights, dividends, borrow costs, and wide bid-ask spreads create bands within which deviations persist without being exploitable. During market stress, financing and borrow constraints widen these bands dramatically.",
+    "misconceptions": "Parity is not a pricing model that predicts option values — it is a consistency condition among prices that already exist. Nor does it require assumptions about volatility or the underlying's distribution.",
+    "example": "With XYZ at $100, one-year $100-strike European call at $8.00, and the risk-free rate near zero, parity implies the $100 put should trade near $8.00 too; if it traded at $5.00, a conversion would lock in the $3.00 discrepancy.",
+    "citations": [
+      {
+        "source": "Put-call parity — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Put%E2%80%93call_parity",
+        "section": "Statement; Derivation",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Black-Scholes model — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model",
+        "section": "Alternative formulation (parity in forward terms)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

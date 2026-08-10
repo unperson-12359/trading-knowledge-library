@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/jade-lizard",
+  "canonical_sha256": "81dce4472fc921466049ed1505669edc19f23a3af4b187d7f8d84378ee20d657",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/jade-lizard",
+    "name": "Jade lizard",
+    "aliases": [],
+    "domain": "Options",
+    "definition": "A jade lizard is a retail-coined, three-leg strategy with one expiration: short an out-of-the-money put and short an out-of-the-money call spread (short a call, long a further OTM call), structured so the total credit collected exceeds the width of the call spread. That sizing condition eliminates upside risk in theory, leaving the naked short put as the only source of loss.",
+    "intuition": "It is a short strangle with the upside tail capped: you collect premium on both sides, and if the call-spread credit is wide enough, even a runaway rally cannot lose money — only a sell-off can.",
+    "mechanics": "Construction: sell 1 OTM put at K1, sell 1 OTM call at K2, buy 1 OTM call at K3 (K1 < K2 < K3), same expiry, with credit > (K3 - K2). Maximum gain is the credit if the underlying finishes between K1 and K2; above K3 the call-spread loss is fully offset by the credit; below K1 the short put loses point-for-point down to zero on the stock.",
+    "formula": "Downside breakeven = K1 - total credit; upside loss = max(0, (K3 - K2) - total credit), which is zero by construction.",
+    "relationships": [
+      "Short strangle",
+      "Big lizard",
+      "Bear call spread",
+      "Cash-secured put",
+      "Iron condor"
+    ],
+    "failure_modes": "The naked put retains full downside exposure to a collapse of the underlying (loss up to the strike times 100 per contract); assignment risk on the short put is real in falling markets, and the 'no upside risk' property can be voided by fees, slippage, or legging in at worse prices.",
+    "misconceptions": "'No upside risk' does not mean low risk — the strategy is simply a bullish-skewed short-volatility trade whose entire risk is concentrated on the downside, where equity crashes live.",
+    "example": "With XYZ at $48: sell the $45 put for $0.90, sell the $52 call for $1.50, buy the $53 call for $1.10 — net credit $1.30 > $1.00 spread width. Max gain $130 between $45 and $52; downside breakeven $43.70.",
+    "citations": [
+      {
+        "source": "Investopedia — The Jade Lizard Option Strategy",
+        "url": "https://www.investopedia.com/the-jade-lizard-option-strategy-7229206",
+        "section": "Understanding the Jade Lizard Options Strategy",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

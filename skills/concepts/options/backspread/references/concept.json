@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/backspread",
+  "canonical_sha256": "20c6d14bbc90013b3ce1c22c5e940993207925cc08b57ba4d737f86238ef688c",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/backspread",
+    "name": "Backspread",
+    "aliases": [
+      "reverse ratio spread"
+    ],
+    "domain": "Options",
+    "definition": "A backspread is a vertical-style spread in which more options are bought than sold at different strikes, same type and expiration — for example, short one call at a lower strike and long two calls at a higher strike. It is the converse of the ratio spread: the CFTC glossary describes it as a delta-neutral ratio spread in which more options are bought than sold, benefiting from an increase in volatility.",
+    "intuition": "You sell one near option to finance two further-out options, creating a position that loses a little in a quiet market but pays off disproportionately in a large directional move.",
+    "mechanics": "Common structure is 1 short x 2 long, often entered near zero net cost. A call backspread has unlimited upside gain beyond the long strikes and a bounded maximum loss when the underlying pins the long strike at expiration; put backspreads mirror this to the downside. The position is net long vega and long gamma.",
+    "formula": "1x2 call backspread payoff = 2 x max(S_T - K2, 0) - max(S_T - K1, 0) + net credit; max loss at S_T = K2 equals (K2 - K1) - net credit.",
+    "relationships": [
+      "Ratio spread",
+      "Deep out-of-the-money option",
+      "Vega",
+      "Gamma",
+      "Bull call spread"
+    ],
+    "failure_modes": "The maximum loss sits exactly at the long strike — the price level traders instinctively anchor to — and slow grind moves lose to time decay; gains require a fast, large move, since a late move arrives after the short leg has already hurt.",
+    "misconceptions": "A backspread is not 'unlimited profit for free': the zero or credit entry embeds a real loss zone between the strikes, and the position loses in the most common (quiet) scenarios.",
+    "example": "With XYZ at $100, sell one $100 call for $4.00 and buy two $105 calls for $2.00 each (zero cost). Max loss $500 if XYZ finishes at $105; above $110 the two long calls outrun the short and profit grows without bound.",
+    "citations": [
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Back Spread",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Backspread — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Backspread",
+        "section": "Call backspread / Put backspread",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

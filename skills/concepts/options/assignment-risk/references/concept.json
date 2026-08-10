@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/assignment-risk",
+  "canonical_sha256": "fb852f963f76f33cdc83eb6d1041d9dfaad59be2da1376392a3018bfae8ad55d",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/assignment-risk",
+    "name": "Assignment risk",
+    "aliases": [
+      "early assignment risk"
+    ],
+    "domain": "Options",
+    "definition": "Assignment risk is the possibility that the writer of an American-style option is assigned an exercise notice at any time before expiration, obliging them to sell the underlying at the strike (call) or buy it at the strike (put). Assignment is most likely when a short option is in-the-money with little remaining time value, especially calls just before an ex-dividend date and deep ITM puts.",
+    "intuition": "When you sell an option, someone else holds the trigger: they can pull it early, and you must then deliver or buy shares at the strike whether or not the timing suits you.",
+    "mechanics": "When a holder exercises, OCC randomly assigns the notice to a clearing member with a short position in that series, which in turn assigns a customer (randomly or first-in-first-out, by firm policy). Assignment creates a stock position and cash obligation the writer must fund; for spread holders, assignment of one leg can leave residual directional exposure and margin calls.",
+    "formula": "",
+    "relationships": [
+      "Early exercise",
+      "Dividend risk",
+      "Pin risk",
+      "Exercise-by-exception",
+      "Option writer",
+      "Covered call"
+    ],
+    "failure_modes": "Assignment strikes when the position is hardest to manage: ex-dividend mornings strip covered-call writers of their shares just before the payout, and spread traders discover over a weekend that one leg was exercised, converting defined risk into naked stock exposure plus a margin call.",
+    "misconceptions": "Assignment is not a penalty or an error — it is the obligation the writer was paid to accept, and it can happen any day, not just at expiration. Avoiding assignment entirely requires closing the short option, not merely monitoring it.",
+    "example": "A trader short the $50 covered call watches XYZ rally to $58 the week before a $0.80 ex-dividend date; the holder exercises early to capture the dividend, and the writer is assigned, losing the shares at $50 and forgoing the expected continued upside.",
+    "citations": [
+      {
+        "source": "The Options Industry Council (OCC) — Exercising Options",
+        "url": "https://www.optionseducation.org/optionsoverview/exercising-options",
+        "section": "Assignment",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Assignment",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
