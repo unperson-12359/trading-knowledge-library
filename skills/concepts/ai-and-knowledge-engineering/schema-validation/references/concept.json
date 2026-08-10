@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/schema-validation",
+  "canonical_sha256": "9ce8b46ec91bc3794144792d26b57e596155fcac4448c578b0e68faf59328e41",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/schema-validation",
+    "name": "Schema validation",
+    "aliases": [
+      "JSON Schema validation",
+      "instance validation"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "The automated checking of a data instance (e.g., a JSON document) against a formal schema that declares its required structure, types, and constraints, using a validator implementing the schema specification. In the JSON ecosystem, a JSON Schema validator verifies that a document conforms to the declared keywords before the data is accepted.",
+    "intuition": "A bouncer with a checklist: data gets in only if every required field is present, correctly typed, and within the declared limits.",
+    "mechanics": "A schema defines properties, types, required fields, ranges, patterns, and allowed enumerations; the validator walks the instance and reports every keyword violation. Validation is run at ingestion boundaries — on model outputs, API payloads, and knowledge-base entries — to reject malformed data before it propagates.",
+    "formula": "",
+    "relationships": [
+      "Structured output",
+      "Ontology",
+      "Golden dataset",
+      "Model evaluation"
+    ],
+    "failure_modes": "Validation enforces only what the schema declares: underspecified schemas admit garbage, and no schema can check factual accuracy or semantic appropriateness. Version drift between producers and validators (different schema drafts) causes false accepts and rejects.",
+    "misconceptions": "Passing validation does not mean the data is good — only that it is well-formed. Schema validation is also not a substitute for domain-level checks such as cross-field consistency or source verification.",
+    "example": "Every entry in this library is validated against the entry schema — required fields like id, definition, status, and citations — so a missing citation array fails the build rather than silently degrading the knowledge base.",
+    "citations": [
+      {
+        "source": "JSON Schema, 'What is JSON Schema?' (json-schema.org)",
+        "url": "https://json-schema.org/overview/what-is-jsonschema",
+        "section": "How does JSON Schema work? (validators check instances against schemas)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

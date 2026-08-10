@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/vector-database",
+  "canonical_sha256": "973e140f3e4f94e9edef16981df4d961af5b633f74429dbfbd6bc2b13f3a4632",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/vector-database",
+    "name": "Vector database",
+    "aliases": [
+      "vector store",
+      "vector DB"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "A database system designed to store, index, and query high-dimensional vectors (typically embeddings), supporting fast similarity search — usually approximate nearest-neighbor (ANN) search — rather than exact-match lookups. It is the standard retrieval infrastructure behind semantic search and retrieval-augmented generation pipelines.",
+    "intuition": "A search engine for meaning: instead of finding rows that match keywords, it finds the stored vectors closest to a query vector, at millisecond latency over millions of items.",
+    "mechanics": "Embeddings are precomputed and stored with metadata; the database builds ANN indexes (e.g., HNSW graphs, LSH, product quantization) so queries can find near neighbors without scanning the full collection. Similarity is scored with metrics such as cosine similarity, dot product, or Euclidean distance, often combined with metadata filters (hybrid search).",
+    "formula": "Query result = argmin over stored vectors v of d(q, v), approximated by ANN indexing; common d is cosine distance 1 − cos(q, v), where q is the query vector.",
+    "relationships": [
+      "Embedding",
+      "Retrieval-augmented generation",
+      "Agent memory",
+      "Semantic memory"
+    ],
+    "failure_modes": "ANN indexes trade recall for speed, so the true nearest neighbors can be missed; results are only as good as the embedding model, and stale embeddings after a model upgrade silently corrupt retrieval quality. Vector search is poorly suited to whole-corpus synthesis tasks such as summarization across all documents.",
+    "misconceptions": "A vector database is not a replacement for a relational or document database — it answers 'what is similar' queries, not exact transactional or join-heavy queries. Storing text in a vector DB does not make the facts in it true or current.",
+    "example": "A trading knowledge system embeds 1,500 concept definitions into a vector database; when an agent is asked about 'slippage', the query embedding retrieves the nearest concept entries to ground its answer.",
+    "citations": [
+      {
+        "source": "IBM Think, 'What is a vector database?'",
+        "url": "https://www.ibm.com/think/topics/vector-database",
+        "section": "Vector storage / Vector indexing / Vector search sections",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

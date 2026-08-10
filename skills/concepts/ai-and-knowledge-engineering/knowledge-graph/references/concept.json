@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/knowledge-graph",
+  "canonical_sha256": "a93f45da66be7e18db66c1f618cdb428a065ca640fabcb7604171074ddaf3077",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/knowledge-graph",
+    "name": "Knowledge graph",
+    "aliases": [
+      "KG"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "A graph-structured knowledge representation in which nodes denote entities and edges denote typed relations between them, typically augmented with schema (ontology), identity resolution, and context. Hogan et al. (2021) survey the data models, query languages, deductive and inductive techniques used to build and exploit such graphs.",
+    "intuition": "A machine-readable map of 'things' and how they relate — companies, instruments, events, concepts — so software can traverse relationships instead of just matching text.",
+    "mechanics": "Facts are stored as (subject, predicate, object) triples or property-graph edges (e.g., (Apple, listedOn, NASDAQ)); query languages such as SPARQL or Cypher traverse the graph, and schema layers define node types and valid relations. Graphs are built by extraction from text, integration of databases, and curated editing, then enriched by inference or embedding-based link prediction.",
+    "formula": "",
+    "relationships": [
+      "Ontology",
+      "Entity linking",
+      "Embedding",
+      "Canonical concept",
+      "Knowledge graph embedding"
+    ],
+    "failure_modes": "Quality degrades with incomplete coverage, extraction errors, and stale facts; open-world assumptions mean an absent edge cannot be read as false. Entity resolution errors can merge distinct entities or split one entity into duplicates.",
+    "misconceptions": "A knowledge graph is not inherently a source of truth — it encodes whatever was asserted into it, including errors, and it is not the same as an ontology (the schema) or a pile of embeddings (no explicit typed relations).",
+    "example": "A knowledge graph records (Fed rate decision, affects, Treasury yields) and (Treasury yields, inverselyCorrelatedWith, bond prices), letting an agent answer multi-hop questions about how an FOMC announcement propagates to a bond portfolio.",
+    "citations": [
+      {
+        "source": "Hogan et al., 'Knowledge Graphs' (ACM Computing Surveys, 2021)",
+        "url": "https://arxiv.org/abs/2003.02320",
+        "section": "Abstract; Section 1 (Introduction)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

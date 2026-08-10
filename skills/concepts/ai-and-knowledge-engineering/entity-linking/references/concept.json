@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/entity-linking",
+  "canonical_sha256": "ca70119e45eeb75555994608cc96f0176d1dd798b933b51981407c615e79af6d",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/entity-linking",
+    "name": "Entity linking",
+    "aliases": [
+      "named entity disambiguation",
+      "NED",
+      "entity disambiguation"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "The NLP task of detecting entity mentions in text and resolving each mention to the specific entity it refers to in a knowledge base. Neural entity linking systems typically combine candidate generation, mention-context encoding, and entity ranking to disambiguate mentions such as 'Apple' (company vs. fruit) or 'Mercury' (element vs. planet).",
+    "intuition": "Figure out which real-world thing a name in the text actually points to, and attach that thing's knowledge-base ID so downstream systems know exactly what is being discussed.",
+    "mechanics": "A pipeline first detects mention spans, then generates candidate entities from a knowledge base (e.g., by name dictionaries or alias tables), then ranks candidates using context embeddings and coherence with other linked entities in the same document. The output is a set of mentions bound to knowledge-base identifiers.",
+    "formula": "",
+    "relationships": [
+      "Alias resolution",
+      "Canonical concept",
+      "Knowledge graph",
+      "Embedding"
+    ],
+    "failure_modes": "Fails on entities absent from the knowledge base (nil mentions), on highly ambiguous short mentions with little context, and under domain shift (e.g., ticker symbols reused across exchanges or over time). Errors propagate: a wrongly linked entity corrupts every downstream fact built on the mention.",
+    "misconceptions": "Entity linking is not the same as named-entity recognition (which only finds and types mentions) nor as alias resolution within one curated vocabulary — it grounds mentions in an external, evolving knowledge base of world entities.",
+    "example": "In the news sentence 'Goldman cuts forecast on crude', entity linking resolves 'Goldman' to the entity Goldman Sachs Group, Inc. (not a person) and 'crude' to the WTI/Brent commodity concepts rather than the adjective.",
+    "citations": [
+      {
+        "source": "Sevgili et al., 'Neural Entity Linking: A Survey of Models Based on Deep Learning' (Semantic Web Journal, 2022)",
+        "url": "https://arxiv.org/abs/2006.00575",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

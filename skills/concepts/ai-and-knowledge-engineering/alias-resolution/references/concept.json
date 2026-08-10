@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/alias-resolution",
+  "canonical_sha256": "985af058cb97ba69a605380fa78f8e52a6eb2206a27c3107149f9c1f85bb36c9",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/alias-resolution",
+    "name": "Alias resolution",
+    "aliases": [
+      "synonym resolution",
+      "name normalization",
+      "equivalence mapping"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "The process of mapping non-preferred or variant terms (aliases, abbreviations, synonyms, misspellings) to the canonical concept they denote, using the equivalence relationships of a controlled vocabulary. In ANSI/NISO Z39.19 terms, this applies the USE/UF (used-for) cross-references that link non-preferred terms to preferred terms.",
+    "intuition": "Whatever name someone uses — 'MACD', 'moving average convergence divergence', 'MACD indicator' — the system figures out they all mean the same concept.",
+    "mechanics": "A lookup layer maintains alias-to-canonical mappings (exact match, normalization rules for case/punctuation, or learned matching) and rewrites incoming terms before indexing or retrieval. Unresolved aliases are flagged for vocabulary maintenance rather than silently creating duplicate concepts.",
+    "formula": "",
+    "relationships": [
+      "Canonical concept",
+      "Entity linking",
+      "Taxonomy",
+      "Embedding"
+    ],
+    "failure_modes": "Fails on ambiguous aliases that map to different concepts in different contexts (e.g., 'gamma' the option Greek vs. gamma scalping jargon), on unseen aliases, and on false-positive merges of distinct concepts. Pure string matching misses paraphrases; pure embedding matching can over-merge.",
+    "misconceptions": "Alias resolution is not just string matching or spell-checking — it is a vocabulary governance problem, and an alias table is only as good as its maintenance. Resolving an alias does not resolve the underlying entity in the world (that is entity linking).",
+    "example": "A user asks about 'VIX futures contango'; alias resolution maps 'VIX' to the canonical concept 'CBOE Volatility Index' and 'contango' to its canonical entry before the answer is composed.",
+    "citations": [
+      {
+        "source": "ANSI/NISO Z39.19-2005 (R2010), Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies",
+        "url": "https://www.niso.org/publications/ansiniso-z3919-2005-r2010",
+        "section": "Abstract (NISO publication page; standard defines equivalence relationships between preferred and non-preferred terms)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

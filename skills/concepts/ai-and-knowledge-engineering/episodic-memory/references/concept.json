@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/episodic-memory",
+  "canonical_sha256": "f8272126f80cea3188a1bc677f81770c5ccce8186d3de6bc2dac811a2401a291",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/episodic-memory",
+    "name": "Episodic memory",
+    "aliases": [
+      "episodic store",
+      "interaction history"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "The long-term memory of an agent's own past experiences: records of specific episodes — observations, actions taken, and outcomes — from earlier decision cycles or sessions. In the CoALA framework, episodic memory stores sequences of past events the agent can retrieve to inform current decisions, paralleling the cognitive-science distinction introduced by Tulving.",
+    "intuition": "The agent's diary: 'last Tuesday the user asked X, I did Y, and the result was Z' — specific events, retrievable later.",
+    "mechanics": "Each episode (or summarized version) is stored — often as text embedded in a vector store — and retrieved by similarity to the current situation. Retrieved episodes support few-shot-style recall of precedents, correction after past mistakes, and personalization across sessions.",
+    "formula": "",
+    "relationships": [
+      "Agent memory",
+      "Semantic memory",
+      "Procedural memory",
+      "Vector database"
+    ],
+    "failure_modes": "Similarity-based retrieval surfaces superficially similar but materially different past episodes, encouraging analogy errors; stale episodes keep influencing behavior after conditions change. Logging everything without summarization floods retrieval with noise.",
+    "misconceptions": "Episodic memory is not a transcript replay — retrieval is approximate and lossy. It is also not knowledge about the world: an episode records what happened to the agent, which may have been a mistake.",
+    "example": "An agent recalls that in a prior session it sized a natural-gas position using the wrong contract multiplier and was corrected; when a similar sizing request arrives, it retrieves that episode and checks the multiplier first.",
+    "citations": [
+      {
+        "source": "Sumers et al., 'Cognitive Architectures for Language Agents (CoALA)' (2023)",
+        "url": "https://arxiv.org/abs/2309.02427",
+        "section": "Sections 3-4 (long-term memory: episodic)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

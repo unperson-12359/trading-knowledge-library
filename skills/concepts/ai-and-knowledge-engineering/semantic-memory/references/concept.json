@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/semantic-memory",
+  "canonical_sha256": "092c15584cc6ac18ad4dc86d30243e10e5702c3d8f2fd4e85ecb8c77a3ea5aaa",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/semantic-memory",
+    "name": "Semantic memory",
+    "aliases": [
+      "semantic store",
+      "factual memory"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "An agent's store of decontextualized facts and knowledge about the world and about the user — as distinct from records of specific episodes. In the CoALA framework, semantic memory holds world knowledge (including facts distilled from experience) that the agent retrieves to ground reasoning.",
+    "intuition": "The agent's reference book: facts like 'ES has a $50 multiplier' or 'this user is risk-averse', without any memory of when or where they were learned.",
+    "mechanics": "Facts are extracted from documents, episodes, or user interactions and stored in structured form (knowledge-base records) or as embedded passages in a vector store; retrieval injects relevant facts into the working context. Confidence and provenance metadata determine how much the agent should rely on each stored fact.",
+    "formula": "",
+    "relationships": [
+      "Agent memory",
+      "Episodic memory",
+      "Procedural memory",
+      "Knowledge graph",
+      "Source provenance"
+    ],
+    "failure_modes": "Facts extracted from episodes or text can be wrong at extraction time or become stale (contract specs change, relationships end), yet are retrieved with undiminished confidence. Conflicting facts from different sources produce inconsistent behavior unless reconciliation rules exist.",
+    "misconceptions": "Semantic memory is not the model's pretrained knowledge — it is an explicit external store that can be audited and edited, which is precisely its advantage. Storing a fact does not verify it; provenance and review decide its trust status.",
+    "example": "A coaching agent stores 'user's max daily loss limit is 2R' and 'NQ point value = $20' in semantic memory, and retrieves both when discussing position sizing, independent of any particular past conversation.",
+    "citations": [
+      {
+        "source": "Sumers et al., 'Cognitive Architectures for Language Agents (CoALA)' (2023)",
+        "url": "https://arxiv.org/abs/2309.02427",
+        "section": "Sections 3-4 (long-term memory: semantic)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

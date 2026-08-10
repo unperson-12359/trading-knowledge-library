@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/structured-output",
+  "canonical_sha256": "671c7c5759a734b5d0e625800be6bc32885110247b6cc18eb5da9b2c474c8ee3",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/structured-output",
+    "name": "Structured output",
+    "aliases": [
+      "structured generation",
+      "machine-readable output"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "Model output constrained to follow a declared machine-readable format — typically JSON conforming to a schema — rather than free-form prose, so downstream systems can parse, validate, and route it deterministically. JSON Schema is the standard declarative language for describing the required structure and constraints.",
+    "intuition": "Instead of an essay you must re-read, make the model fill in a form with fixed fields, so software can consume the answer directly.",
+    "mechanics": "The caller supplies a schema (field names, types, required properties, allowed values); the model is prompted or constrained (via grammar-guided or schema-constrained decoding) to emit conforming JSON; a validator then checks the instance against the schema before the data is used.",
+    "formula": "",
+    "relationships": [
+      "Schema validation",
+      "Tool use",
+      "Golden dataset",
+      "Model evaluation"
+    ],
+    "failure_modes": "Schema-conformant output can still be semantically wrong — validation checks shape, not truth. Long or deeply nested schemas raise the rate of truncation and subtle type errors, and models may hallucinate field values to satisfy required fields.",
+    "misconceptions": "Getting valid JSON is not the same as getting a correct answer; structured output solves the parsing problem, not the reliability problem. Prompting alone ('please reply in JSON') is not a guarantee — only schema-constrained decoding or post-hoc validation enforces it.",
+    "example": "A strategy-review agent must return {\"verdict\": \"pass|fail\", \"issues\": [...], \"citations\": [...]}; the orchestrator rejects any response failing schema validation instead of trying to parse prose.",
+    "citations": [
+      {
+        "source": "JSON Schema, 'What is JSON Schema?' (json-schema.org)",
+        "url": "https://json-schema.org/overview/what-is-jsonschema",
+        "section": "Overview (declarative structure and constraints for JSON data)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

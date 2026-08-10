@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/tool-use",
+  "canonical_sha256": "b6b765766e66d72f30c4a59ce1ce50b8b5d6c39a6ff6628abfbe10d96c6b3d0d",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/tool-use",
+    "name": "Tool use",
+    "aliases": [
+      "function calling",
+      "tool calling",
+      "API calling"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "The ability of a language model to invoke external tools — calculators, search engines, databases, trading or market-data APIs — by emitting structured calls whose results are fed back into the model's context. Schick et al.'s Toolformer (2023) showed a model can learn in a self-supervised way which APIs to call, when, and with what arguments.",
+    "intuition": "Let the model operate the instruments instead of playing every instrument itself: it decides what it needs, calls the tool, and reads the result.",
+    "mechanics": "Available tools are declared to the model with names, descriptions, and argument schemas; during generation the model emits a call (tool name + JSON arguments), the host system executes it, and the result is appended to the context so generation continues with the real data. Training or prompting teaches when a call is warranted.",
+    "formula": "",
+    "relationships": [
+      "Structured output",
+      "Retrieval-augmented generation",
+      "Trading-agent guardrail",
+      "Approval gate",
+      "Read-only trading agent"
+    ],
+    "failure_modes": "Models call wrong tools, pass malformed or hallucinated arguments, misinterpret results, or loop on repeated calls; tools with side effects (orders, emails) turn a model error into a real-world action. Each tool expands the attack surface for prompt injection through returned content.",
+    "misconceptions": "Tool access does not make the model understand the tool's domain — it can call a market-data API correctly and still misread the response. Restricting the model's text does not restrict what it can do through tools; permissions must be enforced outside the model.",
+    "example": "Asked for the notional value of 5 ES contracts, an agent calls a market-data tool for the current S&P 500 futures price, then a calculator for price × multiplier × quantity, instead of estimating from memory.",
+    "citations": [
+      {
+        "source": "Schick et al., 'Toolformer: Language Models Can Teach Themselves to Use Tools' (2023)",
+        "url": "https://arxiv.org/abs/2302.04761",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/procedural-memory",
+  "canonical_sha256": "60c87a88ec16bbd4b823996f6229e7d9ae0d88066252ba99fe1468d0dda30359",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/procedural-memory",
+    "name": "Procedural memory",
+    "aliases": [
+      "procedural store",
+      "skill memory"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "An agent's store of 'how-to' knowledge: the rules, routines, and skills that govern how it acts — in language agents, implemented as a mixture of the model's trained weights, system prompts, code, and tool-use procedures. In the CoALA framework this contrasts with declarative stores (episodic and semantic memory) that record what, not how.",
+    "intuition": "The agent's habits and training manual: not facts or events, but the procedures it follows — like 'always verify contract specs before sizing a trade'.",
+    "mechanics": "Procedural knowledge lives in model parameters (learned skills), in explicit instructions (system prompts, playbooks, checklists), and in executable code or workflows the agent invokes. Unlike episodic/semantic memory, it is rarely written at runtime; updating it means editing prompts/code or retraining/fine-tuning.",
+    "formula": "",
+    "relationships": [
+      "Agent memory",
+      "Episodic memory",
+      "Semantic memory",
+      "Tool use",
+      "Trading-agent guardrail"
+    ],
+    "failure_modes": "Flawed procedures execute reliably and repeatedly — a bad checklist is applied consistently every time. Because procedural memory is split across weights, prompts, and code, updates to one layer can be silently contradicted by another.",
+    "misconceptions": "Procedural memory is not just 'instructions in the prompt' — much of it is baked into model weights and cannot be inspected or edited directly. Adding more rules does not guarantee compliance; enforcement belongs in code outside the model where possible.",
+    "example": "A trading agent's procedural memory includes the rule 'before citing a statistic, retrieve it from the knowledge library rather than recall it', enforced partly by prompt instructions and partly by the orchestration code that routes such queries to retrieval.",
+    "citations": [
+      {
+        "source": "Sumers et al., 'Cognitive Architectures for Language Agents (CoALA)' (2023)",
+        "url": "https://arxiv.org/abs/2309.02427",
+        "section": "Sections 3-4 (long-term memory: procedural)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/embedding",
+  "canonical_sha256": "9920a3e542fc61d03ae86bc79734df3b4aa8112824223e05bd7f0249fd28fabd",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/embedding",
+    "name": "Embedding",
+    "aliases": [
+      "vector embedding",
+      "dense vector representation"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "A learned mapping from discrete items (words, symbols, documents) to dense, continuous vectors in a relatively low-dimensional space, such that geometric proximity in the space reflects semantic or functional similarity. Popularized for words by Mikolov et al. (2013), whose word2vec models showed that such vectors capture syntactic and semantic regularities as directions in the space.",
+    "intuition": "Turn things into points on a map where 'nearby' means 'similar in meaning or behavior', so a computer can measure similarity with distance instead of exact string matching.",
+    "mechanics": "A model (e.g., skip-gram/CBOW, or a transformer encoder) is trained so that items occurring in similar contexts get similar vectors; similarity is then computed with a metric such as cosine similarity. Embeddings are the substrate of semantic search, retrieval, clustering, and recommendation.",
+    "formula": "cos(u, v) = (u · v) / (||u|| · ||v||), where u and v are embedding vectors; values near 1 indicate high similarity, near 0 orthogonality, near -1 opposition.",
+    "relationships": [
+      "Vector database",
+      "Retrieval-augmented generation",
+      "Entity linking",
+      "Knowledge graph"
+    ],
+    "failure_modes": "Embeddings inherit biases and blind spots of their training data, encode spurious correlations, and degrade on out-of-distribution vocabulary (e.g., ticker symbols or jargon absent from training). Similarity in embedding space does not imply any causal or logical relationship.",
+    "misconceptions": "Embeddings are not human-interpretable coordinates: individual dimensions rarely map to named concepts, and high cosine similarity is not proof that two items are interchangeable in a trading or legal sense.",
+    "example": "In a knowledge library, the phrases 'stop-loss order' and 'protective stop' map to nearby embedding vectors, so a semantic search for one retrieves content about the other even though the strings share few tokens.",
+    "citations": [
+      {
+        "source": "Mikolov et al., 'Efficient Estimation of Word Representations in Vector Space' (word2vec)",
+        "url": "https://arxiv.org/abs/1301.3781",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/hallucination",
+  "canonical_sha256": "a87f719c4d2c150a5e90339e78930f3e7d0f264e2a9c9562004b54000547c6a7",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/hallucination",
+    "name": "Hallucination",
+    "aliases": [
+      "confabulation",
+      "fabrication"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "The generation by a language model of content that is fluent and plausible but factually incorrect or unsupported by any source — including fabricated facts, citations, and data. NIST and industry glossaries increasingly prefer the term 'confabulation'; hallucination remains the widely used name.",
+    "intuition": "The model is a confident storyteller optimizing for plausible text, not a database: when it does not know, it often makes something up that sounds right rather than saying so.",
+    "mechanics": "Autoregressive generation samples tokens by learned statistical patterns; nothing in the objective guarantees factual grounding, so gaps in parametric knowledge are filled with high-probability but unverified continuations. Grounding, retrieval augmentation, and constrained decoding reduce but do not eliminate the phenomenon.",
+    "formula": "",
+    "relationships": [
+      "Grounding",
+      "Retrieval-augmented generation",
+      "Abstention",
+      "Confidence calibration",
+      "Citation traceability"
+    ],
+    "failure_modes": "Worst exactly where verification is hardest: rare facts, precise numbers, citations, and fast-changing domains such as market data or regulation. Hallucinated outputs are also self-consistent and confident, so they pass casual inspection.",
+    "misconceptions": "Hallucination is not a bug that a bigger model fully fixes, and retrieval augmentation does not eliminate it. It is also not 'lying' or intent — the model has no belief state; it is a structural property of next-token prediction.",
+    "example": "Asked for the exact tick value of a niche futures contract, a model confidently states a plausible but wrong dollar figure; only checking the exchange rulebook (grounding) catches the error.",
+    "citations": [
+      {
+        "source": "Google for Developers, 'Machine Learning Glossary' (entries: hallucination / confabulation)",
+        "url": "https://developers.google.com/machine-learning/glossary",
+        "section": "Glossary entry: confabulation ('synonym for hallucination')",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

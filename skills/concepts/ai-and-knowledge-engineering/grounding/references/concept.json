@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/grounding",
+  "canonical_sha256": "bc2bd808b9aecb6f01e650f7ef3e4efb672128ce4ec22c2011e2bcccec248251",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/grounding",
+    "name": "Grounding",
+    "aliases": [
+      "source grounding",
+      "grounding with retrieval"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "Connecting a generative model's output to verifiable sources of information so that its claims are tethered to specific data rather than invented. Grounding reduces hallucination, anchors responses to designated data sources, and provides auditability through links to the supporting sources.",
+    "intuition": "Make the model show its work: every claim must hang on a document you can open and check, not just on what the model happens to remember.",
+    "mechanics": "The system supplies the model with retrieved documents, search results, or enterprise data (via RAG, search APIs, or attached files) and instructs it to base answers on that content; responses carry 'grounding support' — references to the source passages used. Verification steps can then check each claim against its cited support.",
+    "formula": "",
+    "relationships": [
+      "Retrieval-augmented generation",
+      "Hallucination",
+      "Citation traceability",
+      "Source provenance"
+    ],
+    "failure_modes": "Grounding fails silently when retrieved sources are wrong, stale, or misread by the model, and when the model paraphrases beyond what the source supports. It also inherits the blind spots of the retrieval corpus: absent information cannot ground an answer.",
+    "misconceptions": "Grounding is not a truth guarantee — it relocates the trust question to the quality of the sources. A grounded answer with a real citation can still misquote or overgeneralize its source.",
+    "example": "A trading assistant grounded on the exchange's official contract-specification page answers a tick-size question from that page and attaches the link, rather than relying on memorized specifications.",
+    "citations": [
+      {
+        "source": "Google Cloud, 'Grounding overview' (Vertex AI / Gemini Enterprise documentation)",
+        "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/grounding/overview",
+        "section": "Grounding overview (definition and benefits)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
