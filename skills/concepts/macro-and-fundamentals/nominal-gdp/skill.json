@@ -1,0 +1,78 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-nominal-gdp",
+  "concept_id": "macro-and-fundamentals/nominal-gdp",
+  "display_name": "Nominal GDP",
+  "domain": "Macro and fundamentals",
+  "description": "Explain, compare, or apply Nominal GDP using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Nominal GDP",
+    "Current-dollar GDP",
+    "explain Nominal GDP",
+    "apply Nominal GDP to a trading question",
+    "common misconception about Nominal GDP"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 54,
+  "package_path": "skills/concepts/macro-and-fundamentals/nominal-gdp",
+  "canonical": {
+    "source_path": "concepts/macro-and-fundamentals.json",
+    "sha256": "a24f1ce7486f774d91f2721fbc9b832ba33f5b09e40fae786b5794fc874ff61c"
+  },
+  "related_concept_ids": [
+    "macro-and-fundamentals/gross-domestic-product",
+    "macro-and-fundamentals/real-gdp",
+    "macro-and-fundamentals/inflation"
+  ]
+}

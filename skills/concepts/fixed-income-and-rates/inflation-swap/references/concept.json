@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/inflation-swap",
+  "canonical_sha256": "9bde1550d192b9a2f224b0e093e3916197227dbee7de3b06761e370b424e7cda",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/inflation-swap",
+    "name": "Inflation swap",
+    "aliases": [
+      "zero-coupon inflation swap",
+      "ZCIS"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "A derivative in which one party pays a fixed rate and the other pays the realized change in an inflation index (e.g. U.S. CPI-U) on a notional amount, transferring inflation risk. In the standard zero-coupon form, both legs are compounded and exchanged as a single payment at maturity.",
+    "intuition": "It is a bet or hedge on inflation itself: one side pays a pre-agreed inflation rate, the other pays whatever inflation actually turns out to be.",
+    "mechanics": "The fixed leg compounds at the agreed fixed rate; the floating leg accrues the realized growth of the reference inflation index (USD uses CPI-U), typically with a publication lag of a few months. In a zero-coupon inflation swap the two compounded amounts are netted and paid once at maturity; the quoted fixed rate is the market's swap-implied inflation level.",
+    "formula": "Fixed leg payment = N × [(1 + k)^n − 1]; inflation leg payment = N × [I(T)/I(0) − 1], where N is notional, k the fixed swap rate, n the tenor in years, and I the inflation index level.",
+    "relationships": [
+      "Breakeven inflation",
+      "Secured Overnight Financing Rate",
+      "Swap spread"
+    ],
+    "failure_modes": "Index publication lags, revisions, and seasonal patterns complicate pricing and hedging; the market is also less liquid than nominal swaps, and quoted rates embed inflation risk premia just like TIPS breakevens.",
+    "misconceptions": "The fixed rate on an inflation swap is not a pure inflation forecast; like breakevens, it includes risk and liquidity premia, so it overstates or understates true expected inflation.",
+    "example": "A pension fund enters a 10-year zero-coupon inflation swap paying a fixed 2.6% and receiving realized CPI-U growth on $50 million notional, hedging its inflation-linked liabilities.",
+    "citations": [
+      {
+        "source": "ICE (Intercontinental Exchange) SDX Interest Rates Help — Zero Coupon Inflation Swap",
+        "url": "https://idd.ice.com/IRHelp/Content/FM/Zero_Coupon_Inflation_Sw.htm",
+        "section": "Zero Coupon Inflation Swap",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

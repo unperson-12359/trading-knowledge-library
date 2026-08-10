@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/breakeven-inflation",
+  "canonical_sha256": "3aa8942122c37ae61b5f0bd1bd1e6aee0012a8d5b80320649943d3bffa9095b6",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/breakeven-inflation",
+    "name": "Breakeven inflation",
+    "aliases": [
+      "breakeven inflation rate",
+      "TIPS breakeven"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "The inflation rate that would make an investor indifferent between holding a nominal Treasury and a same-maturity Treasury Inflation-Protected Security (TIPS), computed as the nominal yield minus the real (TIPS) yield. It is a market-based measure of expected average inflation over the horizon, though it also embeds inflation risk and liquidity premia.",
+    "intuition": "If nominal bonds pay 4.5% and inflation-protected bonds pay 2.0%, the market is pricing roughly 2.5% average inflation — that gap is the breakeven.",
+    "mechanics": "Computed from constant-maturity series, e.g. FRED's T10YIE = 10-Year Treasury Constant Maturity (DGS10) minus 10-Year Treasury Inflation-Indexed Constant Maturity (DFII10); the latest value implies what market participants expect inflation to average over the next 10 years.",
+    "formula": "Breakeven inflation ≈ y(nominal, T) − y(real TIPS, T); exactly, (1 + y_nom)/(1 + y_real) − 1 under compounding.",
+    "relationships": [
+      "Inflation swap",
+      "Term premium",
+      "Par yield",
+      "Yield spread"
+    ],
+    "failure_modes": "Breakevens mix inflation expectations with inflation risk premia and the liquidity disadvantage of TIPS, so they can diverge from true expectations — e.g. they collapsed in 2008 partly because TIPS became deeply illiquid, not because deflation was genuinely expected.",
+    "misconceptions": "Breakeven inflation is not a pure forecast of CPI; it is the rate that equates two bond prices, so reading it as the market's literal inflation expectation ignores embedded premia.",
+    "example": "With the 10-year nominal Treasury at 4.3% and the 10-year TIPS real yield at 2.0%, the 10-year breakeven inflation rate is about 2.3%.",
+    "citations": [
+      {
+        "source": "FRED, 10-Year Breakeven Inflation Rate [T10YIE] (source: Federal Reserve Bank of St. Louis)",
+        "url": "https://fred.stlouisfed.org/series/T10YIE",
+        "section": "Notes",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -2,7 +2,7 @@
   "$schema": "../schemas/skill-manifest.schema.json",
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 1060,
+  "completed_count": 1080,
   "skills": [
     {
       "$schema": "../../../../schemas/concept-skill.schema.json",
@@ -85816,6 +85816,1608 @@
         "fixed-income-and-rates/forward-rate-curve",
         "fixed-income-and-rates/breakeven-inflation",
         "fixed-income-and-rates/policy-rate"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-breakeven-inflation",
+      "concept_id": "fixed-income-and-rates/breakeven-inflation",
+      "display_name": "Breakeven inflation",
+      "domain": "Fixed income and rates",
+      "description": "Explain, compare, or apply Breakeven inflation using the library's structured Fixed income and rates reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Breakeven inflation",
+        "breakeven inflation rate",
+        "TIPS breakeven",
+        "explain Breakeven inflation",
+        "apply Breakeven inflation to a trading question",
+        "common misconception about Breakeven inflation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/fixed-income-and-rates/breakeven-inflation",
+      "canonical": {
+        "source_path": "concepts/fixed-income-and-rates.json",
+        "sha256": "3aa8942122c37ae61b5f0bd1bd1e6aee0012a8d5b80320649943d3bffa9095b6"
+      },
+      "related_concept_ids": [
+        "fixed-income-and-rates/inflation-swap",
+        "fixed-income-and-rates/term-premium",
+        "fixed-income-and-rates/par-yield",
+        "fixed-income-and-rates/yield-spread"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-inflation-swap",
+      "concept_id": "fixed-income-and-rates/inflation-swap",
+      "display_name": "Inflation swap",
+      "domain": "Fixed income and rates",
+      "description": "Explain, compare, or apply Inflation swap using the library's structured Fixed income and rates reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Inflation swap",
+        "zero-coupon inflation swap",
+        "ZCIS",
+        "explain Inflation swap",
+        "apply Inflation swap to a trading question",
+        "common misconception about Inflation swap"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/fixed-income-and-rates/inflation-swap",
+      "canonical": {
+        "source_path": "concepts/fixed-income-and-rates.json",
+        "sha256": "9bde1550d192b9a2f224b0e093e3916197227dbee7de3b06761e370b424e7cda"
+      },
+      "related_concept_ids": [
+        "fixed-income-and-rates/breakeven-inflation",
+        "fixed-income-and-rates/secured-overnight-financing-rate",
+        "fixed-income-and-rates/swap-spread"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-gross-domestic-product",
+      "concept_id": "macro-and-fundamentals/gross-domestic-product",
+      "display_name": "Gross domestic product",
+      "domain": "Macro and fundamentals",
+      "description": "Explain, compare, or apply Gross domestic product using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Gross domestic product",
+        "GDP",
+        "explain Gross domestic product",
+        "apply Gross domestic product to a trading question",
+        "common misconception about Gross domestic product"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/macro-and-fundamentals/gross-domestic-product",
+      "canonical": {
+        "source_path": "concepts/macro-and-fundamentals.json",
+        "sha256": "a2b3b9e1a59909e2c1cab6bffd92001ca335b7a68e2e913018424a60bf138075"
+      },
+      "related_concept_ids": [
+        "macro-and-fundamentals/real-gdp",
+        "macro-and-fundamentals/nominal-gdp",
+        "macro-and-fundamentals/industrial-production",
+        "macro-and-fundamentals/retail-sales",
+        "macro-and-fundamentals/unemployment-rate",
+        "macro-and-fundamentals/monetary-policy"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-real-gdp",
+      "concept_id": "macro-and-fundamentals/real-gdp",
+      "display_name": "Real GDP",
+      "domain": "Macro and fundamentals",
+      "description": "Explain, compare, or apply Real GDP using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Real GDP",
+        "Chained-dollar GDP",
+        "Constant-dollar GDP",
+        "explain Real GDP",
+        "apply Real GDP to a trading question",
+        "common misconception about Real GDP"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/macro-and-fundamentals/real-gdp",
+      "canonical": {
+        "source_path": "concepts/macro-and-fundamentals.json",
+        "sha256": "f56625b48b2390270726ee7a3453b05dec4cd7ce0b872026b56392e43fa7bde2"
+      },
+      "related_concept_ids": [
+        "macro-and-fundamentals/gross-domestic-product",
+        "macro-and-fundamentals/nominal-gdp",
+        "macro-and-fundamentals/inflation",
+        "macro-and-fundamentals/consumer-price-index"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-nominal-gdp",
+      "concept_id": "macro-and-fundamentals/nominal-gdp",
+      "display_name": "Nominal GDP",
+      "domain": "Macro and fundamentals",
+      "description": "Explain, compare, or apply Nominal GDP using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Nominal GDP",
+        "Current-dollar GDP",
+        "explain Nominal GDP",
+        "apply Nominal GDP to a trading question",
+        "common misconception about Nominal GDP"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/macro-and-fundamentals/nominal-gdp",
+      "canonical": {
+        "source_path": "concepts/macro-and-fundamentals.json",
+        "sha256": "a24f1ce7486f774d91f2721fbc9b832ba33f5b09e40fae786b5794fc874ff61c"
+      },
+      "related_concept_ids": [
+        "macro-and-fundamentals/gross-domestic-product",
+        "macro-and-fundamentals/real-gdp",
+        "macro-and-fundamentals/inflation"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-inflation",
+      "concept_id": "macro-and-fundamentals/inflation",
+      "display_name": "Inflation",
+      "domain": "Macro and fundamentals",
+      "description": "Explain, compare, or apply Inflation using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Inflation",
+        "explain Inflation",
+        "apply Inflation to a trading question",
+        "common misconception about Inflation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/macro-and-fundamentals/inflation",
+      "canonical": {
+        "source_path": "concepts/macro-and-fundamentals.json",
+        "sha256": "abde8b97a00da1010f131b71c248445aa2bce76fafca77d4a893801cbd087f5b"
+      },
+      "related_concept_ids": [
+        "macro-and-fundamentals/consumer-price-index",
+        "macro-and-fundamentals/core-inflation",
+        "macro-and-fundamentals/producer-price-index",
+        "macro-and-fundamentals/deflation",
+        "macro-and-fundamentals/disinflation",
+        "macro-and-fundamentals/monetary-policy",
+        "macro-and-fundamentals/stagflation"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-consumer-price-index",
+      "concept_id": "macro-and-fundamentals/consumer-price-index",
+      "display_name": "Consumer price index",
+      "domain": "Macro and fundamentals",
+      "description": "Explain, compare, or apply Consumer price index using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Consumer price index",
+        "CPI",
+        "CPI-U",
+        "explain Consumer price index",
+        "apply Consumer price index to a trading question",
+        "common misconception about Consumer price index"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/macro-and-fundamentals/consumer-price-index",
+      "canonical": {
+        "source_path": "concepts/macro-and-fundamentals.json",
+        "sha256": "22476565bedb7309681d545ccbf6d59b94d404e5461a41f44ac7e38e660f51b8"
+      },
+      "related_concept_ids": [
+        "macro-and-fundamentals/inflation",
+        "macro-and-fundamentals/core-inflation",
+        "macro-and-fundamentals/producer-price-index",
+        "macro-and-fundamentals/real-gdp",
+        "macro-and-fundamentals/monetary-policy"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-producer-price-index",
+      "concept_id": "macro-and-fundamentals/producer-price-index",
+      "display_name": "Producer price index",
+      "domain": "Macro and fundamentals",
+      "description": "Explain, compare, or apply Producer price index using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Producer price index",
+        "PPI",
+        "explain Producer price index",
+        "apply Producer price index to a trading question",
+        "common misconception about Producer price index"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/macro-and-fundamentals/producer-price-index",
+      "canonical": {
+        "source_path": "concepts/macro-and-fundamentals.json",
+        "sha256": "cf6f495c1e9b393f55a7119ca88fe1c236bb65949b2a3c545450826f3c6ae137"
+      },
+      "related_concept_ids": [
+        "macro-and-fundamentals/consumer-price-index",
+        "macro-and-fundamentals/inflation",
+        "macro-and-fundamentals/core-inflation",
+        "macro-and-fundamentals/industrial-production"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-core-inflation",
+      "concept_id": "macro-and-fundamentals/core-inflation",
+      "display_name": "Core inflation",
+      "domain": "Macro and fundamentals",
+      "description": "Explain, compare, or apply Core inflation using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Core inflation",
+        "Core CPI",
+        "Core PCE",
+        "Inflation excluding food and energy",
+        "explain Core inflation",
+        "apply Core inflation to a trading question",
+        "common misconception about Core inflation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/macro-and-fundamentals/core-inflation",
+      "canonical": {
+        "source_path": "concepts/macro-and-fundamentals.json",
+        "sha256": "1147a1a52b32e90bfcdbdc31ba54a76bd7ec7b14d1ff8306efa96668526a2485"
+      },
+      "related_concept_ids": [
+        "macro-and-fundamentals/inflation",
+        "macro-and-fundamentals/consumer-price-index",
+        "macro-and-fundamentals/producer-price-index",
+        "macro-and-fundamentals/monetary-policy"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-deflation",
+      "concept_id": "macro-and-fundamentals/deflation",
+      "display_name": "Deflation",
+      "domain": "Macro and fundamentals",
+      "description": "Explain, compare, or apply Deflation using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Deflation",
+        "explain Deflation",
+        "apply Deflation to a trading question",
+        "common misconception about Deflation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/macro-and-fundamentals/deflation",
+      "canonical": {
+        "source_path": "concepts/macro-and-fundamentals.json",
+        "sha256": "ab2ab477cfa868ce3b74eb7c07fa820c1f1e042163099460c0edfad031a1e2e7"
+      },
+      "related_concept_ids": [
+        "macro-and-fundamentals/inflation",
+        "macro-and-fundamentals/disinflation",
+        "macro-and-fundamentals/consumer-price-index",
+        "macro-and-fundamentals/monetary-policy",
+        "macro-and-fundamentals/quantitative-easing"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-disinflation",
+      "concept_id": "macro-and-fundamentals/disinflation",
+      "display_name": "Disinflation",
+      "domain": "Macro and fundamentals",
+      "description": "Explain, compare, or apply Disinflation using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Disinflation",
+        "explain Disinflation",
+        "apply Disinflation to a trading question",
+        "common misconception about Disinflation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/macro-and-fundamentals/disinflation",
+      "canonical": {
+        "source_path": "concepts/macro-and-fundamentals.json",
+        "sha256": "7339f2b778f94211ea6eee609ba012a0946904438b696080f89b92e13002d8ac"
+      },
+      "related_concept_ids": [
+        "macro-and-fundamentals/inflation",
+        "macro-and-fundamentals/deflation",
+        "macro-and-fundamentals/core-inflation",
+        "macro-and-fundamentals/rate-hike",
+        "macro-and-fundamentals/monetary-policy"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-stagflation",
+      "concept_id": "macro-and-fundamentals/stagflation",
+      "display_name": "Stagflation",
+      "domain": "Macro and fundamentals",
+      "description": "Explain, compare, or apply Stagflation using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Stagflation",
+        "explain Stagflation",
+        "apply Stagflation to a trading question",
+        "common misconception about Stagflation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/macro-and-fundamentals/stagflation",
+      "canonical": {
+        "source_path": "concepts/macro-and-fundamentals.json",
+        "sha256": "a7881e70eb74143f08748229aabee84b17d874040f8f92b7b57a43fdd9c473d1"
+      },
+      "related_concept_ids": [
+        "macro-and-fundamentals/inflation",
+        "macro-and-fundamentals/unemployment-rate",
+        "macro-and-fundamentals/monetary-policy",
+        "macro-and-fundamentals/gross-domestic-product",
+        "macro-and-fundamentals/rate-hike"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-unemployment-rate",
+      "concept_id": "macro-and-fundamentals/unemployment-rate",
+      "display_name": "Unemployment rate",
+      "domain": "Macro and fundamentals",
+      "description": "Explain, compare, or apply Unemployment rate using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Unemployment rate",
+        "U-3 unemployment rate",
+        "U3",
+        "explain Unemployment rate",
+        "apply Unemployment rate to a trading question",
+        "common misconception about Unemployment rate"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/macro-and-fundamentals/unemployment-rate",
+      "canonical": {
+        "source_path": "concepts/macro-and-fundamentals.json",
+        "sha256": "bf7a461876d6ecb8f26db3d418d01fe6d49d05572d1e1cfa0bac78217c9b5567"
+      },
+      "related_concept_ids": [
+        "macro-and-fundamentals/nonfarm-payrolls",
+        "macro-and-fundamentals/consumer-confidence",
+        "macro-and-fundamentals/stagflation",
+        "macro-and-fundamentals/monetary-policy"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-nonfarm-payrolls",
+      "concept_id": "macro-and-fundamentals/nonfarm-payrolls",
+      "display_name": "Nonfarm payrolls",
+      "domain": "Macro and fundamentals",
+      "description": "Explain, compare, or apply Nonfarm payrolls using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Nonfarm payrolls",
+        "NFP",
+        "Non-farm payrolls",
+        "Payroll employment",
+        "Establishment survey employment",
+        "explain Nonfarm payrolls",
+        "apply Nonfarm payrolls to a trading question",
+        "common misconception about Nonfarm payrolls"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/macro-and-fundamentals/nonfarm-payrolls",
+      "canonical": {
+        "source_path": "concepts/macro-and-fundamentals.json",
+        "sha256": "09f2c9e07a321bb7c4e4c6be12311a64e5ef8325b28771cc23bc999891ec643b"
+      },
+      "related_concept_ids": [
+        "macro-and-fundamentals/unemployment-rate",
+        "macro-and-fundamentals/industrial-production",
+        "macro-and-fundamentals/monetary-policy",
+        "macro-and-fundamentals/economic-surprise-index"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-labor-force-participation-rate",
+      "concept_id": "macro-and-fundamentals/labor-force-participation-rate",
+      "display_name": "Labor-force participation rate",
+      "domain": "Macro and fundamentals",
+      "description": "Explain, compare, or apply Labor-force participation rate using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Labor-force participation rate",
+        "LFPR",
+        "Participation rate",
+        "explain Labor-force participation rate",
+        "apply Labor-force participation rate to a trading question",
+        "common misconception about Labor-force participation rate"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/macro-and-fundamentals/labor-force-participation-rate",
+      "canonical": {
+        "source_path": "concepts/macro-and-fundamentals.json",
+        "sha256": "c2dad7e30759987622d11d1953ae0f526d107489633acf1453e5604a2306f9a7"
+      },
+      "related_concept_ids": [
+        "macro-and-fundamentals/unemployment-rate",
+        "macro-and-fundamentals/nonfarm-payrolls",
+        "macro-and-fundamentals/consumer-confidence"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-purchasing-managers-index",
+      "concept_id": "macro-and-fundamentals/purchasing-managers-index",
+      "display_name": "Purchasing managers index",
+      "domain": "Macro and fundamentals",
+      "description": "Explain, compare, or apply Purchasing managers index using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Purchasing managers index",
+        "PMI",
+        "ISM Manufacturing Index",
+        "ISM",
+        "Purchasing Managers Index",
+        "explain Purchasing managers index",
+        "apply Purchasing managers index to a trading question",
+        "common misconception about Purchasing managers index"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/macro-and-fundamentals/purchasing-managers-index",
+      "canonical": {
+        "source_path": "concepts/macro-and-fundamentals.json",
+        "sha256": "c8627fff48ac8f5255b0462a7852379e0b83cd0280ad722f727f9d923d6b7673"
+      },
+      "related_concept_ids": [
+        "macro-and-fundamentals/industrial-production",
+        "macro-and-fundamentals/capacity-utilization",
+        "macro-and-fundamentals/gross-domestic-product",
+        "macro-and-fundamentals/economic-surprise-index"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-retail-sales",
+      "concept_id": "macro-and-fundamentals/retail-sales",
+      "display_name": "Retail sales",
+      "domain": "Macro and fundamentals",
+      "description": "Explain, compare, or apply Retail sales using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Retail sales",
+        "Advance retail sales",
+        "Retail trade",
+        "MARTS",
+        "explain Retail sales",
+        "apply Retail sales to a trading question",
+        "common misconception about Retail sales"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/macro-and-fundamentals/retail-sales",
+      "canonical": {
+        "source_path": "concepts/macro-and-fundamentals.json",
+        "sha256": "9f855726d940b9c453119e2015d2fd97cab1cf4470cf8ee1cda1ec865e92c0d3"
+      },
+      "related_concept_ids": [
+        "macro-and-fundamentals/gross-domestic-product",
+        "macro-and-fundamentals/consumer-confidence",
+        "macro-and-fundamentals/consumer-price-index"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-industrial-production",
+      "concept_id": "macro-and-fundamentals/industrial-production",
+      "display_name": "Industrial production",
+      "domain": "Macro and fundamentals",
+      "description": "Explain, compare, or apply Industrial production using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Industrial production",
+        "IP",
+        "Industrial production index",
+        "G.17",
+        "explain Industrial production",
+        "apply Industrial production to a trading question",
+        "common misconception about Industrial production"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/macro-and-fundamentals/industrial-production",
+      "canonical": {
+        "source_path": "concepts/macro-and-fundamentals.json",
+        "sha256": "ec4708bc2ed379ba68ca50739649fe83a0e8725b1c05d94d67298ceed6d6584b"
+      },
+      "related_concept_ids": [
+        "macro-and-fundamentals/capacity-utilization",
+        "macro-and-fundamentals/purchasing-managers-index",
+        "macro-and-fundamentals/nonfarm-payrolls",
+        "macro-and-fundamentals/gross-domestic-product"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-capacity-utilization",
+      "concept_id": "macro-and-fundamentals/capacity-utilization",
+      "display_name": "Capacity utilization",
+      "domain": "Macro and fundamentals",
+      "description": "Explain, compare, or apply Capacity utilization using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Capacity utilization",
+        "Operating rate",
+        "Capacity utilization rate",
+        "explain Capacity utilization",
+        "apply Capacity utilization to a trading question",
+        "common misconception about Capacity utilization"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/macro-and-fundamentals/capacity-utilization",
+      "canonical": {
+        "source_path": "concepts/macro-and-fundamentals.json",
+        "sha256": "73ac33e70194e43b49d3a9eef47aa786a5e81b968e3afb3a50b64c6a52979013"
+      },
+      "related_concept_ids": [
+        "macro-and-fundamentals/industrial-production",
+        "macro-and-fundamentals/purchasing-managers-index",
+        "macro-and-fundamentals/inflation",
+        "macro-and-fundamentals/producer-price-index"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-consumer-confidence",
+      "concept_id": "macro-and-fundamentals/consumer-confidence",
+      "display_name": "Consumer confidence",
+      "domain": "Macro and fundamentals",
+      "description": "Explain, compare, or apply Consumer confidence using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Consumer confidence",
+        "Consumer Confidence Index",
+        "CCI",
+        "Consumer sentiment",
+        "explain Consumer confidence",
+        "apply Consumer confidence to a trading question",
+        "common misconception about Consumer confidence"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 54,
+      "package_path": "skills/concepts/macro-and-fundamentals/consumer-confidence",
+      "canonical": {
+        "source_path": "concepts/macro-and-fundamentals.json",
+        "sha256": "1f2cffa53166cfc7b70378cedb9ed42b15121d0183506df6a3d80a6a74eaa8a1"
+      },
+      "related_concept_ids": [
+        "macro-and-fundamentals/retail-sales",
+        "macro-and-fundamentals/unemployment-rate",
+        "macro-and-fundamentals/gross-domestic-product",
+        "macro-and-fundamentals/inflation"
       ]
     }
   ]
