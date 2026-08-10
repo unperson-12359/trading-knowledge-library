@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/turtle-trading",
+  "canonical_sha256": "142a6c56c330b4c711e7d8b80803490471242d11a31777b69615d78569b067b8",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/turtle-trading",
+    "name": "Turtle trading",
+    "aliases": [
+      "Turtle system",
+      "Turtle rules"
+    ],
+    "domain": "Trading systems",
+    "definition": "The complete mechanical trend-following system Richard Dennis and William Eckhardt taught their 'Turtle' trainees in 1983-84: Donchian-channel breakout entries, volatility-normalized position sizing in units of 1% risk per N, 2N stops, adds every 0.5N, and portfolio-level unit limits. Published in full by original Turtle Curtis Faith as 'The Original Turtle Trading Rules' (2003).",
+    "intuition": "Dennis's bet was that trading could be taught as rules: trade many liquid futures markets, risk a fixed volatility fraction per unit, take every breakout, and let a few giant trends pay for dozens of stopped-out false starts.",
+    "mechanics": "N is the 20-day exponential average of True Range; unit size = 1% of account / (N x dollars per point). System 1 enters on 20-day breakouts (skipped after a winning breakout, with a 55-day failsafe), System 2 on 55-day breakouts (all taken). Stops sit 2N from entry (about 2% risk); add one unit per 0.5N up to four; unit caps are 4 per market, 6 in closely correlated markets, 10 in loosely correlated, and 12 per direction; exits are 10-day (System 1) or 20-day (System 2) opposite extremes.",
+    "formula": "Unit = (0.01 x account equity) / (N x dollars per point); N_t = (19 x N_{t-1} + TR_t) / 20, where TR is the daily true range.",
+    "relationships": [
+      "Donchian breakout strategy",
+      "Channel breakout strategy",
+      "Trend following",
+      "Pyramiding",
+      "Position sizing"
+    ],
+    "failure_modes": "Trend following fails in long trendless regimes: strings of 2N stop-outs grind equity down, and the published, widely copied rules invite crowded entries and slippage at exactly the breakout points; the system's own rule of cutting account size 20% after each 10% loss exists because losing streaks are the norm.",
+    "misconceptions": "That the entry signals were the secret; Dennis held the rules could be printed in a newspaper because consistency, discipline, and N-based sizing were the real edge - and historical success is not a promise of profitability in today's markets.",
+    "example": "On a $1,000,000 account with heating-oil N = 0.0141 and $42,000 per point, one unit = $10,000 / $592.20, truncated to 16 contracts; a 20-day breakout buys one unit with a stop 2N away, risking about 2% of equity (Turtle rules worked example).",
+    "citations": [
+      {
+        "source": "Curtis Faith, 'The Original Turtle Trading Rules' (originalturtles.org, 2003)",
+        "url": "https://oxfordstrat.com/coasdfASD32/uploads/2016/01/turtle-rules.pdf",
+        "section": "Chapters 3-6 (Position Sizing, Entries, Stops, Exits)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

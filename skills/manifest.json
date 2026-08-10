@@ -2,7 +2,7 @@
   "$schema": "../schemas/skill-manifest.schema.json",
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 1240,
+  "completed_count": 1260,
   "skills": [
     {
       "$schema": "../../../../schemas/concept-skill.schema.json",
@@ -100410,6 +100410,1582 @@
         "trading-systems/pairs-convergence-trade",
         "trading-systems/pairs-divergence-trade",
         "trading-systems/mean-reversion"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-channel-breakout-strategy",
+      "concept_id": "trading-systems/channel-breakout-strategy",
+      "display_name": "Channel breakout strategy",
+      "domain": "Trading systems",
+      "description": "Explain, compare, or apply Channel breakout strategy using the library's structured Trading systems reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Channel breakout strategy",
+        "trading range break",
+        "N-day breakout",
+        "explain Channel breakout strategy",
+        "apply Channel breakout strategy to a trading question",
+        "common misconception about Channel breakout strategy"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/trading-systems/channel-breakout-strategy",
+      "canonical": {
+        "source_path": "concepts/trading-systems.json",
+        "sha256": "28b7078d82ccc134de3fbc7d4a99b08673bb020dd00f576004d033be2bdce306"
+      },
+      "related_concept_ids": [
+        "trading-systems/donchian-breakout-strategy",
+        "trading-systems/breakout-trading",
+        "trading-systems/turtle-trading",
+        "trading-systems/trend-following"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-moving-average-crossover-strategy",
+      "concept_id": "trading-systems/moving-average-crossover-strategy",
+      "display_name": "Moving-average crossover strategy",
+      "domain": "Trading systems",
+      "description": "Explain, compare, or apply Moving-average crossover strategy using the library's structured Trading systems reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Moving-average crossover strategy",
+        "MA crossover",
+        "golden cross / death cross system",
+        "variable-length moving average rule",
+        "explain Moving-average crossover strategy",
+        "apply Moving-average crossover strategy to a trading question",
+        "common misconception about Moving-average crossover strategy"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/trading-systems/moving-average-crossover-strategy",
+      "canonical": {
+        "source_path": "concepts/trading-systems.json",
+        "sha256": "c0b0dbca1a78e16ebb0d5bf11457551a91d1ccfc2b11b4a7564b36697877faf2"
+      },
+      "related_concept_ids": [
+        "trading-systems/trend-following",
+        "trading-systems/channel-breakout-strategy",
+        "market-data/rolling-mean",
+        "indicators/golden-cross"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-donchian-breakout-strategy",
+      "concept_id": "trading-systems/donchian-breakout-strategy",
+      "display_name": "Donchian breakout strategy",
+      "domain": "Trading systems",
+      "description": "Explain, compare, or apply Donchian breakout strategy using the library's structured Trading systems reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Donchian breakout strategy",
+        "Donchian channel breakout",
+        "N-day channel breakout",
+        "explain Donchian breakout strategy",
+        "apply Donchian breakout strategy to a trading question",
+        "common misconception about Donchian breakout strategy"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/trading-systems/donchian-breakout-strategy",
+      "canonical": {
+        "source_path": "concepts/trading-systems.json",
+        "sha256": "20176c8dbd1ce01fa55afbdee304239d85ff2bf1da4d042e5cd089fa9704ae56"
+      },
+      "related_concept_ids": [
+        "trading-systems/channel-breakout-strategy",
+        "trading-systems/turtle-trading",
+        "trading-systems/breakout-trading",
+        "trading-systems/trend-following"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-turtle-trading",
+      "concept_id": "trading-systems/turtle-trading",
+      "display_name": "Turtle trading",
+      "domain": "Trading systems",
+      "description": "Explain, compare, or apply Turtle trading using the library's structured Trading systems reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Turtle trading",
+        "Turtle system",
+        "Turtle rules",
+        "explain Turtle trading",
+        "apply Turtle trading to a trading question",
+        "common misconception about Turtle trading"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/trading-systems/turtle-trading",
+      "canonical": {
+        "source_path": "concepts/trading-systems.json",
+        "sha256": "142a6c56c330b4c711e7d8b80803490471242d11a31777b69615d78569b067b8"
+      },
+      "related_concept_ids": [
+        "trading-systems/donchian-breakout-strategy",
+        "trading-systems/channel-breakout-strategy",
+        "trading-systems/trend-following",
+        "trading-systems/pyramiding",
+        "risk-and-performance/position-sizing"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-risk-on-risk-off-trading",
+      "concept_id": "trading-systems/risk-on-risk-off-trading",
+      "display_name": "Risk-on risk-off trading",
+      "domain": "Trading systems",
+      "description": "Explain, compare, or apply Risk-on risk-off trading using the library's structured Trading systems reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Risk-on risk-off trading",
+        "RORO",
+        "risk appetite rotation",
+        "explain Risk-on risk-off trading",
+        "apply Risk-on risk-off trading to a trading question",
+        "common misconception about Risk-on risk-off trading"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/trading-systems/risk-on-risk-off-trading",
+      "canonical": {
+        "source_path": "concepts/trading-systems.json",
+        "sha256": "ae6725420be5dcccfef9b853f590c45628dba371f0e17a04ca81621aa52ba153"
+      },
+      "related_concept_ids": [
+        "trading-systems/global-macro-trading",
+        "portfolio-management/asset-allocation"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-global-macro-trading",
+      "concept_id": "trading-systems/global-macro-trading",
+      "display_name": "Global macro trading",
+      "domain": "Trading systems",
+      "description": "Explain, compare, or apply Global macro trading using the library's structured Trading systems reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Global macro trading",
+        "global macro",
+        "macro trading",
+        "explain Global macro trading",
+        "apply Global macro trading to a trading question",
+        "common misconception about Global macro trading"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/trading-systems/global-macro-trading",
+      "canonical": {
+        "source_path": "concepts/trading-systems.json",
+        "sha256": "c477ab0c8f67b73788be80636bdc18cf0ea5b6f627aa05edd06997e8e78ed752"
+      },
+      "related_concept_ids": [
+        "trading-systems/risk-on-risk-off-trading",
+        "trading-systems/trend-following"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-relative-strength-rotation",
+      "concept_id": "trading-systems/relative-strength-rotation",
+      "display_name": "Relative strength rotation",
+      "domain": "Trading systems",
+      "description": "Explain, compare, or apply Relative strength rotation using the library's structured Trading systems reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Relative strength rotation",
+        "sector momentum rotation",
+        "relative strength investing",
+        "explain Relative strength rotation",
+        "apply Relative strength rotation to a trading question",
+        "common misconception about Relative strength rotation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/trading-systems/relative-strength-rotation",
+      "canonical": {
+        "source_path": "concepts/trading-systems.json",
+        "sha256": "94b92e4b656e46824169f02e152f1368333c9ab29d95a6b80ef2a0b016d7ecfc"
+      },
+      "related_concept_ids": [
+        "trading-systems/cross-sectional-momentum",
+        "trading-systems/momentum-trading"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-cross-sectional-momentum",
+      "concept_id": "trading-systems/cross-sectional-momentum",
+      "display_name": "Cross-sectional momentum",
+      "domain": "Trading systems",
+      "description": "Explain, compare, or apply Cross-sectional momentum using the library's structured Trading systems reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Cross-sectional momentum",
+        "relative strength momentum",
+        "winners-minus-losers",
+        "J/K momentum",
+        "explain Cross-sectional momentum",
+        "apply Cross-sectional momentum to a trading question",
+        "common misconception about Cross-sectional momentum"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/trading-systems/cross-sectional-momentum",
+      "canonical": {
+        "source_path": "concepts/trading-systems.json",
+        "sha256": "aed9f2da1e00aaa6a701748039e2ab7aec60f8d8e0137709a61440dabc6fc0cb"
+      },
+      "related_concept_ids": [
+        "trading-systems/time-series-momentum",
+        "trading-systems/momentum-trading",
+        "trading-systems/relative-strength-rotation"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-time-series-momentum",
+      "concept_id": "trading-systems/time-series-momentum",
+      "display_name": "Time-series momentum",
+      "domain": "Trading systems",
+      "description": "Explain, compare, or apply Time-series momentum using the library's structured Trading systems reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Time-series momentum",
+        "TSMOM",
+        "absolute momentum",
+        "trend momentum",
+        "explain Time-series momentum",
+        "apply Time-series momentum to a trading question",
+        "common misconception about Time-series momentum"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/trading-systems/time-series-momentum",
+      "canonical": {
+        "source_path": "concepts/trading-systems.json",
+        "sha256": "10a179429efed3318f6ee257f09ef31cf44dd32d4b8ce8ae2b6190f7d2a9b6f2"
+      },
+      "related_concept_ids": [
+        "trading-systems/cross-sectional-momentum",
+        "trading-systems/trend-following",
+        "trading-systems/momentum-trading"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-post-earnings-announcement-drift",
+      "concept_id": "trading-systems/post-earnings-announcement-drift",
+      "display_name": "Post-earnings announcement drift",
+      "domain": "Trading systems",
+      "description": "Explain, compare, or apply Post-earnings announcement drift using the library's structured Trading systems reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Post-earnings announcement drift",
+        "PEAD",
+        "earnings momentum (drift)",
+        "explain Post-earnings announcement drift",
+        "apply Post-earnings announcement drift to a trading question",
+        "common misconception about Post-earnings announcement drift"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/trading-systems/post-earnings-announcement-drift",
+      "canonical": {
+        "source_path": "concepts/trading-systems.json",
+        "sha256": "68a1b0db2e4066218981ad3c4fea3823cb49331e3b014494ce390048e7edfe25"
+      },
+      "related_concept_ids": [
+        "trading-systems/earnings-trading",
+        "trading-systems/news-trading",
+        "macro-and-fundamentals/earnings-surprise",
+        "trading-systems/cross-sectional-momentum"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-short-squeeze-trading",
+      "concept_id": "trading-systems/short-squeeze-trading",
+      "display_name": "Short squeeze trading",
+      "domain": "Trading systems",
+      "description": "Explain, compare, or apply Short squeeze trading using the library's structured Trading systems reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Short squeeze trading",
+        "squeeze trading (short side)",
+        "short-covering rally trade",
+        "explain Short squeeze trading",
+        "apply Short squeeze trading to a trading question",
+        "common misconception about Short squeeze trading"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/trading-systems/short-squeeze-trading",
+      "canonical": {
+        "source_path": "concepts/trading-systems.json",
+        "sha256": "4871334e9da24a6e6bda0bd53f5108ce6ce413e856a967b2a4f505218311d8c0"
+      },
+      "related_concept_ids": [
+        "trading-systems/long-squeeze-trading",
+        "trading-systems/news-trading"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-long-squeeze-trading",
+      "concept_id": "trading-systems/long-squeeze-trading",
+      "display_name": "Long squeeze trading",
+      "domain": "Trading systems",
+      "description": "Explain, compare, or apply Long squeeze trading using the library's structured Trading systems reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Long squeeze trading",
+        "long liquidation cascade",
+        "capitulation trading",
+        "explain Long squeeze trading",
+        "apply Long squeeze trading to a trading question",
+        "common misconception about Long squeeze trading"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/trading-systems/long-squeeze-trading",
+      "canonical": {
+        "source_path": "concepts/trading-systems.json",
+        "sha256": "be232dbb297d932cbd67cfbe8a3328a0a57d24ded8f2cd9954a370b6d2be650b"
+      },
+      "related_concept_ids": [
+        "trading-systems/short-squeeze-trading",
+        "risk-and-performance/forced-liquidation",
+        "trading-systems/mean-reversion",
+        "trading-systems/fade-strategy"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-pairs-convergence-trade",
+      "concept_id": "trading-systems/pairs-convergence-trade",
+      "display_name": "Pairs convergence trade",
+      "domain": "Trading systems",
+      "description": "Explain, compare, or apply Pairs convergence trade using the library's structured Trading systems reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Pairs convergence trade",
+        "pairs mean-reversion trade",
+        "convergence stat-arb",
+        "explain Pairs convergence trade",
+        "apply Pairs convergence trade to a trading question",
+        "common misconception about Pairs convergence trade"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/trading-systems/pairs-convergence-trade",
+      "canonical": {
+        "source_path": "concepts/trading-systems.json",
+        "sha256": "529575929cfaf676b58b1e3a649a65f4b3102115b493038fbeb9c85e2606b3f5"
+      },
+      "related_concept_ids": [
+        "trading-systems/pairs-spread-z-score-strategy",
+        "trading-systems/pairs-divergence-trade",
+        "trading-systems/statistical-arbitrage",
+        "trading-systems/mean-reversion"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-pairs-divergence-trade",
+      "concept_id": "trading-systems/pairs-divergence-trade",
+      "display_name": "Pairs divergence trade",
+      "domain": "Trading systems",
+      "description": "Explain, compare, or apply Pairs divergence trade using the library's structured Trading systems reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Pairs divergence trade",
+        "divergence entry (pairs)",
+        "pairs spread opening trade",
+        "explain Pairs divergence trade",
+        "apply Pairs divergence trade to a trading question",
+        "common misconception about Pairs divergence trade"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/trading-systems/pairs-divergence-trade",
+      "canonical": {
+        "source_path": "concepts/trading-systems.json",
+        "sha256": "c3bcccfa58dc3a2a96e0dcb423b9ff277faa9cb3a0fbb2808cbec9d6afd01046"
+      },
+      "related_concept_ids": [
+        "trading-systems/pairs-convergence-trade",
+        "trading-systems/pairs-spread-z-score-strategy",
+        "trading-systems/statistical-arbitrage",
+        "trading-systems/pairs-trading"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-trading-hypothesis",
+      "concept_id": "research-and-backtesting/trading-hypothesis",
+      "display_name": "Trading hypothesis",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Trading hypothesis using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Trading hypothesis",
+        "explain Trading hypothesis",
+        "apply Trading hypothesis to a trading question",
+        "common misconception about Trading hypothesis"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/research-and-backtesting/trading-hypothesis",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "2eb1685200063a4e22ab369e194e6aaff1bf64f922eb4496ff1eeadb6085cca1"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/backtest",
+        "research-and-backtesting/signal",
+        "research-and-backtesting/benchmark-strategy"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-signal",
+      "concept_id": "research-and-backtesting/signal",
+      "display_name": "Signal",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Signal using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Signal",
+        "explain Signal",
+        "apply Signal to a trading question",
+        "common misconception about Signal"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/research-and-backtesting/signal",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "5b17f8a7907999a480438dc4f75a4fc101e173667982e395ae581750703f34f6"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/feature",
+        "research-and-backtesting/trading-hypothesis",
+        "research-and-backtesting/target-variable"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-feature",
+      "concept_id": "research-and-backtesting/feature",
+      "display_name": "Feature",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Feature using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Feature",
+        "explain Feature",
+        "apply Feature to a trading question",
+        "common misconception about Feature"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/research-and-backtesting/feature",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "188741062cdb721b14a6f5fd66bb74ff7f87f049902b56202e5386058d068eb8"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/signal",
+        "research-and-backtesting/label",
+        "research-and-backtesting/feature-engineering"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-label",
+      "concept_id": "research-and-backtesting/label",
+      "display_name": "Label",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Label using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Label",
+        "explain Label",
+        "apply Label to a trading question",
+        "common misconception about Label"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/research-and-backtesting/label",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "5741499f3378eb42482563b655c2921a12da3154f37d98df2f2702b6a61107c6"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/target-variable",
+        "research-and-backtesting/feature",
+        "research-and-backtesting/training-set"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-target-variable",
+      "concept_id": "research-and-backtesting/target-variable",
+      "display_name": "Target variable",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Target variable using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Target variable",
+        "explain Target variable",
+        "apply Target variable to a trading question",
+        "common misconception about Target variable"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/research-and-backtesting/target-variable",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "a301acca3172c37bee4d83b720db801dac2811a129fe8b5ae31179c0f9b11f2e"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/label",
+        "research-and-backtesting/feature",
+        "research-and-backtesting/objective-function"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-training-set",
+      "concept_id": "research-and-backtesting/training-set",
+      "display_name": "Training set",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Training set using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Training set",
+        "explain Training set",
+        "apply Training set to a trading question",
+        "common misconception about Training set"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 63,
+      "package_path": "skills/concepts/research-and-backtesting/training-set",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "48d177a0d96757ee0aeb0840423453287fc97c5c6ffb521ada76ec2d4a75e755"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/validation-set",
+        "research-and-backtesting/test-set",
+        "research-and-backtesting/in-sample-period"
       ]
     }
   ]

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/target-variable",
+  "canonical_sha256": "a301acca3172c37bee4d83b720db801dac2811a129fe8b5ae31179c0f9b11f2e",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/target-variable",
+    "name": "Target variable",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "The response variable whose conditional value, probability, or class a supervised model is fitted to estimate.",
+    "intuition": "It controls what information the model receives and in what numerical representation.",
+    "mechanics": "Choose an economically meaningful horizon, construct it from future outcomes relative to each feature row, and exclude it from the input columns.",
+    "formula": "",
+    "relationships": [
+      "Label",
+      "Feature",
+      "Objective function"
+    ],
+    "failure_modes": "Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.",
+    "misconceptions": "A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.",
+    "example": "For a regression model, the target is the next five-day excess return in decimal form.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide, Cross-validation",
+        "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+        "section": "Training, validation, test sets and cross-validation",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

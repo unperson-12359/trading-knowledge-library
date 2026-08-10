@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/pairs-convergence-trade",
+  "canonical_sha256": "529575929cfaf676b58b1e3a649a65f4b3102115b493038fbeb9c85e2606b3f5",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/pairs-convergence-trade",
+    "name": "Pairs convergence trade",
+    "aliases": [
+      "pairs mean-reversion trade",
+      "convergence stat-arb"
+    ],
+    "domain": "Trading systems",
+    "definition": "The core pairs-trading position: when the spread between two historically co-moving securities diverges beyond a threshold, short the outperformer and buy the underperformer in expectation that the spread converges back to its historical relation. Gatev, Goetzmann and Rouwenhorst (2006) formalized the rule, matching pairs by minimum distance between normalized price series and trading divergences beyond two standard deviations.",
+    "intuition": "Two near-substitute stocks cannot stay mispriced relative to each other forever; the convergence trade sells whichever got too expensive and buys whichever got too cheap, hedging out the market's direction.",
+    "mechanics": "Form pairs by minimum distance over a 12-month formation period; open when the normalized-price spread exceeds two historical standard deviations, and close on convergence, at the next formation date, or if the pair ceases to trade. Positions are dollar-neutral across the two legs, and a portfolio diversifies across many pairs.",
+    "formula": "Open when |spread of normalized prices| > 2 sigma (historical); P&L approx. (converged spread - entry spread) per dollar-neutral unit.",
+    "relationships": [
+      "Pairs spread z-score strategy",
+      "Pairs divergence trade",
+      "Statistical arbitrage",
+      "Mean reversion"
+    ],
+    "failure_modes": "Convergence fails when the divergence is informational - a takeover rumor, fraud, or fundamental break re-prices one leg permanently and the spread widens through every reversion threshold; Gatev et al. themselves document declining profitability as the strategy crowded.",
+    "misconceptions": "That matched pairs make the trade market-neutral and therefore safe; neutrality holds only for the common factor - idiosyncratic divergence risk is the whole position, and it is fat-tailed.",
+    "example": "Two beverage stocks' normalized prices separate by 2.5 standard deviations; short the leader and buy the laggard dollar-neutral, then unwind for a profit when the spread closes to 0.3 standard deviations three weeks later.",
+    "citations": [
+      {
+        "source": "Gatev, Goetzmann & Rouwenhorst, 'Pairs Trading: Performance of a Relative Value Arbitrage Rule' (SSRN; published RFS 2006)",
+        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=141615",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

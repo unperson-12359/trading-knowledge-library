@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/training-set",
+  "canonical_sha256": "48d177a0d96757ee0aeb0840423453287fc97c5c6ffb521ada76ec2d4a75e755",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/training-set",
+    "name": "Training set",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "The observations used to estimate model parameters and fit data-dependent transformations.",
+    "intuition": "It estimates how a fitted choice behaves on observations that were not used to fit that choice.",
+    "mechanics": "Restrict fitting, feature selection, scaling, and imputation to these rows before applying the learned operations elsewhere.",
+    "formula": "",
+    "relationships": [
+      "Validation set",
+      "Test set",
+      "In-sample period"
+    ],
+    "failure_modes": "Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.",
+    "misconceptions": "Validation measures conditional generalization under a split design; it does not guarantee future market performance.",
+    "example": "A 2015-2021 sample fits a scaler and classifier; no 2022 values enter either fit.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide, Cross-validation",
+        "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+        "section": "Training, validation, test sets and cross-validation",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

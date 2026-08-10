@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/time-series-momentum",
+  "canonical_sha256": "10a179429efed3318f6ee257f09ef31cf44dd32d4b8ce8ae2b6190f7d2a9b6f2",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/time-series-momentum",
+    "name": "Time-series momentum",
+    "aliases": [
+      "TSMOM",
+      "absolute momentum",
+      "trend momentum"
+    ],
+    "domain": "Trading systems",
+    "definition": "A strategy that takes long positions in assets whose own trailing return is positive and short positions where it is negative - each asset against its own history rather than against peers - typically with volatility-scaled sizing. Moskowitz, Ooi and Pedersen (2012) document significant time-series momentum across 58 liquid futures in equity indexes, currencies, commodities, and bonds, persisting about a year and partially reversing thereafter.",
+    "intuition": "Do not ask whether gold beat stocks; ask whether gold beat gold - if its own past year is up, be long, if down, be short, and size each bet so every market contributes equal risk.",
+    "mechanics": "For each instrument, take the sign of the past 12-month excess return as the direction (long if positive, short if negative), size positions inversely to ex-ante volatility (estimated from exponentially weighted squared daily returns with a 60-day center of mass), and hold one month, averaging returns across cohorts. The diversified factor has little exposure to standard asset-pricing factors and performs best during extreme markets.",
+    "formula": "Per-instrument TSMOM return = sign(r_{t-12..t-1}) x (40% / sigma_{t-1}) x r_t, with sigma^2 = 261 x sum_i (1-delta) delta^i (r_{t-1-i} - r_bar)^2.",
+    "relationships": [
+      "Cross-sectional momentum",
+      "Trend following",
+      "Managed futures",
+      "Momentum trading"
+    ],
+    "failure_modes": "Whipsawing ranges reverse the sign of trailing returns repeatedly, and sharp V-shaped reversals hit the strategy exactly when it is maximally positioned for the prior trend; crowding among trend-following funds compresses the effect out of sample.",
+    "misconceptions": "That it is the same thing as cross-sectional momentum; time-series momentum uses an asset's own past return with no winner/loser ranking, and empirically it largely subsumes the cross-sectional stock effect while remaining a distinct construction.",
+    "example": "Crude oil's trailing 12-month excess return is +18% with ex-ante volatility of 30%: go long sized at 40%/30% = 1.33 volatility units; natural gas at 60% volatility gets half that size, so both positions contribute equal risk.",
+    "citations": [
+      {
+        "source": "Moskowitz, Ooi & Pedersen, 'Time Series Momentum', Journal of Financial Economics 104(2), 2012, 228-250 (author-hosted PDF, NYU Stern)",
+        "url": "https://w4.stern.nyu.edu/facdir/lpederse/papers/TimeSeriesMomentum.pdf",
+        "section": "Sections 1-4",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

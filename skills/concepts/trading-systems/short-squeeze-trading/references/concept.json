@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/short-squeeze-trading",
+  "canonical_sha256": "4871334e9da24a6e6bda0bd53f5108ce6ce413e856a967b2a4f505218311d8c0",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/short-squeeze-trading",
+    "name": "Short squeeze trading",
+    "aliases": [
+      "squeeze trading (short side)",
+      "short-covering rally trade"
+    ],
+    "domain": "Trading systems",
+    "definition": "Trading that exploits the feedback loop in heavily shorted stocks, where rising prices force short sellers to buy shares to cover, pushing prices higher still and forcing further covering. Squeeze traders position long in high-short-interest names ahead of or during such cascades - a volatility event trade, not a valuation strategy.",
+    "intuition": "Every short seller is a future guaranteed buyer; when the price rises enough that their losses force buying, the squeeze feeds on itself as the available float shrinks exactly when demand explodes.",
+    "mechanics": "Screen for high short interest (percentage of float, days-to-cover), borrow-fee rates, and crowding; enter long on the triggering momentum and exit as covering exhausts. The SEC's 2021 staff report documents the GameStop episode: large short interest, surging individual-investor volume, price moves that forced covering, and resulting broker trading restrictions.",
+    "formula": "Days to cover = short interest / average daily volume; squeeze risk rises with short interest as a percentage of float and with borrow cost.",
+    "relationships": [
+      "Long squeeze trading",
+      "Short interest",
+      "Short selling",
+      "News trading"
+    ],
+    "failure_modes": "Timing is everything: high short interest can persist for months while the stock bleeds lower, and late entries after the squeeze peak catch the collapse when covering ends and price returns toward fundamentals; trading halts and broker restrictions, as in January 2021, can trap positions entirely.",
+    "misconceptions": "That a short squeeze reflects improving fundamentals; the SEC staff report attributes the GameStop price action to volume, sentiment, and covering dynamics rather than any change in the company's earnings prospects.",
+    "example": "GameStop ran from $17.25 to a pre-market peak above $500 in January 2021 as shorts covered into rising prices, with cumulative short-seller losses estimated at about $5 billion and several brokers restricting purchases at the peak.",
+    "citations": [
+      {
+        "source": "U.S. SEC, Staff Report on Equity and Options Market Structure Conditions in Early 2021",
+        "url": "https://www.sec.gov/files/staff-report-equity-options-market-struction-conditions-early-2021.pdf",
+        "section": "Sections 3.2, 3.4 (GME equities trading; short selling and covering)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

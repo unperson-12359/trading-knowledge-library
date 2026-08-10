@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/moving-average-crossover-strategy",
+  "canonical_sha256": "c0b0dbca1a78e16ebb0d5bf11457551a91d1ccfc2b11b4a7564b36697877faf2",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/moving-average-crossover-strategy",
+    "name": "Moving-average crossover strategy",
+    "aliases": [
+      "MA crossover",
+      "golden cross / death cross system",
+      "variable-length moving average rule"
+    ],
+    "domain": "Trading systems",
+    "definition": "A trend-following rule that goes long when a short moving average crosses above a longer one and exits or shorts on the reverse cross, using the smoothed momentum of two lookback windows as the signal. It is the canonical moving-average rule in Brock, Lakonishok and LeBaron's (1992) tests of simple technical trading rules.",
+    "intuition": "The short average is the market's recent mood, the long average its season; when mood crosses season something has changed - you trade the crossing, accepting that you will be late at both turns.",
+    "mechanics": "Compute a fast and a slow moving average; hold long while the fast average is above the slow one (golden-cross state) and flat or short while below (death-cross state), optionally with a band filter to suppress noise crosses. Brock-Lakonishok-LeBaron tested variable-length moving-average rules (e.g., 1/50, 1/150, 5/150, 1/200, 2/200) on the Dow from 1897 to 1986 with bootstrap comparisons.",
+    "formula": "SMA_N(t) = (1/N) sum_{i=0}^{N-1} P(t-i); signal = sign(SMA_fast - SMA_slow).",
+    "relationships": [
+      "Trend following",
+      "Channel breakout strategy",
+      "Moving average",
+      "Golden cross"
+    ],
+    "failure_modes": "In range-bound markets the crossovers whipsaw, entering at local extremes of each oscillation, and the rule's structural lag means V-shaped reversals cost the full round trip before the signal flips.",
+    "misconceptions": "That a golden cross is a validated buy signal; it is a descriptive trend-following framework whose historical test results are sample- and cost-dependent, not a proven predictive law.",
+    "example": "A 50-day SMA rising through the 200-day SMA at $98 flips the system long; it stays long until the 50-day falls back below the 200-day at $91, capturing the intervening trend less the lag at both ends.",
+    "citations": [
+      {
+        "source": "Brock, Lakonishok & LeBaron, 'Simple Technical Trading Rules and the Stochastic Properties of Stock Returns', Journal of Finance 47(5), 1992, 1731-1764 (EconPapers record)",
+        "url": "https://econpapers.repec.org/RePEc:bla:jfinan:v:47:y:1992:i:5:p:1731-64",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

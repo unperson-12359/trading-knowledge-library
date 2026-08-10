@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/label",
+  "canonical_sha256": "5741499f3378eb42482563b655c2921a12da3154f37d98df2f2702b6a61107c6",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/label",
+    "name": "Label",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "The observed class or value assigned to an example as the outcome a supervised model is trained to predict.",
+    "intuition": "It controls what information the model receives and in what numerical representation.",
+    "mechanics": "Define the event window and labeling rule, align it after the feature timestamp, and prevent overlapping outcomes from leaking across splits.",
+    "formula": "",
+    "relationships": [
+      "Target variable",
+      "Feature",
+      "Training set"
+    ],
+    "failure_modes": "Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.",
+    "misconceptions": "A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.",
+    "example": "A row dated Monday receives label 1 if Tuesday's close-to-close return is positive and 0 otherwise.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide, Cross-validation",
+        "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+        "section": "Training, validation, test sets and cross-validation",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

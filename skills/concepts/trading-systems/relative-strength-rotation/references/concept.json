@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/relative-strength-rotation",
+  "canonical_sha256": "94b92e4b656e46824169f02e152f1368333c9ab29d95a6b80ef2a0b016d7ecfc",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/relative-strength-rotation",
+    "name": "Relative strength rotation",
+    "aliases": [
+      "sector momentum rotation",
+      "relative strength investing"
+    ],
+    "domain": "Trading systems",
+    "definition": "A cross-sectional allocation strategy that periodically rotates capital into the assets, sectors, or industries with the strongest recent relative performance and out of the weakest, harvesting the momentum effect at the group level. It operationalizes industry momentum, which Moskowitz and Grinblatt (1999) showed accounts for much of individual-stock momentum.",
+    "intuition": "Leadership persists longer than contrarians expect: the sectors that led last quarter tend to keep leading next quarter, so you systematically climb aboard the leaders and abandon the laggards on a fixed schedule.",
+    "mechanics": "Rank candidates (sectors, industries, or asset classes) by trailing 3- to 12-month total return, hold the top ranks - or go long the top group and short the bottom - and re-rank and rebalance monthly or quarterly. Moskowitz-Grinblatt find industry momentum significant even after controlling for size, book-to-market, individual-stock momentum, and microstructure effects.",
+    "formula": "Score_i = R_i(t-12, t-1) (optionally skipping the most recent month); hold the top-k candidates by score.",
+    "relationships": [
+      "Cross-sectional momentum",
+      "Momentum trading",
+      "Sector rotation",
+      "Industry momentum"
+    ],
+    "failure_modes": "Momentum crashes - sharp reversals after crises - rotate leadership violently, so the strategy buys the old leaders just as they mean-revert; high turnover also makes costs and taxes a first-order drag.",
+    "misconceptions": "That relative strength is a chart heuristic; the academic version is a systematic cross-sectional ranking with a documented but decaying, crash-prone return pattern, and the rotation adds nothing if the ranking window is noise.",
+    "example": "Each month, rank 11 sector ETFs by trailing 6-month return, hold the top 3 equal-weighted, and rotate; in a year where energy leads technology by 25 points, the portfolio stays long energy until its rank decays.",
+    "citations": [
+      {
+        "source": "Moskowitz & Grinblatt, 'Do Industries Explain Momentum?', Journal of Finance 54(4), 1999, 1249-1290 (EconPapers record)",
+        "url": "https://econpapers.repec.org/RePEc:bla:jfinan:v:54:y:1999:i:4:p:1249-1290",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

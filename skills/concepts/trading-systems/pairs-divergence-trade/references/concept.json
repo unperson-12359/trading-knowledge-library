@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/pairs-divergence-trade",
+  "canonical_sha256": "c3bcccfa58dc3a2a96e0dcb423b9ff277faa9cb3a0fbb2808cbec9d6afd01046",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/pairs-divergence-trade",
+    "name": "Pairs divergence trade",
+    "aliases": [
+      "divergence entry (pairs)",
+      "pairs spread opening trade"
+    ],
+    "domain": "Trading systems",
+    "definition": "The entry logic of a pairs trade: positioning as the spread between two linked securities diverges to an extreme, on the expectation that the divergence has run its course and the spread will close. In the Gatev-Goetzmann-Rouwenhorst framework, divergence beyond two historical standard deviations is precisely the event that triggers the dollar-neutral position.",
+    "intuition": "Divergence is the signal, not the enemy: you wait for the rubber band between two stocks to stretch beyond historical tolerance, then take the position that profits as it snaps back.",
+    "mechanics": "During the trading period, monitor the normalized-price spread of a formed pair; a divergence beyond +/-2 historical standard deviations opens the dollar-neutral long/short. Risk management defines a maximum adverse divergence (stop), because spreads can widen arbitrarily before closing - or never close.",
+    "formula": "Trigger: |s_t| > 2 sigma_s, where s is the normalized price spread; position = short the high leg, long the low leg, in equal dollar amounts.",
+    "relationships": [
+      "Pairs convergence trade",
+      "Pairs spread z-score strategy",
+      "Statistical arbitrage",
+      "Pairs trading"
+    ],
+    "failure_modes": "The central risk is divergence that never closes: structural breaks turn the entry signal into a trap, and each unit added to a widening spread increases exposure exactly as the probability of a permanent break rises.",
+    "misconceptions": "That larger divergence means a better trade; beyond some point, extreme divergence correlates with pair breakdown (for example, an impending acquisition of one leg), so the biggest apparent opportunities carry the highest breakdown risk.",
+    "example": "A pair's spread widens from 0 to -2.2 sigma over two weeks on no news; the trader buys the lagging leg and shorts the leader, with a stop at -3.5 sigma in case the relationship has broken.",
+    "citations": [
+      {
+        "source": "Gatev, Goetzmann & Rouwenhorst, 'Pairs Trading: Performance of a Relative Value Arbitrage Rule' (SSRN; published RFS 2006)",
+        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=141615",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

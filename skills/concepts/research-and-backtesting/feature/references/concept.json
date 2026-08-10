@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/feature",
+  "canonical_sha256": "188741062cdb721b14a6f5fd66bb74ff7f87f049902b56202e5386058d068eb8",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/feature",
+    "name": "Feature",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "An input variable supplied to a statistical or machine-learning model, derived from raw observations without using future information.",
+    "intuition": "It controls what information the model receives and in what numerical representation.",
+    "mechanics": "Define its timestamp and lookback, fit any transformation on training data, and construct the same value identically in validation and live use.",
+    "formula": "",
+    "relationships": [
+      "Signal",
+      "Label",
+      "Feature engineering"
+    ],
+    "failure_modes": "Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.",
+    "misconceptions": "A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.",
+    "example": "At each close, 20-day realized volatility computed through that close is a feature for predicting next-day range.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide, Dataset transformations",
+        "url": "https://scikit-learn.org/stable/data_transforms.html",
+        "section": "Fit/transform semantics and feature representations",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

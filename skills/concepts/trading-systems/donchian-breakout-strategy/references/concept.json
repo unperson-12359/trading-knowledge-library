@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/donchian-breakout-strategy",
+  "canonical_sha256": "20176c8dbd1ce01fa55afbdee304239d85ff2bf1da4d042e5cd089fa9704ae56",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/donchian-breakout-strategy",
+    "name": "Donchian breakout strategy",
+    "aliases": [
+      "Donchian channel breakout",
+      "N-day channel breakout"
+    ],
+    "domain": "Trading systems",
+    "definition": "A channel-breakout system built on Donchian channels - the trailing N-day high and low - entering long when price exceeds the channel top and short when it breaks the channel bottom, most famously as the 20-day (System 1) and 55-day (System 2) entries of the Turtle rules. Exits use a shorter opposite channel: 10-day for System 1 and 20-day for System 2.",
+    "intuition": "Richard Donchian's insight was that you need not predict trends, only agree to join every new N-day extreme; most breakouts fail, but the few that run pay for all of them.",
+    "mechanics": "Enter one unit when price trades one tick beyond the 20-day high or low (System 1, skipped if the previous breakout was a winner, with a 55-day failsafe entry) or the 55-day high or low (System 2, all taken). Stop at 2N, add units every 0.5N, and exit on the opposite 10-day (System 1) or 20-day (System 2) extreme.",
+    "formula": "Upper channel = max(high, last 20 or 55 days); lower channel = min(low, last 20 or 55 days); N = 20-day exponential average of True Range, used for sizing and stops.",
+    "relationships": [
+      "Channel breakout strategy",
+      "Turtle trading",
+      "Breakout trading",
+      "Trend following"
+    ],
+    "failure_modes": "Long flat or choppy stretches produce strings of losing false breakouts, and because entries sit at the extreme, slippage and stop-outs cluster at the worst prices; whatever edge exists lives entirely in rare, fat-tailed trends.",
+    "misconceptions": "That the 20/55 parameters are magic; the Turtles themselves emphasized N-based position sizing and consistency over the entry parameters, which any similar channel length approximates.",
+    "example": "Gold's 55-day high is 310.00 with N = 2.50: buy one unit at 310.00, add at 311.25, 312.50, and 313.75, stop the pyramid 2N below the last fill, and exit on a 20-day low (Turtle worked example).",
+    "citations": [
+      {
+        "source": "Curtis Faith, 'The Original Turtle Trading Rules' (originalturtles.org, 2003)",
+        "url": "https://oxfordstrat.com/coasdfASD32/uploads/2016/01/turtle-rules.pdf",
+        "section": "Chapter 4: Entries - Breakouts",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

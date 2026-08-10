@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/cross-sectional-momentum",
+  "canonical_sha256": "aed9f2da1e00aaa6a701748039e2ab7aec60f8d8e0137709a61440dabc6fc0cb",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/cross-sectional-momentum",
+    "name": "Cross-sectional momentum",
+    "aliases": [
+      "relative strength momentum",
+      "winners-minus-losers",
+      "J/K momentum"
+    ],
+    "domain": "Trading systems",
+    "definition": "The anomaly and strategy class of buying securities with the highest recent returns relative to their peers and selling those with the lowest, over 3- to 12-month formation and holding periods. Jegadeesh and Titman (1993) documented that such relative-strength portfolios generated significant abnormal returns not explained by systematic risk or delayed reaction to common factors.",
+    "intuition": "Winners keep winning and losers keep losing for a while: rank the whole market by recent performance, buy the top decile, short the bottom, and let the persistence work over the next quarter.",
+    "mechanics": "Each month, rank stocks by past J-month return (J = 3-12), form decile portfolios, buy the top decile and short the bottom, and hold for K months (K = 3-12) with overlapping monthly cohorts. Jegadeesh-Titman found the strongest strategies earning roughly 1% per month in 1965-1989 data, with part of the first-year abnormal return dissipating over the following two years.",
+    "formula": "Momentum return = R(top decile by past J-month return) - R(bottom decile), measured over holding period K and averaged across overlapping (J,K) cohorts.",
+    "relationships": [
+      "Time-series momentum",
+      "Momentum trading",
+      "Relative strength rotation",
+      "UMD factor"
+    ],
+    "failure_modes": "Momentum crashes - violent reversals concentrated in rebound phases after market declines - can erase years of gains in months, and turnover plus short-side costs are large; the published anomaly has decayed as it became crowded.",
+    "misconceptions": "That it is a free lunch refuting market efficiency; subsequent literature ties the premium to crash risk, behavioral underreaction, and trading costs - it is a risky, capacity-constrained anomaly, not an arbitrage.",
+    "example": "Rank 3,000 stocks by trailing 6-month return, buy the top 300 and short the bottom 300, hold 3 months, and reform monthly; Jegadeesh-Titman's tests show the best such zero-cost portfolios averaging about 1% per month before costs.",
+    "citations": [
+      {
+        "source": "Jegadeesh & Titman, 'Returns to Buying Winners and Selling Losers: Implications for Stock Market Efficiency', Journal of Finance 48(1), 1993, 65-91 (EconPapers record)",
+        "url": "https://econpapers.repec.org/RePEc:bla:jfinan:v:48:y:1993:i:1:p:65-91",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

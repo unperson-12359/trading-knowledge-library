@@ -1,0 +1,80 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-time-series-momentum",
+  "concept_id": "trading-systems/time-series-momentum",
+  "display_name": "Time-series momentum",
+  "domain": "Trading systems",
+  "description": "Explain, compare, or apply Time-series momentum using the library's structured Trading systems reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Time-series momentum",
+    "TSMOM",
+    "absolute momentum",
+    "trend momentum",
+    "explain Time-series momentum",
+    "apply Time-series momentum to a trading question",
+    "common misconception about Time-series momentum"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 63,
+  "package_path": "skills/concepts/trading-systems/time-series-momentum",
+  "canonical": {
+    "source_path": "concepts/trading-systems.json",
+    "sha256": "10a179429efed3318f6ee257f09ef31cf44dd32d4b8ce8ae2b6190f7d2a9b6f2"
+  },
+  "related_concept_ids": [
+    "trading-systems/cross-sectional-momentum",
+    "trading-systems/trend-following",
+    "trading-systems/momentum-trading"
+  ]
+}

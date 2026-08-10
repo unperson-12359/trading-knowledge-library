@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/post-earnings-announcement-drift",
+  "canonical_sha256": "68a1b0db2e4066218981ad3c4fea3823cb49331e3b014494ce390048e7edfe25",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/post-earnings-announcement-drift",
+    "name": "Post-earnings announcement drift",
+    "aliases": [
+      "PEAD",
+      "earnings momentum (drift)"
+    ],
+    "domain": "Trading systems",
+    "definition": "The documented tendency of stock prices to continue moving in the direction of an earnings surprise for weeks after the announcement, and the strategy of trading that continuation. Bernard and Thomas (1989) showed cumulative abnormal returns drift with the sign of the surprise for roughly 60 days, concluding the pattern is consistent with a delayed price response rather than risk mismeasurement.",
+    "intuition": "The market under-reacts to earnings: the announcement-day jump is only part of the move, so buying after good news - late, after everyone saw the print - historically still captured the slow digestion that followed.",
+    "mechanics": "Rank announcements by standardized unexpected earnings or the announcement-window abnormal return; buy the highest-surprise decile and short the lowest, holding for the following weeks to a quarter. The effect is stronger for small companies and coexists with elevated announcement-period volatility.",
+    "formula": "SUE = (EPS_actual - EPS_expected) / sigma(EPS forecast errors); portfolios sorted on SUE show cumulative abnormal return drift over the subsequent ~60 trading days.",
+    "relationships": [
+      "Earnings trading",
+      "News trading",
+      "Earnings surprise",
+      "Cross-sectional momentum"
+    ],
+    "failure_modes": "The anomaly weakens as it is arbitraged and can invert in high-attention, high-liquidity names where reaction is instant; trading costs and the need to act immediately after each announcement consume much of the gross drift.",
+    "misconceptions": "That PEAD guarantees upside after every earnings beat; it is a statistical tendency across large samples of announcements with wide dispersion - individual prints reverse violently all the time.",
+    "example": "Buy the decile of stocks with the largest positive earnings surprises the day after reporting and short the most negative decile; Bernard-Thomas's sample shows the long-short portfolio continuing to earn abnormal returns over the following ~60 days.",
+    "citations": [
+      {
+        "source": "Bernard & Thomas, 'Post-Earnings-Announcement Drift: Delayed Price Response or Risk Premium?', Journal of Accounting Research 27 (1989), 1-36 (EconPapers record)",
+        "url": "https://econpapers.repec.org/RePEc:bla:joares:v:27:y:1989:i::p:1-36",
+        "section": "Bibliographic record (DOI 10.2307/2491062)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
