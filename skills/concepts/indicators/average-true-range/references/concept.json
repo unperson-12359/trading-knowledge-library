@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/average-true-range",
+  "canonical_sha256": "0800a7014699957e0cd0a463a57b8b382e4f4a9e0e0e1f48c8b53120deee6cdf",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/average-true-range",
+    "name": "Average true range",
+    "aliases": [
+      "ATR"
+    ],
+    "domain": "Indicators",
+    "definition": "Welles Wilder's volatility measure (New Concepts in Technical Trading Systems, 1978): the Wilder-smoothed average of True Range, where True Range is the greatest of the current high-low span, |high - prior close|, and |low - prior close| - capturing gap and limit-move volatility that a plain high-low range misses.",
+    "intuition": "ATR tells you how much an instrument typically moves per bar, with no directional content: it expands in violent markets and contracts in quiet ones.",
+    "mechanics": "TR_t = max(High - Low, |High - Close_prev|, |Low - Close_prev|). The first 14-period ATR is the SMA of the first 14 TR values; thereafter ATR_t = (ATR_{t-1} x 13 + TR_t) / 14. Used for stop distances, position sizing, and breakout validation.",
+    "formula": "TR = max(H - L, |H - C_{t-1}|, |L - C_{t-1}|); ATR(14)_t = (ATR_{t-1} x 13 + TR_t) / 14.",
+    "relationships": [
+      "Average directional index",
+      "Parabolic SAR",
+      "Supertrend",
+      "Keltner Channel",
+      "Smoothed moving average"
+    ],
+    "failure_modes": "ATR is in absolute price units, so values are not comparable across securities or across large price changes in one security; the recursive Wilder smoothing makes early values seed-dependent and needs long histories (StockCharts calculates back 250+ periods) to stabilize.",
+    "misconceptions": "ATR says nothing about direction - a falling ATR during a rally is not bearish, just quietening; and a high ATR is not by itself a top signal.",
+    "example": "StockCharts' spreadsheet: the first 14-day ATR comes out at 0.56, and ATR surged as QQQ plunged with long candlesticks in May.",
+    "citations": [
+      {
+        "source": "Average True Range (ATR) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/average-true-range-atr-and-average-true-range-percent-atrp",
+        "section": "True Range / How To Calculate ATR",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "TA-Lib Technical Analysis Documentation - ATR",
+        "url": "https://ta-lib.github.io/ta-doc/indicator/ATR.htm",
+        "section": "Average True Range implementation and source references",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

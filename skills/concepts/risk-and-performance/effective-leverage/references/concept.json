@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/effective-leverage",
+  "canonical_sha256": "dcff697a932f04b03f63fb9d5f5606215afd16b5b6d151ad5a7894630a505047",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/effective-leverage",
+    "name": "Effective leverage",
+    "aliases": [
+      "true leverage",
+      "leverage in use"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The ratio of a portfolio's total position exposure to its equity — typically gross exposure divided by net asset value — expressing how many dollars of market exposure are controlled per dollar of capital.",
+    "intuition": "It is the real multiplier on your capital: effective leverage of 3x means a 10% adverse market move costs about 30% of equity, before hedging effects.",
+    "mechanics": "Sum absolute position values (or notionals for derivatives) and divide by account equity; for a single margined position it approximates position notional divided by margin posted. It changes dynamically as prices move and as equity or margin balances fluctuate.",
+    "formula": "Effective leverage = gross exposure / equity = (|longs| + |shorts|) / NAV; for one margined position, approximately position notional / margin posted.",
+    "relationships": [
+      "Gross exposure",
+      "Leverage",
+      "Margin",
+      "Liquidation price",
+      "Position sizing"
+    ],
+    "failure_modes": "Gross-based effective leverage ignores netting and correlation, overstating risk for hedged books, while notional-based versions understate risk for convex instruments such as options, whose delta-adjusted exposure moves. It also spikes passively when equity falls, tightening margin pressure in downturns.",
+    "misconceptions": "An account's leverage setting (e.g. 10x) is a cap, not the leverage actually in use: effective leverage is what the open positions imply at a given moment, and it drifts with every price tick.",
+    "example": "$200,000 of positions on $50,000 of equity is 4x effective leverage; a 5% adverse move then costs roughly $10,000, or 20% of equity.",
+    "citations": [
+      {
+        "source": "Investopedia: Gross Exposure",
+        "url": "https://www.investopedia.com/terms/g/gross-exposure.asp",
+        "section": "Gross vs. Net Exposure (gross exposure over 100% implying leverage)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Futures Glossary",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Leverage",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

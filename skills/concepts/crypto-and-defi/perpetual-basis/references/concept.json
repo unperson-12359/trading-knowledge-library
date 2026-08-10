@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/perpetual-basis",
+  "canonical_sha256": "7f9ee5140b3a362e41ecb7f5606809a076aca55014cea92fc0bcdcfcf856415c",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/perpetual-basis",
+    "name": "Perpetual basis",
+    "aliases": [
+      "perp premium",
+      "futures-spot basis (perp)"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "The perpetual basis is the price difference between a perpetual futures contract and the underlying spot (index) price, typically expressed as a percentage; the funding mechanism exists to keep this basis mean-reverting around zero.",
+    "intuition": "It is how far the tail (perp) wags from the dog (spot): positive when perp buyers pay a premium, negative when perps trade at a discount.",
+    "mechanics": "Basis = perp price − index price (or (perp/index) − 1). Unlike dated futures, whose basis converges at expiry, perp basis is anchored continuously by funding: a persistent positive basis raises funding, charging longs and attracting cash-and-carry arbitrage (buy spot, short perp, collect funding) that compresses it. Binance's premium index operationalizes the basis using impact bid/ask prices rather than last trade.",
+    "formula": "Basis % = (perp price / spot index − 1) × 100; annualized carry ≈ average funding rate × 3 × 365 (8h interval).",
+    "relationships": [
+      "Funding rate",
+      "Predicted funding rate",
+      "Funding interval",
+      "Open interest leverage ratio"
+    ],
+    "failure_modes": "In liquidation cascades or index outages, the basis can gap violently (perp trading far below spot) before funding arbitrage restores it; basis also embeds the premium index's order-book sampling, so thin books give noisy readings.",
+    "misconceptions": "A wide positive basis is not a free carry trade — funding can flip or spike, and execution of both legs has costs and margin risk. Perp basis is not a forecast of spot direction; it primarily reflects positioning imbalance.",
+    "example": "BTC spot index at $100,000 while the perp prints $100,500: basis +0.5%; funding turns positive, and arbitrageurs shorting the perp against spot longs collect ~0.01% per 8h until the premium closes.",
+    "citations": [
+      {
+        "source": "Binance Support - Introduction to Binance Futures Funding Rates",
+        "url": "https://www.binance.com/en/support/faq/introduction-to-binance-futures-funding-rates-360033525031",
+        "section": "How are funding rates calculated",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Hyperliquid Docs - Funding",
+        "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/funding",
+        "section": "Premium component and underlying spot oracle price",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

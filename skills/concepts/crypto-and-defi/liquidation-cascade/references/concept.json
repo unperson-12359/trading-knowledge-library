@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/liquidation-cascade",
+  "canonical_sha256": "6c1b179a6a81d9dcb8d48d63c18604e7e686d35ad42e1bb8d89fc96ee7b963ae",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/liquidation-cascade",
+    "name": "Liquidation cascade",
+    "aliases": [
+      "liquidation spiral",
+      "forced liquidation chain"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A liquidation cascade is a self-reinforcing chain of forced position closures: falling prices trigger liquidations whose forced market sells push prices lower still, triggering the next tier of liquidations in rapid succession.",
+    "intuition": "It is an avalanche on a leveraged mountainside: each margin call knocks loose more snow, and the falling snow triggers the margin calls below.",
+    "mechanics": "Leveraged positions have liquidation prices set by maintenance margin (or health factors in DeFi); when price crosses a dense cluster of them, engines and liquidators market-sell collateral/positions into the book, deepening the move and hitting the next cluster. Open interest collapses, funding and basis gap, and thin order books amplify each leg — visible in Coin Metrics-style analyses combining OI, funding and liquidation data.",
+    "formula": "",
+    "relationships": [
+      "Liquidation threshold",
+      "Liquidation bonus",
+      "Open interest leverage ratio",
+      "Funding rate",
+      "Cross margin"
+    ],
+    "failure_modes": "Cascades overshoot any fundamental value — price can wick far below fair levels before recovering (the 'liquidation hunt' zone); exchange risk systems (ADL, insurance funds) socialize residual losses when liquidations cannot fill in time.",
+    "misconceptions": "Cascades are not proof of manipulation — they are the mechanical consequence of stacked leverage at similar levels, though actors can deliberately push price toward liquidation clusters ('stop hunting'). High leverage in a market is the fuel; any spark works.",
+    "example": "BTC drops 3% to $97,000 where a dense band of 25x longs liquidates; their forced selling drives $94,000, liquidating 10x longs, then $90,000 — billions in open interest wiped in an hour before buyers absorb the flow.",
+    "citations": [
+      {
+        "source": "Binance Support - Leverage and Margin of USD-M Futures",
+        "url": "https://www.binance.com/en/support/faq/leverage-and-margin-of-usd%E2%93%A2-m-futures-360033162192",
+        "section": "Maintenance Margin",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Aave docs - Liquidations",
+        "url": "https://aave.com/docs/concepts/liquidations",
+        "section": "Health factor and liquidation mechanics",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

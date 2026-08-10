@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/liquidation-price",
+  "canonical_sha256": "3307719c4c7d8b70d3e74e31d6a4e1713b78a6c116192baed3b1cc00219bbb3d",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/liquidation-price",
+    "name": "Liquidation price",
+    "aliases": [
+      "liq price",
+      "liquidation threshold"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The mark price at which a leveraged position's margin balance falls to the maintenance margin requirement, triggering the venue's liquidation process. On crypto derivatives venues it is derived from entry price, leverage, and the tiered maintenance margin rate.",
+    "intuition": "It is the line in the sand: if the market prints there, the exchange takes over and closes the position because your collateral can no longer safely cover the loss.",
+    "mechanics": "For an isolated-margin long, the liquidation price is approximately entry * (1 - 1/leverage) / (1 - MMR), symmetrically for shorts, where MMR is the maintenance margin rate for the position's tier. As price approaches it, laddered liquidation may first cut the position to a lower risk tier; the bankruptcy price — where the position margin is fully exhausted — lies beyond the liquidation price.",
+    "formula": "Long: P_liq ~= P_entry * (1 - 1/L) / (1 - MMR); Short: P_liq ~= P_entry * (1 + 1/L) / (1 + MMR), with L the leverage and MMR the maintenance margin rate for the position's risk tier.",
+    "relationships": [
+      "Forced liquidation",
+      "Maintenance margin",
+      "Leverage",
+      "Margin call",
+      "Insurance fund",
+      "Auto-deleveraging"
+    ],
+    "failure_modes": "The displayed liquidation price is a live estimate, not a fixed level: funding fees, commissions, and unrealized P/L shift the margin balance and move it. In gaps or thin books the actual fill can be far worse than the trigger, and in cross-margin mode one position's losses can drag healthy positions into the same liquidation cascade.",
+    "misconceptions": "Liquidation price is not the bankruptcy price: liquidation begins while some margin remains (at the maintenance requirement), and the bankruptcy price is only reached if the engine cannot close the position in time.",
+    "example": "A 10x isolated long entered at $50,000 with a 0.5% maintenance margin rate has an approximate liquidation price of 50,000 * (1 - 0.1) / (1 - 0.005), about $45,226.",
+    "citations": [
+      {
+        "source": "Bybit Help Center: Risk Limit (Perpetual and Expiry Contracts)",
+        "url": "https://www.bybit.com/en/help-center/article/Risk-Limit-Perpetual-and-Expiry-Contracts",
+        "section": "Introduction to Risk Limit (tiered maintenance margin and laddered liquidation)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Hyperliquid Docs - Liquidations",
+        "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/liquidations",
+        "section": "Computing Liquidation Price",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

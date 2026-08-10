@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/oracle",
+  "canonical_sha256": "489af26610b7fe92d34b6a66a5d573bf169c6033bda25f134aee21a05566421b",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/oracle",
+    "name": "Oracle",
+    "aliases": [
+      "blockchain oracle",
+      "price oracle",
+      "price feed"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A blockchain oracle is a service that sources, verifies and transmits off-chain data (prices, events, computation results) onto the blockchain so that smart contracts — which cannot access external data themselves — can act on it.",
+    "intuition": "Contracts are sealed in a deterministic box and can't browse the internet; the oracle is the courier that slips verified notes under the door.",
+    "mechanics": "An on-chain oracle contract receives data requests; off-chain oracle nodes query APIs or data sources, reach agreement (e.g. via median aggregation across many nodes, as in Chainlink price feeds), and post the result on-chain where any contract can read it. Decentralized oracle networks use multiple independent nodes and sources plus staking/reputation to resist manipulation.",
+    "formula": "",
+    "relationships": [
+      "Smart contract",
+      "Lending protocol",
+      "Liquidation threshold",
+      "Stablecoin supply"
+    ],
+    "failure_modes": "If the oracle reports a wrong or stale price, lending protocols liquidate solvent users or let attackers drain pools with mispriced collateral; single-source or centralized oracles are one hack or outage away from corrupting every dependent contract ('the oracle problem').",
+    "misconceptions": "Oracles do not make off-chain data trustless — they shift trust to the oracle network's aggregation and incentives. A decentralized oracle with many nodes but one upstream data source still has a single point of failure.",
+    "example": "Aave reads a Chainlink ETH/USD price feed to value collateral; if the feed briefly reported ETH at half its true price, thousands of loans would instantly fall below their liquidation thresholds through no fault of borrowers.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Oracles",
+        "url": "https://ethereum.org/en/developers/docs/oracles/",
+        "section": "What is a blockchain oracle?",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Chainlink Documentation - Decentralized Data Model",
+        "url": "https://docs.chain.link/architecture-overview/architecture-decentralized-model",
+        "section": "Data-source, node-operator, and oracle-network decentralization",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

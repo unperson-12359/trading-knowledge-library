@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-stop-loss-level",
+  "concept_id": "risk-and-performance/stop-loss-level",
+  "display_name": "Stop-loss level",
+  "domain": "Risk and performance",
+  "description": "Explain, compare, or apply Stop-loss level using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Stop-loss level",
+    "stop price",
+    "protective stop",
+    "explain Stop-loss level",
+    "apply Stop-loss level to a trading question",
+    "common misconception about Stop-loss level"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": true,
+  "batch_number": 2,
+  "package_path": "skills/concepts/risk-and-performance/stop-loss-level",
+  "canonical": {
+    "source_path": "concepts/risk-and-performance.json",
+    "sha256": "aa59640ec451468a276b004a7277b877444c67d84074702b5330d0c1217f8d8a"
+  },
+  "related_concept_ids": [
+    "risk-and-performance/take-profit-level",
+    "risk-and-performance/volatility-stop",
+    "risk-and-performance/r-multiple",
+    "risk-and-performance/position-sizing",
+    "risk-and-performance/gap-risk"
+  ]
+}

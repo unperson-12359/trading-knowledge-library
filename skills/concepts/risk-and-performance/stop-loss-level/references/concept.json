@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/stop-loss-level",
+  "canonical_sha256": "aa59640ec451468a276b004a7277b877444c67d84074702b5330d0c1217f8d8a",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/stop-loss-level",
+    "name": "Stop-loss level",
+    "aliases": [
+      "stop price",
+      "protective stop"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The predetermined price at which an open position is closed to cap its loss, implemented as a stop (stop-loss) order that triggers a market — or, for stop-limit, a limit — order once the stop price trades. It defines the trade's initial risk (1R).",
+    "intuition": "It is the pre-commitment to admit being wrong at a specific price, converting an open-ended loss into a bounded, planned one.",
+    "mechanics": "A sell-stop sits below the market for long positions (a buy-stop above for shorts); when the stop price trades, the order becomes a market order and fills at the next available price. Stops are placed by price structure (support/resistance), percentage, or volatility (ATR multiples), and the entry-to-stop distance drives position size.",
+    "formula": "Initial risk per unit = |entry price - stop price|; position size = (equity * risk fraction) / (initial risk per unit).",
+    "relationships": [
+      "Take-profit level",
+      "Trailing stop",
+      "Volatility stop",
+      "R-multiple",
+      "Position sizing",
+      "Gap risk"
+    ],
+    "failure_modes": "Triggered stops become market orders and can fill far through the stop price in gaps or fast markets — realized loss can be several times the planned 1R. Stops at obvious levels cluster and invite stop-running, and overly tight stops raise loss frequency enough to destroy expectancy.",
+    "misconceptions": "A stop-loss does not guarantee the exit price — it guarantees execution, not price — and stops do not create edge: they define per-trade risk, which is different from making a system profitable.",
+    "example": "Buying at $50 with a sell-stop at $48 caps the planned loss at $2 per share; in an overnight gap to $45 the market order fills near $45, tripling the planned loss.",
+    "citations": [
+      {
+        "source": "Wikipedia: Order (exchange)",
+        "url": "https://en.wikipedia.org/wiki/Order_(exchange)",
+        "section": "Conditional orders: Stop orders",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "U.S. SEC - Stop Order",
+        "url": "https://www.sec.gov/answers/stopord.htm",
+        "section": "Stop-order definition, triggering, and execution-price risk",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

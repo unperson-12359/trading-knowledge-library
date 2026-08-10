@@ -2,7 +2,7 @@
   "$schema": "../schemas/skill-manifest.schema.json",
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 20,
+  "completed_count": 40,
   "skills": [
     {
       "$schema": "../../../../schemas/concept-skill.schema.json",
@@ -1589,6 +1589,1634 @@
         "risk-and-performance/r-multiple",
         "risk-and-performance/risk-limit",
         "risk-and-performance/trade-expectancy"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-volatility-targeting",
+      "concept_id": "risk-and-performance/volatility-targeting",
+      "display_name": "Volatility targeting",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Volatility targeting using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Volatility targeting",
+        "volatility scaling",
+        "vol targeting",
+        "volatility management",
+        "explain Volatility targeting",
+        "apply Volatility targeting to a trading question",
+        "common misconception about Volatility targeting"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/risk-and-performance/volatility-targeting",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "2c8a3351e8b4a0d42ac5d81f64623b9b993fc189f34ebb6213293459f86eaae4"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/position-sizing",
+        "risk-and-performance/volatility",
+        "risk-and-performance/fixed-fractional-sizing",
+        "risk-and-performance/sharpe-ratio"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-stop-loss-level",
+      "concept_id": "risk-and-performance/stop-loss-level",
+      "display_name": "Stop-loss level",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Stop-loss level using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Stop-loss level",
+        "stop price",
+        "protective stop",
+        "explain Stop-loss level",
+        "apply Stop-loss level to a trading question",
+        "common misconception about Stop-loss level"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/risk-and-performance/stop-loss-level",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "aa59640ec451468a276b004a7277b877444c67d84074702b5330d0c1217f8d8a"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/take-profit-level",
+        "risk-and-performance/volatility-stop",
+        "risk-and-performance/r-multiple",
+        "risk-and-performance/position-sizing",
+        "risk-and-performance/gap-risk"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-volatility-stop",
+      "concept_id": "risk-and-performance/volatility-stop",
+      "display_name": "Volatility stop",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Volatility stop using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Volatility stop",
+        "ATR stop",
+        "volatility-based stop",
+        "explain Volatility stop",
+        "apply Volatility stop to a trading question",
+        "common misconception about Volatility stop"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/risk-and-performance/volatility-stop",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "52e1be7060c18654cd6fe882683961c14ae0e217543f771c10d318356c30d5a3"
+      },
+      "related_concept_ids": [
+        "indicators/average-true-range",
+        "risk-and-performance/stop-loss-level",
+        "risk-and-performance/volatility",
+        "risk-and-performance/position-sizing"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-effective-leverage",
+      "concept_id": "risk-and-performance/effective-leverage",
+      "display_name": "Effective leverage",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Effective leverage using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Effective leverage",
+        "true leverage",
+        "leverage in use",
+        "explain Effective leverage",
+        "apply Effective leverage to a trading question",
+        "common misconception about Effective leverage"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/risk-and-performance/effective-leverage",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "dcff697a932f04b03f63fb9d5f5606215afd16b5b6d151ad5a7894630a505047"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/gross-exposure",
+        "risk-and-performance/leverage",
+        "risk-and-performance/margin",
+        "risk-and-performance/liquidation-price",
+        "risk-and-performance/position-sizing"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-liquidation-price",
+      "concept_id": "risk-and-performance/liquidation-price",
+      "display_name": "Liquidation price",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Liquidation price using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Liquidation price",
+        "liq price",
+        "liquidation threshold",
+        "explain Liquidation price",
+        "apply Liquidation price to a trading question",
+        "common misconception about Liquidation price"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/risk-and-performance/liquidation-price",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "3307719c4c7d8b70d3e74e31d6a4e1713b78a6c116192baed3b1cc00219bbb3d"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/forced-liquidation",
+        "risk-and-performance/maintenance-margin",
+        "risk-and-performance/leverage",
+        "risk-and-performance/margin-call",
+        "risk-and-performance/insurance-fund",
+        "risk-and-performance/auto-deleveraging"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-forced-liquidation",
+      "concept_id": "risk-and-performance/forced-liquidation",
+      "display_name": "Forced liquidation",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Forced liquidation using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Forced liquidation",
+        "forced close-out",
+        "auto-liquidation",
+        "explain Forced liquidation",
+        "apply Forced liquidation to a trading question",
+        "common misconception about Forced liquidation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/risk-and-performance/forced-liquidation",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "b495bc62accba0e8427ea8f75a2213f9266ba55a76067e4679d751bfdfa055f8"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/liquidation-price",
+        "risk-and-performance/margin-call",
+        "risk-and-performance/maintenance-margin",
+        "risk-and-performance/auto-deleveraging",
+        "risk-and-performance/insurance-fund",
+        "risk-and-performance/deleveraging"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-auto-deleveraging",
+      "concept_id": "risk-and-performance/auto-deleveraging",
+      "display_name": "Auto-deleveraging",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Auto-deleveraging using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Auto-deleveraging",
+        "ADL",
+        "auto-deleveraging system",
+        "explain Auto-deleveraging",
+        "apply Auto-deleveraging to a trading question",
+        "common misconception about Auto-deleveraging"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/risk-and-performance/auto-deleveraging",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "ae0a8bd3b63ba8d304c907ad367cc4d2d688569b9bff8599de0673c8af32f46e"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/insurance-fund",
+        "risk-and-performance/forced-liquidation",
+        "risk-and-performance/liquidation-price",
+        "risk-and-performance/deleveraging",
+        "risk-and-performance/margin-call"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-insurance-fund",
+      "concept_id": "risk-and-performance/insurance-fund",
+      "display_name": "Insurance fund",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Insurance fund using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Insurance fund",
+        "insurance pool",
+        "guarantee fund (venue)",
+        "explain Insurance fund",
+        "apply Insurance fund to a trading question",
+        "common misconception about Insurance fund"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/risk-and-performance/insurance-fund",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "af8f10ffb1c2c7218a8025e2f81f0c78a48e305e8c2a22b16ae3457ac53c9541"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/auto-deleveraging",
+        "risk-and-performance/forced-liquidation",
+        "risk-and-performance/liquidation-price",
+        "risk-and-performance/margin-call"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-tail-risk",
+      "concept_id": "risk-and-performance/tail-risk",
+      "display_name": "Tail risk",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Tail risk using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Tail risk",
+        "fat tail risk",
+        "left-tail risk",
+        "explain Tail risk",
+        "apply Tail risk to a trading question",
+        "common misconception about Tail risk"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/risk-and-performance/tail-risk",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "1a648c7efa4f6ffed7488bd39fdd6a152485efb206aefe99a97958f02ebca9aa"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/expected-shortfall",
+        "risk-and-performance/value-at-risk",
+        "risk-and-performance/gap-risk",
+        "risk-and-performance/event-risk",
+        "risk-and-performance/drawdown",
+        "risk-and-performance/volatility"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-stochastic-oscillator",
+      "concept_id": "indicators/stochastic-oscillator",
+      "display_name": "Stochastic oscillator",
+      "domain": "Indicators",
+      "description": "Explain, compare, or apply Stochastic oscillator using the library's structured Indicators reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Stochastic oscillator",
+        "Stochastics",
+        "%K and %D",
+        "explain Stochastic oscillator",
+        "apply Stochastic oscillator to a trading question",
+        "common misconception about Stochastic oscillator"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/indicators/stochastic-oscillator",
+      "canonical": {
+        "source_path": "concepts/indicators.json",
+        "sha256": "56cc12c67ce9d2be15aa0039b58b7b5b577b6fc1e4545c5f37311a323d461722"
+      },
+      "related_concept_ids": [
+        "indicators/williams-percent-r",
+        "indicators/stochastic-rsi",
+        "indicators/relative-strength-index"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-average-true-range",
+      "concept_id": "indicators/average-true-range",
+      "display_name": "Average true range",
+      "domain": "Indicators",
+      "description": "Explain, compare, or apply Average true range using the library's structured Indicators reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Average true range",
+        "ATR",
+        "explain Average true range",
+        "apply Average true range to a trading question",
+        "common misconception about Average true range"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/indicators/average-true-range",
+      "canonical": {
+        "source_path": "concepts/indicators.json",
+        "sha256": "0800a7014699957e0cd0a463a57b8b382e4f4a9e0e0e1f48c8b53120deee6cdf"
+      },
+      "related_concept_ids": [
+        "indicators/average-directional-index",
+        "indicators/parabolic-sar",
+        "indicators/supertrend",
+        "indicators/keltner-channel",
+        "indicators/smoothed-moving-average"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-volume-weighted-average-price",
+      "concept_id": "indicators/volume-weighted-average-price",
+      "display_name": "Volume-weighted average price",
+      "domain": "Indicators",
+      "description": "Explain, compare, or apply Volume-weighted average price using the library's structured Indicators reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Volume-weighted average price",
+        "VWAP",
+        "explain Volume-weighted average price",
+        "apply Volume-weighted average price to a trading question",
+        "common misconception about Volume-weighted average price"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/indicators/volume-weighted-average-price",
+      "canonical": {
+        "source_path": "concepts/indicators.json",
+        "sha256": "cc410401dcf9be2ae06ce1133ca2b68f892f6ced486e002d16aa3b992682219b"
+      },
+      "related_concept_ids": [
+        "indicators/anchored-vwap",
+        "indicators/moving-vwap",
+        "indicators/volume-weighted-moving-average"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-anchored-vwap",
+      "concept_id": "indicators/anchored-vwap",
+      "display_name": "Anchored VWAP",
+      "domain": "Indicators",
+      "description": "Explain, compare, or apply Anchored VWAP using the library's structured Indicators reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Anchored VWAP",
+        "AVWAP",
+        "explain Anchored VWAP",
+        "apply Anchored VWAP to a trading question",
+        "common misconception about Anchored VWAP"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/indicators/anchored-vwap",
+      "canonical": {
+        "source_path": "concepts/indicators.json",
+        "sha256": "03ff41c7481d788a66a5f1f23ac2c53af0ca0ffb14aa4c5d4014011b579bd1dc"
+      },
+      "related_concept_ids": [
+        "indicators/volume-weighted-average-price",
+        "indicators/moving-vwap",
+        "indicators/volume-weighted-moving-average"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-oracle",
+      "concept_id": "crypto-and-defi/oracle",
+      "display_name": "Oracle",
+      "domain": "Crypto and DeFi",
+      "description": "Explain, compare, or apply Oracle using the library's structured Crypto and DeFi reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Oracle",
+        "blockchain oracle",
+        "price oracle",
+        "price feed",
+        "explain Oracle",
+        "apply Oracle to a trading question",
+        "common misconception about Oracle"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "contract specification",
+          "funding and margin state"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/crypto-and-defi/oracle",
+      "canonical": {
+        "source_path": "concepts/crypto-and-defi.json",
+        "sha256": "489af26610b7fe92d34b6a66a5d573bf169c6033bda25f134aee21a05566421b"
+      },
+      "related_concept_ids": [
+        "crypto-and-defi/smart-contract",
+        "crypto-and-defi/lending-protocol",
+        "crypto-and-defi/stablecoin-supply"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-slippage-tolerance",
+      "concept_id": "crypto-and-defi/slippage-tolerance",
+      "display_name": "Slippage tolerance",
+      "domain": "Crypto and DeFi",
+      "description": "Explain, compare, or apply Slippage tolerance using the library's structured Crypto and DeFi reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Slippage tolerance",
+        "max slippage",
+        "explain Slippage tolerance",
+        "apply Slippage tolerance to a trading question",
+        "common misconception about Slippage tolerance"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "contract specification",
+          "funding and margin state"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/crypto-and-defi/slippage-tolerance",
+      "canonical": {
+        "source_path": "concepts/crypto-and-defi.json",
+        "sha256": "39076db1c2b1ef11de9c45d409e9445bbfa81b5df3bf95c2810f7660ab7d7883"
+      },
+      "related_concept_ids": [
+        "crypto-and-defi/price-impact-in-amms",
+        "crypto-and-defi/sandwich-attack",
+        "crypto-and-defi/decentralized-exchange",
+        "crypto-and-defi/mempool",
+        "crypto-and-defi/gas-fee"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-liquidation-threshold",
+      "concept_id": "crypto-and-defi/liquidation-threshold",
+      "display_name": "Liquidation threshold",
+      "domain": "Crypto and DeFi",
+      "description": "Explain, compare, or apply Liquidation threshold using the library's structured Crypto and DeFi reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Liquidation threshold",
+        "LT",
+        "maintenance collateral ratio",
+        "explain Liquidation threshold",
+        "apply Liquidation threshold to a trading question",
+        "common misconception about Liquidation threshold"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "contract specification",
+          "funding and margin state"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/crypto-and-defi/liquidation-threshold",
+      "canonical": {
+        "source_path": "concepts/crypto-and-defi.json",
+        "sha256": "2a1b85c2e360f05a02933bc6eeb98e9bc854de2f5b97edb7693cfe094fd14609"
+      },
+      "related_concept_ids": [
+        "crypto-and-defi/health-factor",
+        "crypto-and-defi/loan-to-value-ratio",
+        "crypto-and-defi/liquidation-bonus",
+        "crypto-and-defi/collateral-factor",
+        "crypto-and-defi/lending-protocol"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-funding-rate",
+      "concept_id": "crypto-and-defi/funding-rate",
+      "display_name": "Funding rate",
+      "domain": "Crypto and DeFi",
+      "description": "Explain, compare, or apply Funding rate using the library's structured Crypto and DeFi reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Funding rate",
+        "funding",
+        "perp funding",
+        "explain Funding rate",
+        "apply Funding rate to a trading question",
+        "common misconception about Funding rate"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "contract specification",
+          "funding and margin state"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/crypto-and-defi/funding-rate",
+      "canonical": {
+        "source_path": "concepts/crypto-and-defi.json",
+        "sha256": "309ed4eb8d0a350611c66f1603c27e500208870303d2ca36a45df7750561b192"
+      },
+      "related_concept_ids": [
+        "crypto-and-defi/predicted-funding-rate",
+        "crypto-and-defi/funding-interval",
+        "crypto-and-defi/perpetual-basis",
+        "crypto-and-defi/long-short-ratio",
+        "crypto-and-defi/open-interest-leverage-ratio"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-funding-interval",
+      "concept_id": "crypto-and-defi/funding-interval",
+      "display_name": "Funding interval",
+      "domain": "Crypto and DeFi",
+      "description": "Explain, compare, or apply Funding interval using the library's structured Crypto and DeFi reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Funding interval",
+        "funding period",
+        "funding frequency",
+        "explain Funding interval",
+        "apply Funding interval to a trading question",
+        "common misconception about Funding interval"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "contract specification",
+          "funding and margin state"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/crypto-and-defi/funding-interval",
+      "canonical": {
+        "source_path": "concepts/crypto-and-defi.json",
+        "sha256": "8446717dd8560bc9d89ede525922f2abcfeb4ac86181f5e20e890038604c66c6"
+      },
+      "related_concept_ids": [
+        "crypto-and-defi/funding-rate",
+        "crypto-and-defi/predicted-funding-rate",
+        "crypto-and-defi/perpetual-basis"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-perpetual-basis",
+      "concept_id": "crypto-and-defi/perpetual-basis",
+      "display_name": "Perpetual basis",
+      "domain": "Crypto and DeFi",
+      "description": "Explain, compare, or apply Perpetual basis using the library's structured Crypto and DeFi reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Perpetual basis",
+        "perp premium",
+        "futures-spot basis (perp)",
+        "explain Perpetual basis",
+        "apply Perpetual basis to a trading question",
+        "common misconception about Perpetual basis"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "contract specification",
+          "funding and margin state"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/crypto-and-defi/perpetual-basis",
+      "canonical": {
+        "source_path": "concepts/crypto-and-defi.json",
+        "sha256": "7f9ee5140b3a362e41ecb7f5606809a076aca55014cea92fc0bcdcfcf856415c"
+      },
+      "related_concept_ids": [
+        "crypto-and-defi/funding-rate",
+        "crypto-and-defi/predicted-funding-rate",
+        "crypto-and-defi/funding-interval",
+        "crypto-and-defi/open-interest-leverage-ratio"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-liquidation-cascade",
+      "concept_id": "crypto-and-defi/liquidation-cascade",
+      "display_name": "Liquidation cascade",
+      "domain": "Crypto and DeFi",
+      "description": "Explain, compare, or apply Liquidation cascade using the library's structured Crypto and DeFi reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Liquidation cascade",
+        "liquidation spiral",
+        "forced liquidation chain",
+        "explain Liquidation cascade",
+        "apply Liquidation cascade to a trading question",
+        "common misconception about Liquidation cascade"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "contract specification",
+          "funding and margin state"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 2,
+      "package_path": "skills/concepts/crypto-and-defi/liquidation-cascade",
+      "canonical": {
+        "source_path": "concepts/crypto-and-defi.json",
+        "sha256": "6c1b179a6a81d9dcb8d48d63c18604e7e686d35ad42e1bb8d89fc96ee7b963ae"
+      },
+      "related_concept_ids": [
+        "crypto-and-defi/liquidation-bonus",
+        "crypto-and-defi/open-interest-leverage-ratio",
+        "crypto-and-defi/funding-rate",
+        "crypto-and-defi/cross-margin"
       ]
     }
   ]

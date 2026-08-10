@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/funding-interval",
+  "canonical_sha256": "8446717dd8560bc9d89ede525922f2abcfeb4ac86181f5e20e890038604c66c6",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/funding-interval",
+    "name": "Funding interval",
+    "aliases": [
+      "funding period",
+      "funding frequency"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "The funding interval is the fixed period between funding payments on a perpetual futures contract — the clock that determines how often the funding rate is applied to open positions.",
+    "intuition": "It is the billing cycle of the perp tether: every interval, the payment between longs and shorts settles and the meter resets.",
+    "mechanics": "Binance settles funding every 8 hours at 00:00, 08:00 and 16:00 UTC; only positions open at those timestamps pay or receive (with a ~15-second execution deviation), so closing before the timestamp avoids the charge entirely. In extreme volatility venues can shorten the interval (e.g. to 4h or 1h) to tighten the peg; the default interest component (0.03%/day) is split per interval (0.01% per 8h).",
+    "formula": "",
+    "relationships": [
+      "Funding rate",
+      "Predicted funding rate",
+      "Perpetual basis"
+    ],
+    "failure_modes": "Interval changes during stress (announced per venue rules) alter the carry economics of open positions mid-trade; timing games around timestamps (closing seconds before, reopening after) add noise and can distort the rate's anchoring function.",
+    "misconceptions": "Intervals are venue- and contract-specific, not universal — assuming 8h everywhere misprices carry; and funding accrues only at the timestamps, not continuously: intraday holding between timestamps costs no funding.",
+    "example": "A trader opening a BTC long at 08:00:05 UTC still pays the 08:00 funding (within the 15-second deviation window), while one who closed at 07:59 pays nothing regardless of how large the rate is.",
+    "citations": [
+      {
+        "source": "Binance Support - Introduction to Binance Futures Funding Rates",
+        "url": "https://www.binance.com/en/support/faq/introduction-to-binance-futures-funding-rates-360033525031",
+        "section": "How are funding rates calculated",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Hyperliquid Docs - Funding",
+        "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/funding",
+        "section": "Hourly funding interval and settlement",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

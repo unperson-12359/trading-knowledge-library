@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/volatility-targeting",
+  "canonical_sha256": "2c8a3351e8b4a0d42ac5d81f64623b9b993fc189f34ebb6213293459f86eaae4",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/volatility-targeting",
+    "name": "Volatility targeting",
+    "aliases": [
+      "volatility scaling",
+      "vol targeting",
+      "volatility management"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A portfolio management rule that scales exposure inversely to an estimate of current volatility so that portfolio risk stays near a constant target level: taking less risk when volatility is high and more when it is low.",
+    "intuition": "If the market is twice as wild, hold half as much: keeping risk (not capital) constant smooths the return stream and prevents risk from ballooning exactly in crises.",
+    "mechanics": "Estimate volatility (trailing realized or exponentially weighted), set the exposure weight w = sigma_target / sigma_estimate, rebalance periodically, and cap the weight by a leverage ceiling. Moreira and Muir document that such volatility-managed portfolios historically raised factor Sharpe ratios because volatility changes were not fully offset by proportional changes in expected returns.",
+    "formula": "w_t = min( sigma_target / sigma_hat_t, w_max ), where sigma_target is the desired annualized volatility and sigma_hat_t the current volatility estimate; exposure exceeds 1 (leverage) when sigma_hat_t < sigma_target.",
+    "relationships": [
+      "Position sizing",
+      "Volatility",
+      "Risk parity",
+      "Fixed fractional sizing",
+      "Sharpe ratio"
+    ],
+    "failure_modes": "Volatility estimates lag regime shifts, leaving exposure highest right before a vol spike when the estimation window is slow, and gaps can move prices faster than rebalancing de-risks. Leverage caps and transaction costs constrain implementation, and the documented Sharpe improvement is an empirical finding, not a law.",
+    "misconceptions": "Volatility targeting is not return forecasting: it times risk, not direction. A constant-volatility portfolio is not a low-risk portfolio when the target itself is set aggressively.",
+    "example": "With a 10% volatility target, an asset estimated at 20% volatility is held at 0.5 weight; if estimated volatility later falls to 8%, the weight rises to 1.25, subject to the leverage cap.",
+    "citations": [
+      {
+        "source": "Moreira, A. and Muir, T.: Volatility-Managed Portfolios (SSRN)",
+        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2659431",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Moreira and Muir - Volatility Managed Portfolios (NBER Working Paper 22208)",
+        "url": "https://www.nber.org/papers/w22208",
+        "section": "Abstract and published-version metadata",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

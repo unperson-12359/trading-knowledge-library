@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/slippage-tolerance",
+  "canonical_sha256": "39076db1c2b1ef11de9c45d409e9445bbfa81b5df3bf95c2810f7660ab7d7883",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/slippage-tolerance",
+    "name": "Slippage tolerance",
+    "aliases": [
+      "max slippage"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Slippage tolerance is the maximum deviation a user accepts between the expected price of an on-chain swap and the price it actually executes at; if execution would exceed this bound, the transaction reverts.",
+    "intuition": "It is the 'don't fill me worse than X' dial on a DEX trade — your insurance against the price moving between signing and execution.",
+    "mechanics": "Price slippage is the gap between the quoted price when a swap is submitted and the realized execution price, caused by other trades landing first and by the trade's own price impact. Wallets/routers encode slippage tolerance as a minimum output amount; if the pool cannot deliver at least that much, the transaction fails (and only gas is lost).",
+    "formula": "",
+    "relationships": [
+      "Price impact in AMMs",
+      "Sandwich attack",
+      "Decentralized exchange",
+      "Mempool",
+      "Gas fee"
+    ],
+    "failure_modes": "Setting tolerance too high invites sandwich attackers to push execution to the worst allowed price; too low, and transactions revert repeatedly in volatile markets, wasting gas without executing.",
+    "misconceptions": "Slippage tolerance does not reduce price impact — it only caps the damage you accept; the trade's own impact is computed by the AMM regardless. A failed, reverted swap still costs gas.",
+    "example": "Swapping 50,000 USDC for ETH quoted at 12.5 ETH with 0.5% slippage tolerance sets a minimum of 12.4375 ETH; if a sandwich bot moves the pool so you'd only get 12.3 ETH, the transaction reverts instead of filling.",
+    "citations": [
+      {
+        "source": "Uniswap Support - Price Impact vs. Price Slippage",
+        "url": "https://support.uniswap.org/hc/en-us/articles/8643794102669-Price-Impact-vs-Price-Slippage",
+        "section": "Definitions",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Ethereum.org developer docs - Maximal extractable value (MEV)",
+        "url": "https://ethereum.org/en/developers/docs/mev/",
+        "section": "MEV examples",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

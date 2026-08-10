@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/anchored-vwap",
+  "canonical_sha256": "03ff41c7481d788a66a5f1f23ac2c53af0ca0ffb14aa4c5d4014011b579bd1dc",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/anchored-vwap",
+    "name": "Anchored VWAP",
+    "aliases": [
+      "AVWAP"
+    ],
+    "domain": "Indicators",
+    "definition": "Volume-weighted average price computed from a user-chosen anchor bar - a significant high or low, earnings release, gap, or other event - rather than the session open, extending the VWAP logic across days and timeframes.",
+    "intuition": "Markets reprice after events; anchoring VWAP to the event measures whether buyers or sellers have won all the volume traded since that moment.",
+    "mechanics": "Same formula as VWAP - sum(TP x V) / sum(V) - but accumulation starts at the chosen anchor bar and runs to the latest bar, on any timeframe. Used as dynamic support/resistance; converging AVWAPs from multiple anchors mark especially watched zones.",
+    "formula": "AVWAP = sum(TypicalPrice_i x Volume_i, from anchor to t) / sum(Volume_i, from anchor to t).",
+    "relationships": [
+      "Volume-weighted average price",
+      "Moving VWAP",
+      "Volume-weighted moving average"
+    ],
+    "failure_modes": "Anchor choice is subjective - different anchors give different lines, inviting confirmation bias; like VWAP it lags increasingly as the anchored window lengthens.",
+    "misconceptions": "There is no objectively 'correct' anchor - the tool measures the post-event volume-weighted consensus, not a hidden fair value.",
+    "example": "StockCharts' TSLA example: the session VWAP from the open was skewed by the first 20 minutes, while an AVWAP anchored at the morning low better tracked midday trade.",
+    "citations": [
+      {
+        "source": "Anchored VWAP | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/anchored-vwap",
+        "section": "How Do You Calculate the Anchored VWAP?",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "TradingView - Anchored VWAP drawing tool",
+        "url": "https://www.tradingview.com/support/solutions/43000669764-anchored-vwap/",
+        "section": "Anchor point and calculation behavior",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/insurance-fund",
+  "canonical_sha256": "af8f10ffb1c2c7218a8025e2f81f0c78a48e305e8c2a22b16ae3457ac53c9541",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/insurance-fund",
+    "name": "Insurance fund",
+    "aliases": [
+      "insurance pool",
+      "guarantee fund (venue)"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A reserve pool maintained by a crypto derivatives exchange, funded by venue contributions and by residual margin from liquidations closed better than the bankruptcy price, used to cover losses when a liquidated position's losses exceed its margin (bad debt) before auto-deleveraging is invoked.",
+    "intuition": "It is the venue's shock absorber between ordinary liquidations and socialized losses: small bankruptcies are absorbed from the pot so that winning counterparties are never touched.",
+    "mechanics": "When a position is liquidated at a price better than its bankruptcy price, the residual margin flows into the fund; when a liquidation closes below the bankruptcy price, the fund pays the deficit. If the fund is exhausted, or its drawdown breaches trigger levels, the venue escalates to auto-deleveraging. Some venues run per-pair pools, others shared pools.",
+    "formula": "Fund inflow = residual margin when a liquidation fills better than the bankruptcy price; outflow = (bankruptcy price - actual closing price) * size when fills are worse.",
+    "relationships": [
+      "Auto-deleveraging",
+      "Forced liquidation",
+      "Liquidation price",
+      "Margin call"
+    ],
+    "failure_modes": "In cascading crashes the fund can drain faster than liquidations replenish it, at which point losses socialize via ADL anyway; fund adequacy is venue-specific and partly opaque, and per-pair pools can be exhausted while the venue's other pools sit full.",
+    "misconceptions": "The insurance fund does not insure the trader — it protects the venue and winning counterparties from bad debt — and a large advertised fund is not a guarantee against ADL in a systemic event.",
+    "example": "If a bankrupt position's $8,000 shortfall hits a $20,000 pair-level fund with a 30% drawdown trigger, the fund pays down to the trigger and auto-deleveraging covers the remaining $2,000 (Bybit's worked example).",
+    "citations": [
+      {
+        "source": "Bybit Help Center: Auto-Deleveraging (ADL)",
+        "url": "https://www.bybit.com/en/help-center/article/Auto-Deleveraging-ADL",
+        "section": "What is an insurance fund; Trigger & Stop Condition 1 (Example 1)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Bybit Help Center - Insurance Fund",
+        "url": "https://www.bybit.com/en/help-center/article/Insurance-Fund",
+        "section": "What Are Insurance Funds?",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

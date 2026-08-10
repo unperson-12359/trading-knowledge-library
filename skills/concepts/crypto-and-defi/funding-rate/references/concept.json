@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/funding-rate",
+  "canonical_sha256": "309ed4eb8d0a350611c66f1603c27e500208870303d2ca36a45df7750561b192",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/funding-rate",
+    "name": "Funding rate",
+    "aliases": [
+      "funding",
+      "perp funding"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "The funding rate is a periodic payment exchanged directly between long and short holders of a perpetual futures contract, sized by the gap between the perpetual's price and the underlying spot index, designed to pull the perpetual price back toward spot.",
+    "intuition": "Perpetuals have no expiry to force convergence, so the market rents a tether instead: whoever is on the crowded, premium side pays the other side every few hours.",
+    "mechanics": "Funding amount = position notional (mark price × size) × funding rate. When the perp trades above spot the rate is positive and longs pay shorts; below spot it is negative and shorts pay longs. On Binance the rate combines a fixed interest component (0.01% per 8h interval by default) with a premium index computed from impact bid/ask prices vs the index, clamped within bounds; only positions open at the funding timestamp pay/receive.",
+    "formula": "Funding = notional × funding rate; Premium Index = [max(0, impactBid − index) − max(0, index − impactAsk)] / index.",
+    "relationships": [
+      "Predicted funding rate",
+      "Funding interval",
+      "Perpetual basis",
+      "Long-short ratio",
+      "Open interest leverage ratio"
+    ],
+    "failure_modes": "Deeply negative or positive funding in stressed markets makes holding the paying side ruinously expensive, forcing exits that amplify the move; funding is venue-specific, and extreme events can change intervals or caps with little notice.",
+    "misconceptions": "Funding is not an exchange fee — it is a peer-to-peer transfer (Binance takes no cut), and you only pay or receive it if you hold the position at the exact funding timestamps. Positive funding is not 'free yield' for shorts; it compensates for being on the losing side of crowded positioning.",
+    "example": "BTC perp at $102,000 vs $100,000 index: positive funding, say 0.01% per 8h — a $1M long pays $100 to shorts each interval (~0.9%/month annualized if persistent), incentivizing shorts and arbitrage that close the premium.",
+    "citations": [
+      {
+        "source": "Binance Support - Introduction to Binance Futures Funding Rates",
+        "url": "https://www.binance.com/en/support/faq/introduction-to-binance-futures-funding-rates-360033525031",
+        "section": "How are funding rates calculated",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Hyperliquid Docs - Funding",
+        "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/funding",
+        "section": "Premium component and underlying spot oracle price",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

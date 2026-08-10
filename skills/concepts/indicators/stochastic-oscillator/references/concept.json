@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/stochastic-oscillator",
+  "canonical_sha256": "56cc12c67ce9d2be15aa0039b58b7b5b577b6fc1e4545c5f37311a323d461722",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/stochastic-oscillator",
+    "name": "Stochastic oscillator",
+    "aliases": [
+      "Stochastics",
+      "%K and %D"
+    ],
+    "domain": "Indicators",
+    "definition": "George Lane's momentum indicator (late 1950s) measuring where the close sits within the high-low range of the look-back period, bounded 0-100 and published in Fast, Slow, and Full versions. Lane's premise: momentum changes direction before price.",
+    "intuition": "In an uptrend prices tend to close near the top of their recent range; the stochastic quantifies that tendency.",
+    "mechanics": "%K = (C - LL)/(HH - LL)*100 over (default) 14 periods; %D = 3-period SMA of %K acts as the signal line; the Slow version smooths %K once more. Readings above 80 are overbought, below 20 oversold; signals come from %K/%D crosses, divergences, and Lane's bull/bear set-ups.",
+    "formula": "%K = 100 * (C - LL_n)/(HH_n - LL_n); %D = SMA_3(%K); HH_n and LL_n are the highest high and lowest low over n periods.",
+    "relationships": [
+      "Williams percent R",
+      "Stochastic RSI",
+      "Relative strength index"
+    ],
+    "failure_modes": "Can remain overbought or oversold through an entire strong trend, so counter-trend signals fail repeatedly; fast versions whipsaw, and signals work best in trading ranges or zigzag trends.",
+    "misconceptions": "The stochastic does not follow price or volume — per Lane it follows the speed (momentum) of price; and an overbought reading alone is not a sell signal.",
+    "example": "With a 14-day high of 110, low of 100, and close of 108, %K = (108-100)/(110-100)*100 = 80.",
+    "citations": [
+      {
+        "source": "Stochastic Oscillator (Fast, Slow, and Full) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/stochastic-oscillator-fast-slow-and-full",
+        "section": "How Do You Calculate the Stochastic Oscillator?",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "TA-Lib Technical Analysis Documentation - STOCH",
+        "url": "https://ta-lib.github.io/ta-doc/indicator/STOCH.htm",
+        "section": "Stochastic Oscillator implementation and source references",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

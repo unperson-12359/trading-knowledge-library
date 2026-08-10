@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/auto-deleveraging",
+  "canonical_sha256": "ae0a8bd3b63ba8d304c907ad367cc4d2d688569b9bff8599de0673c8af32f46e",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/auto-deleveraging",
+    "name": "Auto-deleveraging",
+    "aliases": [
+      "ADL",
+      "auto-deleveraging system"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A last-resort loss-allocation mechanism on leveraged crypto derivatives venues: when a liquidated position cannot be closed above its bankruptcy price and the insurance fund cannot absorb the shortfall, the exchange forcibly reduces profitable opposing positions at the bankruptcy price to cover the deficit.",
+    "intuition": "If the loser is bankrupt and the insurance fund is empty, the winners' positions are trimmed to make the books balance: the system socializes the residual loss to stay solvent.",
+    "mechanics": "ADL triggers when the insurance fund is depleted or its drawdown breaches venue-specific trigger lines. Opposing positions are ranked by leveraged return (profit percentage scaled by margin rate/effective leverage), and the highest-ranked positions are deleveraged first at the bankruptcy price; affected traders are notified and their open orders canceled. Queue-indicator lights show a position's ADL ranking.",
+    "formula": "ADL ranking (isolated margin, in profit): leveraged return = position PnL(%) * position margin rate; selected positions are settled at the bankruptcy price of the liquidated position taken over.",
+    "relationships": [
+      "Insurance fund",
+      "Forced liquidation",
+      "Liquidation price",
+      "Deleveraging",
+      "Margin call"
+    ],
+    "failure_modes": "ADL hits exactly the most profitable, most leveraged traders at the worst moment, destroying hedges — an ADL'd hedge leg leaves the other leg naked — and imposing execution at the bankruptcy price rather than market. The ranking is pro-cyclical: the better your trade, the more likely it is to be cut in a crash.",
+    "misconceptions": "ADL is not ordinary liquidation and not a fee: your position is closed against someone else's bankruptcy, not your own margin failure, and high ADL-indicator lights signal queue priority, not the probability of your own liquidation.",
+    "example": "When a bankrupt long's losses exceed the insurance fund, the exchange force-closes 5,000 contracts of the top-ranked profitable short at the bankruptcy price, shrinking that trader's position while keeping the venue solvent.",
+    "citations": [
+      {
+        "source": "Bybit Help Center: Auto-Deleveraging (ADL)",
+        "url": "https://www.bybit.com/en/help-center/article/Auto-Deleveraging-ADL",
+        "section": "What is the ADL mechanism; How does ADL work; How is ADL ranking determined",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Hyperliquid Docs - Auto-deleveraging",
+        "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/auto-deleveraging",
+        "section": "Solvency safeguard, counterparty ranking, and close-out mechanics",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

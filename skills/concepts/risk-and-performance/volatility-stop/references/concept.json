@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/volatility-stop",
+  "canonical_sha256": "52e1be7060c18654cd6fe882683961c14ae0e217543f771c10d318356c30d5a3",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/volatility-stop",
+    "name": "Volatility stop",
+    "aliases": [
+      "ATR stop",
+      "volatility-based stop"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A stop-loss placed at a multiple of a volatility measure — typically Average True Range — away from entry or from a reference extreme, so the exit distance adapts to current market conditions instead of being a fixed number of points or percent.",
+    "intuition": "A 2-point stop is noise in a wild market and a chasm in a quiet one; sizing the stop by ATR keeps the exit outside normal random fluctuation in any regime.",
+    "mechanics": "Compute ATR (Wilder's average of true range, which incorporates gaps) and place the initial or trailing stop at k * ATR beyond the entry or the most favorable extreme (a chandelier-style exit trails the highest high by about 3 * ATR). Wider volatility widens the stop and, through position sizing, shrinks the position.",
+    "formula": "Stop = entry - k * ATR(n) for a long (or highest high since entry - k * ATR(n) when trailing), with k typically 2-3 and n commonly 14; TR = max( H - L, |H - C_prev|, |L - C_prev| ).",
+    "relationships": [
+      "Average true range",
+      "Stop-loss level",
+      "Trailing stop",
+      "Volatility",
+      "Position sizing"
+    ],
+    "failure_modes": "In volatility spikes the widened stop implies much larger dollar risk unless size is re-cut; in volatility collapses the stop tightens into noise and gets hit by routine fluctuation. ATR is backward-looking, so sudden regime jumps leave the stop miscalibrated.",
+    "misconceptions": "A volatility stop is not inherently wider or looser than a fixed stop — it is condition-adaptive — and an ATR-based distance does not protect through gaps: true range embeds gaps in the measurement, not in the execution.",
+    "example": "With a 14-day ATR of 2.5 points, a long entered at 100 carries a volatility stop at 100 - 2 * 2.5 = 95; if ATR later doubles, a new position's stop sits 10 points away instead.",
+    "citations": [
+      {
+        "source": "StockCharts ChartSchool: Average True Range (ATR)",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/average-true-range-atr-and-average-true-range-percent-atrp",
+        "section": "What Is the Average True Range; True Range; How To Calculate ATR",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Curtis Faith - Original Turtle Trading Rules",
+        "url": "https://www.tradingblox.com/originalturtles/originalturtlerules.pdf",
+        "section": "Stops: risk-based stops expressed in N (ATR)",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

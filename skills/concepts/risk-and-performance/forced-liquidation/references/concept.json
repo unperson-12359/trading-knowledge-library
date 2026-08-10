@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/forced-liquidation",
+  "canonical_sha256": "b495bc62accba0e8427ea8f75a2213f9266ba55a76067e4679d751bfdfa055f8",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/forced-liquidation",
+    "name": "Forced liquidation",
+    "aliases": [
+      "forced close-out",
+      "auto-liquidation"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The mandatory closing of a position by the broker, clearinghouse, or exchange without the holder's consent, triggered when account equity falls below the maintenance margin and margin calls are not — or cannot be — met.",
+    "intuition": "When you can't or won't post more collateral, the venue closes the trade for you, at whatever price the market gives, to stop the loss from eating other people's money.",
+    "mechanics": "Once equity breaches maintenance margin, the liquidation process takes over: on futures venues the position may be liquidated automatically, and on crypto venues a laddered process first reduces the position to lower risk tiers. Any residual loss beyond the bankruptcy price passes to the insurance fund or, failing that, to auto-deleveraging.",
+    "formula": "Trigger condition: account equity < maintenance margin requirement for the open position, with equity computed at the mark price.",
+    "relationships": [
+      "Liquidation price",
+      "Margin call",
+      "Maintenance margin",
+      "Auto-deleveraging",
+      "Insurance fund",
+      "Deleveraging"
+    ],
+    "failure_modes": "Forced selling is pro-cyclical: cascades of liquidations push prices further, triggering more liquidations in a spiral, and fills occur at distressed prices with maximal slippage. In extreme moves the engine can fail to close above the bankruptcy price, creating bad debt.",
+    "misconceptions": "Forced liquidation is not a penalty or fee event — it is a risk-control mechanism — and the trader chooses neither timing nor price; partial liquidation to a lower tier can precede full liquidation, so it is not always all-or-nothing.",
+    "example": "An account whose balance falls below maintenance margin and cannot meet the call has its futures position liquidated automatically, as CME's margin rules describe; on crypto venues the engine reduces the position tier by tier before full close-out.",
+    "citations": [
+      {
+        "source": "CME Group: Understanding Margin (Introduction to Futures)",
+        "url": "https://www.cmegroup.com/education/courses/introduction-to-futures/margin-know-what-is-needed.html",
+        "section": "Types of Futures Margin (automatic liquidation below maintenance margin)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Bybit Help Center: Risk Limit (Perpetual and Expiry Contracts)",
+        "url": "https://www.bybit.com/en/help-center/article/Risk-Limit-Perpetual-and-Expiry-Contracts",
+        "section": "Introduction to Risk Limit (laddered liquidation process)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

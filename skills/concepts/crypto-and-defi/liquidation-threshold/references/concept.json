@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/liquidation-threshold",
+  "canonical_sha256": "2a1b85c2e360f05a02933bc6eeb98e9bc854de2f5b97edb7693cfe094fd14609",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/liquidation-threshold",
+    "name": "Liquidation threshold",
+    "aliases": [
+      "LT",
+      "maintenance collateral ratio"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "The liquidation threshold is the per-asset percentage of collateral value at which a borrow position is deemed undercollateralized and becomes eligible for liquidation — effectively the maintenance margin of a DeFi loan.",
+    "intuition": "It is the tripwire on your collateral: once your debt exceeds this share of what you posted, the protocol declares the loan unsafe and lets liquidators step in.",
+    "mechanics": "Aave Governance sets a liquidation threshold per asset (e.g. 80% for ETH, 97-98% for stablecoin E-Mode). The account's weighted average threshold enters the health factor formula; when HF falls below 1, a liquidationCall repays up to 50% of debt (100% if deeply insolvent) and seizes collateral at a discount. The threshold sits above LTV, giving borrowers a buffer between max borrow and liquidation.",
+    "formula": "Position liquidatable when: borrows > Σ(collateral_i × liquidation threshold_i).",
+    "relationships": [
+      "Health factor",
+      "Loan-to-value ratio",
+      "Liquidation bonus",
+      "Collateral factor",
+      "Lending protocol"
+    ],
+    "failure_modes": "Thresholds set too high for volatile assets let insolvency arrive before liquidators can profitably act; governance misconfiguration or oracle errors can liquidate healthy users or fail to liquidate dying ones.",
+    "misconceptions": "The liquidation threshold is not the same as max LTV — LTV limits new borrowing, the (higher) threshold triggers liquidation; confusing them leads borrowers to think max-borrowed positions are safe. It is a parameter, not a market-derived guarantee.",
+    "example": "With ETH's 80% threshold, a borrower with $10,000 ETH and $7,900 debt is still safe (HF ≈ 1.013), but a further $150 drop in collateral value or $150 of accrued interest crosses HF < 1 and opens the position to liquidators.",
+    "citations": [
+      {
+        "source": "Aave docs - Liquidations",
+        "url": "https://aave.com/docs/concepts/liquidations",
+        "section": "Health factor and liquidation mechanics",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Frangella & Herskind, Aave V3 Technical Paper (2022)",
+        "url": "https://resources.cryptocompare.com/asset-management/9/1682584843504.pdf",
+        "section": "Section 3-4: risk parameters (LTV, liquidation threshold, liquidation bonus)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

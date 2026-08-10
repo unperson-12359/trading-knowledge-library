@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/tail-risk",
+  "canonical_sha256": "1a648c7efa4f6ffed7488bd39fdd6a152485efb206aefe99a97958f02ebca9aa",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/tail-risk",
+    "name": "Tail risk",
+    "aliases": [
+      "fat tail risk",
+      "left-tail risk"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The risk of extreme outcomes in the tails of the return distribution — conventionally moves beyond about three standard deviations — which occur far more often in financial returns than a normal distribution implies. Because losses matter more than gains, practice focuses on the left tail.",
+    "intuition": "The bell curve says the crash should almost never happen; market history says otherwise. Tail risk is the danger hiding in the 'impossible' part of the distribution.",
+    "mechanics": "Fat tails arise from volatility clustering, jumps, leverage unwinds, and correlation spikes in crises. Tail risk is measured with VaR and CVaR and with stress scenarios, and mitigated through robust diversification across assets and strategies or asymmetric hedges (options, tail-risk funds) that pay off convexly in crashes.",
+    "formula": "Heuristic boundary: returns beyond +/-3 sigma (about 0.3% of a normal distribution); measured via CVaR/expected shortfall in the tail region rather than by a single formula.",
+    "relationships": [
+      "Expected shortfall",
+      "Value at risk",
+      "Gap risk",
+      "Event risk",
+      "Drawdown",
+      "Volatility"
+    ],
+    "failure_modes": "Tail events are by definition rare, so estimates are data-starved and models extrapolate poorly; hedges carry decay costs (negative carry) and can fail exactly when counterparties or correlations break, and 'tail-hedged' portfolios sometimes discover their hedge was in the wrong tail.",
+    "misconceptions": "Fat tails do not make extreme events ignorable noise — they recur with striking regularity (1987, 1994, 1997-98, 2000-02, 2008-09) — and a three-sigma label understates them because sigma itself expands in crises.",
+    "example": "A normal-distribution model treats a -8% day as near-impossible; in practice such days arrive several times per decade, and left-tail episodes drive most long-run maximum drawdowns.",
+    "citations": [
+      {
+        "source": "Wikipedia: Tail risk",
+        "url": "https://en.wikipedia.org/wiki/Tail_risk",
+        "section": "Characteristics of tail risk; Tail risk hedging",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Basel Committee on Banking Supervision - Fundamental Review of the Trading Book",
+        "url": "https://www.bis.org/publ/bcbs219.htm",
+        "section": "Expected shortfall as a measure designed to better capture tail risk",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}
