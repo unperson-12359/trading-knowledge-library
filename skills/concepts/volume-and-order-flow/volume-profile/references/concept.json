@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/volume-profile",
+  "canonical_sha256": "5e7932e5dab108bb351013923c0aefe035985d9b3d15e7f1b71f408ec06dc3e3",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/volume-profile",
+    "name": "Volume profile",
+    "aliases": [
+      "VP",
+      "volume-at-price histogram"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "A charting study that displays, for a specified period, a horizontal histogram of total traded volume at each price level. Unlike the TPO-based Market Profile, which counts time brackets at price, the volume profile counts contracts or shares actually traded at price, revealing where business concentrated and where it was absent.",
+    "intuition": "It rotates the volume histogram 90 degrees: instead of volume per time bar, you see volume per price — the market's actual footprint of where trading happened.",
+    "mechanics": "The period's price range is divided into rows; volume from lower-timeframe data (or tick data) is assigned to the row containing its price and summed; the histogram is then rendered with derived levels — point of control (highest-volume row) and value area (rows containing a set percentage, default 70%, of total volume).",
+    "formula": "",
+    "relationships": [
+      "Market profile",
+      "Volume point of control",
+      "Volume value area",
+      "High-volume node",
+      "Low-volume node"
+    ],
+    "failure_modes": "Resolution and row-count settings materially change the picture, and on spot forex or CFDs only tick or proxy volume exists; on non-standard chart types (Renko, Heikin Ashi) both price and volume are distorted, as platform documentation warns.",
+    "misconceptions": "Volume profile is a reactive, backward-looking tool — its own platform documentation stresses it shows what already happened rather than predicting what comes next; high-volume levels are not automatically support or resistance.",
+    "example": "A session volume profile on ES shows 25% of the day's volume between 4,515 and 4,520 with a POC at 4,517; the next day, price stalls repeatedly in that band on the first retest.",
+    "citations": [
+      {
+        "source": "TradingView — Volume profile indicators: basic concepts",
+        "url": "https://www.tradingview.com/support/solutions/43000502040-volume-profile/",
+        "section": "Volume profile basic concepts / Calculation methodology",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "GoCharting — Market Profile Trading: The Complete Guide (Market Profile vs Volume Profile)",
+        "url": "https://www.gocharting.com/blog/market-profile-indicator/market-profile-complete-guide",
+        "section": "Market Profile vs Volume Profile",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

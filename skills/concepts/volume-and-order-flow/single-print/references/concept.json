@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/single-print",
+  "canonical_sha256": "80475cd884c7a18ee645685b1683412c852666d801f314ba2a774806a088aef3",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/single-print",
+    "name": "Single print",
+    "aliases": [
+      "single prints",
+      "single TPO prints",
+      "singles"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "A price row in a Market Profile occupied by letters from only one time bracket, showing the market passed through that price so quickly it traded there in just one period. Single prints at session extremes form buying or selling tails; single-print columns inside a profile separate distributions and mark levels the market did not accept.",
+    "intuition": "Single prints are the skid marks of a fast auction — prices the market touched once and fled, leaving a gap in the distribution.",
+    "mechanics": "Read directly off the TPO profile: any row containing only one bracket's letter is a single print; at extremes they signal rejection (excess), and between two bulges they mark the low-time zone separating a double distribution.",
+    "formula": "",
+    "relationships": [
+      "Market profile",
+      "Time price opportunity",
+      "Excess",
+      "Double-distribution day",
+      "Low-volume node"
+    ],
+    "failure_modes": "Single-print zones are frequently revisited and filled, so treating them as reliable support/resistance fails often; they are also artifacts of bracket size — different bracketing moves or erases them.",
+    "misconceptions": "Singles are not 'unfilled orders' waiting to be executed; they record an absence of time at price, and whether price later respects or fills them is an empirical tendency, not a rule.",
+    "example": "B-period alone prints the rows from 4,505 to 4,508 before the market rallies; that single-print buying tail marks strong rejection of the lows, and traders note the zone as a reference for the following sessions.",
+    "citations": [
+      {
+        "source": "WindoTrader — Market Profile Glossary (single prints, tails, spikes)",
+        "url": "https://www.windotrader.com/market-profile/market-profile-glossary-index/",
+        "section": "Part-01: Market Profile Terminology",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "FuturesIndicators — Trading With Market Profile: Practical Setups (single prints as S/R, initiative without acceptance)",
+        "url": "https://futuresindicators.com/learn/trading-with-market-profile",
+        "section": "Single Print Support and Resistance",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

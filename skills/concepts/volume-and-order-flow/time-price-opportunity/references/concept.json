@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/time-price-opportunity",
+  "canonical_sha256": "9808f8085d6ef8727c88a992b45a43362618b721457efc523ab12c0c9b657ae8",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/time-price-opportunity",
+    "name": "Time price opportunity",
+    "aliases": [
+      "TPO",
+      "time-price opportunity"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "The atomic unit of a Market Profile chart: one TPO records that the market had the opportunity to trade at a given price during a given time bracket (conventionally 30 minutes). Each bracket is assigned a letter, and that letter is stamped at every price the market touched during the bracket.",
+    "intuition": "A TPO is one half-hour 'vote' for a price — the more brackets that traded at a level, the more time the market accepted it.",
+    "mechanics": "The session is split into sequential brackets (A, B, C…); for each price traded within a bracket, that bracket's letter is added to the price's row, so row length measures time-at-price and the whole array forms the profile distribution.",
+    "formula": "",
+    "relationships": [
+      "Market profile",
+      "Point of control",
+      "Value area",
+      "Single print"
+    ],
+    "failure_modes": "TPO counts measure time, not volume — a price briefly visited in many brackets can outrank a price where most contracts actually traded; bracket size and session boundaries are conventions that change the picture.",
+    "misconceptions": "A TPO is not a trade or a volume unit; rows of letters show opportunity (time at price), which is why the same session's TPO POC and volume POC can sit at different prices.",
+    "example": "If ES trades at 4,520 during brackets A, C, and D, that price's row holds three TPO letters; the row with the most letters by day's end is the point of control.",
+    "citations": [
+      {
+        "source": "Topstep — Intro to auction market theory and market profile (TPO definition)",
+        "url": "https://www.topstep.com/blog/intro-to-auction-market-theory-and-market-profile",
+        "section": "TPO (Time-Price Opportunity)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "WindoTrader — Market Profile Glossary (time, price and volume / TPOs)",
+        "url": "https://www.windotrader.com/market-profile/market-profile-glossary-index/",
+        "section": "Part-01: Market Profile Terminology",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

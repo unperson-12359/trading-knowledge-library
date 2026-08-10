@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/block-trade",
+  "canonical_sha256": "9672099995d2d03e200a3c28c4f0e558168f4e3ffe4b5849e1e14d19f9c51355",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/block-trade",
+    "name": "Block trade",
+    "aliases": [
+      "block",
+      "block transaction"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "A privately negotiated futures, options, or combination transaction that is permitted to be executed apart from the public auction market (the central limit order book) and is then submitted to the exchange for clearing. On CME Group venues, participation is restricted to Eligible Contract Participants as defined in the Commodity Exchange Act, and each product has a minimum quantity threshold (CME Rule 526 regime).",
+    "intuition": "Two institutions agree a big price privately, then hand the trade to the exchange to clear — letting size change hands without tipping off or sweeping the public order book.",
+    "mechanics": "Counterparties negotiate bilaterally (often via a broker), agree price and quantity at or above the product's block minimum, and report the trade to the exchange within prescribed time windows; the trade must be at a fair and reasonable price and is disseminated to market data after reporting.",
+    "formula": "",
+    "relationships": [
+      "Large-lot trade",
+      "Time and sales",
+      "Absorption"
+    ],
+    "failure_modes": "Block prints hit the tape delayed and off-book, so they cannot be read as real-time aggressive flow; their price may diverge from the prevailing market because it reflects a negotiated package, not screen liquidity.",
+    "misconceptions": "A block trade is not an ordinary large market order sweeping the book, and its direction (buy or sell) is not publicly determinable from the print alone — it is a bilateral transfer.",
+    "example": "Two eligible counterparties privately negotiate a 500-lot Treasury futures block at a fair price and submit it to CME for clearing; the print appears in time and sales flagged as a block, away from the lit order book.",
+    "citations": [
+      {
+        "source": "CME Group Client Systems Wiki — Trade Types (Block trade definition)",
+        "url": "https://cmegroupclientsite.atlassian.net/wiki/display/EPICSANDBOX/Trade%2BTypes",
+        "section": "OTC Products Cleared as Futures — Block",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-trend-day",
+  "concept_id": "volume-and-order-flow/trend-day",
+  "display_name": "Trend day",
+  "domain": "Volume and order flow",
+  "description": "Explain, compare, or apply Trend day using the library's structured Volume and order flow reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Trend day",
+    "trend day (profile)",
+    "one-time-framing day",
+    "explain Trend day",
+    "apply Trend day to a trading question",
+    "common misconception about Trend day"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints",
+      "order type",
+      "spread and liquidity conditions"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 42,
+  "package_path": "skills/concepts/volume-and-order-flow/trend-day",
+  "canonical": {
+    "source_path": "concepts/volume-and-order-flow.json",
+    "sha256": "bb6a01eb278fbe7592a4a8e825853a5af895271c7ee9e74bf3e35af710559bba"
+  },
+  "related_concept_ids": [
+    "volume-and-order-flow/balanced-profile",
+    "volume-and-order-flow/normal-day",
+    "volume-and-order-flow/double-distribution-day",
+    "volume-and-order-flow/initiative-buying",
+    "volume-and-order-flow/initiative-selling"
+  ]
+}

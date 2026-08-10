@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/volume-point-of-control",
+  "canonical_sha256": "c81c24847491868f77a64f8c3b8ee54b09b6484b236fb4ff06cf5a97fc432728",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/volume-point-of-control",
+    "name": "Volume point of control",
+    "aliases": [
+      "VPOC",
+      "volume POC",
+      "POC (volume)"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "The price level within a volume profile at which the greatest volume traded during the measured period — the highest-volume row of the histogram. It is the volume-based counterpart of the TPO point of control and is read as the price of maximum two-sided agreement by traded quantity.",
+    "intuition": "The VPOC is where the most contracts actually changed hands — the market's busiest price over the period.",
+    "mechanics": "After volume is binned into price rows, the row with the largest total volume is marked as the VPOC; many platforms also plot a developing VPOC line showing how the level migrated during the period.",
+    "formula": "VPOC = argmax over price rows p of V(p), where V(p) is total volume traded in row p over the profile period",
+    "relationships": [
+      "Volume profile",
+      "Point of control",
+      "High-volume node",
+      "Volume value area"
+    ],
+    "failure_modes": "The VPOC shifts as the period develops and depends on the chosen range and row size; on uneven-volume days the volume POC and time-based (TPO) POC sit at different prices, and choosing between them is contextual.",
+    "misconceptions": "The VPOC is not a proven magnet for future price; retest reactions are a documented practitioner observation, not a reliable regularity, and expecting precise bounces off the level is flagged as a mistake by platform documentation.",
+    "example": "Over a two-week fixed-range profile, the most-traded row is 4,480 with 1.1M contracts; that VPOC is carried forward as a reference when price returns to the area.",
+    "citations": [
+      {
+        "source": "TradingView — Volume profile indicators: basic concepts (POC definition)",
+        "url": "https://www.tradingview.com/support/solutions/43000502040-volume-profile/",
+        "section": "Typical levels of significance",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "ATAS — Fixed Range Volume Profile (POC = price level with highest trading volume in range)",
+        "url": "https://atas.net/blog/fixed-range-volume-profile-definition-and-trading-strategies/",
+        "section": "Components of the Fixed Range Volume Profile",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

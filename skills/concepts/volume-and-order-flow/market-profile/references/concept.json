@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/market-profile",
+  "canonical_sha256": "15ec5a1530ff5bb33c053db0c5b870565ca5b16e6616ec2da7f380bb88a66d38",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/market-profile",
+    "name": "Market profile",
+    "aliases": [
+      "Market Profile",
+      "TPO chart",
+      "TPO profile"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "A charting method developed by J. Peter Steidlmayer at the Chicago Board of Trade in the 1980s that organizes a session's trading as a distribution: each price traded during each time bracket (conventionally 30 minutes, labeled A, B, C…) receives that bracket's letter, building a horizontal histogram of time-at-price. It is a way of organizing market-generated data for auction-market analysis — a chart format, not an indicator or a predictive system.",
+    "intuition": "Instead of plotting price against time, the profile plots time spent at each price, revealing where the market accepted value (fat middle) and where it rejected prices (thin tails).",
+    "mechanics": "The session is divided into brackets; every price traded in a bracket gets that bracket's TPO letter; the stacked letters form the distribution from which the point of control (longest row), value area (~70% of TPOs), initial balance, single prints, and tails are read.",
+    "formula": "",
+    "relationships": [
+      "Time price opportunity",
+      "Value area",
+      "Point of control",
+      "Auction market theory",
+      "Volume profile"
+    ],
+    "failure_modes": "Profile reading depends on subjective session definitions and bracket conventions, and its day-type labels are assigned in hindsight; applying its shape heuristics mechanically, without the underlying auction logic, degrades into curve-fit pattern matching.",
+    "misconceptions": "Market Profile is not a trading system with built-in signals — its own documentation stresses it is a way of organizing market-generated data; nor is it the same as a volume profile, which counts contracts rather than time brackets.",
+    "example": "A day's ES session prints brackets A through J; the D–G rows stack widest around 4,520 (the POC) and 70% of TPOs sit between 4,512 and 4,531 (the value area), with single B-period prints at the low marking an early rejection.",
+    "citations": [
+      {
+        "source": "Topstep — Intro to auction market theory and market profile",
+        "url": "https://www.topstep.com/blog/intro-to-auction-market-theory-and-market-profile",
+        "section": "What is a market profile?",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "WindoTrader — Market Profile Glossary (Profile definition; 'not a trading methodology')",
+        "url": "https://www.windotrader.com/market-profile/market-profile-glossary-index/",
+        "section": "Part-01: Market Profile Terminology",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "GoCharting — Market Profile Trading: The Complete Guide (Steidlmayer/CBOT origin)",
+        "url": "https://www.gocharting.com/blog/market-profile-indicator/market-profile-complete-guide",
+        "section": "What Market Profile Actually Is",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

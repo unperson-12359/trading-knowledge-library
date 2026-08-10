@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/time-and-sales",
+  "canonical_sha256": "a58a46998c620b6142de963ac5481612335db133cf5fe014d10f79d053967a9d",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/time-and-sales",
+    "name": "Time and sales",
+    "aliases": [
+      "T&S",
+      "the tape",
+      "trade log"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "A real-time, trade-by-trade record of executions in an instrument, showing for each trade its time, price, and volume (and typically direction relative to the bid/ask). It is the modern digital descendant of the ticker tape and the raw feed from which footprint and delta statistics are built.",
+    "intuition": "Time and sales is the market's transaction ledger: every fill, in sequence, with its size and price.",
+    "mechanics": "Exchanges disseminate each executed trade in market-data feeds; platforms render it as a scrolling table, often color-coded by whether the trade occurred at, inside, or outside the bid/ask, with filters by size or price to isolate large prints.",
+    "formula": "",
+    "relationships": [
+      "Tape reading",
+      "Large-lot trade",
+      "Footprint chart",
+      "Bid volume",
+      "Ask volume"
+    ],
+    "failure_modes": "The raw stream is extremely fast in liquid markets and includes block reports, spreads, and auction prints that distort the apparent flow; aggregated feeds bundle multiple executions into one print, hiding sequence.",
+    "misconceptions": "Watching the tape does not reveal 'who' is trading — it shows anonymous executions; attribution to institutions or intent is inference, not data.",
+    "example": "A T&S window shows 100 XYZ at $65.84 at 12:31:54, upticked and colored at the ask, followed by three 2,500-share prints at the same price — the trader notes unusual size hitting the offer.",
+    "citations": [
+      {
+        "source": "Investopedia — Understanding Time and Sales for Advanced Trading Strategies",
+        "url": "https://www.investopedia.com/terms/t/time-and-sales.asp",
+        "section": "What Are Time and Sales?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

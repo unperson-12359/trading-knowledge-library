@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/excess",
+  "canonical_sha256": "5db0f18b08c97f25004ac36336545546d3772150495e2a2c585b462380eeca79",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/excess",
+    "name": "Excess",
+    "aliases": [
+      "buying tail",
+      "selling tail",
+      "auction excess"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "In Market Profile, excess is the single-print tail at an auction extreme: a run of prices printed by only one bracket at the top (selling tail) or bottom (buying tail) of the distribution, marking where the market moved quickly away and demonstrating rejection. Excess is the structural signature that an auction in that direction has completed.",
+    "intuition": "Excess is the market slamming a door: prices were tried, found unacceptable, and left behind so fast that only one period ever traded there.",
+    "mechanics": "Read from the profile as two or more single-print TPO rows at an extreme (a tail in the final period, called a spike, cannot be confirmed by a following period); the absence of excess — a poor high or low — suggests the auction in that direction may be unfinished.",
+    "formula": "",
+    "relationships": [
+      "Single print",
+      "Poor high",
+      "Poor low",
+      "Rejection",
+      "Market profile"
+    ],
+    "failure_modes": "Tails can be run through by later sessions like any level, and spike tails formed in the last bracket are unconfirmable by construction; tail length thresholds are visual conventions, not measured quantities.",
+    "misconceptions": "Excess does not make an extreme untouchable forever; it records rejection at that time, and new information can legitimately reprice the market straight through an old tail.",
+    "example": "An early flush leaves single C-period prints from 4,502 to 4,506 at the day's low and price never returns; that buying tail is excess, marking the downside auction as complete for the session.",
+    "citations": [
+      {
+        "source": "WindoTrader — Market Profile Glossary (excess: buy tails, sell tails, single prints; end of auction)",
+        "url": "https://www.windotrader.com/market-profile/market-profile-glossary-index/",
+        "section": "Part-01: Market Profile Terminology",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Marketcalls — Poor High and Poor Low Market Profile Structure Explained (poor highs/lows as lack of excess)",
+        "url": "https://www.marketcalls.in/market-profile/poor-high-and-poor-low-market-profile-structure-explained.html",
+        "section": "What is Poor Low and Poor High?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

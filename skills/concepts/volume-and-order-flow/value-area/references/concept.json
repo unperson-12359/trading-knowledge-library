@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/value-area",
+  "canonical_sha256": "516f49404b206118f4b6fec2ee28cf3d377976c8404ae3ba135a8aeb1bf1a4e7",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/value-area",
+    "name": "Value area",
+    "aliases": [
+      "VA",
+      "value area (TPO)",
+      "70% value area"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "In Market Profile, the price range in which approximately 70% of the session's TPOs (or, in volume-based variants, of traded volume) fall, bounded by the value area high (VAH) and value area low (VAL). The 70% convention approximates one standard deviation of a normal distribution and is read as the range where the market accepted price as fair value.",
+    "intuition": "The value area is where the auction actually did business — the prices both buyers and sellers kept agreeing on all day.",
+    "mechanics": "Computed by starting at the point of control and expanding outward row by row, adding the larger of the adjacent rows above and below, until about 70% of the session's TPOs (or volume) are enclosed; the top and bottom rows become VAH and VAL.",
+    "formula": "VA = smallest contiguous price band around the POC containing ≈70% of TPOs/volume (the ≈68–70% figure mirrors ±1 standard deviation of a normal distribution)",
+    "relationships": [
+      "Market profile",
+      "Point of control",
+      "Volume value area",
+      "Acceptance",
+      "Balanced profile"
+    ],
+    "failure_modes": "The 70% parameter is a statistical analogy, and market distributions are frequently skewed or multi-modal, so the 'value area' of a double-distribution day misrepresents the auction; value areas also shift as sessions develop.",
+    "misconceptions": "The value area is not a support/resistance box with mechanical bounces, and 70% is convention rather than a measured property of the market — Dalton himself describes it as an organizing convenience.",
+    "example": "With the POC at 4,520, expanding outward until 70% of the day's TPOs are enclosed yields VAH 4,531 and VAL 4,512; opens inside that band the next day are read as acceptance of the same value.",
+    "citations": [
+      {
+        "source": "Topstep — Intro to auction market theory and market profile (value area ~70%, normal-distribution rationale)",
+        "url": "https://www.topstep.com/blog/intro-to-auction-market-theory-and-market-profile",
+        "section": "Value area",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "TradingView — Volume profile indicators: basic concepts (value-area calculation algorithm)",
+        "url": "https://www.tradingview.com/support/solutions/43000502040-volume-profile/",
+        "section": "Calculating value area",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
