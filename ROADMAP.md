@@ -6,8 +6,8 @@ knowledge rollout.
 | Checkpoint | State |
 |---|---|
 | Remove provenance metadata and add AI disclosure | Complete |
-| Build and source-audit the 50-concept core | In progress |
-| Add regime taxonomy and core annotations | Pending |
+| Build and source-audit the 50-concept core | Complete |
+| Add regime taxonomy and core annotations | In progress |
 | Add five generic-perpetual research playbooks | Pending |
 | Add structured query/API and relationship links | Pending |
 
@@ -22,4 +22,4 @@ verified on GitHub Pages before the next checkpoint begins.
 | B | Funding and liquidation | Complete |
 | C | Execution and microstructure | Complete |
 | D | Signals and context | Complete |
-| E | Risk and research | In progress |
+| E | Risk and research | Complete |
