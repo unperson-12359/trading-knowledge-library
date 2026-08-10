@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "concept_id": "candlestick-patterns/three-inside-up",
+  "canonical_sha256": "39e17f6f4f7a52b0a0c31f6f2cc87c84103c58ca83bc4819aae446ea8f22fa8f",
+  "source_path": "concepts/candlestick-patterns.json",
+  "concept": {
+    "id": "candlestick-patterns/three-inside-up",
+    "name": "Three inside up",
+    "aliases": [],
+    "domain": "Candlestick patterns",
+    "definition": "A three-candlestick bullish reversal pattern introduced by Gregory Morris as a confirmed bullish harami: a long black body in a downtrend is followed by a small white body contained within it (the harami), and then a third candle closing above the second candle's close. The third candle's higher close is the confirmation that distinguishes it from the unconfirmed two-candle harami.",
+    "intuition": "First the trend's selling stalls inside the prior big candle, then the next candle actually closes higher, confirming that buyers, not sellers, won the standoff.",
+    "mechanics": "From OHLC data: candle 1 is a long black body; candle 2 is a white (non-doji) body engulfed by body 1; candle 3 closes above candle 2's close (many implementations require a white body). Shadow lengths are disregarded. Practitioners often seek further confirmation via a break of nearby resistance or a trendline.",
+    "formula": "Three inside up when C1 < O1 (long body), O1 > O2, C2 > C1, min(O2, C2) > C1, max(O2, C2) < O1, and C3 > C2.",
+    "relationships": [
+      "Three inside down",
+      "Bullish harami",
+      "Harami",
+      "Three outside up"
+    ],
+    "failure_modes": "Backtested occurrence statistics show only moderate efficiency; many instances fail in strong downtrends despite the built-in confirmation. Signals forming far from support or on low volume underperform.",
+    "misconceptions": "It is not just 'any three rising candles'; the first two must form a genuine bullish harami with body containment. It is also a Morris-era formalization, not one of the classical Japanese patterns.",
+    "example": "After a decline, a stock prints a long black candle (50.00 to 47.00), a small white candle inside it (47.50 to 48.30), then a third candle closing at 48.90, above the second close. The three inside up confirms the harami as a bullish reversal signal.",
+    "citations": [
+      {
+        "source": "CandleScanner, \"Three Inside Up\"",
+        "url": "https://www.candlescanner.com/candlestick-patterns/three-inside-up/",
+        "section": "Construction",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

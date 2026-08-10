@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "concept_id": "candlestick-patterns/three-inside-down",
+  "canonical_sha256": "2b3b5f230e14eede64394d8557c746c260c624d6b301718d7382a49264cb2dff",
+  "source_path": "concepts/candlestick-patterns.json",
+  "concept": {
+    "id": "candlestick-patterns/three-inside-down",
+    "name": "Three inside down",
+    "aliases": [],
+    "domain": "Candlestick patterns",
+    "definition": "A three-candlestick bearish reversal pattern introduced by Gregory Morris as a confirmed bearish harami: a long white body in an uptrend is followed by a small black body contained within it (the harami), and then a third candle closing below the second candle's close. The third candle's lower close is the confirmation that distinguishes it from the unconfirmed two-candle harami.",
+    "intuition": "First the rally stalls inside the prior big candle, then the next candle actually closes lower, confirming that sellers, not buyers, won the standoff.",
+    "mechanics": "From OHLC data: candle 1 is a long white body; candle 2 is a black (non-doji) body engulfed by body 1; candle 3 closes below candle 2's close (many implementations require a black body). Shadow lengths are disregarded; a close of candle 3 below candle 1's close is considered stronger confirmation.",
+    "formula": "Three inside down when C1 > O1 (long body), O2 < C1, C2 > O1, min(O2, C2) > O1, max(O2, C2) < C1, and C3 < C2.",
+    "relationships": [
+      "Three inside up",
+      "Bearish harami",
+      "Harami",
+      "Three outside down"
+    ],
+    "failure_modes": "Even with the built-in confirmation, many instances fail in strong uptrends where the dip is immediately bought. Empirical frequency-efficiency statistics (e.g., CandleScanner on S&P 500 data) show only moderate predictive power.",
+    "misconceptions": "It is not any three declining candles; the first two must form a genuine bearish harami with the second body inside the first. It is a modern formalization by Morris, not a classical Japanese pattern.",
+    "example": "After a rally, a stock prints a long white candle (60.00 to 63.00), a small black candle inside it (62.50 to 61.70), then a third candle closing at 61.20, below the second close. The three inside down confirms the harami as a bearish reversal signal.",
+    "citations": [
+      {
+        "source": "CandleScanner, \"Three Inside Down\"",
+        "url": "https://www.candlescanner.com/candlestick-patterns/three-inside-down/",
+        "section": "Construction",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

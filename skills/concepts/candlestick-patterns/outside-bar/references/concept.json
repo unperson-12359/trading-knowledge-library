@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "candlestick-patterns/outside-bar",
+  "canonical_sha256": "5481ace9df72dc46d271ed3dfd70e682841b34739f8f97159b88a9d92ee51b0c",
+  "source_path": "concepts/candlestick-patterns.json",
+  "concept": {
+    "id": "candlestick-patterns/outside-bar",
+    "name": "Outside bar",
+    "aliases": [
+      "Outside day",
+      "Engulfing bar"
+    ],
+    "domain": "Candlestick patterns",
+    "definition": "A bar whose high exceeds the prior bar's high and whose low falls below the prior bar's low, so its full range engulfs the previous bar's range. Price-action traders read it as volatility expansion and a battle between buyers and sellers, with the close's location indicating which side won; it differs from the engulfing candlestick pattern, which compares only real bodies.",
+    "intuition": "The market explored beyond both edges of the previous session in one bar, a burst of expanded volatility where both sides were tested and the close reveals the winner.",
+    "mechanics": "From OHLC data: High_t > High_{t-1} and Low_t < Low_{t-1}. The close near the high is read bullishly and near the low bearishly, especially at support/resistance; a mid-range close is considered weak. Its wide range makes stop placement and position sizing a central practical issue.",
+    "formula": "Outside bar when H_t > H_{t-1} and L_t < L_{t-1}.",
+    "relationships": [
+      "Inside bar",
+      "Bullish engulfing",
+      "Bearish engulfing",
+      "Volatility expansion"
+    ],
+    "failure_modes": "The wide range forces wide stops, so a single failed trade is expensive; mid-range closes are especially prone to whipsaw. In trendless chop, outside bars frequently mark two-sided stop-runs rather than genuine reversals or continuations.",
+    "misconceptions": "An outside bar is not identical to an engulfing pattern: engulfing requires only the real body to be engulfed, while the outside bar requires the entire shadow range to be engulfed. Nor is every outside bar a reversal signal; many act as continuation bars within trends.",
+    "example": "After an uptrend stalls at resistance, a bar trades from a low of 47.50 to a high of 50.50, fully outside the prior bar's 48.00-50.00 range, and closes at 47.80 near its low. Traders read this bearish outside bar as supply overwhelming demand at resistance.",
+    "citations": [
+      {
+        "source": "Technical-Analysis-Pro, \"Inside Bar and Outside Bar: Price Action Patterns for Trading\"",
+        "url": "https://www.technical-analysis-pro.com/patterns-inside-bar-outside-bar-trading/",
+        "section": "What Is an Outside Bar",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

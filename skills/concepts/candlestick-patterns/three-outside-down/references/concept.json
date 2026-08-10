@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "concept_id": "candlestick-patterns/three-outside-down",
+  "canonical_sha256": "d08fef420c6fbb68cdf28fe4840c46313910fd6834ac8a7f4659d58adf60c7d0",
+  "source_path": "concepts/candlestick-patterns.json",
+  "concept": {
+    "id": "candlestick-patterns/three-outside-down",
+    "name": "Three outside down",
+    "aliases": [],
+    "domain": "Candlestick patterns",
+    "definition": "A three-candlestick bearish reversal pattern introduced by Gregory Morris as a confirmed bearish engulfing: a white body in an uptrend is engulfed by a larger black body (the engulfing), and then a third black candle closes below the second candle's close. The third candle's lower close confirms the engulfing signal; it is the mirror of three outside up.",
+    "intuition": "Sellers first swallow the prior up candle whole, then prove it was no fluke by closing lower again the very next session.",
+    "mechanics": "From OHLC data: candle 1 is a white body; candle 2 is a long black body engulfing body 1 (O2 >= C1, C2 <= O1); candle 3 is a black candle closing below C2. Shadows are disregarded. Higher-than-usual volume on the third candle is considered supportive.",
+    "formula": "Three outside down when C1 > O1, O2 >= C1, C2 <= O1, C2 < O2, and C3 < C2 (with candle 3 black).",
+    "relationships": [
+      "Three outside up",
+      "Bearish engulfing",
+      "Three inside down",
+      "Falling three methods"
+    ],
+    "failure_modes": "In strong uptrends the confirmed pattern still fails often as the dip is bought; scan statistics show a meaningful fraction of false signals. Entering after the third candle can also place the stop far away, hurting risk-reward.",
+    "misconceptions": "It is not simply a bearish engulfing; the confirming third candle is part of the definition. Like the other Morris extensions, it is a modern formalization rather than a classical Japanese pattern.",
+    "example": "In an uptrend, a stock prints a white candle (70.00 to 72.00), a long black candle engulfing it (72.30 to 69.50), then a third black candle closing at 68.80. The three outside down is read as a confirmed bearish reversal.",
+    "citations": [
+      {
+        "source": "CandleScanner, \"Three Outside Down\"",
+        "url": "https://www.candlescanner.com/candlestick-patterns/three-outside-down/",
+        "section": "Construction",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

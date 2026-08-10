@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "candlestick-patterns/pin-bar",
+  "canonical_sha256": "0161a83fea833bdbddbd6119cb32d06ead4e393f0d3b5fd8d9268bfe6426d790",
+  "source_path": "concepts/candlestick-patterns.json",
+  "concept": {
+    "id": "candlestick-patterns/pin-bar",
+    "name": "Pin bar",
+    "aliases": [
+      "Pinocchio bar",
+      "Pinbar"
+    ],
+    "domain": "Candlestick patterns",
+    "definition": "A single-candlestick price-action pattern with a small real body and one very long shadow protruding in one direction, the name deriving from Martin Pring's 'Pinocchio bar' because the long wick 'lies' about market direction by showing a rejected probe. Traders read the long shadow as rejection of a price level and use it as a reversal or continuation trigger, typically in confluence with support and resistance.",
+    "intuition": "Price made a quick dash far in one direction and was slapped back before the close, leaving a long nose; the dash is treated as a lie that reveals where the market refuses to go.",
+    "mechanics": "From OHLC data: a common heuristic requires the dominant shadow to be at least two-thirds of the bar's total range, with the small body at the opposite end; body color is secondary. In strict price-action usage the bar only 'counts' as a tradeable pin bar when its wick penetrates a meaningful support/resistance level and closes back on the other side, trapping breakout traders.",
+    "formula": "Bearish pin bar heuristic: (H - max(O, C)) >= (2/3) * (H - L); bullish pin bar: (min(O, C) - L) >= (2/3) * (H - L).",
+    "relationships": [
+      "Hammer",
+      "Shooting star",
+      "Hanging man",
+      "Inverted hammer",
+      "Doji"
+    ],
+    "failure_modes": "Pin-shaped bars occur constantly on all timeframes, so most are noise; without a key level or trend context the pattern has little edge. Failed pin bars are common enough that some traders specifically trade the failures, and the wide stop beyond the wick can produce poor risk-reward.",
+    "misconceptions": "A pin bar is not defined by shape alone in rigorous usage; the same bar is a hammer, hanging man, shooting star, or inverted hammer in classical candlestick taxonomy, with context determining the label. It is also not a standalone strategy: practitioners emphasize that context and confirmation matter more than the bar's geometry.",
+    "example": "EUR/USD pokes above a well-watched 1.1000 resistance to 1.1040 intraday but closes back at 1.0985, leaving a long upper wick. Price-action traders read the bearish pin bar as a rejected breakout and consider shorts below the bar's low with a stop above 1.1040.",
+    "citations": [
+      {
+        "source": "Trading Setups Review, \"Trading The Pinocchio Bar (Pin Bar) With Four Detailed Price Action Examples\"",
+        "url": "https://www.tradingsetupsreview.com/pinocchio-bar-trade-setup-pin-bar/",
+        "section": "Pin Bar Trading Rules",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

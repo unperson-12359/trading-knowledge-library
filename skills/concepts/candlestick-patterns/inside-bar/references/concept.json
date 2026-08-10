@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "candlestick-patterns/inside-bar",
+  "canonical_sha256": "41e0411284187c6c4bdd3990b99b8bc1dfef51441ab743fa48cfd912885befdb",
+  "source_path": "concepts/candlestick-patterns.json",
+  "concept": {
+    "id": "candlestick-patterns/inside-bar",
+    "name": "Inside bar",
+    "aliases": [
+      "Inside day",
+      "IB"
+    ],
+    "domain": "Candlestick patterns",
+    "definition": "A bar whose entire high-low range is contained within the range of the preceding bar (the 'mother bar'): its high is at or below the prior high and its low is at or above the prior low. Price-action traders read it as volatility compression and indecision, traded as a breakout setup in either direction rather than as an inherently bullish or bearish signal.",
+    "intuition": "The market took a breath: the latest bar traded entirely inside the previous bar's range, coiling like a spring while buy and sell stop orders pile up on both sides of the mother bar.",
+    "mechanics": "From OHLC data: High_t < High_{t-1} and Low_t > Low_{t-1} (strict; some conventions allow equality). The body color is irrelevant. Common usage places stop orders beyond the mother bar's high and low and treats the triggered side as a continuation or reversal entry depending on context.",
+    "formula": "Inside bar when H_t < H_{t-1} and L_t > L_{t-1} (strict form).",
+    "relationships": [
+      "Outside bar",
+      "Harami",
+      "NR4",
+      "Volatility compression"
+    ],
+    "failure_modes": "On low timeframes inside bars form constantly and produce many false breakouts; whipsaws around the mother bar's extremes are common in choppy markets. The pattern gives no directional edge by itself, so breakout entries fail roughly as often as they succeed without trend or level confluence.",
+    "misconceptions": "An inside bar is not inherently bullish or bearish, and it is not the same as a harami: the harami compares real bodies, while the inside bar compares full high-low ranges. A doji whose shadows exceed the mother bar is not an inside bar.",
+    "example": "A daily bar trades between 100 and 104; the next bar trades only between 101 and 103. A trader places a buy stop at 104.10 and a sell stop at 99.90, letting the market's break of the mother bar's range decide the trade direction.",
+    "citations": [
+      {
+        "source": "Technical-Analysis-Pro, \"Inside Bar and Outside Bar: Price Action Patterns for Trading\"",
+        "url": "https://www.technical-analysis-pro.com/patterns-inside-bar-outside-bar-trading/",
+        "section": "What Is an Inside Bar",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
