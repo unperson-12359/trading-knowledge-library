@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/maximum-supply",
+  "canonical_sha256": "5f83354a8953389963e96729cf364f5a98fd3403fca51d3cf933ac00f5c89347",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/maximum-supply",
+    "name": "Maximum supply",
+    "aliases": [
+      "max supply",
+      "supply cap"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Maximum supply is the hard upper bound on the number of tokens that can ever exist under a protocol's issuance rules, where such a cap exists — most famously Bitcoin's 21 million.",
+    "intuition": "It is the ceiling written into the monetary constitution: no matter what happens, there will never be more than this many coins.",
+    "mechanics": "Protocols with capped issuance hard-code an emission schedule that asymptotically approaches the cap (Bitcoin's subsidy halves every 210,000 blocks until issuance rounds to zero, after which only fees reward miners). Many tokens (ETH, most governance tokens with perpetual inflation) have no maximum supply, so the field is undefined for them.",
+    "formula": "Bitcoin: Max supply = 21,000,000 BTC; subsidy_t = 50 / 2^⌊t/210,000⌋ BTC per block, converging to 0.",
+    "relationships": [
+      "Total supply",
+      "Circulating supply",
+      "Emission schedule",
+      "Tokenomics",
+      "Miner"
+    ],
+    "failure_modes": "The cap is only as credible as the social consensus defending it — a sufficiently dominant coalition could change the code, and the security budget problem (subsidy → 0, fees must replace it) is unresolved for Bitcoin's distant future.",
+    "misconceptions": "Not all tokens have a maximum supply, and a big cap is not automatically 'bad' — what matters is emission schedule and utility. 'Max supply reached' does not mean all coins are circulating; lost keys permanently shrink effective float below the cap.",
+    "example": "Bitcoin's max supply is 21M BTC, of which ~19.9M had been mined by 2025; the final satoshis will be issued around the year 2140 as the 33rd halving approaches zero subsidy.",
+    "citations": [
+      {
+        "source": "Nakamoto, Bitcoin: A Peer-to-Peer Electronic Cash System (whitepaper)",
+        "url": "https://bitcoin.org/bitcoin.pdf",
+        "section": "Sections 4-6: Proof-of-Work, Network, Incentive",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

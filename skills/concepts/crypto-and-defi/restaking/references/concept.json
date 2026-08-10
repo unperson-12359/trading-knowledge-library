@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/restaking",
+  "canonical_sha256": "b554a66030f14edb899b4363a00611a3b58cd80b28cc1f31b796311537d76237",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/restaking",
+    "name": "Restaking",
+    "aliases": [
+      "re-staking"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Restaking is the reuse of already-staked ETH or liquid staking tokens as cryptoeconomic security for additional services (Actively/Autonomously Verifiable Services, AVSs), letting those services borrow Ethereum's trust while stakers earn extra rewards and accept extra slashing conditions.",
+    "intuition": "It is posting the same collateral as bail for multiple jobs at once: more income from one deposit, but any job can trigger forfeiture of the shared stake.",
+    "mechanics": "On EigenLayer, stakers deposit native ETH or LSTs into restaking contracts and delegate to operators who run AVS software (oracles, bridges, data-availability layers). AVSs pay rewards to operators and stakers for correct service and can slash the restaked stake if commitments are broken — extending Ethereum-grade economic security without each service bootstrapping its own validator set.",
+    "formula": "",
+    "relationships": [
+      "Staking",
+      "Liquid staking token",
+      "Validator",
+      "Proof of stake"
+    ],
+    "failure_modes": "Stacked slashing conditions mean a bug or dispute in any single AVS can destroy stake that also secures others; leverage-like recursive restaking (LSTs used as collateral to restake) creates contagion paths where one depeg or slash cascades across services.",
+    "misconceptions": "Restaking does not create new security from nothing — it re-hypothecates the same stake, so total security is only as strong as the weakest slashing regime in the stack. Extra yield is compensation for extra slashing risk, not free return.",
+    "example": "A staker restakes 32 ETH worth of stETH on EigenLayer and delegates to an operator serving a data-availability AVS; they earn Ethereum staking rewards plus AVS rewards, but an AVS slashing event can burn the same stake backing both.",
+    "citations": [
+      {
+        "source": "EigenLayer docs - What is EigenLayer?",
+        "url": "https://docs.eigenlayer.xyz/eigenlayer/overview/",
+        "section": "Architecture overview",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

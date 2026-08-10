@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/health-factor",
+  "canonical_sha256": "314d795859ff504f590941d06adff3119f55c636dd5496bd4a365751931d358f",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/health-factor",
+    "name": "Health factor",
+    "aliases": [
+      "HF"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "The health factor is Aave's numeric measure of how safe a borrow position is: the collateralization of the account weighted by liquidation thresholds, divided by total borrows — a value below 1 means the position can be liquidated.",
+    "intuition": "It is a fuel gauge for your loan: comfortably above 1 is green, approaching 1 is the warning light, below 1 liquidators take the car.",
+    "mechanics": "Health factor = (Σ collateral_i in ETH × liquidation threshold_i) / total borrows in ETH. It rises when collateral appreciates or debt is repaid, and falls when collateral drops or debt grows (including accrued interest). Users improve it by supplying more collateral or repaying; liquidators monitor accounts for HF < 1.",
+    "formula": "HF = (Total collateral value × weighted avg liquidation threshold) / Total borrow value; HF < 1 → liquidatable.",
+    "relationships": [
+      "Liquidation threshold",
+      "Loan-to-value ratio",
+      "Liquidation bonus",
+      "Lending protocol",
+      "Liquidation cascade"
+    ],
+    "failure_modes": "HF depends entirely on oracle prices, so oracle failure or L2 sequencer downtime can make HF misleading exactly when it matters; in violent crashes HF can skip from safe to insolvent before liquidators act, leaving bad debt.",
+    "misconceptions": "HF = 1 is not where you 'start losing money' — you lose value continuously as collateral falls; HF just marks the point where the protocol allows others to seize it. A high HF today says nothing about HF tomorrow in volatile collateral.",
+    "example": "Supplying $10,000 of ETH at an 80% liquidation threshold and borrowing $6,000 of GHO gives HF = (10,000×0.8)/6,000 = 1.333; if ETH falls 30%, HF drops to ~0.93 and the position is liquidatable.",
+    "citations": [
+      {
+        "source": "Aave docs - Liquidations",
+        "url": "https://aave.com/docs/concepts/liquidations",
+        "section": "Health factor and liquidation mechanics",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/liquidation-bonus",
+  "canonical_sha256": "2b66678a562749fd9860b9ea09588c142cd55d307bf97d5903b29f674f8a7a0c",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/liquidation-bonus",
+    "name": "Liquidation bonus",
+    "aliases": [
+      "liquidation penalty",
+      "liquidation incentive"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "The liquidation bonus (or penalty) is the discount at which a liquidator can claim a borrower's collateral when repaying their debt — the economic incentive that makes third-party liquidation profitable.",
+    "intuition": "It is the bounty for the repo agent: repay part of a failing loan and you get to buy the borrower's collateral at a few percent below market.",
+    "mechanics": "When HF < 1, anyone can call liquidationCall, repay up to 50% of the debt (100% if HF is below the close-factor threshold), and receive collateral worth debt repaid × (1 + bonus). Bonuses are set per asset by governance (e.g. ~5% on majors, higher on risky assets); the discount is the borrower's liquidation penalty.",
+    "formula": "Collateral seized = (debt repaid × (1 + liquidation bonus)) / collateral price; e.g. repay $1,000 at 5% bonus → $1,050 of collateral.",
+    "relationships": [
+      "Liquidation threshold",
+      "Health factor",
+      "Lending protocol",
+      "Liquidation cascade"
+    ],
+    "failure_modes": "Bonuses that are too small fail to attract liquidators in congestion or crashes (bad debt accumulates); too large, and they over-punish borrowers and invite liquidation-hunting manipulation of oracle prices.",
+    "misconceptions": "The bonus is not free money for liquidators — competition, gas costs and price slippage on seized collateral eat most of it. Borrowers lose the bonus on top of their market losses; it is a penalty, not a fee rebate.",
+    "example": "A liquidator repays $5,000 of a failing loan backed by ETH at a 5% bonus and receives $5,250 worth of the borrower's ETH, profiting ~$250 minus gas and any slippage when selling the ETH.",
+    "citations": [
+      {
+        "source": "Aave docs - Liquidations",
+        "url": "https://aave.com/docs/concepts/liquidations",
+        "section": "Health factor and liquidation mechanics",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Frangella & Herskind, Aave V3 Technical Paper (2022)",
+        "url": "https://resources.cryptocompare.com/asset-management/9/1682584843504.pdf",
+        "section": "Section 3-4: risk parameters (LTV, liquidation threshold, liquidation bonus)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

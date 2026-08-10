@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/market-capitalization",
+  "canonical_sha256": "af9e15f33c267d44e4c2a4db5a72248dd5b0977186df9d0af894c96fc72b27dd",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/market-capitalization",
+    "name": "Market capitalization",
+    "aliases": [
+      "market cap",
+      "network value"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Crypto market capitalization is the total USD value of an asset's supply, conventionally computed as current price multiplied by circulating supply (Coin Metrics' on-chain variant uses all issued native units).",
+    "intuition": "It is the price tag of the entire network at today's price — the standard yardstick for comparing the size of cryptoassets.",
+    "mechanics": "Conventional market cap = circulating supply × price (reported float), while Coin Metrics' CapMrktCurUSD = current issued supply × daily close, deliberately including escrow/foundation holdings; 'free float' variants exclude insider and strategic holdings. The choice of supply basis is why different sites report different market caps for the same coin.",
+    "formula": "Market cap = circulating supply × price; (Coin Metrics on-chain: CapMrktCurUSD = SplyCur × PriceUSD).",
+    "relationships": [
+      "Circulating supply",
+      "Fully diluted valuation",
+      "Realized capitalization",
+      "Market-value-to-realized-value ratio",
+      "Total supply"
+    ],
+    "failure_modes": "Market cap treats illiquid, lost and locked coins as if they traded at spot, overstating economically real value; for thin-float tokens, small purchases move price — and thus 'market cap' — far more than real capital committed.",
+    "misconceptions": "Market cap is not 'money invested' in the coin — it is a marginal price times a stock of supply, so a $1B market cap can rest on a few million dollars of actual inflows. It also says nothing about liquidity or exit capacity.",
+    "example": "If BTC trades at $100,000 with ~19.9M coins issued, its market cap is ~$1.99T; Coin Metrics' realized cap — each coin at its last-moved price — sits far lower, showing how much of that figure is unrealized gain.",
+    "citations": [
+      {
+        "source": "Coin Metrics Product Docs - Market capitalization metrics",
+        "url": "https://gitbook-docs.coinmetrics.io/network-data/network-data-overview/market/market-capitalization",
+        "section": "Market Cap / Realized Cap / MVRV definitions",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

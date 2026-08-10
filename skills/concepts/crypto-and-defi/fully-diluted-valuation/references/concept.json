@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/fully-diluted-valuation",
+  "canonical_sha256": "0de02ef1340f18c312556e02c223b85aaf6e44c0f153923dc7eb5904344c5766",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/fully-diluted-valuation",
+    "name": "Fully diluted valuation",
+    "aliases": [
+      "FDV"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Fully diluted valuation (FDV) is a token's price multiplied by its total (or maximum) supply — the market capitalization the asset would have if every token that can ever exist were already circulating at today's price.",
+    "intuition": "FDV is the sticker price of the whole company if all shares, including locked insider shares, traded at today's price — often a fantasy number for low-float tokens.",
+    "mechanics": "FDV = current price × total/max supply, versus market cap = price × circulating supply. Coin Metrics formalizes a related 'Future Market Cap' using known issuance over the next 10 years. A large FDV-to-market-cap gap quantifies overhang from future unlocks and emissions and is a standard dilution-risk gauge.",
+    "formula": "FDV = price × total (or max) supply; dilution overhang ≈ FDV / market cap.",
+    "relationships": [
+      "Market capitalization",
+      "Circulating supply",
+      "Maximum supply",
+      "Token unlock",
+      "Tokenomics"
+    ],
+    "failure_modes": "FDV assumes future tokens would trade at today's price, which is false under emission-driven sell pressure — it overstates achievable value in either direction; comparing FDVs across projects ignores different float, demand and emission profiles.",
+    "misconceptions": "A high FDV/low float token is not 'cheap' because its market cap looks small — the FDV is the honest size of the claim on future supply. FDV is also not a price target; it is a static dilution snapshot.",
+    "example": "A new L2 token trades at $2 with 100M circulating (market cap $200M) but 10B total supply: FDV = $20B, a 100x float gap warning that 99% of supply is still locked and coming to market.",
+    "citations": [
+      {
+        "source": "Coin Metrics Product Docs - Market capitalization metrics",
+        "url": "https://gitbook-docs.coinmetrics.io/network-data/network-data-overview/market/market-capitalization",
+        "section": "Market Cap / Realized Cap / MVRV definitions",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Keyrock research - From Locked to Liquidity: What 16,000+ Token Unlocks Teach Us",
+        "url": "https://keyrock.com/from-locked-to-liquidity-what-16000-token-unlocks-teach-us/",
+        "section": "Unlock terminology and vesting structure",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

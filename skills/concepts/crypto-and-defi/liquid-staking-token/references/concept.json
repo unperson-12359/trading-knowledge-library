@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/liquid-staking-token",
+  "canonical_sha256": "7589817fd43d684a5145159d76f6aef67364cfe66302bcab776c422efac4717a",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/liquid-staking-token",
+    "name": "Liquid staking token",
+    "aliases": [
+      "LST",
+      "staking derivative",
+      "liquid staking derivative (LSD)"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A liquid staking token (LST) is a transferable token issued by a liquid staking protocol (e.g. Lido's stETH) that represents a claim on staked assets plus accruing rewards, letting stakers stay liquid and use their stake in DeFi while validators do the work.",
+    "intuition": "It is a receipt for your staked ETH that trades like ETH itself — you earn staking yield while still being able to sell, lend or LP the receipt.",
+    "mechanics": "Users deposit ETH into the staking pool; the protocol stakes it across a set of professional node operators and mints stETH (or similar) to the depositor. The token's balance or exchange rate grows with staking rewards net of a protocol fee (Lido takes 10% of rewards), and it can be traded, used as collateral, or redeemed for the underlying (subject to withdrawal queues).",
+    "formula": "User APR ≈ protocol staking APR × (1 − protocol fee); e.g. 3.2% × (1 − 0.10) ≈ 2.9%.",
+    "relationships": [
+      "Staking",
+      "Validator",
+      "Restaking",
+      "Yield farming",
+      "Lending protocol"
+    ],
+    "failure_modes": "LSTs can trade below their underlying value (depeg) during market stress or withdrawal congestion, and leveraged looping of LST collateral unwinds violently when the peg slips; smart contract bugs, operator slashing and governance capture add layers beyond native staking risk.",
+    "misconceptions": "An LST is not pegged 1:1 by arbitrage the way a stablecoin is — secondary-market price floats and can deviate for months. 'Liquid' also does not mean instantly redeemable: native withdrawals queue, so liquidity depends on DEX depth.",
+    "example": "Deposit 10 ETH into Lido and receive ~10 stETH; a year later the position represents ~10.3 ETH of staking rewards, and throughout you could have supplied the stETH as Aave collateral to borrow stablecoins.",
+    "citations": [
+      {
+        "source": "Lido docs - What is Lido / Liquid staking",
+        "url": "https://docs.lido.fi/",
+        "section": "Liquid staking",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Ethereum.org - Ethereum staking",
+        "url": "https://ethereum.org/en/staking/",
+        "section": "What is staking?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

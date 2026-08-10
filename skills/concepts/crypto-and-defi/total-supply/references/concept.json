@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/total-supply",
+  "canonical_sha256": "7da129663b2134a2932244c2453f6df0d926bd3ddffc0806eb6f835f54c5f608",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/total-supply",
+    "name": "Total supply",
+    "aliases": [
+      "issued supply"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Total supply is the total number of tokens that have been created (minted) so far, minus any that have been verifiably burned — i.e. all tokens in existence whether or not they are circulating.",
+    "intuition": "It is the full headcount of minted tokens: circulating plus everything still locked in vesting contracts, treasuries and escrow.",
+    "mechanics": "Total supply = cumulative issuance − cumulative burns; it grows with emissions (block rewards, unlock-related mints) and shrinks with burns (e.g. EIP-1559 base-fee burning on Ethereum). Locked/vested tokens count toward total supply but not circulating supply, so total ≥ circulating at any moment.",
+    "formula": "Total supply = Σ minted − Σ burned; Circulating supply ≤ Total supply ≤ Maximum supply.",
+    "relationships": [
+      "Circulating supply",
+      "Maximum supply",
+      "Token burn",
+      "Emission schedule",
+      "Minting"
+    ],
+    "failure_modes": "Projects blur total vs circulating to make valuations look smaller or larger as convenient; tokens in 'ecosystem' wallets technically count as total supply while being economically equivalent to insider float.",
+    "misconceptions": "Total supply is not the cap — for inflationary tokens there is no maximum, and total supply grows indefinitely. A low total supply number means nothing for price without knowing emission rate and burns.",
+    "example": "Ethereum's total supply equals all ETH ever issued as block rewards minus all ETH burned via base fees since EIP-1559 — fluctuating near ~120M with no maximum cap.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Gas and fees",
+        "url": "https://ethereum.org/en/developers/docs/gas/",
+        "section": "How are gas fees calculated?",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Coin Metrics Product Docs - Market capitalization metrics",
+        "url": "https://gitbook-docs.coinmetrics.io/network-data/network-data-overview/market/market-capitalization",
+        "section": "Market Cap / Realized Cap / MVRV definitions",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

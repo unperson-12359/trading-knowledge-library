@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/emission-schedule",
+  "canonical_sha256": "fb3d8c945b353fbba253f1548e821d6643df9f8de70cca5a6a20067ca087ee64",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/emission-schedule",
+    "name": "Emission schedule",
+    "aliases": [
+      "issuance schedule",
+      "supply schedule"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "An emission schedule is the predetermined rule governing the rate and timing of new token issuance over time — the protocol's monetary policy expressed as supply growth per block, epoch or era.",
+    "intuition": "It is the central-bank timetable baked into code: exactly how many new tokens are printed, when, and for whom, years into the future.",
+    "mechanics": "Bitcoin emits a block subsidy that halves every 210,000 blocks (50 → 25 → 12.5 → 3.125 BTC...) toward the 21M cap; Ethereum issues ETH per epoch to validators with rates that fall as total stake rises, net of base-fee burns. Application tokens define their own schedules for incentives and treasury releases. Coin Metrics' future-supply metrics formalize projecting supply from the known schedule.",
+    "formula": "Bitcoin subsidy = 50 / 2^⌊height/210,000⌋ BTC per block; annualized inflation = issuance per year / current supply.",
+    "relationships": [
+      "Minting",
+      "Maximum supply",
+      "Tokenomics",
+      "Token burn",
+      "Miner",
+      "Validator"
+    ],
+    "failure_modes": "Declining emissions create a long-run security-budget question (fees must eventually fund security alone); for application tokens, front-loaded emissions fund growth but guarantee heavy early dilution and sell pressure.",
+    "misconceptions": "A fixed emission schedule makes supply predictable, not price — demand shocks still dominate valuation. 'Deflationary' claims require net issuance (emissions − burns) below zero, not just a burn mechanism.",
+    "example": "After the April 2024 halving, Bitcoin emits 3.125 BTC per ~10-minute block (~450/day, ~0.8% annualized); UNI instead has a 2% perpetual annual inflation beginning in year 4 after its 1B genesis mint.",
+    "citations": [
+      {
+        "source": "Nakamoto, Bitcoin: A Peer-to-Peer Electronic Cash System (whitepaper)",
+        "url": "https://bitcoin.org/bitcoin.pdf",
+        "section": "Sections 4-6: Proof-of-Work, Network, Incentive",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Uniswap blog - Introducing UNI",
+        "url": "https://blog.uniswap.org/uni",
+        "section": "UNI allocation, liquidity mining",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

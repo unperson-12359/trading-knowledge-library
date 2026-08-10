@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/overcollateralized-loan",
+  "canonical_sha256": "fea3c7d80b774249abe02bf512438a5cf898dca28b611748c7f09920c4283b31",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/overcollateralized-loan",
+    "name": "Overcollateralized loan",
+    "aliases": [
+      "over-collateralization"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "An overcollateralized loan is a loan whose collateral value exceeds the borrowed amount — the standard structure of DeFi lending, where borrowers must post more than they take because there is no credit assessment or recourse beyond the collateral.",
+    "intuition": "Borrow $70 by locking up $100: the lender never checks your credit because your collateral is already worth more than the debt and can be seized instantly.",
+    "mechanics": "Lending protocols enforce overcollateralization through per-asset LTV caps (e.g. 75-80%) and liquidation thresholds: oracles revalue collateral continuously, and positions drifting toward undercollateralization (health factor < 1) are liquidated permissionlessly to keep the protocol solvent. Interest accrues on the debt, slowly consuming the collateral buffer.",
+    "formula": "Collateralization ratio = collateral value / borrow value > 1 (e.g. $10,000 collateral / $6,000 debt ≈ 1.67).",
+    "relationships": [
+      "Lending protocol",
+      "Loan-to-value ratio",
+      "Health factor",
+      "Under-collateralized loan",
+      "Liquidation threshold"
+    ],
+    "failure_modes": "Overcollateralization protects only while collateral is liquid and correctly priced: flash crashes, oracle failures or illiquid collateral can flip a loan to undercollateralized before liquidators respond, creating protocol bad debt.",
+    "misconceptions": "Overcollateralized borrowing is capital-inefficient by design, not a flaw to be fixed by higher LTVs alone — it substitutes collateral for creditworthiness. It also does not make the loan risk-free for the borrower, who can still be liquidated at a penalty.",
+    "example": "Locking $15,000 of ETH to borrow $7,500 of USDC (50% effective LTV against an 80% threshold) lets you spend dollars without selling ETH, but a ~47% ETH drawdown makes the position liquidatable.",
+    "citations": [
+      {
+        "source": "Aave docs - Liquidations",
+        "url": "https://aave.com/docs/concepts/liquidations",
+        "section": "Health factor and liquidation mechanics",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Ethereum.org - Decentralized finance (DeFi)",
+        "url": "https://ethereum.org/en/defi/",
+        "section": "What can you do with DeFi?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

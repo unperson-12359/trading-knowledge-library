@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/circulating-supply",
+  "canonical_sha256": "c4bf42970a7b885ba8c1180c3aab640e4345c38593fea316db26bf1c289c38f8",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/circulating-supply",
+    "name": "Circulating supply",
+    "aliases": [
+      "float",
+      "circulating tokens"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Circulating supply is the number of tokens currently issued and available to the market — excluding locked, vested, escrowed or not-yet-minted tokens — and is the supply basis for the conventional market capitalization.",
+    "intuition": "It is the float: the tokens that could actually change hands today, not the ones still locked in team vaults or scheduled for future emission.",
+    "mechanics": "Different providers compute it differently: reported circulating supply is typically sourced from project disclosures (Coin Metrics' 'Estimated Market Cap' uses circulating supply from project/CoinGecko feeds), while on-chain approaches count issued native units (which can include escrow). The number drifts upward as tokens unlock and emissions accrue.",
+    "formula": "Circulating supply ≈ total issued − locked/vested/escrowed; Market cap = circulating supply × price.",
+    "relationships": [
+      "Total supply",
+      "Maximum supply",
+      "Market capitalization",
+      "Token unlock",
+      "Fully diluted valuation"
+    ],
+    "failure_modes": "Circulating supply is partly self-reported, so projects can understate locked supply or treasuries, inflating the apparent float; low-float tokens show deceptively small market caps that hide massive future dilution.",
+    "misconceptions": "Circulating supply is not directly observable from price feeds and methodologies differ across data providers — comparisons must use a consistent source. It also does not equal 'liquid' supply: much of it may be dormant or staked.",
+    "example": "A token with 100M circulating, 400M vested-locked and 1B max supply trading at $5 shows a $500M market cap but a $5B FDV; holders face 10x potential dilution as unlocks arrive.",
+    "citations": [
+      {
+        "source": "Coin Metrics Product Docs - Market capitalization metrics",
+        "url": "https://gitbook-docs.coinmetrics.io/network-data/network-data-overview/market/market-capitalization",
+        "section": "Market Cap / Realized Cap / MVRV definitions",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

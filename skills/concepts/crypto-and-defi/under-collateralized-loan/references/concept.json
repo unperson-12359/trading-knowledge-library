@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/under-collateralized-loan",
+  "canonical_sha256": "265a16fb5387b6e174ae79c99b1ae79b821a249e8964933a7a48070d7d5ca759",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/under-collateralized-loan",
+    "name": "Under-collateralized loan",
+    "aliases": [
+      "undercollateralized loan",
+      "unsecured loan (DeFi context)"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "An under-collateralized loan is a loan where the borrower's collateral is worth less than the outstanding debt — either by design (credit-based or flash loans) or by deterioration (a liquidated-too-late position that becomes protocol bad debt).",
+    "intuition": "It is lending on trust rather than on locked value — normal in banking, but the exception in DeFi, where code cannot chase a borrower for the difference.",
+    "mechanics": "Mainstream DeFi lending is overcollateralized, so under-collateralized lending appears only in special forms: flash loans (zero collateral, repaid atomically in the same transaction), credit delegation (a depositor delegates borrowing power to a trusted party), and undercollateralized institutional credit pools with legal agreements. When a normal position becomes undercollateralized faster than liquidators act, the deficit becomes bad debt socialized across the protocol.",
+    "formula": "",
+    "relationships": [
+      "Overcollateralized loan",
+      "Flash loan",
+      "Lending protocol",
+      "Health factor"
+    ],
+    "failure_modes": "Without excess collateral, default risk returns: credit delegation and institutional pools depend on legal enforcement or reputation rather than code, and defaults cannot be clawed back trustlessly; bad debt from failed liquidations is absorbed by the protocol's suppliers.",
+    "misconceptions": "Under-collateralized does not mean unsecured-in-the-moment for flash loans — atomicity is a stronger guarantee than collateral. Conversely, an 'overcollateralized' loan is only as safe as its collateral's liquidity and oracle, and can silently become undercollateralized in a crash.",
+    "example": "A flash loan of 50,000 ETH is 'undercollateralized' for ~12 seconds yet riskless to Aave because repayment is enforced in the same transaction; by contrast, a $1M institutional credit line with $600k collateral relies on contracts and courts if the borrower defaults.",
+    "citations": [
+      {
+        "source": "Aave docs - Flash Loans",
+        "url": "https://aave.com/docs/concepts/flash-loans",
+        "section": "Overview",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Ethereum.org - Decentralized finance (DeFi)",
+        "url": "https://ethereum.org/en/defi/",
+        "section": "What can you do with DeFi?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

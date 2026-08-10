@@ -308,6 +308,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="health-factor"><h3>Health factor <a class="anchor" href="#health-factor">#</a></h3>
 <div class="field">The health factor is Aave&#x27;s numeric measure of how safe a borrow position is: the collateralization of the account weighted by liquidation thresholds, divided by total borrows — a value below 1 means the position can be liquidated.</div>
+<div class="skill-links"><a href="../skills/tkl-health-factor/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is a fuel gauge for your loan: comfortably above 1 is green, approaching 1 is the warning light, below 1 liquidators take the car.</div>
 <div class="field"><span class="label">Mechanics:</span> Health factor = (Σ collateral_i in ETH × liquidation threshold_i) / total borrows in ETH. It rises when collateral appreciates or debt is repaid, and falls when collateral drops or debt grows (including accrued interest). Users improve it by supplying more collateral or repaying; liquidators monitor accounts for HF &lt; 1.</div>
 <div class="field"><span class="label">Failure modes:</span> HF depends entirely on oracle prices, so oracle failure or L2 sequencer downtime can make HF misleading exactly when it matters; in violent crashes HF can skip from safe to insolvent before liquidators act, leaving bad debt.</div>
@@ -334,6 +335,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="liquidation-bonus"><h3>Liquidation bonus <a class="anchor" href="#liquidation-bonus">#</a></h3>
 <div class="field">The liquidation bonus (or penalty) is the discount at which a liquidator can claim a borrower&#x27;s collateral when repaying their debt — the economic incentive that makes third-party liquidation profitable.</div>
+<div class="skill-links"><a href="../skills/tkl-liquidation-bonus/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the bounty for the repo agent: repay part of a failing loan and you get to buy the borrower&#x27;s collateral at a few percent below market.</div>
 <div class="field"><span class="label">Mechanics:</span> When HF &lt; 1, anyone can call liquidationCall, repay up to 50% of the debt (100% if HF is below the close-factor threshold), and receive collateral worth debt repaid × (1 + bonus). Bonuses are set per asset by governance (e.g. ~5% on majors, higher on risky assets); the discount is the borrower&#x27;s liquidation penalty.</div>
 <div class="field"><span class="label">Failure modes:</span> Bonuses that are too small fail to attract liquidators in congestion or crashes (bad debt accumulates); too large, and they over-punish borrowers and invite liquidation-hunting manipulation of oracle prices.</div>
@@ -347,6 +349,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="overcollateralized-loan"><h3>Overcollateralized loan <a class="anchor" href="#overcollateralized-loan">#</a></h3>
 <div class="field">An overcollateralized loan is a loan whose collateral value exceeds the borrowed amount — the standard structure of DeFi lending, where borrowers must post more than they take because there is no credit assessment or recourse beyond the collateral.</div>
+<div class="skill-links"><a href="../skills/tkl-overcollateralized-loan/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Borrow $70 by locking up $100: the lender never checks your credit because your collateral is already worth more than the debt and can be seized instantly.</div>
 <div class="field"><span class="label">Mechanics:</span> Lending protocols enforce overcollateralization through per-asset LTV caps (e.g. 75-80%) and liquidation thresholds: oracles revalue collateral continuously, and positions drifting toward undercollateralization (health factor &lt; 1) are liquidated permissionlessly to keep the protocol solvent. Interest accrues on the debt, slowly consuming the collateral buffer.</div>
 <div class="field"><span class="label">Failure modes:</span> Overcollateralization protects only while collateral is liquid and correctly priced: flash crashes, oracle failures or illiquid collateral can flip a loan to undercollateralized before liquidators respond, creating protocol bad debt.</div>
@@ -360,6 +363,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="under-collateralized-loan"><h3>Under-collateralized loan <a class="anchor" href="#under-collateralized-loan">#</a></h3>
 <div class="field">An under-collateralized loan is a loan where the borrower&#x27;s collateral is worth less than the outstanding debt — either by design (credit-based or flash loans) or by deterioration (a liquidated-too-late position that becomes protocol bad debt).</div>
+<div class="skill-links"><a href="../skills/tkl-under-collateralized-loan/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is lending on trust rather than on locked value — normal in banking, but the exception in DeFi, where code cannot chase a borrower for the difference.</div>
 <div class="field"><span class="label">Mechanics:</span> Mainstream DeFi lending is overcollateralized, so under-collateralized lending appears only in special forms: flash loans (zero collateral, repaid atomically in the same transaction), credit delegation (a depositor delegates borrowing power to a trusted party), and undercollateralized institutional credit pools with legal agreements. When a normal position becomes undercollateralized faster than liquidators act, the deficit becomes bad debt socialized across the protocol.</div>
 <div class="field"><span class="label">Failure modes:</span> Without excess collateral, default risk returns: credit delegation and institutional pools depend on legal enforcement or reputation rather than code, and defaults cannot be clawed back trustlessly; bad debt from failed liquidations is absorbed by the protocol&#x27;s suppliers.</div>
@@ -372,6 +376,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="staking"><h3>Staking <a class="anchor" href="#staking">#</a></h3>
 <div class="field">Staking is the act of depositing a network&#x27;s native token to activate validator software that secures a proof-of-stake chain — proposing and attesting to blocks — in exchange for protocol rewards, with penalties (slashing) for misbehavior or downtime.</div>
+<div class="skill-links"><a href="../skills/tkl-staking/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Staking is posting a performance bond to become part-time infrastructure: do the work honestly and you earn a yield on your deposit; cheat or sleep and part of the deposit burns.</div>
 <div class="field"><span class="label">Mechanics:</span> On Ethereum, solo staking requires 32 ETH and running execution, consensus and validator clients; rewards accrue for attestations, block proposals and sync duties, while offline validators leak small penalties and equivocating validators are slashed and ejected. Alternatives with lower barriers include pooled staking, staking-as-a-service, liquid staking and exchange staking, each adding its own trust assumptions.</div>
 <div class="field"><span class="label">Failure modes:</span> Slashing (including correlated mass slashing) and inactivity penalties reduce stake; custodial and pooled staking concentrate funds and validators, creating central points of failure; staking yields are diluted as more of the supply stakes (issuance per validator falls with total stake).</div>
@@ -384,6 +389,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="liquid-staking-token"><h3>Liquid staking token <a class="anchor" href="#liquid-staking-token">#</a></h3>
 <div class="field">A liquid staking token (LST) is a transferable token issued by a liquid staking protocol (e.g. Lido&#x27;s stETH) that represents a claim on staked assets plus accruing rewards, letting stakers stay liquid and use their stake in DeFi while validators do the work.</div>
+<div class="skill-links"><a href="../skills/tkl-liquid-staking-token/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is a receipt for your staked ETH that trades like ETH itself — you earn staking yield while still being able to sell, lend or LP the receipt.</div>
 <div class="field"><span class="label">Mechanics:</span> Users deposit ETH into the staking pool; the protocol stakes it across a set of professional node operators and mints stETH (or similar) to the depositor. The token&#x27;s balance or exchange rate grows with staking rewards net of a protocol fee (Lido takes 10% of rewards), and it can be traded, used as collateral, or redeemed for the underlying (subject to withdrawal queues).</div>
 <div class="field"><span class="label">Failure modes:</span> LSTs can trade below their underlying value (depeg) during market stress or withdrawal congestion, and leveraged looping of LST collateral unwinds violently when the peg slips; smart contract bugs, operator slashing and governance capture add layers beyond native staking risk.</div>
