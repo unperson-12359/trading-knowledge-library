@@ -1,21 +1,19 @@
 """Build the static site from concepts/*.json into docs/ (GitHub Pages source).
 
 Stdlib only. Generates:
-  docs/index.html              dashboard + domain table + search
+  docs/index.html              consolidated searchable concept catalog
   docs/about.html              AI disclosure and project methodology
   docs/playbooks/              research playbook index + detail pages
   docs/research/               executable research index + result reports
-  docs/all.html                A-Z index of every concept
-  docs/<slug>/index.html       domain page 1 (25 entries/page)
-  docs/<slug>/page-N.html      further domain pages
+  docs/all.html                compatibility redirect to the catalog
+  docs/<slug>/*.html           compatibility redirects for legacy concept URLs
   docs/api/v1/regimes.json     regime taxonomy + core annotations
   docs/api/v1/playbooks.json   all research playbook objects
   docs/search-index.json       client-side search data
   docs/sitemap.xml             every generated page
 
-Navigation: sidebar with all domains on every page, breadcrumbs, prev/next
-domain links, full pager (First/Prev/numbered/Next/Last), rel=prev/next,
-internal link checker (build fails if any internal href is broken).
+Navigation: compact global header, shareable catalog filters, breadcrumbs,
+and an internal link checker (build fails if any internal href is broken).
 """
 import html
 import json
@@ -33,19 +31,14 @@ PER_PAGE = 25
 
 CSS = """
 *{box-sizing:border-box}
-body{font-family:Georgia,serif;margin:0;color:#1a1a1a;line-height:1.55;display:flex;min-height:100vh}
+body{font-family:Georgia,serif;margin:0;color:#1a1a1a;line-height:1.55;min-height:100vh;background:#fff}
 a{color:#0b5fff;text-decoration:none}a:hover{text-decoration:underline}
-nav#sidebar{width:250px;flex-shrink:0;background:#f7f7f5;border-right:1px solid #e2e2e0;padding:1rem;position:sticky;top:0;height:100vh;overflow-y:auto;font-family:system-ui;font-size:.85rem}
-nav#sidebar h2{font-size:.95rem;margin:.2rem 0 .6rem}
-nav#sidebar ul{list-style:none;margin:0;padding:0}
-nav#sidebar li{margin:.1rem 0}
-nav#sidebar a{display:block;padding:.18rem .4rem;border-radius:4px;color:#333}
-nav#sidebar a.active{background:#2d6a4f;color:#fff;font-weight:600}
-nav#sidebar a:hover{background:#e6e6e2;text-decoration:none}
-nav#sidebar a.active:hover{background:#2d6a4f}
-nav#sidebar .count{color:#888;font-size:.75rem}
-nav#sidebar a.active .count{color:#cfe8d8}
-main{flex:1;padding:1.5rem 2rem;max-width:900px;min-width:0}
+.global-header{position:sticky;top:0;z-index:20;background:#101010;color:#fff;border-bottom:1px solid #2d2d2d;font-family:system-ui}
+.header-inner{max-width:1180px;margin:0 auto;padding:.8rem 1.4rem;display:flex;align-items:center;gap:1.5rem}
+.brand{color:#fff;font-weight:800;letter-spacing:-.02em;white-space:nowrap}.brand:hover{text-decoration:none;color:#ffb08a}
+.global-nav{display:flex;align-items:center;gap:.25rem;flex-wrap:wrap}.global-nav a{color:#ddd;padding:.38rem .62rem;border-radius:5px;font-size:.86rem}.global-nav a:hover{background:#262626;color:#fff;text-decoration:none}.global-nav a.active{background:#fff;color:#111;font-weight:700}
+.github-link{margin-left:auto;color:#ffb08a;font-size:.86rem}.github-link:hover{color:#fff;text-decoration:none}
+main{padding:1.5rem 1.4rem;max-width:1180px;margin:0 auto;min-width:0}
 h1{border-bottom:3px solid #111;padding-bottom:.3rem;font-size:1.6rem}
 .crumbs{font-family:system-ui;font-size:.8rem;color:#666;margin-bottom:1rem}
 .crumbs a{color:#666}
@@ -73,13 +66,13 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 .metric strong{display:block;font-size:1.15rem}.metric span{font-size:.72rem;color:#666}
 .negative{color:#a61b1b}.positive{color:#176b35}
 .json{white-space:pre-wrap;background:#f4f4f4;padding:.7rem;border-radius:4px;font-family:Consolas,monospace;font-size:.8rem}
-.query-controls{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:.55rem;margin:1rem 0;font-family:system-ui}
+.query-controls{display:grid;grid-template-columns:minmax(220px,2fr) repeat(4,minmax(130px,1fr));gap:.55rem;margin:1rem 0;font-family:system-ui;align-items:end}
 .query-controls input,.query-controls select{width:100%;padding:.5rem;border:1px solid #bbb;border-radius:5px;background:#fff}
 .query-controls label{font-size:.78rem;color:#555}.query-controls .check{display:flex;align-items:end;padding-bottom:.5rem}
 .query-result{border-bottom:1px solid #ddd;padding:.8rem 0}.query-result h2{font-size:1.05rem;margin:0 0 .2rem}
 .skills-hero{background:#111;color:#fff;border-radius:10px;padding:1.3rem 1.4rem;margin-bottom:1rem}.skills-hero h1{border:0;margin:.1rem 0}.skills-hero p{max-width:680px}.skills-hero a{color:#ffb08a}
 .catalog-stat{font-family:system-ui;font-size:1.05rem;margin:.8rem 0}.catalog-stat strong{font-size:1.45rem}
-.skill-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin:1rem 0}
+.skill-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1rem 0}
 .skill-card{border:1px solid #ccc;border-radius:8px;padding:1rem;background:#fff;display:flex;flex-direction:column;min-height:205px}.skill-card:hover{border-color:#d97745;box-shadow:0 3px 12px #0000000d}.skill-card h2{font-family:system-ui;font-size:1.08rem;margin:0 0 .25rem}.skill-card p{margin:.5rem 0;flex:1}.skill-links{font-family:system-ui;font-size:.82rem;border-top:1px solid #eee;padding-top:.55rem}.skill-arrow{float:right;color:#d05f2c}
 .skill-identity{border:1px solid #ddd;border-radius:8px;padding:.8rem 1rem;font-family:system-ui;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1rem 0}.skill-identity strong{display:block;font-size:.78rem;color:#666}.skill-identity span{overflow-wrap:anywhere}
 .use-panel{border:1px solid #ccc;border-radius:8px;padding:1rem;margin:1rem 0}.copy-row{display:flex;gap:.5rem;align-items:start}.copy-row pre{flex:1;margin:0}.copy-button{border:1px solid #aaa;background:#fff;border-radius:5px;padding:.45rem .65rem;cursor:pointer;font-weight:600}.copy-button:hover{background:#f3f3f0}
@@ -94,10 +87,10 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 #search-results{list-style:none;margin:0 0 .8rem;padding:0}
 #search-results li{padding:.25rem .4rem;border-bottom:1px solid #eee}
 #search-results .sr-domain{color:#888;font-size:.72rem}
+.catalog-tools{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin:.8rem 0}.letter-nav{display:flex;gap:.2rem;flex-wrap:wrap;font:600 .78rem system-ui}.letter-nav a{padding:.2rem .4rem;border-radius:4px;border:1px solid #ddd;color:#444}.letter-nav a.active,.letter-nav a:hover{background:#111;color:#fff;text-decoration:none;border-color:#111}.catalog-pagination{display:flex;gap:.35rem;justify-content:center;align-items:center;margin:1.2rem 0;font-family:system-ui}.catalog-pagination a,.catalog-pagination span{border:1px solid #ccc;border-radius:5px;padding:.35rem .65rem}.catalog-pagination .current{background:#111;color:#fff;border-color:#111}.catalog-pagination a:hover{background:#f3f3f0;text-decoration:none}
+.redirect-card{max-width:620px;margin:12vh auto;padding:1.5rem;border:1px solid #ddd;border-radius:10px;font-family:system-ui;background:#fff}
 @media(max-width:820px){
- body{display:block}
- nav#sidebar{width:100%;height:auto;position:static;border-right:none;border-bottom:1px solid #e2e2e0}
- nav#sidebar details.tocwrap:not([open]) .navlist{display:none}
+ .global-header{position:static}.header-inner{align-items:flex-start;gap:.6rem;flex-wrap:wrap}.global-nav{order:3;width:100%}.github-link{margin-left:0}
  main{padding:1rem}
  .toc{columns:1}
  .query-controls{grid-template-columns:1fr 1fr}
@@ -108,57 +101,28 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 }
 """
 
-SEARCH_JS = """
+CATALOG_JS = """
 (function(){
-  var box=document.getElementById('search'),res=document.getElementById('search-results');
-  if(!box||!res)return;var idx=null;
-  function load(){if(idx)return Promise.resolve(idx);
-    return fetch(box.getAttribute('data-index')).then(function(r){return r.json()}).then(function(d){idx=d;return d});}
-  box.addEventListener('input',function(){
-    var q=box.value.trim().toLowerCase();res.innerHTML='';
-    if(q.length<2)return;
-    load().then(function(data){
-      var hits=data.filter(function(e){return (e.n+' '+(e.a||'')+' '+(e.x||'')).toLowerCase().indexOf(q)!==-1}).slice(0,12);
-      res.innerHTML=hits.map(function(e){
-        return '<li><a href="'+e.u+'">'+e.n+'</a> <span class="sr-domain">'+e.d+'</span></li>';
-      }).join('')||'<li class="meta">No matches</li>';
-    });
-  });
-})();
-"""
-
-QUERY_JS = """
-(function(){
-  var form=document.getElementById('query-controls'),out=document.getElementById('query-results'),count=document.getElementById('query-count');
+  var form=document.getElementById('catalog-controls'),out=document.getElementById('catalog-results'),count=document.getElementById('catalog-count'),letters=document.getElementById('letter-nav'),pager=document.getElementById('catalog-pagination');
   if(!form||!out)return;
-  var state={concepts:[],playbooks:[]},fields=['q','type','domain','required_input','regime'];
-  function h(s){return String(s).replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]});}
-  function applyUrl(){var p=new URLSearchParams(location.search);fields.forEach(function(k){if(p.has(k))form.elements[k].value=p.get(k)});form.elements.core.checked=p.get('core')==='1';}
-  function updateUrl(){var p=new URLSearchParams();fields.forEach(function(k){var v=form.elements[k].value.trim();if(v)p.set(k,v)});if(form.elements.core.checked)p.set('core','1');history.replaceState(null,'',location.pathname+(p.toString()?'?'+p:''));}
-  function concept(c){return {type:'concept',title:c.name,domain:c.domain,url:c.url,core:c.core,regimes:(c.regime_annotation||{}).regime_relevance||[],required:[],summary:c.definition,text:[c.name,(c.aliases||[]).join(' '),c.definition,c.intuition,c.mechanics,c.failure_modes,c.misconceptions].join(' ').toLowerCase()};}
-  function playbook(p){return {type:'playbook',title:p.title,domain:'Research playbooks',url:'playbooks/'+p.id+'.html',core:true,regimes:(p.regime_profile.favored||[]).concat(p.regime_profile.avoid||[]),required:(p.required_data||[]).map(function(x){return x.field}),summary:p.hypothesis,text:[p.title,p.hypothesis,(p.failure_modes||[]).join(' '),(p.concept_ids||[]).join(' ')].join(' ').toLowerCase()};}
-  function run(){updateUrl();var q=form.elements.q.value.trim().toLowerCase(),type=form.elements.type.value,domain=form.elements.domain.value,required=form.elements.required_input.value,regime=form.elements.regime.value,core=form.elements.core.checked;
-    var rows=state.concepts.map(concept).concat(state.playbooks.map(playbook)).filter(function(x){return (!q||x.text.indexOf(q)!==-1)&&(!type||x.type===type)&&(!domain||x.domain===domain)&&(!core||x.core)&&(!required||x.required.indexOf(required)!==-1)&&(!regime||x.regimes.indexOf(regime)!==-1)}).slice(0,200);
-    count.textContent=rows.length+(rows.length===200?' (first 200)':'')+' results';
-    out.innerHTML=rows.map(function(x){return '<article class="query-result"><h2><a href="'+h(x.url)+'">'+h(x.title)+'</a></h2><div class="meta">'+h(x.type)+' &middot; '+h(x.domain)+(x.core?' &middot; core':'')+'</div><p>'+h(x.summary)+'</p></article>'}).join('')||'<p>No matching records.</p>';
-  }
-  applyUrl();Promise.all([fetch('api/v1/concepts.json').then(function(r){return r.json()}),fetch('api/v1/playbooks.json').then(function(r){return r.json()})]).then(function(data){state.concepts=data[0];state.playbooks=data[1];run()});
-  form.addEventListener('input',run);form.addEventListener('change',run);form.addEventListener('submit',function(e){e.preventDefault();run()});
-})();
-"""
-
-SKILLS_JS = """
-(function(){
-  var form=document.getElementById('skill-controls'),out=document.getElementById('skill-results'),count=document.getElementById('skill-count');
-  if(!form||!out)return;var catalog=[];
+  var state={skills:[],concepts:{}},pageSize=60,fields=['q','domain','regime','letter','sort'];
   function h(s){return String(s==null?'':s).replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]});}
-  function render(){var q=form.elements.q.value.trim().toLowerCase(),domain=form.elements.domain.value,core=form.elements.core.checked;
-    var rows=catalog.filter(function(x){var text=[x.display_name,x.concept_id,x.description,(x.trigger_phrases||[]).join(' ')].join(' ').toLowerCase();return (!q||text.indexOf(q)!==-1)&&(!domain||x.domain===domain)&&(!core||x.core);});
-    count.textContent=rows.length+' of '+catalog.length+' skills';
-    out.innerHTML=rows.map(function(x){return '<article class="skill-card"><h2><a href="'+h(x.detail_url)+'">'+h(x.display_name)+'</a><span class="skill-arrow">&rarr;</span></h2><div class="meta">'+h(x.domain)+(x.core?' &middot; core collection':'')+'</div><p>'+h(x.description)+'</p><div class="skill-links"><a href="'+h(x.detail_url)+'">View complete skill</a> &middot; <a href="'+h(x.profile_url)+'">JSON</a></div></article>';}).join('')||(catalog.length?'<p>No skills match these filters.</p>':'<p>The skill catalog is being prepared.</p>');
+  function applyUrl(){var p=new URLSearchParams(location.search);fields.forEach(function(k){if(p.has(k)&&form.elements[k])form.elements[k].value=p.get(k)});form.elements.core.checked=p.get('core')==='1';}
+  function params(page){var p=new URLSearchParams();fields.forEach(function(k){var v=form.elements[k].value.trim();if(v&&!(k==='sort'&&v==='az'))p.set(k,v)});if(form.elements.core.checked)p.set('core','1');if(page>1)p.set('page',page);return p;}
+  function href(changes){var p=params(1);Object.keys(changes).forEach(function(k){var v=changes[k];if(v)p.set(k,v);else p.delete(k)});return 'index.html'+(p.toString()?'?'+p:'');}
+  function updateUrl(page){var p=params(page);history.replaceState(null,'',location.pathname+(p.toString()?'?'+p:''));}
+  function render(){
+    var q=form.elements.q.value.trim().toLowerCase(),domain=form.elements.domain.value,regime=form.elements.regime.value,letter=form.elements.letter.value.toUpperCase(),core=form.elements.core.checked,sort=form.elements.sort.value;
+    var rows=state.skills.filter(function(x){var c=state.concepts[x.concept_id]||{},text=[x.display_name,x.concept_id,x.description,(x.trigger_phrases||[]).join(' '),(c.aliases||[]).join(' '),c.definition,c.intuition,c.mechanics,c.failure_modes,c.misconceptions].join(' ').toLowerCase(),regimes=((c.regime_annotation||{}).regime_relevance||[]);return (!q||text.indexOf(q)!==-1)&&(!domain||x.concept_id.split('/')[0]===domain)&&(!core||x.core)&&(!regime||regimes.indexOf(regime)!==-1)&&(!letter||x.display_name.charAt(0).toUpperCase()===letter);});
+    rows.sort(function(a,b){if(sort==='domain'){var d=a.domain.localeCompare(b.domain);if(d)return d;}return a.display_name.localeCompare(b.display_name);});
+    var requested=parseInt(new URLSearchParams(location.search).get('page')||'1',10),pages=Math.max(1,Math.ceil(rows.length/pageSize)),page=Math.min(Math.max(requested,1),pages),shown=rows.slice((page-1)*pageSize,page*pageSize);
+    updateUrl(page);count.innerHTML=rows.length+' of '+state.skills.length+' concepts'+(rows.length?' &middot; showing '+((page-1)*pageSize+1)+'&ndash;'+Math.min(page*pageSize,rows.length):'');
+    out.innerHTML=shown.map(function(x){var c=state.concepts[x.concept_id]||{},url='skills/'+encodeURIComponent(x.skill_name)+'/';return '<article class="skill-card"><h2><a href="'+url+'">'+h(x.display_name)+'</a><span class="skill-arrow">&rarr;</span></h2><div class="meta">'+h(x.domain)+(x.core?' &middot; core collection':'')+'</div><p>'+h(c.definition||x.description)+'</p><div class="skill-links"><a href="'+url+'">Open concept</a> &middot; <a href="api/v1/skills/'+encodeURIComponent(x.skill_name)+'.json">JSON</a></div></article>';}).join('')||(state.skills.length?'<p>No concepts match these filters.</p>':'<p>The concept catalog is being prepared.</p>');
+    var alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');letters.innerHTML='<a href="'+h(href({letter:''}))+'"'+(!letter?' class="active"':'')+'>All</a>'+alphabet.map(function(x){return '<a href="'+h(href({letter:x}))+'"'+(letter===x?' class="active"':'')+'>'+x+'</a>';}).join('');
+    var nav=[];if(page>1)nav.push('<a href="'+h(href({page:String(page-1)}))+'">&larr; Previous</a>');nav.push('<span class="current">'+page+' of '+pages+'</span>');if(page<pages)nav.push('<a href="'+h(href({page:String(page+1)}))+'">Next &rarr;</a>');pager.innerHTML=nav.join('');
   }
-  fetch('../api/v1/skills.json').then(function(r){return r.json()}).then(function(data){catalog=data.skills||[];var wanted=new URLSearchParams(location.search).get('skill');if(wanted)form.elements.q.value=wanted;render();});
-  form.addEventListener('input',render);form.addEventListener('change',render);
+  applyUrl();Promise.all([fetch('api/v1/skills.json').then(function(r){return r.json()}),fetch('api/v1/concepts.json').then(function(r){return r.json()})]).then(function(data){state.skills=data[0].skills||[];data[1].forEach(function(c){state.concepts[c.id]=c});render();});
+  form.addEventListener('input',function(){history.replaceState(null,'',location.pathname);render();});form.addEventListener('change',function(){history.replaceState(null,'',location.pathname);render();});form.addEventListener('submit',function(e){e.preventDefault();render();});
 })();
 """
 
@@ -174,11 +138,6 @@ COPY_JS = """
 })();
 """
 
-FIELDS = [("intuition", "Intuition"), ("mechanics", "Mechanics"),
-          ("failure_modes", "Failure modes"), ("misconceptions", "Misconceptions"),
-          ("example", "Example")]
-
-
 def esc(s):
     return html.escape(str(s), quote=True)
 
@@ -187,68 +146,38 @@ def anchor(name):
     return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
 
-def render_entry(e, prefix, relationship_lookup, concept_urls, skill_urls):
-    parts = [f'<article class="entry" id="{anchor(e["name"])}"><h3>{esc(e["name"])} '
-             f'<a class="anchor" href="#{anchor(e["name"])}">#</a></h3>']
-    parts.append(f'<div class="field">{esc(e["definition"])}</div>')
-    if e["id"] in skill_urls:
-        parts.append(
-            f'<div class="skill-links"><a href="{prefix}{skill_urls[e["id"]]}">'
-            'Open unified concept + skill view &rarr;</a></div>'
-        )
-    for key, label in FIELDS:
-        if e.get(key):
-            parts.append(f'<div class="field"><span class="label">{label}:</span> {esc(e[key])}</div>')
-    if e.get("formula"):
-        parts.append(f'<div class="formula">{esc(e["formula"])}</div>')
-    if e.get("aliases"):
-        parts.append(f'<div class="field"><span class="label">Aliases:</span> {esc(", ".join(e["aliases"]))}</div>')
-    if e.get("relationships"):
-        rendered = []
-        for relationship in e["relationships"]:
-            concept_id = relationship_lookup.get(relationship.casefold())
-            if concept_id:
-                rendered.append(
-                    f'<li><a href="{prefix}{concept_urls[concept_id]}">{esc(relationship)}</a></li>'
-                )
-            else:
-                rendered.append(f"<li>{esc(relationship)}</li>")
-        rel = "".join(rendered)
-        parts.append(f'<div class="field"><span class="label">Related:</span><ul class="rel">{rel}</ul></div>')
-    for c in e.get("citations", []):
-        url = esc(c.get("url", ""))
-        sec = f' — {esc(c["section"])}' if c.get("section") else ""
-        parts.append(f'<div class="field"><span class="label">Source:</span> '
-                     f'<a href="{url}" rel="noopener">{esc(c.get("source", url))}</a>{sec}</div>')
-    parts.append("</article>")
-    return "\n".join(parts)
+def redirect_document(title, fallback, script):
+    """Return a small GitHub Pages-compatible redirect with a usable fallback."""
+    return (
+        "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'>"
+        "<meta name='viewport' content='width=device-width,initial-scale=1'>"
+        f"<title>{esc(title)}</title><style>{CSS}</style></head><body>"
+        f"<main><div class='redirect-card'><h1>{esc(title)}</h1>"
+        "<p>This address now opens the consolidated trading concept library.</p>"
+        f"<p><a href='{esc(fallback)}'>Continue to the library</a></p></div></main>"
+        f"<script>{script}</script></body></html>"
+    )
 
 
 def page(title, body, prefix, slug, domains, extra_head="", description=""):
-    links = []
-    for s, d in domains:
-        active = ' class="active"' if s == slug else ""
-        links.append(f'<li><a href="{prefix}{s}/"{active}>{esc(d[0]["domain"])} '
-                     f'<span class="count">{len(d)}</span></a></li>')
-    nav = (f'<nav id="sidebar" aria-label="Domains">'
-           f'<h2><a href="{prefix}index.html" style="color:#111">Trading Library</a></h2>'
-           f'<input id="search" type="search" placeholder="Search 1,500 concepts…" '
-           f'data-index="{prefix}search-index.json" aria-label="Search concepts">'
-           f'<ul id="search-results"></ul>'
-           f'<details class="tocwrap" open><summary class="meta">Domains</summary>'
-           f'<ul class="navlist"><li><a href="{prefix}all.html"'
-           + (' class="active"' if slug == "all" else "")
-           + f'>A–Z index</a></li><li><a href="{prefix}about.html"'
-           + (' class="active"' if slug == "about" else "")
-           + f'>About &amp; Methodology</a></li><li><a href="{prefix}query.html"'
-           + (' class="active"' if slug == "query" else "")
-           + f'>Structured query</a></li><li><a href="{prefix}playbooks/"'
-           + (' class="active"' if slug == "playbooks" else "")
-           + f'>Research playbooks</a></li><li><a href="{prefix}research/"'
-           + (' class="active"' if slug == "research" else "")
-           + f'>Research results</a></li><li><a href="{prefix}skills/"'
-           + (' class="active"' if slug == "skills" else "")
-           + f'>Concept skills</a></li>{"".join(links)}</ul></details></nav>')
+    nav_items = [
+        ("", "Library", f"{prefix}index.html"),
+        ("playbooks", "Playbooks", f"{prefix}playbooks/"),
+        ("research", "Research", f"{prefix}research/"),
+        ("about", "About", f"{prefix}about.html"),
+    ]
+    nav_links = "".join(
+        f'<a href="{href}"' + (' class="active"' if slug == key else "") +
+        f'>{label}</a>'
+        for key, label, href in nav_items
+    )
+    nav = (
+        '<header class="global-header"><div class="header-inner">'
+        f'<a class="brand" href="{prefix}index.html">Pakupai Library</a>'
+        f'<nav class="global-nav" aria-label="Primary">{nav_links}</nav>'
+        '<a class="github-link" href="https://github.com/unperson-12359/'
+        'trading-knowledge-library">GitHub</a></div></header>'
+    )
     desc = f'<meta name="description" content="{esc(description)}">' if description else ""
     return (f"<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'>"
             f"<meta name='viewport' content='width=device-width,initial-scale=1'>"
@@ -256,31 +185,9 @@ def page(title, body, prefix, slug, domains, extra_head="", description=""):
             f"<body>{nav}<main>{body}"
             f"<p class='meta'>Generated {date.today().isoformat()} · "
             f"<a href='{prefix}about.html'>About &amp; Methodology</a> · "
+            f"<a href='{prefix}api/v1/manifest.json'>JSON API</a> · "
             f"<a href='https://github.com/unperson-12359/trading-knowledge-library'>GitHub</a></p>"
-            f"</main><script>{SEARCH_JS}</script></body></html>")
-
-
-def pager(slug, page_no, n_pages, prefix=""):
-    if n_pages <= 1:
-        return ""
-    def href(p):
-        return f"{prefix}index.html" if p == 1 else f"{prefix}page-{p}.html"
-    items = []
-    if page_no > 1:
-        items.append(f'<a href="{href(1)}" rel="first">First</a>')
-        items.append(f'<a href="{href(page_no - 1)}" rel="prev">Prev</a>')
-    nums = sorted({1, n_pages, *range(max(1, page_no - 2), min(n_pages, page_no + 2) + 1)})
-    last = 0
-    for p in nums:
-        if p - last > 1:
-            items.append('<span class="gap">…</span>')
-        items.append(f'<span class="cur" aria-current="page">{p}</span>' if p == page_no
-                     else f'<a href="{href(p)}">{p}</a>')
-        last = p
-    if page_no < n_pages:
-        items.append(f'<a href="{href(page_no + 1)}" rel="next">Next</a>')
-        items.append(f'<a href="{href(n_pages)}" rel="last">Last</a>')
-    return f'<div class="pager" role="navigation" aria-label="Pagination">{"".join(items)}</div>'
+            f"</main></body></html>")
 
 
 def render_playbook(playbook, prefix, concept_urls, concept_names):
@@ -473,9 +380,14 @@ def main():
         (ROOT / "skills" / "architecture.json").read_text(encoding="utf-8")
     )
     written = set()      # relative paths of generated pages, for the link checker
+    redirects = set()    # compatibility pages excluded from the sitemap
     search_index = []    # {n, d, u}
-    az = {}              # letter -> [(name, url)]
-    concept_urls = {}
+    legacy_urls = {}
+    skill_urls = {
+        profile["concept_id"]: f'skills/{profile["skill_name"]}/'
+        for profile in skill_manifest["skills"]
+    }
+    concept_urls = dict(skill_urls)
     concept_names = {}
     concept_by_id = {}
     term_ids = {}
@@ -484,15 +396,18 @@ def main():
             page_no = index // PER_PAGE + 1
             url = f"{slug}/" if page_no == 1 else f"{slug}/page-{page_no}.html"
             url += f"#{anchor(entry['name'])}"
-            concept_urls[entry["id"]] = url
+            legacy_urls[entry["id"]] = url
             concept_names[entry["id"]] = entry["name"]
             concept_by_id[entry["id"]] = entry
+            search_index.append({
+                "n": entry["name"], "d": entry["domain"],
+                "u": concept_urls[entry["id"]],
+                "a": " ".join(entry.get("aliases", [])),
+                "x": " ".join([entry.get("definition", ""), entry.get("intuition", "")]),
+            })
             for term in [entry["name"], *entry.get("aliases", [])]:
                 term_ids.setdefault(term.casefold(), set()).add(entry["id"])
-    skill_urls = {
-        profile["concept_id"]: f'skills/{profile["skill_name"]}/'
-        for profile in skill_manifest["skills"]
-    }
+    assert len(concept_urls) == total, "every concept must have a unified detail page"
     relationship_lookup = {
         term: next(iter(ids_for_term))
         for term, ids_for_term in term_ids.items() if len(ids_for_term) == 1
@@ -503,107 +418,80 @@ def main():
         if relationship.casefold() not in relationship_lookup
     })
 
-    # ---- domain pages (paginated) ----
-    for di, (slug, data) in enumerate(domains):
-        n = len(data)
-        n_pages = max(1, (n + PER_PAGE - 1) // PER_PAGE)
+    # ---- legacy domain URLs -> unified concept pages ----
+    for slug, data in domains:
+        n_pages = max(1, (len(data) + PER_PAGE - 1) // PER_PAGE)
         ddir = DOCS / slug
         ddir.mkdir()
-        prev_slug = domains[di - 1][0] if di > 0 else None
-        next_slug = domains[di + 1][0] if di + 1 < len(domains) else None
-        toc = '<div class="toc">' + "".join(
-            f'<div><a href="#{anchor(e["name"])}">{esc(e["name"])}</a></div>' for e in data) + "</div>"
-
         for pno in range(1, n_pages + 1):
             chunk = data[(pno - 1) * PER_PAGE: pno * PER_PAGE]
             fname = "index.html" if pno == 1 else f"page-{pno}.html"
-            for e in chunk:
-                url = f"{slug}/" if pno == 1 else f"{slug}/page-{pno}.html"
-                url += f"#{anchor(e['name'])}"
-                search_index.append({
-                    "n": e["name"], "d": data[0]["domain"], "u": url,
-                    "a": " ".join(e.get("aliases", [])),
-                    "x": " ".join([e.get("definition", ""), e.get("intuition", "")]),
-                })
-                concept_urls[e["id"]] = url
-                concept_names[e["id"]] = e["name"]
-                az.setdefault(e["name"][0].upper(), []).append((e["name"], url))
-
-            lo, hi = (pno - 1) * PER_PAGE + 1, min(n, pno * PER_PAGE)
-            crumbs = (f'<div class="crumbs"><a href="../index.html">Home</a> / '
-                      f'<a href="./">{esc(data[0]["domain"])}</a>'
-                      + (f' / page {pno}' if pno > 1 else "") + "</div>")
-            head = ""
-            if pno > 1:
-                head += f'<link rel="prev" href="{"./" if pno == 2 else f"page-{pno-1}.html"}">'
-            if pno < n_pages:
-                head += f'<link rel="next" href="page-{pno+1}.html">'
-            domnav = '<div class="domainnav">'
-            domnav += (f'<a href="../{prev_slug}/">&larr; {esc(domains[di-1][1][0]["domain"])}</a>'
-                       if prev_slug else "<span></span>")
-            domnav += (f'<a href="../{next_slug}/">{esc(domains[di+1][1][0]["domain"])} &rarr;</a>'
-                       if next_slug else "<span></span>")
-            domnav += "</div>"
-
-            body = (crumbs + f"<h1>{esc(data[0]['domain'])}</h1>"
-                    f'<p class="meta">{n} concepts · '
-                    f'<span class="showing">showing {lo}–{hi} of {n}</span></p>'
-                    + (toc if pno == 1 else "")
-                    + pager(slug, pno, n_pages)
-                    + "\n".join(
-                        render_entry(e, "../", relationship_lookup, concept_urls, skill_urls)
-                        for e in chunk
-                    )
-                    + pager(slug, pno, n_pages) + domnav)
-            title = f"{data[0]['domain']}" + (f" — page {pno}" if pno > 1 else "")
+            routes = {
+                anchor(entry["name"]): "../" + concept_urls[entry["id"]]
+                for entry in chunk
+            }
+            fallback = f"../index.html?domain={slug}"
+            script = (
+                "(function(){var routes=" + json.dumps(routes, ensure_ascii=False) +
+                ",key=decodeURIComponent(location.hash.slice(1));"
+                f"location.replace(routes[key]||{json.dumps(fallback)});}})();"
+            )
+            rel = f"{slug}/{fname}"
             (ddir / fname).write_text(
-                page(title, body, "../", slug, domains, extra_head=head,
-                     description=f"{data[0]['domain']}: {n} trading concepts with citations."),
-                encoding="utf-8")
-            written.add(f"{slug}/{fname}")
+                redirect_document(data[0]["domain"], fallback, script), encoding="utf-8"
+            )
+            written.add(rel)
+            redirects.add(rel)
 
-    # ---- A-Z index ----
-    letters = sorted(az)
-    alpha_nav = " ".join(f'<a href="#L-{l}">{l}</a>' for l in letters)
-    az_body = ['<div class="crumbs"><a href="index.html">Home</a> / A–Z index</div>',
-               f"<h1>All {total} concepts, A–Z</h1>",
-               f'<div class="pager">{alpha_nav}</div>']
-    for l in letters:
-        az_body.append(f'<h2 id="L-{l}">{l}</h2><ul>')
-        for name, url in sorted(az[l], key=lambda x: x[0].lower()):
-            az_body.append(f'<li><a href="{url}">{esc(name)}</a></li>')
-        az_body.append("</ul>")
+    # ---- compatibility A-Z route ----
+    all_script = "location.replace('index.html'+location.search+location.hash);"
     (DOCS / "all.html").write_text(
-        page("A–Z index", "\n".join(az_body), "", "all", domains), encoding="utf-8")
+        redirect_document("A–Z concept index", "index.html", all_script), encoding="utf-8"
+    )
     written.add("all.html")
+    redirects.add("all.html")
 
-    # ---- index / dashboard ----
-    rows = []
-    for slug, data in domains:
-        n = len(data)
-        rows.append(f"<tr><td><a href='{slug}/'>{esc(data[0]['domain'])}</a></td>"
-                    f"<td>{n}</td></tr>")
+    # ---- consolidated concept catalog ----
+    domain_options = "".join(
+        f'<option value="{esc(slug)}">{esc(data[0]["domain"])} ({len(data)})</option>'
+        for slug, data in domains
+    )
+    regime_tags = [
+        f'{dimension["id"]}.{state["id"]}'
+        for dimension in taxonomy["dimensions"] for state in dimension["states"]
+    ]
+    regime_options = "".join(
+        f'<option value="{esc(value)}">{esc(value)}</option>' for value in regime_tags
+    )
     index_body = (
-        '<div class="crumbs">Home</div>'
-        "<h1>Pakupai Trading Knowledge Library</h1>"
-        "<p>A machine-readable library of trading concepts with definitions, mechanics, "
-        "failure modes, misconceptions, examples, relationships, and citations. "
-        "Phase 1 of Pakupai: the knowledge foundation for AI-native trading.</p>"
-        f"<p><strong>{total} concepts across {len(domains)} domains</strong></p>"
-        "<p class='meta'>Built with AI systems. Read the "
-        "<a href='about.html'>About &amp; Methodology</a> disclosure before using the material.</p>"
-        "<p><a href='query.html'><strong>Open the structured query</strong></a> &middot; "
-        "<a href='playbooks/'>Browse research playbooks</a> &middot; "
-        "<a href='research/'>View executable research</a> &middot; "
-        "<a href='skills/'>Browse concept skills</a> &middot; "
-        "<a href='api/v1/manifest.json'>API manifest</a></p>"
-        "<h2>Domains</h2>"
-        "<table><tr><th>Domain</th><th>Concepts</th></tr>"
-        + "".join(rows) + "</table>")
-    (DOCS / "index.html").write_text(
-        page("Pakupai Trading Knowledge Library", index_body, "", "", domains,
-             description="AI-built trading knowledge library: 1,500 concepts with citations."),
-        encoding="utf-8")
+        '<div class="crumbs">Library</div>'
+        '<section class="skills-hero"><h1>Trading Knowledge Library</h1>'
+        '<p>Search 1,500 trading concepts. Every result opens one complete page with the '
+        'human explanation, AI skill instructions, canonical JSON, packaged references, '
+        'failure modes, misconceptions, and citations.</p>'
+        f'<p class="catalog-stat"><strong>{total}</strong> concepts across '
+        f'<strong>{len(domains)}</strong> domains</p>'
+        '<p><a href="api/v1/skills.json">Machine-readable catalog</a></p></section>'
+        '<p class="warning">Built with AI systems. Verify cited sources independently. '
+        'This library provides educational research and decision support, not financial advice.</p>'
+        '<form id="catalog-controls" class="query-controls">'
+        '<label>Search<input name="q" type="search" placeholder="funding rate, slippage, margin..."></label>'
+        f'<label>Domain<select name="domain"><option value="">All domains</option>{domain_options}</select></label>'
+        f'<label>Regime<select name="regime"><option value="">All regimes</option>{regime_options}</select></label>'
+        '<label>Sort<select name="sort"><option value="az">A–Z</option><option value="domain">Domain</option></select></label>'
+        '<label class="check"><input name="core" type="checkbox" style="width:auto;margin-right:.4rem">Core collection only</label>'
+        '<input name="letter" type="hidden" value=""></form>'
+        '<div class="catalog-tools"><p id="catalog-count" class="meta">Loading catalog...</p>'
+        '<nav id="letter-nav" class="letter-nav" aria-label="Filter by first letter"></nav></div>'
+        '<div id="catalog-results" class="skill-grid"></div>'
+        '<nav id="catalog-pagination" class="catalog-pagination" aria-label="Catalog pages"></nav>'
+    )
+    index_html = page(
+        "Pakupai Trading Knowledge Library", index_body, "", "", domains,
+        extra_head=f'<link rel="canonical" href="{BASE}/">',
+        description="Search 1,500 unified trading concept and AI skill pages."
+    ).replace("</body>", f"<script>{CATALOG_JS}</script></body>")
+    (DOCS / "index.html").write_text(index_html, encoding="utf-8")
     written.add("index.html")
 
     # ---- about / methodology ----
@@ -619,8 +507,8 @@ def main():
         "<h2>How the library is organized</h2>"
         "<p>The canonical data lives in structured JSON. This website and the text export are "
         "generated from that data. Entries emphasize mechanics, failure modes, misconceptions, "
-        "worked examples, relationships, and direct citations. The structured query and static "
-        "JSON API are dependency-free generated views of the same canonical material.</p>"
+        "worked examples, relationships, and direct citations. The consolidated catalog and "
+        "static JSON API are dependency-free generated views of the same canonical material.</p>"
         "<p>Executable studies keep frozen research specifications, immutable hashed datasets, "
         "deterministic trade logs, and reported metrics as separate JSON records. Human-readable "
         "research pages are generated from those same records and do not replace them.</p>"
@@ -641,73 +529,32 @@ def main():
         encoding="utf-8")
     written.add("about.html")
 
-    # ---- structured query ----
-    domain_options = "".join(
-        f'<option value="{esc(data[0]["domain"])}">{esc(data[0]["domain"])}</option>'
-        for _, data in domains
+    # ---- compatibility routes for the former query and skill catalogs ----
+    query_script = (
+        "(function(){var p=new URLSearchParams(location.search);"
+        "p.delete('type');p.delete('required_input');"
+        "location.replace('index.html'+(p.toString()?'?'+p:''));})();"
     )
-    required_inputs = sorted({
-        item["field"] for playbook in playbooks for item in playbook["required_data"]
-    })
-    required_options = "".join(
-        f'<option value="{esc(value)}">{esc(value)}</option>' for value in required_inputs
+    (DOCS / "query.html").write_text(
+        redirect_document("Structured concept search", "index.html", query_script),
+        encoding="utf-8"
     )
-    regime_tags = [
-        f'{dimension["id"]}.{state["id"]}'
-        for dimension in taxonomy["dimensions"] for state in dimension["states"]
-    ]
-    regime_options = "".join(
-        f'<option value="{esc(value)}">{esc(value)}</option>' for value in regime_tags
-    )
-    query_body = (
-        '<div class="crumbs"><a href="index.html">Home</a> / Structured query</div>'
-        '<h1>Structured knowledge query</h1>'
-        '<p>Search concepts and research playbooks, then narrow by type, domain, core membership, required data, or regime context. The URL updates as you filter so a query can be shared.</p>'
-        '<form id="query-controls" class="query-controls">'
-        '<label>Search<input name="q" type="search" placeholder="funding liquidation VWAP..."></label>'
-        '<label>Record type<select name="type"><option value="">All types</option><option value="concept">Concept</option><option value="playbook">Playbook</option></select></label>'
-        f'<label>Domain<select name="domain"><option value="">All domains</option><option value="Research playbooks">Research playbooks</option>{domain_options}</select></label>'
-        f'<label>Regime<select name="regime"><option value="">All regimes</option>{regime_options}</select></label>'
-        f'<label>Required input<select name="required_input"><option value="">Any input</option>{required_options}</select></label>'
-        '<label class="check"><input name="core" type="checkbox" style="width:auto;margin-right:.4rem">Core only</label>'
-        '</form><p id="query-count" class="meta">Loading structured data...</p><div id="query-results"></div>'
-    )
-    query_html = page(
-        "Structured knowledge query", query_body, "", "query", domains,
-        description="Filter trading concepts and untested research playbooks by structured context."
-    ).replace("</body>", f"<script>{QUERY_JS}</script></body>")
-    (DOCS / "query.html").write_text(query_html, encoding="utf-8")
     written.add("query.html")
+    redirects.add("query.html")
 
-    # ---- GitHub-first concept skill catalog ----
     skill_dir = DOCS / "skills"
     skill_dir.mkdir()
-    skill_domains = sorted({profile["domain"] for profile in skill_manifest["skills"]})
-    skill_domain_options = "".join(
-        f'<option value="{esc(value)}">{esc(value)}</option>' for value in skill_domains
+    skills_script = (
+        "(function(){var p=new URLSearchParams(location.search),skill=p.get('skill');"
+        "if(skill&&!p.has('q'))p.set('q',skill.replace(/^tkl-/,'').replace(/-/g,' '));"
+        "p.delete('skill');location.replace('../index.html'+(p.toString()?'?'+p:''));})();"
     )
-    skill_body = (
-        '<div class="crumbs"><a href="../index.html">Home</a> / Concept skills</div>'
-        '<section class="skills-hero"><h1>Trading Concept Skills</h1>'
-        '<p>Browse focused AI-readable skills for explaining and applying trading concepts '
-        'with mechanics, failure modes, misconceptions, and citations.</p>'
-        f'<p class="catalog-stat"><strong>{skill_progress["completed_count"]}</strong> skills available</p>'
-        '<p><a href="../api/v1/skills.json">Machine-readable catalog</a></p></section>'
-        '<p class="warning">Built with AI systems. These packages provide educational research '
-        'and decision support, not autonomous execution, financial advice, or evidence of profitability.</p>'
-        '<h2>Find a skill</h2>'
-        '<form id="skill-controls" class="query-controls">'
-        '<label>Search<input name="q" type="search" placeholder="funding rate, slippage, margin..."></label>'
-        f'<label>Domain<select name="domain"><option value="">All domains</option>{skill_domain_options}</select></label>'
-        '<label class="check"><input name="core" type="checkbox" style="width:auto;margin-right:.4rem">Core collection only</label>'
-        '</form><p id="skill-count" class="meta">Loading catalog...</p><div id="skill-results" class="skill-grid"></div>'
+    (skill_dir / "index.html").write_text(
+        redirect_document("Trading concept catalog", "../index.html", skills_script),
+        encoding="utf-8"
     )
-    skill_html = page(
-        "Trading concept skills", skill_body, "../", "skills", domains,
-        description="Searchable catalog of GitHub-first, AI-readable trading concept skills.",
-    ).replace("</body>", f"<script>{SKILLS_JS}</script></body>")
-    (skill_dir / "index.html").write_text(skill_html, encoding="utf-8")
     written.add("skills/index.html")
+    redirects.add("skills/index.html")
 
     # Every catalog item gets a complete human-readable page with its source files.
     skill_by_concept = {
@@ -763,13 +610,15 @@ def main():
             f'<div class="evidence-section"><h3>Related concepts</h3>'
             f'<ul>{"".join(related_links)}</ul></div>' if related_links else ""
         )
+        domain_slug = profile["concept_id"].split("/", 1)[0]
         detail_body = (
-            '<div class="crumbs"><a href="../../index.html">Home</a> / '
-            '<a href="../">Skills</a> / ' + esc(profile["display_name"]) + '</div>'
+            '<div class="crumbs"><a href="../../index.html">Library</a> / '
+            f'<a href="../../index.html?domain={esc(domain_slug)}">{esc(profile["domain"])}</a> / '
+            + esc(profile["display_name"]) + '</div>'
             f'<h1>{esc(profile["display_name"])}</h1><p>{esc(profile["description"])}</p>'
             f'<div>{aliases}</div>'
             '<div class="skill-identity">'
-            f'<div><strong>Skill</strong><span>{esc(profile["skill_name"])}</span></div>'
+            f'<div><strong>Skill package</strong><span>{esc(profile["skill_name"])}</span></div>'
             f'<div><strong>Domain</strong><span>{esc(profile["domain"])}</span></div>'
             f'<div><strong>Concept ID</strong><span>{esc(profile["concept_id"])}</span></div>'
             '</div>'
@@ -808,11 +657,12 @@ def main():
             f'<section class="skill-panel" id="panel-reference-json" role="tabpanel" hidden><h2>Packaged reference.json</h2><pre class="json">{esc(reference_source)}</pre></section>'
             f'<section class="skill-panel" id="panel-openai-yaml" role="tabpanel" hidden><h2>agents/openai.yaml</h2><pre class="json">{esc(agent_source)}</pre></section>'
             f'<p class="skill-links"><a href="../../api/v1/skills/{esc(profile["skill_name"])}.json">'
-            f'Open profile JSON</a> &middot; <a href="{esc(github_folder)}">GitHub source</a> &middot; '
-            f'<a href="../../{esc(concept_urls[profile["concept_id"]])}">Canonical concept page</a></p>'
+            f'Open profile JSON</a> &middot; <a href="{esc(github_folder)}">GitHub source</a></p>'
         )
         detail_html = page(
-            profile["display_name"] + " skill", detail_body, "../../", "skills", domains,
+            profile["display_name"], detail_body, "../../", "", domains,
+            extra_head=(f'<link rel="canonical" href="{BASE}/skills/'
+                        f'{esc(profile["skill_name"])}/">'),
             description=profile["description"],
         ).replace("</body>", f"<script>{COPY_JS}</script></body>")
         (detail_dir / "index.html").write_text(detail_html, encoding="utf-8")
@@ -947,6 +797,7 @@ def main():
                 "type": "concept",
                 "url": concept_urls[entry["id"]],
                 "skill_url": skill_urls.get(entry["id"]),
+                "legacy_url": legacy_urls[entry["id"]],
                 "core": entry["id"] in core_ids,
                 "regime_annotation": core_collection["annotations"].get(entry["id"]),
                 "relationship_ids": relationship_ids,
@@ -1021,7 +872,10 @@ def main():
     (api_dir / "manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-    urls = [f"{BASE}/{w.replace('index.html', '')}" for w in sorted(written)]
+    urls = [
+        f"{BASE}/{w.replace('index.html', '')}"
+        for w in sorted(written - redirects)
+    ]
     (DOCS / "sitemap.xml").write_text(
         "<?xml version='1.0' encoding='UTF-8'?>\n"
         "<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>\n"
@@ -1039,8 +893,9 @@ def main():
             target = m.group(1)
             if target.startswith(("http", "mailto")):
                 continue
-            resolved = (fpath.parent / target).resolve()
-            if target.endswith("/"):
+            target_path = target.split("?", 1)[0]
+            resolved = (fpath.parent / target_path).resolve()
+            if target_path.endswith("/"):
                 resolved = resolved / "index.html"
             elif resolved.is_dir():
                 resolved = resolved / "index.html"

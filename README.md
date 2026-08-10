@@ -78,17 +78,20 @@ and `docs/api/v1/playbooks.json`. Every playbook is explicitly untested and
 requires caller-supplied risk constraints plus realistic execution, fee,
 impact, and funding models before evaluation.
 
-## Static query API
+## Consolidated library and static API
 
-The dependency-free browser query is generated at `docs/query.html`. It filters
-concepts and playbooks by text, record type, domain, core membership, required
-input, and regime; filters are retained in the URL for sharing.
+The dependency-free public catalog is generated at `docs/index.html`. It
+filters all 1,500 concepts by text, domain, core membership, regime, and first
+letter, with sorting and pagination retained in the URL for sharing. The former
+A-Z, structured-query, skill-catalog, and domain pages are compatibility routes
+that forward visitors to this catalog or directly to the relevant unified page.
 
 Versioned JSON endpoints live in `docs/api/v1/`:
 
 - `manifest.json` describes counts, endpoints, and relationship resolution.
-- `concepts.json` provides all public concept fields, stable URLs, resolved
-  relationship IDs, core membership, and core regime annotations.
+- `concepts.json` provides all public concept fields, unified canonical URLs,
+  legacy compatibility URLs, resolved relationship IDs, core membership, and
+  core regime annotations.
 - `core-perps.json`, `regimes.json`, and `playbooks.json` expose the focused
   collection and its research layer.
 - `research-specs.json` exposes frozen executable rules separately from the
@@ -102,12 +105,11 @@ Versioned JSON endpoints live in `docs/api/v1/`:
   the installable skill catalog, exact rollout checkpoint, and design decision.
   Individual profiles live under `skills/<skill-name>.json`.
 
-The public `docs/skills/` catalog presents skills as a searchable library, not
-as maintenance batches. Every skill has one unified page whose default tab is
-the human-readable trading concept. Adjacent tabs switch in place to copyable
-usage, `SKILL.md`, `skill.json`, canonical `concept.json`, the packaged
-reference, and `agents/openai.yaml`. GitHub remains the canonical package
-source.
+Every concept has one unified page under `docs/skills/<skill-name>/`. Its
+default tab is the human-readable trading concept; adjacent tabs switch in
+place to copyable usage, `SKILL.md`, `skill.json`, canonical `concept.json`, the
+packaged reference, and `agents/openai.yaml`. GitHub remains the canonical
+package source.
 
 Unambiguous relationship names and aliases become internal links. Ambiguous or
 unresolved terms remain visible as plain text and are reported in the manifest.

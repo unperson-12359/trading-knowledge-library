@@ -1,18 +1,13 @@
-<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Research and backtesting — page 3</title><meta name="description" content="Research and backtesting: 94 trading concepts with citations."><link rel="prev" href="page-2.html"><link rel="next" href="page-4.html"><style>
+<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Research and backtesting</title><style>
 *{box-sizing:border-box}
-body{font-family:Georgia,serif;margin:0;color:#1a1a1a;line-height:1.55;display:flex;min-height:100vh}
+body{font-family:Georgia,serif;margin:0;color:#1a1a1a;line-height:1.55;min-height:100vh;background:#fff}
 a{color:#0b5fff;text-decoration:none}a:hover{text-decoration:underline}
-nav#sidebar{width:250px;flex-shrink:0;background:#f7f7f5;border-right:1px solid #e2e2e0;padding:1rem;position:sticky;top:0;height:100vh;overflow-y:auto;font-family:system-ui;font-size:.85rem}
-nav#sidebar h2{font-size:.95rem;margin:.2rem 0 .6rem}
-nav#sidebar ul{list-style:none;margin:0;padding:0}
-nav#sidebar li{margin:.1rem 0}
-nav#sidebar a{display:block;padding:.18rem .4rem;border-radius:4px;color:#333}
-nav#sidebar a.active{background:#2d6a4f;color:#fff;font-weight:600}
-nav#sidebar a:hover{background:#e6e6e2;text-decoration:none}
-nav#sidebar a.active:hover{background:#2d6a4f}
-nav#sidebar .count{color:#888;font-size:.75rem}
-nav#sidebar a.active .count{color:#cfe8d8}
-main{flex:1;padding:1.5rem 2rem;max-width:900px;min-width:0}
+.global-header{position:sticky;top:0;z-index:20;background:#101010;color:#fff;border-bottom:1px solid #2d2d2d;font-family:system-ui}
+.header-inner{max-width:1180px;margin:0 auto;padding:.8rem 1.4rem;display:flex;align-items:center;gap:1.5rem}
+.brand{color:#fff;font-weight:800;letter-spacing:-.02em;white-space:nowrap}.brand:hover{text-decoration:none;color:#ffb08a}
+.global-nav{display:flex;align-items:center;gap:.25rem;flex-wrap:wrap}.global-nav a{color:#ddd;padding:.38rem .62rem;border-radius:5px;font-size:.86rem}.global-nav a:hover{background:#262626;color:#fff;text-decoration:none}.global-nav a.active{background:#fff;color:#111;font-weight:700}
+.github-link{margin-left:auto;color:#ffb08a;font-size:.86rem}.github-link:hover{color:#fff;text-decoration:none}
+main{padding:1.5rem 1.4rem;max-width:1180px;margin:0 auto;min-width:0}
 h1{border-bottom:3px solid #111;padding-bottom:.3rem;font-size:1.6rem}
 .crumbs{font-family:system-ui;font-size:.8rem;color:#666;margin-bottom:1rem}
 .crumbs a{color:#666}
@@ -40,13 +35,13 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 .metric strong{display:block;font-size:1.15rem}.metric span{font-size:.72rem;color:#666}
 .negative{color:#a61b1b}.positive{color:#176b35}
 .json{white-space:pre-wrap;background:#f4f4f4;padding:.7rem;border-radius:4px;font-family:Consolas,monospace;font-size:.8rem}
-.query-controls{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:.55rem;margin:1rem 0;font-family:system-ui}
+.query-controls{display:grid;grid-template-columns:minmax(220px,2fr) repeat(4,minmax(130px,1fr));gap:.55rem;margin:1rem 0;font-family:system-ui;align-items:end}
 .query-controls input,.query-controls select{width:100%;padding:.5rem;border:1px solid #bbb;border-radius:5px;background:#fff}
 .query-controls label{font-size:.78rem;color:#555}.query-controls .check{display:flex;align-items:end;padding-bottom:.5rem}
 .query-result{border-bottom:1px solid #ddd;padding:.8rem 0}.query-result h2{font-size:1.05rem;margin:0 0 .2rem}
 .skills-hero{background:#111;color:#fff;border-radius:10px;padding:1.3rem 1.4rem;margin-bottom:1rem}.skills-hero h1{border:0;margin:.1rem 0}.skills-hero p{max-width:680px}.skills-hero a{color:#ffb08a}
 .catalog-stat{font-family:system-ui;font-size:1.05rem;margin:.8rem 0}.catalog-stat strong{font-size:1.45rem}
-.skill-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin:1rem 0}
+.skill-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1rem 0}
 .skill-card{border:1px solid #ccc;border-radius:8px;padding:1rem;background:#fff;display:flex;flex-direction:column;min-height:205px}.skill-card:hover{border-color:#d97745;box-shadow:0 3px 12px #0000000d}.skill-card h2{font-family:system-ui;font-size:1.08rem;margin:0 0 .25rem}.skill-card p{margin:.5rem 0;flex:1}.skill-links{font-family:system-ui;font-size:.82rem;border-top:1px solid #eee;padding-top:.55rem}.skill-arrow{float:right;color:#d05f2c}
 .skill-identity{border:1px solid #ddd;border-radius:8px;padding:.8rem 1rem;font-family:system-ui;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1rem 0}.skill-identity strong{display:block;font-size:.78rem;color:#666}.skill-identity span{overflow-wrap:anywhere}
 .use-panel{border:1px solid #ccc;border-radius:8px;padding:1rem;margin:1rem 0}.copy-row{display:flex;gap:.5rem;align-items:start}.copy-row pre{flex:1;margin:0}.copy-button{border:1px solid #aaa;background:#fff;border-radius:5px;padding:.45rem .65rem;cursor:pointer;font-weight:600}.copy-button:hover{background:#f3f3f0}
@@ -61,10 +56,10 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 #search-results{list-style:none;margin:0 0 .8rem;padding:0}
 #search-results li{padding:.25rem .4rem;border-bottom:1px solid #eee}
 #search-results .sr-domain{color:#888;font-size:.72rem}
+.catalog-tools{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin:.8rem 0}.letter-nav{display:flex;gap:.2rem;flex-wrap:wrap;font:600 .78rem system-ui}.letter-nav a{padding:.2rem .4rem;border-radius:4px;border:1px solid #ddd;color:#444}.letter-nav a.active,.letter-nav a:hover{background:#111;color:#fff;text-decoration:none;border-color:#111}.catalog-pagination{display:flex;gap:.35rem;justify-content:center;align-items:center;margin:1.2rem 0;font-family:system-ui}.catalog-pagination a,.catalog-pagination span{border:1px solid #ccc;border-radius:5px;padding:.35rem .65rem}.catalog-pagination .current{background:#111;color:#fff;border-color:#111}.catalog-pagination a:hover{background:#f3f3f0;text-decoration:none}
+.redirect-card{max-width:620px;margin:12vh auto;padding:1.5rem;border:1px solid #ddd;border-radius:10px;font-family:system-ui;background:#fff}
 @media(max-width:820px){
- body{display:block}
- nav#sidebar{width:100%;height:auto;position:static;border-right:none;border-bottom:1px solid #e2e2e0}
- nav#sidebar details.tocwrap:not([open]) .navlist{display:none}
+ .global-header{position:static}.header-inner{align-items:flex-start;gap:.6rem;flex-wrap:wrap}.global-nav{order:3;width:100%}.github-link{margin-left:0}
  main{padding:1rem}
  .toc{columns:1}
  .query-controls{grid-template-columns:1fr 1fr}
@@ -73,309 +68,4 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
  .skill-identity{grid-template-columns:1fr}
  .copy-row{display:block}.copy-button{margin-top:.5rem}
 }
-</style></head><body><nav id="sidebar" aria-label="Domains"><h2><a href="../index.html" style="color:#111">Trading Library</a></h2><input id="search" type="search" placeholder="Search 1,500 concepts…" data-index="../search-index.json" aria-label="Search concepts"><ul id="search-results"></ul><details class="tocwrap" open><summary class="meta">Domains</summary><ul class="navlist"><li><a href="../all.html">A–Z index</a></li><li><a href="../about.html">About &amp; Methodology</a></li><li><a href="../query.html">Structured query</a></li><li><a href="../playbooks/">Research playbooks</a></li><li><a href="../research/">Research results</a></li><li><a href="../skills/">Concept skills</a></li><li><a href="../ai-and-knowledge-engineering/">AI and knowledge engineering <span class="count">38</span></a></li><li><a href="../candlestick-patterns/">Candlestick patterns <span class="count">37</span></a></li><li><a href="../chart-patterns/">Chart patterns <span class="count">26</span></a></li><li><a href="../contract-mechanics/">Contract mechanics <span class="count">38</span></a></li><li><a href="../crypto-and-defi/">Crypto and DeFi <span class="count">92</span></a></li><li><a href="../fixed-income-and-rates/">Fixed income and rates <span class="count">32</span></a></li><li><a href="../foreign-exchange/">Foreign exchange <span class="count">25</span></a></li><li><a href="../futures-and-spreads/">Futures and spreads <span class="count">33</span></a></li><li><a href="../indicators/">Indicators <span class="count">79</span></a></li><li><a href="../instruments/">Instruments <span class="count">48</span></a></li><li><a href="../macro-and-fundamentals/">Macro and fundamentals <span class="count">57</span></a></li><li><a href="../market-abuse-and-ethics/">Market abuse and ethics <span class="count">31</span></a></li><li><a href="../market-data/">Market data <span class="count">33</span></a></li><li><a href="../market-foundations/">Market foundations <span class="count">35</span></a></li><li><a href="../microstructure/">Microstructure <span class="count">54</span></a></li><li><a href="../options/">Options <span class="count">85</span></a></li><li><a href="../orders-and-execution/">Orders and execution <span class="count">71</span></a></li><li><a href="../parameterized-analytics/">Parameterized analytics <span class="count">63</span></a></li><li><a href="../participants/">Participants <span class="count">28</span></a></li><li><a href="../portfolio-management/">Portfolio management <span class="count">45</span></a></li><li><a href="../price-action-and-technical-analysis/">Price action and technical analysis <span class="count">58</span></a></li><li><a href="../psychology-and-process/">Psychology and process <span class="count">55</span></a></li><li><a href="../research-and-backtesting/" class="active">Research and backtesting <span class="count">94</span></a></li><li><a href="../risk-and-performance/">Risk and performance <span class="count">82</span></a></li><li><a href="../statistics-and-probability/">Statistics and probability <span class="count">50</span></a></li><li><a href="../time-series-analysis/">Time-series analysis <span class="count">63</span></a></li><li><a href="../trading-systems/">Trading systems <span class="count">56</span></a></li><li><a href="../volume-and-order-flow/">Volume and order flow <span class="count">56</span></a></li><li><a href="../wyckoff/">Wyckoff <span class="count">36</span></a></li></ul></details></nav><main><div class="crumbs"><a href="../index.html">Home</a> / <a href="./">Research and backtesting</a> / page 3</div><h1>Research and backtesting</h1><p class="meta">94 concepts · <span class="showing">showing 51–75 of 94</span></p><div class="pager" role="navigation" aria-label="Pagination"><a href="index.html" rel="first">First</a><a href="page-2.html" rel="prev">Prev</a><a href="index.html">1</a><a href="page-2.html">2</a><span class="cur" aria-current="page">3</span><a href="page-4.html">4</a><a href="page-4.html" rel="next">Next</a><a href="page-4.html" rel="last">Last</a></div><article class="entry" id="ensemble-model"><h3>Ensemble model <a class="anchor" href="#ensemble-model">#</a></h3>
-<div class="field">A predictor that combines outputs from multiple component models to improve stability, accuracy, or coverage of different patterns.</div>
-<div class="skill-links"><a href="../skills/tkl-ensemble-model/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> Train diverse base estimators and aggregate their predictions by averaging, voting, weighted blending, or a learned meta-model.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> Three return forecasts of 0.2%, -0.1%, and 0.5% are equally averaged into a 0.2% ensemble forecast.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#bagging">Bagging</a></li><li><a href="../research-and-backtesting/page-3.html#boosting">Boosting</a></li><li><a href="../research-and-backtesting/page-3.html#random-forest">Random forest</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.ensemble.html" rel="noopener">scikit-learn API, ensemble methods</a> — Bagging, boosting, random forests, voting, and stacking</div>
-</article>
-<article class="entry" id="bagging"><h3>Bagging <a class="anchor" href="#bagging">#</a></h3>
-<div class="field">An ensemble method that fits base estimators independently on resampled observations or features and averages or votes their predictions.</div>
-<div class="skill-links"><a href="../skills/tkl-bagging/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> Draw bootstrap samples, train one base model per sample, obtain predictions from all models, and aggregate them.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> One hundred trees trained on bootstrap samples vote 62 to 38 for the positive class.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#ensemble-model">Ensemble model</a></li><li><a href="../research-and-backtesting/page-3.html#random-forest">Random forest</a></li><li><a href="../research-and-backtesting/page-3.html#boosting">Boosting</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.ensemble.html" rel="noopener">scikit-learn API, ensemble methods</a> — Bagging, boosting, random forests, voting, and stacking</div>
-</article>
-<article class="entry" id="boosting"><h3>Boosting <a class="anchor" href="#boosting">#</a></h3>
-<div class="field">An additive ensemble method that trains weak learners sequentially so later learners emphasize errors or negative gradients left by the current ensemble.</div>
-<div class="skill-links"><a href="../skills/tkl-boosting/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> Initialize a prediction, fit a learner to weighted errors or loss gradients, scale its contribution, and add it to the ensemble repeatedly.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> A second stump focuses on observations misclassified by the first and its weighted vote is added to the score.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#ensemble-model">Ensemble model</a></li><li><a href="../research-and-backtesting/page-3.html#gradient-boosting">Gradient boosting</a></li><li><a href="../research-and-backtesting/page-3.html#bagging">Bagging</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.ensemble.html" rel="noopener">scikit-learn API, ensemble methods</a> — Bagging, boosting, random forests, voting, and stacking</div>
-</article>
-<article class="entry" id="random-forest"><h3>Random forest <a class="anchor" href="#random-forest">#</a></h3>
-<div class="field">A bagged ensemble of decision trees that also randomizes the candidate features considered at splits, reducing correlation among trees.</div>
-<div class="skill-links"><a href="../skills/tkl-random-forest/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> Bootstrap rows for each tree, choose splits from random feature subsets, grow many trees, then average regression values or vote on classes.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> Five hundred trees each consider sqrt(p) features per split; 310 vote for an up day, producing class 1.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#bagging">Bagging</a></li><li>Decision tree</li><li><a href="../research-and-backtesting/page-3.html#ensemble-model">Ensemble model</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.ensemble.html" rel="noopener">scikit-learn API, ensemble methods</a> — Bagging, boosting, random forests, voting, and stacking</div>
-</article>
-<article class="entry" id="gradient-boosting"><h3>Gradient boosting <a class="anchor" href="#gradient-boosting">#</a></h3>
-<div class="field">Boosting that adds weak learners fitted to the negative gradient of a differentiable loss with respect to current predictions.</div>
-<div class="skill-links"><a href="../skills/tkl-gradient-boosting/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> Compute current predictions and loss gradients, fit a small tree to those gradients, scale it by a learning rate, and add it to the model.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> A regression tree fitted to residual-like gradients is multiplied by 0.05 and added as iteration 20.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#boosting">Boosting</a></li><li><a href="../research-and-backtesting/page-3.html#xgboost">XGBoost</a></li><li><a href="../research-and-backtesting/page-2.html#objective-function">Objective function</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.ensemble.html" rel="noopener">scikit-learn API, ensemble methods</a> — Bagging, boosting, random forests, voting, and stacking</div>
-</article>
-<article class="entry" id="xgboost"><h3>XGBoost <a class="anchor" href="#xgboost">#</a></h3>
-<div class="field">A scalable gradient-tree-boosting system using a regularized objective, second-order loss approximation, sparsity-aware split handling, and optimized tree construction.</div>
-<div class="skill-links"><a href="../skills/tkl-xgboost/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> At each boosting round, use gradients and Hessians to choose tree splits and leaf weights, add the regularized tree, and update predictions.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> A binary classifier adds 200 shallow trees at learning rate 0.05 and converts the summed margin through a logistic link.</div>
-<div class="formula">Prediction = sum of tree leaf scores; objective = loss + sum of tree penalties</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#gradient-boosting">Gradient boosting</a></li><li><a href="../research-and-backtesting/page-2.html#regularization">Regularization</a></li><li><a href="../research-and-backtesting/page-3.html#ensemble-model">Ensemble model</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://arxiv.org/abs/1603.02754" rel="noopener">Chen and Guestrin, XGBoost: A Scalable Tree Boosting System</a> — Regularized objective and gradient tree boosting</div>
-</article>
-<article class="entry" id="neural-network"><h3>Neural network <a class="anchor" href="#neural-network">#</a></h3>
-<div class="field">A parameterized composition of affine transformations and nonlinear activations trained to approximate a mapping from inputs to outputs.</div>
-<div class="skill-links"><a href="../skills/tkl-neural-network/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> Run inputs forward through layers, compute a loss, propagate gradients backward, and update weights with an optimizer over repeated batches.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> A network maps 20 features through 32 ReLU units to one sigmoid probability and updates weights using minibatch gradients.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#objective-function">Objective function</a></li><li><a href="../research-and-backtesting/page-2.html#regularization">Regularization</a></li><li><a href="../research-and-backtesting/page-3.html#recurrent-neural-network">Recurrent neural network</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://keras.io/api/layers/recurrent_layers/" rel="noopener">Keras API, Recurrent layers</a> — SimpleRNN and LSTM layers</div>
-</article>
-<article class="entry" id="recurrent-neural-network"><h3>Recurrent neural network <a class="anchor" href="#recurrent-neural-network">#</a></h3>
-<div class="field">A neural network for sequences that updates a hidden state from the current input and previous state, sharing parameters across time steps.</div>
-<div class="skill-links"><a href="../skills/tkl-recurrent-neural-network/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> Process observations in order using h_t = activation(W_x x_t + W_h h_previous + b), then map states to outputs and train through time.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> A 30-day return sequence updates one hidden state per day and the final state predicts day 31 direction.</div>
-<div class="formula">h_t = f(W_x x_t + W_h h_(t-1) + b)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#neural-network">Neural network</a></li><li><a href="../research-and-backtesting/page-3.html#long-short-term-memory-network">Long short-term memory network</a></li><li><a href="../time-series-analysis/#time-series">Time series</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://keras.io/api/layers/recurrent_layers/" rel="noopener">Keras API, Recurrent layers</a> — SimpleRNN and LSTM layers</div>
-</article>
-<article class="entry" id="long-short-term-memory-network"><h3>Long short-term memory network <a class="anchor" href="#long-short-term-memory-network">#</a></h3>
-<div class="field">A gated recurrent neural network whose cell state and input, forget, and output gates regulate information retention across long sequences.</div>
-<div class="skill-links"><a href="../skills/tkl-long-short-term-memory-network/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> At each time step compute gate values, update the cell state from retained and candidate information, then expose a gated hidden state.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> An LSTM reads 60 daily feature vectors and uses its final hidden state to forecast the next five-day return.</div>
-<div class="formula">c_t = f_t c_(t-1) + i_t g_t; h_t = o_t tanh(c_t)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#recurrent-neural-network">Recurrent neural network</a></li><li><a href="../research-and-backtesting/page-3.html#neural-network">Neural network</a></li><li><a href="../research-and-backtesting/page-3.html#attention-mechanism">Attention mechanism</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://keras.io/api/layers/recurrent_layers/" rel="noopener">Keras API, Recurrent layers</a> — SimpleRNN and LSTM layers</div>
-</article>
-<article class="entry" id="transformer-model"><h3>Transformer model <a class="anchor" href="#transformer-model">#</a></h3>
-<div class="field">A sequence model built from attention and position-wise transformations rather than recurrent state updates.</div>
-<div class="skill-links"><a href="../skills/tkl-transformer-model/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> Embed inputs with position information, apply multi-head self-attention and feed-forward blocks with residual connections and normalization, then map outputs to the task.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> A Transformer attends across 128 return observations in parallel and pools the encoded sequence for classification.</div>
-<div class="formula">Attention(Q,K,V) = softmax(Q K^T / sqrt(d_k)) V</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#attention-mechanism">Attention mechanism</a></li><li><a href="../research-and-backtesting/page-3.html#neural-network">Neural network</a></li><li><a href="../time-series-analysis/#time-series">Time series</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://arxiv.org/abs/1706.03762" rel="noopener">Vaswani et al., Attention Is All You Need</a> — Sections 1 and 3: attention and Transformer architecture</div>
-</article>
-<article class="entry" id="attention-mechanism"><h3>Attention mechanism <a class="anchor" href="#attention-mechanism">#</a></h3>
-<div class="field">A differentiable operation that forms each output as a weighted combination of value vectors, with weights derived from compatibility between queries and keys.</div>
-<div class="skill-links"><a href="../skills/tkl-attention-mechanism/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> Compute query-key scores, scale and normalize them with softmax, then multiply the resulting weights by values; multiple heads learn different projections.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> A query for the current day assigns 60% of its weight to a recent volatility shock and smaller weights to other days.</div>
-<div class="formula">Attention(Q,K,V) = softmax(Q K^T / sqrt(d_k)) V</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#transformer-model">Transformer model</a></li><li><a href="../research-and-backtesting/page-3.html#neural-network">Neural network</a></li><li><a href="../time-series-analysis/#time-series">Time series</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://arxiv.org/abs/1706.03762" rel="noopener">Vaswani et al., Attention Is All You Need</a> — Sections 1 and 3: attention and Transformer architecture</div>
-</article>
-<article class="entry" id="classification"><h3>Classification <a class="anchor" href="#classification">#</a></h3>
-<div class="field">A supervised-learning task that maps inputs to one of a finite set of labels or estimates probabilities over those labels.</div>
-<div class="skill-links"><a href="../skills/tkl-classification/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> Fit a decision function or class-probability model on labeled training examples, choose any operating threshold on validation data, and evaluate held out outcomes.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> A model estimates 0.68 probability that next-day return is positive and classifies it as up at a 0.60 threshold.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#regression-task">Regression task</a></li><li><a href="../research-and-backtesting/page-3.html#confusion-matrix">Confusion matrix</a></li><li><a href="../research-and-backtesting/#label">Label</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/user_guide.html" rel="noopener">scikit-learn User Guide</a> — Supervised learning, unsupervised learning, model selection, and inspection</div>
-</article>
-<article class="entry" id="regression-task"><h3>Regression task <a class="anchor" href="#regression-task">#</a></h3>
-<div class="field">A supervised-learning task that estimates a continuous numeric target from input features.</div>
-<div class="skill-links"><a href="../skills/tkl-regression-task/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> Fit a function by minimizing a regression loss on training data and evaluate numeric prediction errors on temporally held-out observations.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> A model predicts a next-week excess return of 0.7% rather than an up/down class.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#classification">Classification</a></li><li><a href="../research-and-backtesting/page-4.html#mean-squared-error">Mean squared error</a></li><li><a href="../research-and-backtesting/#target-variable">Target variable</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/user_guide.html" rel="noopener">scikit-learn User Guide</a> — Supervised learning, unsupervised learning, model selection, and inspection</div>
-</article>
-<article class="entry" id="clustering"><h3>Clustering <a class="anchor" href="#clustering">#</a></h3>
-<div class="field">Unsupervised partitioning or grouping of observations so members of the same cluster are more similar under a chosen representation and distance or linkage rule.</div>
-<div class="skill-links"><a href="../skills/tkl-clustering/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> Choose features, scaling, similarity, and algorithm; fit clusters without target labels; then assess stability and economic interpretation out of sample.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> Assets represented by return correlations are grouped into four clusters without supplying sector labels.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#k-means-clustering">K-means clustering</a></li><li><a href="../research-and-backtesting/page-3.html#hierarchical-clustering">Hierarchical clustering</a></li><li>Unsupervised learning</li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.cluster.html" rel="noopener">scikit-learn API, clustering</a> — K-means and agglomerative clustering</div>
-</article>
-<article class="entry" id="k-means-clustering"><h3>K-means clustering <a class="anchor" href="#k-means-clustering">#</a></h3>
-<div class="field">A clustering algorithm that assigns observations to the nearest of k centroids and updates centroids to minimize within-cluster squared Euclidean distance.</div>
-<div class="skill-links"><a href="../skills/tkl-k-means-clustering/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> Initialize k centroids, alternate nearest-centroid assignment and centroid recomputation, and stop when assignments or inertia stabilize.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> Six asset feature vectors are partitioned around two centroids, then centroids are recomputed from the assigned members.</div>
-<div class="formula">Inertia = sum of squared distances from each point to its assigned centroid</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#clustering">Clustering</a></li><li><a href="../research-and-backtesting/page-3.html#hierarchical-clustering">Hierarchical clustering</a></li><li>Centroid</li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.cluster.html" rel="noopener">scikit-learn API, clustering</a> — K-means and agglomerative clustering</div>
-</article>
-<article class="entry" id="hierarchical-clustering"><h3>Hierarchical clustering <a class="anchor" href="#hierarchical-clustering">#</a></h3>
-<div class="field">A family of clustering methods that creates a nested tree of groups by successively merging clusters or splitting them according to a linkage criterion.</div>
-<div class="skill-links"><a href="../skills/tkl-hierarchical-clustering/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> Start with individual observations for agglomeration, repeatedly merge the closest pair under the linkage rule, and cut the resulting dendrogram at a chosen level.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> Ten assets begin as singletons; average-linkage merges them until a dendrogram cut yields three clusters.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#clustering">Clustering</a></li><li><a href="../research-and-backtesting/page-3.html#k-means-clustering">K-means clustering</a></li><li>Dendrogram</li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.cluster.html" rel="noopener">scikit-learn API, clustering</a> — K-means and agglomerative clustering</div>
-</article>
-<article class="entry" id="principal-component-analysis"><h3>Principal component analysis <a class="anchor" href="#principal-component-analysis">#</a></h3>
-<div class="field">A linear dimensionality-reduction method that rotates centered features into orthogonal directions ordered by the variance they explain.</div>
-<div class="skill-links"><a href="../skills/tkl-principal-component-analysis/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> Center the training matrix, eigendecompose its covariance matrix or apply singular-value decomposition, retain leading components, and project later rows with the fitted loadings.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> Three correlated yield features are projected onto a first component explaining 85% of their training variance.</div>
-<div class="formula">PC scores = centered X times loading vectors</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#independent-component-analysis">Independent component analysis</a></li><li><a href="../research-and-backtesting/page-2.html#feature-engineering">Feature engineering</a></li><li>Dimensionality reduction</li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/user_guide.html" rel="noopener">scikit-learn User Guide</a> — Supervised learning, unsupervised learning, model selection, and inspection</div>
-</article>
-<article class="entry" id="independent-component-analysis"><h3>Independent component analysis <a class="anchor" href="#independent-component-analysis">#</a></h3>
-<div class="field">A linear latent-variable method that seeks components whose statistical dependence is minimized, often by maximizing non-Gaussianity.</div>
-<div class="skill-links"><a href="../skills/tkl-independent-component-analysis/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> Center and whiten observations, optimize an unmixing matrix under an independence contrast, and transform later data using the fitted matrix.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> ICA separates two mixed return drivers into components interpreted as market and sector shocks.</div>
-<div class="formula">S = W X, where rows of S are estimated independent sources</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#principal-component-analysis">Principal component analysis</a></li><li><a href="../research-and-backtesting/page-2.html#feature-engineering">Feature engineering</a></li><li>Latent variable</li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/user_guide.html" rel="noopener">scikit-learn User Guide</a> — Supervised learning, unsupervised learning, model selection, and inspection</div>
-</article>
-<article class="entry" id="autoencoder"><h3>Autoencoder <a class="anchor" href="#autoencoder">#</a></h3>
-<div class="field">A neural network trained to reconstruct its input through a constrained latent representation produced by an encoder and decoded back to input space.</div>
-<div class="skill-links"><a href="../skills/tkl-autoencoder/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
-<div class="field"><span class="label">Mechanics:</span> Pass training inputs through encoder and decoder, minimize reconstruction loss, then use latent codes or reconstruction errors for downstream analysis.</div>
-<div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
-<div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
-<div class="field"><span class="label">Example:</span> An autoencoder trained on normal returns flags a day whose reconstruction error exceeds the training threshold as anomalous.</div>
-<div class="formula">Reconstruction error = loss(x, decoder(encoder(x)))</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#neural-network">Neural network</a></li><li><a href="../research-and-backtesting/page-3.html#principal-component-analysis">Principal component analysis</a></li><li>Anomaly detection</li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://keras.io/examples/timeseries/timeseries_anomaly_detection/" rel="noopener">Keras example, Timeseries anomaly detection using an Autoencoder</a> — Reconstruction autoencoder workflow</div>
-</article>
-<article class="entry" id="confusion-matrix"><h3>Confusion matrix <a class="anchor" href="#confusion-matrix">#</a></h3>
-<div class="field">A table counting predicted classes against actual classes, including true positives, false positives, true negatives, and false negatives for binary outcomes.</div>
-<div class="skill-links"><a href="../skills/tkl-confusion-matrix/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It summarizes one aspect of prediction error or decision quality in a number or curve.</div>
-<div class="field"><span class="label">Mechanics:</span> Apply a fixed decision threshold to held-out scores, cross-tabulate predictions and labels, and derive threshold-dependent classification metrics from the counts.</div>
-<div class="field"><span class="label">Failure modes:</span> Class imbalance, threshold choice, unequal error costs, outliers, and dependence can make the summary inappropriate or unstable.</div>
-<div class="field"><span class="label">Misconceptions:</span> No single metric captures economic utility, turnover, risk, calibration, and trading costs at once.</div>
-<div class="field"><span class="label">Example:</span> For 100 cases, TP=30, FP=10, TN=50, and FN=10 form the binary confusion matrix.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#precision">Precision</a></li><li><a href="../research-and-backtesting/page-3.html#recall">Recall</a></li><li><a href="../research-and-backtesting/page-3.html#specificity">Specificity</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.metrics.html" rel="noopener">scikit-learn API, metrics</a> — Classification, ranking, probabilistic, and regression metrics</div>
-</article>
-<article class="entry" id="precision"><h3>Precision <a class="anchor" href="#precision">#</a></h3>
-<div class="field">The fraction of predicted-positive cases that are actually positive.</div>
-<div class="skill-links"><a href="../skills/tkl-precision/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It summarizes one aspect of prediction error or decision quality in a number or curve.</div>
-<div class="field"><span class="label">Mechanics:</span> Count true and false positives at a specified threshold and divide true positives by all predicted positives.</div>
-<div class="field"><span class="label">Failure modes:</span> Class imbalance, threshold choice, unequal error costs, outliers, and dependence can make the summary inappropriate or unstable.</div>
-<div class="field"><span class="label">Misconceptions:</span> No single metric captures economic utility, turnover, risk, calibration, and trading costs at once.</div>
-<div class="field"><span class="label">Example:</span> With 30 true positives and 10 false positives, precision is 30/40 = 0.75.</div>
-<div class="formula">Precision = TP / (TP + FP)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#recall">Recall</a></li><li><a href="../research-and-backtesting/page-3.html#f1-score">F1 score</a></li><li><a href="../research-and-backtesting/page-3.html#confusion-matrix">Confusion matrix</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.metrics.html" rel="noopener">scikit-learn API, metrics</a> — Classification, ranking, probabilistic, and regression metrics</div>
-</article>
-<article class="entry" id="recall"><h3>Recall <a class="anchor" href="#recall">#</a></h3>
-<div class="field">The fraction of actual-positive cases correctly identified, also called sensitivity or true-positive rate.</div>
-<div class="skill-links"><a href="../skills/tkl-recall/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It summarizes one aspect of prediction error or decision quality in a number or curve.</div>
-<div class="field"><span class="label">Mechanics:</span> Count true positives and false negatives at a specified threshold and divide true positives by all actual positives.</div>
-<div class="field"><span class="label">Failure modes:</span> Class imbalance, threshold choice, unequal error costs, outliers, and dependence can make the summary inappropriate or unstable.</div>
-<div class="field"><span class="label">Misconceptions:</span> No single metric captures economic utility, turnover, risk, calibration, and trading costs at once.</div>
-<div class="field"><span class="label">Example:</span> With 30 true positives and 10 false negatives, recall is 30/40 = 0.75.</div>
-<div class="formula">Recall = TP / (TP + FN)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#precision">Precision</a></li><li><a href="../research-and-backtesting/page-3.html#specificity">Specificity</a></li><li><a href="../research-and-backtesting/page-3.html#f1-score">F1 score</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.metrics.html" rel="noopener">scikit-learn API, metrics</a> — Classification, ranking, probabilistic, and regression metrics</div>
-</article>
-<article class="entry" id="specificity"><h3>Specificity <a class="anchor" href="#specificity">#</a></h3>
-<div class="field">The fraction of actual-negative cases correctly identified, also called the true-negative rate.</div>
-<div class="skill-links"><a href="../skills/tkl-specificity/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It summarizes one aspect of prediction error or decision quality in a number or curve.</div>
-<div class="field"><span class="label">Mechanics:</span> Count true negatives and false positives at a threshold and divide true negatives by all actual negatives.</div>
-<div class="field"><span class="label">Failure modes:</span> Class imbalance, threshold choice, unequal error costs, outliers, and dependence can make the summary inappropriate or unstable.</div>
-<div class="field"><span class="label">Misconceptions:</span> No single metric captures economic utility, turnover, risk, calibration, and trading costs at once.</div>
-<div class="field"><span class="label">Example:</span> With 50 true negatives and 10 false positives, specificity is 50/60 = 0.833.</div>
-<div class="formula">Specificity = TN / (TN + FP)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#recall">Recall</a></li><li><a href="../research-and-backtesting/page-3.html#roc-curve">ROC curve</a></li><li><a href="../research-and-backtesting/page-3.html#confusion-matrix">Confusion matrix</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.metrics.html" rel="noopener">scikit-learn API, metrics</a> — Classification, ranking, probabilistic, and regression metrics</div>
-</article>
-<article class="entry" id="f1-score"><h3>F1 score <a class="anchor" href="#f1-score">#</a></h3>
-<div class="field">The harmonic mean of precision and recall, balancing the two when both are important.</div>
-<div class="skill-links"><a href="../skills/tkl-f1-score/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It summarizes one aspect of prediction error or decision quality in a number or curve.</div>
-<div class="field"><span class="label">Mechanics:</span> Compute precision and recall from held-out classifications and take twice their product divided by their sum.</div>
-<div class="field"><span class="label">Failure modes:</span> Class imbalance, threshold choice, unequal error costs, outliers, and dependence can make the summary inappropriate or unstable.</div>
-<div class="field"><span class="label">Misconceptions:</span> No single metric captures economic utility, turnover, risk, calibration, and trading costs at once.</div>
-<div class="field"><span class="label">Example:</span> Precision 0.75 and recall 0.60 give F1 = 0.667.</div>
-<div class="formula">F1 = 2 precision recall / (precision + recall)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#precision">Precision</a></li><li><a href="../research-and-backtesting/page-3.html#recall">Recall</a></li><li><a href="../research-and-backtesting/page-3.html#confusion-matrix">Confusion matrix</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.metrics.html" rel="noopener">scikit-learn API, metrics</a> — Classification, ranking, probabilistic, and regression metrics</div>
-</article>
-<article class="entry" id="roc-curve"><h3>ROC curve <a class="anchor" href="#roc-curve">#</a></h3>
-<div class="field">A threshold curve plotting true-positive rate against false-positive rate for a binary score.</div>
-<div class="skill-links"><a href="../skills/tkl-roc-curve/">Open unified concept + skill view &rarr;</a></div>
-<div class="field"><span class="label">Intuition:</span> It summarizes one aspect of prediction error or decision quality in a number or curve.</div>
-<div class="field"><span class="label">Mechanics:</span> Sort distinct score thresholds, classify observations at each threshold, and plot recall against one minus specificity.</div>
-<div class="field"><span class="label">Failure modes:</span> Class imbalance, threshold choice, unequal error costs, outliers, and dependence can make the summary inappropriate or unstable.</div>
-<div class="field"><span class="label">Misconceptions:</span> No single metric captures economic utility, turnover, risk, calibration, and trading costs at once.</div>
-<div class="field"><span class="label">Example:</span> Lowering a threshold raises TPR from 0.60 to 0.80 while FPR rises from 0.10 to 0.25, adding a point to the ROC curve.</div>
-<div class="formula">TPR = TP/(TP+FN); FPR = FP/(FP+TN)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-4.html#area-under-roc-curve">Area under ROC curve</a></li><li><a href="../research-and-backtesting/page-3.html#recall">Recall</a></li><li><a href="../research-and-backtesting/page-3.html#specificity">Specificity</a></li></ul></div>
-<div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.metrics.html" rel="noopener">scikit-learn API, metrics</a> — Classification, ranking, probabilistic, and regression metrics</div>
-</article><div class="pager" role="navigation" aria-label="Pagination"><a href="index.html" rel="first">First</a><a href="page-2.html" rel="prev">Prev</a><a href="index.html">1</a><a href="page-2.html">2</a><span class="cur" aria-current="page">3</span><a href="page-4.html">4</a><a href="page-4.html" rel="next">Next</a><a href="page-4.html" rel="last">Last</a></div><div class="domainnav"><a href="../psychology-and-process/">&larr; Psychology and process</a><a href="../risk-and-performance/">Risk and performance &rarr;</a></div><p class='meta'>Generated 2026-08-10 · <a href='../about.html'>About &amp; Methodology</a> · <a href='https://github.com/unperson-12359/trading-knowledge-library'>GitHub</a></p></main><script>
-(function(){
-  var box=document.getElementById('search'),res=document.getElementById('search-results');
-  if(!box||!res)return;var idx=null;
-  function load(){if(idx)return Promise.resolve(idx);
-    return fetch(box.getAttribute('data-index')).then(function(r){return r.json()}).then(function(d){idx=d;return d});}
-  box.addEventListener('input',function(){
-    var q=box.value.trim().toLowerCase();res.innerHTML='';
-    if(q.length<2)return;
-    load().then(function(data){
-      var hits=data.filter(function(e){return (e.n+' '+(e.a||'')+' '+(e.x||'')).toLowerCase().indexOf(q)!==-1}).slice(0,12);
-      res.innerHTML=hits.map(function(e){
-        return '<li><a href="'+e.u+'">'+e.n+'</a> <span class="sr-domain">'+e.d+'</span></li>';
-      }).join('')||'<li class="meta">No matches</li>';
-    });
-  });
-})();
-</script></body></html>
+</style></head><body><main><div class='redirect-card'><h1>Research and backtesting</h1><p>This address now opens the consolidated trading concept library.</p><p><a href='../index.html?domain=research-and-backtesting'>Continue to the library</a></p></div></main><script>(function(){var routes={"ensemble-model": "../skills/tkl-ensemble-model/", "bagging": "../skills/tkl-bagging/", "boosting": "../skills/tkl-boosting/", "random-forest": "../skills/tkl-random-forest/", "gradient-boosting": "../skills/tkl-gradient-boosting/", "xgboost": "../skills/tkl-xgboost/", "neural-network": "../skills/tkl-neural-network/", "recurrent-neural-network": "../skills/tkl-recurrent-neural-network/", "long-short-term-memory-network": "../skills/tkl-long-short-term-memory-network/", "transformer-model": "../skills/tkl-transformer-model/", "attention-mechanism": "../skills/tkl-attention-mechanism/", "classification": "../skills/tkl-classification/", "regression-task": "../skills/tkl-regression-task/", "clustering": "../skills/tkl-clustering/", "k-means-clustering": "../skills/tkl-k-means-clustering/", "hierarchical-clustering": "../skills/tkl-hierarchical-clustering/", "principal-component-analysis": "../skills/tkl-principal-component-analysis/", "independent-component-analysis": "../skills/tkl-independent-component-analysis/", "autoencoder": "../skills/tkl-autoencoder/", "confusion-matrix": "../skills/tkl-confusion-matrix/", "precision": "../skills/tkl-precision/", "recall": "../skills/tkl-recall/", "specificity": "../skills/tkl-specificity/", "f1-score": "../skills/tkl-f1-score/", "roc-curve": "../skills/tkl-roc-curve/"},key=decodeURIComponent(location.hash.slice(1));location.replace(routes[key]||"../index.html?domain=research-and-backtesting");})();</script></body></html>

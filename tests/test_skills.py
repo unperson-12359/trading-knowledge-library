@@ -89,9 +89,13 @@ class ConceptSkillTests(unittest.TestCase):
         progress = json.loads((ROOT / "skills" / "progress.json").read_text(encoding="utf-8"))
         self.assertEqual(progress["completed_count"], progress["completed_batches"] * 20)
 
-    def test_public_catalog_uses_detail_pages_not_batch_language(self):
-        catalog = (ROOT / "docs" / "skills" / "index.html").read_text(encoding="utf-8")
+    def test_public_catalog_uses_unified_detail_pages_not_batch_language(self):
+        catalog = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
         self.assertNotIn("batch", catalog.casefold())
+        self.assertIn('id="catalog-controls"', catalog)
+        self.assertIn('id="catalog-results"', catalog)
+        self.assertIn('id="letter-nav"', catalog)
+        self.assertNotIn('id="sidebar"', catalog)
         manifest = json.loads(
             (ROOT / "skills" / "manifest.json").read_text(encoding="utf-8")
         )
@@ -106,6 +110,50 @@ class ConceptSkillTests(unittest.TestCase):
             self.assertIn("The original concept object from the main library.", html)
             self.assertIn("SKILL.md", html)
             self.assertIn("Packaged reference.json", html)
+            self.assertNotIn("Canonical concept page", html)
+            self.assertIn('rel="canonical"', html)
+
+    def test_legacy_browsing_routes_forward_to_the_consolidated_catalog(self):
+        skills_index = (ROOT / "docs" / "skills" / "index.html").read_text(
+            encoding="utf-8"
+        )
+        query = (ROOT / "docs" / "query.html").read_text(encoding="utf-8")
+        az = (ROOT / "docs" / "all.html").read_text(encoding="utf-8")
+        domain = (ROOT / "docs" / "orders-and-execution" / "index.html").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("location.replace", skills_index)
+        self.assertIn("../index.html", skills_index)
+        self.assertIn("location.replace", query)
+        self.assertIn("location.replace", az)
+        self.assertIn("../skills/tkl-slippage/", domain)
+
+    def test_public_concept_urls_are_unified_and_keep_legacy_targets(self):
+        concepts = json.loads(
+            (ROOT / "docs" / "api" / "v1" / "concepts.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        search_index = json.loads(
+            (ROOT / "docs" / "search-index.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(len(concepts), 1500)
+        self.assertTrue(all(row["url"] == row["skill_url"] for row in concepts))
+        self.assertTrue(all(row["url"].startswith("skills/tkl-") for row in concepts))
+        self.assertTrue(all("legacy_url" in row for row in concepts))
+        self.assertTrue(all(row["u"].startswith("skills/tkl-") for row in search_index))
+        legacy_pages = {}
+        for row in concepts:
+            page, fragment = row["legacy_url"].split("#", 1)
+            path = ROOT / "docs" / page
+            if page.endswith("/"):
+                path /= "index.html"
+            if path not in legacy_pages:
+                legacy_pages[path] = path.read_text(encoding="utf-8")
+            text = legacy_pages[path]
+            with self.subTest(concept=row["id"]):
+                self.assertIn(fragment, text)
+                self.assertIn("../" + row["url"], text)
 
 
 if __name__ == "__main__":
