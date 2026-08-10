@@ -1,0 +1,81 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-market-maker",
+  "concept_id": "participants/market-maker",
+  "display_name": "Market maker",
+  "domain": "Participants",
+  "description": "Explain, compare, or apply Market maker using the library's structured Participants reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Market maker",
+    "MM",
+    "liquidity provider",
+    "explain Market maker",
+    "apply Market maker to a trading question",
+    "common misconception about Market maker"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 3,
+  "package_path": "skills/concepts/participants/market-maker",
+  "canonical": {
+    "source_path": "concepts/participants.json",
+    "sha256": "d41a6a2d06427000fe9ab6d6214c2458cf0d726d3a7b8a360074d60b6aa24d2c"
+  },
+  "related_concept_ids": [
+    "participants/dealer",
+    "participants/designated-market-maker",
+    "participants/liquidity-taker",
+    "participants/broker-dealer",
+    "participants/high-frequency-trader"
+  ]
+}

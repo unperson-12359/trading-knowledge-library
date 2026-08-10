@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/mean-reversion",
+  "canonical_sha256": "3b4195ed91ab4f67c609cfbfaca5bc98481689f7b3bbcb15217e2390dca028d9",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/mean-reversion",
+    "name": "Mean reversion",
+    "aliases": [
+      "reversal strategy",
+      "contrarian trading"
+    ],
+    "domain": "Trading systems",
+    "definition": "The hypothesis, and the family of strategies built on it, that asset prices or returns contain a transitory component that tends to revert toward a long-run mean, so that extreme moves are at least partially undone. Empirically, stock returns show positive serial correlation at short horizons and negative autocorrelation at long horizons, consistent with a slowly decaying transitory price component, though the effect is statistical and contested, not a law.",
+    "intuition": "What stretches too far from its usual level tends to snap back; mean-reversion traders buy what has fallen too far and sell what has risen too far.",
+    "mechanics": "Traders measure deviation from an estimated mean (moving average, fair-value model, or historical spread) and take positions expecting reversion, exiting when the series returns toward its mean. Statistically, mean reversion is tested with variance-ratio tests or modeled with mean-reverting processes such as Ornstein-Uhlenbeck.",
+    "formula": "Ornstein-Uhlenbeck model: dX_t = theta * (mu - X_t) dt + sigma dW_t, where mu is the long-run mean, theta the speed of reversion, and sigma the volatility; variance-ratio test: VR(q) = Var(r_t^q) / (q * Var(r_t)), with VR < 1 indicating mean reversion (Poterba and Summers 1988).",
+    "relationships": [
+      "Pairs trading",
+      "Statistical arbitrage",
+      "Range trading",
+      "Fade strategy",
+      "Momentum trading"
+    ],
+    "failure_modes": "When the underlying equilibrium shifts (structural breaks, bankruptcies, regime change), 'cheap' assets keep getting cheaper; betting against strong trends produces large losses, and estimated reversion speeds are unstable out of sample.",
+    "misconceptions": "That prices must revert to a historical mean on a predictable schedule, or that mean reversion contradicts momentum; empirically both coexist at different horizons, and apparent reversion can reflect time-varying required returns rather than mispricing.",
+    "example": "A stock drops 12% in two weeks on no fundamental news while its sector is flat; a mean-reversion trader buys, expecting the gap versus its 60-day average to close, and exits after an 8% rebound.",
+    "citations": [
+      {
+        "source": "NBER Working Paper 2343: Mean Reversion in Stock Prices: Evidence and Implications (Poterba and Summers)",
+        "url": "https://www.nber.org/papers/w2343",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "QuantConnect - Intraday Dynamic Pairs Trading Using Correlation and Cointegration",
+        "url": "https://www.quantconnect.com/learning/articles/investment-strategy-library/intraday-dynamic-pairs-trading-using-correlation-and-cointegration-approach",
+        "section": "Cointegration, spread construction, and mean-reversion approach",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

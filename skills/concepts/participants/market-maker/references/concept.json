@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "participants/market-maker",
+  "canonical_sha256": "d41a6a2d06427000fe9ab6d6214c2458cf0d726d3a7b8a360074d60b6aa24d2c",
+  "source_path": "concepts/participants.json",
+  "concept": {
+    "id": "participants/market-maker",
+    "name": "Market maker",
+    "aliases": [
+      "MM",
+      "liquidity provider"
+    ],
+    "domain": "Participants",
+    "definition": "A market maker is a professional dealer or person with trading privileges on an exchange who has an obligation to buy when there is an excess of sell orders and to sell when there is an excess of buy orders. In SEC usage, a market maker is a firm that stands ready to buy or sell a stock at publicly quoted prices.",
+    "intuition": "A market maker is the always-open shop: it continuously posts both a buying price and a selling price so that other participants can trade immediately whenever they want.",
+    "mechanics": "The market maker quotes two-sided bid and ask prices, absorbs order-flow imbalances into inventory, and is compensated by the bid-ask spread (buying price lower than selling price) as compensation for the risk of holding an inventory buffer. Many exchanges impose quoting obligations (minimum presence, maximum spread) in exchange for privileges; on maker-taker venues, resting market-maker orders may also earn liquidity rebates.",
+    "formula": "Quoted spread = ask - bid; spread capture per round trip approximates ask - bid (before adverse selection and hedging costs).",
+    "relationships": [
+      "Dealer",
+      "Designated market maker",
+      "Liquidity provider",
+      "Liquidity taker",
+      "Broker-dealer",
+      "High-frequency trader"
+    ],
+    "failure_modes": "Market making breaks down under adverse selection (trading against better-informed flow) and inventory shocks, so market makers widen or pull quotes in volatile markets, reducing liquidity exactly when it is scarce. Apparent quoted liquidity can therefore be ephemeral in stress episodes.",
+    "misconceptions": "Market makers are not obligated to prop up or stabilize a stock's price level — their obligations concern continuous two-sided quoting, not price direction. They are also not guaranteed profits: the spread compensates for real inventory and adverse-selection risk.",
+    "example": "A market maker quotes a stock at $50.00 x $50.05 all day; it buys from sellers at $50.00 and sells to buyers at $50.05, aiming to earn five cents per round turn while keeping inventory roughly flat.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Market Maker",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "SEC Investor.gov, Investing Basics Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Market Makers",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

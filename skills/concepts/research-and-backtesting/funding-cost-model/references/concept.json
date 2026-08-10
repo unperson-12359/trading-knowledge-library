@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/funding-cost-model",
+  "canonical_sha256": "bd2f36c727c5d333a99790129414caeea8ede0badebe2a5f9eda5a9dd055ebf9",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/funding-cost-model",
+    "name": "Funding-cost model",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A model of interest paid or received on financed cash balances, margin, or derivative funding exposures.",
+    "intuition": "It is part of the machinery that converts strategy instructions into simulated positions, cash flows, and performance.",
+    "mechanics": "Apply the relevant dated rate, spread, balance, and day-count convention over each accrual interval and post the cash flow.",
+    "formula": "",
+    "relationships": [
+      "Borrow-cost model",
+      "Margin",
+      "Transaction cost"
+    ],
+    "failure_modes": "Simplified timing, liquidity, fee, borrow, funding, or corporate-action assumptions can make simulated results unattainable live.",
+    "misconceptions": "A detailed simulator reduces modeling error but cannot reproduce every queue event or future market condition.",
+    "example": "A $200,000 debit balance funded for 10 days at 7% annualized costs about $384 on an actual/365 basis.",
+    "citations": [
+      {
+        "source": "CFA Institute Research Foundation, Investment Model Validation",
+        "url": "https://rpc.cfainstitute.org/research/foundation/2024/investment-model-validation",
+        "section": "Overview and model-validation framework",
+        "accessed": "2026-08-09"
+      },
+      {
+        "source": "Hyperliquid Docs - Funding",
+        "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/funding",
+        "section": "Funding calculation, premium, interest component, and hourly payments",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

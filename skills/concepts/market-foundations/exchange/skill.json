@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-exchange",
+  "concept_id": "market-foundations/exchange",
+  "display_name": "Exchange",
+  "domain": "Market foundations",
+  "description": "Explain, compare, or apply Exchange using the library's structured Market foundations reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Exchange",
+    "Board of trade",
+    "Organized exchange",
+    "explain Exchange",
+    "apply Exchange to a trading question",
+    "common misconception about Exchange"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 3,
+  "package_path": "skills/concepts/market-foundations/exchange",
+  "canonical": {
+    "source_path": "concepts/market-foundations.json",
+    "sha256": "7d118ddcb01390b3568663f34d11b1751a641086196a889fd51f9a4d11c06d84"
+  },
+  "related_concept_ids": [
+    "market-foundations/financial-market",
+    "market-foundations/order-driven-market",
+    "market-foundations/clearinghouse",
+    "market-foundations/national-market-system",
+    "market-foundations/auction-market"
+  ]
+}

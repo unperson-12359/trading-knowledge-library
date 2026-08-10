@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/trend-following",
+  "canonical_sha256": "8858c48a151dceb64d4e6034658b1f797102c0b37d6f3b08bf92ffeda0067536",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/trend-following",
+    "name": "Trend following",
+    "aliases": [
+      "trend trading",
+      "managed futures trend following"
+    ],
+    "domain": "Trading systems",
+    "definition": "A systematic trading approach that takes long positions in instruments whose own recent returns have been positive and short positions in those whose recent returns have been negative, on the hypothesis that price trends persist. It is an empirical strategy family, not a proven predictive law; academic work documents that a security's own past returns positively predict its near-term future returns across many futures markets, with partial reversal at longer horizons.",
+    "intuition": "Rather than predicting turning points, trend followers assume a market that has been going up will keep going up for a while, and they ride it until the trend reverses.",
+    "mechanics": "Signals are computed from past returns or price series (e.g., sign of the trailing 12-month excess return, moving-average filters, channel breakouts); positions are often scaled by inverse volatility and diversified across equity index, bond, currency, and commodity futures. Positions are exited or flipped when the trend signal reverses.",
+    "formula": "Position sign s_t = sign(r_{t-12,t}), where r_{t-12,t} is the instrument's excess return over the past 12 months (Moskowitz, Ooi, Pedersen 2012); position size is commonly scaled as s_t / sigma_t with sigma_t an ex-ante volatility estimate.",
+    "relationships": [
+      "Time-series momentum",
+      "Cross-sectional momentum",
+      "Donchian breakout strategy",
+      "Turtle trading",
+      "Moving-average crossover strategy"
+    ],
+    "failure_modes": "In range-bound or mean-reverting markets trend signals whipsaw, producing strings of small losses; trend strategies also suffer sharp drawdowns at abrupt trend reversals (e.g., V-shaped recoveries).",
+    "misconceptions": "That trend following predicts where prices will go; it is purely reactive to what prices have done and its documented edge is a statistical regularity that can weaken as it is crowded, not a guarantee.",
+    "example": "A CTA goes long S&P 500 futures because the 12-month return is positive, sizes the position to 10% annualized volatility, and flips short a year later after the trailing return turns negative.",
+    "citations": [
+      {
+        "source": "AQR: Time Series Momentum (Moskowitz, Ooi, Pedersen, Journal of Financial Economics 2012)",
+        "url": "https://www.aqr.com/Insights/Research/Journal-Article/Time-Series-Momentum",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "AQR - A Century of Evidence on Trend-Following Investing",
+        "url": "https://www.aqr.com/Insights/Research/Journal-Article/A-Century-of-Evidence-on-Trend-Following-Investing",
+        "section": "Research summary and long-run evidence",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

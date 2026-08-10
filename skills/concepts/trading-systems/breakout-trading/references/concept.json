@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/breakout-trading",
+  "canonical_sha256": "d10c9041c298e38201a231309bc6573a5bf9c15ca2b5b9ddabec97ad0c34d5db",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/breakout-trading",
+    "name": "Breakout trading",
+    "aliases": [],
+    "domain": "Trading systems",
+    "definition": "A technical-analysis trading style that enters a position when price passes through and holds beyond a defined support or resistance level, on the hypothesis that such breakouts mark the early stage of a new trend. It is an analytical framework, not a proven predictive law; broken resistance is often treated as new support and vice versa.",
+    "intuition": "When price finally escapes the ceiling or floor where it has been stuck, breakout traders jump in, betting the escape is the start of a real move.",
+    "mechanics": "Traders mark horizontal support/resistance from prior swing highs and lows, then place buy stops above resistance or sell stops below support, often confirming with volume. Stops are placed back inside the broken level (a breakout that immediately re-enters the range is treated as failed).",
+    "formula": "Typical long trigger: enter if P_t > R, where R = max(High_{t-N}, ..., High_{t-1}) over a chosen lookback N; stop placed at or below R after entry.",
+    "relationships": [
+      "Channel breakout strategy",
+      "Donchian breakout strategy",
+      "Opening-range breakout",
+      "Trend following",
+      "Range trading"
+    ],
+    "failure_modes": "False breakouts are common, especially in low-volume or range-bound conditions: price pokes through the level, triggers entries, then reverses back into the range, stopping out breakout traders repeatedly.",
+    "misconceptions": "That a breakout predicts continued movement with high probability; support/resistance levels are heuristic constructs, and the frequency of failed breakouts means risk control, not prediction, drives any edge.",
+    "example": "A stock has failed three times near $60; a trader places a buy stop at $60.25 with volume confirmation and a protective stop at $58.50 when filled.",
+    "citations": [
+      {
+        "source": "Wikipedia: Breakout (technical analysis)",
+        "url": "https://en.wikipedia.org/wiki/Breakout_(technical_analysis)",
+        "section": "Lead",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Curtis Faith - Original Turtle Trading Rules",
+        "url": "https://www.tradingblox.com/originalturtles/originalturtlerules.pdf",
+        "section": "Breakouts, entry systems, and exits",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

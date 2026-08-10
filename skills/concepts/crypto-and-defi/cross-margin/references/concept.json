@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/cross-margin",
+  "canonical_sha256": "b548edd03eb7b6426e5a6a9c2dce63204e43d994996e1ddf92171a96d038521f",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/cross-margin",
+    "name": "Cross margin",
+    "aliases": [
+      "cross margin mode",
+      "cross collateral"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Cross margin is a margin mode in which all available balance in the margin/futures account is shared as collateral across every open position, so unrealized profits and the whole account equity support each position's maintenance margin.",
+    "intuition": "It is one shared life raft for all your trades: a losing position can drain the entire account to stay afloat — and if it sinks, everything goes down with it.",
+    "mechanics": "Under cross margin, the account's total margin balance (wallet balance + unrealized PnL) counts toward every position's maintenance requirement, making individual positions harder to liquidate but exposing the entire account to any single failure. Leverage can be adjusted on open cross positions (on Binance); liquidation occurs when account equity falls below the maintenance margin (notional × maintenance margin rate − maintenance amount, per tier).",
+    "formula": "Maintenance margin = notional position value × maintenance margin rate − maintenance amount (tiered, per Binance).",
+    "relationships": [
+      "Isolated margin",
+      "Liquidation cascade",
+      "Loan-to-value ratio",
+      "Funding rate"
+    ],
+    "failure_modes": "A single oversized losing position can consume the equity supporting every other position, turning one bad trade into a whole-account liquidation; correlated losses across positions hit the shared pool simultaneously.",
+    "misconceptions": "Cross margin does not reduce risk — it redistributes it: positions are individually safer but the account as a whole is more exposed. Adding leverage across many cross positions multiplies hidden total exposure beyond any single position's setting.",
+    "example": "With $10,000 in a cross account and two 5x positions of $20,000 each, a drawdown on one position is buffered by the full $10,000; but if combined maintenance margin reaches $10,000, both positions liquidate together.",
+    "citations": [
+      {
+        "source": "Binance Support - Leverage and Margin of USD-M Futures",
+        "url": "https://www.binance.com/en/support/faq/leverage-and-margin-of-usd%E2%93%A2-m-futures-360033162192",
+        "section": "Maintenance Margin",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Hyperliquid Docs - Margining",
+        "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/margining",
+        "section": "Margin Mode - cross margin",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

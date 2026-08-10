@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/execution-simulator",
+  "canonical_sha256": "de334a2196aaebdf3d522748856883fdee72696ab3c7cc09f12b28cdfabdff7f",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/execution-simulator",
+    "name": "Execution simulator",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "The backtest component that converts hypothetical orders into timestamped fills or rejections under explicit market and brokerage assumptions.",
+    "intuition": "It is part of the machinery that converts strategy instructions into simulated positions, cash flows, and performance.",
+    "mechanics": "Apply venue hours, order-type rules, latency, available price and volume, partial-fill logic, costs, and market impact before returning execution events.",
+    "formula": "",
+    "relationships": [
+      "Fill model",
+      "Slippage model",
+      "Commission model"
+    ],
+    "failure_modes": "Simplified timing, liquidity, fee, borrow, funding, or corporate-action assumptions can make simulated results unattainable live.",
+    "misconceptions": "A detailed simulator reduces modeling error but cannot reproduce every queue event or future market condition.",
+    "example": "A 5,000-share market order is capped at 10% of bar volume and fills over several bars with impact.",
+    "citations": [
+      {
+        "source": "QuantConnect LEAN documentation, Trade Fill Models",
+        "url": "https://www.quantconnect.com/docs/v2/writing-algorithms/reality-modeling/trade-fills/key-concepts",
+        "section": "Fill price, quantity, partial-fill, and stale-fill modeling",
+        "accessed": "2026-08-09"
+      },
+      {
+        "source": "Byrd, Hybinette, and Balch - ABIDES: Towards High-Fidelity Multi-Agent Market Simulation",
+        "url": "https://arxiv.org/abs/1904.12066",
+        "section": "Abstract and discrete-event market-simulation design",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

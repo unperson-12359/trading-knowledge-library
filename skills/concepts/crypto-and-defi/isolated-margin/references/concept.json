@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/isolated-margin",
+  "canonical_sha256": "f68566c7333e5d91b80f23d8127650421cd7e98b59a5854e9006fdcb44571dfe",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/isolated-margin",
+    "name": "Isolated margin",
+    "aliases": [
+      "isolated margin mode"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Isolated margin is a margin mode in which each position carries its own dedicated collateral allotment, capping the maximum loss of that position at the margin assigned to it and ring-fencing the rest of the account.",
+    "intuition": "It is a fire door between trades: each position burns with only the fuel you loaded into it, never spreading to the rest of the account.",
+    "mechanics": "The trader assigns a fixed margin amount per position (and can manually add more); the position's liquidation price is computed from that isolated allotment against the maintenance margin requirement. If breached, only the isolated margin is lost — other positions and wallet balance are untouched. On Binance, leverage on open isolated positions cannot be reduced, and each isolated margin account/pair maintains its own independent risk level.",
+    "formula": "",
+    "relationships": [
+      "Cross margin",
+      "Liquidation cascade",
+      "Liquidation threshold",
+      "Funding rate"
+    ],
+    "failure_modes": "Isolated positions liquidate much earlier than cross positions because they lack the account buffer — a normal wick can take out the margin; over-reliance on manual margin top-ups fails exactly in fast markets when you cannot react.",
+    "misconceptions": "Isolated margin limits loss per position, not total risk: running many isolated positions still sums to large account exposure. The 'cap' is the assigned margin plus any added along the way, not the initial amount if you keep topping up.",
+    "example": "With $10,000 in the account, you open a 10x long with $500 isolated margin ($5,000 position); a ~10% adverse move liquidates the position for a $500 loss while the remaining $9,500 stays intact.",
+    "citations": [
+      {
+        "source": "Binance Support - Leverage and Margin of USD-M Futures",
+        "url": "https://www.binance.com/en/support/faq/leverage-and-margin-of-usd%E2%93%A2-m-futures-360033162192",
+        "section": "Maintenance Margin",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Hyperliquid Docs - Margining",
+        "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/margining",
+        "section": "Margin Mode - isolated margin",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

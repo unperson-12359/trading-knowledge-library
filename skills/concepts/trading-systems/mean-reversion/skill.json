@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-mean-reversion",
+  "concept_id": "trading-systems/mean-reversion",
+  "display_name": "Mean reversion",
+  "domain": "Trading systems",
+  "description": "Explain, compare, or apply Mean reversion using the library's structured Trading systems reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Mean reversion",
+    "reversal strategy",
+    "contrarian trading",
+    "explain Mean reversion",
+    "apply Mean reversion to a trading question",
+    "common misconception about Mean reversion"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": true,
+  "batch_number": 3,
+  "package_path": "skills/concepts/trading-systems/mean-reversion",
+  "canonical": {
+    "source_path": "concepts/trading-systems.json",
+    "sha256": "3b4195ed91ab4f67c609cfbfaca5bc98481689f7b3bbcb15217e2390dca028d9"
+  },
+  "related_concept_ids": [
+    "trading-systems/pairs-trading",
+    "trading-systems/statistical-arbitrage",
+    "trading-systems/range-trading",
+    "trading-systems/fade-strategy",
+    "trading-systems/momentum-trading"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/open-interest-leverage-ratio",
+  "canonical_sha256": "bcc4b4c4eb2c62e847861073b64e3b030e8e518aab2e5d15204b523e69cdc098",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/open-interest-leverage-ratio",
+    "name": "Open interest leverage ratio",
+    "aliases": [
+      "OI/market cap ratio",
+      "estimated leverage ratio"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "The open-interest leverage ratio compares total derivatives open interest to the underlying market's size (spot market cap or exchange reserves), gauging how much leveraged positioning the market carries relative to its real capital base.",
+    "intuition": "It is the debt-to-equity ratio of the whole market: how big the tower of leveraged bets is compared to the pile of actual coins it leans on.",
+    "mechanics": "Open interest is the count of outstanding, unsettled derivatives contracts (Coin Metrics collects it per market, ~1-minute cadence, noting venues report one- or two-sided conventions differently). Ratios such as futures OI / market cap or OI / exchange reserve estimate aggregate leverage; elevated readings mean liquidation cascades can move spot violently, and sharp OI drops mark deleveraging events.",
+    "formula": "OI leverage ratio ≈ futures open interest (USD) / spot market cap (USD) [or / exchange reserve].",
+    "relationships": [
+      "Liquidation cascade",
+      "Funding rate",
+      "Perpetual basis",
+      "Long-short ratio"
+    ],
+    "failure_modes": "OI conventions differ by venue (one- vs two-sided, contract units), so cross-exchange aggregation can misstate leverage; high OI alone is ambiguous — hedged and arbitrage positions inflate it without directional risk, and spot inflows can quietly lower the ratio.",
+    "misconceptions": "Rising OI is not inherently bearish or bullish — it is fuel, not direction; the risk comes from OI concentration near the current price with one-sided positioning. OI is also not 'money in futures'; it is the stock of open contracts.",
+    "example": "If BTC futures OI is $40B against a $1T market cap (4%), a 5% spot move forces limited liquidation flow; if OI is $120B (12%) with funding at extremes, the same move can trigger multi-billion cascades.",
+    "citations": [
+      {
+        "source": "Coin Metrics Product Docs - Market Open Interest",
+        "url": "https://gitbook-docs.coinmetrics.io/market-data/market-data-overview/market-open-interest",
+        "section": "Overview and methodology",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CryptoQuant User Guide - Estimated Leverage Ratio",
+        "url": "https://userguide.cryptoquant.com/cryptoquant-metrics/market/estimated-leverage-ratio.md",
+        "section": "Definition and interpretation",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}
