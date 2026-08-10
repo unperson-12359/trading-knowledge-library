@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/min-max-scaling",
+  "canonical_sha256": "d2afa4da2ee15bda0f0a364ed4bf1077f44e29210cb1c3306d705918e99bc2a5",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/min-max-scaling",
+    "name": "Min-max scaling",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A linear transformation mapping the training minimum and maximum of a feature to a specified range, commonly zero to one.",
+    "intuition": "It controls what information the model receives and in what numerical representation.",
+    "mechanics": "Estimate the extrema on training data and apply the same affine transform out of sample, allowing later values to fall outside the range unless clipped.",
+    "formula": "x_scaled = (x - min_train) / (max_train - min_train)",
+    "relationships": [
+      "Data normalization",
+      "Standardization"
+    ],
+    "failure_modes": "Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.",
+    "misconceptions": "A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.",
+    "example": "With training minimum 10 and maximum 30, value 20 maps to 0.5 and later value 40 maps to 1.5.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide, Preprocessing data",
+        "url": "https://scikit-learn.org/stable/modules/preprocessing.html",
+        "section": "Standardization, range scaling, and outlier-robust transformations",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

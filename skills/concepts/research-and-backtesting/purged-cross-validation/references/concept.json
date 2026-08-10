@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/purged-cross-validation",
+  "canonical_sha256": "28b26a87e3e19ab3f5588ea31982ce7ceb55e71d351fe4db0091ceaa55098389",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/purged-cross-validation",
+    "name": "Purged cross-validation",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A time-series cross-validation design that removes training observations whose label-information intervals overlap a test fold.",
+    "intuition": "It estimates how a fitted choice behaves on observations that were not used to fit that choice.",
+    "mechanics": "Represent each sample by its information start and label end, create a test fold, then purge any training interval that intersects the test intervals.",
+    "formula": "",
+    "relationships": [
+      "Time-series cross-validation",
+      "Embargo period",
+      "Look-ahead bias"
+    ],
+    "failure_modes": "Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.",
+    "misconceptions": "Validation measures conditional generalization under a split design; it does not guarantee future market performance.",
+    "example": "If a Friday label uses returns through Wednesday, training rows whose labels also use that Monday-Wednesday interval are removed when Friday is tested.",
+    "citations": [
+      {
+        "source": "A Bayesian-based classification framework for financial time series trend prediction",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9521884/",
+        "section": "Combinatorial purged K-fold cross-validation",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

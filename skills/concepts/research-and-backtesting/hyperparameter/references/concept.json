@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/hyperparameter",
+  "canonical_sha256": "08b8fa0df483f9575a96c7519bbf1cd502650f8d450d27bead5c4769f8dcc8d0",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/hyperparameter",
+    "name": "Hyperparameter",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A model or training setting chosen outside the parameter-fitting procedure, such as tree depth, regularization strength, or learning rate.",
+    "intuition": "It is a learnable mapping or representation used to turn features into predictions or groups.",
+    "mechanics": "Define a search space, estimate each candidate with training-fold validation, select under a stated objective, and preserve a final untouched test.",
+    "formula": "",
+    "relationships": [
+      "Grid search",
+      "Random search",
+      "Bayesian optimization"
+    ],
+    "failure_modes": "Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.",
+    "misconceptions": "Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.",
+    "example": "Tree depths 2, 4, and 6 are hyperparameter candidates; depth 4 is selected by mean validation log loss.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide",
+        "url": "https://scikit-learn.org/stable/user_guide.html",
+        "section": "Supervised learning, unsupervised learning, model selection, and inspection",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

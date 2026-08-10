@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/early-stopping",
+  "canonical_sha256": "302373c72e7330b8f3950ec2111ad1e36c73550eefbc211d142834d80cc6bfdc",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/early-stopping",
+    "name": "Early stopping",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "Terminating iterative training when a monitored held-out metric stops improving, thereby limiting effective model complexity.",
+    "intuition": "It estimates how a fitted choice behaves on observations that were not used to fit that choice.",
+    "mechanics": "After each iteration, evaluate a validation metric, retain the best checkpoint, and stop after a preset patience without sufficient improvement.",
+    "formula": "",
+    "relationships": [
+      "Regularization",
+      "Validation set",
+      "Hyperparameter"
+    ],
+    "failure_modes": "Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.",
+    "misconceptions": "Validation measures conditional generalization under a split design; it does not guarantee future market performance.",
+    "example": "Validation loss bottoms at epoch 42 and fails to improve for 10 epochs, so training stops at 52 and restores epoch 42.",
+    "citations": [
+      {
+        "source": "XGBoost documentation, Get Started",
+        "url": "https://xgboost.readthedocs.io/en/stable/get_started.html",
+        "section": "XGBoost training and prediction interfaces",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

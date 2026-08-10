@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/feature-engineering",
+  "canonical_sha256": "8568ad3749ca6ac18d93dcbd701670f39a884a9f76c7bce4228760f9b09a71e8",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/feature-engineering",
+    "name": "Feature engineering",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "Creating model inputs from raw data through domain-informed transformations, aggregations, interactions, lags, or encodings.",
+    "intuition": "It controls what information the model receives and in what numerical representation.",
+    "mechanics": "Specify each feature's information timestamp and window, implement it in a train/live-consistent pipeline, and test it without fitting on future rows.",
+    "formula": "",
+    "relationships": [
+      "Feature",
+      "Feature selection",
+      "Data cleaning"
+    ],
+    "failure_modes": "Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.",
+    "misconceptions": "A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.",
+    "example": "Daily closes are converted into lagged 5-day return, 20-day volatility, and price-to-moving-average features.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide, Dataset transformations",
+        "url": "https://scikit-learn.org/stable/data_transforms.html",
+        "section": "Fit/transform semantics and feature representations",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

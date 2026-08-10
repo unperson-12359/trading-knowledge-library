@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/bayesian-optimization",
+  "canonical_sha256": "21933a3852fca82f95b9519895a19e98817b1426ed41e124987a10d2a4564166",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/bayesian-optimization",
+    "name": "Bayesian optimization",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "Sequential hyperparameter optimization that uses a probabilistic surrogate of prior evaluations to choose promising next configurations.",
+    "intuition": "It estimates how a fitted choice behaves on observations that were not used to fit that choice.",
+    "mechanics": "Fit a surrogate to evaluated configurations and scores, maximize an acquisition function, run the proposed trial, and update the surrogate until the budget ends.",
+    "formula": "",
+    "relationships": [
+      "Hyperparameter",
+      "Random search",
+      "Objective function"
+    ],
+    "failure_modes": "Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.",
+    "misconceptions": "Validation measures conditional generalization under a split design; it does not guarantee future market performance.",
+    "example": "After eight initial trials, expected improvement proposes a lower learning rate near the best observed region for trial nine.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide",
+        "url": "https://scikit-learn.org/stable/user_guide.html",
+        "section": "Supervised learning, unsupervised learning, model selection, and inspection",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/embargo-period",
+  "canonical_sha256": "df6195f68d30cdc63772d3c85f1dc6f1ae6f9b67767842e347ac2d47b730c9fb",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/embargo-period",
+    "name": "Embargo period",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A buffer excluded from training around or after a test interval to reduce leakage from serial dependence or overlapping information sets.",
+    "intuition": "It estimates how a fitted choice behaves on observations that were not used to fit that choice.",
+    "mechanics": "After assigning the test interval, exclude the prescribed number or percentage of adjacent observations from the eligible training indices.",
+    "formula": "",
+    "relationships": [
+      "Purged cross-validation",
+      "Time-series cross-validation"
+    ],
+    "failure_modes": "Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.",
+    "misconceptions": "Validation measures conditional generalization under a split design; it does not guarantee future market performance.",
+    "example": "A five-day embargo after a March test fold prevents early-April rows from entering that fold's training set.",
+    "citations": [
+      {
+        "source": "A Bayesian-based classification framework for financial time series trend prediction",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9521884/",
+        "section": "Combinatorial purged K-fold cross-validation",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

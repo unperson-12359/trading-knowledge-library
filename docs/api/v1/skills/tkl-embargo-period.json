@@ -1,0 +1,76 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-embargo-period",
+  "concept_id": "research-and-backtesting/embargo-period",
+  "display_name": "Embargo period",
+  "domain": "Research and backtesting",
+  "description": "Explain, compare, or apply Embargo period using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Embargo period",
+    "explain Embargo period",
+    "apply Embargo period to a trading question",
+    "common misconception about Embargo period"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 65,
+  "package_path": "skills/concepts/research-and-backtesting/embargo-period",
+  "canonical": {
+    "source_path": "concepts/research-and-backtesting.json",
+    "sha256": "df6195f68d30cdc63772d3c85f1dc6f1ae6f9b67767842e347ac2d47b730c9fb"
+  },
+  "related_concept_ids": [
+    "research-and-backtesting/purged-cross-validation",
+    "research-and-backtesting/time-series-cross-validation"
+  ]
+}

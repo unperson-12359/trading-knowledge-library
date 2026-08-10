@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/objective-function",
+  "canonical_sha256": "f8a55d60070093d7da1c6456cce442907adc0a43674216c1167b88f47a12a0aa",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/objective-function",
+    "name": "Objective function",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A scalar criterion that fitting or optimization seeks to minimize or maximize, optionally combining data loss and penalties.",
+    "intuition": "It is a learnable mapping or representation used to turn features into predictions or groups.",
+    "mechanics": "Compute the criterion from predictions, targets, parameters, and constraints; use its gradient or search comparisons to update the candidate solution.",
+    "formula": "Objective = data loss + regularization penalty",
+    "relationships": [
+      "Loss function",
+      "Regularization",
+      "Constraint"
+    ],
+    "failure_modes": "Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.",
+    "misconceptions": "Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.",
+    "example": "A model minimizes validation log loss plus 0.01 times the sum of squared weights.",
+    "citations": [
+      {
+        "source": "Chen and Guestrin, XGBoost: A Scalable Tree Boosting System",
+        "url": "https://arxiv.org/abs/1603.02754",
+        "section": "Regularized objective and gradient tree boosting",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

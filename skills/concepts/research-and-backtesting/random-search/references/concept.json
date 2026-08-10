@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/random-search",
+  "canonical_sha256": "7aca51d1bf53e7394ab141aa7cf51beb53340102abb799fb3735763046f89ad7",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/random-search",
+    "name": "Random search",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "Hyperparameter search that samples a fixed number of configurations from specified distributions rather than exhaustively enumerating a grid.",
+    "intuition": "It estimates how a fitted choice behaves on observations that were not used to fit that choice.",
+    "mechanics": "Specify distributions and a random seed, draw the budgeted configurations, evaluate each consistently, and select by the prespecified score.",
+    "formula": "",
+    "relationships": [
+      "Hyperparameter",
+      "Grid search",
+      "Bayesian optimization"
+    ],
+    "failure_modes": "Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.",
+    "misconceptions": "Validation measures conditional generalization under a split design; it does not guarantee future market performance.",
+    "example": "Twenty pairs of log-uniform learning rate and integer tree depth are drawn from a space containing thousands of possibilities.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide",
+        "url": "https://scikit-learn.org/stable/user_guide.html",
+        "section": "Supervised learning, unsupervised learning, model selection, and inspection",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/time-series-cross-validation",
+  "canonical_sha256": "7bb270cb106fcf3cbfc593cb7e97439b58cd0d195f4687033b079c2dc0d7a391",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/time-series-cross-validation",
+    "name": "Time-series cross-validation",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "Cross-validation whose splits preserve chronology so training observations precede the observations used for evaluation.",
+    "intuition": "It estimates how a fitted choice behaves on observations that were not used to fit that choice.",
+    "mechanics": "Create sequential train/test index pairs, optionally cap the training window and insert a gap, fit on past rows, and score the next block.",
+    "formula": "",
+    "relationships": [
+      "Cross-validation",
+      "Walk-forward analysis",
+      "Purged cross-validation"
+    ],
+    "failure_modes": "Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.",
+    "misconceptions": "Validation measures conditional generalization under a split design; it does not guarantee future market performance.",
+    "example": "Train on months 1-24 and test 25-30, then train on 1-30 and test 31-36.",
+    "citations": [
+      {
+        "source": "scikit-learn API, TimeSeriesSplit",
+        "url": "https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html",
+        "section": "Time-ordered train/test splits and gap parameter",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

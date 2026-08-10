@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/standardization",
+  "canonical_sha256": "1ffba136c812e9b885bc0ef47e0c26451ec34c4d66b6ccbee4d3981403285ee4",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/standardization",
+    "name": "Standardization",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "Feature-wise centering and scaling, conventionally subtracting the training mean and dividing by the training standard deviation.",
+    "intuition": "It controls what information the model receives and in what numerical representation.",
+    "mechanics": "Estimate mean and scale on training rows, store them, and transform every later row with those same values.",
+    "formula": "z = (x - training mean) / training standard deviation",
+    "relationships": [
+      "Data normalization",
+      "Min-max scaling"
+    ],
+    "failure_modes": "Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.",
+    "misconceptions": "A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.",
+    "example": "Training values 8, 10, and 12 have mean 10 and standard deviation about 1.63, so 12 maps to about 1.22.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide, Preprocessing data",
+        "url": "https://scikit-learn.org/stable/modules/preprocessing.html",
+        "section": "Standardization, range scaling, and outlier-robust transformations",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

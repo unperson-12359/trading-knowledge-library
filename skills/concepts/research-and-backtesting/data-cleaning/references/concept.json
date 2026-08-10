@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/data-cleaning",
+  "canonical_sha256": "4e9e5d021c68dae1355ff84b3d4dd478623466f6122d44024832dad2f9baf514",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/data-cleaning",
+    "name": "Data cleaning",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "The documented process of detecting and handling invalid, inconsistent, duplicate, missing, or mistimed observations before analysis.",
+    "intuition": "It controls what information the model receives and in what numerical representation.",
+    "mechanics": "Define rules from domain knowledge, preserve raw data and audit flags, fit statistical thresholds on training data, and test the effect of each correction.",
+    "formula": "",
+    "relationships": [
+      "Data normalization",
+      "Winsorization",
+      "Point-in-time data"
+    ],
+    "failure_modes": "Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.",
+    "misconceptions": "A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.",
+    "example": "A negative share volume is flagged invalid and set missing rather than silently converted to a positive number.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide, Dataset transformations",
+        "url": "https://scikit-learn.org/stable/data_transforms.html",
+        "section": "Fit/transform semantics and feature representations",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

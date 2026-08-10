@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/grid-search",
+  "canonical_sha256": "921a842718bf4825a47f43c4b55efb8f8ce4e4bf50b1571b4cca7e9252748feb",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/grid-search",
+    "name": "Grid search",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "Hyperparameter search that evaluates every point in a finite Cartesian product of candidate values.",
+    "intuition": "It estimates how a fitted choice behaves on observations that were not used to fit that choice.",
+    "mechanics": "Enumerate all combinations, evaluate each through the same cross-validation pipeline and metric, then refit the selected combination on the development data.",
+    "formula": "",
+    "relationships": [
+      "Hyperparameter",
+      "Random search",
+      "Objective function"
+    ],
+    "failure_modes": "Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.",
+    "misconceptions": "Validation measures conditional generalization under a split design; it does not guarantee future market performance.",
+    "example": "Three learning rates times four tree depths produce 12 configurations, each evaluated on the same time folds.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide",
+        "url": "https://scikit-learn.org/stable/user_guide.html",
+        "section": "Supervised learning, unsupervised learning, model selection, and inspection",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

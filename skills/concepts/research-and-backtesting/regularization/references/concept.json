@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/regularization",
+  "canonical_sha256": "c562df8b49d7e349b98b72f8a6298303de5182064736ddcfce63f22d45eebe30",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/regularization",
+    "name": "Regularization",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A fitting technique that discourages model complexity through penalties, shrinkage, structural restrictions, or noise to improve generalization.",
+    "intuition": "It is a learnable mapping or representation used to turn features into predictions or groups.",
+    "mechanics": "Add a complexity penalty or constraint to the training objective, tune its strength on validation data, and refit without using test results.",
+    "formula": "Regularized objective = empirical loss + lambda times penalty",
+    "relationships": [
+      "Objective function",
+      "Early stopping",
+      "Feature selection"
+    ],
+    "failure_modes": "Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.",
+    "misconceptions": "Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.",
+    "example": "Increasing an L2 penalty from 0 to 0.1 shrinks a fitted coefficient from 2.4 to 1.7.",
+    "citations": [
+      {
+        "source": "Chen and Guestrin, XGBoost: A Scalable Tree Boosting System",
+        "url": "https://arxiv.org/abs/1603.02754",
+        "section": "Regularized objective and gradient tree boosting",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

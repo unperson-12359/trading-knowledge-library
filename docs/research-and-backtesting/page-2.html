@@ -131,6 +131,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="data-revision"><h3>Data revision <a class="anchor" href="#data-revision">#</a></h3>
 <div class="field">A later correction, restatement, benchmark update, or methodological change to a previously released observation.</div>
+<div class="skill-links"><a href="../skills/tkl-data-revision/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It controls what information the model receives and in what numerical representation.</div>
 <div class="field"><span class="label">Mechanics:</span> Store vintages and release times, use the then-available version in simulation, and separately test sensitivity to revised history.</div>
 <div class="field"><span class="label">Failure modes:</span> Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.</div>
@@ -141,6 +142,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="data-cleaning"><h3>Data cleaning <a class="anchor" href="#data-cleaning">#</a></h3>
 <div class="field">The documented process of detecting and handling invalid, inconsistent, duplicate, missing, or mistimed observations before analysis.</div>
+<div class="skill-links"><a href="../skills/tkl-data-cleaning/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It controls what information the model receives and in what numerical representation.</div>
 <div class="field"><span class="label">Mechanics:</span> Define rules from domain knowledge, preserve raw data and audit flags, fit statistical thresholds on training data, and test the effect of each correction.</div>
 <div class="field"><span class="label">Failure modes:</span> Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.</div>
@@ -151,6 +153,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="data-normalization"><h3>Data normalization <a class="anchor" href="#data-normalization">#</a></h3>
 <div class="field">A broad transformation that puts observations into a chosen scale or norm so features can be compared or consumed reliably by a model.</div>
+<div class="skill-links"><a href="../skills/tkl-data-normalization/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It controls what information the model receives and in what numerical representation.</div>
 <div class="field"><span class="label">Mechanics:</span> Fit transformation parameters on training observations and apply the stored mapping unchanged to validation, test, and live rows.</div>
 <div class="field"><span class="label">Failure modes:</span> Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.</div>
@@ -161,6 +164,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="standardization"><h3>Standardization <a class="anchor" href="#standardization">#</a></h3>
 <div class="field">Feature-wise centering and scaling, conventionally subtracting the training mean and dividing by the training standard deviation.</div>
+<div class="skill-links"><a href="../skills/tkl-standardization/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It controls what information the model receives and in what numerical representation.</div>
 <div class="field"><span class="label">Mechanics:</span> Estimate mean and scale on training rows, store them, and transform every later row with those same values.</div>
 <div class="field"><span class="label">Failure modes:</span> Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.</div>
@@ -172,6 +176,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="min-max-scaling"><h3>Min-max scaling <a class="anchor" href="#min-max-scaling">#</a></h3>
 <div class="field">A linear transformation mapping the training minimum and maximum of a feature to a specified range, commonly zero to one.</div>
+<div class="skill-links"><a href="../skills/tkl-min-max-scaling/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It controls what information the model receives and in what numerical representation.</div>
 <div class="field"><span class="label">Mechanics:</span> Estimate the extrema on training data and apply the same affine transform out of sample, allowing later values to fall outside the range unless clipped.</div>
 <div class="field"><span class="label">Failure modes:</span> Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.</div>
@@ -183,6 +188,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="winsorization"><h3>Winsorization <a class="anchor" href="#winsorization">#</a></h3>
 <div class="field">Capping observations below and above chosen quantiles or limits at those boundary values rather than deleting them.</div>
+<div class="skill-links"><a href="../skills/tkl-winsorization/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It controls what information the model receives and in what numerical representation.</div>
 <div class="field"><span class="label">Mechanics:</span> Choose limits from training data, replace lower and upper tail values with the respective caps, and reuse the caps on later data.</div>
 <div class="field"><span class="label">Failure modes:</span> Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.</div>
@@ -194,6 +200,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="feature-engineering"><h3>Feature engineering <a class="anchor" href="#feature-engineering">#</a></h3>
 <div class="field">Creating model inputs from raw data through domain-informed transformations, aggregations, interactions, lags, or encodings.</div>
+<div class="skill-links"><a href="../skills/tkl-feature-engineering/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It controls what information the model receives and in what numerical representation.</div>
 <div class="field"><span class="label">Mechanics:</span> Specify each feature&#x27;s information timestamp and window, implement it in a train/live-consistent pipeline, and test it without fitting on future rows.</div>
 <div class="field"><span class="label">Failure modes:</span> Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.</div>
@@ -204,6 +211,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="feature-selection"><h3>Feature selection <a class="anchor" href="#feature-selection">#</a></h3>
 <div class="field">Choosing a subset of candidate inputs using prespecified statistical, model-based, or domain criteria.</div>
+<div class="skill-links"><a href="../skills/tkl-feature-selection/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It estimates how a fitted choice behaves on observations that were not used to fit that choice.</div>
 <div class="field"><span class="label">Mechanics:</span> Fit the selector inside each training fold, apply it to that fold&#x27;s validation data, and repeat selection when the training window changes.</div>
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>
@@ -214,6 +222,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="cross-validation"><h3>Cross-validation <a class="anchor" href="#cross-validation">#</a></h3>
 <div class="field">A resampling procedure that repeatedly fits a model on one subset and evaluates it on held-out observations to estimate generalization and compare choices.</div>
+<div class="skill-links"><a href="../skills/tkl-cross-validation/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It estimates how a fitted choice behaves on observations that were not used to fit that choice.</div>
 <div class="field"><span class="label">Mechanics:</span> Choose a splitter consistent with the data-generating process, fit the entire pipeline inside each training fold, score each held-out fold, and aggregate the scores.</div>
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>
@@ -224,6 +233,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="time-series-cross-validation"><h3>Time-series cross-validation <a class="anchor" href="#time-series-cross-validation">#</a></h3>
 <div class="field">Cross-validation whose splits preserve chronology so training observations precede the observations used for evaluation.</div>
+<div class="skill-links"><a href="../skills/tkl-time-series-cross-validation/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It estimates how a fitted choice behaves on observations that were not used to fit that choice.</div>
 <div class="field"><span class="label">Mechanics:</span> Create sequential train/test index pairs, optionally cap the training window and insert a gap, fit on past rows, and score the next block.</div>
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>
@@ -234,6 +244,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="purged-cross-validation"><h3>Purged cross-validation <a class="anchor" href="#purged-cross-validation">#</a></h3>
 <div class="field">A time-series cross-validation design that removes training observations whose label-information intervals overlap a test fold.</div>
+<div class="skill-links"><a href="../skills/tkl-purged-cross-validation/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It estimates how a fitted choice behaves on observations that were not used to fit that choice.</div>
 <div class="field"><span class="label">Mechanics:</span> Represent each sample by its information start and label end, create a test fold, then purge any training interval that intersects the test intervals.</div>
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>
@@ -244,6 +255,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="embargo-period"><h3>Embargo period <a class="anchor" href="#embargo-period">#</a></h3>
 <div class="field">A buffer excluded from training around or after a test interval to reduce leakage from serial dependence or overlapping information sets.</div>
+<div class="skill-links"><a href="../skills/tkl-embargo-period/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It estimates how a fitted choice behaves on observations that were not used to fit that choice.</div>
 <div class="field"><span class="label">Mechanics:</span> After assigning the test interval, exclude the prescribed number or percentage of adjacent observations from the eligible training indices.</div>
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>
@@ -254,6 +266,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="hyperparameter"><h3>Hyperparameter <a class="anchor" href="#hyperparameter">#</a></h3>
 <div class="field">A model or training setting chosen outside the parameter-fitting procedure, such as tree depth, regularization strength, or learning rate.</div>
+<div class="skill-links"><a href="../skills/tkl-hyperparameter/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
 <div class="field"><span class="label">Mechanics:</span> Define a search space, estimate each candidate with training-fold validation, select under a stated objective, and preserve a final untouched test.</div>
 <div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
@@ -264,6 +277,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="grid-search"><h3>Grid search <a class="anchor" href="#grid-search">#</a></h3>
 <div class="field">Hyperparameter search that evaluates every point in a finite Cartesian product of candidate values.</div>
+<div class="skill-links"><a href="../skills/tkl-grid-search/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It estimates how a fitted choice behaves on observations that were not used to fit that choice.</div>
 <div class="field"><span class="label">Mechanics:</span> Enumerate all combinations, evaluate each through the same cross-validation pipeline and metric, then refit the selected combination on the development data.</div>
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>
@@ -274,6 +288,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="random-search"><h3>Random search <a class="anchor" href="#random-search">#</a></h3>
 <div class="field">Hyperparameter search that samples a fixed number of configurations from specified distributions rather than exhaustively enumerating a grid.</div>
+<div class="skill-links"><a href="../skills/tkl-random-search/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It estimates how a fitted choice behaves on observations that were not used to fit that choice.</div>
 <div class="field"><span class="label">Mechanics:</span> Specify distributions and a random seed, draw the budgeted configurations, evaluate each consistently, and select by the prespecified score.</div>
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>
@@ -284,6 +299,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="bayesian-optimization"><h3>Bayesian optimization <a class="anchor" href="#bayesian-optimization">#</a></h3>
 <div class="field">Sequential hyperparameter optimization that uses a probabilistic surrogate of prior evaluations to choose promising next configurations.</div>
+<div class="skill-links"><a href="../skills/tkl-bayesian-optimization/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It estimates how a fitted choice behaves on observations that were not used to fit that choice.</div>
 <div class="field"><span class="label">Mechanics:</span> Fit a surrogate to evaluated configurations and scores, maximize an acquisition function, run the proposed trial, and update the surrogate until the budget ends.</div>
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>
@@ -294,6 +310,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="objective-function"><h3>Objective function <a class="anchor" href="#objective-function">#</a></h3>
 <div class="field">A scalar criterion that fitting or optimization seeks to minimize or maximize, optionally combining data loss and penalties.</div>
+<div class="skill-links"><a href="../skills/tkl-objective-function/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute the criterion from predictions, targets, parameters, and constraints; use its gradient or search comparisons to update the candidate solution.</div>
 <div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
@@ -305,6 +322,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="constraint"><h3>Constraint <a class="anchor" href="#constraint">#</a></h3>
 <div class="field">A condition that restricts the feasible parameters, predictions, portfolio weights, or decisions available to an optimization.</div>
+<div class="skill-links"><a href="../skills/tkl-constraint/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
 <div class="field"><span class="label">Mechanics:</span> Express the restriction as bounds, equalities, inequalities, or admissible sets and search only solutions that satisfy them.</div>
 <div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
@@ -315,6 +333,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="regularization"><h3>Regularization <a class="anchor" href="#regularization">#</a></h3>
 <div class="field">A fitting technique that discourages model complexity through penalties, shrinkage, structural restrictions, or noise to improve generalization.</div>
+<div class="skill-links"><a href="../skills/tkl-regularization/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
 <div class="field"><span class="label">Mechanics:</span> Add a complexity penalty or constraint to the training objective, tune its strength on validation data, and refit without using test results.</div>
 <div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
@@ -326,6 +345,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="early-stopping"><h3>Early stopping <a class="anchor" href="#early-stopping">#</a></h3>
 <div class="field">Terminating iterative training when a monitored held-out metric stops improving, thereby limiting effective model complexity.</div>
+<div class="skill-links"><a href="../skills/tkl-early-stopping/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It estimates how a fitted choice behaves on observations that were not used to fit that choice.</div>
 <div class="field"><span class="label">Mechanics:</span> After each iteration, evaluate a validation metric, retain the best checkpoint, and stop after a preset patience without sufficient improvement.</div>
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>

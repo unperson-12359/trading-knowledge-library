@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/feature-selection",
+  "canonical_sha256": "f5fc05af5773440f9b70d58f051ecf93d4fbee5ffe70f5ab723390471f5f6e72",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/feature-selection",
+    "name": "Feature selection",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "Choosing a subset of candidate inputs using prespecified statistical, model-based, or domain criteria.",
+    "intuition": "It estimates how a fitted choice behaves on observations that were not used to fit that choice.",
+    "mechanics": "Fit the selector inside each training fold, apply it to that fold's validation data, and repeat selection when the training window changes.",
+    "formula": "",
+    "relationships": [
+      "Feature engineering",
+      "Regularization",
+      "Cross-validation"
+    ],
+    "failure_modes": "Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.",
+    "misconceptions": "Validation measures conditional generalization under a split design; it does not guarantee future market performance.",
+    "example": "Within each fold, the 10 highest training-set mutual-information features are selected from 200 candidates.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide",
+        "url": "https://scikit-learn.org/stable/user_guide.html",
+        "section": "Supervised learning, unsupervised learning, model selection, and inspection",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

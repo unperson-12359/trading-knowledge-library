@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/data-normalization",
+  "canonical_sha256": "2ef61cfc970f6e58bc66354111667668aae257f1d9da089746b75b0dd44a0159",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/data-normalization",
+    "name": "Data normalization",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A broad transformation that puts observations into a chosen scale or norm so features can be compared or consumed reliably by a model.",
+    "intuition": "It controls what information the model receives and in what numerical representation.",
+    "mechanics": "Fit transformation parameters on training observations and apply the stored mapping unchanged to validation, test, and live rows.",
+    "formula": "",
+    "relationships": [
+      "Standardization",
+      "Min-max scaling",
+      "Feature engineering"
+    ],
+    "failure_modes": "Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.",
+    "misconceptions": "A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.",
+    "example": "Each return vector is divided by its L2 norm before a similarity model, while the fitted pipeline is reused out of sample.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide, Preprocessing data",
+        "url": "https://scikit-learn.org/stable/modules/preprocessing.html",
+        "section": "Standardization, range scaling, and outlier-robust transformations",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

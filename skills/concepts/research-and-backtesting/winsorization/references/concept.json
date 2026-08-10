@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/winsorization",
+  "canonical_sha256": "ba971471935e3d5c72e36b176514c579883170f63c1abe7e7b232c00ff5b115b",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/winsorization",
+    "name": "Winsorization",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "Capping observations below and above chosen quantiles or limits at those boundary values rather than deleting them.",
+    "intuition": "It controls what information the model receives and in what numerical representation.",
+    "mechanics": "Choose limits from training data, replace lower and upper tail values with the respective caps, and reuse the caps on later data.",
+    "formula": "x_w = min(max(x, lower_cap), upper_cap)",
+    "relationships": [
+      "Data cleaning",
+      "Outlier",
+      "Robust statistics"
+    ],
+    "failure_modes": "Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.",
+    "misconceptions": "A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.",
+    "example": "With caps at -5 and 5, observations -9, 2, and 8 become -5, 2, and 5.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide, Preprocessing data",
+        "url": "https://scikit-learn.org/stable/modules/preprocessing.html",
+        "section": "Standardization, range scaling, and outlier-robust transformations",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

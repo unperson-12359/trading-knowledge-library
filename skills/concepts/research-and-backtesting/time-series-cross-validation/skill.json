@@ -1,0 +1,77 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-time-series-cross-validation",
+  "concept_id": "research-and-backtesting/time-series-cross-validation",
+  "display_name": "Time-series cross-validation",
+  "domain": "Research and backtesting",
+  "description": "Explain, compare, or apply Time-series cross-validation using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Time-series cross-validation",
+    "explain Time-series cross-validation",
+    "apply Time-series cross-validation to a trading question",
+    "common misconception about Time-series cross-validation"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 65,
+  "package_path": "skills/concepts/research-and-backtesting/time-series-cross-validation",
+  "canonical": {
+    "source_path": "concepts/research-and-backtesting.json",
+    "sha256": "7bb270cb106fcf3cbfc593cb7e97439b58cd0d195f4687033b079c2dc0d7a391"
+  },
+  "related_concept_ids": [
+    "research-and-backtesting/cross-validation",
+    "research-and-backtesting/walk-forward-analysis",
+    "research-and-backtesting/purged-cross-validation"
+  ]
+}

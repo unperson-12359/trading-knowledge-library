@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/cross-validation",
+  "canonical_sha256": "64f1045e3dfb7495c89f81cb4ac499dfa5cd2f3da86cd655cf95a92969b823cf",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/cross-validation",
+    "name": "Cross-validation",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A resampling procedure that repeatedly fits a model on one subset and evaluates it on held-out observations to estimate generalization and compare choices.",
+    "intuition": "It estimates how a fitted choice behaves on observations that were not used to fit that choice.",
+    "mechanics": "Choose a splitter consistent with the data-generating process, fit the entire pipeline inside each training fold, score each held-out fold, and aggregate the scores.",
+    "formula": "",
+    "relationships": [
+      "Training set",
+      "Validation set",
+      "Time-series cross-validation"
+    ],
+    "failure_modes": "Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.",
+    "misconceptions": "Validation measures conditional generalization under a split design; it does not guarantee future market performance.",
+    "example": "Five-fold cross-validation trains on four folds and scores the fifth five times, so every row is evaluated out of fold once.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide, Cross-validation",
+        "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+        "section": "Training, validation, test sets and cross-validation",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

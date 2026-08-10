@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/data-revision",
+  "canonical_sha256": "89693115d4b8b15e9277fe8480b4d0f46048643ee91104d0e61b1b558195681a",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/data-revision",
+    "name": "Data revision",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A later correction, restatement, benchmark update, or methodological change to a previously released observation.",
+    "intuition": "It controls what information the model receives and in what numerical representation.",
+    "mechanics": "Store vintages and release times, use the then-available version in simulation, and separately test sensitivity to revised history.",
+    "formula": "",
+    "relationships": [
+      "Point-in-time data",
+      "Look-ahead bias",
+      "Data cleaning"
+    ],
+    "failure_modes": "Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.",
+    "misconceptions": "A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.",
+    "example": "An earnings value reported as $1.00 in April and restated to $0.80 in August remains $1.00 for a May decision simulation.",
+    "citations": [
+      {
+        "source": "CFA Institute Research Foundation, Investment Model Validation",
+        "url": "https://rpc.cfainstitute.org/research/foundation/2024/investment-model-validation",
+        "section": "Overview and model-validation framework",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}
