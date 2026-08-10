@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/repurchase-agreement",
+  "canonical_sha256": "2122e40db8e69f191417ca582a27a734a3722f5cfe47744a41118e7b97e0f833",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/repurchase-agreement",
+    "name": "Repurchase agreement",
+    "aliases": [
+      "Repo",
+      "RP"
+    ],
+    "domain": "Instruments",
+    "definition": "A transaction in which one party sells securities to another while agreeing to repurchase them at a later date at an agreed price. A repo is economically similar to a loan collateralized by securities, with the interest rate — the repo rate — implied by the difference between the sale and repurchase prices.",
+    "intuition": "A repo is a pawnshop loan for securities: hand over your bonds today for cash, buy them back tomorrow for slightly more — the difference is the interest.",
+    "mechanics": "The cash borrower transfers securities (typically Treasuries, agency debt, or agency MBS) against cash, often at a haircut, and repurchases them at the agreed price on the settlement date, which is usually overnight but can be term. The New York Fed's Open Market Desk conducts repo operations to add reserves and help keep the federal funds rate within its target range.",
+    "formula": "Repurchase price = sale price x (1 + repo rate x days / 360).",
+    "relationships": [
+      "Reverse repurchase agreement",
+      "Treasury bond",
+      "Money market",
+      "Secured lending"
+    ],
+    "failure_modes": "Repos roll constantly, so funding can vanish abruptly: haircuts spike and lenders pull back in stress, as in the 2008 run on repo, forcing fire sales of collateral. The borrower also bears counterparty and collateral-value risk if the lender fails to return the securities.",
+    "misconceptions": "That a repo is a true sale of the securities — legally structured as a sale and repurchase, it functions economically as secured borrowing. Also, the collateral does not eliminate risk; haircut and mark-to-market gaps remain.",
+    "example": "A dealer finances a $100 million Treasury position via overnight repo at 5.40%, receiving $100 million today and repurchasing the bonds tomorrow for $100 million x (1 + 0.054/360), about $15,000 more.",
+    "citations": [
+      {
+        "source": "Federal Reserve Bank of New York: Repo and Reverse Repo Agreements",
+        "url": "https://www.newyorkfed.org/markets/domestic-market-operations/monetary-policy-implementation/repo-reverse-repo-agreements",
+        "section": "Repo transactions",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Repo or Repurchase Agreement",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

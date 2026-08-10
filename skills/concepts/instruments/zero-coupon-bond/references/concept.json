@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/zero-coupon-bond",
+  "canonical_sha256": "0cabaf5644b01a2a0529e8b3979a652ed3716fa7af011b2800157f6f9b1ea4ee",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/zero-coupon-bond",
+    "name": "Zero-coupon bond",
+    "aliases": [
+      "Zero",
+      "Discount bond",
+      "Accrual bond"
+    ],
+    "domain": "Instruments",
+    "definition": "A bond that pays no periodic interest; it is issued or created at a deep discount to face value, and the investor's entire return comes from accretion to the full face value at maturity. U.S. Treasury STRIPS create zero-coupon securities by separately trading the individual interest and principal components of Treasury notes, bonds, and TIPS.",
+    "intuition": "A zero-coupon bond bundles all its interest into the purchase discount: you pay a fraction of face value today and receive one certain payment on one known future date.",
+    "mechanics": "The price is the present value of face value at the bond's yield, and the implied interest compounds internally until maturity. With all cash flow at maturity, a zero's duration equals its maturity, making it highly sensitive to rate changes; in taxable accounts, the accrued interest is generally taxable annually even though nothing is paid out ('phantom income').",
+    "formula": "Price = F / (1 + y)^T, where F is face value, y the yield per period, and T the number of periods.",
+    "relationships": [
+      "Treasury bill",
+      "Treasury bond",
+      "Government bond",
+      "Corporate bond"
+    ],
+    "failure_modes": "Zeros carry the maximum duration for their maturity, so rising rates produce outsized price losses. Phantom-income taxation creates cash-flow drag, and corporate zeros add credit risk on a single distant payment.",
+    "misconceptions": "That no coupon means no interest — the discount embodies the full interest. Also, while zeros have no reinvestment risk, they are not low-risk: their price volatility is higher than any coupon bond of the same maturity.",
+    "example": "A 10-year zero-coupon bond yielding 5% costs about $613.91 per $1,000 face value and pays exactly $1,000 at maturity.",
+    "citations": [
+      {
+        "source": "U.S. TreasuryDirect: Marketable Securities",
+        "url": "https://www.treasurydirect.gov/marketable-securities/",
+        "section": "Separate Trading of Registered Interest and Principal of Securities (STRIPS)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "STRIPS (allows the creation of zero coupon Treasury securities)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

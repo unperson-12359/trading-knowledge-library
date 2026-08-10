@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-certificate-of-deposit",
+  "concept_id": "instruments/certificate-of-deposit",
+  "display_name": "Certificate of deposit",
+  "domain": "Instruments",
+  "description": "Explain, compare, or apply Certificate of deposit using the library's structured Instruments reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Certificate of deposit",
+    "CD",
+    "Time deposit",
+    "explain Certificate of deposit",
+    "apply Certificate of deposit to a trading question",
+    "common misconception about Certificate of deposit"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 8,
+  "package_path": "skills/concepts/instruments/certificate-of-deposit",
+  "canonical": {
+    "source_path": "concepts/instruments.json",
+    "sha256": "106eea298e15c174b829e5f0e1bd6ad629f9723b7650a4be3a860a986a72d52e"
+  },
+  "related_concept_ids": [
+    "instruments/commercial-paper",
+    "instruments/treasury-bill",
+    "instruments/repurchase-agreement",
+    "instruments/government-bond"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/synthetic-asset",
+  "canonical_sha256": "4238603e7b5e7c2c1dd8bf84be0a477e50db74a0d81f867e3424421c9e0e283d",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/synthetic-asset",
+    "name": "Synthetic asset",
+    "aliases": [
+      "Synth",
+      "Synthetic position",
+      "Replicating portfolio"
+    ],
+    "domain": "Instruments",
+    "definition": "An instrument constructed to replicate the payoff of another asset without holding it. In traditional finance this is a replicating portfolio of derivatives and cash instruments (e.g., a long call plus a short put at the same strike and expiry creates a synthetic long futures position); in DeFi, synthetic assets are collateral-backed on-chain tokens whose oracle-driven prices track off-chain assets such as the U.S. dollar or equities (as in Maker or Synthetix).",
+    "intuition": "A synthetic asset fakes exposure to something you don't own: combine the right building blocks — options, collateral, oracles — and you get the target's price behavior without the asset itself.",
+    "mechanics": "Traditional synthetics rely on put-call parity: identical-strike calls and puts combine into forward-like payoffs, and a portfolio of the underlying plus bonds can replicate an option. DeFi synthetics mint tokens against overcollateralized debt positions, with price feeds from oracles and automatic liquidations when collateral ratios fall below thresholds.",
+    "formula": "Synthetic long forward payoff = long call - short put (same strike and expiry); equivalently, put-call parity: C - P = S - K x e^(-rT).",
+    "relationships": [
+      "Option",
+      "Futures contract",
+      "Total return swap",
+      "Wrapped token",
+      "Stablecoin"
+    ],
+    "failure_modes": "Replication breaks when its assumptions fail — borrow costs, funding, jumps, or liquidity gaps. DeFi synthetics add oracle-manipulation and liquidation-cascade risk, and under extreme moves the collateral backing can prove insufficient.",
+    "misconceptions": "That a synthetic has the same risk as the real asset — it stacks counterparty, oracle, smart-contract, or model risk on top of the target's market risk. Also, put-call parity gives the payoff at expiry, not identical margin or funding treatment along the way.",
+    "example": "A DeFi user locks $150 of ETH as collateral and mints $100 of a synthetic USD token; if ETH falls and the collateral ratio breaches 120%, the position is liquidated to protect the peg.",
+    "citations": [
+      {
+        "source": "Werner, Perez, Gudgeon, Klages-Mundt, Harz, Knottenbelt: SoK: Decentralized Finance (DeFi), arXiv:2101.08778",
+        "url": "https://arxiv.org/abs/2101.08778",
+        "section": "Derivatives section: synthetic assets in DeFi (Maker, Synthetix)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Synthetic Futures; Replicating Portfolio",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

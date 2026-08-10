@@ -1,0 +1,81 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-inflation-linked-bond",
+  "concept_id": "instruments/inflation-linked-bond",
+  "display_name": "Inflation-linked bond",
+  "domain": "Instruments",
+  "description": "Explain, compare, or apply Inflation-linked bond using the library's structured Instruments reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Inflation-linked bond",
+    "TIPS",
+    "Linker",
+    "Index-linked bond",
+    "explain Inflation-linked bond",
+    "apply Inflation-linked bond to a trading question",
+    "common misconception about Inflation-linked bond"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 8,
+  "package_path": "skills/concepts/instruments/inflation-linked-bond",
+  "canonical": {
+    "source_path": "concepts/instruments.json",
+    "sha256": "f9acd4628d9a027b518ac9f8c44e7befc05f54bee7a86cd87a236f94b3b08d57"
+  },
+  "related_concept_ids": [
+    "instruments/government-bond",
+    "instruments/treasury-note",
+    "instruments/treasury-bond",
+    "instruments/zero-coupon-bond"
+  ]
+}

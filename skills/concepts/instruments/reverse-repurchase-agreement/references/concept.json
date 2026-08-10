@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/reverse-repurchase-agreement",
+  "canonical_sha256": "b3e41767186884e97a103afaba0e1e0c2648434d6f9b6a3641727cb49d46242c",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/reverse-repurchase-agreement",
+    "name": "Reverse repurchase agreement",
+    "aliases": [
+      "Reverse repo",
+      "RRP",
+      "ON RRP"
+    ],
+    "domain": "Instruments",
+    "definition": "A reverse repurchase agreement is the mirror side of a repo: one party buys securities from a counterparty subject to an agreement to resell them at a later date at an agreed price. It is economically similar to lending cash collateralized by securities; the New York Fed's Overnight Reverse Repo (ON RRP) facility temporarily reduces reserve balances and helps provide a floor under overnight interest rates.",
+    "intuition": "In a reverse repo you are the lender: you take securities as collateral, hand over cash overnight, and get your cash back with interest the next day.",
+    "mechanics": "The cash lender buys the securities and resells them at the contracted higher price, earning the implied rate. At the Fed, ON RRP operations are conducted each business day at an FOMC-set offering rate with primary dealers, banks, money market funds, and GSEs, giving institutions ineligible for interest on reserve balances a risk-free investment that puts a floor under money market rates.",
+    "formula": "Resale price = purchase price x (1 + RRP rate x days / 360).",
+    "relationships": [
+      "Repurchase agreement",
+      "Money market",
+      "Federal funds rate",
+      "Treasury bill"
+    ],
+    "failure_modes": "For tri-party Treasury reverse repos the residual risks (collateral, settlement, counterparty) are small but nonzero. For policy, heavy ON RRP usage can drain reserves faster than expected, contributing to money-market rate pressures at quarter-ends or when bill supply shifts.",
+    "misconceptions": "That a reverse repo is a different instrument from a repo — it is the same contract viewed from the cash lender's side; every repo is someone's reverse repo. Also, ON RRP usage is not 'money leaving the economy' in a harmful sense; it is a rate-floor tool.",
+    "example": "A money market fund invests $500 million overnight in the Fed's ON RRP facility at 5.30% and receives $500 million plus one day's interest (about $73,600) the next morning.",
+    "citations": [
+      {
+        "source": "Federal Reserve Bank of New York: Repo and Reverse Repo Agreements",
+        "url": "https://www.newyorkfed.org/markets/domestic-market-operations/monetary-policy-implementation/repo-reverse-repo-agreements",
+        "section": "Reverse repo transactions; Overnight Reverse Repo Operations",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

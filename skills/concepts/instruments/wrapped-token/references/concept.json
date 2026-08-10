@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/wrapped-token",
+  "canonical_sha256": "69ff6f82e99bfc2ba8c165a33207936f108e7bad3c01c25536a6177da0cbc1a9",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/wrapped-token",
+    "name": "Wrapped token",
+    "aliases": [
+      "Wrapped asset",
+      "Bridged token"
+    ],
+    "domain": "Instruments",
+    "definition": "A token on one blockchain that represents, and is intended to be backed one-for-one by, a crypto-asset locked with a custodian or smart contract, so the underlying asset can be used in environments where it does not natively exist. Wrapped bitcoin (wBTC), for example, makes bitcoin usable as collateral in Ethereum-based DeFi protocols.",
+    "intuition": "A wrapped token is a coat-check ticket for a coin from another blockchain: you lock the original, get a ticket that circulates elsewhere, and redeem the ticket to get the original back.",
+    "mechanics": "A custodian (or bridge smart contract) takes custody of the underlying asset and mints an equivalent amount of the wrapped token; burning the wrapped token redeems the underlying. The wrapped token's price tracks the underlying through this mint/redeem arbitrage, and its safety depends entirely on the integrity of the custody or bridge mechanism.",
+    "formula": "",
+    "relationships": [
+      "Cryptoasset",
+      "Stablecoin",
+      "Synthetic asset",
+      "Depositary receipt"
+    ],
+    "failure_modes": "The peg fails if the custodian or bridge is compromised — bridge exploits are among the largest thefts in DeFi history. Custodial designs reintroduce exactly the centralized counterparty risk that the underlying asset was designed to avoid.",
+    "misconceptions": "That a wrapped token is the same asset as the original — it is a claim whose value depends on the wrapper's solvency and code, much as a depositary receipt depends on its depositary bank. Also, 'trustless' bridging is an aspiration; most wraps involve some trusted party or validator set.",
+    "example": "A user deposits 1 BTC with the wBTC custodian, which mints 1 wBTC on Ethereum; the user posts the wBTC as collateral in an Ethereum lending protocol and later burns it to reclaim the BTC.",
+    "citations": [
+      {
+        "source": "Werner, Perez, Gudgeon, Klages-Mundt, Harz, Knottenbelt: SoK: Decentralized Finance (DeFi), arXiv:2101.08778",
+        "url": "https://arxiv.org/abs/2101.08778",
+        "section": "DEX primitives section (wrapped tokens such as wBTC)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
