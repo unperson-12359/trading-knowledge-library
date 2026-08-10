@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "macro-and-fundamentals/economic-surprise-index",
+  "canonical_sha256": "9dfbccedfc0bbafc868a9ba1ab2ac609c61f46b1e10b2ed3756b797161ff9f18",
+  "source_path": "concepts/macro-and-fundamentals.json",
+  "concept": {
+    "id": "macro-and-fundamentals/economic-surprise-index",
+    "name": "Economic surprise index",
+    "aliases": [
+      "Citi Economic Surprise Index",
+      "CESI",
+      "Economic Surprise Index"
+    ],
+    "domain": "Macro and fundamentals",
+    "definition": "An index that aggregates how economic data releases compare with consensus forecasts, turning 'better or worse than expected' into a single daily time series. The best known is the Citigroup Economic Surprise Index, a rolling three-month, weighted measure of data surprises versus Bloomberg survey medians.",
+    "intuition": "Markets move on surprises, not levels - the index tracks whether the flow of data is beating or disappointing what economists had already priced in.",
+    "mechanics": "Each release's surprise is the actual value minus the survey median, normalized by the historical standard deviation of surprises; the index sums these standardized surprises over a rolling three-month window, weighting indicators by their historical impact on high-frequency FX moves and applying a time decay so recent surprises count more.",
+    "formula": "ESI = Sum over releases of w_i x (Actual_i - Consensus_i) / sigma_i, computed daily over a trailing three-month window with FX-impact weights and time decay.",
+    "relationships": [
+      "Nonfarm payrolls",
+      "Consumer price index",
+      "Purchasing managers index",
+      "Earnings surprise"
+    ],
+    "failure_modes": "It is mean-reverting by construction - a long run of beats pulls consensus up until misses become arithmetically likely - and it measures deviation from forecast, not whether the economy is actually strong or weak.",
+    "misconceptions": "A positive reading does not mean the economy is good, only better than expected; a deeply negative index can coincide with solid growth if consensus was simply too optimistic.",
+    "example": "The Citi U.S. Economic Surprise Index fell deeply negative in mid-2022 as data kept surprising hawkish forecasts, then climbed back to around its 90th historical percentile by early 2026 as releases repeatedly beat consensus.",
+    "citations": [
+      {
+        "source": "iCapital, Market Pulse: Macro Playbook (index definitions)",
+        "url": "https://icapital.com/insights/investment-market-strategy/icapital-market-pulse-macro-playbook-reflation-nation/",
+        "section": "Index definitions: Citi Economic Surprise Index",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

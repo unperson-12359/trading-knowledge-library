@@ -1,0 +1,81 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-forward-price-earnings-ratio",
+  "concept_id": "macro-and-fundamentals/forward-price-earnings-ratio",
+  "display_name": "Forward price-earnings ratio",
+  "domain": "Macro and fundamentals",
+  "description": "Explain, compare, or apply Forward price-earnings ratio using the library's structured Macro and fundamentals reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Forward price-earnings ratio",
+    "Forward P/E",
+    "Forward earnings multiple",
+    "explain Forward price-earnings ratio",
+    "apply Forward price-earnings ratio to a trading question",
+    "common misconception about Forward price-earnings ratio"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 55,
+  "package_path": "skills/concepts/macro-and-fundamentals/forward-price-earnings-ratio",
+  "canonical": {
+    "source_path": "concepts/macro-and-fundamentals.json",
+    "sha256": "03cbce98616f6378cb71c45ea761e254eaf32eb4f4a08ee320634fbda73bba2e"
+  },
+  "related_concept_ids": [
+    "macro-and-fundamentals/price-earnings-ratio",
+    "macro-and-fundamentals/earnings-per-share",
+    "macro-and-fundamentals/guidance",
+    "macro-and-fundamentals/earnings-surprise",
+    "macro-and-fundamentals/earnings-yield"
+  ]
+}
