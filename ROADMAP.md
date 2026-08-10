@@ -21,5 +21,5 @@ verified on GitHub Pages before the next checkpoint begins.
 | A | Contract foundation | Complete |
 | B | Funding and liquidation | Complete |
 | C | Execution and microstructure | Complete |
-| D | Signals and context | In progress |
-| E | Risk and research | Pending |
+| D | Signals and context | Complete |
+| E | Risk and research | In progress |
