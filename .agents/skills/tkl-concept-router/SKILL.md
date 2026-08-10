@@ -9,6 +9,8 @@ Use the repository catalog as evidence for research and decision support. Do not
 
 ## Route the request
 
+For current BTC or ETH Hyperliquid perpetual-market questions, run `python scripts/analyze_market.py --asset BTC --pretty` (or ETH) from the repository root. Treat its JSON as observed data, deterministic features, regime context, and inconclusive playbook fit; never convert it directly into an order instruction.
+
 1. Identify the user's intent: explain, compare, apply, or diagnose a misconception.
 2. Run `python scripts/search.py "<query>" --limit 5` from this skill directory. Add `--core-only` for perpetual-futures workflow questions when appropriate. The router resolves retired identifiers and binds numbered requests such as “20-period simple return” to the canonical N-period skill with `periods=20`.
 3. Select at most three concepts whose definitions and mechanics directly address the request. If the top matches represent materially different meanings, state the ambiguity before continuing.

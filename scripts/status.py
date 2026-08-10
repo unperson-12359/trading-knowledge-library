@@ -421,6 +421,7 @@ def main():
         "skill-alias-catalog.schema.json", "skill-manifest.schema.json",
         "skill-architecture.schema.json", "source-policy.schema.json",
         "citation-audit.schema.json", "relationship-vocabulary.schema.json",
+        "analysis-context-request.schema.json", "analysis-context.schema.json",
     }
     schema_paths = {path.name: path for path in (ROOT / "schemas").glob("*.json")}
     missing_schemas = sorted(required_schemas - set(schema_paths))

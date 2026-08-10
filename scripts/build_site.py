@@ -168,6 +168,7 @@ def page(title, body, prefix, slug, domains, extra_head="", description=""):
         ("", "Library", f"{prefix}index.html"),
         ("playbooks", "Playbooks", f"{prefix}playbooks/"),
         ("research", "Research", f"{prefix}research/"),
+        ("analysis", "Analysis API", f"{prefix}analysis.html"),
         ("about", "About", f"{prefix}about.html"),
     ]
     nav_links = "".join(
@@ -390,6 +391,9 @@ def main():
     citation_audit = json.loads(
         (ROOT / "audits" / "citation-audit.json").read_text(encoding="utf-8")
     )
+    analysis_context_contract = json.loads(
+        (ROOT / "schemas" / "analysis-context.schema.json").read_text(encoding="utf-8")
+    )
     written = set()      # relative paths of generated pages, for the link checker
     redirects = set()    # compatibility pages excluded from the sitemap
     search_index = []    # {n, d, u}
@@ -583,6 +587,29 @@ def main():
              description="AI disclosure and methodology for the Pakupai Trading Knowledge Library."),
         encoding="utf-8")
     written.add("about.html")
+
+    # ---- read-only market analysis contract ----
+    analysis_body = (
+        '<div class="crumbs"><a href="index.html">Home</a> / Analysis Context API</div>'
+        '<h1>Read-only Market Analysis Context</h1>'
+        '<p class="warning">This command fetches public Hyperliquid data for research context. '
+        'It does not access wallets or accounts, place orders, calculate a position size, or issue a trade instruction.</p>'
+        '<p>Run <code>python scripts/analyze_market.py --asset BTC --pretty</code> locally. '
+        'The response separates observed venue data, deterministic calculations, regime context, '
+        'inconclusive playbook fit, missing data, and safety warnings.</p>'
+        '<p>The default coverage is BTC and ETH perpetuals using public mark/oracle price, current '
+        'funding, current open interest, L2-book depth, and closed 15m/1h/4h candles. It labels '
+        'unavailable history and user-selected anchors as unknown.</p>'
+        '<h2>Machine-readable contract</h2>'
+        '<p><a href="api/v1/analysis-context-contract.json">Open response contract JSON</a> · '
+        '<a href="schemas/analysis-context-request.schema.json">Open request schema JSON</a></p>'
+        f'<div class="json">{esc(json.dumps(analysis_context_contract, ensure_ascii=False, indent=2))}</div>'
+    )
+    (DOCS / "analysis.html").write_text(
+        page("Read-only market analysis context", analysis_body, "", "analysis", domains,
+             description="JSON-first, read-only Hyperliquid perpetual-market analysis context for AI research."),
+        encoding="utf-8")
+    written.add("analysis.html")
 
     # ---- compatibility routes for the former query and skill catalogs ----
     query_script = (
@@ -916,6 +943,9 @@ def main():
     (api_dir / "citation-audit.json").write_text(
         json.dumps(public_citation_audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
+    (api_dir / "analysis-context-contract.json").write_text(
+        json.dumps(analysis_context_contract, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
     public_skills = []
     skill_api_dir = api_dir / "skills"
     skill_api_dir.mkdir()
@@ -993,6 +1023,7 @@ def main():
             "research_results": "research-results.json", "skills": "skills.json",
             "concept_aliases": "concept-aliases.json", "relationship_vocabulary": "relationship-vocabulary.json",
             "source_policy": "source-policy.json", "citation_audit": "citation-audit.json",
+            "analysis_context_contract": "analysis-context-contract.json",
             "skill_architecture": "skill-architecture.json"
         },
         "relationship_resolution": {
