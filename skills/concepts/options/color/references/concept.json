@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/color",
+  "canonical_sha256": "0cf13eab8c6995ac7bd8e923858acda0b3dd04ab33a29c5107ec72a6e887d4f5",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/color",
+    "name": "Color",
+    "aliases": [
+      "gamma decay",
+      "DgammaDtime"
+    ],
+    "domain": "Options",
+    "definition": "Color is a third-order sensitivity of an option's value: the rate of change of gamma with the passage of time, equivalently the third derivative of value with respect to the underlying price (twice) and time (once). It measures how a position's convexity profile decays as expiration approaches.",
+    "intuition": "Color tells you how fast your gamma is aging: near expiration, the gamma of at-the-money options swells while out-of-the-money gamma withers, changing your hedge needs day by day.",
+    "mechanics": "Color = d(gamma)/d(tau) = d3V/(dS2 d(tau)), often quoted as gamma change per day. It is monitored by traders maintaining gamma-hedged books, because the hedge adjustment schedule depends on how gamma itself evolves; near expiry, color itself changes rapidly, degrading full-day estimates.",
+    "formula": "Color = d3V/(dS2 d(tau)) = d(gamma)/d(tau).",
+    "relationships": [
+      "Gamma",
+      "Theta",
+      "Charm",
+      "Speed",
+      "Black-Scholes model"
+    ],
+    "failure_modes": "Color is a fine-grained model derivative whose practical estimates are noisy: input errors in volatility and time are amplified at third order, and near expiration its own instability makes day-ahead hedge forecasts unreliable.",
+    "misconceptions": "Color is not the time decay of the option's price (theta) or of its delta (charm) — it is the time decay of gamma, a distinction that matters only for books actively managing convexity.",
+    "example": "A 10-day ATM option's gamma might rise from 0.05 to 0.09 over the final week; a color reading of +0.004 per day warns the gamma hedger that re-hedge frequency must increase into expiry.",
+    "citations": [
+      {
+        "source": "Greeks (finance) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Greeks_(finance)",
+        "section": "Third-order Greeks: Color",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/binomial-option-model",
+  "canonical_sha256": "0f4e27b5bca022af4e953fb3c36fd0b988b215fe2d47bbc07b85dfb8695f2628",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/binomial-option-model",
+    "name": "Binomial option model",
+    "aliases": [
+      "binomial tree",
+      "CRR model",
+      "Cox-Ross-Rubinstein model"
+    ],
+    "domain": "Options",
+    "definition": "The binomial option pricing model is a lattice method that values options by discretizing the underlying's path into up/down moves over many steps and working backward from expiration payoffs, using risk-neutral probabilities. Introduced by Cox, Ross, and Rubinstein (1979), it handles American-style early exercise naturally and converges to Black-Scholes prices as the step count grows.",
+    "intuition": "Chop time into tiny intervals in which the stock can only tick up or down; at expiry the option's value is known at every endpoint, so you can fold the tree back to today like solving a puzzle in reverse.",
+    "mechanics": "Each step multiplies price by u = e^(sigma*sqrt(dt)) or d = 1/u; the risk-neutral up probability p = (e^((r-q)dt) - d)/(u - d) makes the discounted expected payoff a martingale. At each node an American option's value is the max of hold value and immediate exercise value, which is exactly what closed-form European models cannot express.",
+    "formula": "u = e^(sigma*sqrt(dt)), d = e^(-sigma*sqrt(dt)); p = (e^((r-q)dt) - d)/(u - d); node value = e^(-r*dt)[p*V_up + (1-p)*V_down], and for American options V = max(that, exercise value).",
+    "relationships": [
+      "Black-Scholes model",
+      "Trinomial tree",
+      "Risk-neutral valuation",
+      "Risk-neutral probability",
+      "Early exercise",
+      "Monte Carlo option pricing"
+    ],
+    "failure_modes": "The two-state step is a stylization: convergence to continuous-time prices can oscillate and slow near barriers or exercise boundaries, and accuracy depends on tree specification. Trees also scale poorly to multiple underlyings or path-dependent payoffs, where Monte Carlo is preferred.",
+    "misconceptions": "The binomial probabilities are not real-world odds — they are computational devices chosen so the discounted stock price is a martingale. More steps do not add information; they only refine the numerical approximation.",
+    "example": "A 2-step tree on a $100 stock with u = 1.1, d = 0.909, p ≈ 0.6 values a $100 call by computing payoffs at the three endpoints ($121 -> $21, $100 -> $0, $82.64 -> $0) and discounting expected values back to roughly $5-6 depending on rate and step length.",
+    "citations": [
+      {
+        "source": "Binomial options pricing model — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Binomial_options_pricing_model",
+        "section": "Method",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Cox, J.C., Ross, S.A. & Rubinstein, M. (1979), Option Pricing: A Simplified Approach, Journal of Financial Economics 7(3):229-263 — Crossref record",
+        "url": "https://api.crossref.org/works/10.1016/0304-405X(79)90015-1",
+        "section": "DOI 10.1016/0304-405X(79)90015-1",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

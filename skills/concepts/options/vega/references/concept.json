@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/vega",
+  "canonical_sha256": "10c384823943d0f8fd27f8e2a5922e42813db34afbc8579e4113e6ca25e7b57a",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/vega",
+    "name": "Vega",
+    "aliases": [
+      "option vega",
+      "kappa"
+    ],
+    "domain": "Options",
+    "definition": "Vega is the sensitivity of an option's price to a one-point change in the underlying's implied volatility: the partial derivative of option value with respect to volatility. All long options have positive vega; vega is largest for at-the-money options with longer time to expiration.",
+    "intuition": "Vega tells you how much your option's price inflates or deflates when the market's forecast of future movement changes, even if the stock itself hasn't moved.",
+    "mechanics": "Vega = dV/d(sigma), typically quoted per 1 percentage point of implied volatility; identical for calls and puts at the same strike in Black-Scholes. Positions long options are long vega and gain when implied volatility rises; short premium positions are short vega and suffer in volatility spikes. Vega decays toward zero as expiration approaches.",
+    "formula": "Vega = dV/d(sigma); Black-Scholes: Vega = S * N'(d1) * sqrt(T) (per unit vol; divide by 100 per vol point).",
+    "relationships": [
+      "Implied volatility",
+      "Vanna",
+      "Volga",
+      "Theta",
+      "Volatility smile",
+      "Black-Scholes model",
+      "Calendar spread"
+    ],
+    "failure_modes": "Vega assumes a parallel shift of a single volatility number, but real surfaces move by strike and tenor, so vega-neutral books can still lose to skew or term-structure twists. The classic failure is 'volatility crush': a long option loses through vega after an event even when the directional call was right.",
+    "misconceptions": "Vega is not a Greek letter — the name is a market coinage (the symbol derives from a misread nu). Nor is implied volatility a forecast in the statistical sense; it is a price, so vega P&L reflects changes in option market pricing, not realized outcomes.",
+    "example": "A 60-day ATM call worth $4.00 with vega 0.12 rises to about $4.12 if implied volatility rises from 20% to 21%, with the stock unchanged; a short straddle with vega -0.25 loses $25 per vol point per contract.",
+    "citations": [
+      {
+        "source": "Greeks (finance) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Greeks_(finance)",
+        "section": "First-order Greeks: Vega",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "The Options Industry Council (OCC) — Understanding Options Greeks",
+        "url": "https://www.optionseducation.org/advancedconcepts/understanding-options-greeks",
+        "section": "Greeks overview",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

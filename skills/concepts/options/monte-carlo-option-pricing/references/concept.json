@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/monte-carlo-option-pricing",
+  "canonical_sha256": "5290ad640acda0cf70f7d7e568451bb4b537c0aa807b1fcdb68c5a1e0e294105",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/monte-carlo-option-pricing",
+    "name": "Monte Carlo option pricing",
+    "aliases": [
+      "Monte Carlo simulation pricing"
+    ],
+    "domain": "Options",
+    "definition": "Monte Carlo option pricing values an option by simulating many random price paths of the underlying under the risk-neutral measure, computing the option's payoff on each path, and discounting the average payoff to today. First applied to European options by Phelim Boyle (1977), it is the method of choice for path-dependent and multi-asset options that defeat closed forms and lattices.",
+    "intuition": "Instead of solving an equation, you play out thousands of possible futures for the stock, see what the option pays in each, and take the discounted average.",
+    "mechanics": "Paths are generated from a specified process (e.g., geometric Brownian motion S via dS = rS dt + sigma S dW in the risk-neutral world); the estimator is the sample mean of discounted payoffs with error shrinking as 1/sqrt(N). American-style early exercise requires extensions such as Longstaff-Schwartz least-squares Monte Carlo (2001); variance-reduction techniques (antithetics, control variates) accelerate convergence.",
+    "formula": "Price = e^(-rT) * (1/N) * sum over paths of payoff(S_path); standard error ~ sigma_payoff / sqrt(N).",
+    "relationships": [
+      "Risk-neutral valuation",
+      "Binomial option model",
+      "Trinomial tree",
+      "Black-Scholes model",
+      "Risk-neutral probability"
+    ],
+    "failure_modes": "Simulation error decays slowly (1/sqrt(N)), so high precision is computationally expensive; the method inherits every assumption of the simulated process, and naive simulation of American exercise decisions produces biased (typically low) prices without regression-based or dual approaches.",
+    "misconceptions": "Monte Carlo does not discover the market's real distribution — it prices under the risk-neutral measure chosen by the modeler, so feeding it real-world drift estimates is a conceptual error. Nor does simulation bypass model risk; it numerizes it.",
+    "example": "To price an Asian call averaging 12 monthly fixings on a $100 stock, simulate 100,000 yearly paths at 20% volatility, average each path's 12 fixings, compute max(average - 100, 0) per path, and discount the mean — a payoff no closed form handles simply.",
+    "citations": [
+      {
+        "source": "Monte Carlo methods for option pricing — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Monte_Carlo_methods_for_option_pricing",
+        "section": "Methodology; Least Square Monte Carlo",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Boyle, P.P. (1977), Options: A Monte Carlo Approach, Journal of Financial Economics 4(3):323-338 — Crossref record",
+        "url": "https://api.crossref.org/works/10.1016/0304-405X(77)90005-8",
+        "section": "DOI 10.1016/0304-405X(77)90005-8",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/delta",
+  "canonical_sha256": "eccec345383a27dd4dbc1368f80d0b619591da06c03cbcfc15ba62ac99f64f0a",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/delta",
+    "name": "Delta",
+    "aliases": [
+      "option delta",
+      "hedge ratio"
+    ],
+    "domain": "Options",
+    "definition": "Delta is the first-order sensitivity of an option's price to a small change in the underlying's price: the partial derivative of option value with respect to the underlying price. A call delta ranges from 0 to +1 and a put delta from -1 to 0; the CFTC defines it as the expected change in an option's price per one-unit change in the underlying's price.",
+    "intuition": "Delta tells you how many shares of stock your option currently behaves like: a 0.50-delta call gains about fifty cents when the stock rises a dollar.",
+    "mechanics": "In Black-Scholes, call delta = N(d1) and put delta = N(d1) - 1 (for a non-dividend stock). Delta is the hedge ratio for delta-hedging, is used as a rough proxy for the risk-neutral probability of finishing in-the-money, and aggregates linearly across a portfolio. Delta itself changes as the underlying moves, which is what gamma measures.",
+    "formula": "Delta = dV/dS; Black-Scholes: call delta = N(d1), put delta = -N(-d1) = N(d1) - 1.",
+    "relationships": [
+      "Gamma",
+      "Charm",
+      "Vanna",
+      "Moneyness",
+      "Black-Scholes model",
+      "At-the-money option"
+    ],
+    "failure_modes": "Delta hedging is exact only for infinitesimal moves with all other inputs frozen; gaps, volatility changes, and time decay make realized hedge P&L diverge. The delta-as-probability proxy is only an approximation (it conflates N(d1) with the N(d2) exercise probability) and degrades for long-dated or high-volatility options.",
+    "misconceptions": "Delta is not the true real-world probability of finishing ITM — it is a sensitivity under the risk-neutral pricing framework. Nor is a delta-hedged position riskless: it remains exposed to gamma, vega, and theta.",
+    "example": "An XYZ $100 call with delta 0.60 gains roughly $0.60 when XYZ rises from $100 to $101; a trader long 10 such calls can delta-hedge by shorting 600 shares.",
+    "citations": [
+      {
+        "source": "Greeks (finance) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Greeks_(finance)",
+        "section": "First-order Greeks: Delta",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Delta",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/exercise-by-exception",
+  "canonical_sha256": "096e726c8c3ea30c2b6cadd7242008617c1c26b219392a0808906811d0c8c9a4",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/exercise-by-exception",
+    "name": "Exercise-by-exception",
+    "aliases": [
+      "automatic exercise",
+      "ex-by-ex"
+    ],
+    "domain": "Options",
+    "definition": "Exercise-by-exception is the OCC's administrative procedure under which expiring options that are in-the-money by a specified threshold ($0.01 per contract for equity and index options) are automatically exercised for clearing members unless contrary instructions are submitted. It is a default mechanism between OCC and its clearing members, not a substitute for customer exercise instructions.",
+    "intuition": "At expiration the clearinghouse assumes you want your in-the-money options exercised — unless you or your broker say otherwise — so worthless-by-a-cent positions do not silently evaporate and valuable ones are not accidentally abandoned.",
+    "mechanics": "After the close on expiration day, OCC exercises options meeting the threshold based on the underlying's official closing price, absent contrary instructions from the clearing member. Brokers may apply different (often higher) thresholds for retail accounts, and holders can always instruct contrary exercise — including exercising an option that is not ITM by the threshold.",
+    "formula": "Threshold: exercise if (closing price - strike) >= $0.01 for calls, or (strike - closing price) >= $0.01 for puts (equity/index).",
+    "relationships": [
+      "Pin risk",
+      "Assignment risk",
+      "In-the-money option",
+      "Early exercise",
+      "Option writer"
+    ],
+    "failure_modes": "Holders who assume only clearly ITM options are exercised get surprised: after-hours news can move the underlying past the threshold after they stopped paying attention, and writers of slightly ITM shorts can be assigned while holders of slightly OTM longs can still choose to exercise. The result is unwanted stock positions discovered after expiration.",
+    "misconceptions": "Exercise-by-exception is not truly 'automatic': OCC stresses that contrary instructions are always permitted, so neither writers nor holders can rely on the threshold as a guarantee of what will happen to a pinned strike.",
+    "example": "XYZ closes expiration Friday at $100.02; the $100 calls are $0.02 ITM and are auto-exercised by exception, so writers of those calls are assigned even though the option looked nearly worthless at 3:59 pm.",
+    "citations": [
+      {
+        "source": "The Options Industry Council (OCC) — Options Exercise FAQ",
+        "url": "https://www.optionseducation.org/referencelibrary/faq/options-exercise",
+        "section": "Exercise by Exception; Exercise Thresholds",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary — A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Automatic Exercise",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

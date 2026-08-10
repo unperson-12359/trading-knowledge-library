@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/black-scholes-model",
+  "canonical_sha256": "398affe7a36dadd1e3ae48e8fc4e50fa94c828a676a2edf697308b90e5961dfc",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/black-scholes-model",
+    "name": "Black-Scholes model",
+    "aliases": [
+      "Black-Scholes-Merton model",
+      "BSM"
+    ],
+    "domain": "Options",
+    "definition": "The Black-Scholes model is a continuous-time option-pricing framework that values a European option by constructing a continuously rebalanced, riskless hedge between the option and its underlying, yielding a partial differential equation whose solution is the Black-Scholes formula. Published by Fischer Black and Myron Scholes in 1973, with Robert Merton's concurrent mathematical extension, it assumes geometric Brownian motion with constant volatility, a constant risk-free rate, no dividends, and frictionless markets.",
+    "intuition": "If you can perfectly cancel an option's risk by holding the right amount of stock, the hedged portfolio must earn the risk-free rate — and that single requirement pins down the option's fair price, whatever investors expect the stock to do.",
+    "mechanics": "The formula prices a European call as S*N(d1) - K*e^(-rT)*N(d2), with d1, d2 functions of spot, strike, rate, volatility, and time. Its practical legacy is twofold: the Greeks (closed-form hedge parameters) and implied volatility — the model is routinely inverted to quote option prices as volatilities rather than used as a literal price predictor.",
+    "formula": "C = S*N(d1) - K*e^(-rT)*N(d2); P = K*e^(-rT)*N(-d2) - S*N(-d1); d1 = [ln(S/K) + (r + sigma^2/2)T] / (sigma*sqrt(T)); d2 = d1 - sigma*sqrt(T).",
+    "relationships": [
+      "Black-76 model",
+      "Binomial option model",
+      "Risk-neutral valuation",
+      "Implied volatility",
+      "Volatility smile",
+      "Delta",
+      "Put-call parity"
+    ],
+    "failure_modes": "Constant-volatility lognormality is empirically false: returns have fat tails and skew, so the model systematically underprices crash protection (the post-1987 volatility smile) and gap risk breaks the continuous-hedging argument. Its inputs — especially future volatility — are unobservable, making the output only as good as the guess.",
+    "misconceptions": "The model does not assume markets are efficient or that it predicts prices; it is a relative-pricing consistency device. Nor is implied volatility from the model a forecast — it is the market's price of insurance expressed in the model's units.",
+    "example": "For S = $100, K = $100, T = 0.5, r = 5%, sigma = 20%: d1 = (0 + (0.05+0.02)*0.5)/(0.2*0.7071) = 0.2475, d2 = 0.1061, giving C = 100*N(0.2475) - 100*e^-0.025*N(0.1061) ≈ $6.89.",
+    "citations": [
+      {
+        "source": "Black-Scholes model — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model",
+        "section": "Black-Scholes formula; Fundamental hypotheses",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Black, F. & Scholes, M. (1973), The Pricing of Options and Corporate Liabilities, Journal of Political Economy 81(3):637-654 — Crossref record",
+        "url": "https://api.crossref.org/works/10.1086/260062",
+        "section": "DOI 10.1086/260062",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Merton, R.C. (1973), Theory of Rational Option Pricing, Bell Journal of Economics and Management Science 4(1):141 — Crossref record",
+        "url": "https://api.crossref.org/works/10.2307/3003143",
+        "section": "DOI 10.2307/3003143",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

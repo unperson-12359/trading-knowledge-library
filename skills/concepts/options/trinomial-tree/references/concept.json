@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/trinomial-tree",
+  "canonical_sha256": "60ca2bf42abe1e228e0e19ab9a0e5ed23998942a46eb9287832afb96948f5186",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/trinomial-tree",
+    "name": "Trinomial tree",
+    "aliases": [
+      "trinomial lattice"
+    ],
+    "domain": "Options",
+    "definition": "A trinomial tree is a lattice option-pricing model in which each step allows the underlying to move up, down, or stay flat (three branches per node), valued by the same risk-neutral backward induction as the binomial model. Developed by Phelim Boyle (1986), it achieves accuracy comparable to a binomial tree with fewer time steps and is equivalent to an explicit finite-difference scheme for the pricing PDE.",
+    "intuition": "Adding a 'no move' branch to the up/down tree gives the model an extra degree of freedom, so it hugs the continuous price process more closely at each step.",
+    "mechanics": "Typical parameterization: u = e^(sigma*sqrt(2*dt)), d = 1/u, m = 1, with probabilities p_u, p_d, p_m chosen to match the drift and variance of the lognormal process. Option values are computed by backward induction as discounted risk-neutral expectations over the three successor nodes, with early-exercise checks for American options.",
+    "formula": "p_u = [(e^((r-q)dt/2) - e^(-sigma*sqrt(dt/2))) / (e^(sigma*sqrt(dt/2)) - e^(-sigma*sqrt(dt/2)))]^2; p_d analogously; p_m = 1 - p_u - p_d.",
+    "relationships": [
+      "Binomial option model",
+      "Monte Carlo option pricing",
+      "Risk-neutral valuation",
+      "Black-Scholes model",
+      "Early exercise"
+    ],
+    "failure_modes": "The extra branch adds implementation complexity and probability-positivity constraints that can fail for large steps; like all lattices it handles multiple underlyings and strong path dependence poorly, and its accuracy advantage over binomial trees vanishes once enough steps are used.",
+    "misconceptions": "Three branches do not make the model 'more realistic' about the market — the lattice remains a numerical approximation to the same continuous-time assumptions, not a richer description of price behavior.",
+    "example": "Valuing an American put on a $100 stock with 50 trinomial steps: each node branches to $100*u, $100, $100*d, and early exercise is checked at every node, converging to the American put price faster than a 50-step binomial tree.",
+    "citations": [
+      {
+        "source": "Trinomial tree — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Trinomial_tree",
+        "section": "Formula; Application",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

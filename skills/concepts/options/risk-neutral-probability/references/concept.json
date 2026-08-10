@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/risk-neutral-probability",
+  "canonical_sha256": "4057e7c89b0ae9a0932520edcad526b30c0798c340df1deb33545cb7676e5682",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/risk-neutral-probability",
+    "name": "Risk-neutral probability",
+    "aliases": [
+      "martingale probability",
+      "Q-measure probability",
+      "implied probability"
+    ],
+    "domain": "Options",
+    "definition": "A risk-neutral probability is a probability weight under which every traded asset's discounted price is a martingale — the set of odds that makes the expected future price of the underlying equal its forward price. Risk-neutral probabilities are implied by current market prices and are used to value derivatives as discounted expected payoffs.",
+    "intuition": "They are the odds a casino would have to post so that every bet is exactly fair after interest — not the odds anyone believes, but the odds consistent with today's prices.",
+    "mechanics": "In a one-step binomial with up/down prices S*u and S*d, the risk-neutral up probability is p = (S*e^(r*dt) - S*d)/(S*u - S*d). Across a full option chain, the second derivative of call prices with respect to strike (Breeden-Litzenberger) recovers the implied risk-neutral density; delta and N(d2) are common practical proxies for risk-neutral exercise probability.",
+    "formula": "Binomial: p = (e^(r*dt) - d)/(u - d); continuous: risk-neutral density at K is e^(rT) * d2C/dK2 (Breeden-Litzenberger).",
+    "relationships": [
+      "Risk-neutral valuation",
+      "Binomial option model",
+      "Delta",
+      "Volatility smile",
+      "Implied volatility"
+    ],
+    "failure_modes": "Treating risk-neutral probabilities as physical probabilities leads to systematic misjudgment of real-world odds, especially in the tails where risk premia are largest; empirically, risk-neutral crash probabilities vastly exceed realized frequencies, reflecting the price of insurance rather than expected frequency.",
+    "misconceptions": "A 25-delta put does not mean the market thinks there is a 25% real chance of touching that strike — it encodes demand for protection. Nor are these probabilities observable directly; they are inferred from prices under modeling choices.",
+    "example": "If a butterfly spread centered at the $90 strike costs $0.40 for a $1-wide payoff, the implied risk-neutral probability of finishing near $90 is roughly 40% (before discounting) — a pricing weight, not a forecast.",
+    "citations": [
+      {
+        "source": "Risk-neutral measure — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Risk-neutral_measure",
+        "section": "Example 1 — Binomial model; Definition",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Greeks (finance) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Greeks_(finance)",
+        "section": "Delta as a proxy for probability; strike second derivative (Breeden-Litzenberger)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

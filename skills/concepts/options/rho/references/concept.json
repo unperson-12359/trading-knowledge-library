@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/rho",
+  "canonical_sha256": "d33f3cdc550beea8a4ea675c4f74fecd63e099deef58396866d04b81f1a75259",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/rho",
+    "name": "Rho",
+    "aliases": [
+      "option rho"
+    ],
+    "domain": "Options",
+    "definition": "Rho is the sensitivity of an option's price to a change in the risk-free interest rate: the partial derivative of option value with respect to the rate for the relevant term. Calls have positive rho and puts negative rho; it is the least-watched first-order Greek because short-dated option values are only weakly rate-sensitive.",
+    "intuition": "Rho captures that buying a call is partly a deferred purchase: higher rates make paying later more attractive, nudging call values up and put values down.",
+    "mechanics": "Rho = dV/dr, usually quoted per 100 basis points. In Black-Scholes, call rho = K*T*e^(-rT)*N(d2) and put rho = -K*T*e^(-rT)*N(-d2). Sensitivity grows with time to expiration, so rho matters mainly for LEAPS and for rate regime shifts; it also explains why call-put price differences move with rates via put-call parity.",
+    "formula": "Rho = dV/dr; Black-Scholes call rho = K*T*e^(-rT)*N(d2); put rho = -K*T*e^(-rT)*N(-d2).",
+    "relationships": [
+      "Delta",
+      "Theta",
+      "Put-call parity",
+      "Black-Scholes model",
+      "Box spread"
+    ],
+    "failure_modes": "Rho assumes a single flat constant rate; real rate changes twist the discount curve, and in high-rate regimes the simplification in short-dated books hides real funding-cost effects. Box-spread and parity-based positions, whose entire economics are interest rate plays, cannot be risk-managed with a single rho number.",
+    "misconceptions": "Rho being 'small' does not mean rates are irrelevant: for long-dated options, a 1% rate shift can move prices by several percent, and rate-driven early-exercise incentives on deep ITM puts are a first-order effect.",
+    "example": "A one-year $100-strike call with rho 0.45 gains about $0.45 if rates rise from 4% to 5%, all else equal; the same rho is negligible on a one-week option.",
+    "citations": [
+      {
+        "source": "Greeks (finance) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Greeks_(finance)",
+        "section": "First-order Greeks: Rho",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "The Options Industry Council (OCC) — Understanding Options Greeks",
+        "url": "https://www.optionseducation.org/advancedconcepts/understanding-options-greeks",
+        "section": "Greeks overview",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

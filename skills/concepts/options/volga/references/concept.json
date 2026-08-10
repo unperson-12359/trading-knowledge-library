@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/volga",
+  "canonical_sha256": "61159c2c611feb10286156dc90c52746d3c673bed6402ab2cc5533071344c9ce",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/volga",
+    "name": "Volga",
+    "aliases": [
+      "vomma",
+      "vega convexity",
+      "DvegaDvol"
+    ],
+    "domain": "Options",
+    "definition": "Volga (vomma) is the second-order sensitivity of an option's value to volatility: the rate of change of vega per unit change in implied volatility. It measures vega convexity — how a position's volatility exposure itself grows or shrinks as volatility moves.",
+    "intuition": "Volga is to vega what gamma is to delta: a long-volga position becomes more long volatility as volatility rises and less as it falls, so it benefits from volatility of volatility.",
+    "mechanics": "Volga = d(vega)/d(sigma) = d2V/d(sigma)2. Volga is positive for long options away from the money and peaks for OTM/wing options, which is why strangles and wings carry volga while ATM options carry little. Vega-neutral books built from different strikes can still be net long or short volga.",
+    "formula": "Volga = d2V/d(sigma)2; Black-Scholes: Volga = Vega * (d1 * d2) / sigma.",
+    "relationships": [
+      "Vega",
+      "Vanna",
+      "Ultima",
+      "Implied volatility",
+      "Backspread",
+      "Black-Scholes model"
+    ],
+    "failure_modes": "Volga exposure hides in strike-diversified books that report flat vega: a volatility spike re-prices the wings far more than first-order vega predicts. Because volga lives in OTM options, it is entangled with skew dynamics that a single-volatility model cannot represent.",
+    "misconceptions": "Being vega-neutral is not being volatility-neutral: volga (and vanna) leave residual exposure to volatility changes. Volga also is not 'the volatility of volatility' itself — it is a price sensitivity to that second-order risk.",
+    "example": "A vega-flat book long far-OTM wings and short ATM options has positive volga: when implied volatility jumps from 15% to 25%, the wings' vega inflates and the book gains beyond what its zero initial vega implied.",
+    "citations": [
+      {
+        "source": "Greeks (finance) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Greeks_(finance)",
+        "section": "Second-order Greeks: Vomma (volga)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

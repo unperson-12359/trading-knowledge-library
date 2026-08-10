@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/vanna",
+  "canonical_sha256": "02edbd42d92b28165387dc7f6edb2e485623edaafe70c2ab74049c7031e42db0",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/vanna",
+    "name": "Vanna",
+    "aliases": [
+      "DdeltaDvol",
+      "DvegaDspot"
+    ],
+    "domain": "Options",
+    "definition": "Vanna is a second-order cross sensitivity of an option's value: the rate of change of delta with respect to volatility, equivalently the rate of change of vega with respect to the underlying price. It measures how an option's directional exposure shifts when implied volatility changes.",
+    "intuition": "Vanna tells you that a volatility spike can make your position longer or shorter the stock without the stock moving — because changing odds of finishing in-the-money change your effective share-equivalent exposure.",
+    "mechanics": "Vanna = d(delta)/d(sigma) = d(vega)/dS = d2V/(dS d(sigma)); by symmetry of mixed partials the two readings are equal. It is monitored in delta- and vega-hedged books because volatility moves rotate hedge ratios; OTM options have pronounced vanna, and aggregate dealer vanna flows are tracked as a market-microstructure force.",
+    "formula": "Vanna = d2V/(dS d(sigma)); Black-Scholes: Vanna = -N'(d1) * d2 / sigma.",
+    "relationships": [
+      "Delta",
+      "Vega",
+      "Volga",
+      "Charm",
+      "Implied volatility",
+      "Black-Scholes model"
+    ],
+    "failure_modes": "Vanna is invisible in first-order risk reports, so books that are delta- and vega-neutral separately can still bleed when price and volatility move together (the usual negative correlation in equities interacts with vanna). Model-dependence is high: smile dynamics alter realized vanna exposure away from Black-Scholes values.",
+    "misconceptions": "Vanna is not a measure of 'volatility of volatility' — that is volga; vanna is the cross term between price and volatility, and confusing the two misstates how hedges behave in sell-offs.",
+    "example": "An OTM put's delta falls from -0.30 toward -0.45 as implied volatility jumps from 20% to 30%; the holder's hedge ratio changed purely through vanna, with the stock flat.",
+    "citations": [
+      {
+        "source": "Greeks (finance) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Greeks_(finance)",
+        "section": "Second-order Greeks: Vanna",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/charm",
+  "canonical_sha256": "f3f4b37112caf5bb8d2a5bc6e6d28ee59357890878542305f8bb4ebde171fc86",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/charm",
+    "name": "Charm",
+    "aliases": [
+      "delta decay",
+      "DdeltaDtime"
+    ],
+    "domain": "Options",
+    "definition": "Charm is the second-order cross sensitivity of an option's value to the underlying price and time: the rate of change of delta with the passage of time, equivalently the rate of change of theta with the underlying price. It measures how a position's directional exposure drifts as expiration approaches.",
+    "intuition": "Charm is why your hedge moves on its own overnight: as time passes, deltas of OTM options bleed toward zero and ITM deltas toward one, even with the stock unchanged.",
+    "mechanics": "Charm = -d(delta)/d(tau) = d(theta)/dS = -d2V/(d(tau) dS), typically quoted as delta change per day. It matters most for delta-hedged books held over weekends or into expiration, and aggregate dealer charm is tracked as a driver of hedging flows into the close of large expirations.",
+    "formula": "Charm = -d2V/(d(tau) dS) = -d(delta)/d(tau).",
+    "relationships": [
+      "Delta",
+      "Theta",
+      "Color",
+      "Vanna",
+      "Gamma exposure",
+      "Black-Scholes model"
+    ],
+    "failure_modes": "Charm accelerates near expiration, so full-day delta-decay estimates become inaccurate exactly when hedges matter most; books hedged Friday can be materially off-hedge Monday purely from charm. As a model quantity it inherits all Black-Scholes input sensitivities.",
+    "misconceptions": "Charm is not time decay of the option price — that is theta; charm is the time decay of delta. Confusing the two leads hedgers to mis-position for expiration-week drift.",
+    "example": "An OTM call with delta 0.30 and charm -0.02 per day drifts toward delta 0.24 over a quiet weekend with the stock flat, forcing a hedger to buy back 6 deltas per contract to stay neutral.",
+    "citations": [
+      {
+        "source": "Greeks (finance) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Greeks_(finance)",
+        "section": "Second-order Greeks: Charm",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

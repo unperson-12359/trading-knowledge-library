@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/black-76-model",
+  "canonical_sha256": "561ea5fa1eb585ba78be635649a34aa8430fa97919034e3985c06540d1f7a5b7",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/black-76-model",
+    "name": "Black-76 model",
+    "aliases": [
+      "Black model",
+      "Black futures option model"
+    ],
+    "domain": "Options",
+    "definition": "The Black-76 model is Fischer Black's 1976 adaptation of the Black-Scholes framework to options on forwards and futures: it prices a European option off the forward/futures price directly, discounting the expected payoff at the risk-free rate. It remains the standard quoting convention for options on commodity futures, bond options, caps/floors, and swaptions.",
+    "intuition": "For an option on a future, you don't need to model spot, storage, and carry separately — the futures price already bundles them, so you just plug the futures price into a Black-Scholes-like formula.",
+    "mechanics": "Call price = e^(-rT) * [F*N(d1) - K*N(d2)] with d1 = [ln(F/K) + sigma^2*T/2]/(sigma*sqrt(T)); the risk-neutral futures price is driftless (a martingale), which is why no cost-of-carry term appears. Markets routinely invert the formula to quote 'Black implied volatilities' across strikes and maturities.",
+    "formula": "C = e^(-rT)[F*N(d1) - K*N(d2)]; P = e^(-rT)[K*N(-d2) - F*N(-d1)]; d1 = [ln(F/K) + (sigma^2/2)T]/(sigma*sqrt(T)); d2 = d1 - sigma*sqrt(T).",
+    "relationships": [
+      "Black-Scholes model",
+      "Risk-neutral valuation",
+      "Implied volatility",
+      "Volatility surface",
+      "Call option"
+    ],
+    "failure_modes": "The lognormal forward assumption fails in the same ways as Black-Scholes (smiles/skews across strikes) and additionally breaks when forwards or rates can go negative — the post-2008 rate environment forced shifted-lognormal and Bachelier (normal) model conventions in rates markets.",
+    "misconceptions": "Black-76 is not a different theory from Black-Scholes — substituting F = S*e^((r-q)T) recovers the dividend-adjusted Black-Scholes formula, so it is best understood as the same machinery reparameterized to the forward.",
+    "example": "An at-the-money option on a futures contract at F = 4,000, K = 4,000, T = 0.25, r = 5%, sigma = 15%: d1 = 0.0375, d2 = -0.0375, giving C = e^(-0.0125)*4000*(2*N(0.0375) - 1) ≈ $119.",
+    "citations": [
+      {
+        "source": "Black model — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Black_model",
+        "section": "The Black formula",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Black, F. (1976), The Pricing of Commodity Contracts, Journal of Financial Economics 3(1-2):167-179 — Crossref record",
+        "url": "https://api.crossref.org/works/10.1016/0304-405X(76)90024-6",
+        "section": "DOI 10.1016/0304-405X(76)90024-6",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

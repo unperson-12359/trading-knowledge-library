@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/risk-neutral-valuation",
+  "canonical_sha256": "daaa6d46bf9f6bb36277e2fad61d0a7c98bb724e57e91a1d8bf59e4817224b01",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/risk-neutral-valuation",
+    "name": "Risk-neutral valuation",
+    "aliases": [
+      "risk-neutral pricing",
+      "martingale pricing"
+    ],
+    "domain": "Options",
+    "definition": "Risk-neutral valuation is the pricing principle that an asset's fair value equals the discounted expectation of its future payoff computed under the risk-neutral (equivalent martingale) measure — the probability measure in which all assets earn the risk-free rate. In a complete, arbitrage-free market this measure is unique, and every derivative has a unique arbitrage-free price under it.",
+    "intuition": "Instead of arguing about how much extra return investors demand for risk, you re-weight the odds so everyone looks risk-neutral, take the average payoff, and discount — the answer is the same either way, but much easier to compute.",
+    "mechanics": "By the fundamental theorem of asset pricing, no-arbitrage is equivalent to the existence of a risk-neutral measure Q under which discounted prices are martingales; the price of a payoff H_T is E^Q[H_T] discounted. This is why option pricing formulas contain the risk-free rate instead of the stock's expected return, and it underlies Black-Scholes, trees, and Monte Carlo methods alike.",
+    "formula": "V_0 = e^(-rT) * E^Q[payoff at T], where Q is the risk-neutral measure under which the underlying's expected return equals r.",
+    "relationships": [
+      "Risk-neutral probability",
+      "Black-Scholes model",
+      "Binomial option model",
+      "Monte Carlo option pricing",
+      "Put-call parity"
+    ],
+    "failure_modes": "In incomplete markets (jumps, stochastic volatility, untradeable risks) infinitely many risk-neutral measures exist, so 'the' price is not pinned down without additional economic choice. The method also silently assumes tradeability and financing at the risk-free rate, which fails in stressed funding markets.",
+    "misconceptions": "Risk-neutral probabilities are not the market's real-world forecasts — they are pricing weights that embed risk premia, so reading them as literal crash odds overstates tail probabilities. Risk neutrality is a computational device, not a claim that investors are indifferent to risk.",
+    "example": "A stock can go to $120 or $80 in one year, r = 5%; the risk-neutral up probability is (105 - 80)/(120 - 80) = 0.625, so a call paying max(S - 100, 0) is worth (0.625 x $20)/1.05 = $11.90 regardless of the true up probability.",
+    "citations": [
+      {
+        "source": "Risk-neutral measure — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Risk-neutral_measure",
+        "section": "Motivating the use of risk-neutral measures; Definition",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Binomial options pricing model — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Binomial_options_pricing_model",
+        "section": "Step 3: risk-neutral node valuation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

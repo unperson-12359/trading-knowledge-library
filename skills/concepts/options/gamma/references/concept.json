@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/gamma",
+  "canonical_sha256": "72bbb8860582cda65ee20cb40ac404ca1f876af52bb621b19b4cde8c4fe0604f",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/gamma",
+    "name": "Gamma",
+    "aliases": [
+      "option gamma"
+    ],
+    "domain": "Options",
+    "definition": "Gamma is the second-order sensitivity of an option's price to the underlying's price — the rate of change of delta per unit change in the underlying. Long options have positive gamma and short options negative gamma; gamma peaks for at-the-money options near expiration.",
+    "intuition": "Gamma is the accelerator pedal of your delta: the higher the gamma, the faster your position turns more long as the stock rises and more short as it falls.",
+    "mechanics": "Gamma = d(delta)/dS = d2V/dS2; identical for calls and puts at the same strike in Black-Scholes. It measures the convexity of the option's value and the cost of re-hedging a delta-neutral book: long-gamma positions gain from realized volatility and pay theta; short-gamma positions collect theta and lose to realized volatility.",
+    "formula": "Gamma = d2V/dS2; Black-Scholes: Gamma = N'(d1) / (S * sigma * sqrt(T)).",
+    "relationships": [
+      "Delta",
+      "Theta",
+      "Vega",
+      "Speed",
+      "Zomma",
+      "Color",
+      "Gamma exposure",
+      "Black-Scholes model"
+    ],
+    "failure_modes": "Near expiration, ATM gamma explodes, so hedges that looked adequate become useless within hours and small price jumps force large re-hedges; short-gamma books are exactly where gap moves inflict unbounded damage, and gamma estimates are model-dependent.",
+    "misconceptions": "Long gamma does not mean 'profits from any move' — it profits only when realized volatility exceeds the implied volatility paid for via theta. Gamma is also not a standalone position: it is inseparable from the theta cost that funds it.",
+    "example": "A $100-strike call with delta 0.50 and gamma 0.08 sees its delta rise to about 0.58 if the stock rises $1; a short option with gamma -0.08 must buy back 8 deltas of hedge after that same move.",
+    "citations": [
+      {
+        "source": "Greeks (finance) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Greeks_(finance)",
+        "section": "Second-order Greeks: Gamma",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "The Options Industry Council (OCC) — Understanding Options Greeks",
+        "url": "https://www.optionseducation.org/advancedconcepts/understanding-options-greeks",
+        "section": "Greeks overview",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

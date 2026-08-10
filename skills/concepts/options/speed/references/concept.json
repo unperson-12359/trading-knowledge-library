@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/speed",
+  "canonical_sha256": "d800aad26027f1c0738c304d47a158c1c04c8a41d40979322d3131480e2ce07f",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/speed",
+    "name": "Speed",
+    "aliases": [
+      "gamma of the gamma",
+      "DgammaDspot"
+    ],
+    "domain": "Options",
+    "definition": "Speed is a third-order sensitivity of an option's value: the rate of change of gamma with respect to the underlying price, i.e., the third derivative of value with respect to the underlying price. It measures how quickly a position's convexity changes as the underlying moves.",
+    "intuition": "If delta is your speedometer and gamma your accelerator, speed is how fast the accelerator itself stiffens as the stock moves — it warns you that your gamma hedge will go stale.",
+    "mechanics": "Speed = d(gamma)/dS = d3V/dS3. It is relevant to gamma-hedged books because a large move changes not just delta but gamma, so the re-hedge quantities computed at current prices are wrong after the move; speed is largest for near-ATM options and changes sign across the strike.",
+    "formula": "Speed = d3V/dS3; Black-Scholes: Speed = -(Gamma/S) * (d1/(sigma*sqrt(T)) + 1).",
+    "relationships": [
+      "Gamma",
+      "Delta",
+      "Zomma",
+      "Color",
+      "Black-Scholes model"
+    ],
+    "failure_modes": "Third-order Greeks are extremely model- and input-sensitive: small errors in implied volatility produce large speed errors, so hedge prescriptions based on speed are indicative at best. In discontinuous markets the smooth-derivative framing breaks down entirely.",
+    "misconceptions": "Speed is not how fast an option's price moves — it measures the curvature of gamma across price, a book-management quantity with no intuitive P&L meaning for simple positions.",
+    "example": "A gamma-hedged book re-hedged assuming gamma 0.06 finds gamma has fallen to 0.04 after a $2 rally because speed was negative at that strike; the hedge quantities were therefore over-stated.",
+    "citations": [
+      {
+        "source": "Greeks (finance) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Greeks_(finance)",
+        "section": "Third-order Greeks: Speed",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

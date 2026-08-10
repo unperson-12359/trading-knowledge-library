@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/ultima",
+  "canonical_sha256": "a93858abc4725ccc8e8195d753ed4437b6af764c7739593182fdd484ac94a2bc",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/ultima",
+    "name": "Ultima",
+    "aliases": [
+      "DvommaDvol"
+    ],
+    "domain": "Options",
+    "definition": "Ultima is a third-order sensitivity of an option's value: the rate of change of volga (vomma) with respect to volatility, i.e., the third derivative of value with respect to volatility alone. It measures the convexity of vega convexity — how volga exposure itself shifts as implied volatility changes.",
+    "intuition": "Ultima is the volatility analogue of speed: it tells deep volatility books how their volga will mutate if volatility itself keeps rising or collapsing.",
+    "mechanics": "Ultima = d(volga)/d(sigma) = d3V/d(sigma)3. It matters only for portfolios with large volga exposure — typically books concentrated in OTM wings — where second-order estimates of vega change themselves become unreliable across large volatility moves.",
+    "formula": "Ultima = d3V/d(sigma)3 = d(volga)/d(sigma).",
+    "relationships": [
+      "Volga",
+      "Vega",
+      "Vanna",
+      "Implied volatility",
+      "Black-Scholes model"
+    ],
+    "failure_modes": "Ultima sits at the edge of practical risk measurement: third-order-in-volatility terms are swamped by smile, skew dynamics, and quote discreteness, so computed ultima is a model artifact as much as a risk number.",
+    "misconceptions": "Ultima is not a measure of tail event probability — it is a smooth-model derivative that says nothing directly about crash risk, only about how wing-book sensitivities bend with volatility.",
+    "example": "A wing-heavy book whose volga rises as volatility rises has negative or positive ultima depending on the smile region; risk managers use it only to bound how wrong their volga estimate could be after a 10-point vol shock.",
+    "citations": [
+      {
+        "source": "Greeks (finance) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Greeks_(finance)",
+        "section": "Third-order Greeks: Ultima",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

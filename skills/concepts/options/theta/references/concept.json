@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/theta",
+  "canonical_sha256": "57c3b1d1f5f8a72b96a677d7e9aee82a5e23552ea94302cd3517508b1dc5159a",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/theta",
+    "name": "Theta",
+    "aliases": [
+      "time decay"
+    ],
+    "domain": "Options",
+    "definition": "Theta is the sensitivity of an option's price to the passage of time, holding all other inputs constant — conventionally reported as the (typically negative) change in option value per day. Long options usually have negative theta and short options positive theta; theta is largest in magnitude for at-the-money options near expiration.",
+    "intuition": "Theta is the daily rent you pay to own an option: every day that passes with the stock unmoved, a little more of the premium evaporates.",
+    "mechanics": "Theta = -dV/d(tau) by practitioner convention, where tau is time to expiry. Time decay is non-linear, accelerating into expiration for ATM options, and it is the mirror image of gamma: long-gamma positions pay theta and short-gamma positions collect it. Deep ITM European puts can have positive theta because of discounting effects.",
+    "formula": "Theta = -dV/d(tau); Black-Scholes call theta = -(S*N'(d1)*sigma)/(2*sqrt(T)) - r*K*e^(-rT)*N(d2).",
+    "relationships": [
+      "Gamma",
+      "Vega",
+      "Charm",
+      "Color",
+      "Calendar spread",
+      "At-the-money option",
+      "Black-Scholes model"
+    ],
+    "failure_modes": "Theta is a model value assuming constant implied volatility and price — real decay is lumpy (weekends, events, IV changes), so daily theta estimates routinely misstate actual overnight P&L. Strategies sold as 'theta harvesting' silently assume realized volatility stays below implied.",
+    "misconceptions": "Theta is not guaranteed income for sellers: it is compensation for bearing gamma risk, and the two are linked by the pricing PDE. Buyers likewise do not 'lose theta' on weekends in a simple daily pro-rata way — models price decay continuously while markets price it in discrete jumps.",
+    "example": "A $100-strike call trading at $3.00 with theta -0.05 loses about $0.05 overnight if price and implied volatility are unchanged; after a quiet week it would be worth roughly $2.65, all else equal.",
+    "citations": [
+      {
+        "source": "Greeks (finance) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Greeks_(finance)",
+        "section": "First-order Greeks: Theta",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "The Options Industry Council (OCC) — Understanding Options Greeks",
+        "url": "https://www.optionseducation.org/advancedconcepts/understanding-options-greeks",
+        "section": "Greeks overview",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
