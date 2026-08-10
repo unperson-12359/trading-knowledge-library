@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/semivariance",
+  "canonical_sha256": "1bd118a850ba0b10dddfd217dde74fd609620cf6e395edda169b2ce2d08dd1de",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/semivariance",
+    "name": "Semivariance",
+    "aliases": [
+      "semi-variance",
+      "lower partial moment of order 2"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The expected squared deviation of returns below a reference point (the mean, or a stated target), restricted to the unfavorable half of the distribution; its square root is the semi-deviation. Introduced through Roy's 1952 'safety-first' framework and endorsed by Markowitz as a more plausible risk measure than full variance.",
+    "intuition": "Variance punishes big gains as much as big losses; semivariance counts only the outcomes that hurt, matching how investors actually perceive risk.",
+    "mechanics": "Average the squared deviations of observations falling at or below the reference point: mean semivariance uses the mean as reference, target semivariance a chosen threshold T. The quantity feeds downside-deviation measures and the Sortino ratio.",
+    "formula": "SV = E[ (X - E[X])^2 * 1{X <= E[X]} ]; target semivariance = E[ (X - t)^2 * 1{X <= t} ], where 1{} is the indicator function.",
+    "relationships": [
+      "Downside volatility",
+      "Sortino ratio",
+      "Volatility",
+      "Value at risk"
+    ],
+    "failure_modes": "Estimation requires many below-reference observations, so short samples are unreliable, and results depend on the reference convention (mean versus target). It discards upside information, so it cannot distinguish distributions whose lower halves match but whose upside differs.",
+    "misconceptions": "Semivariance is not half of variance: for asymmetric return distributions it can be much more or much less than variance/2, which is precisely what makes it informative.",
+    "example": "If returns below the mean have squared deviations averaging 0.0016 while full variance is 0.0025, semivariance is 0.0016 and semi-deviation 4%, indicating loss-side concentration of risk.",
+    "citations": [
+      {
+        "source": "Wikipedia: Downside risk",
+        "url": "https://en.wikipedia.org/wiki/Downside_risk",
+        "section": "History; Examples (semivariance definition)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

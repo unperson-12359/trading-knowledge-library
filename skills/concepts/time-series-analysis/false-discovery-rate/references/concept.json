@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/false-discovery-rate",
+  "canonical_sha256": "27dd101dfbd33e071f98124c3502a661e15cafb863087981c6869d16a2aa915b",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/false-discovery-rate",
+    "name": "False discovery rate",
+    "aliases": [
+      "FDR",
+      "Benjamini-Hochberg procedure"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The expected proportion of false rejections among all rejections in a multiple-testing procedure, FDR = E[V/R] (defined as 0 when R = 0), where V counts false positives among R rejections. Benjamini and Hochberg (1995) proposed controlling it as a less conservative alternative to familywise error rates.",
+    "intuition": "Instead of demanding zero chance of any false positive, accept that a small controlled fraction of your discoveries may be false, buying back the power to find real effects among many tests.",
+    "mechanics": "The Benjamini-Hochberg procedure orders the p-values p_(1) <= ... <= p_(m), finds the largest k with p_(k) <= (k/m) q, and rejects hypotheses 1 through k; this controls the FDR at level q under independence (and under positive dependence).",
+    "formula": "FDR = E[V / max(R, 1)]; BH rejects H_(1),...,H_(k) where k = max{ i : p_(i) <= (i/m) q }.",
+    "relationships": [
+      "Multiple testing problem",
+      "Data snooping",
+      "Publication bias"
+    ],
+    "failure_modes": "BH control can fail under strong arbitrary dependence among test statistics, requiring the much more conservative Benjamini-Yekutieli adjustment, and the FDR bounds a rate, not which specific rejections are false.",
+    "misconceptions": "That FDR control at 5% gives each rejected hypothesis a 5% chance of being false: it bounds the average proportion of false rejections across the whole rejection set.",
+    "example": "Screening 1,000 candidate alpha signals at FDR q = 0.10, the BH procedure rejects 40, and in expectation no more than about 4 of those are false positives.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1111/j.2517-6161.1995.tb02031.x",
+        "url": "https://api.crossref.org/works/10.1111/j.2517-6161.1995.tb02031.x",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

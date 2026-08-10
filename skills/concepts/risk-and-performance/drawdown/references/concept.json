@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/drawdown",
+  "canonical_sha256": "d2956f77f1d6343167c18996f27769d213e253f75eed9cec537828e25625d847",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/drawdown",
+    "name": "Drawdown",
+    "aliases": [],
+    "domain": "Risk and performance",
+    "definition": "The decline in the value of an account, portfolio, or strategy from a historical peak to a subsequent point before a new peak is reached, typically expressed as a percentage of the peak value. Formally, for an equity process X(t), the drawdown at time T is the running maximum of X up to T minus X(T).",
+    "intuition": "It is the pain an investor endures between equity highs: how much of the peak value is given back before the account recovers.",
+    "mechanics": "Track the running maximum of the equity (NAV) series and at each point compute (peak - current) / peak. The series of these values forms the drawdown (underwater) curve, whose extreme values and durations define the maximum drawdown and drawdown duration statistics.",
+    "formula": "D(T) = max_{t in (0,T)} X(t) - X(T); in percentage terms, DD%(T) = ( max_{t in (0,T)} X(t) - X(T) ) / max_{t in (0,T)} X(t).",
+    "relationships": [
+      "Maximum drawdown",
+      "Drawdown duration",
+      "Time under water",
+      "Underwater curve",
+      "Equity curve",
+      "Calmar ratio"
+    ],
+    "failure_modes": "Drawdown is path- and sample-dependent: a different evaluation window changes every value, and one deep event dominates the statistic. For illiquid strategies, smoothed or stale marks flatter reported drawdowns.",
+    "misconceptions": "A drawdown is not a realized loss — positions need not be closed and the account can recover — and the deepest drawdown is not necessarily the longest-lived one.",
+    "example": "An account that peaks at $120,000 and falls to $96,000 before recovering is in a drawdown of $24,000, or 20% from peak.",
+    "citations": [
+      {
+        "source": "Wikipedia: Drawdown (economics)",
+        "url": "https://en.wikipedia.org/wiki/Drawdown_(economics)",
+        "section": "Definition; Trading definitions",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

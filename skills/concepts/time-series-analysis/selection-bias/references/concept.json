@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/selection-bias",
+  "canonical_sha256": "dec68f8a8c335b62aec4e03116fbf0995b077d6f0963996f98789da3ecdb21f8",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/selection-bias",
+    "name": "Selection bias",
+    "aliases": [
+      "sample selection bias",
+      "sampling bias"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "Systematic error introduced when the data selected for analysis are not representative of the target population because selection is related to the variables under study, so associations measured in the selected sample differ from those in the population.",
+    "intuition": "You only observe the winners of some filtering process, whoever applied, survived, volunteered, or was listed, so what you measure reflects the filter as much as the phenomenon.",
+    "mechanics": "It arises through non-random sampling, self-selection, conditioning on a collider or an outcome, attrition, and truncation. In econometrics, Heckman's two-step correction models the selection equation explicitly; in backtesting, defining the test universe with hindsight produces selection bias alongside survivorship bias.",
+    "formula": "",
+    "relationships": [
+      "Survivorship bias",
+      "Publication bias",
+      "Endogeneity",
+      "Look-ahead bias"
+    ],
+    "failure_modes": "No within-sample statistical technique can repair selection on unobservables, because the bias concerns which data exist rather than how they are analyzed; only design changes (randomization, point-in-time sampling) or explicit selection models address it.",
+    "misconceptions": "That a very large sample protects against selection bias: the bias does not shrink with n, and a huge biased sample converges precisely to the wrong answer.",
+    "example": "Evaluating a signal only on stocks that passed a liquidity screen conditions on a variable related to returns, so the measured performance does not generalize to the full universe.",
+    "citations": [
+      {
+        "source": "Wikipedia, 'Selection bias'",
+        "url": "https://en.wikipedia.org/wiki/Selection_bias",
+        "section": "definition and types",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

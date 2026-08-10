@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/data-snooping",
+  "canonical_sha256": "91353fac928571b555033c5d7add9d27ef1dc003524b18f319a21a1e69461bc7",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/data-snooping",
+    "name": "Data snooping",
+    "aliases": [
+      "data mining bias",
+      "specification search bias"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The bias arising when the same data are used repeatedly to select and evaluate models or strategies, so the best-performing specification among those searched is optimistically biased in-sample even if none has genuine predictive ability. White's (2000) reality check formalized testing whether the best rule in a searched universe truly beats a benchmark.",
+    "intuition": "If you let the data pick your strategy and then judge it on the same data, you are grading an exam the student wrote for themselves: the winner's edge is partly luck harvested by the search.",
+    "mechanics": "Prevention uses untouched holdout data, walk-forward evaluation, and pre-registered specifications. Correction uses White's reality check and the superior predictive ability test, which compare the best searched rule to its null distribution via resampling, or deflated performance metrics that adjust for the number of trials.",
+    "formula": "Reality-check null: max over k of E[f_k] <= 0 across the searched universe of rules, tested by bootstrapping the maximum of the recentered performance statistics.",
+    "relationships": [
+      "Multiple testing problem",
+      "Look-ahead bias",
+      "Overfitting",
+      "Publication bias",
+      "False discovery rate"
+    ],
+    "failure_modes": "Holdout data lose their protection once consulted repeatedly during development (holdout snooping), and collective backtests by many researchers on public data create community-wide snooping that no single study can correct.",
+    "misconceptions": "That a large in-sample t-statistic rules out snooping: the statistic is unadjusted for the search that produced it, and significance must be judged against the best-of-many null, not the single-test null.",
+    "example": "White's reality check applied to universes of technical trading rules asks whether the best rule's apparent profit exceeds what the luckiest rule would achieve under the null of no predictive ability.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1111/1468-0262.00152",
+        "url": "https://api.crossref.org/works/10.1111/1468-0262.00152",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

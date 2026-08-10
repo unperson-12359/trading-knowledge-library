@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/bootstrap",
+  "canonical_sha256": "aa3fa3f7f86d2003accc26acac00b2d10ce56126bd68af996d3cd42e52644f8c",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/bootstrap",
+    "name": "Bootstrap",
+    "aliases": [
+      "bootstrap resampling",
+      "nonparametric bootstrap"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A resampling method that approximates the sampling distribution of a statistic by repeatedly resampling the observed data with replacement and recomputing the statistic, using the empirical distribution as a stand-in for the unknown population. Introduced by Efron (1979).",
+    "intuition": "Pretend your sample is the whole population: draw many new samples from it with replacement, watch how much the statistic wiggles across them, and read off standard errors and confidence intervals without distributional formulas.",
+    "mechanics": "From n observations, draw B bootstrap samples of size n with replacement, recompute the statistic on each, and use the spread of the bootstrap replicates for standard errors, bias estimates, and percentile or BCa confidence intervals. The method is consistent for smooth statistics under i.i.d. sampling.",
+    "formula": "SE_boot = sqrt( (1/(B-1)) sum_b (theta*_b - mean(theta*))^2 ); the percentile interval uses the alpha/2 and 1 - alpha/2 quantiles of the replicates theta*_b.",
+    "relationships": [
+      "Block bootstrap",
+      "Monte Carlo simulation",
+      "Permutation test"
+    ],
+    "failure_modes": "The i.i.d. bootstrap fails for dependent data, where it destroys serial structure and block variants are required, and for non-smooth or extreme statistics such as sample minima. It also fails when the sample poorly represents the population tails.",
+    "misconceptions": "That the bootstrap creates new information: it reuses only what is in the sample, so with small or unrepresentative samples its intervals are no better than the data allow.",
+    "example": "Estimating a confidence interval for a strategy's Sharpe ratio: resample the 500 daily returns 10,000 times with replacement, recompute the Sharpe each time, and take the 2.5th and 97.5th percentiles.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1214/aos/1176344552",
+        "url": "https://api.crossref.org/works/10.1214/aos/1176344552",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/downside-volatility",
+  "canonical_sha256": "0799778d31e22d0b04af9e1b5dfa9e9548fae741f83e1138d47ca3a5e8d9a8a6",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/downside-volatility",
+    "name": "Downside volatility",
+    "aliases": [
+      "downside deviation",
+      "downside risk (measure)"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The dispersion of returns computed only over outcomes below a chosen threshold (zero, the mean, or a minimum acceptable return), isolating the variability investors actually dislike. Its squared form is the lower semivariance, and its target-relative version is the below-target semi-deviation used as the risk denominator of the Sortino ratio.",
+    "intuition": "Upside surprises are welcome, so counting them as risk overstates danger; downside volatility measures only the harmful half of the distribution.",
+    "mechanics": "Take the return series, retain deviations below the target T (with above-target deviations set to zero), square and average them, then take the square root. The result, downside deviation, replaces total standard deviation in measures such as the Sortino ratio.",
+    "formula": "DR = sqrt( E[ (r - T)^2 * 1{r < T} ] ), where r is return, T the target (minimum acceptable) return, and 1{} the indicator function; DR^2 is the target semivariance.",
+    "relationships": [
+      "Semivariance",
+      "Sortino ratio",
+      "Volatility",
+      "Omega ratio"
+    ],
+    "failure_modes": "With few below-target observations the estimate is statistically fragile, and results are sensitive to the arbitrary target chosen. It also cannot distinguish frequency from severity: two distributions with equal downside deviation can have very different tail shapes.",
+    "misconceptions": "Downside volatility is not simply the standard deviation of the negative returns: it is computed against a target across all observations with above-target deviations zeroed, a distinction that materially changes the number.",
+    "example": "For monthly returns against a 0% target, if squared shortfalls average 0.0009, downside deviation is 3% per month; using it in place of total volatility in a Sortino ratio rescales the risk-adjusted score.",
+    "citations": [
+      {
+        "source": "Wikipedia: Downside risk",
+        "url": "https://en.wikipedia.org/wiki/Downside_risk",
+        "section": "Examples (below-target semi-deviation)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/win-rate",
+  "canonical_sha256": "e575b49f73ef7b272ab4b694969c66c7d9b2ae796968d5e81f192fd95f78f6f0",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/win-rate",
+    "name": "Win rate",
+    "aliases": [
+      "win percentage",
+      "strike rate"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The proportion of closed trades in a sample that produce a profit, conventionally expressed as a percentage of all closed trades. It is a core trading-performance statistic but is meaningful only in combination with the sizes of wins and losses.",
+    "intuition": "It answers 'how often do I win?' — a psychologically salient number that, on its own, says almost nothing about whether a system makes money.",
+    "mechanics": "Count winning trades (PnL above zero after costs) and divide by total closed trades over the evaluation period. Whether breakeven trades are excluded or counted must be stated, because conventions differ.",
+    "formula": "Win rate = (number of winning trades) / (total number of closed trades).",
+    "relationships": [
+      "Loss rate",
+      "Breakeven rate",
+      "Trade expectancy",
+      "Payoff ratio",
+      "Profit factor",
+      "Hit rate"
+    ],
+    "failure_modes": "A high win rate can coexist with negative expectancy if average losers dwarf average winners (short-volatility systems are the classic case), and on small samples the rate is dominated by luck. Cherry-picked windows and survivorship bias inflate it.",
+    "misconceptions": "The belief that profitable trading requires winning most of the time is false: trend-following systems often win about 40% of trades yet have positive expectancy because winners are much larger than losers.",
+    "example": "70 winners out of 100 closed trades is a 70% win rate; by contrast, with a 2:1 reward-to-risk structure a strategy only needs to win about 34% of the time to break even before costs.",
+    "citations": [
+      {
+        "source": "Investopedia: Gap Risk",
+        "url": "https://www.investopedia.com/terms/g/gaprisk.asp",
+        "section": "Strategies for Managing Gap Risk (win rate / reward-to-risk breakeven example)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/drawdown-duration",
+  "canonical_sha256": "b5f4ea59fe785ed94662c7408339ba1b6ddd672411720c658bef4f5d9186accb",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/drawdown-duration",
+    "name": "Drawdown duration",
+    "aliases": [],
+    "domain": "Risk and performance",
+    "definition": "The length of time an equity curve spends below its previous peak: the span from the peak at which a drawdown begins until equity recovers to a new high (or to the end of the sample if it has not recovered). The maximum drawdown duration is the longest such peak-to-peak interval observed.",
+    "intuition": "Depth tells you how much it hurt; duration tells you for how long. Long recoveries test investor patience and capital commitments even when losses are shallow.",
+    "mechanics": "Mark each new equity high and measure the elapsed time (or number of periods) between consecutive highs during which equity sits below the last peak. The longest of these intervals is the maximum drawdown duration, which need not coincide with the deepest drawdown.",
+    "formula": "Duration of drawdown i = t_recovery,i - t_peak,i, where t_peak is when the running peak was set and t_recovery the first later time equity reaches or exceeds it; max drawdown duration = max_i of those spans.",
+    "relationships": [
+      "Drawdown",
+      "Maximum drawdown",
+      "Time under water",
+      "Underwater curve"
+    ],
+    "failure_modes": "Windows ending in an unrecovered drawdown censor the measurement (the end date is unknown), biasing durations downward in short samples. The statistic also depends on the sampling frequency of the equity series.",
+    "misconceptions": "Maximum drawdown duration is commonly misdefined as the duration of the deepest drawdown; it is the longest time between equity highs, which can belong to a shallower episode.",
+    "example": "A fund that peaked in January, troughed at -8% in June, and regained its high the following March has a drawdown duration of 14 months.",
+    "citations": [
+      {
+        "source": "Wikipedia: Drawdown (economics)",
+        "url": "https://en.wikipedia.org/wiki/Drawdown_(economics)",
+        "section": "Trading definitions: How long it lasts",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

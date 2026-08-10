@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/block-bootstrap",
+  "canonical_sha256": "656435451177b81244cbb2eba4338ca9e2a44d1a3c75a4a419f8460290a2e318",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/block-bootstrap",
+    "name": "Block bootstrap",
+    "aliases": [
+      "moving block bootstrap",
+      "MBB"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A bootstrap variant for dependent data that resamples contiguous blocks of observations rather than individual points, preserving short-run serial dependence within each block while still generating artificial samples. Developed by Kunsch (1989) as the moving-blocks bootstrap.",
+    "intuition": "Resampling single returns would shuffle away the volatility clustering and momentum you need to preserve, so you resample whole chunks of consecutive days and let dependence live inside each chunk.",
+    "mechanics": "Divide the series into overlapping (moving-blocks) or non-overlapping blocks of length l, resample the blocks with replacement, concatenate them into pseudo-series of length n, and recompute the statistic on each. Block length trades bias (too short breaks dependence) against variance (too long leaves few distinct blocks), with l typically growing as n^{1/3}.",
+    "formula": "For x_1,...,x_n, blocks B_i = (x_i, ..., x_{i+l-1}); a bootstrap sample concatenates ceiling(n/l) blocks drawn uniformly with replacement.",
+    "relationships": [
+      "Bootstrap",
+      "Monte Carlo simulation",
+      "Autocorrelation",
+      "Time series"
+    ],
+    "failure_modes": "Results are sensitive to block length, and dependence spanning more than the block length is still severed at block boundaries, biasing statistics that depend on long memory.",
+    "misconceptions": "That any block length works once blocks are used: too-short blocks reproduce the i.i.d. bootstrap's failure on dependent data, and the choice is a genuine tuning problem.",
+    "example": "Testing a trend-following rule's t-statistic: generate moving-block bootstrap return series with l = 20 days, rerun the rule on each, and compare the real t-statistic to the bootstrap distribution.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1214/aos/1176347265",
+        "url": "https://api.crossref.org/works/10.1214/aos/1176347265",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

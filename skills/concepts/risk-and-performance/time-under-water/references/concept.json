@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/time-under-water",
+  "canonical_sha256": "b9cdc9c44ba25a702df85ab4cc0c61089a3216a25244659f28c542802396fa47",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/time-under-water",
+    "name": "Time under water",
+    "aliases": [
+      "TuW",
+      "underwater duration"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The time an investment's equity spends below its high-water mark — the duration view of drawdown, visualized by the underwater curve and summarized by longest or average episode length.",
+    "intuition": "It measures how long investors are 'drowning' relative to their peak, capturing the opportunity cost and psychological burden that depth-only statistics miss.",
+    "mechanics": "Compute the running drawdown series; each contiguous stretch of nonzero drawdown is one time-under-water episode with a start (last peak), a depth path, and an end (recovery to the peak). Reported statistics include longest episode, current episode, and average episode length.",
+    "formula": "TUW over (0,T) = integral_0^T 1{D(t) > 0} dt, where D(t) is the drawdown at time t and 1{} the indicator function.",
+    "relationships": [
+      "Drawdown duration",
+      "Drawdown",
+      "Underwater curve",
+      "Maximum drawdown"
+    ],
+    "failure_modes": "Like all drawdown-path statistics it is sample- and frequency-dependent, and unrecovered drawdowns at the sample end censor the measurement. Within an episode it ignores magnitude unless paired with depth statistics.",
+    "misconceptions": "Time under water is not the same as losing money continuously: equity can rise during most of an episode while still sitting below the old high-water mark.",
+    "example": "A strategy that made its last equity high ten months ago and is still 5% below it has a current time under water of ten months.",
+    "citations": [
+      {
+        "source": "Wikipedia: Drawdown (economics)",
+        "url": "https://en.wikipedia.org/wiki/Drawdown_(economics)",
+        "section": "Trading definitions: How long it lasts",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/permutation-test",
+  "canonical_sha256": "3b0edc0ed2dbd326c2a825cc58aad5a2e9d51ef452cc6fd7d45d54bb32a3113d",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/permutation-test",
+    "name": "Permutation test",
+    "aliases": [
+      "randomization test",
+      "re-randomization test"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "An exact, distribution-free significance test that computes the p-value by recomputing the test statistic over all (or many random) rearrangements of the data labels consistent with the null hypothesis, generating the null distribution from the data themselves. Systematized by Pitman (1937) following Fisher's randomization idea.",
+    "intuition": "If the treatment made no difference, the labels are meaningless: shuffle them thousands of times, recompute the statistic each time, and see how extreme the real statistic is among the shuffled ones.",
+    "mechanics": "Compute the statistic T on the observed assignment, permute group labels or pairing signs B times (or exhaustively), recompute T under each permutation, and take the p-value as the proportion of permuted statistics at least as extreme as the observed one. Validity requires exchangeability under the null, not any parametric distribution.",
+    "formula": "p = (1 + #{b : T_b >= T_obs}) / (B + 1) over B permutations of the data under the null of exchangeability.",
+    "relationships": [
+      "Bootstrap",
+      "Monte Carlo simulation",
+      "Multiple testing problem",
+      "Block bootstrap"
+    ],
+    "failure_modes": "Exchangeability fails under dependence: naive permutations of autocorrelated series destroy serial structure and give invalid p-values, requiring restricted or block permutations. Exhaustive enumeration is computationally feasible only for small samples.",
+    "misconceptions": "That permutation tests are assumption-free: they trade distributional assumptions for the structural assumption of exchangeability, itself violated by cross-group heteroskedasticity and time dependence.",
+    "example": "Testing whether a signal's long-short spread is real: permute the signal-to-date alignment 5,000 times in blocks, rebuild the spread each time, and check whether the real spread exceeds 99% of permuted versions.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.2307/2984124",
+        "url": "https://api.crossref.org/works/10.2307/2984124",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

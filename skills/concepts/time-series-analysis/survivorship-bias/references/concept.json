@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/survivorship-bias",
+  "canonical_sha256": "9b1c20b6095ec0331ffaca2569eba33269e7648125e297bcd860da30888ac49b",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/survivorship-bias",
+    "name": "Survivorship bias",
+    "aliases": [
+      "survival bias"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The distortion of sample statistics caused by conditioning on survival: analyzing only the funds, stocks, or strategies that persisted to the end of the sample while dropping those that failed or delisted, thereby overstating average performance and understating risk. Quantified for mutual funds by Brown, Goetzmann, Ibbotson and Ross (1992).",
+    "intuition": "Judging bomber safety by the holes in the planes that returned ignores the ones that never came back; the failures carry information the survivors cannot show.",
+    "mechanics": "Dead and delisted entities disappear from standard databases, so average returns computed on survivors exclude the losses of the vanished, biasing mean performance and persistence estimates upward. Correction requires point-in-time universes that include delistings and dead funds with their full, often negative, terminal returns.",
+    "formula": "",
+    "relationships": [
+      "Selection bias",
+      "Look-ahead bias",
+      "Data snooping",
+      "Publication bias"
+    ],
+    "failure_modes": "The bias grows with attrition rates and return dispersion: databases with high dropout can overstate mean returns by several percentage points a year, and index backtests using today's constituents inherit it silently.",
+    "misconceptions": "That adding currently known dead funds fixes it: the universe must be defined as of each historical date (point-in-time), not as of today minus remembered closures.",
+    "example": "Brown et al. showed that apparent persistence in mutual fund rankings weakened or reversed once funds that had exited the sample were included in the analysis.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1093/rfs/5.4.553",
+        "url": "https://api.crossref.org/works/10.1093/rfs/5.4.553",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

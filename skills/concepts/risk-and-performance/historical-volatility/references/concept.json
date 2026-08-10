@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/historical-volatility",
+  "canonical_sha256": "c218e965c1548bcdd73b7695455bd93106187601196f7f0320c77c0d3826709a",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/historical-volatility",
+    "name": "Historical volatility",
+    "aliases": [
+      "HV",
+      "statistical volatility",
+      "historic volatility"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A backward-looking measure of the dispersion of an asset's returns over a past observation window, conventionally the sample standard deviation of logarithmic returns scaled to an annual figure. It quantifies how much price actually fluctuated over a specified historical period under a stated estimator and annualization convention.",
+    "intuition": "It answers 'how wild has this market actually been?' by measuring the spread of past price changes. Calm markets show low historical volatility; whipsawing, crash-prone markets show high.",
+    "mechanics": "Compute log returns over the chosen window, take their sample standard deviation, then annualize by multiplying by the square root of the number of periods per year (e.g. sqrt(252) for daily returns). The estimate is only as stable as the window and sampling frequency chosen.",
+    "formula": "sigma_ann = sigma_period * sqrt(P), where sigma_period = sqrt( (1/(n-1)) * sum_i (r_i - r_bar)^2 ), r_i = ln(P_i / P_{i-1}) are log returns over n observations, and P is periods per year (252 for daily).",
+    "relationships": [
+      "Volatility",
+      "Realized volatility",
+      "Implied volatility",
+      "Volatility stop",
+      "Volatility targeting"
+    ],
+    "failure_modes": "It assumes the trailing window is representative, so regime shifts leave the estimate stale, and sqrt-of-time annualization breaks down when returns are autocorrelated or fat-tailed. Short windows are noisy; long windows lag.",
+    "misconceptions": "Historical volatility is not a forecast: it describes what happened, not what will happen, and it says nothing about direction because it measures dispersion, not trend.",
+    "example": "If daily log returns of a stock over the last 21 sessions have a standard deviation of 1.2%, annualized historical volatility is 1.2% * sqrt(252), about 19%.",
+    "citations": [
+      {
+        "source": "Wikipedia: Volatility (finance)",
+        "url": "https://en.wikipedia.org/wiki/Volatility_(finance)",
+        "section": "Volatility terminology; Mathematical definition",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

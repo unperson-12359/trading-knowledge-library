@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/look-ahead-bias",
+  "canonical_sha256": "68a4e6036704a00c91dad6a00539810f5762fc139e89c24e4b9d463355159a5b",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/look-ahead-bias",
+    "name": "Look-ahead bias",
+    "aliases": [
+      "look-ahead",
+      "forward-looking bias"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A backtesting error in which a simulated decision uses information that would not have been available at the simulated decision time, such as future prices, revised fundamentals, or full-sample statistics, artificially inflating measured performance.",
+    "intuition": "It is trading with tomorrow's newspaper: any rule looks brilliant if at each historical date it quietly consults data that only became known later.",
+    "mechanics": "Common forms include signals computed on a bar's close but executed at that same close, use of revised rather than point-in-time fundamentals, universes defined with hindsight, and features normalized with full-sample means and variances. Prevention requires point-in-time data, lagging signal computation relative to execution, and walk-forward rather than full-sample preprocessing.",
+    "formula": "",
+    "relationships": [
+      "Data snooping",
+      "Survivorship bias",
+      "Overfitting",
+      "Selection bias"
+    ],
+    "failure_modes": "Subtle leaks, index membership, delisting returns, feature scaling, and cross-validation folds that interleave past and future, survive casual review and almost always bias results upward, making weak strategies appear strong.",
+    "misconceptions": "That look-ahead bias requires explicitly using future prices: standard i.i.d. cross-validation on autocorrelated financial data leaks future information through overlapping folds just as surely.",
+    "example": "A moving-average crossover computed with a centered window uses prices after the signal date; switching to a trailing window with next-open execution removes several percent of phantom annual return.",
+    "citations": [
+      {
+        "source": "Bailey, Borwein, Lopez de Prado and Zhu (2014), 'Pseudo-mathematics and Financial Charlatanism', Notices of the AMS 61(5):458-471",
+        "url": "https://www.ams.org/notices/201405/rnoti-p458.pdf",
+        "section": "pp. 458-471 (backtest pitfalls incl. look-ahead bias)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

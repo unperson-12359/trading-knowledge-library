@@ -88,6 +88,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="bootstrap"><h3>Bootstrap <a class="anchor" href="#bootstrap">#</a></h3>
 <div class="field">A resampling method that approximates the sampling distribution of a statistic by repeatedly resampling the observed data with replacement and recomputing the statistic, using the empirical distribution as a stand-in for the unknown population. Introduced by Efron (1979).</div>
+<div class="skill-links"><a href="../skills/tkl-bootstrap/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Pretend your sample is the whole population: draw many new samples from it with replacement, watch how much the statistic wiggles across them, and read off standard errors and confidence intervals without distributional formulas.</div>
 <div class="field"><span class="label">Mechanics:</span> From n observations, draw B bootstrap samples of size n with replacement, recompute the statistic on each, and use the spread of the bootstrap replicates for standard errors, bias estimates, and percentile or BCa confidence intervals. The method is consistent for smooth statistics under i.i.d. sampling.</div>
 <div class="field"><span class="label">Failure modes:</span> The i.i.d. bootstrap fails for dependent data, where it destroys serial structure and block variants are required, and for non-smooth or extreme statistics such as sample minima. It also fails when the sample poorly represents the population tails.</div>
@@ -100,6 +101,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="block-bootstrap"><h3>Block bootstrap <a class="anchor" href="#block-bootstrap">#</a></h3>
 <div class="field">A bootstrap variant for dependent data that resamples contiguous blocks of observations rather than individual points, preserving short-run serial dependence within each block while still generating artificial samples. Developed by Kunsch (1989) as the moving-blocks bootstrap.</div>
+<div class="skill-links"><a href="../skills/tkl-block-bootstrap/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Resampling single returns would shuffle away the volatility clustering and momentum you need to preserve, so you resample whole chunks of consecutive days and let dependence live inside each chunk.</div>
 <div class="field"><span class="label">Mechanics:</span> Divide the series into overlapping (moving-blocks) or non-overlapping blocks of length l, resample the blocks with replacement, concatenate them into pseudo-series of length n, and recompute the statistic on each. Block length trades bias (too short breaks dependence) against variance (too long leaves few distinct blocks), with l typically growing as n^{1/3}.</div>
 <div class="field"><span class="label">Failure modes:</span> Results are sensitive to block length, and dependence spanning more than the block length is still severed at block boundaries, biasing statistics that depend on long memory.</div>
@@ -112,6 +114,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="permutation-test"><h3>Permutation test <a class="anchor" href="#permutation-test">#</a></h3>
 <div class="field">An exact, distribution-free significance test that computes the p-value by recomputing the test statistic over all (or many random) rearrangements of the data labels consistent with the null hypothesis, generating the null distribution from the data themselves. Systematized by Pitman (1937) following Fisher&#x27;s randomization idea.</div>
+<div class="skill-links"><a href="../skills/tkl-permutation-test/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> If the treatment made no difference, the labels are meaningless: shuffle them thousands of times, recompute the statistic each time, and see how extreme the real statistic is among the shuffled ones.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute the statistic T on the observed assignment, permute group labels or pairing signs B times (or exhaustively), recompute T under each permutation, and take the p-value as the proportion of permuted statistics at least as extreme as the observed one. Validity requires exchangeability under the null, not any parametric distribution.</div>
 <div class="field"><span class="label">Failure modes:</span> Exchangeability fails under dependence: naive permutations of autocorrelated series destroy serial structure and give invalid p-values, requiring restricted or block permutations. Exhaustive enumeration is computationally feasible only for small samples.</div>
@@ -124,6 +127,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="multiple-testing-problem"><h3>Multiple testing problem <a class="anchor" href="#multiple-testing-problem">#</a></h3>
 <div class="field">The inflation of false-positive rates when many hypotheses are tested simultaneously: at a per-test level alpha, the probability of at least one false rejection across m tests grows toward 1 as m increases, so unadjusted testing reliably produces spurious discoveries.</div>
+<div class="skill-links"><a href="../skills/tkl-multiple-testing-problem/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A 5% test cries wolf one time in twenty by design; test a hundred strategies and you should expect about five wolves even if every strategy is worthless.</div>
 <div class="field"><span class="label">Mechanics:</span> The familywise error rate (probability of any false rejection) is controlled by Bonferroni (alpha/m) or Holm&#x27;s step-down procedure; the false discovery rate is controlled by the Benjamini-Hochberg step-up procedure. In finance, Harvey, Liu and Zhu (2016) argue that the factor literature requires t-statistic thresholds well above 2 for exactly this reason.</div>
 <div class="field"><span class="label">Failure modes:</span> FWER control is conservative with many or correlated tests and destroys power, while FDR control assumes independence or positive dependence and needs the Benjamini-Yekutieli correction under arbitrary dependence.</div>
@@ -137,6 +141,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="false-discovery-rate"><h3>False discovery rate <a class="anchor" href="#false-discovery-rate">#</a></h3>
 <div class="field">The expected proportion of false rejections among all rejections in a multiple-testing procedure, FDR = E[V/R] (defined as 0 when R = 0), where V counts false positives among R rejections. Benjamini and Hochberg (1995) proposed controlling it as a less conservative alternative to familywise error rates.</div>
+<div class="skill-links"><a href="../skills/tkl-false-discovery-rate/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Instead of demanding zero chance of any false positive, accept that a small controlled fraction of your discoveries may be false, buying back the power to find real effects among many tests.</div>
 <div class="field"><span class="label">Mechanics:</span> The Benjamini-Hochberg procedure orders the p-values p_(1) &lt;= ... &lt;= p_(m), finds the largest k with p_(k) &lt;= (k/m) q, and rejects hypotheses 1 through k; this controls the FDR at level q under independence (and under positive dependence).</div>
 <div class="field"><span class="label">Failure modes:</span> BH control can fail under strong arbitrary dependence among test statistics, requiring the much more conservative Benjamini-Yekutieli adjustment, and the FDR bounds a rate, not which specific rejections are false.</div>
@@ -149,6 +154,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="data-snooping"><h3>Data snooping <a class="anchor" href="#data-snooping">#</a></h3>
 <div class="field">The bias arising when the same data are used repeatedly to select and evaluate models or strategies, so the best-performing specification among those searched is optimistically biased in-sample even if none has genuine predictive ability. White&#x27;s (2000) reality check formalized testing whether the best rule in a searched universe truly beats a benchmark.</div>
+<div class="skill-links"><a href="../skills/tkl-data-snooping/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> If you let the data pick your strategy and then judge it on the same data, you are grading an exam the student wrote for themselves: the winner&#x27;s edge is partly luck harvested by the search.</div>
 <div class="field"><span class="label">Mechanics:</span> Prevention uses untouched holdout data, walk-forward evaluation, and pre-registered specifications. Correction uses White&#x27;s reality check and the superior predictive ability test, which compare the best searched rule to its null distribution via resampling, or deflated performance metrics that adjust for the number of trials.</div>
 <div class="field"><span class="label">Failure modes:</span> Holdout data lose their protection once consulted repeatedly during development (holdout snooping), and collective backtests by many researchers on public data create community-wide snooping that no single study can correct.</div>
@@ -161,6 +167,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="look-ahead-bias"><h3>Look-ahead bias <a class="anchor" href="#look-ahead-bias">#</a></h3>
 <div class="field">A backtesting error in which a simulated decision uses information that would not have been available at the simulated decision time, such as future prices, revised fundamentals, or full-sample statistics, artificially inflating measured performance.</div>
+<div class="skill-links"><a href="../skills/tkl-look-ahead-bias/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is trading with tomorrow&#x27;s newspaper: any rule looks brilliant if at each historical date it quietly consults data that only became known later.</div>
 <div class="field"><span class="label">Mechanics:</span> Common forms include signals computed on a bar&#x27;s close but executed at that same close, use of revised rather than point-in-time fundamentals, universes defined with hindsight, and features normalized with full-sample means and variances. Prevention requires point-in-time data, lagging signal computation relative to execution, and walk-forward rather than full-sample preprocessing.</div>
 <div class="field"><span class="label">Failure modes:</span> Subtle leaks, index membership, delisting returns, feature scaling, and cross-validation folds that interleave past and future, survive casual review and almost always bias results upward, making weak strategies appear strong.</div>
@@ -172,6 +179,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="survivorship-bias"><h3>Survivorship bias <a class="anchor" href="#survivorship-bias">#</a></h3>
 <div class="field">The distortion of sample statistics caused by conditioning on survival: analyzing only the funds, stocks, or strategies that persisted to the end of the sample while dropping those that failed or delisted, thereby overstating average performance and understating risk. Quantified for mutual funds by Brown, Goetzmann, Ibbotson and Ross (1992).</div>
+<div class="skill-links"><a href="../skills/tkl-survivorship-bias/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Judging bomber safety by the holes in the planes that returned ignores the ones that never came back; the failures carry information the survivors cannot show.</div>
 <div class="field"><span class="label">Mechanics:</span> Dead and delisted entities disappear from standard databases, so average returns computed on survivors exclude the losses of the vanished, biasing mean performance and persistence estimates upward. Correction requires point-in-time universes that include delistings and dead funds with their full, often negative, terminal returns.</div>
 <div class="field"><span class="label">Failure modes:</span> The bias grows with attrition rates and return dispersion: databases with high dropout can overstate mean returns by several percentage points a year, and index backtests using today&#x27;s constituents inherit it silently.</div>
@@ -183,6 +191,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="selection-bias"><h3>Selection bias <a class="anchor" href="#selection-bias">#</a></h3>
 <div class="field">Systematic error introduced when the data selected for analysis are not representative of the target population because selection is related to the variables under study, so associations measured in the selected sample differ from those in the population.</div>
+<div class="skill-links"><a href="../skills/tkl-selection-bias/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> You only observe the winners of some filtering process, whoever applied, survived, volunteered, or was listed, so what you measure reflects the filter as much as the phenomenon.</div>
 <div class="field"><span class="label">Mechanics:</span> It arises through non-random sampling, self-selection, conditioning on a collider or an outcome, attrition, and truncation. In econometrics, Heckman&#x27;s two-step correction models the selection equation explicitly; in backtesting, defining the test universe with hindsight produces selection bias alongside survivorship bias.</div>
 <div class="field"><span class="label">Failure modes:</span> No within-sample statistical technique can repair selection on unobservables, because the bias concerns which data exist rather than how they are analyzed; only design changes (randomization, point-in-time sampling) or explicit selection models address it.</div>
@@ -194,6 +203,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="publication-bias"><h3>Publication bias <a class="anchor" href="#publication-bias">#</a></h3>
 <div class="field">The distortion of the published research record caused by preferential publication of statistically significant or spectacular results over null or unremarkable ones, so the literature overstates effect sizes and the fraction of true effects. In finance it interacts with the &#x27;factor zoo&#x27; documented by Harvey, Liu and Zhu (2016).</div>
+<div class="skill-links"><a href="../skills/tkl-publication-bias/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Journals and authors both prefer headline results, so the file drawer fills with failures and the literature shows only the winners, like reading only the strategies that survived.</div>
 <div class="field"><span class="label">Mechanics:</span> Multiple-testing incentives plus significance-filtered publication inflate reported t-statistics and Sharpe ratios across hundreds of published return predictors. Diagnostics include funnel-plot asymmetry and p-curve analysis; mitigations include pre-registration, replication requirements, and raised significance thresholds that account for the searched universe.</div>
 <div class="field"><span class="label">Failure modes:</span> Meta-analyses that ingest the published record inherit its inflation, and the out-of-sample decay of published anomalies partly reflects the bias being revealed rather than arbitrage alone.</div>
@@ -205,6 +215,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="overfitting"><h3>Overfitting <a class="anchor" href="#overfitting">#</a></h3>
 <div class="field">The production of a model that corresponds too closely to the particular training data, fitting noise as if it were structure, so it performs well in-sample but fails to generalize to new data. It arises whenever the selection criterion (training performance) diverges from the evaluation criterion (out-of-sample performance).</div>
+<div class="skill-links"><a href="../skills/tkl-overfitting/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The model memorizes the textbook&#x27;s answers instead of learning the subject: perfect on past questions, helpless on new ones.</div>
 <div class="field"><span class="label">Mechanics:</span> Risk grows with model complexity relative to data, weak signal-to-noise, and repeated reuse of the same data for tuning. Countermeasures include holdout test sets and cross-validation, regularization (ridge, lasso), early stopping, complexity penalties (AIC/BIC), and in trading walk-forward testing with trial-adjusted performance metrics.</div>
 <div class="field"><span class="label">Failure modes:</span> In-sample fit statistics (R-squared, backtest Sharpe) are upward-biased estimates of real performance, with the bias largest exactly where the search was most intense, and validation sets consulted repeatedly become training data.</div>
@@ -217,6 +228,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="underfitting"><h3>Underfitting <a class="anchor" href="#underfitting">#</a></h3>
 <div class="field">The failure of a model to capture the systematic structure present in the data, because it is too simple, too constrained, or trained too little, resulting in high bias and poor fit on both training and new data.</div>
+<div class="skill-links"><a href="../skills/tkl-underfitting/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Drawing a straight line through a curve: the model is not wrong about the noise, it never even saw the signal.</div>
 <div class="field"><span class="label">Mechanics:</span> Diagnosed when training and validation errors are both high and close together (high bias), in contrast to the wide gap between low training and high validation error that marks overfitting. Remedies include richer model classes, additional relevant features, weaker regularization, or longer training.</div>
 <div class="field"><span class="label">Failure modes:</span> Underfit models push real effects into the error term, biasing coefficients and reading genuine structure as noise; in trading, a linear model of a genuinely nonlinear payoff concludes there is no signal.</div>

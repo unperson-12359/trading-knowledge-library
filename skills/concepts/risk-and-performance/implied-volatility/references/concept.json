@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/implied-volatility",
+  "canonical_sha256": "d5c403bce99198e1b2ee19768e0ace4475c341e72932ca0ae223d02a922d9288",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/implied-volatility",
+    "name": "Implied volatility",
+    "aliases": [
+      "IV"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The forward-looking volatility value that, when input to an option pricing model such as Black-Scholes, equates the model price to the observed market price of the option. It is the market's consensus expectation of future volatility embedded in option premiums.",
+    "intuition": "Options cost more when traders expect big moves, so the premium can be read backward: the volatility that justifies today's option price is what the market collectively expects.",
+    "mechanics": "Holding spot, strike, rate, and time to expiry fixed, invert the pricing model numerically (bisection or Newton-Raphson) on the observed option price; no closed-form inverse exists for Black-Scholes. Index-level composites such as VIX aggregate implied volatilities across strikes.",
+    "formula": "IV = sigma such that C_BS(S, K, r, T, sigma) = C_market, where C_BS is the Black-Scholes call price with spot S, strike K, rate r, and time to expiry T.",
+    "relationships": [
+      "Historical volatility",
+      "Realized volatility",
+      "Volatility",
+      "VIX"
+    ],
+    "failure_modes": "IV is model-dependent and inherits the pricing model's assumptions; it can embed skew, event premium, and supply-demand distortions rather than pure volatility expectations. Being an expectation, it can diverge widely from the volatility that actually realizes.",
+    "misconceptions": "IV is not a directional forecast: it says how much movement is expected, not which way. High IV does not mean price will fall, and low IV does not mean it must rise.",
+    "example": "If an at-the-money one-month option's premium solves Black-Scholes only at sigma = 25%, the implied volatility is 25% annualized; if the underlying then realizes 12% over the year, IV overshot.",
+    "citations": [
+      {
+        "source": "Wikipedia: Volatility (finance)",
+        "url": "https://en.wikipedia.org/wiki/Volatility_(finance)",
+        "section": "Lead and Volatility terminology (implied volatility)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

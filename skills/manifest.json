@@ -2,7 +2,7 @@
   "$schema": "../schemas/skill-manifest.schema.json",
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 480,
+  "completed_count": 500,
   "skills": [
     {
       "$schema": "../../../../schemas/concept-skill.schema.json",
@@ -38789,6 +38789,1605 @@
         "time-series-analysis/permutation-test",
         "time-series-analysis/stochastic-volatility-model",
         "time-series-analysis/bayesian-inference"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-bootstrap",
+      "concept_id": "time-series-analysis/bootstrap",
+      "display_name": "Bootstrap",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Bootstrap using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Bootstrap",
+        "bootstrap resampling",
+        "nonparametric bootstrap",
+        "explain Bootstrap",
+        "apply Bootstrap to a trading question",
+        "common misconception about Bootstrap"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/time-series-analysis/bootstrap",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "aa3fa3f7f86d2003accc26acac00b2d10ce56126bd68af996d3cd42e52644f8c"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/block-bootstrap",
+        "time-series-analysis/monte-carlo-simulation",
+        "time-series-analysis/permutation-test"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-block-bootstrap",
+      "concept_id": "time-series-analysis/block-bootstrap",
+      "display_name": "Block bootstrap",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Block bootstrap using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Block bootstrap",
+        "moving block bootstrap",
+        "MBB",
+        "explain Block bootstrap",
+        "apply Block bootstrap to a trading question",
+        "common misconception about Block bootstrap"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/time-series-analysis/block-bootstrap",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "656435451177b81244cbb2eba4338ca9e2a44d1a3c75a4a419f8460290a2e318"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/bootstrap",
+        "time-series-analysis/monte-carlo-simulation",
+        "time-series-analysis/autocorrelation",
+        "time-series-analysis/time-series"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-permutation-test",
+      "concept_id": "time-series-analysis/permutation-test",
+      "display_name": "Permutation test",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Permutation test using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Permutation test",
+        "randomization test",
+        "re-randomization test",
+        "explain Permutation test",
+        "apply Permutation test to a trading question",
+        "common misconception about Permutation test"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/time-series-analysis/permutation-test",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "3b0edc0ed2dbd326c2a825cc58aad5a2e9d51ef452cc6fd7d45d54bb32a3113d"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/bootstrap",
+        "time-series-analysis/monte-carlo-simulation",
+        "time-series-analysis/multiple-testing-problem",
+        "time-series-analysis/block-bootstrap"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-multiple-testing-problem",
+      "concept_id": "time-series-analysis/multiple-testing-problem",
+      "display_name": "Multiple testing problem",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Multiple testing problem using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Multiple testing problem",
+        "multiplicity problem",
+        "multiple comparisons problem",
+        "explain Multiple testing problem",
+        "apply Multiple testing problem to a trading question",
+        "common misconception about Multiple testing problem"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/time-series-analysis/multiple-testing-problem",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "75c9fa6d480afdefc1f41eb89fe6cf6ab5bf3274dec89f4587234d1d0af7e9a3"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/false-discovery-rate",
+        "time-series-analysis/data-snooping",
+        "time-series-analysis/publication-bias",
+        "time-series-analysis/overfitting"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-false-discovery-rate",
+      "concept_id": "time-series-analysis/false-discovery-rate",
+      "display_name": "False discovery rate",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply False discovery rate using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "False discovery rate",
+        "FDR",
+        "Benjamini-Hochberg procedure",
+        "explain False discovery rate",
+        "apply False discovery rate to a trading question",
+        "common misconception about False discovery rate"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/time-series-analysis/false-discovery-rate",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "27dd101dfbd33e071f98124c3502a661e15cafb863087981c6869d16a2aa915b"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/multiple-testing-problem",
+        "time-series-analysis/data-snooping",
+        "time-series-analysis/publication-bias"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-data-snooping",
+      "concept_id": "time-series-analysis/data-snooping",
+      "display_name": "Data snooping",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Data snooping using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Data snooping",
+        "data mining bias",
+        "specification search bias",
+        "explain Data snooping",
+        "apply Data snooping to a trading question",
+        "common misconception about Data snooping"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/time-series-analysis/data-snooping",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "91353fac928571b555033c5d7add9d27ef1dc003524b18f319a21a1e69461bc7"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/multiple-testing-problem",
+        "time-series-analysis/look-ahead-bias",
+        "time-series-analysis/overfitting",
+        "time-series-analysis/publication-bias",
+        "time-series-analysis/false-discovery-rate"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-look-ahead-bias",
+      "concept_id": "time-series-analysis/look-ahead-bias",
+      "display_name": "Look-ahead bias",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Look-ahead bias using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Look-ahead bias",
+        "look-ahead",
+        "forward-looking bias",
+        "explain Look-ahead bias",
+        "apply Look-ahead bias to a trading question",
+        "common misconception about Look-ahead bias"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/time-series-analysis/look-ahead-bias",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "68a4e6036704a00c91dad6a00539810f5762fc139e89c24e4b9d463355159a5b"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/data-snooping",
+        "time-series-analysis/survivorship-bias",
+        "time-series-analysis/overfitting",
+        "time-series-analysis/selection-bias"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-survivorship-bias",
+      "concept_id": "time-series-analysis/survivorship-bias",
+      "display_name": "Survivorship bias",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Survivorship bias using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Survivorship bias",
+        "survival bias",
+        "explain Survivorship bias",
+        "apply Survivorship bias to a trading question",
+        "common misconception about Survivorship bias"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/time-series-analysis/survivorship-bias",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "9b1c20b6095ec0331ffaca2569eba33269e7648125e297bcd860da30888ac49b"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/selection-bias",
+        "time-series-analysis/look-ahead-bias",
+        "time-series-analysis/data-snooping",
+        "time-series-analysis/publication-bias"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-selection-bias",
+      "concept_id": "time-series-analysis/selection-bias",
+      "display_name": "Selection bias",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Selection bias using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Selection bias",
+        "sample selection bias",
+        "sampling bias",
+        "explain Selection bias",
+        "apply Selection bias to a trading question",
+        "common misconception about Selection bias"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/time-series-analysis/selection-bias",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "dec68f8a8c335b62aec4e03116fbf0995b077d6f0963996f98789da3ecdb21f8"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/survivorship-bias",
+        "time-series-analysis/publication-bias",
+        "time-series-analysis/endogeneity",
+        "time-series-analysis/look-ahead-bias"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-publication-bias",
+      "concept_id": "time-series-analysis/publication-bias",
+      "display_name": "Publication bias",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Publication bias using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Publication bias",
+        "file-drawer problem",
+        "reporting bias",
+        "explain Publication bias",
+        "apply Publication bias to a trading question",
+        "common misconception about Publication bias"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/time-series-analysis/publication-bias",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "adde82711be3feeff940947f703f3701b913acb8523002b39cafefacaef2e85a"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/multiple-testing-problem",
+        "time-series-analysis/data-snooping",
+        "time-series-analysis/selection-bias",
+        "time-series-analysis/survivorship-bias",
+        "time-series-analysis/false-discovery-rate"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-overfitting",
+      "concept_id": "time-series-analysis/overfitting",
+      "display_name": "Overfitting",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Overfitting using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Overfitting",
+        "overtraining",
+        "over-fitting",
+        "explain Overfitting",
+        "apply Overfitting to a trading question",
+        "common misconception about Overfitting"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/time-series-analysis/overfitting",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "5c842183a55601a0371fd5b0025a477347b5f248ca8c67379c5c021042063f90"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/underfitting",
+        "time-series-analysis/data-snooping",
+        "time-series-analysis/multiple-testing-problem",
+        "time-series-analysis/ridge-regression",
+        "time-series-analysis/lasso-regression"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-underfitting",
+      "concept_id": "time-series-analysis/underfitting",
+      "display_name": "Underfitting",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Underfitting using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Underfitting",
+        "high bias",
+        "under-fitting",
+        "explain Underfitting",
+        "apply Underfitting to a trading question",
+        "common misconception about Underfitting"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/time-series-analysis/underfitting",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "b8147f6889ed3053e1b9961c5a902ba4f123a27e096dbe8b15f30b9e19ec5974"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/overfitting",
+        "time-series-analysis/linear-regression",
+        "time-series-analysis/ridge-regression",
+        "time-series-analysis/r-squared"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-historical-volatility",
+      "concept_id": "risk-and-performance/historical-volatility",
+      "display_name": "Historical volatility",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Historical volatility using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Historical volatility",
+        "HV",
+        "statistical volatility",
+        "historic volatility",
+        "explain Historical volatility",
+        "apply Historical volatility to a trading question",
+        "common misconception about Historical volatility"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/risk-and-performance/historical-volatility",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "c218e965c1548bcdd73b7695455bd93106187601196f7f0320c77c0d3826709a"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/volatility",
+        "risk-and-performance/realized-volatility",
+        "risk-and-performance/implied-volatility",
+        "risk-and-performance/volatility-stop"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-implied-volatility",
+      "concept_id": "risk-and-performance/implied-volatility",
+      "display_name": "Implied volatility",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Implied volatility using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Implied volatility",
+        "IV",
+        "explain Implied volatility",
+        "apply Implied volatility to a trading question",
+        "common misconception about Implied volatility"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/risk-and-performance/implied-volatility",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "d5c403bce99198e1b2ee19768e0ace4475c341e72932ca0ae223d02a922d9288"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/historical-volatility",
+        "risk-and-performance/realized-volatility",
+        "risk-and-performance/volatility"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-downside-volatility",
+      "concept_id": "risk-and-performance/downside-volatility",
+      "display_name": "Downside volatility",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Downside volatility using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Downside volatility",
+        "downside deviation",
+        "downside risk (measure)",
+        "explain Downside volatility",
+        "apply Downside volatility to a trading question",
+        "common misconception about Downside volatility"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/risk-and-performance/downside-volatility",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "0799778d31e22d0b04af9e1b5dfa9e9548fae741f83e1138d47ca3a5e8d9a8a6"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/semivariance",
+        "risk-and-performance/sortino-ratio",
+        "risk-and-performance/volatility",
+        "risk-and-performance/omega-ratio"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-semivariance",
+      "concept_id": "risk-and-performance/semivariance",
+      "display_name": "Semivariance",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Semivariance using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Semivariance",
+        "semi-variance",
+        "lower partial moment of order 2",
+        "explain Semivariance",
+        "apply Semivariance to a trading question",
+        "common misconception about Semivariance"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/risk-and-performance/semivariance",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "1bd118a850ba0b10dddfd217dde74fd609620cf6e395edda169b2ce2d08dd1de"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/downside-volatility",
+        "risk-and-performance/sortino-ratio",
+        "risk-and-performance/volatility",
+        "risk-and-performance/value-at-risk"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-drawdown",
+      "concept_id": "risk-and-performance/drawdown",
+      "display_name": "Drawdown",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Drawdown using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Drawdown",
+        "explain Drawdown",
+        "apply Drawdown to a trading question",
+        "common misconception about Drawdown"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/risk-and-performance/drawdown",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "d2956f77f1d6343167c18996f27769d213e253f75eed9cec537828e25625d847"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/maximum-drawdown",
+        "risk-and-performance/drawdown-duration",
+        "risk-and-performance/time-under-water",
+        "risk-and-performance/underwater-curve",
+        "risk-and-performance/equity-curve",
+        "risk-and-performance/calmar-ratio"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-drawdown-duration",
+      "concept_id": "risk-and-performance/drawdown-duration",
+      "display_name": "Drawdown duration",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Drawdown duration using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Drawdown duration",
+        "explain Drawdown duration",
+        "apply Drawdown duration to a trading question",
+        "common misconception about Drawdown duration"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/risk-and-performance/drawdown-duration",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "b5f4ea59fe785ed94662c7408339ba1b6ddd672411720c658bef4f5d9186accb"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/drawdown",
+        "risk-and-performance/maximum-drawdown",
+        "risk-and-performance/time-under-water",
+        "risk-and-performance/underwater-curve"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-time-under-water",
+      "concept_id": "risk-and-performance/time-under-water",
+      "display_name": "Time under water",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Time under water using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Time under water",
+        "TuW",
+        "underwater duration",
+        "explain Time under water",
+        "apply Time under water to a trading question",
+        "common misconception about Time under water"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/risk-and-performance/time-under-water",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "b9cdc9c44ba25a702df85ab4cc0c61089a3216a25244659f28c542802396fa47"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/drawdown-duration",
+        "risk-and-performance/drawdown",
+        "risk-and-performance/underwater-curve",
+        "risk-and-performance/maximum-drawdown"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-win-rate",
+      "concept_id": "risk-and-performance/win-rate",
+      "display_name": "Win rate",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Win rate using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Win rate",
+        "win percentage",
+        "strike rate",
+        "explain Win rate",
+        "apply Win rate to a trading question",
+        "common misconception about Win rate"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 25,
+      "package_path": "skills/concepts/risk-and-performance/win-rate",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "e575b49f73ef7b272ab4b694969c66c7d9b2ae796968d5e81f192fd95f78f6f0"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/loss-rate",
+        "risk-and-performance/breakeven-rate",
+        "risk-and-performance/trade-expectancy",
+        "risk-and-performance/payoff-ratio",
+        "risk-and-performance/profit-factor",
+        "risk-and-performance/hit-rate"
       ]
     }
   ]

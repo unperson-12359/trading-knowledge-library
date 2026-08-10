@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/underfitting",
+  "canonical_sha256": "b8147f6889ed3053e1b9961c5a902ba4f123a27e096dbe8b15f30b9e19ec5974",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/underfitting",
+    "name": "Underfitting",
+    "aliases": [
+      "high bias",
+      "under-fitting"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The failure of a model to capture the systematic structure present in the data, because it is too simple, too constrained, or trained too little, resulting in high bias and poor fit on both training and new data.",
+    "intuition": "Drawing a straight line through a curve: the model is not wrong about the noise, it never even saw the signal.",
+    "mechanics": "Diagnosed when training and validation errors are both high and close together (high bias), in contrast to the wide gap between low training and high validation error that marks overfitting. Remedies include richer model classes, additional relevant features, weaker regularization, or longer training.",
+    "formula": "",
+    "relationships": [
+      "Overfitting",
+      "Linear regression",
+      "Ridge regression",
+      "R-squared"
+    ],
+    "failure_modes": "Underfit models push real effects into the error term, biasing coefficients and reading genuine structure as noise; in trading, a linear model of a genuinely nonlinear payoff concludes there is no signal.",
+    "misconceptions": "That a simpler model is always safer: beyond some point simplicity destroys signal, and the bias-variance tradeoff penalizes both extremes.",
+    "example": "Fitting a constant expected return to a strongly trending series leaves residuals that are themselves highly autocorrelated, the signature of the unmodeled trend.",
+    "citations": [
+      {
+        "source": "Wikipedia, 'Overfitting'",
+        "url": "https://en.wikipedia.org/wiki/Overfitting",
+        "section": "Underfitting section",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

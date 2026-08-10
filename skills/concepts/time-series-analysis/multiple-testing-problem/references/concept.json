@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/multiple-testing-problem",
+  "canonical_sha256": "75c9fa6d480afdefc1f41eb89fe6cf6ab5bf3274dec89f4587234d1d0af7e9a3",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/multiple-testing-problem",
+    "name": "Multiple testing problem",
+    "aliases": [
+      "multiplicity problem",
+      "multiple comparisons problem"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The inflation of false-positive rates when many hypotheses are tested simultaneously: at a per-test level alpha, the probability of at least one false rejection across m tests grows toward 1 as m increases, so unadjusted testing reliably produces spurious discoveries.",
+    "intuition": "A 5% test cries wolf one time in twenty by design; test a hundred strategies and you should expect about five wolves even if every strategy is worthless.",
+    "mechanics": "The familywise error rate (probability of any false rejection) is controlled by Bonferroni (alpha/m) or Holm's step-down procedure; the false discovery rate is controlled by the Benjamini-Hochberg step-up procedure. In finance, Harvey, Liu and Zhu (2016) argue that the factor literature requires t-statistic thresholds well above 2 for exactly this reason.",
+    "formula": "FWER = P(at least one false rejection); Bonferroni rejects H_i when p_i <= alpha/m, giving FWER <= alpha.",
+    "relationships": [
+      "False discovery rate",
+      "Data snooping",
+      "Publication bias",
+      "Overfitting"
+    ],
+    "failure_modes": "FWER control is conservative with many or correlated tests and destroys power, while FDR control assumes independence or positive dependence and needs the Benjamini-Yekutieli correction under arbitrary dependence.",
+    "misconceptions": "That a single strong p-value is immune to multiplicity: what matters is how many hypotheses were examined to produce it, and p = 0.01 found among 200 tests is unremarkable under the null.",
+    "example": "Scanning 300 calendar anomalies at alpha = 0.05 yields about 15 significant effects under pure chance; Bonferroni demands p < 0.00017 before declaring any of them real.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1111/j.2517-6161.1995.tb02031.x",
+        "url": "https://api.crossref.org/works/10.1111/j.2517-6161.1995.tb02031.x",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Crossref metadata record for DOI 10.1093/rfs/hhv059",
+        "url": "https://api.crossref.org/works/10.1093/rfs/hhv059",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

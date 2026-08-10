@@ -138,6 +138,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="historical-volatility"><h3>Historical volatility <a class="anchor" href="#historical-volatility">#</a></h3>
 <div class="field">A backward-looking measure of the dispersion of an asset&#x27;s returns over a past observation window, conventionally the sample standard deviation of logarithmic returns scaled to an annual figure. It quantifies how much price actually fluctuated over a specified historical period under a stated estimator and annualization convention.</div>
+<div class="skill-links"><a href="../skills/tkl-historical-volatility/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It answers &#x27;how wild has this market actually been?&#x27; by measuring the spread of past price changes. Calm markets show low historical volatility; whipsawing, crash-prone markets show high.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute log returns over the chosen window, take their sample standard deviation, then annualize by multiplying by the square root of the number of periods per year (e.g. sqrt(252) for daily returns). The estimate is only as stable as the window and sampling frequency chosen.</div>
 <div class="field"><span class="label">Failure modes:</span> It assumes the trailing window is representative, so regime shifts leave the estimate stale, and sqrt-of-time annualization breaks down when returns are autocorrelated or fat-tailed. Short windows are noisy; long windows lag.</div>
@@ -164,6 +165,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="implied-volatility"><h3>Implied volatility <a class="anchor" href="#implied-volatility">#</a></h3>
 <div class="field">The forward-looking volatility value that, when input to an option pricing model such as Black-Scholes, equates the model price to the observed market price of the option. It is the market&#x27;s consensus expectation of future volatility embedded in option premiums.</div>
+<div class="skill-links"><a href="../skills/tkl-implied-volatility/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Options cost more when traders expect big moves, so the premium can be read backward: the volatility that justifies today&#x27;s option price is what the market collectively expects.</div>
 <div class="field"><span class="label">Mechanics:</span> Holding spot, strike, rate, and time to expiry fixed, invert the pricing model numerically (bisection or Newton-Raphson) on the observed option price; no closed-form inverse exists for Black-Scholes. Index-level composites such as VIX aggregate implied volatilities across strikes.</div>
 <div class="field"><span class="label">Failure modes:</span> IV is model-dependent and inherits the pricing model&#x27;s assumptions; it can embed skew, event premium, and supply-demand distortions rather than pure volatility expectations. Being an expectation, it can diverge widely from the volatility that actually realizes.</div>
@@ -176,6 +178,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="downside-volatility"><h3>Downside volatility <a class="anchor" href="#downside-volatility">#</a></h3>
 <div class="field">The dispersion of returns computed only over outcomes below a chosen threshold (zero, the mean, or a minimum acceptable return), isolating the variability investors actually dislike. Its squared form is the lower semivariance, and its target-relative version is the below-target semi-deviation used as the risk denominator of the Sortino ratio.</div>
+<div class="skill-links"><a href="../skills/tkl-downside-volatility/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Upside surprises are welcome, so counting them as risk overstates danger; downside volatility measures only the harmful half of the distribution.</div>
 <div class="field"><span class="label">Mechanics:</span> Take the return series, retain deviations below the target T (with above-target deviations set to zero), square and average them, then take the square root. The result, downside deviation, replaces total standard deviation in measures such as the Sortino ratio.</div>
 <div class="field"><span class="label">Failure modes:</span> With few below-target observations the estimate is statistically fragile, and results are sensitive to the arbitrary target chosen. It also cannot distinguish frequency from severity: two distributions with equal downside deviation can have very different tail shapes.</div>
@@ -188,6 +191,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="semivariance"><h3>Semivariance <a class="anchor" href="#semivariance">#</a></h3>
 <div class="field">The expected squared deviation of returns below a reference point (the mean, or a stated target), restricted to the unfavorable half of the distribution; its square root is the semi-deviation. Introduced through Roy&#x27;s 1952 &#x27;safety-first&#x27; framework and endorsed by Markowitz as a more plausible risk measure than full variance.</div>
+<div class="skill-links"><a href="../skills/tkl-semivariance/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Variance punishes big gains as much as big losses; semivariance counts only the outcomes that hurt, matching how investors actually perceive risk.</div>
 <div class="field"><span class="label">Mechanics:</span> Average the squared deviations of observations falling at or below the reference point: mean semivariance uses the mean as reference, target semivariance a chosen threshold T. The quantity feeds downside-deviation measures and the Sortino ratio.</div>
 <div class="field"><span class="label">Failure modes:</span> Estimation requires many below-reference observations, so short samples are unreliable, and results depend on the reference convention (mean versus target). It discards upside information, so it cannot distinguish distributions whose lower halves match but whose upside differs.</div>
@@ -200,6 +204,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="drawdown"><h3>Drawdown <a class="anchor" href="#drawdown">#</a></h3>
 <div class="field">The decline in the value of an account, portfolio, or strategy from a historical peak to a subsequent point before a new peak is reached, typically expressed as a percentage of the peak value. Formally, for an equity process X(t), the drawdown at time T is the running maximum of X up to T minus X(T).</div>
+<div class="skill-links"><a href="../skills/tkl-drawdown/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the pain an investor endures between equity highs: how much of the peak value is given back before the account recovers.</div>
 <div class="field"><span class="label">Mechanics:</span> Track the running maximum of the equity (NAV) series and at each point compute (peak - current) / peak. The series of these values forms the drawdown (underwater) curve, whose extreme values and durations define the maximum drawdown and drawdown duration statistics.</div>
 <div class="field"><span class="label">Failure modes:</span> Drawdown is path- and sample-dependent: a different evaluation window changes every value, and one deep event dominates the statistic. For illiquid strategies, smoothed or stale marks flatter reported drawdowns.</div>
@@ -225,6 +230,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="drawdown-duration"><h3>Drawdown duration <a class="anchor" href="#drawdown-duration">#</a></h3>
 <div class="field">The length of time an equity curve spends below its previous peak: the span from the peak at which a drawdown begins until equity recovers to a new high (or to the end of the sample if it has not recovered). The maximum drawdown duration is the longest such peak-to-peak interval observed.</div>
+<div class="skill-links"><a href="../skills/tkl-drawdown-duration/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Depth tells you how much it hurt; duration tells you for how long. Long recoveries test investor patience and capital commitments even when losses are shallow.</div>
 <div class="field"><span class="label">Mechanics:</span> Mark each new equity high and measure the elapsed time (or number of periods) between consecutive highs during which equity sits below the last peak. The longest of these intervals is the maximum drawdown duration, which need not coincide with the deepest drawdown.</div>
 <div class="field"><span class="label">Failure modes:</span> Windows ending in an unrecovered drawdown censor the measurement (the end date is unknown), biasing durations downward in short samples. The statistic also depends on the sampling frequency of the equity series.</div>
@@ -236,6 +242,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="time-under-water"><h3>Time under water <a class="anchor" href="#time-under-water">#</a></h3>
 <div class="field">The time an investment&#x27;s equity spends below its high-water mark — the duration view of drawdown, visualized by the underwater curve and summarized by longest or average episode length.</div>
+<div class="skill-links"><a href="../skills/tkl-time-under-water/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It measures how long investors are &#x27;drowning&#x27; relative to their peak, capturing the opportunity cost and psychological burden that depth-only statistics miss.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute the running drawdown series; each contiguous stretch of nonzero drawdown is one time-under-water episode with a start (last peak), a depth path, and an end (recovery to the peak). Reported statistics include longest episode, current episode, and average episode length.</div>
 <div class="field"><span class="label">Failure modes:</span> Like all drawdown-path statistics it is sample- and frequency-dependent, and unrecovered drawdowns at the sample end censor the measurement. Within an episode it ignores magnitude unless paired with depth statistics.</div>
@@ -248,6 +255,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="win-rate"><h3>Win rate <a class="anchor" href="#win-rate">#</a></h3>
 <div class="field">The proportion of closed trades in a sample that produce a profit, conventionally expressed as a percentage of all closed trades. It is a core trading-performance statistic but is meaningful only in combination with the sizes of wins and losses.</div>
+<div class="skill-links"><a href="../skills/tkl-win-rate/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It answers &#x27;how often do I win?&#x27; — a psychologically salient number that, on its own, says almost nothing about whether a system makes money.</div>
 <div class="field"><span class="label">Mechanics:</span> Count winning trades (PnL above zero after costs) and divide by total closed trades over the evaluation period. Whether breakeven trades are excluded or counted must be stated, because conventions differ.</div>
 <div class="field"><span class="label">Failure modes:</span> A high win rate can coexist with negative expectancy if average losers dwarf average winners (short-volatility systems are the classic case), and on small samples the rate is dominated by luck. Cherry-picked windows and survivorship bias inflate it.</div>
