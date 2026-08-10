@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/median",
+  "canonical_sha256": "c5730aab8e1592f0552b61be09f9874d3b80cb9904686d13f023198248cf18cb",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/median",
+    "name": "Median",
+    "aliases": [
+      "50th percentile",
+      "second quartile",
+      "Q2"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The middle value of an ordered data set: the point with half the observations below it and half above. For an even number of observations it is conventionally the average of the two central values.",
+    "intuition": "It is the 'typical middle' value that ignores how extreme the tails are. Half the data lies on each side, by construction.",
+    "mechanics": "Sort the data ascending; if N is odd, take the ((N+1)/2)th value; if N is even, average the (N/2)th and (N/2 + 1)th values. Because it depends only on ranks, it is robust to outliers and skew.",
+    "formula": "For ordered data Y_(1) <= ... <= Y_(N): median = Y_((N+1)/2) if N is odd; median = (Y_(N/2) + Y_(N/2 + 1))/2 if N is even.",
+    "relationships": [
+      "Arithmetic mean",
+      "Mode",
+      "Quantile",
+      "Percentile",
+      "Interquartile range"
+    ],
+    "failure_modes": "By discarding magnitude information, the median can hide important tail behavior - two return series with the same median can have very different crash risk. It is also less statistically efficient than the mean when data truly are normal.",
+    "misconceptions": "The median is not necessarily a member of the data set, and it equals the mean only for symmetric distributions; for skewed data they differ systematically, with the mean pulled toward the long tail.",
+    "example": "For trade P&Ls of -50, -20, 10, 30, 400, the median is 10 while the mean is 74; the single large win dominates the mean but leaves the median unchanged.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda351.htm",
+        "section": "1.3.5.1, 'Measures of Location'",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

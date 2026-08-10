@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/rolling-z-score",
+  "canonical_sha256": "9e46ef7192f99ea95bd364881aa4d4d98176ca840f8405c23559be3774fe55c1",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/rolling-z-score",
+    "name": "Rolling z-score",
+    "aliases": [
+      "moving z-score",
+      "rolling standardized value"
+    ],
+    "domain": "Market data",
+    "definition": "The rolling z-score standardizes each observation of a series by the rolling mean and rolling standard deviation of its trailing window: how many recent-standard-deviations the current value sits from the recent mean. It converts levels into a locally normalized scale used by mean-reversion and Bollinger-style analyses.",
+    "intuition": "A z-score of +2 says 'today's value is unusually high compared with the recent past' — unusual measured in units of the recent volatility, not absolute price.",
+    "mechanics": "At each t compute z_t = (x_t − μ_t)/σ_t, where μ_t and σ_t are the rolling mean and rolling standard deviation over the trailing window of length w. pandas rolling().mean() and rolling().std() supply the components; care is needed on whether the current observation is included in the window.",
+    "formula": "z_t = (x_t − μ_t) / σ_t, with μ_t and σ_t the rolling mean and rolling standard deviation over the trailing window of length w.",
+    "relationships": [
+      "Rolling mean",
+      "Rolling standard deviation",
+      "Bollinger Bands",
+      "Mean reversion"
+    ],
+    "failure_modes": "Z-scores assume approximate local normality and stationarity; in trending or fat-tailed series, |z| > 2 events are far more common than the Gaussian 5%, so 'extreme' readings are not reliable reversal signals. The statistic also inherits the window sensitivity of its mean and std components.",
+    "misconceptions": "A high z-score is not automatically an overbought signal — in a persistent trend, price can hold z > 2 for long stretches. The z-score is relative to an arbitrary lookback, not to any fundamental anchor.",
+    "example": "If the 20-day rolling mean of a spread is 1.20 with rolling std 0.15 and today's spread is 1.65, the z-score is (1.65 − 1.20)/0.15 = +3.0.",
+    "citations": [
+      {
+        "source": "pandas User Guide: Windowing operations",
+        "url": "https://pandas.pydata.org/docs/user_guide/window.html",
+        "section": "Rolling window (mean and std aggregations)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

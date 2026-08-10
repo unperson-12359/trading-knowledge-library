@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/rolling-standard-deviation",
+  "canonical_sha256": "5648d736ed926bfeb9d0899cb3037c99a51f44589b8444f3a4087aa0a29a5605",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/rolling-standard-deviation",
+    "name": "Rolling standard deviation",
+    "aliases": [
+      "rolling volatility",
+      "rolling std",
+      "moving standard deviation"
+    ],
+    "domain": "Market data",
+    "definition": "The rolling standard deviation is the sample (or population) standard deviation of a series over a trailing window of fixed length that slides forward one observation at a time. Applied to returns it is the standard estimator of realized volatility and the width driver of Bollinger Bands.",
+    "intuition": "It measures how spread out the last N returns (or prices) were — a live gauge of how violently the market has been moving recently.",
+    "mechanics": "For window w, compute σ over the last w observations at each step; pandas rolling(window).std() uses the sample (unbiased, ddof=1) convention by default and labels at the window's right edge. On returns, annualization scales by √T (e.g., √252 for daily data).",
+    "formula": "σ_t = sqrt( (1/(w−1)) Σ_{i=0}^{w−1} (x_{t−i} − μ_t)² ), where μ_t is the rolling mean over the same window (use 1/w for the population convention).",
+    "relationships": [
+      "Rolling mean",
+      "Rolling z-score",
+      "Bollinger Bands",
+      "Average true range",
+      "Volatility"
+    ],
+    "failure_modes": "The estimate assumes the window's observations come from one stable regime; volatility clustering makes short windows noisy and long windows slow to react. Squaring returns gives extreme observations outsized influence, and with w−1 denominators small windows are unreliable.",
+    "misconceptions": "Rolling std of prices is not comparable across instruments or time as price levels drift — volatility is conventionally computed on returns, not price levels.",
+    "example": "The 20-day rolling std of daily log returns at 0.015 (1.5%) annualizes to roughly 0.015 × √252 ≈ 23.8%.",
+    "citations": [
+      {
+        "source": "pandas User Guide: Windowing operations",
+        "url": "https://pandas.pydata.org/docs/user_guide/window.html",
+        "section": "Rolling window (std aggregation; numerical notes)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

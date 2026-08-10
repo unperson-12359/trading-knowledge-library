@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/simple-return",
+  "canonical_sha256": "b8c3d93af0e4fda1c280a425a8b62618e3ef0259d03df1081c265a00947d4c9a",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/simple-return",
+    "name": "Simple return",
+    "aliases": [
+      "arithmetic return",
+      "discrete return",
+      "holding period return",
+      "net return (single period)"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The fractional change in value of an investment over a single period: the difference between final and initial value divided by the initial value, including any income such as dividends in the final value. It is the standard per-period return measure in empirical finance.",
+    "intuition": "It answers 'by what percentage did my money grow this period?' A 5% simple return means $100 became $105.",
+    "mechanics": "Divide the change in value (final plus distributions minus initial) by the initial value. Simple returns aggregate across assets by value-weighted averaging (portfolio return is the weighted sum of asset returns) but compound, not add, across time.",
+    "formula": "R_t = (V_t + D_t - V_{t-1}) / V_{t-1}, where V_t is the end-of-period value, V_{t-1} the initial value, and D_t any distributions (dividends, interest) received during the period.",
+    "relationships": [
+      "Log return",
+      "Gross return",
+      "Cumulative return",
+      "Annualized return",
+      "Geometric mean"
+    ],
+    "failure_modes": "Simple returns do not add across time - summing them over multiple periods overstates compounded growth when returns are volatile. They are also bounded below by -100%, which complicates symmetric statistical models.",
+    "misconceptions": "A +50% gain followed by a -50% loss does not net to zero: (1.5)(0.5) = 0.75, a 25% cumulative loss. Arithmetic averaging of simple returns is not the rate at which capital actually compounds.",
+    "example": "A stock bought at $100 that pays a $2 dividend and ends the period at $105 has simple return R = (105 + 2 - 100)/100 = 7%.",
+    "citations": [
+      {
+        "source": "Wikipedia, 'Rate of return'",
+        "url": "https://en.wikipedia.org/wiki/Rate_of_return",
+        "section": "Calculation (single period)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -2,7 +2,7 @@
   "$schema": "../schemas/skill-manifest.schema.json",
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 380,
+  "completed_count": 400,
   "skills": [
     {
       "$schema": "../../../../schemas/concept-skill.schema.json",
@@ -30735,6 +30735,1625 @@
         "market-data/median-price",
         "market-data/rolling-maximum",
         "market-data/rolling-minimum"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-rolling-standard-deviation",
+      "concept_id": "market-data/rolling-standard-deviation",
+      "display_name": "Rolling standard deviation",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Rolling standard deviation using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Rolling standard deviation",
+        "rolling volatility",
+        "rolling std",
+        "moving standard deviation",
+        "explain Rolling standard deviation",
+        "apply Rolling standard deviation to a trading question",
+        "common misconception about Rolling standard deviation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/market-data/rolling-standard-deviation",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "5648d736ed926bfeb9d0899cb3037c99a51f44589b8444f3a4087aa0a29a5605"
+      },
+      "related_concept_ids": [
+        "market-data/rolling-mean",
+        "market-data/rolling-z-score",
+        "indicators/bollinger-bands",
+        "indicators/average-true-range",
+        "risk-and-performance/volatility"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-rolling-correlation",
+      "concept_id": "market-data/rolling-correlation",
+      "display_name": "Rolling correlation",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Rolling correlation using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Rolling correlation",
+        "moving correlation",
+        "trailing correlation",
+        "explain Rolling correlation",
+        "apply Rolling correlation to a trading question",
+        "common misconception about Rolling correlation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/market-data/rolling-correlation",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "d3ebd178df52193089b8c4c155c29132dc607bc851575eb6d1f2847d69ef6071"
+      },
+      "related_concept_ids": [
+        "market-data/rolling-beta",
+        "market-data/rolling-standard-deviation",
+        "statistics-and-probability/correlation"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-rolling-beta",
+      "concept_id": "market-data/rolling-beta",
+      "display_name": "Rolling beta",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Rolling beta using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Rolling beta",
+        "moving beta",
+        "trailing beta",
+        "explain Rolling beta",
+        "apply Rolling beta to a trading question",
+        "common misconception about Rolling beta"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/market-data/rolling-beta",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "04226bf7f97017e61cc7e9de367067b3e794f36779b658846d4512d1f4b8edb0"
+      },
+      "related_concept_ids": [
+        "market-data/rolling-correlation",
+        "market-data/rolling-standard-deviation",
+        "portfolio-management/beta"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-rolling-z-score",
+      "concept_id": "market-data/rolling-z-score",
+      "display_name": "Rolling z-score",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Rolling z-score using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Rolling z-score",
+        "moving z-score",
+        "rolling standardized value",
+        "explain Rolling z-score",
+        "apply Rolling z-score to a trading question",
+        "common misconception about Rolling z-score"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/market-data/rolling-z-score",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "9e46ef7192f99ea95bd364881aa4d4d98176ca840f8405c23559be3774fe55c1"
+      },
+      "related_concept_ids": [
+        "market-data/rolling-mean",
+        "market-data/rolling-standard-deviation",
+        "indicators/bollinger-bands",
+        "trading-systems/mean-reversion"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-simple-return",
+      "concept_id": "statistics-and-probability/simple-return",
+      "display_name": "Simple return",
+      "domain": "Statistics and probability",
+      "description": "Explain, compare, or apply Simple return using the library's structured Statistics and probability reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Simple return",
+        "arithmetic return",
+        "discrete return",
+        "holding period return",
+        "net return (single period)",
+        "explain Simple return",
+        "apply Simple return to a trading question",
+        "common misconception about Simple return"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/statistics-and-probability/simple-return",
+      "canonical": {
+        "source_path": "concepts/statistics-and-probability.json",
+        "sha256": "b8c3d93af0e4fda1c280a425a8b62618e3ef0259d03df1081c265a00947d4c9a"
+      },
+      "related_concept_ids": [
+        "statistics-and-probability/log-return",
+        "statistics-and-probability/gross-return",
+        "statistics-and-probability/cumulative-return",
+        "statistics-and-probability/annualized-return",
+        "statistics-and-probability/geometric-mean"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-log-return",
+      "concept_id": "statistics-and-probability/log-return",
+      "display_name": "Log return",
+      "domain": "Statistics and probability",
+      "description": "Explain, compare, or apply Log return using the library's structured Statistics and probability reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Log return",
+        "logarithmic return",
+        "continuously compounded return",
+        "force of interest",
+        "explain Log return",
+        "apply Log return to a trading question",
+        "common misconception about Log return"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/statistics-and-probability/log-return",
+      "canonical": {
+        "source_path": "concepts/statistics-and-probability.json",
+        "sha256": "053408e6aab07612ff2bd6ac3d2ca393c9f63a59e4828fb56790c7e8e328c965"
+      },
+      "related_concept_ids": [
+        "statistics-and-probability/simple-return",
+        "statistics-and-probability/gross-return",
+        "statistics-and-probability/cumulative-return",
+        "statistics-and-probability/lognormal-distribution",
+        "statistics-and-probability/geometric-mean"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-gross-return",
+      "concept_id": "statistics-and-probability/gross-return",
+      "display_name": "Gross return",
+      "domain": "Statistics and probability",
+      "description": "Explain, compare, or apply Gross return using the library's structured Statistics and probability reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Gross return",
+        "growth factor",
+        "gross-of-fees return",
+        "explain Gross return",
+        "apply Gross return to a trading question",
+        "common misconception about Gross return"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/statistics-and-probability/gross-return",
+      "canonical": {
+        "source_path": "concepts/statistics-and-probability.json",
+        "sha256": "73170ccddd8287c7ab4609b275bb5f8987493cc818a8527c9e487a41f185dfca"
+      },
+      "related_concept_ids": [
+        "statistics-and-probability/simple-return",
+        "statistics-and-probability/log-return",
+        "statistics-and-probability/cumulative-return"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-cumulative-return",
+      "concept_id": "statistics-and-probability/cumulative-return",
+      "display_name": "Cumulative return",
+      "domain": "Statistics and probability",
+      "description": "Explain, compare, or apply Cumulative return using the library's structured Statistics and probability reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Cumulative return",
+        "total holding period return",
+        "overall return",
+        "explain Cumulative return",
+        "apply Cumulative return to a trading question",
+        "common misconception about Cumulative return"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/statistics-and-probability/cumulative-return",
+      "canonical": {
+        "source_path": "concepts/statistics-and-probability.json",
+        "sha256": "ef81d245730e39d606c14f8158343f8bf435ca3d1107b26ebe7f88458910bf98"
+      },
+      "related_concept_ids": [
+        "statistics-and-probability/simple-return",
+        "statistics-and-probability/gross-return",
+        "statistics-and-probability/log-return",
+        "statistics-and-probability/annualized-return",
+        "statistics-and-probability/geometric-mean"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-annualized-return",
+      "concept_id": "statistics-and-probability/annualized-return",
+      "display_name": "Annualized return",
+      "domain": "Statistics and probability",
+      "description": "Explain, compare, or apply Annualized return using the library's structured Statistics and probability reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Annualized return",
+        "annualized rate of return",
+        "compound annual growth rate",
+        "CAGR",
+        "explain Annualized return",
+        "apply Annualized return to a trading question",
+        "common misconception about Annualized return"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/statistics-and-probability/annualized-return",
+      "canonical": {
+        "source_path": "concepts/statistics-and-probability.json",
+        "sha256": "368693ff93b1d25fe9733b0f0fb124d4b0fb73522600fe9acc5f30b742bd0305"
+      },
+      "related_concept_ids": [
+        "statistics-and-probability/cumulative-return",
+        "statistics-and-probability/geometric-mean",
+        "statistics-and-probability/simple-return",
+        "statistics-and-probability/log-return"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-arithmetic-mean",
+      "concept_id": "statistics-and-probability/arithmetic-mean",
+      "display_name": "Arithmetic mean",
+      "domain": "Statistics and probability",
+      "description": "Explain, compare, or apply Arithmetic mean using the library's structured Statistics and probability reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Arithmetic mean",
+        "average",
+        "sample average",
+        "mean",
+        "explain Arithmetic mean",
+        "apply Arithmetic mean to a trading question",
+        "common misconception about Arithmetic mean"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/statistics-and-probability/arithmetic-mean",
+      "canonical": {
+        "source_path": "concepts/statistics-and-probability.json",
+        "sha256": "28c78fa2866b71d7f8ae216c333dd970a47a4c0196cf032849bdf0ea81e55f26"
+      },
+      "related_concept_ids": [
+        "statistics-and-probability/median",
+        "statistics-and-probability/mode",
+        "statistics-and-probability/geometric-mean",
+        "statistics-and-probability/expected-value",
+        "statistics-and-probability/sample-mean",
+        "statistics-and-probability/population-mean"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-geometric-mean",
+      "concept_id": "statistics-and-probability/geometric-mean",
+      "display_name": "Geometric mean",
+      "domain": "Statistics and probability",
+      "description": "Explain, compare, or apply Geometric mean using the library's structured Statistics and probability reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Geometric mean",
+        "mean proportional",
+        "compound average",
+        "explain Geometric mean",
+        "apply Geometric mean to a trading question",
+        "common misconception about Geometric mean"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/statistics-and-probability/geometric-mean",
+      "canonical": {
+        "source_path": "concepts/statistics-and-probability.json",
+        "sha256": "d4e3e000cb8ce82b7d5075bff8bc61941c01e24d433f94649da7870aa14bada3"
+      },
+      "related_concept_ids": [
+        "statistics-and-probability/arithmetic-mean",
+        "statistics-and-probability/cumulative-return",
+        "statistics-and-probability/annualized-return",
+        "statistics-and-probability/log-return",
+        "statistics-and-probability/lognormal-distribution"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-median",
+      "concept_id": "statistics-and-probability/median",
+      "display_name": "Median",
+      "domain": "Statistics and probability",
+      "description": "Explain, compare, or apply Median using the library's structured Statistics and probability reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Median",
+        "50th percentile",
+        "second quartile",
+        "Q2",
+        "explain Median",
+        "apply Median to a trading question",
+        "common misconception about Median"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/statistics-and-probability/median",
+      "canonical": {
+        "source_path": "concepts/statistics-and-probability.json",
+        "sha256": "c5730aab8e1592f0552b61be09f9874d3b80cb9904686d13f023198248cf18cb"
+      },
+      "related_concept_ids": [
+        "statistics-and-probability/arithmetic-mean",
+        "statistics-and-probability/mode",
+        "statistics-and-probability/quantile",
+        "statistics-and-probability/percentile",
+        "statistics-and-probability/interquartile-range"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-mode",
+      "concept_id": "statistics-and-probability/mode",
+      "display_name": "Mode",
+      "domain": "Statistics and probability",
+      "description": "Explain, compare, or apply Mode using the library's structured Statistics and probability reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Mode",
+        "modal value",
+        "most frequent value",
+        "explain Mode",
+        "apply Mode to a trading question",
+        "common misconception about Mode"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/statistics-and-probability/mode",
+      "canonical": {
+        "source_path": "concepts/statistics-and-probability.json",
+        "sha256": "882c8033259e78eb4c0746c087e9707df921aa20b254229f137e787e87afa520"
+      },
+      "related_concept_ids": [
+        "statistics-and-probability/arithmetic-mean",
+        "statistics-and-probability/median",
+        "statistics-and-probability/probability-distribution"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-covariance",
+      "concept_id": "statistics-and-probability/covariance",
+      "display_name": "Covariance",
+      "domain": "Statistics and probability",
+      "description": "Explain, compare, or apply Covariance using the library's structured Statistics and probability reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Covariance",
+        "sigma_XY",
+        "cov(X,Y)",
+        "explain Covariance",
+        "apply Covariance to a trading question",
+        "common misconception about Covariance"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/statistics-and-probability/covariance",
+      "canonical": {
+        "source_path": "concepts/statistics-and-probability.json",
+        "sha256": "18fbfe1b4a38e33444dc4af1ca2a2ed57a9252387029539fe1f05c11e69c7721"
+      },
+      "related_concept_ids": [
+        "statistics-and-probability/correlation",
+        "statistics-and-probability/pearson-correlation",
+        "statistics-and-probability/variance",
+        "portfolio-management/portfolio-variance",
+        "portfolio-management/beta"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-pearson-correlation",
+      "concept_id": "statistics-and-probability/pearson-correlation",
+      "display_name": "Pearson correlation",
+      "domain": "Statistics and probability",
+      "description": "Explain, compare, or apply Pearson correlation using the library's structured Statistics and probability reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Pearson correlation",
+        "Pearson product-moment correlation coefficient",
+        "Pearson's r",
+        "r",
+        "explain Pearson correlation",
+        "apply Pearson correlation to a trading question",
+        "common misconception about Pearson correlation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/statistics-and-probability/pearson-correlation",
+      "canonical": {
+        "source_path": "concepts/statistics-and-probability.json",
+        "sha256": "14494a2b629672bf6867e94ae85584c596dba77607ad3a2e10cc6204efa0c54b"
+      },
+      "related_concept_ids": [
+        "statistics-and-probability/correlation",
+        "statistics-and-probability/covariance",
+        "statistics-and-probability/spearman-rank-correlation",
+        "statistics-and-probability/kendall-rank-correlation",
+        "time-series-analysis/r-squared",
+        "time-series-analysis/linear-regression"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-spearman-rank-correlation",
+      "concept_id": "statistics-and-probability/spearman-rank-correlation",
+      "display_name": "Spearman rank correlation",
+      "domain": "Statistics and probability",
+      "description": "Explain, compare, or apply Spearman rank correlation using the library's structured Statistics and probability reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Spearman rank correlation",
+        "Spearman's rho",
+        "Spearman's rank correlation coefficient",
+        "grade correlation",
+        "explain Spearman rank correlation",
+        "apply Spearman rank correlation to a trading question",
+        "common misconception about Spearman rank correlation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/statistics-and-probability/spearman-rank-correlation",
+      "canonical": {
+        "source_path": "concepts/statistics-and-probability.json",
+        "sha256": "bddfbd3b0d1a881dd3fa3a004a8e941254b7bbe88a0615e8307291ff0dd22ef9"
+      },
+      "related_concept_ids": [
+        "statistics-and-probability/pearson-correlation",
+        "statistics-and-probability/kendall-rank-correlation",
+        "statistics-and-probability/correlation"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-kendall-rank-correlation",
+      "concept_id": "statistics-and-probability/kendall-rank-correlation",
+      "display_name": "Kendall rank correlation",
+      "domain": "Statistics and probability",
+      "description": "Explain, compare, or apply Kendall rank correlation using the library's structured Statistics and probability reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Kendall rank correlation",
+        "Kendall's tau",
+        "Kendall tau coefficient",
+        "explain Kendall rank correlation",
+        "apply Kendall rank correlation to a trading question",
+        "common misconception about Kendall rank correlation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/statistics-and-probability/kendall-rank-correlation",
+      "canonical": {
+        "source_path": "concepts/statistics-and-probability.json",
+        "sha256": "bab8dc09968961fc6e65b6bec61f751a30ef9dc764c109281e3cadb27bea7f6c"
+      },
+      "related_concept_ids": [
+        "statistics-and-probability/spearman-rank-correlation",
+        "statistics-and-probability/pearson-correlation",
+        "statistics-and-probability/correlation"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-probability-distribution",
+      "concept_id": "statistics-and-probability/probability-distribution",
+      "display_name": "Probability distribution",
+      "domain": "Statistics and probability",
+      "description": "Explain, compare, or apply Probability distribution using the library's structured Statistics and probability reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Probability distribution",
+        "probability function",
+        "distribution",
+        "explain Probability distribution",
+        "apply Probability distribution to a trading question",
+        "common misconception about Probability distribution"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/statistics-and-probability/probability-distribution",
+      "canonical": {
+        "source_path": "concepts/statistics-and-probability.json",
+        "sha256": "da73841c62258873e4b36d30f5e7f85c70c2b287ab7a6da36edae9f355404501"
+      },
+      "related_concept_ids": [
+        "statistics-and-probability/normal-distribution",
+        "statistics-and-probability/lognormal-distribution",
+        "statistics-and-probability/binomial-distribution",
+        "statistics-and-probability/poisson-distribution",
+        "statistics-and-probability/expected-value",
+        "statistics-and-probability/quantile"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-normal-distribution",
+      "concept_id": "statistics-and-probability/normal-distribution",
+      "display_name": "Normal distribution",
+      "domain": "Statistics and probability",
+      "description": "Explain, compare, or apply Normal distribution using the library's structured Statistics and probability reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Normal distribution",
+        "Gaussian distribution",
+        "bell curve",
+        "N(mu, sigma^2)",
+        "explain Normal distribution",
+        "apply Normal distribution to a trading question",
+        "common misconception about Normal distribution"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/statistics-and-probability/normal-distribution",
+      "canonical": {
+        "source_path": "concepts/statistics-and-probability.json",
+        "sha256": "7b9dc09064a69ae5f3a58bf0b3cc8c6e9c403666a7ec249296be3ec6102d1833"
+      },
+      "related_concept_ids": [
+        "statistics-and-probability/probability-distribution",
+        "statistics-and-probability/central-limit-theorem",
+        "statistics-and-probability/z-score",
+        "statistics-and-probability/student-s-t-distribution",
+        "statistics-and-probability/lognormal-distribution",
+        "statistics-and-probability/standard-deviation"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-lognormal-distribution",
+      "concept_id": "statistics-and-probability/lognormal-distribution",
+      "display_name": "Lognormal distribution",
+      "domain": "Statistics and probability",
+      "description": "Explain, compare, or apply Lognormal distribution using the library's structured Statistics and probability reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Lognormal distribution",
+        "log-normal distribution",
+        "Galton distribution",
+        "explain Lognormal distribution",
+        "apply Lognormal distribution to a trading question",
+        "common misconception about Lognormal distribution"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 20,
+      "package_path": "skills/concepts/statistics-and-probability/lognormal-distribution",
+      "canonical": {
+        "source_path": "concepts/statistics-and-probability.json",
+        "sha256": "2419a4a0a013954b55eb42378523db9142986a6889d0b2cee0d8dadb168989d2"
+      },
+      "related_concept_ids": [
+        "statistics-and-probability/normal-distribution",
+        "statistics-and-probability/probability-distribution",
+        "statistics-and-probability/log-return",
+        "statistics-and-probability/geometric-mean"
       ]
     }
   ]

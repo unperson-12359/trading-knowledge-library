@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/geometric-mean",
+  "canonical_sha256": "d4e3e000cb8ce82b7d5075bff8bc61941c01e24d433f94649da7870aa14bada3",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/geometric-mean",
+    "name": "Geometric mean",
+    "aliases": [
+      "mean proportional",
+      "compound average"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The nth root of the product of n positive numbers; the central-tendency measure appropriate when quantities combine multiplicatively rather than additively. In finance, the geometric mean of period growth factors gives the constant per-period growth rate that reproduces the compounded result.",
+    "intuition": "It is the average growth rate that actually compounds to the observed total. Where the arithmetic mean answers 'average change', the geometric mean answers 'average multiplier'.",
+    "mechanics": "Multiply the n values and take the nth root; equivalently average their natural logarithms and exponentiate. It is always less than or equal to the arithmetic mean, with equality only when all values are identical (AM-GM inequality), so the gap widens with dispersion.",
+    "formula": "GM = (PRODUCT_{i=1..n} a_i)^(1/n) = exp( (1/n) * SUM ln(a_i) ), for a_i > 0. For returns, apply it to gross returns: g = (PRODUCT (1 + R_t))^(1/n) - 1.",
+    "relationships": [
+      "Arithmetic mean",
+      "Cumulative return",
+      "Annualized return",
+      "Log return",
+      "Lognormal distribution"
+    ],
+    "failure_modes": "It is defined only for positive values, so it cannot be applied to raw returns that can be negative - one must average gross returns (1 + R) instead. A single zero value makes the whole product zero, and highly volatile return sequences push it far below the arithmetic mean (volatility drag).",
+    "misconceptions": "The geometric mean of returns is not interchangeable with the arithmetic mean: for +50% and -50% the arithmetic mean is 0% but the geometric mean of 1.5 and 0.5 is about -13.4% per period, which is what the capital actually did. It is also wrong to apply it to negative raw returns directly.",
+    "example": "An investment with annual returns of +10%, -12%, +90%, -30%, +25% ends at 1.609 times its start; the geometric mean growth factor is 1.0998, i.e., about 9.98% per year, versus a 16.6% arithmetic mean that does not reproduce the final value.",
+    "citations": [
+      {
+        "source": "Wikipedia, 'Geometric mean'",
+        "url": "https://en.wikipedia.org/wiki/Geometric_mean",
+        "section": "Definition; Average proportional growth rate",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

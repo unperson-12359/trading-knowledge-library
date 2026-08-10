@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/kendall-rank-correlation",
+  "canonical_sha256": "bab8dc09968961fc6e65b6bec61f751a30ef9dc764c109281e3cadb27bea7f6c",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/kendall-rank-correlation",
+    "name": "Kendall rank correlation",
+    "aliases": [
+      "Kendall's tau",
+      "Kendall tau coefficient"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "A nonparametric measure of ordinal association between two variables, computed from the difference between the number of concordant and discordant observation pairs, normalized by the total number of pairs. It ranges from -1 (perfectly reversed rankings) to +1 (identical rankings) and was introduced by Maurice Kendall in 1938.",
+    "intuition": "Pick any two observations; the pair is 'concordant' if both variables rank them in the same order. Tau is essentially the probability of concordance minus the probability of discordance.",
+    "mechanics": "For all n(n-1)/2 pairs, count pairs where the x-order and y-order agree (concordant) minus those where they disagree (discordant), and divide by the number of pairs. Variants tau-b and tau-c adjust the denominator for ties; under the null of independence, tau has mean zero and an approximately normal sampling distribution for large n.",
+    "formula": "tau = (n_C - n_D) / (n(n-1)/2) = 1 - 2*n_D / C(n,2), where n_C and n_D are the numbers of concordant and discordant pairs and C(n,2) is the binomial coefficient (number of pairs).",
+    "relationships": [
+      "Spearman rank correlation",
+      "Pearson correlation",
+      "Correlation",
+      "Rank statistics",
+      "Copula"
+    ],
+    "failure_modes": "With many tied values, unadjusted tau-a cannot reach +/-1 and the tie-corrected tau-b or tau-c must be used, changing the value. Direct computation is O(n^2), and tau values are systematically smaller in magnitude than Spearman's rho for the same data, so the two are not numerically interchangeable.",
+    "misconceptions": "Tau is not 'a worse Spearman': it has a direct probabilistic interpretation (concordance minus discordance) that rho lacks. And like any rank correlation it measures ordinal association only, never causation.",
+    "example": "For n = 30 points with 395 concordant and 40 discordant pairs out of 435 total, tau = (395 - 40)/435 = 0.816, indicating strong agreement between the two rankings.",
+    "citations": [
+      {
+        "source": "Wikipedia, 'Kendall rank correlation coefficient'",
+        "url": "https://en.wikipedia.org/wiki/Kendall_rank_correlation_coefficient",
+        "section": "Definition",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

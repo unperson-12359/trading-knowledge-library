@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/rolling-correlation",
+  "canonical_sha256": "d3ebd178df52193089b8c4c155c29132dc607bc851575eb6d1f2847d69ef6071",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/rolling-correlation",
+    "name": "Rolling correlation",
+    "aliases": [
+      "moving correlation",
+      "trailing correlation"
+    ],
+    "domain": "Market data",
+    "definition": "Rolling correlation is the Pearson correlation coefficient between two series computed over a trailing window of fixed length that slides forward one observation at a time. It tracks how the co-movement of two assets (typically their returns) evolves through time.",
+    "intuition": "Instead of one correlation number for the whole history, you get a time series showing when two markets moved together and when they decoupled.",
+    "mechanics": "For window w, compute the Pearson coefficient over the paired observations in the last w points at each t; pandas rolling().corr() supports Series–Series and pairwise DataFrame computations, ignoring missing values pairwise. Correlations are typically computed on returns, not price levels.",
+    "formula": "ρ_t = Σ (x_i − μ_x)(y_i − μ_y) / sqrt( Σ (x_i − μ_x)² Σ (y_i − μ_y)² ), sums over the trailing w paired observations.",
+    "relationships": [
+      "Rolling beta",
+      "Rolling covariance",
+      "Rolling standard deviation",
+      "Correlation"
+    ],
+    "failure_modes": "Short windows produce wildly unstable estimates that swing between −1 and +1 on noise; correlation computed on trending price levels is spuriously high. Crisis periods reveal that correlations estimated in calm windows understate co-movement exactly when diversification is needed.",
+    "misconceptions": "A high rolling correlation over a window does not establish a stable relationship — window choice can manufacture or erase apparent correlation, and correlation is not causation.",
+    "example": "A 60-day rolling correlation between SPY and TLT daily returns hovering near −0.4 that jumps toward +0.2 signals a regime shift in the stock-bond relationship.",
+    "citations": [
+      {
+        "source": "pandas User Guide: Windowing operations",
+        "url": "https://pandas.pydata.org/docs/user_guide/window.html",
+        "section": "Binary window functions (corr) and rolling pairwise covariances/correlations",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

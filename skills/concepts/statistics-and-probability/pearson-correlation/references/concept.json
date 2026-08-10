@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/pearson-correlation",
+  "canonical_sha256": "14494a2b629672bf6867e94ae85584c596dba77607ad3a2e10cc6204efa0c54b",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/pearson-correlation",
+    "name": "Pearson correlation",
+    "aliases": [
+      "Pearson product-moment correlation coefficient",
+      "Pearson's r",
+      "r"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The standardized measure of linear association between two variables, equal to their covariance divided by the product of their standard deviations, ranging from -1 (perfect negative linear) to +1 (perfect positive linear). Developed by Karl Pearson around the early 1900s.",
+    "intuition": "It measures how well a straight line describes the relationship: +1 or -1 means all points lie exactly on a line, 0 means no linear pattern at all.",
+    "mechanics": "Standardize each variable (subtract its mean, divide by its standard deviation), multiply the paired standardized values, and average. The sign matches the slope of the least-squares regression line, and r^2 is the share of variance in y explained linearly by x.",
+    "formula": "r = [n*SUM(xy) - (SUM x)(SUM y)] / sqrt( [n*SUM x^2 - (SUM x)^2] * [n*SUM y^2 - (SUM y)^2] ), where n is the number of paired observations.",
+    "relationships": [
+      "Correlation",
+      "Covariance",
+      "Spearman rank correlation",
+      "Kendall rank correlation",
+      "Coefficient of determination",
+      "Linear regression"
+    ],
+    "failure_modes": "It detects only linear structure: U-shaped, cyclical, or threshold relationships can yield r near 0 despite perfect dependence. It is also non-robust - one outlier can inflate or destroy r - and it presumes the relationship is stable over the sample.",
+    "misconceptions": "r = 0 does not mean 'no relationship', only no linear one. Squaring r gives variance explained, so r = 0.5 means only 25% shared variance, not '50% association'; and strong correlation still does not imply causation.",
+    "example": "For 11 students' third-exam and final-exam scores, OpenStax computes r = 0.6631, so r^2 = 0.44: about 44% of the variation in final scores is linearly explained by third-exam scores.",
+    "citations": [
+      {
+        "source": "OpenStax, Introductory Statistics",
+        "url": "https://openstax.org/books/introductory-statistics/pages/12-3-the-regression-equation",
+        "section": "12.3, 'The Correlation Coefficient r'",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/log-return",
+  "canonical_sha256": "053408e6aab07612ff2bd6ac3d2ca393c9f63a59e4828fb56790c7e8e328c965",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/log-return",
+    "name": "Log return",
+    "aliases": [
+      "logarithmic return",
+      "continuously compounded return",
+      "force of interest"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The natural logarithm of the gross return (price ratio) over a period, equivalent to the continuously compounded rate of return. Its key property is time-additivity: multi-period log returns are the sum of single-period log returns.",
+    "intuition": "Log returns convert compounding into addition. Gains and losses become symmetric: +10% and -10% log returns cancel exactly to zero, unlike simple returns.",
+    "mechanics": "Take the natural log of the ratio of final to initial value. Because log returns add across periods, they are preferred for statistical modeling, aggregation over time, and continuous-time finance; they approximate simple returns closely when the period change is small.",
+    "formula": "r_t = ln(V_t / V_{t-1}) = ln(1 + R_t), where V_t and V_{t-1} are the final and initial values and R_t is the simple return. Multi-period: r_{1..T} = SUM r_t = ln(V_T / V_0).",
+    "relationships": [
+      "Simple return",
+      "Gross return",
+      "Cumulative return",
+      "Lognormal distribution",
+      "Geometric mean"
+    ],
+    "failure_modes": "Log returns are undefined for a final value of zero or negative and diverge to minus infinity as value approaches zero, so they behave badly for instruments that can hit zero. Portfolio-level log returns are not the weighted sum of asset log returns (that property holds only for simple returns), so they must be converted back before portfolio aggregation.",
+    "misconceptions": "Log returns are not identical to simple returns except approximately for small changes: +50% simple corresponds to 40.55% log, and -50% simple to -69.31% log. Treating a mean log return as an arithmetic mean return understates or overstates expected growth if conversion is skipped.",
+    "example": "A stock closes at $3.570 one day and $3.575 the next; the daily log return is ln(3.575/3.570) = 0.0014, or 0.14%.",
+    "citations": [
+      {
+        "source": "Wikipedia, 'Rate of return'",
+        "url": "https://en.wikipedia.org/wiki/Rate_of_return",
+        "section": "Logarithmic or continuously compounded return",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

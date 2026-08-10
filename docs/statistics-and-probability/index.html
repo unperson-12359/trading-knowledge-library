@@ -128,6 +128,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="simple-return"><h3>Simple return <a class="anchor" href="#simple-return">#</a></h3>
 <div class="field">The fractional change in value of an investment over a single period: the difference between final and initial value divided by the initial value, including any income such as dividends in the final value. It is the standard per-period return measure in empirical finance.</div>
+<div class="skill-links"><a href="../skills/tkl-simple-return/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It answers &#x27;by what percentage did my money grow this period?&#x27; A 5% simple return means $100 became $105.</div>
 <div class="field"><span class="label">Mechanics:</span> Divide the change in value (final plus distributions minus initial) by the initial value. Simple returns aggregate across assets by value-weighted averaging (portfolio return is the weighted sum of asset returns) but compound, not add, across time.</div>
 <div class="field"><span class="label">Failure modes:</span> Simple returns do not add across time - summing them over multiple periods overstates compounded growth when returns are volatile. They are also bounded below by -100%, which complicates symmetric statistical models.</div>
@@ -140,6 +141,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="log-return"><h3>Log return <a class="anchor" href="#log-return">#</a></h3>
 <div class="field">The natural logarithm of the gross return (price ratio) over a period, equivalent to the continuously compounded rate of return. Its key property is time-additivity: multi-period log returns are the sum of single-period log returns.</div>
+<div class="skill-links"><a href="../skills/tkl-log-return/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Log returns convert compounding into addition. Gains and losses become symmetric: +10% and -10% log returns cancel exactly to zero, unlike simple returns.</div>
 <div class="field"><span class="label">Mechanics:</span> Take the natural log of the ratio of final to initial value. Because log returns add across periods, they are preferred for statistical modeling, aggregation over time, and continuous-time finance; they approximate simple returns closely when the period change is small.</div>
 <div class="field"><span class="label">Failure modes:</span> Log returns are undefined for a final value of zero or negative and diverge to minus infinity as value approaches zero, so they behave badly for instruments that can hit zero. Portfolio-level log returns are not the weighted sum of asset log returns (that property holds only for simple returns), so they must be converted back before portfolio aggregation.</div>
@@ -152,6 +154,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="gross-return"><h3>Gross return <a class="anchor" href="#gross-return">#</a></h3>
 <div class="field">Two usages coexist: (1) in asset-pricing mathematics, the gross return is the growth factor of an investment over a period, i.e., final value divided by initial value, equal to one plus the simple return; (2) in performance reporting, gross return is the return before deduction of fees, commissions, and taxes (gross of costs), as opposed to net return.</div>
+<div class="skill-links"><a href="../skills/tkl-gross-return/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> In sense (1), it is &#x27;what $1 becomes&#x27; - a multiplier like 1.07 for a 7% gain. In sense (2), it is what the investment earned before anyone took their cut.</div>
 <div class="field"><span class="label">Mechanics:</span> As a growth factor, gross returns multiply across periods, which is why cumulative performance is computed as their product. As a reporting concept, gross-of-fees return subtracts no management fees or trading costs, while net return is gross return minus those costs.</div>
 <div class="field"><span class="label">Failure modes:</span> The term is ambiguous across literatures: confusing the growth-factor sense (1.07) with the percentage sense (7%) corrupts compounding calculations, and gross-of-fees performance systematically overstates what an investor actually receives.</div>
@@ -165,6 +168,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="cumulative-return"><h3>Cumulative return <a class="anchor" href="#cumulative-return">#</a></h3>
 <div class="field">The total return of an investment over a multi-period horizon, obtained by compounding (geometrically linking) the single-period returns, assuming gains are reinvested. It measures the full change in value from the start to the end of the holding period.</div>
+<div class="skill-links"><a href="../skills/tkl-cumulative-return/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the answer to &#x27;if I invested $1 at the start and reinvested everything, what fraction do I have now, minus one?&#x27; It compounds, so it is not the sum of the periodic returns.</div>
 <div class="field"><span class="label">Mechanics:</span> Multiply the gross returns (growth factors) of each sub-period together and subtract one. Equivalently, sum the log returns over the horizon and exponentiate minus one.</div>
 <div class="field"><span class="label">Failure modes:</span> Cumulative returns are path-dependent with respect to cash flows: with deposits and withdrawals, the simple compounded figure misstates performance and time-weighted or money-weighted methods are needed. Long cumulative figures also conceal interim drawdowns.</div>
@@ -177,6 +181,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="annualized-return"><h3>Annualized return <a class="anchor" href="#annualized-return">#</a></h3>
 <div class="field">The constant per-year rate of return that, compounded over the holding period, would produce the observed cumulative return. It converts returns measured over periods longer or shorter than a year to a comparable yearly basis.</div>
+<div class="skill-links"><a href="../skills/tkl-annualized-return/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It answers &#x27;what steady yearly growth rate would have gotten me to the same final value?&#x27; It lets you compare a 9-month return with a 5-year return on one scale.</div>
 <div class="field"><span class="label">Mechanics:</span> Take the cumulative gross return, raise it to the power 1/T where T is the holding period in years, and subtract one. For volatility-style annualization of average per-period returns, the compounded convention (1+R_period)^k - 1 is used, not simple multiplication by k.</div>
 <div class="field"><span class="label">Failure modes:</span> Annualizing short or volatile track records extrapolates a possibly unrepresentative period to a full year; CFA Institute GIPS prohibit annualizing returns for periods shorter than one year because such figures project an unverified rate onto the remainder of the year. Annualized returns also smooth over the path and hide drawdowns.</div>
@@ -190,6 +195,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="arithmetic-mean"><h3>Arithmetic mean <a class="anchor" href="#arithmetic-mean">#</a></h3>
 <div class="field">The sum of a set of values divided by their count; the most common measure of central tendency (location). It is the value that minimizes the sum of squared deviations from the data.</div>
+<div class="skill-links"><a href="../skills/tkl-arithmetic-mean/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the &#x27;fair share&#x27; value: if every observation were replaced by the mean, the total would stay the same. It balances the data like a center of gravity.</div>
 <div class="field"><span class="label">Mechanics:</span> Add all observations and divide by the number of observations. Every value, including extremes, contributes fully, which makes the mean efficient for well-behaved data but sensitive to outliers.</div>
 <div class="field"><span class="label">Failure modes:</span> Extreme tail values can pull the mean far from the bulk of the data (NIST illustrates this with Cauchy data, where the mean is useless as a location estimate). For multiplicative processes such as compounded returns, the arithmetic mean overstates the actual growth rate.</div>
@@ -202,6 +208,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="geometric-mean"><h3>Geometric mean <a class="anchor" href="#geometric-mean">#</a></h3>
 <div class="field">The nth root of the product of n positive numbers; the central-tendency measure appropriate when quantities combine multiplicatively rather than additively. In finance, the geometric mean of period growth factors gives the constant per-period growth rate that reproduces the compounded result.</div>
+<div class="skill-links"><a href="../skills/tkl-geometric-mean/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the average growth rate that actually compounds to the observed total. Where the arithmetic mean answers &#x27;average change&#x27;, the geometric mean answers &#x27;average multiplier&#x27;.</div>
 <div class="field"><span class="label">Mechanics:</span> Multiply the n values and take the nth root; equivalently average their natural logarithms and exponentiate. It is always less than or equal to the arithmetic mean, with equality only when all values are identical (AM-GM inequality), so the gap widens with dispersion.</div>
 <div class="field"><span class="label">Failure modes:</span> It is defined only for positive values, so it cannot be applied to raw returns that can be negative - one must average gross returns (1 + R) instead. A single zero value makes the whole product zero, and highly volatile return sequences push it far below the arithmetic mean (volatility drag).</div>
@@ -214,6 +221,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="median"><h3>Median <a class="anchor" href="#median">#</a></h3>
 <div class="field">The middle value of an ordered data set: the point with half the observations below it and half above. For an even number of observations it is conventionally the average of the two central values.</div>
+<div class="skill-links"><a href="../skills/tkl-median/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the &#x27;typical middle&#x27; value that ignores how extreme the tails are. Half the data lies on each side, by construction.</div>
 <div class="field"><span class="label">Mechanics:</span> Sort the data ascending; if N is odd, take the ((N+1)/2)th value; if N is even, average the (N/2)th and (N/2 + 1)th values. Because it depends only on ranks, it is robust to outliers and skew.</div>
 <div class="field"><span class="label">Failure modes:</span> By discarding magnitude information, the median can hide important tail behavior - two return series with the same median can have very different crash risk. It is also less statistically efficient than the mean when data truly are normal.</div>
@@ -226,6 +234,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="mode"><h3>Mode <a class="anchor" href="#mode">#</a></h3>
 <div class="field">The value that occurs with the greatest frequency in a data set, or the location of the peak of a probability distribution. A distribution may have one mode (unimodal), several modes (multimodal), or no well-defined mode.</div>
+<div class="skill-links"><a href="../skills/tkl-mode/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the most common outcome - the value you would bet on if you had to guess exactly one number.</div>
 <div class="field"><span class="label">Mechanics:</span> For discrete data, count frequencies and select the most frequent value; for continuous data, values essentially never repeat, so the mode is taken as the peak of a histogram or density estimate (e.g., the midpoint of the tallest histogram bin).</div>
 <div class="field"><span class="label">Failure modes:</span> For continuous data the sample mode is unstable and depends on histogram binning, and multimodal data make &#x27;the mode&#x27; ambiguous. The mode ignores all non-peak values, so it carries no information about spread or tails.</div>
@@ -237,6 +246,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="covariance"><h3>Covariance <a class="anchor" href="#covariance">#</a></h3>
 <div class="field">A measure of the joint variability of two random variables: the expected product of their deviations from their respective means. Its sign indicates the direction of the linear relationship (positive: variables tend to move together; negative: oppositely), and its magnitude depends on the units of the variables.</div>
+<div class="skill-links"><a href="../skills/tkl-covariance/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the raw, unstandardized version of correlation: it tells you whether two variables move together and by how much in squared unit terms, but you cannot compare covariances across different unit scales.</div>
 <div class="field"><span class="label">Mechanics:</span> For each paired observation, multiply the deviation of x from its mean by the deviation of y from its mean, then average these products. Normalizing covariance by the product of the standard deviations yields the Pearson correlation coefficient; in portfolio theory, asset covariances determine portfolio variance.</div>
 <div class="field"><span class="label">Failure modes:</span> Because covariance carries units of x times y, its magnitude is not comparable across variable pairs or scales - only its sign and the normalized correlation are interpretable. Zero covariance rules out linear dependence but not nonlinear dependence (e.g., X uniform on [-1,1] and Y = X^2 have covariance zero yet are perfectly dependent).</div>
@@ -249,6 +259,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="pearson-correlation"><h3>Pearson correlation <a class="anchor" href="#pearson-correlation">#</a></h3>
 <div class="field">The standardized measure of linear association between two variables, equal to their covariance divided by the product of their standard deviations, ranging from -1 (perfect negative linear) to +1 (perfect positive linear). Developed by Karl Pearson around the early 1900s.</div>
+<div class="skill-links"><a href="../skills/tkl-pearson-correlation/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It measures how well a straight line describes the relationship: +1 or -1 means all points lie exactly on a line, 0 means no linear pattern at all.</div>
 <div class="field"><span class="label">Mechanics:</span> Standardize each variable (subtract its mean, divide by its standard deviation), multiply the paired standardized values, and average. The sign matches the slope of the least-squares regression line, and r^2 is the share of variance in y explained linearly by x.</div>
 <div class="field"><span class="label">Failure modes:</span> It detects only linear structure: U-shaped, cyclical, or threshold relationships can yield r near 0 despite perfect dependence. It is also non-robust - one outlier can inflate or destroy r - and it presumes the relationship is stable over the sample.</div>
@@ -261,6 +272,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="spearman-rank-correlation"><h3>Spearman rank correlation <a class="anchor" href="#spearman-rank-correlation">#</a></h3>
 <div class="field">A nonparametric measure of monotonic association between two variables, defined as the Pearson correlation coefficient computed on the ranks of the observations rather than their raw values. It ranges from -1 to +1 and detects any consistent monotonic relationship, linear or not.</div>
+<div class="skill-links"><a href="../skills/tkl-spearman-rank-correlation/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It asks &#x27;do bigger x values reliably come with bigger y values?&#x27; regardless of how big the steps are. Only the ordering matters, so outliers can do no more damage than their rank allows.</div>
 <div class="field"><span class="label">Mechanics:</span> Rank each variable separately (averaging ranks for ties), then compute the Pearson correlation of the rank pairs. With no ties, a simplified formula in the squared rank differences d_i applies; with ties, the general Pearson-on-ranks form must be used.</div>
 <div class="field"><span class="label">Failure modes:</span> The simplified d^2 formula gives wrong values when ties are present. Like all correlation measures it does not imply causation, and it quantifies monotone association only - a non-monotonic (e.g., inverted-U) dependence can score near zero. With small samples, significance is hard to establish.</div>
@@ -273,6 +285,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="kendall-rank-correlation"><h3>Kendall rank correlation <a class="anchor" href="#kendall-rank-correlation">#</a></h3>
 <div class="field">A nonparametric measure of ordinal association between two variables, computed from the difference between the number of concordant and discordant observation pairs, normalized by the total number of pairs. It ranges from -1 (perfectly reversed rankings) to +1 (identical rankings) and was introduced by Maurice Kendall in 1938.</div>
+<div class="skill-links"><a href="../skills/tkl-kendall-rank-correlation/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Pick any two observations; the pair is &#x27;concordant&#x27; if both variables rank them in the same order. Tau is essentially the probability of concordance minus the probability of discordance.</div>
 <div class="field"><span class="label">Mechanics:</span> For all n(n-1)/2 pairs, count pairs where the x-order and y-order agree (concordant) minus those where they disagree (discordant), and divide by the number of pairs. Variants tau-b and tau-c adjust the denominator for ties; under the null of independence, tau has mean zero and an approximately normal sampling distribution for large n.</div>
 <div class="field"><span class="label">Failure modes:</span> With many tied values, unadjusted tau-a cannot reach +/-1 and the tie-corrected tau-b or tau-c must be used, changing the value. Direct computation is O(n^2), and tau values are systematically smaller in magnitude than Spearman&#x27;s rho for the same data, so the two are not numerically interchangeable.</div>
@@ -285,6 +298,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="probability-distribution"><h3>Probability distribution <a class="anchor" href="#probability-distribution">#</a></h3>
 <div class="field">A mathematical function that assigns probabilities to the possible outcomes of a random variable. For discrete variables it is a probability mass function giving P(X = x) with all masses non-negative and summing to 1; for continuous variables it is a probability density function whose integral over the whole line is 1, with probabilities defined over intervals.</div>
+<div class="skill-links"><a href="../skills/tkl-probability-distribution/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the complete map of what values a random quantity can take and how likely each is - the &#x27;shape of uncertainty&#x27; for a variable such as tomorrow&#x27;s return.</div>
 <div class="field"><span class="label">Mechanics:</span> A discrete PMF p(x) satisfies p(x) &gt;= 0 and SUM p(x) = 1, with P(X = x) = p(x) at each value. A continuous PDF f(x) satisfies f(x) &gt;= 0 and integrates to 1; the probability of any single point is zero and interval probabilities are areas under the curve. The cumulative distribution function F(x) = P(X &lt;= x) gives left-tail probabilities in both cases.</div>
 <div class="field"><span class="label">Failure modes:</span> Real financial return series rarely match any simple parametric distribution exactly - they show skewness, excess kurtosis, volatility clustering, and regime changes - so a fitted distribution understates tail risk if taken literally. For continuous models, treating density height as a probability is a category error.</div>
@@ -297,6 +311,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="normal-distribution"><h3>Normal distribution <a class="anchor" href="#normal-distribution">#</a></h3>
 <div class="field">A continuous, symmetric, single-peaked probability distribution fully determined by its location parameter mu (mean = median = mode) and scale parameter sigma (standard deviation). It is the default modeling distribution in statistics, theoretically justified by the central limit theorem for sums and averages.</div>
+<div class="skill-links"><a href="../skills/tkl-normal-distribution/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the classic bell curve: most values cluster near the mean and extremes become rapidly rarer, with about 68% of probability within one sigma and 99.7% within three.</div>
 <div class="field"><span class="label">Mechanics:</span> The density is fully specified by mu and sigma; the standard normal (mu = 0, sigma = 1) is obtained by z-scoring. Sums and means of many independent contributions converge to it (CLT), which is why many test statistics are normal-based; its CDF has no closed form and is computed numerically.</div>
 <div class="field"><span class="label">Failure modes:</span> Financial returns exhibit heavier tails and skewness than the normal model, so normality assumptions understate the probability of extreme moves (crashes). Tests and intervals built on normality can mislead when applied to fat-tailed or asymmetric data without robustness checks.</div>
@@ -309,6 +324,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="lognormal-distribution"><h3>Lognormal distribution <a class="anchor" href="#lognormal-distribution">#</a></h3>
 <div class="field">A continuous probability distribution of a positive random variable X whose natural logarithm is normally distributed. It is right-skewed with support on (0, infinity) and is the standard model for asset prices under geometric Brownian motion.</div>
+<div class="skill-links"><a href="../skills/tkl-lognormal-distribution/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> If returns compound multiplicatively, prices end up lognormal: the product of many positive random growth factors has a log that is a sum, hence normal by the CLT. Prices cannot go below zero, which the lognormal respects.</div>
 <div class="field"><span class="label">Mechanics:</span> If Y = ln(X) ~ N(mu, sigma^2) then X is lognormal; the scale parameter m = exp(mu) is the median of X, and sigma is the standard deviation of log X. The mean exp(mu + sigma^2/2) exceeds the median, reflecting the right skew.</div>
 <div class="field"><span class="label">Failure modes:</span> Real asset prices deviate from lognormality: returns show fat tails, skew, and jumps, so option-pricing and risk models built on strict lognormality (e.g., basic Black-Scholes) misprice tail events. Parameter estimates are also fragile when the data contain outliers.</div>

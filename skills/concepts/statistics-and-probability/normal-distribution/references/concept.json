@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/normal-distribution",
+  "canonical_sha256": "7b9dc09064a69ae5f3a58bf0b3cc8c6e9c403666a7ec249296be3ec6102d1833",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/normal-distribution",
+    "name": "Normal distribution",
+    "aliases": [
+      "Gaussian distribution",
+      "bell curve",
+      "N(mu, sigma^2)"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "A continuous, symmetric, single-peaked probability distribution fully determined by its location parameter mu (mean = median = mode) and scale parameter sigma (standard deviation). It is the default modeling distribution in statistics, theoretically justified by the central limit theorem for sums and averages.",
+    "intuition": "It is the classic bell curve: most values cluster near the mean and extremes become rapidly rarer, with about 68% of probability within one sigma and 99.7% within three.",
+    "mechanics": "The density is fully specified by mu and sigma; the standard normal (mu = 0, sigma = 1) is obtained by z-scoring. Sums and means of many independent contributions converge to it (CLT), which is why many test statistics are normal-based; its CDF has no closed form and is computed numerically.",
+    "formula": "f(x) = exp( -(x - mu)^2 / (2*sigma^2) ) / (sigma * sqrt(2*pi)), where mu is the mean and sigma the standard deviation; skewness = 0, kurtosis = 3.",
+    "relationships": [
+      "Probability distribution",
+      "Central limit theorem",
+      "Z-score",
+      "Student's t-distribution",
+      "Lognormal distribution",
+      "Standard deviation"
+    ],
+    "failure_modes": "Financial returns exhibit heavier tails and skewness than the normal model, so normality assumptions understate the probability of extreme moves (crashes). Tests and intervals built on normality can mislead when applied to fat-tailed or asymmetric data without robustness checks.",
+    "misconceptions": "'Everything averages out to a bell curve' is false for heavy-tailed data - the CLT requires finite variance, and Cauchy-type data never normalize. Also, normality of returns does not follow from price levels being lognormal; they are distinct modeling choices.",
+    "example": "Under a normal model with daily mean 0.05% and sigma 1%, a -3% day is a -3.05-sigma event with probability near 0.1% - yet such days occur far more often in real equity returns, illustrating the thin-tail failure.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda3661.htm",
+        "section": "1.3.6.6.1, 'Normal Distribution'",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

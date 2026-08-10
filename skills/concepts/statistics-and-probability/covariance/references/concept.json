@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/covariance",
+  "canonical_sha256": "18fbfe1b4a38e33444dc4af1ca2a2ed57a9252387029539fe1f05c11e69c7721",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/covariance",
+    "name": "Covariance",
+    "aliases": [
+      "sigma_XY",
+      "cov(X,Y)"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "A measure of the joint variability of two random variables: the expected product of their deviations from their respective means. Its sign indicates the direction of the linear relationship (positive: variables tend to move together; negative: oppositely), and its magnitude depends on the units of the variables.",
+    "intuition": "It is the raw, unstandardized version of correlation: it tells you whether two variables move together and by how much in squared unit terms, but you cannot compare covariances across different unit scales.",
+    "mechanics": "For each paired observation, multiply the deviation of x from its mean by the deviation of y from its mean, then average these products. Normalizing covariance by the product of the standard deviations yields the Pearson correlation coefficient; in portfolio theory, asset covariances determine portfolio variance.",
+    "formula": "cov(X,Y) = E[(X - E[X])(Y - E[Y])] = E[XY] - E[X]E[Y]; sample estimate: q = SUM_{i=1..N}(x_i - x_bar)(y_i - y_bar) / (N - 1).",
+    "relationships": [
+      "Correlation",
+      "Pearson correlation",
+      "Variance",
+      "Portfolio variance",
+      "Beta"
+    ],
+    "failure_modes": "Because covariance carries units of x times y, its magnitude is not comparable across variable pairs or scales - only its sign and the normalized correlation are interpretable. Zero covariance rules out linear dependence but not nonlinear dependence (e.g., X uniform on [-1,1] and Y = X^2 have covariance zero yet are perfectly dependent).",
+    "misconceptions": "Uncorrelated does not mean independent, except under joint normality. Also, a large absolute covariance does not by itself imply a strong relationship - it may just reflect large units or variances.",
+    "example": "If two stocks have daily returns with variances 0.0004 and 0.0009 and covariance 0.0003, their correlation is 0.0003 / sqrt(0.0004*0.0009) = 0.5; the covariance value alone says nothing without that normalization.",
+    "citations": [
+      {
+        "source": "Wikipedia, 'Covariance'",
+        "url": "https://en.wikipedia.org/wiki/Covariance",
+        "section": "Definition; Calculating the sample covariance",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

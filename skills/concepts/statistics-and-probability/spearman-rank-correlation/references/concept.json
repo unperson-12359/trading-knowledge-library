@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/spearman-rank-correlation",
+  "canonical_sha256": "bddfbd3b0d1a881dd3fa3a004a8e941254b7bbe88a0615e8307291ff0dd22ef9",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/spearman-rank-correlation",
+    "name": "Spearman rank correlation",
+    "aliases": [
+      "Spearman's rho",
+      "Spearman's rank correlation coefficient",
+      "grade correlation"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "A nonparametric measure of monotonic association between two variables, defined as the Pearson correlation coefficient computed on the ranks of the observations rather than their raw values. It ranges from -1 to +1 and detects any consistent monotonic relationship, linear or not.",
+    "intuition": "It asks 'do bigger x values reliably come with bigger y values?' regardless of how big the steps are. Only the ordering matters, so outliers can do no more damage than their rank allows.",
+    "mechanics": "Rank each variable separately (averaging ranks for ties), then compute the Pearson correlation of the rank pairs. With no ties, a simplified formula in the squared rank differences d_i applies; with ties, the general Pearson-on-ranks form must be used.",
+    "formula": "rs = 1 - 6*SUM(d_i^2) / (n*(n^2 - 1)), where d_i is the difference between the two ranks of observation i and n is the sample size; valid only when all ranks are distinct (no ties).",
+    "relationships": [
+      "Pearson correlation",
+      "Kendall rank correlation",
+      "Correlation",
+      "Rank statistics"
+    ],
+    "failure_modes": "The simplified d^2 formula gives wrong values when ties are present. Like all correlation measures it does not imply causation, and it quantifies monotone association only - a non-monotonic (e.g., inverted-U) dependence can score near zero. With small samples, significance is hard to establish.",
+    "misconceptions": "A perfect Spearman coefficient does not require a linear relationship - any strictly monotonic one gives +/-1, so Spearman = 1 is weaker evidence than Pearson = 1. Nor is Spearman simply 'Pearson with outliers removed'; it answers a different question (monotonic vs. linear).",
+    "example": "Ranking 10 people by IQ and by weekly TV hours yields SUM d_i^2 = 58 and n = 10, giving rho = 1 - 6*58/(10*99) = -0.176, a weak negative monotonic association.",
+    "citations": [
+      {
+        "source": "Wikipedia, 'Spearman's rank correlation coefficient'",
+        "url": "https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient",
+        "section": "Definition and calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

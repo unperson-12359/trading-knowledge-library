@@ -1,0 +1,82 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-rolling-standard-deviation",
+  "concept_id": "market-data/rolling-standard-deviation",
+  "display_name": "Rolling standard deviation",
+  "domain": "Market data",
+  "description": "Explain, compare, or apply Rolling standard deviation using the library's structured Market data reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Rolling standard deviation",
+    "rolling volatility",
+    "rolling std",
+    "moving standard deviation",
+    "explain Rolling standard deviation",
+    "apply Rolling standard deviation to a trading question",
+    "common misconception about Rolling standard deviation"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 20,
+  "package_path": "skills/concepts/market-data/rolling-standard-deviation",
+  "canonical": {
+    "source_path": "concepts/market-data.json",
+    "sha256": "5648d736ed926bfeb9d0899cb3037c99a51f44589b8444f3a4087aa0a29a5605"
+  },
+  "related_concept_ids": [
+    "market-data/rolling-mean",
+    "market-data/rolling-z-score",
+    "indicators/bollinger-bands",
+    "indicators/average-true-range",
+    "risk-and-performance/volatility"
+  ]
+}

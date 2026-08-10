@@ -127,6 +127,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="rolling-standard-deviation"><h3>Rolling standard deviation <a class="anchor" href="#rolling-standard-deviation">#</a></h3>
 <div class="field">The rolling standard deviation is the sample (or population) standard deviation of a series over a trailing window of fixed length that slides forward one observation at a time. Applied to returns it is the standard estimator of realized volatility and the width driver of Bollinger Bands.</div>
+<div class="skill-links"><a href="../skills/tkl-rolling-standard-deviation/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It measures how spread out the last N returns (or prices) were — a live gauge of how violently the market has been moving recently.</div>
 <div class="field"><span class="label">Mechanics:</span> For window w, compute σ over the last w observations at each step; pandas rolling(window).std() uses the sample (unbiased, ddof=1) convention by default and labels at the window&#x27;s right edge. On returns, annualization scales by √T (e.g., √252 for daily data).</div>
 <div class="field"><span class="label">Failure modes:</span> The estimate assumes the window&#x27;s observations come from one stable regime; volatility clustering makes short windows noisy and long windows slow to react. Squaring returns gives extreme observations outsized influence, and with w−1 denominators small windows are unreliable.</div>
@@ -139,6 +140,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="rolling-correlation"><h3>Rolling correlation <a class="anchor" href="#rolling-correlation">#</a></h3>
 <div class="field">Rolling correlation is the Pearson correlation coefficient between two series computed over a trailing window of fixed length that slides forward one observation at a time. It tracks how the co-movement of two assets (typically their returns) evolves through time.</div>
+<div class="skill-links"><a href="../skills/tkl-rolling-correlation/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Instead of one correlation number for the whole history, you get a time series showing when two markets moved together and when they decoupled.</div>
 <div class="field"><span class="label">Mechanics:</span> For window w, compute the Pearson coefficient over the paired observations in the last w points at each t; pandas rolling().corr() supports Series–Series and pairwise DataFrame computations, ignoring missing values pairwise. Correlations are typically computed on returns, not price levels.</div>
 <div class="field"><span class="label">Failure modes:</span> Short windows produce wildly unstable estimates that swing between −1 and +1 on noise; correlation computed on trending price levels is spuriously high. Crisis periods reveal that correlations estimated in calm windows understate co-movement exactly when diversification is needed.</div>
@@ -151,6 +153,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="rolling-beta"><h3>Rolling beta <a class="anchor" href="#rolling-beta">#</a></h3>
 <div class="field">Rolling beta is the regression slope of an asset&#x27;s returns on a benchmark&#x27;s returns — covariance divided by benchmark variance — estimated over a trailing window that slides forward one observation at a time. It tracks how an asset&#x27;s market sensitivity evolves rather than assuming a single static beta.</div>
+<div class="skill-links"><a href="../skills/tkl-rolling-beta/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Beta asks &#x27;when the market moves 1%, how much does this asset typically move?&#x27;; rolling beta shows that answer changing through time as the asset&#x27;s risk profile shifts.</div>
 <div class="field"><span class="label">Mechanics:</span> For window w, compute β_t = Cov_w(r_asset, r_market) / Var_w(r_market) over the last w paired return observations at each t; pandas rolling().cov() and rolling().var() provide the components. The result is the CAPM-style beta estimated on the trailing sample.</div>
 <div class="field"><span class="label">Failure modes:</span> Beta estimates are regime-dependent: a window spanning a volatility spike or structural break blends incompatible regimes, and short windows give noisy, unstable slopes. Rolling beta is backward-looking and often fails to anticipate beta shifts at market turning points.</div>
@@ -163,6 +166,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="rolling-z-score"><h3>Rolling z-score <a class="anchor" href="#rolling-z-score">#</a></h3>
 <div class="field">The rolling z-score standardizes each observation of a series by the rolling mean and rolling standard deviation of its trailing window: how many recent-standard-deviations the current value sits from the recent mean. It converts levels into a locally normalized scale used by mean-reversion and Bollinger-style analyses.</div>
+<div class="skill-links"><a href="../skills/tkl-rolling-z-score/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A z-score of +2 says &#x27;today&#x27;s value is unusually high compared with the recent past&#x27; — unusual measured in units of the recent volatility, not absolute price.</div>
 <div class="field"><span class="label">Mechanics:</span> At each t compute z_t = (x_t − μ_t)/σ_t, where μ_t and σ_t are the rolling mean and rolling standard deviation over the trailing window of length w. pandas rolling().mean() and rolling().std() supply the components; care is needed on whether the current observation is included in the window.</div>
 <div class="field"><span class="label">Failure modes:</span> Z-scores assume approximate local normality and stationarity; in trending or fat-tailed series, |z| &gt; 2 events are far more common than the Gaussian 5%, so &#x27;extreme&#x27; readings are not reliable reversal signals. The statistic also inherits the window sensitivity of its mean and std components.</div>

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/annualized-return",
+  "canonical_sha256": "368693ff93b1d25fe9733b0f0fb124d4b0fb73522600fe9acc5f30b742bd0305",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/annualized-return",
+    "name": "Annualized return",
+    "aliases": [
+      "annualized rate of return",
+      "compound annual growth rate",
+      "CAGR"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The constant per-year rate of return that, compounded over the holding period, would produce the observed cumulative return. It converts returns measured over periods longer or shorter than a year to a comparable yearly basis.",
+    "intuition": "It answers 'what steady yearly growth rate would have gotten me to the same final value?' It lets you compare a 9-month return with a 5-year return on one scale.",
+    "mechanics": "Take the cumulative gross return, raise it to the power 1/T where T is the holding period in years, and subtract one. For volatility-style annualization of average per-period returns, the compounded convention (1+R_period)^k - 1 is used, not simple multiplication by k.",
+    "formula": "R_ann = (1 + R_cum)^(1/T) - 1 = (PRODUCT (1 + R_t))^(1/T) - 1, where R_cum is the cumulative return and T is the horizon in years.",
+    "relationships": [
+      "Cumulative return",
+      "Geometric mean",
+      "Simple return",
+      "Log return"
+    ],
+    "failure_modes": "Annualizing short or volatile track records extrapolates a possibly unrepresentative period to a full year; CFA Institute GIPS prohibit annualizing returns for periods shorter than one year because such figures project an unverified rate onto the remainder of the year. Annualized returns also smooth over the path and hide drawdowns.",
+    "misconceptions": "Annualized return is not the arithmetic average of yearly returns: +10% then -10% averages to 0% arithmetically but annualizes to (0.99)^(1/2) - 1 = -0.5% per year. The gap between arithmetic and annualized (geometric) return grows with volatility.",
+    "example": "A cumulative return of 33.1% over 3 months annualizes to (1.331)^(12/3) - 1 = 214% if naively compounded, which is why sub-year annualization is discouraged; a 21% return over 2 years annualizes to (1.21)^(1/2) - 1 = 10% per year.",
+    "citations": [
+      {
+        "source": "Wikipedia, 'Rate of return'",
+        "url": "https://en.wikipedia.org/wiki/Rate_of_return",
+        "section": "Annualization; Annual returns and annualized returns",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Investopedia, 'What Is a Return?'",
+        "url": "https://www.investopedia.com/terms/r/return.asp",
+        "section": "Understanding a Return (annualization)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

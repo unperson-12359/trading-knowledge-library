@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/probability-distribution",
+  "canonical_sha256": "da73841c62258873e4b36d30f5e7f85c70c2b287ab7a6da36edae9f355404501",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/probability-distribution",
+    "name": "Probability distribution",
+    "aliases": [
+      "probability function",
+      "distribution"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "A mathematical function that assigns probabilities to the possible outcomes of a random variable. For discrete variables it is a probability mass function giving P(X = x) with all masses non-negative and summing to 1; for continuous variables it is a probability density function whose integral over the whole line is 1, with probabilities defined over intervals.",
+    "intuition": "It is the complete map of what values a random quantity can take and how likely each is - the 'shape of uncertainty' for a variable such as tomorrow's return.",
+    "mechanics": "A discrete PMF p(x) satisfies p(x) >= 0 and SUM p(x) = 1, with P(X = x) = p(x) at each value. A continuous PDF f(x) satisfies f(x) >= 0 and integrates to 1; the probability of any single point is zero and interval probabilities are areas under the curve. The cumulative distribution function F(x) = P(X <= x) gives left-tail probabilities in both cases.",
+    "formula": "Discrete: SUM_j p_j = 1, p_j >= 0. Continuous: integral_{-inf}^{+inf} f(x) dx = 1, f(x) >= 0; P(a <= X <= b) = integral_a^b f(x) dx.",
+    "relationships": [
+      "Normal distribution",
+      "Lognormal distribution",
+      "Binomial distribution",
+      "Poisson distribution",
+      "Expected value",
+      "Quantile"
+    ],
+    "failure_modes": "Real financial return series rarely match any simple parametric distribution exactly - they show skewness, excess kurtosis, volatility clustering, and regime changes - so a fitted distribution understates tail risk if taken literally. For continuous models, treating density height as a probability is a category error.",
+    "misconceptions": "A probability density is not a probability: f(x) can exceed 1, and only areas under it are probabilities. Also, knowing a distribution's mean and variance does not determine the distribution - many shapes share the same two moments.",
+    "example": "Modeling the number of daily limit-up moves in a year with a binomial distribution and tomorrow's percentage price change with a normal distribution are both choices of a probability distribution; each implies different tail odds.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda361.htm",
+        "section": "1.3.6.1, 'What is a Probability Distribution'",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

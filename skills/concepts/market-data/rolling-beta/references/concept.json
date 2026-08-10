@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/rolling-beta",
+  "canonical_sha256": "04226bf7f97017e61cc7e9de367067b3e794f36779b658846d4512d1f4b8edb0",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/rolling-beta",
+    "name": "Rolling beta",
+    "aliases": [
+      "moving beta",
+      "trailing beta"
+    ],
+    "domain": "Market data",
+    "definition": "Rolling beta is the regression slope of an asset's returns on a benchmark's returns — covariance divided by benchmark variance — estimated over a trailing window that slides forward one observation at a time. It tracks how an asset's market sensitivity evolves rather than assuming a single static beta.",
+    "intuition": "Beta asks 'when the market moves 1%, how much does this asset typically move?'; rolling beta shows that answer changing through time as the asset's risk profile shifts.",
+    "mechanics": "For window w, compute β_t = Cov_w(r_asset, r_market) / Var_w(r_market) over the last w paired return observations at each t; pandas rolling().cov() and rolling().var() provide the components. The result is the CAPM-style beta estimated on the trailing sample.",
+    "formula": "β_t = Cov_w(r_i, r_m) / Var_w(r_m), where r_i and r_m are the asset's and benchmark's returns over the trailing window of length w.",
+    "relationships": [
+      "Rolling correlation",
+      "Rolling standard deviation",
+      "Beta",
+      "CAPM"
+    ],
+    "failure_modes": "Beta estimates are regime-dependent: a window spanning a volatility spike or structural break blends incompatible regimes, and short windows give noisy, unstable slopes. Rolling beta is backward-looking and often fails to anticipate beta shifts at market turning points.",
+    "misconceptions": "Beta is not correlation — it scales correlation by relative volatility — and a low trailing beta does not guarantee low future market sensitivity, especially for assets with option-like payoffs.",
+    "example": "If over the last 252 days Cov(r_stock, r_S&P500) = 0.0030 and Var(r_S&P500) = 0.0020, the stock's rolling 1-year beta is 1.5.",
+    "citations": [
+      {
+        "source": "pandas User Guide: Windowing operations",
+        "url": "https://pandas.pydata.org/docs/user_guide/window.html",
+        "section": "Binary window functions (cov) and rolling pairwise covariances",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
