@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/volume-bar",
+  "canonical_sha256": "dec0f2e40bc2ab3a42d133d1abc9c7902450124bf604633e0ec096eb1aa26f73",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/volume-bar",
+    "name": "Volume bar",
+    "aliases": [
+      "volume-based bar",
+      "shares bar"
+    ],
+    "domain": "Market data",
+    "definition": "A volume bar is an OHLCV bar built by aggregating trades until a fixed cumulative quantity (e.g., 10,000 shares or 100 BTC) has traded. Bars are thus sampled in units of traded volume rather than time or trade count.",
+    "intuition": "Each bar represents the same amount of actual participation — the market 'votes' with quantity, and a new bar is cast once the vote count reaches the threshold.",
+    "mechanics": "Accumulate traded quantities from the tick stream; when cumulative volume reaches the threshold V*, reduce the accumulated trades to OHLCV and reset. Volume bars sample more frequently when large traders are active and partially mitigate the trade-fragmentation distortion of tick bars, since splitting an order into more prints does not change total volume.",
+    "formula": "",
+    "relationships": [
+      "Tick bar",
+      "Dollar bar",
+      "Time bar",
+      "Trading volume",
+      "OHLCV bar"
+    ],
+    "failure_modes": "A single block trade larger than the threshold straddles multiple bars or forces an oversized bar, depending on implementation, so bar-level volume is not exactly constant in practice. The threshold is arbitrary and not comparable across instruments of different liquidity.",
+    "misconceptions": "Volume bars do not have identical volumes in strict tick-level implementations unless trades are allowed to be split; many charting platforms approximate them from already-aggregated data, distorting the construction.",
+    "example": "With 50,000-share volume bars, if the tape prints 30k, 15k, and then 10k shares, the bar closes partway through the third print after exactly 50k shares have traded.",
+    "citations": [
+      {
+        "source": "López de Prado, Advances in Financial Machine Learning (Wiley, 2018)",
+        "url": "https://www.wiley.com/en-us/Advances+in+Financial+Machine+Learning-p-9781119482086",
+        "section": "Chapter 2: Financial Data Structures (volume bars)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

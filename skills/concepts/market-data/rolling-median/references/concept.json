@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/rolling-median",
+  "canonical_sha256": "16fcc8f27ecd068ac0ba20a4c1b98d749ff11e34eed1be737b3a82f3d83d7139",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/rolling-median",
+    "name": "Rolling median",
+    "aliases": [
+      "moving median",
+      "median filter"
+    ],
+    "domain": "Market data",
+    "definition": "The rolling median is the median value of a series over a trailing window of fixed length that slides forward one observation at a time. It is a robust alternative to the rolling mean, insensitive to extreme values within the window.",
+    "intuition": "Instead of averaging the last N bars, take the middle one — a single spike can pull a mean around but cannot move the median much.",
+    "mechanics": "For window length w, sort the last w observations and take the middle value (average of the two middle values for even w) at each step. pandas supports rolling(window).median(), with the same right-edge labeling and min_periods conventions as other rolling aggregations.",
+    "formula": "RMed_t = median(x_{t−w+1}, …, x_t), where w is the window length.",
+    "relationships": [
+      "Rolling mean",
+      "Median price",
+      "Rolling maximum",
+      "Rolling minimum"
+    ],
+    "failure_modes": "The median is a coarse, step-like statistic that can sit unchanged for many bars and then jump, which makes derivative-based signals awkward. It is also computationally heavier than the mean and still lagged by the window.",
+    "misconceptions": "Robustness to outliers is not always desirable — in return series, extreme moves are often the information, and median-filtering them away changes the risk picture.",
+    "example": "For the last 5 closes 100, 101, 99, 130, 102, the rolling median is 101 while the rolling mean is 106.4, showing the median's immunity to the 130 spike.",
+    "citations": [
+      {
+        "source": "pandas User Guide: Windowing operations",
+        "url": "https://pandas.pydata.org/docs/user_guide/window.html",
+        "section": "Rolling window (median aggregation)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/typical-price",
+  "canonical_sha256": "d400553f6307f8c863a63858174729a900e78b628905593a7e3f0fd70dc7a0b3",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/typical-price",
+    "name": "Typical price",
+    "aliases": [
+      "HLC average",
+      "HLC/3"
+    ],
+    "domain": "Market data",
+    "definition": "The typical price is the arithmetic mean of a bar's high, low, and close: (H+L+C)/3. It is a standard single-price summary of a trading bar, used as the price input of indicators such as the Money Flow Index and the Commodity Channel Index.",
+    "intuition": "Typical price collapses a bar into one number that represents where trading happened, giving equal weight to the extremes and the close.",
+    "mechanics": "Compute (High + Low + Close)/3 for each bar and optionally smooth the resulting series (e.g., with a moving average) for trend display. It serves as the price input in MFI's raw money flow (typical price × volume) and CCI's deviation calculations.",
+    "formula": "TP = (H + L + C) / 3, where H, L, C are the bar's high, low, and close.",
+    "relationships": [
+      "Median price",
+      "Weighted close",
+      "Average price",
+      "Money flow index",
+      "Commodity channel index",
+      "OHLC bar"
+    ],
+    "failure_modes": "Equal weighting of high and low lets a single extreme print shift the summary as much as the close, while ignoring the open and the volume distribution within the bar. It is a convention, not a statistically optimal bar summary.",
+    "misconceptions": "The typical price is not the price at which most volume traded (that would be closer to VWAP) and not necessarily near the close — treating it as 'the' bar price is a modeling choice.",
+    "example": "For a bar with H=105, L=100, C=103, the typical price is (105+100+103)/3 = 102.67.",
+    "citations": [
+      {
+        "source": "StockCharts ChartSchool: Typical Price",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/typical-price",
+        "section": "Calculating the Typical Price Indicator",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

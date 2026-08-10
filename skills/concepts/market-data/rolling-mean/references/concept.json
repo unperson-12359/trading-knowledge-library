@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/rolling-mean",
+  "canonical_sha256": "6c3e5b95651bfbb2954c4de2a22ac5cbcedbeed56646b9e7d6ecac513f932370",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/rolling-mean",
+    "name": "Rolling mean",
+    "aliases": [
+      "rolling average",
+      "simple moving average",
+      "SMA",
+      "moving average"
+    ],
+    "domain": "Market data",
+    "definition": "The rolling mean is the arithmetic average of a series over a trailing window of fixed length that slides forward one observation at a time. Applied to prices it is the simple moving average (SMA), the most common trend-smoothing statistic in market analysis.",
+    "intuition": "The rolling mean smooths out bar-to-bar noise by averaging the last N values, so the line rises when recent values are generally higher than the ones dropping out.",
+    "mechanics": "For window length w, sum the last w observations and divide by w at each step. pandas rolling(window).mean() labels the result at the right edge of the window and returns NaN for the first w−1 points by default (min_periods=w for fixed windows).",
+    "formula": "μ_t = (1/w) Σ_{i=0}^{w−1} x_{t−i}, where w is the window length.",
+    "relationships": [
+      "Rolling median",
+      "Rolling standard deviation",
+      "Moving average",
+      "Rolling z-score"
+    ],
+    "failure_modes": "The mean lags the series by roughly half the window and is distorted by outliers, since each extreme pulls the average for w periods. Equal weighting of the oldest and newest observations is arbitrary; window changes can flip signals.",
+    "misconceptions": "A moving-average crossover is a descriptive smoothing artifact, not a proven predictive signal; and the SMA is not 'the fair price' — it is a trailing average.",
+    "example": "A 5-day rolling mean of closes 100, 102, 101, 103, 104 is (100+102+101+103+104)/5 = 102.0 on the fifth day.",
+    "citations": [
+      {
+        "source": "pandas User Guide: Windowing operations",
+        "url": "https://pandas.pydata.org/docs/user_guide/window.html",
+        "section": "Rolling window (mean aggregation)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

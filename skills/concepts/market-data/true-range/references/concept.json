@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/true-range",
+  "canonical_sha256": "5ffa53315ca64d270e7411e03eb2e94f93023ca4eafc310bc579d8dcdf8ecbb2",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/true-range",
+    "name": "True range",
+    "aliases": [
+      "TR"
+    ],
+    "domain": "Market data",
+    "definition": "True range is a volatility measure introduced by J. Welles Wilder Jr. (1978) that extends the bar's high-low range to capture gaps relative to the previous close. It is the largest of: current high minus low, |high − previous close|, and |low − previous close|; its smoothed average is the Average True Range (ATR).",
+    "intuition": "Plain range misses overnight gaps. True range asks: how far did price actually travel, including any jump from yesterday's close to today's extremes?",
+    "mechanics": "Compute the three candidate distances per bar and take the maximum: when the previous close lies inside today's range this reduces to high − low; gaps up or down are captured by the two absolute-value terms. Wilder smoothed TR with a 14-period smoothed moving average to obtain ATR.",
+    "formula": "TR_t = max(H_t − L_t, |H_t − C_{t−1}|, |L_t − C_{t−1}|), where H_t, L_t are the current high and low and C_{t−1} is the previous close.",
+    "relationships": [
+      "Average true range",
+      "High price",
+      "Low price",
+      "Close price",
+      "OHLC bar"
+    ],
+    "failure_modes": "True range measures magnitude only — it carries no directional information, and a single gap bar permanently elevates the smoothed ATR for the smoothing horizon. Because it is computed from price differences, its interpretation shifts with the instrument's price level.",
+    "misconceptions": "A high true range does not signal a trend or a breakout direction — it only marks volatility. ATR is not a percentage volatility measure unless normalized by price.",
+    "example": "If yesterday closed at 50 and today trades between 48 and 49, plain range is 1 but true range is max(1, 2, 1) = 2, capturing the gap down.",
+    "citations": [
+      {
+        "source": "Wikipedia: Average true range",
+        "url": "https://en.wikipedia.org/wiki/Average_true_range",
+        "section": "True range definition (citing Wilder, New Concepts in Technical Trading Systems, 1978)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

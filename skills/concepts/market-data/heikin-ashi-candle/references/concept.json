@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/heikin-ashi-candle",
+  "canonical_sha256": "c67c9bb2c7d687ed66457f47fe5548793b0184cb318bbfd5618c92e385f7599c",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/heikin-ashi-candle",
+    "name": "Heikin-Ashi candle",
+    "aliases": [
+      "Heikin-Ashi",
+      "average bar",
+      "HA candle"
+    ],
+    "domain": "Market data",
+    "definition": "Heikin-Ashi (Japanese for 'average bar') is a candlestick variant in which each candle's OHLC values are computed as weighted averages of actual prices and the previous Heikin-Ashi candle, smoothing the displayed price series. It is a visualization/analytical technique for highlighting trend; its displayed values are not actual traded prices.",
+    "intuition": "Heikin-Ashi candles are 'pre-smoothed' candlesticks: trends look cleaner and reversals stand out, because each bar is averaged with its predecessor.",
+    "mechanics": "HA-Close = (O+H+L+C)/4 of the real bar; HA-Open = (previous HA-Open + previous HA-Close)/2; HA-High = max(real high, HA-Open, HA-Close); HA-Low = min(real low, HA-Open, HA-Close). The recursion means each candle depends on the prior one, introducing lag.",
+    "formula": "HA_C = (O+H+L+C)/4; HA_O = (HA_O_prev + HA_C_prev)/2; HA_H = max(H, HA_O, HA_C); HA_L = min(L, HA_O, HA_C), where O,H,L,C are the real bar's prices.",
+    "relationships": [
+      "OHLC bar",
+      "OHLCV bar",
+      "Average price",
+      "Candlestick chart"
+    ],
+    "failure_modes": "Because HA values are synthetic averages, the current HA close does not equal the market price, so signals based on HA levels lag and cannot be executed at displayed prices. Smoothing also erases gap information that matters for risk management.",
+    "misconceptions": "Heikin-Ashi candles cannot be traded directly — a strategy backtested on HA prices uses prices that never existed. Fewer red candles in an uptrend is a smoothing artifact, not new information about the trend.",
+    "example": "If a real bar is O=100, H=103, L=99, C=102 and the prior HA candle had HA_O=99, HA_C=100.5, then HA_C=101.0 and HA_O=99.75 — not equal to any real print.",
+    "citations": [
+      {
+        "source": "Wikipedia: Candlestick chart",
+        "url": "https://en.wikipedia.org/wiki/Candlestick_chart",
+        "section": "Heikin-Ashi candlesticks",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

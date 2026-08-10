@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/median-price",
+  "canonical_sha256": "ef29e1dd7ac7323c74063c44e393044b5ff1a6c92ab9c6148b73851b390ab024",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/median-price",
+    "name": "Median price",
+    "aliases": [
+      "midpoint price",
+      "HL average",
+      "HL/2"
+    ],
+    "domain": "Market data",
+    "definition": "The median price is the midpoint of a bar's trading range: (H+L)/2. It summarizes a bar by the center of its extremes and, when averaged over periods, forms a smoother trend line than close-based averages because it is less affected by close-to-close fluctuations and outliers.",
+    "intuition": "Median price is the halfway point of the bar's range — a quick measure of the bar's center of gravity that ignores where within the range the close landed.",
+    "mechanics": "Compute (High + Low)/2 per bar; charting platforms typically then average the per-bar median prices over N periods (e.g., 14) to plot the Median Price indicator as a trend line or overlay.",
+    "formula": "MP = (H + L) / 2, where H and L are the bar's high and low.",
+    "relationships": [
+      "Typical price",
+      "Weighted close",
+      "Average price",
+      "OHLC bar"
+    ],
+    "failure_modes": "Ignoring open and close discards the most decision-relevant prints, and the midpoint is dominated by outlier extremes in volatile bars. Like all averages it lags, and it produces misleading signals in choppy, non-trending markets.",
+    "misconceptions": "Despite the name, it is the midrange, not the statistical median of all trade prices in the bar — no trade-level distribution is involved.",
+    "example": "For a bar with H=48.20 and L=46.80, the median price is 47.50 regardless of whether the close was 47.00 or 48.10.",
+    "citations": [
+      {
+        "source": "StockCharts ChartSchool: Median Price",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/median-price",
+        "section": "How Is the Median Price Indicator Calculated?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

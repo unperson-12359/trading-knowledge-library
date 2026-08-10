@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-tick-data",
+  "concept_id": "market-data/tick-data",
+  "display_name": "Tick data",
+  "domain": "Market data",
+  "description": "Explain, compare, or apply Tick data using the library's structured Market data reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Tick data",
+    "tick-by-tick data",
+    "trade and quote data",
+    "TAQ data",
+    "explain Tick data",
+    "apply Tick data to a trading question",
+    "common misconception about Tick data"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 19,
+  "package_path": "skills/concepts/market-data/tick-data",
+  "canonical": {
+    "source_path": "concepts/market-data.json",
+    "sha256": "06a395a998a86ba0e83f83d02c17e7546fbf0b65f8077fda3c9e4185df712bdf"
+  },
+  "related_concept_ids": [
+    "market-data/ohlcv-bar",
+    "market-data/tick-bar",
+    "market-foundations/consolidated-tape",
+    "market-data/trading-volume"
+  ]
+}

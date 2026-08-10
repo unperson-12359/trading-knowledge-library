@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/point-and-figure-chart",
+  "canonical_sha256": "3c955753fc05858de5bc3d36bfc3a6e3fee43541206cda47c677a46c4922ea78",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/point-and-figure-chart",
+    "name": "Point-and-figure chart",
+    "aliases": [
+      "P&F chart",
+      "point and figure",
+      "P&F"
+    ],
+    "domain": "Market data",
+    "definition": "Point-and-figure is a century-old technical-analysis charting technique that plots price against changes in direction rather than against time: rising prices are drawn as columns of Xs and falling prices as columns of Os, with columns reversing only after a set reversal amount. It is an analytical framework for trend and pattern study, not a proven predictive law.",
+    "intuition": "P&F ignores the clock and minor wiggles entirely — the chart only grows when price moves by a full box, and switches columns only on a meaningful reversal.",
+    "mechanics": "Choose a box size (price increment per X/O) and a reversal criterion (traditionally 1 box, commonly 3). Add Xs upward as price rises by box increments and Os downward as it falls; move to a new column only when price reverses by the reversal number of boxes. Price changes smaller than the box size are filtered out, and if no significant move occurs, no new data is plotted.",
+    "formula": "",
+    "relationships": [
+      "Renko bar",
+      "Kagi chart",
+      "Range bar",
+      "OHLC bar"
+    ],
+    "failure_modes": "Results are highly sensitive to box size and reversal settings, and discarding time and volume removes execution-relevant context. Classic P&F price targets (vertical/horizontal counts) are heuristics without reliable out-of-sample validation.",
+    "misconceptions": "P&F columns are not time periods — a column can span days or minutes — and the filtered chart understates how much price action actually occurred.",
+    "example": "With a $1 box and 3-box reversal, a stock rising from $50 to $54 draws four Xs; it must fall to $51 before a column of Os begins.",
+    "citations": [
+      {
+        "source": "Wikipedia: Point and figure chart",
+        "url": "https://en.wikipedia.org/wiki/Point_and_figure_chart",
+        "section": "Construction and history",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -2,7 +2,7 @@
   "$schema": "../schemas/skill-manifest.schema.json",
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 360,
+  "completed_count": 380,
   "skills": [
     {
       "$schema": "../../../../schemas/concept-skill.schema.json",
@@ -29117,6 +29117,1624 @@
         "market-data/close-price",
         "macro-and-fundamentals/stock-split",
         "macro-and-fundamentals/cash-dividend"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-ohlc-bar",
+      "concept_id": "market-data/ohlc-bar",
+      "display_name": "OHLC bar",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply OHLC bar using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "OHLC bar",
+        "price bar",
+        "bar",
+        "OHLC",
+        "explain OHLC bar",
+        "apply OHLC bar to a trading question",
+        "common misconception about OHLC bar"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/ohlc-bar",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "799f32c21f39ff83b4393460171e15a0047f917e9cbfe7621a91cb6709773136"
+      },
+      "related_concept_ids": [
+        "market-data/ohlcv-bar",
+        "market-data/open-price",
+        "market-data/high-price",
+        "market-data/low-price",
+        "market-data/close-price",
+        "market-data/time-bar"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-ohlcv-bar",
+      "concept_id": "market-data/ohlcv-bar",
+      "display_name": "OHLCV bar",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply OHLCV bar using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "OHLCV bar",
+        "OHLCV",
+        "candle",
+        "bar with volume",
+        "explain OHLCV bar",
+        "apply OHLCV bar to a trading question",
+        "common misconception about OHLCV bar"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/ohlcv-bar",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "8ecf2efb3d9d467979ef2c05d765aa43f4c86bfef536181f17b4a8cc9cb0c804"
+      },
+      "related_concept_ids": [
+        "market-data/ohlc-bar",
+        "market-data/trading-volume",
+        "market-data/quote-volume",
+        "market-data/time-bar"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-tick-data",
+      "concept_id": "market-data/tick-data",
+      "display_name": "Tick data",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Tick data using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Tick data",
+        "tick-by-tick data",
+        "trade and quote data",
+        "TAQ data",
+        "explain Tick data",
+        "apply Tick data to a trading question",
+        "common misconception about Tick data"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/tick-data",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "06a395a998a86ba0e83f83d02c17e7546fbf0b65f8077fda3c9e4185df712bdf"
+      },
+      "related_concept_ids": [
+        "market-data/ohlcv-bar",
+        "market-data/tick-bar",
+        "market-foundations/consolidated-tape",
+        "market-data/trading-volume"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-time-bar",
+      "concept_id": "market-data/time-bar",
+      "display_name": "Time bar",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Time bar using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Time bar",
+        "time-based bar",
+        "fixed-interval bar",
+        "calendar bar",
+        "explain Time bar",
+        "apply Time bar to a trading question",
+        "common misconception about Time bar"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/time-bar",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "2132a63c56455ddf9e1a766359b012b2163f252af4ad8764cd5471d2b84f6558"
+      },
+      "related_concept_ids": [
+        "market-data/ohlcv-bar",
+        "market-data/tick-bar",
+        "market-data/volume-bar",
+        "market-data/dollar-bar",
+        "market-data/tick-data"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-tick-bar",
+      "concept_id": "market-data/tick-bar",
+      "display_name": "Tick bar",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Tick bar using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Tick bar",
+        "trade bar",
+        "tick-based bar",
+        "explain Tick bar",
+        "apply Tick bar to a trading question",
+        "common misconception about Tick bar"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/tick-bar",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "dad6e1f3fbf53824b7b2c5569478dbef8f33a55cce1ece04eefefa04f2b5a0de"
+      },
+      "related_concept_ids": [
+        "market-data/time-bar",
+        "market-data/volume-bar",
+        "market-data/dollar-bar",
+        "market-data/tick-data"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-volume-bar",
+      "concept_id": "market-data/volume-bar",
+      "display_name": "Volume bar",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Volume bar using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Volume bar",
+        "volume-based bar",
+        "shares bar",
+        "explain Volume bar",
+        "apply Volume bar to a trading question",
+        "common misconception about Volume bar"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/volume-bar",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "dec0f2e40bc2ab3a42d133d1abc9c7902450124bf604633e0ec096eb1aa26f73"
+      },
+      "related_concept_ids": [
+        "market-data/tick-bar",
+        "market-data/dollar-bar",
+        "market-data/time-bar",
+        "market-data/trading-volume",
+        "market-data/ohlcv-bar"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-dollar-bar",
+      "concept_id": "market-data/dollar-bar",
+      "display_name": "Dollar bar",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Dollar bar using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Dollar bar",
+        "dollar-based bar",
+        "value bar",
+        "explain Dollar bar",
+        "apply Dollar bar to a trading question",
+        "common misconception about Dollar bar"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/dollar-bar",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "7ddee6ce9a2e4436ec0cbe22eb9c71a760b516a51d0b6f0e98ed42fe98280e55"
+      },
+      "related_concept_ids": [
+        "market-data/volume-bar",
+        "market-data/tick-bar",
+        "market-data/time-bar",
+        "market-data/dollar-volume",
+        "market-data/ohlcv-bar"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-range-bar",
+      "concept_id": "market-data/range-bar",
+      "display_name": "Range bar",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Range bar using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Range bar",
+        "range chart",
+        "range bars",
+        "explain Range bar",
+        "apply Range bar to a trading question",
+        "common misconception about Range bar"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/range-bar",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "57962db105a0b94a629db01155a56d76b8b80eb000a39a7496267a6acb1446b8"
+      },
+      "related_concept_ids": [
+        "market-data/renko-bar",
+        "market-data/point-and-figure-chart",
+        "market-data/time-bar",
+        "market-data/true-range"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-renko-bar",
+      "concept_id": "market-data/renko-bar",
+      "display_name": "Renko bar",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Renko bar using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Renko bar",
+        "Renko brick",
+        "Renko chart",
+        "renko",
+        "explain Renko bar",
+        "apply Renko bar to a trading question",
+        "common misconception about Renko bar"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/renko-bar",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "67e8d57678c5fdd7a73fe655c1b69e72928455b12e879d972a17a76bf5754ff5"
+      },
+      "related_concept_ids": [
+        "market-data/point-and-figure-chart",
+        "market-data/range-bar",
+        "market-data/ohlc-bar"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-point-and-figure-chart",
+      "concept_id": "market-data/point-and-figure-chart",
+      "display_name": "Point-and-figure chart",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Point-and-figure chart using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Point-and-figure chart",
+        "P&F chart",
+        "point and figure",
+        "P&F",
+        "explain Point-and-figure chart",
+        "apply Point-and-figure chart to a trading question",
+        "common misconception about Point-and-figure chart"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/point-and-figure-chart",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "3c955753fc05858de5bc3d36bfc3a6e3fee43541206cda47c677a46c4922ea78"
+      },
+      "related_concept_ids": [
+        "market-data/renko-bar",
+        "market-data/range-bar",
+        "market-data/ohlc-bar"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-heikin-ashi-candle",
+      "concept_id": "market-data/heikin-ashi-candle",
+      "display_name": "Heikin-Ashi candle",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Heikin-Ashi candle using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Heikin-Ashi candle",
+        "Heikin-Ashi",
+        "average bar",
+        "HA candle",
+        "explain Heikin-Ashi candle",
+        "apply Heikin-Ashi candle to a trading question",
+        "common misconception about Heikin-Ashi candle"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/heikin-ashi-candle",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "c67c9bb2c7d687ed66457f47fe5548793b0184cb318bbfd5618c92e385f7599c"
+      },
+      "related_concept_ids": [
+        "market-data/ohlc-bar",
+        "market-data/ohlcv-bar",
+        "market-data/average-price"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-typical-price",
+      "concept_id": "market-data/typical-price",
+      "display_name": "Typical price",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Typical price using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Typical price",
+        "HLC average",
+        "HLC/3",
+        "explain Typical price",
+        "apply Typical price to a trading question",
+        "common misconception about Typical price"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/typical-price",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "d400553f6307f8c863a63858174729a900e78b628905593a7e3f0fd70dc7a0b3"
+      },
+      "related_concept_ids": [
+        "market-data/median-price",
+        "market-data/weighted-close",
+        "market-data/average-price",
+        "indicators/money-flow-index",
+        "indicators/commodity-channel-index",
+        "market-data/ohlc-bar"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-median-price",
+      "concept_id": "market-data/median-price",
+      "display_name": "Median price",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Median price using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Median price",
+        "midpoint price",
+        "HL average",
+        "HL/2",
+        "explain Median price",
+        "apply Median price to a trading question",
+        "common misconception about Median price"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/median-price",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "ef29e1dd7ac7323c74063c44e393044b5ff1a6c92ab9c6148b73851b390ab024"
+      },
+      "related_concept_ids": [
+        "market-data/typical-price",
+        "market-data/weighted-close",
+        "market-data/average-price",
+        "market-data/ohlc-bar"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-weighted-close",
+      "concept_id": "market-data/weighted-close",
+      "display_name": "Weighted close",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Weighted close using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Weighted close",
+        "HLC close-weighted average",
+        "HLCC/4",
+        "explain Weighted close",
+        "apply Weighted close to a trading question",
+        "common misconception about Weighted close"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/weighted-close",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "b6ca3603f9a37f890ddc5f3b319b1a340b5a55d14439e01c5ce64c2bb4e9522a"
+      },
+      "related_concept_ids": [
+        "market-data/typical-price",
+        "market-data/median-price",
+        "market-data/average-price",
+        "market-data/close-price",
+        "market-data/ohlc-bar"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-average-price",
+      "concept_id": "market-data/average-price",
+      "display_name": "Average price",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Average price using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Average price",
+        "OHLC average",
+        "OHLC/4",
+        "mean price",
+        "explain Average price",
+        "apply Average price to a trading question",
+        "common misconception about Average price"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/average-price",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "417db4fccf82804ce8d93da861c80b0777db24da33b4348a2baff80e9a5a39a0"
+      },
+      "related_concept_ids": [
+        "market-data/typical-price",
+        "market-data/median-price",
+        "market-data/weighted-close",
+        "market-data/heikin-ashi-candle",
+        "market-data/ohlc-bar"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-true-range",
+      "concept_id": "market-data/true-range",
+      "display_name": "True range",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply True range using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "True range",
+        "TR",
+        "explain True range",
+        "apply True range to a trading question",
+        "common misconception about True range"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/true-range",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "5ffa53315ca64d270e7411e03eb2e94f93023ca4eafc310bc579d8dcdf8ecbb2"
+      },
+      "related_concept_ids": [
+        "indicators/average-true-range",
+        "market-data/high-price",
+        "market-data/low-price",
+        "market-data/close-price",
+        "market-data/ohlc-bar"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-rolling-maximum",
+      "concept_id": "market-data/rolling-maximum",
+      "display_name": "Rolling maximum",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Rolling maximum using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Rolling maximum",
+        "rolling max",
+        "moving maximum",
+        "trailing maximum",
+        "explain Rolling maximum",
+        "apply Rolling maximum to a trading question",
+        "common misconception about Rolling maximum"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/rolling-maximum",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "9538b4b3252fc4ee2bb36441d2c9af44d5e1e4f912d379f90ee875f69f5324f6"
+      },
+      "related_concept_ids": [
+        "market-data/rolling-minimum",
+        "indicators/donchian-channel",
+        "market-data/high-price",
+        "market-data/rolling-mean"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-rolling-minimum",
+      "concept_id": "market-data/rolling-minimum",
+      "display_name": "Rolling minimum",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Rolling minimum using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Rolling minimum",
+        "rolling min",
+        "moving minimum",
+        "trailing minimum",
+        "explain Rolling minimum",
+        "apply Rolling minimum to a trading question",
+        "common misconception about Rolling minimum"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/rolling-minimum",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "f97604efee9225aa81e3950ed6ec30471e6d56b8c07511d344090396396f836a"
+      },
+      "related_concept_ids": [
+        "market-data/rolling-maximum",
+        "indicators/donchian-channel",
+        "market-data/low-price",
+        "market-data/rolling-median"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-rolling-mean",
+      "concept_id": "market-data/rolling-mean",
+      "display_name": "Rolling mean",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Rolling mean using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Rolling mean",
+        "rolling average",
+        "simple moving average",
+        "SMA",
+        "moving average",
+        "explain Rolling mean",
+        "apply Rolling mean to a trading question",
+        "common misconception about Rolling mean"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/rolling-mean",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "6c3e5b95651bfbb2954c4de2a22ac5cbcedbeed56646b9e7d6ecac513f932370"
+      },
+      "related_concept_ids": [
+        "market-data/rolling-median",
+        "market-data/rolling-standard-deviation",
+        "market-data/rolling-z-score"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-rolling-median",
+      "concept_id": "market-data/rolling-median",
+      "display_name": "Rolling median",
+      "domain": "Market data",
+      "description": "Explain, compare, or apply Rolling median using the library's structured Market data reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Rolling median",
+        "moving median",
+        "median filter",
+        "explain Rolling median",
+        "apply Rolling median to a trading question",
+        "common misconception about Rolling median"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 19,
+      "package_path": "skills/concepts/market-data/rolling-median",
+      "canonical": {
+        "source_path": "concepts/market-data.json",
+        "sha256": "16fcc8f27ecd068ac0ba20a4c1b98d749ff11e34eed1be737b3a82f3d83d7139"
+      },
+      "related_concept_ids": [
+        "market-data/rolling-mean",
+        "market-data/median-price",
+        "market-data/rolling-maximum",
+        "market-data/rolling-minimum"
       ]
     }
   ]

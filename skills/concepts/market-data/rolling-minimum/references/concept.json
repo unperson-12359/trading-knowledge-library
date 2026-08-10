@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/rolling-minimum",
+  "canonical_sha256": "f97604efee9225aa81e3950ed6ec30471e6d56b8c07511d344090396396f836a",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/rolling-minimum",
+    "name": "Rolling minimum",
+    "aliases": [
+      "rolling min",
+      "moving minimum",
+      "trailing minimum"
+    ],
+    "domain": "Market data",
+    "definition": "The rolling minimum is the lowest value of a series within a trailing window of fixed length that slides forward one observation at a time. Together with the rolling maximum it defines the lower boundary of channel indicators such as Donchian channels.",
+    "intuition": "At each point, look back over the last N bars and ask: what was the lowest price seen? The level ratchets as time passes and old lows expire from the window.",
+    "mechanics": "For window length w, compute min over observations x_{t−w+1}…x_t at each t; implementations such as pandas rolling().min() label at the window's right edge and produce NaN until the window fills unless min_periods is set.",
+    "formula": "RMin_t = min(x_{t−w+1}, …, x_t), where w is the window length.",
+    "relationships": [
+      "Rolling maximum",
+      "Donchian channel",
+      "Low price",
+      "Rolling median"
+    ],
+    "failure_modes": "Like the rolling maximum, it jumps discontinuously when an extreme exits the window and is entirely defined by the chosen window length; centered windows leak future data into the past.",
+    "misconceptions": "The rolling minimum is not a support level in any market-microstructure sense — it is purely the trailing extreme over an arbitrary lookback.",
+    "example": "With a 20-day rolling minimum on daily lows, if the lowest low of the last 20 days is 96.10, the lower Donchian line sits at 96.10 today.",
+    "citations": [
+      {
+        "source": "pandas User Guide: Windowing operations",
+        "url": "https://pandas.pydata.org/docs/user_guide/window.html",
+        "section": "Rolling window (supported aggregations incl. min)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

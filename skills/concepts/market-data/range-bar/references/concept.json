@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/range-bar",
+  "canonical_sha256": "57962db105a0b94a629db01155a56d76b8b80eb000a39a7496267a6acb1446b8",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/range-bar",
+    "name": "Range bar",
+    "aliases": [
+      "range chart",
+      "range bars"
+    ],
+    "domain": "Market data",
+    "definition": "A range bar is a price-based chart element in which a new bar is created only after the price has moved by a user-specified fixed range, regardless of how much time passes. Every completed bar therefore has the same high-low span, and time is eliminated as a construction variable.",
+    "intuition": "Range bars print one bar per fixed price excursion — the chart advances only when price actually travels, so flat markets produce almost no bars.",
+    "mechanics": "Choose a range in ticks (1 range unit equals one minimum price change). Track the running high-low of the forming bar; when the span reaches the configured range, close the bar at that boundary and open a new one. Because bars complete at irregular times, the time axis is non-uniform.",
+    "formula": "",
+    "relationships": [
+      "Renko bar",
+      "Point-and-figure chart",
+      "Time bar",
+      "True range"
+    ],
+    "failure_modes": "Fast markets and gaps can blow through a bar's boundary, so the recorded bar may not reflect tradeable prices within it. As an analytical framework, range bars filter noise but discard time and usually volume information, and results are sensitive to the chosen range.",
+    "misconceptions": "Equal-sized bars do not imply equal information per bar, and a range bar's tidy structure is a construction artifact, not evidence of orderly market behavior.",
+    "example": "With a 10-tick range setting on crude oil futures, each bar closes once price has traveled $0.10 from its open extreme, whether that takes two seconds or two hours.",
+    "citations": [
+      {
+        "source": "TradingView Support: Understanding range charts",
+        "url": "https://www.tradingview.com/support/solutions/43000474007-understanding-range-charts/",
+        "section": "What are range bars",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

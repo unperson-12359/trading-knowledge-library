@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/ohlcv-bar",
+  "canonical_sha256": "8ecf2efb3d9d467979ef2c05d765aa43f4c86bfef536181f17b4a8cc9cb0c804",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/ohlcv-bar",
+    "name": "OHLCV bar",
+    "aliases": [
+      "OHLCV",
+      "candle",
+      "bar with volume"
+    ],
+    "domain": "Market data",
+    "definition": "An OHLCV bar is an OHLC bar augmented with the total trading volume over the same interval. It is the standard record layout for aggregated market data; in finance literature the OHLCV data is sometimes called 'candles'.",
+    "intuition": "OHLCV adds 'how much traded' to the four price extremes, so each record captures both the price path summary and the activity level behind it.",
+    "mechanics": "For each aggregation interval, compute open/high/low/close from the trade sequence and sum traded quantities into V; many feeds add quote-asset volume and trade count alongside. Daily, weekly, monthly, and intraday equity series from vendors such as Alpha Vantage are delivered in this layout.",
+    "formula": "O = p_first; H = max(p_i); L = min(p_i); C = p_last; V = Σ q_i, over trades i in the interval.",
+    "relationships": [
+      "OHLC bar",
+      "Trading volume",
+      "Quote volume",
+      "Time bar",
+      "Candlestick chart"
+    ],
+    "failure_modes": "Volume conventions differ across vendors (consolidated vs single-venue, inclusion of auction volume and off-exchange prints), so the V field is not always comparable across sources. The bar still hides intra-period sequencing.",
+    "misconceptions": "OHLCV bars are not raw market data — they are an aggregation; assuming they preserve tick-level information leads to unrealistic backtest fills.",
+    "example": "A 5-minute AAPL bar of O=189.10, H=189.45, L=189.00, C=189.30, V=412,000 summarizes all trades in that five-minute window.",
+    "citations": [
+      {
+        "source": "Alpha Vantage API Documentation",
+        "url": "https://www.alphavantage.co/documentation/",
+        "section": "Time Series Stock Data APIs (OHLCV time series; 'candles')",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

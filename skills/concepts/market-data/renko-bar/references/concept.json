@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/renko-bar",
+  "canonical_sha256": "67e8d57678c5fdd7a73fe655c1b69e72928455b12e879d972a17a76bf5754ff5",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/renko-bar",
+    "name": "Renko bar",
+    "aliases": [
+      "Renko brick",
+      "Renko chart",
+      "renko"
+    ],
+    "domain": "Market data",
+    "definition": "A Renko chart is a Japanese-origin price chart built of fixed-size 'bricks': a new brick is drawn in the direction of the move only when price surpasses the previous brick's boundary by the brick size, and never adjacent on the same line. Like point-and-figure, time plays no role; it is a technical-analysis framework for filtering noise, not a proven predictive method.",
+    "intuition": "Renko stacks identical bricks in the direction of travel — you see a clean staircase of meaningful moves while small wiggles never make it onto the chart.",
+    "mechanics": "Fix a brick size (e.g., 10 points). When price exceeds the last brick's upper or lower boundary by the brick size, draw a new brick offset to the right; moves larger than one brick add multiple bricks, and partial bricks are not plotted. Classic Renko uses only closing prices of the chosen time frame; a reversal conventionally requires a move of two brick sizes from the last brick's close.",
+    "formula": "",
+    "relationships": [
+      "Point-and-figure chart",
+      "Range bar",
+      "Kagi chart",
+      "OHLC bar"
+    ],
+    "failure_modes": "Brick-size selection completely determines the chart: too small reintroduces noise, too large misses structure. Discarding time and volume removes context, and bricks drawn from closes can lag sharply in fast reversals.",
+    "misconceptions": "Renko 'signals' are a repackaging of price movement, not independent confirmation — and because bricks form only after the required move, entries shown on the chart were not available at the brick's open price.",
+    "example": "With a $1 brick size on a stock closing at 50.00, 50.40, 51.10, 51.30, two up-bricks are drawn (50→51, 51→52 requires 52.00, so only one) — only the 50→51 brick prints.",
+    "citations": [
+      {
+        "source": "Wikipedia: Renko chart",
+        "url": "https://en.wikipedia.org/wiki/Renko_chart",
+        "section": "Construction rules",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/rolling-maximum",
+  "canonical_sha256": "9538b4b3252fc4ee2bb36441d2c9af44d5e1e4f912d379f90ee875f69f5324f6",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/rolling-maximum",
+    "name": "Rolling maximum",
+    "aliases": [
+      "rolling max",
+      "moving maximum",
+      "trailing maximum"
+    ],
+    "domain": "Market data",
+    "definition": "The rolling maximum is the highest value of a series within a trailing window of fixed length that slides forward one observation at a time. It underlies channel indicators such as Donchian channels and breakout systems.",
+    "intuition": "At each point, look back over the last N bars and ask: what was the highest price seen? That level moves as old extremes drop out of the window.",
+    "mechanics": "For window length w, compute max over observations x_{t−w+1}…x_t and repeat for each t; standard implementations (e.g., pandas rolling().max()) label the result at the window's right edge and return NaN until the window is full unless min_periods is set.",
+    "formula": "RMax_t = max(x_{t−w+1}, …, x_t), where w is the window length.",
+    "relationships": [
+      "Rolling minimum",
+      "Donchian channel",
+      "High price",
+      "Rolling mean"
+    ],
+    "failure_modes": "The statistic is window-sensitive and jumps discontinuously when an old extreme exits the window, creating artificial 'breakdowns' of the level. Centering the window introduces lookahead bias into backtests.",
+    "misconceptions": "A break above the rolling maximum is a mechanical event defined by the window choice, not independent evidence of a meaningful breakout.",
+    "example": "With a 20-day rolling maximum on daily highs, if the highest high of the last 20 days is 112.30, today's upper Donchian line sits at 112.30.",
+    "citations": [
+      {
+        "source": "pandas User Guide: Windowing operations",
+        "url": "https://pandas.pydata.org/docs/user_guide/window.html",
+        "section": "Rolling window (supported aggregations incl. max)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

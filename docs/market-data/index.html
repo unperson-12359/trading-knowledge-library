@@ -190,6 +190,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="ohlc-bar"><h3>OHLC bar <a class="anchor" href="#ohlc-bar">#</a></h3>
 <div class="field">An OHLC bar is a summary record of a period&#x27;s trading containing the open (first trade), high (maximum trade), low (minimum trade), and close (last trade) prices. It is the canonical aggregated unit of price history and the basis of bar and candlestick charts.</div>
+<div class="skill-links"><a href="../skills/tkl-ohlc-bar/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> An OHLC bar compresses everything that happened in a period into four numbers: where trading started, the extremes it reached, and where it ended.</div>
 <div class="field"><span class="label">Mechanics:</span> Trades within the aggregation interval (a minute, hour, day, etc.) are reduced to O = first price, H = max price, L = min price, C = last price. On a chart the vertical line spans high to low, with left/right ticks marking open and close; a candlestick shows the identical data with a body between open and close.</div>
 <div class="field"><span class="label">Failure modes:</span> Aggregation destroys intra-bar path information: a bar with the same OHLC can hide very different sequences (e.g., high-then-low vs low-then-high), which matters for stop-fill assumptions in backtests. Vendor conventions on bar timestamps (open time vs close time) and session boundaries differ.</div>
@@ -202,6 +203,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="ohlcv-bar"><h3>OHLCV bar <a class="anchor" href="#ohlcv-bar">#</a></h3>
 <div class="field">An OHLCV bar is an OHLC bar augmented with the total trading volume over the same interval. It is the standard record layout for aggregated market data; in finance literature the OHLCV data is sometimes called &#x27;candles&#x27;.</div>
+<div class="skill-links"><a href="../skills/tkl-ohlcv-bar/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> OHLCV adds &#x27;how much traded&#x27; to the four price extremes, so each record captures both the price path summary and the activity level behind it.</div>
 <div class="field"><span class="label">Mechanics:</span> For each aggregation interval, compute open/high/low/close from the trade sequence and sum traded quantities into V; many feeds add quote-asset volume and trade count alongside. Daily, weekly, monthly, and intraday equity series from vendors such as Alpha Vantage are delivered in this layout.</div>
 <div class="field"><span class="label">Failure modes:</span> Volume conventions differ across vendors (consolidated vs single-venue, inclusion of auction volume and off-exchange prints), so the V field is not always comparable across sources. The bar still hides intra-period sequencing.</div>
@@ -214,6 +216,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="tick-data"><h3>Tick data <a class="anchor" href="#tick-data">#</a></h3>
 <div class="field">Tick data is the unaggregated, event-level record of market activity: every executed trade (price, size, time, venue) and, in full feeds, every quote update (bid, ask, sizes), timestamped in sequence. It is the finest granularity of market data, from which bars of any type are derived.</div>
+<div class="skill-links"><a href="../skills/tkl-tick-data/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Tick data is the market&#x27;s raw ledger — each individual trade and quote as it happened, rather than a summary.</div>
 <div class="field"><span class="label">Mechanics:</span> Trading venues disseminate trade reports (last sale, size) and quote updates (bid, ask, bid size, ask size) over separate feeds; in the U.S., consolidated tape systems report the latest price and volume of each sale in exchange-listed stocks. Consumers reconstruct sequences via feed handlers and timestamp normalization.</div>
 <div class="field"><span class="label">Failure modes:</span> Raw tick data contains bad prints, out-of-sequence messages, and exchange-specific timestamp quirks that must be cleaned before analysis. Volume is enormous (millions of events per day for active instruments), creating storage and processing burdens.</div>
@@ -226,6 +229,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="time-bar"><h3>Time bar <a class="anchor" href="#time-bar">#</a></h3>
 <div class="field">A time bar is an OHLC(V) bar built by aggregating all trades within a fixed clock interval (1 minute, 1 hour, 1 day, etc.). It is the default sampling scheme in market data, in which bars are produced at uniform points in time regardless of how much trading occurred.</div>
+<div class="skill-links"><a href="../skills/tkl-time-bar/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Time bars chop the trading day into equal clock slices and summarize each slice — whether it contained three trades or three thousand.</div>
 <div class="field"><span class="label">Mechanics:</span> Define a fixed interval Δt; group all ticks with timestamps in [t, t+Δt) and reduce to OHLCV. López de Prado notes that time bars oversample information-poor (quiet) periods and undersample information-rich (busy) periods, and exhibit serial correlation, heteroskedasticity, and non-normality of returns — motivating activity-based alternatives like tick, volume, and dollar bars.</div>
 <div class="field"><span class="label">Failure modes:</span> Statistical properties of time-bar returns (normality, homoskedasticity) are poor, which degrades many ML and econometric methods applied directly to them. Bars also align to arbitrary clock boundaries, splitting coherent bursts of activity.</div>
@@ -237,6 +241,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="tick-bar"><h3>Tick bar <a class="anchor" href="#tick-bar">#</a></h3>
 <div class="field">A tick bar is an OHLCV bar built by aggregating a fixed number of consecutive trades (e.g., every 1,000 transactions), rather than a fixed clock interval. Sampling in transaction time aligns bar formation with market activity instead of the clock.</div>
+<div class="skill-links"><a href="../skills/tkl-tick-bar/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A new bar appears after every N trades — busy markets produce bars rapidly, quiet markets slowly, so each bar contains a comparable amount of trading activity.</div>
 <div class="field"><span class="label">Mechanics:</span> Count executed trades from the tick stream; every time the count reaches N, reduce those N trades to OHLCV and start a new bar. Returns sampled this way are statistically better behaved (closer to i.i.d. and normal) than time-bar returns, per López de Prado.</div>
 <div class="field"><span class="label">Failure modes:</span> Tick bars are sensitive to trade-count fragmentation: the same order flow split into more prints (by algo slicing or venue rules) produces more bars without more information, so bar frequency is not comparable across regimes or venues.</div>
@@ -248,6 +253,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="volume-bar"><h3>Volume bar <a class="anchor" href="#volume-bar">#</a></h3>
 <div class="field">A volume bar is an OHLCV bar built by aggregating trades until a fixed cumulative quantity (e.g., 10,000 shares or 100 BTC) has traded. Bars are thus sampled in units of traded volume rather than time or trade count.</div>
+<div class="skill-links"><a href="../skills/tkl-volume-bar/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Each bar represents the same amount of actual participation — the market &#x27;votes&#x27; with quantity, and a new bar is cast once the vote count reaches the threshold.</div>
 <div class="field"><span class="label">Mechanics:</span> Accumulate traded quantities from the tick stream; when cumulative volume reaches the threshold V*, reduce the accumulated trades to OHLCV and reset. Volume bars sample more frequently when large traders are active and partially mitigate the trade-fragmentation distortion of tick bars, since splitting an order into more prints does not change total volume.</div>
 <div class="field"><span class="label">Failure modes:</span> A single block trade larger than the threshold straddles multiple bars or forces an oversized bar, depending on implementation, so bar-level volume is not exactly constant in practice. The threshold is arbitrary and not comparable across instruments of different liquidity.</div>
@@ -259,6 +265,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="dollar-bar"><h3>Dollar bar <a class="anchor" href="#dollar-bar">#</a></h3>
 <div class="field">A dollar bar is an OHLCV bar built by aggregating trades until a fixed cumulative dollar value (price × quantity, e.g., $1,000,000) has traded. Sampling in money terms keeps bar information content comparable even as an instrument&#x27;s price level changes over time.</div>
+<div class="skill-links"><a href="../skills/tkl-dollar-bar/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Each bar represents the same amount of cash changing hands, which keeps the sampling meaningful across years during which the share price may have multiplied.</div>
 <div class="field"><span class="label">Mechanics:</span> Accumulate p_i·q_i over consecutive trades; when the running sum reaches the dollar threshold, emit an OHLCV bar and reset. López de Prado advocates dollar bars over share-volume bars because a fixed share count corresponds to very different economic significance as prices move, and suggests periodically adjusting the threshold for changes in free float or outstanding shares.</div>
 <div class="field"><span class="label">Failure modes:</span> The threshold must be maintained: corporate actions, price trends, and changing float can make a once-reasonable dollar threshold inappropriate, and implementations that cannot split block trades produce inexact bar values. Thresholds are not portable across instruments.</div>
@@ -270,6 +277,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="range-bar"><h3>Range bar <a class="anchor" href="#range-bar">#</a></h3>
 <div class="field">A range bar is a price-based chart element in which a new bar is created only after the price has moved by a user-specified fixed range, regardless of how much time passes. Every completed bar therefore has the same high-low span, and time is eliminated as a construction variable.</div>
+<div class="skill-links"><a href="../skills/tkl-range-bar/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Range bars print one bar per fixed price excursion — the chart advances only when price actually travels, so flat markets produce almost no bars.</div>
 <div class="field"><span class="label">Mechanics:</span> Choose a range in ticks (1 range unit equals one minimum price change). Track the running high-low of the forming bar; when the span reaches the configured range, close the bar at that boundary and open a new one. Because bars complete at irregular times, the time axis is non-uniform.</div>
 <div class="field"><span class="label">Failure modes:</span> Fast markets and gaps can blow through a bar&#x27;s boundary, so the recorded bar may not reflect tradeable prices within it. As an analytical framework, range bars filter noise but discard time and usually volume information, and results are sensitive to the chosen range.</div>
@@ -281,6 +289,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="renko-bar"><h3>Renko bar <a class="anchor" href="#renko-bar">#</a></h3>
 <div class="field">A Renko chart is a Japanese-origin price chart built of fixed-size &#x27;bricks&#x27;: a new brick is drawn in the direction of the move only when price surpasses the previous brick&#x27;s boundary by the brick size, and never adjacent on the same line. Like point-and-figure, time plays no role; it is a technical-analysis framework for filtering noise, not a proven predictive method.</div>
+<div class="skill-links"><a href="../skills/tkl-renko-bar/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Renko stacks identical bricks in the direction of travel — you see a clean staircase of meaningful moves while small wiggles never make it onto the chart.</div>
 <div class="field"><span class="label">Mechanics:</span> Fix a brick size (e.g., 10 points). When price exceeds the last brick&#x27;s upper or lower boundary by the brick size, draw a new brick offset to the right; moves larger than one brick add multiple bricks, and partial bricks are not plotted. Classic Renko uses only closing prices of the chosen time frame; a reversal conventionally requires a move of two brick sizes from the last brick&#x27;s close.</div>
 <div class="field"><span class="label">Failure modes:</span> Brick-size selection completely determines the chart: too small reintroduces noise, too large misses structure. Discarding time and volume removes context, and bricks drawn from closes can lag sharply in fast reversals.</div>
@@ -292,6 +301,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="point-and-figure-chart"><h3>Point-and-figure chart <a class="anchor" href="#point-and-figure-chart">#</a></h3>
 <div class="field">Point-and-figure is a century-old technical-analysis charting technique that plots price against changes in direction rather than against time: rising prices are drawn as columns of Xs and falling prices as columns of Os, with columns reversing only after a set reversal amount. It is an analytical framework for trend and pattern study, not a proven predictive law.</div>
+<div class="skill-links"><a href="../skills/tkl-point-and-figure-chart/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> P&amp;F ignores the clock and minor wiggles entirely — the chart only grows when price moves by a full box, and switches columns only on a meaningful reversal.</div>
 <div class="field"><span class="label">Mechanics:</span> Choose a box size (price increment per X/O) and a reversal criterion (traditionally 1 box, commonly 3). Add Xs upward as price rises by box increments and Os downward as it falls; move to a new column only when price reverses by the reversal number of boxes. Price changes smaller than the box size are filtered out, and if no significant move occurs, no new data is plotted.</div>
 <div class="field"><span class="label">Failure modes:</span> Results are highly sensitive to box size and reversal settings, and discarding time and volume removes execution-relevant context. Classic P&amp;F price targets (vertical/horizontal counts) are heuristics without reliable out-of-sample validation.</div>
@@ -303,6 +313,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="heikin-ashi-candle"><h3>Heikin-Ashi candle <a class="anchor" href="#heikin-ashi-candle">#</a></h3>
 <div class="field">Heikin-Ashi (Japanese for &#x27;average bar&#x27;) is a candlestick variant in which each candle&#x27;s OHLC values are computed as weighted averages of actual prices and the previous Heikin-Ashi candle, smoothing the displayed price series. It is a visualization/analytical technique for highlighting trend; its displayed values are not actual traded prices.</div>
+<div class="skill-links"><a href="../skills/tkl-heikin-ashi-candle/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Heikin-Ashi candles are &#x27;pre-smoothed&#x27; candlesticks: trends look cleaner and reversals stand out, because each bar is averaged with its predecessor.</div>
 <div class="field"><span class="label">Mechanics:</span> HA-Close = (O+H+L+C)/4 of the real bar; HA-Open = (previous HA-Open + previous HA-Close)/2; HA-High = max(real high, HA-Open, HA-Close); HA-Low = min(real low, HA-Open, HA-Close). The recursion means each candle depends on the prior one, introducing lag.</div>
 <div class="field"><span class="label">Failure modes:</span> Because HA values are synthetic averages, the current HA close does not equal the market price, so signals based on HA levels lag and cannot be executed at displayed prices. Smoothing also erases gap information that matters for risk management.</div>
@@ -315,6 +326,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="typical-price"><h3>Typical price <a class="anchor" href="#typical-price">#</a></h3>
 <div class="field">The typical price is the arithmetic mean of a bar&#x27;s high, low, and close: (H+L+C)/3. It is a standard single-price summary of a trading bar, used as the price input of indicators such as the Money Flow Index and the Commodity Channel Index.</div>
+<div class="skill-links"><a href="../skills/tkl-typical-price/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Typical price collapses a bar into one number that represents where trading happened, giving equal weight to the extremes and the close.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute (High + Low + Close)/3 for each bar and optionally smooth the resulting series (e.g., with a moving average) for trend display. It serves as the price input in MFI&#x27;s raw money flow (typical price × volume) and CCI&#x27;s deviation calculations.</div>
 <div class="field"><span class="label">Failure modes:</span> Equal weighting of high and low lets a single extreme print shift the summary as much as the close, while ignoring the open and the volume distribution within the bar. It is a convention, not a statistically optimal bar summary.</div>
@@ -327,6 +339,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="median-price"><h3>Median price <a class="anchor" href="#median-price">#</a></h3>
 <div class="field">The median price is the midpoint of a bar&#x27;s trading range: (H+L)/2. It summarizes a bar by the center of its extremes and, when averaged over periods, forms a smoother trend line than close-based averages because it is less affected by close-to-close fluctuations and outliers.</div>
+<div class="skill-links"><a href="../skills/tkl-median-price/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Median price is the halfway point of the bar&#x27;s range — a quick measure of the bar&#x27;s center of gravity that ignores where within the range the close landed.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute (High + Low)/2 per bar; charting platforms typically then average the per-bar median prices over N periods (e.g., 14) to plot the Median Price indicator as a trend line or overlay.</div>
 <div class="field"><span class="label">Failure modes:</span> Ignoring open and close discards the most decision-relevant prints, and the midpoint is dominated by outlier extremes in volatile bars. Like all averages it lags, and it produces misleading signals in choppy, non-trending markets.</div>
@@ -339,6 +352,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="weighted-close"><h3>Weighted close <a class="anchor" href="#weighted-close">#</a></h3>
 <div class="field">The weighted close is the average of a bar&#x27;s high, low, and close with the close counted twice: (H+L+2C)/4. It is a bar-summary price that emphasizes the close — reflecting its importance for mark-to-market — over the bar&#x27;s extremes.</div>
+<div class="skill-links"><a href="../skills/tkl-weighted-close/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Weighted close is the typical price with extra weight on the closing print, on the view that where the bar settled matters more than where it wandered.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute (High + Low + Close×2)/4 for each bar and plot as a line or overlay; it is commonly combined with moving averages, using crossovers as trend signals.</div>
 <div class="field"><span class="label">Failure modes:</span> The 2× weight on the close is an arbitrary convention, and the measure still ignores the open and intra-bar volume distribution. As with other smoothed price lines, crossover signals lag and whipsaw in sideways markets.</div>
@@ -351,6 +365,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="average-price"><h3>Average price <a class="anchor" href="#average-price">#</a></h3>
 <div class="field">In bar data, the average price is the arithmetic mean of a bar&#x27;s four OHLC prices: (O+H+L+C)/4. It is the most neutral single-number summary of a bar — it is, for example, exactly the Heikin-Ashi close — though in session-level contexts &#x27;average price&#x27; can instead mean a volume-weighted average over the period.</div>
+<div class="skill-links"><a href="../skills/tkl-average-price/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Average price treats all four of a bar&#x27;s reference prices equally, giving a balanced &#x27;center&#x27; of the period&#x27;s action.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute (Open + High + Low + Close)/4 per bar. The same construction appears as the close of a Heikin-Ashi candle; exchanges and vendors also publish session average prices, sometimes volume-weighted, so the exact convention must be checked per data source.</div>
 <div class="field"><span class="label">Failure modes:</span> The unweighted mean ignores where volume concentrated inside the bar, so it can sit far from the prices at which most trading occurred. The term is ambiguous across sources (OHLC/4 vs VWAP vs average of period closes), which causes silent data mismatches.</div>
@@ -364,6 +379,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="true-range"><h3>True range <a class="anchor" href="#true-range">#</a></h3>
 <div class="field">True range is a volatility measure introduced by J. Welles Wilder Jr. (1978) that extends the bar&#x27;s high-low range to capture gaps relative to the previous close. It is the largest of: current high minus low, |high − previous close|, and |low − previous close|; its smoothed average is the Average True Range (ATR).</div>
+<div class="skill-links"><a href="../skills/tkl-true-range/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Plain range misses overnight gaps. True range asks: how far did price actually travel, including any jump from yesterday&#x27;s close to today&#x27;s extremes?</div>
 <div class="field"><span class="label">Mechanics:</span> Compute the three candidate distances per bar and take the maximum: when the previous close lies inside today&#x27;s range this reduces to high − low; gaps up or down are captured by the two absolute-value terms. Wilder smoothed TR with a 14-period smoothed moving average to obtain ATR.</div>
 <div class="field"><span class="label">Failure modes:</span> True range measures magnitude only — it carries no directional information, and a single gap bar permanently elevates the smoothed ATR for the smoothing horizon. Because it is computed from price differences, its interpretation shifts with the instrument&#x27;s price level.</div>

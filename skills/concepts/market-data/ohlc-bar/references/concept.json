@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/ohlc-bar",
+  "canonical_sha256": "799f32c21f39ff83b4393460171e15a0047f917e9cbfe7621a91cb6709773136",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/ohlc-bar",
+    "name": "OHLC bar",
+    "aliases": [
+      "price bar",
+      "bar",
+      "OHLC"
+    ],
+    "domain": "Market data",
+    "definition": "An OHLC bar is a summary record of a period's trading containing the open (first trade), high (maximum trade), low (minimum trade), and close (last trade) prices. It is the canonical aggregated unit of price history and the basis of bar and candlestick charts.",
+    "intuition": "An OHLC bar compresses everything that happened in a period into four numbers: where trading started, the extremes it reached, and where it ended.",
+    "mechanics": "Trades within the aggregation interval (a minute, hour, day, etc.) are reduced to O = first price, H = max price, L = min price, C = last price. On a chart the vertical line spans high to low, with left/right ticks marking open and close; a candlestick shows the identical data with a body between open and close.",
+    "formula": "O = p_first; H = max(p_i); L = min(p_i); C = p_last, over trades i in the interval.",
+    "relationships": [
+      "OHLCV bar",
+      "Open price",
+      "High price",
+      "Low price",
+      "Close price",
+      "Candlestick chart",
+      "Time bar"
+    ],
+    "failure_modes": "Aggregation destroys intra-bar path information: a bar with the same OHLC can hide very different sequences (e.g., high-then-low vs low-then-high), which matters for stop-fill assumptions in backtests. Vendor conventions on bar timestamps (open time vs close time) and session boundaries differ.",
+    "misconceptions": "An OHLC bar is not four independent market quotes — it is a derived summary of trade prints, and for illiquid instruments some of O/H/L/C may coincide at a single trade.",
+    "example": "A daily bar of O=100, H=103, L=99, C=102 says the session opened at 100, ranged from 99 to 103, and settled at 102 — nothing more about the order of events.",
+    "citations": [
+      {
+        "source": "Wikipedia: Open-high-low-close chart",
+        "url": "https://en.wikipedia.org/wiki/Open-high-low-close_chart",
+        "section": "Lead section",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

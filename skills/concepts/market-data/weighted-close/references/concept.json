@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/weighted-close",
+  "canonical_sha256": "b6ca3603f9a37f890ddc5f3b319b1a340b5a55d14439e01c5ce64c2bb4e9522a",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/weighted-close",
+    "name": "Weighted close",
+    "aliases": [
+      "HLC close-weighted average",
+      "HLCC/4"
+    ],
+    "domain": "Market data",
+    "definition": "The weighted close is the average of a bar's high, low, and close with the close counted twice: (H+L+2C)/4. It is a bar-summary price that emphasizes the close — reflecting its importance for mark-to-market — over the bar's extremes.",
+    "intuition": "Weighted close is the typical price with extra weight on the closing print, on the view that where the bar settled matters more than where it wandered.",
+    "mechanics": "Compute (High + Low + Close×2)/4 for each bar and plot as a line or overlay; it is commonly combined with moving averages, using crossovers as trend signals.",
+    "formula": "WC = (H + L + 2C) / 4, where H, L, C are the bar's high, low, and close.",
+    "relationships": [
+      "Typical price",
+      "Median price",
+      "Average price",
+      "Close price",
+      "OHLC bar"
+    ],
+    "failure_modes": "The 2× weight on the close is an arbitrary convention, and the measure still ignores the open and intra-bar volume distribution. As with other smoothed price lines, crossover signals lag and whipsaw in sideways markets.",
+    "misconceptions": "Weighted close is not a volume-weighted measure — 'weighted' refers only to the doubled close in the average, not to traded volume.",
+    "example": "For a bar with H=210, L=200, C=206, the weighted close is (210+200+2×206)/4 = 205.50.",
+    "citations": [
+      {
+        "source": "StockCharts ChartSchool: Weighted Close",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/weighted-close",
+        "section": "How To Calculate the Weighted Close Indicator",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

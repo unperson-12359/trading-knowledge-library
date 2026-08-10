@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/tick-data",
+  "canonical_sha256": "06a395a998a86ba0e83f83d02c17e7546fbf0b65f8077fda3c9e4185df712bdf",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/tick-data",
+    "name": "Tick data",
+    "aliases": [
+      "tick-by-tick data",
+      "trade and quote data",
+      "TAQ data"
+    ],
+    "domain": "Market data",
+    "definition": "Tick data is the unaggregated, event-level record of market activity: every executed trade (price, size, time, venue) and, in full feeds, every quote update (bid, ask, sizes), timestamped in sequence. It is the finest granularity of market data, from which bars of any type are derived.",
+    "intuition": "Tick data is the market's raw ledger — each individual trade and quote as it happened, rather than a summary.",
+    "mechanics": "Trading venues disseminate trade reports (last sale, size) and quote updates (bid, ask, bid size, ask size) over separate feeds; in the U.S., consolidated tape systems report the latest price and volume of each sale in exchange-listed stocks. Consumers reconstruct sequences via feed handlers and timestamp normalization.",
+    "formula": "",
+    "relationships": [
+      "OHLCV bar",
+      "Tick bar",
+      "Consolidated tape",
+      "Market data",
+      "Trading volume"
+    ],
+    "failure_modes": "Raw tick data contains bad prints, out-of-sequence messages, and exchange-specific timestamp quirks that must be cleaned before analysis. Volume is enormous (millions of events per day for active instruments), creating storage and processing burdens.",
+    "misconceptions": "A 'tick' in tick data is any recorded event, not the minimum price increment (tick size) — the two uses of the word are unrelated. Also, the consolidated tape is not identical to any single exchange's feed.",
+    "example": "A single second of AAPL tick data might contain 40 trade prints across NYSE, Nasdaq, and other venues plus hundreds of bid/ask updates — all collapsed into one OHLCV bar if aggregated per second.",
+    "citations": [
+      {
+        "source": "Wikipedia: Market data",
+        "url": "https://en.wikipedia.org/wiki/Market_data",
+        "section": "Data structure (trade data and quote data feeds)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "SEC Investor.gov Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Consolidated Tape",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

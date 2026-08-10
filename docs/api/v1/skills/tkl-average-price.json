@@ -1,0 +1,82 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-average-price",
+  "concept_id": "market-data/average-price",
+  "display_name": "Average price",
+  "domain": "Market data",
+  "description": "Explain, compare, or apply Average price using the library's structured Market data reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Average price",
+    "OHLC average",
+    "OHLC/4",
+    "mean price",
+    "explain Average price",
+    "apply Average price to a trading question",
+    "common misconception about Average price"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 19,
+  "package_path": "skills/concepts/market-data/average-price",
+  "canonical": {
+    "source_path": "concepts/market-data.json",
+    "sha256": "417db4fccf82804ce8d93da861c80b0777db24da33b4348a2baff80e9a5a39a0"
+  },
+  "related_concept_ids": [
+    "market-data/typical-price",
+    "market-data/median-price",
+    "market-data/weighted-close",
+    "market-data/heikin-ashi-candle",
+    "market-data/ohlc-bar"
+  ]
+}

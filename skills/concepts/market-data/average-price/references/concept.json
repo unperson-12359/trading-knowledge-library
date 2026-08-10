@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-data/average-price",
+  "canonical_sha256": "417db4fccf82804ce8d93da861c80b0777db24da33b4348a2baff80e9a5a39a0",
+  "source_path": "concepts/market-data.json",
+  "concept": {
+    "id": "market-data/average-price",
+    "name": "Average price",
+    "aliases": [
+      "OHLC average",
+      "OHLC/4",
+      "mean price"
+    ],
+    "domain": "Market data",
+    "definition": "In bar data, the average price is the arithmetic mean of a bar's four OHLC prices: (O+H+L+C)/4. It is the most neutral single-number summary of a bar — it is, for example, exactly the Heikin-Ashi close — though in session-level contexts 'average price' can instead mean a volume-weighted average over the period.",
+    "intuition": "Average price treats all four of a bar's reference prices equally, giving a balanced 'center' of the period's action.",
+    "mechanics": "Compute (Open + High + Low + Close)/4 per bar. The same construction appears as the close of a Heikin-Ashi candle; exchanges and vendors also publish session average prices, sometimes volume-weighted, so the exact convention must be checked per data source.",
+    "formula": "AP = (O + H + L + C) / 4, where O, H, L, C are the bar's four prices.",
+    "relationships": [
+      "Typical price",
+      "Median price",
+      "Weighted close",
+      "Heikin-Ashi candle",
+      "OHLC bar"
+    ],
+    "failure_modes": "The unweighted mean ignores where volume concentrated inside the bar, so it can sit far from the prices at which most trading occurred. The term is ambiguous across sources (OHLC/4 vs VWAP vs average of period closes), which causes silent data mismatches.",
+    "misconceptions": "Average price (OHLC/4) is not VWAP — no volume weighting is involved — and it is not the same as a moving average of closes.",
+    "example": "For a bar with O=100, H=103, L=99, C=102, the average price is (100+103+99+102)/4 = 101.00, which is also that bar's Heikin-Ashi close.",
+    "citations": [
+      {
+        "source": "Wikipedia: Candlestick chart",
+        "url": "https://en.wikipedia.org/wiki/Candlestick_chart",
+        "section": "Heikin-Ashi candlesticks (Close = (open+high+low+close)/4)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Binance Spot API documentation (rest-api.md)",
+        "url": "https://raw.githubusercontent.com/binance/binance-spot-api-docs/master/rest-api.md",
+        "section": "Current average price endpoint",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
