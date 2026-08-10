@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unperson-12359.github.io/trading-knowledge-library/schemas/analysis-context.schema.json",
+  "title": "Read-only market analysis context",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "classification", "status", "venue", "as_of", "assets", "playbook_fit", "warnings"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": 1},
+    "classification": {"const": "read-only-market-context"},
+    "status": {"enum": ["complete", "incomplete", "failed"]},
+    "venue": {"const": "Hyperliquid"},
+    "as_of": {"type": "integer"},
+    "assets": {"type": "array", "minItems": 1},
+    "playbook_fit": {"type": "array"},
+    "warnings": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+  }
+}
