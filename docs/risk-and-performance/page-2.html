@@ -53,6 +53,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 .source-nav{display:flex;gap:.5rem;flex-wrap:wrap;font-family:system-ui;font-size:.82rem;margin:.8rem 0}.source-nav a{border:1px solid #ccc;border-radius:5px;padding:.25rem .5rem}
 .source-file{border:1px solid #ddd;border-radius:7px;margin:.65rem 0;background:#fafaf8}.source-file summary{padding:.7rem .85rem;cursor:pointer;font-family:system-ui;font-weight:700}.source-file pre{border-top:1px solid #ddd;margin:0;border-radius:0;max-height:620px;overflow:auto;white-space:pre-wrap;word-break:break-word}
 .evidence-section{border-top:1px solid #ddd;padding-top:.35rem;margin-top:1rem}.citation-list li{margin:.35rem 0}
+.skill-tabs{display:flex;gap:.45rem;flex-wrap:wrap;margin:1.2rem 0;border-bottom:1px solid #ddd;padding-bottom:.7rem}.skill-tab{border:1px solid #bbb;background:#fff;color:#0b5fff;border-radius:6px;padding:.45rem .7rem;cursor:pointer;font:600 .82rem system-ui}.skill-tab:hover{background:#f4f4f1}.skill-tab[aria-selected="true"]{background:#111;color:#fff;border-color:#111}.skill-panel{min-height:260px}.skill-panel[hidden]{display:none}.skill-panel>pre{max-height:720px;overflow:auto;white-space:pre-wrap;word-break:break-word}
 .domainnav{display:flex;justify-content:space-between;margin-top:2rem;font-family:system-ui;font-size:.85rem}
 .toc{columns:2;font-family:system-ui;font-size:.82rem;background:#fafaf8;border:1px solid #e8e8e5;border-radius:6px;padding:.8rem 1rem}
 .toc a{color:#333}
@@ -98,6 +99,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="volatility-targeting"><h3>Volatility targeting <a class="anchor" href="#volatility-targeting">#</a></h3>
 <div class="field">A portfolio management rule that scales exposure inversely to an estimate of current volatility so that portfolio risk stays near a constant target level: taking less risk when volatility is high and more when it is low.</div>
+<div class="skill-links"><a href="../skills/tkl-volatility-targeting/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> If the market is twice as wild, hold half as much: keeping risk (not capital) constant smooths the return stream and prevents risk from ballooning exactly in crises.</div>
 <div class="field"><span class="label">Mechanics:</span> Estimate volatility (trailing realized or exponentially weighted), set the exposure weight w = sigma_target / sigma_estimate, rebalance periodically, and cap the weight by a leverage ceiling. Moreira and Muir document that such volatility-managed portfolios historically raised factor Sharpe ratios because volatility changes were not fully offset by proportional changes in expected returns.</div>
 <div class="field"><span class="label">Failure modes:</span> Volatility estimates lag regime shifts, leaving exposure highest right before a vol spike when the estimation window is slow, and gaps can move prices faster than rebalancing de-risks. Leverage caps and transaction costs constrain implementation, and the documented Sharpe improvement is an empirical finding, not a law.</div>
@@ -147,6 +149,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="stop-loss-level"><h3>Stop-loss level <a class="anchor" href="#stop-loss-level">#</a></h3>
 <div class="field">The predetermined price at which an open position is closed to cap its loss, implemented as a stop (stop-loss) order that triggers a market — or, for stop-limit, a limit — order once the stop price trades. It defines the trade&#x27;s initial risk (1R).</div>
+<div class="skill-links"><a href="../skills/tkl-stop-loss-level/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the pre-commitment to admit being wrong at a specific price, converting an open-ended loss into a bounded, planned one.</div>
 <div class="field"><span class="label">Mechanics:</span> A sell-stop sits below the market for long positions (a buy-stop above for shorts); when the stop price trades, the order becomes a market order and fills at the next available price. Stops are placed by price structure (support/resistance), percentage, or volatility (ATR multiples), and the entry-to-stop distance drives position size.</div>
 <div class="field"><span class="label">Failure modes:</span> Triggered stops become market orders and can fill far through the stop price in gaps or fast markets — realized loss can be several times the planned 1R. Stops at obvious levels cluster and invite stop-running, and overly tight stops raise loss frequency enough to destroy expectancy.</div>
@@ -196,6 +199,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="volatility-stop"><h3>Volatility stop <a class="anchor" href="#volatility-stop">#</a></h3>
 <div class="field">A stop-loss placed at a multiple of a volatility measure — typically Average True Range — away from entry or from a reference extreme, so the exit distance adapts to current market conditions instead of being a fixed number of points or percent.</div>
+<div class="skill-links"><a href="../skills/tkl-volatility-stop/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A 2-point stop is noise in a wild market and a chasm in a quiet one; sizing the stop by ATR keeps the exit outside normal random fluctuation in any regime.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute ATR (Wilder&#x27;s average of true range, which incorporates gaps) and place the initial or trailing stop at k * ATR beyond the entry or the most favorable extreme (a chandelier-style exit trails the highest high by about 3 * ATR). Wider volatility widens the stop and, through position sizing, shrinks the position.</div>
 <div class="field"><span class="label">Failure modes:</span> In volatility spikes the widened stop implies much larger dollar risk unless size is re-cut; in volatility collapses the stop tightens into noise and gets hit by routine fluctuation. ATR is backward-looking, so sudden regime jumps leave the stop miscalibrated.</div>
@@ -293,6 +297,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="effective-leverage"><h3>Effective leverage <a class="anchor" href="#effective-leverage">#</a></h3>
 <div class="field">The ratio of a portfolio&#x27;s total position exposure to its equity — typically gross exposure divided by net asset value — expressing how many dollars of market exposure are controlled per dollar of capital.</div>
+<div class="skill-links"><a href="../skills/tkl-effective-leverage/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the real multiplier on your capital: effective leverage of 3x means a 10% adverse market move costs about 30% of equity, before hedging effects.</div>
 <div class="field"><span class="label">Mechanics:</span> Sum absolute position values (or notionals for derivatives) and divide by account equity; for a single margined position it approximates position notional divided by margin posted. It changes dynamically as prices move and as equity or margin balances fluctuate.</div>
 <div class="field"><span class="label">Failure modes:</span> Gross-based effective leverage ignores netting and correlation, overstating risk for hedged books, while notional-based versions understate risk for convex instruments such as options, whose delta-adjusted exposure moves. It also spikes passively when equity falls, tightening margin pressure in downturns.</div>
@@ -330,6 +335,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="liquidation-price"><h3>Liquidation price <a class="anchor" href="#liquidation-price">#</a></h3>
 <div class="field">The mark price at which a leveraged position&#x27;s margin balance falls to the maintenance margin requirement, triggering the venue&#x27;s liquidation process. On crypto derivatives venues it is derived from entry price, leverage, and the tiered maintenance margin rate.</div>
+<div class="skill-links"><a href="../skills/tkl-liquidation-price/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the line in the sand: if the market prints there, the exchange takes over and closes the position because your collateral can no longer safely cover the loss.</div>
 <div class="field"><span class="label">Mechanics:</span> For an isolated-margin long, the liquidation price is approximately entry * (1 - 1/leverage) / (1 - MMR), symmetrically for shorts, where MMR is the maintenance margin rate for the position&#x27;s tier. As price approaches it, laddered liquidation may first cut the position to a lower risk tier; the bankruptcy price — where the position margin is fully exhausted — lies beyond the liquidation price.</div>
 <div class="field"><span class="label">Failure modes:</span> The displayed liquidation price is a live estimate, not a fixed level: funding fees, commissions, and unrealized P/L shift the margin balance and move it. In gaps or thin books the actual fill can be far worse than the trigger, and in cross-margin mode one position&#x27;s losses can drag healthy positions into the same liquidation cascade.</div>
@@ -343,6 +349,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="forced-liquidation"><h3>Forced liquidation <a class="anchor" href="#forced-liquidation">#</a></h3>
 <div class="field">The mandatory closing of a position by the broker, clearinghouse, or exchange without the holder&#x27;s consent, triggered when account equity falls below the maintenance margin and margin calls are not — or cannot be — met.</div>
+<div class="skill-links"><a href="../skills/tkl-forced-liquidation/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> When you can&#x27;t or won&#x27;t post more collateral, the venue closes the trade for you, at whatever price the market gives, to stop the loss from eating other people&#x27;s money.</div>
 <div class="field"><span class="label">Mechanics:</span> Once equity breaches maintenance margin, the liquidation process takes over: on futures venues the position may be liquidated automatically, and on crypto venues a laddered process first reduces the position to lower risk tiers. Any residual loss beyond the bankruptcy price passes to the insurance fund or, failing that, to auto-deleveraging.</div>
 <div class="field"><span class="label">Failure modes:</span> Forced selling is pro-cyclical: cascades of liquidations push prices further, triggering more liquidations in a spiral, and fills occur at distressed prices with maximal slippage. In extreme moves the engine can fail to close above the bankruptcy price, creating bad debt.</div>
@@ -369,6 +376,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="auto-deleveraging"><h3>Auto-deleveraging <a class="anchor" href="#auto-deleveraging">#</a></h3>
 <div class="field">A last-resort loss-allocation mechanism on leveraged crypto derivatives venues: when a liquidated position cannot be closed above its bankruptcy price and the insurance fund cannot absorb the shortfall, the exchange forcibly reduces profitable opposing positions at the bankruptcy price to cover the deficit.</div>
+<div class="skill-links"><a href="../skills/tkl-auto-deleveraging/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> If the loser is bankrupt and the insurance fund is empty, the winners&#x27; positions are trimmed to make the books balance: the system socializes the residual loss to stay solvent.</div>
 <div class="field"><span class="label">Mechanics:</span> ADL triggers when the insurance fund is depleted or its drawdown breaches venue-specific trigger lines. Opposing positions are ranked by leveraged return (profit percentage scaled by margin rate/effective leverage), and the highest-ranked positions are deleveraged first at the bankruptcy price; affected traders are notified and their open orders canceled. Queue-indicator lights show a position&#x27;s ADL ranking.</div>
 <div class="field"><span class="label">Failure modes:</span> ADL hits exactly the most profitable, most leveraged traders at the worst moment, destroying hedges — an ADL&#x27;d hedge leg leaves the other leg naked — and imposing execution at the bankruptcy price rather than market. The ranking is pro-cyclical: the better your trade, the more likely it is to be cut in a crash.</div>

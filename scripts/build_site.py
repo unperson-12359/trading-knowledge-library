@@ -86,6 +86,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 .source-nav{display:flex;gap:.5rem;flex-wrap:wrap;font-family:system-ui;font-size:.82rem;margin:.8rem 0}.source-nav a{border:1px solid #ccc;border-radius:5px;padding:.25rem .5rem}
 .source-file{border:1px solid #ddd;border-radius:7px;margin:.65rem 0;background:#fafaf8}.source-file summary{padding:.7rem .85rem;cursor:pointer;font-family:system-ui;font-weight:700}.source-file pre{border-top:1px solid #ddd;margin:0;border-radius:0;max-height:620px;overflow:auto;white-space:pre-wrap;word-break:break-word}
 .evidence-section{border-top:1px solid #ddd;padding-top:.35rem;margin-top:1rem}.citation-list li{margin:.35rem 0}
+.skill-tabs{display:flex;gap:.45rem;flex-wrap:wrap;margin:1.2rem 0;border-bottom:1px solid #ddd;padding-bottom:.7rem}.skill-tab{border:1px solid #bbb;background:#fff;color:#0b5fff;border-radius:6px;padding:.45rem .7rem;cursor:pointer;font:600 .82rem system-ui}.skill-tab:hover{background:#f4f4f1}.skill-tab[aria-selected="true"]{background:#111;color:#fff;border-color:#111}.skill-panel{min-height:260px}.skill-panel[hidden]{display:none}.skill-panel>pre{max-height:720px;overflow:auto;white-space:pre-wrap;word-break:break-word}
 .domainnav{display:flex;justify-content:space-between;margin-top:2rem;font-family:system-ui;font-size:.85rem}
 .toc{columns:2;font-family:system-ui;font-size:.82rem;background:#fafaf8;border:1px solid #e8e8e5;border-radius:6px;padding:.8rem 1rem}
 .toc a{color:#333}
@@ -163,6 +164,10 @@ SKILLS_JS = """
 
 COPY_JS = """
 (function(){
+  var tabs=[].slice.call(document.querySelectorAll('[data-skill-tab]'));
+  function show(id,updateHash){tabs.forEach(function(tab){var selected=tab.getAttribute('data-skill-tab')===id;tab.setAttribute('aria-selected',selected?'true':'false');var panel=document.getElementById(tab.getAttribute('aria-controls'));if(panel)panel.hidden=!selected;});if(updateHash)history.replaceState(null,'','#'+id);}
+  tabs.forEach(function(tab){tab.addEventListener('click',function(){show(tab.getAttribute('data-skill-tab'),true);});});
+  if(tabs.length){var requested=location.hash.replace(/^#/,'');show(tabs.some(function(tab){return tab.getAttribute('data-skill-tab')===requested;})?requested:'concept',false);}
   document.querySelectorAll('[data-copy]').forEach(function(button){
     button.addEventListener('click',function(){var target=document.getElementById(button.getAttribute('data-copy'));if(!target)return;navigator.clipboard.writeText(target.textContent).then(function(){var old=button.textContent;button.textContent='Copied';setTimeout(function(){button.textContent=old},1400);});});
   });
@@ -182,10 +187,15 @@ def anchor(name):
     return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
 
-def render_entry(e, prefix, relationship_lookup, concept_urls):
+def render_entry(e, prefix, relationship_lookup, concept_urls, skill_urls):
     parts = [f'<article class="entry" id="{anchor(e["name"])}"><h3>{esc(e["name"])} '
              f'<a class="anchor" href="#{anchor(e["name"])}">#</a></h3>']
     parts.append(f'<div class="field">{esc(e["definition"])}</div>')
+    if e["id"] in skill_urls:
+        parts.append(
+            f'<div class="skill-links"><a href="{prefix}{skill_urls[e["id"]]}">'
+            'Open unified concept + skill view &rarr;</a></div>'
+        )
     for key, label in FIELDS:
         if e.get(key):
             parts.append(f'<div class="field"><span class="label">{label}:</span> {esc(e[key])}</div>')
@@ -479,6 +489,10 @@ def main():
             concept_by_id[entry["id"]] = entry
             for term in [entry["name"], *entry.get("aliases", [])]:
                 term_ids.setdefault(term.casefold(), set()).add(entry["id"])
+    skill_urls = {
+        profile["concept_id"]: f'skills/{profile["skill_name"]}/'
+        for profile in skill_manifest["skills"]
+    }
     relationship_lookup = {
         term: next(iter(ids_for_term))
         for term, ids_for_term in term_ids.items() if len(ids_for_term) == 1
@@ -537,7 +551,7 @@ def main():
                     + (toc if pno == 1 else "")
                     + pager(slug, pno, n_pages)
                     + "\n".join(
-                        render_entry(e, "../", relationship_lookup, concept_urls)
+                        render_entry(e, "../", relationship_lookup, concept_urls, skill_urls)
                         for e in chunk
                     )
                     + pager(slug, pno, n_pages) + domnav)
@@ -740,6 +754,7 @@ def main():
         profile_source = (package / "skill.json").read_text(encoding="utf-8")
         agent_source = (package / "agents" / "openai.yaml").read_text(encoding="utf-8")
         reference_source = (package / "references" / "concept.json").read_text(encoding="utf-8")
+        canonical_source = json.dumps(concept, ensure_ascii=False, indent=2) + "\n"
         github_folder = (
             "https://github.com/unperson-12359/trading-knowledge-library/tree/main/"
             + profile["package_path"]
@@ -758,15 +773,17 @@ def main():
             f'<div><strong>Domain</strong><span>{esc(profile["domain"])}</span></div>'
             f'<div><strong>Concept ID</strong><span>{esc(profile["concept_id"])}</span></div>'
             '</div>'
-            '<h2>Use this skill</h2><div class="use-panel">'
-            '<p>Use the catalog router in a repository that includes this library:</p>'
-            '<div class="copy-row"><pre id="router-prompt" class="json">'
-            + esc(router_prompt) +
-            '</pre><button class="copy-button" data-copy="router-prompt">Copy prompt</button></div>'
-            '<p class="meta">For a direct repository-local install, copy this package folder to '
-            f'<code>.agents/skills/{esc(profile["skill_name"])}/</code>. '
-            f'<a href="{esc(github_folder)}">Open the package on GitHub</a>.</p></div>'
-            '<h2>Concept evidence</h2>'
+            '<nav class="skill-tabs" role="tablist" aria-label="Concept and skill files">'
+            '<button class="skill-tab" data-skill-tab="concept" aria-controls="panel-concept" aria-selected="true">Trading concept</button>'
+            '<button class="skill-tab" data-skill-tab="use" aria-controls="panel-use" aria-selected="false">Use skill</button>'
+            '<button class="skill-tab" data-skill-tab="skill-md" aria-controls="panel-skill-md" aria-selected="false">SKILL.md</button>'
+            '<button class="skill-tab" data-skill-tab="skill-json" aria-controls="panel-skill-json" aria-selected="false">skill.json</button>'
+            '<button class="skill-tab" data-skill-tab="concept-json" aria-controls="panel-concept-json" aria-selected="false">concept.json</button>'
+            '<button class="skill-tab" data-skill-tab="reference-json" aria-controls="panel-reference-json" aria-selected="false">reference.json</button>'
+            '<button class="skill-tab" data-skill-tab="openai-yaml" aria-controls="panel-openai-yaml" aria-selected="false">openai.yaml</button>'
+            '</nav>'
+            '<section class="skill-panel" id="panel-concept" role="tabpanel">'
+            '<h2>Trading concept</h2>'
             f'<p>{esc(concept["definition"])}</p>'
             f'<div class="field"><span class="label">Intuition</span><p>{esc(concept["intuition"])}</p></div>'
             f'<div class="field"><span class="label">Mechanics</span><p>{esc(concept["mechanics"])}</p></div>'
@@ -775,16 +792,21 @@ def main():
             f'<div class="evidence-section"><h3>Misconceptions</h3><p>{esc(concept["misconceptions"])}</p></div>'
             f'<div class="evidence-section"><h3>Example</h3><p>{esc(concept["example"])}</p></div>'
             f'<div class="evidence-section"><h3>Citations</h3><ul class="citation-list">{citations}</ul></div>'
-            + related_section +
-            '<h2 id="source-files">Review the source files</h2>'
-            '<p>Everything required to inspect or install this skill is available here and in the JSON API.</p>'
-            '<nav class="source-nav"><a href="#skill-md">SKILL.md</a>'
-            '<a href="#skill-json">skill.json</a><a href="#concept-json">concept.json</a>'
-            '<a href="#openai-yaml">openai.yaml</a></nav>'
-            f'<details class="source-file" id="skill-md" open><summary>SKILL.md</summary><pre class="json">{esc(skill_source)}</pre></details>'
-            f'<details class="source-file" id="skill-json"><summary>skill.json</summary><pre class="json">{esc(profile_source)}</pre></details>'
-            f'<details class="source-file" id="concept-json"><summary>references/concept.json</summary><pre class="json">{esc(reference_source)}</pre></details>'
-            f'<details class="source-file" id="openai-yaml"><summary>agents/openai.yaml</summary><pre class="json">{esc(agent_source)}</pre></details>'
+            + related_section + '</section>'
+            '<section class="skill-panel" id="panel-use" role="tabpanel" hidden>'
+            '<h2>Use this skill</h2><div class="use-panel">'
+            '<p>Use the catalog router in a repository that includes this library:</p>'
+            '<div class="copy-row"><pre id="router-prompt" class="json">'
+            + esc(router_prompt) +
+            '</pre><button class="copy-button" data-copy="router-prompt">Copy prompt</button></div>'
+            '<p class="meta">For a direct repository-local install, copy this package folder to '
+            f'<code>.agents/skills/{esc(profile["skill_name"])}/</code>. '
+            f'<a href="{esc(github_folder)}">Open the package on GitHub</a>.</p></div></section>'
+            f'<section class="skill-panel" id="panel-skill-md" role="tabpanel" hidden><h2>SKILL.md</h2><pre class="json">{esc(skill_source)}</pre></section>'
+            f'<section class="skill-panel" id="panel-skill-json" role="tabpanel" hidden><h2>skill.json</h2><pre class="json">{esc(profile_source)}</pre></section>'
+            f'<section class="skill-panel" id="panel-concept-json" role="tabpanel" hidden><h2>Canonical concept.json</h2><p class="meta">The original concept object from the main library.</p><pre class="json">{esc(canonical_source)}</pre></section>'
+            f'<section class="skill-panel" id="panel-reference-json" role="tabpanel" hidden><h2>Packaged reference.json</h2><pre class="json">{esc(reference_source)}</pre></section>'
+            f'<section class="skill-panel" id="panel-openai-yaml" role="tabpanel" hidden><h2>agents/openai.yaml</h2><pre class="json">{esc(agent_source)}</pre></section>'
             f'<p class="skill-links"><a href="../../api/v1/skills/{esc(profile["skill_name"])}.json">'
             f'Open profile JSON</a> &middot; <a href="{esc(github_folder)}">GitHub source</a> &middot; '
             f'<a href="../../{esc(concept_urls[profile["concept_id"]])}">Canonical concept page</a></p>'
@@ -924,6 +946,7 @@ def main():
             public_entry.update({
                 "type": "concept",
                 "url": concept_urls[entry["id"]],
+                "skill_url": skill_urls.get(entry["id"]),
                 "core": entry["id"] in core_ids,
                 "regime_annotation": core_collection["annotations"].get(entry["id"]),
                 "relationship_ids": relationship_ids,

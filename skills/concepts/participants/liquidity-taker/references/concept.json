@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "participants/liquidity-taker",
+  "canonical_sha256": "1acccc385ea0f06a4e8de028f2f02e69f4d8e4cce0af8d870cc2d417963e3dfb",
+  "source_path": "concepts/participants.json",
+  "concept": {
+    "id": "participants/liquidity-taker",
+    "name": "Liquidity taker",
+    "aliases": [
+      "taker",
+      "aggressor"
+    ],
+    "domain": "Participants",
+    "definition": "A liquidity taker is a market participant that demands immediacy by submitting marketable orders that execute against resting bids and offers posted by liquidity providers, thereby removing displayed liquidity from the book. The taker pays the bid-ask spread (and, on maker-taker venues, a taker fee) for immediate execution.",
+    "intuition": "A liquidity taker is the impatient party: it wants to trade right now, so it hits the bid or lifts the offer that someone else posted, paying the spread for the privilege of immediacy.",
+    "mechanics": "The taker submits a market order or a marketable limit order that crosses the spread and executes against resting quotes. Each such trade removes depth from the order book; repeated taking in one direction moves the price. Institutional algorithms manage how aggressively they take liquidity to balance urgency against market impact.",
+    "formula": "",
+    "relationships": [
+      "Liquidity provider",
+      "Market maker",
+      "Retail trader",
+      "Institutional investor",
+      "High-frequency trader"
+    ],
+    "failure_modes": "Aggressive taking in thin books produces outsized market impact and slippage, and stop-loss cascades occur when many takers' stop orders convert to market orders simultaneously. Taker costs (spread + fees) compound quickly for high-turnover strategies.",
+    "misconceptions": "Taking liquidity is not 'free' even at zero commission — the spread and price impact are real costs embedded in execution price. Being a taker also does not imply being uninformed; informed traders often must take to capitalize on information before it decays.",
+    "example": "A portfolio manager needs to exit a position immediately and sends a market order to sell 10,000 shares; the order walks down three levels of resting bids, filling at an average price 8 cents below the pre-order bid.",
+    "citations": [
+      {
+        "source": "SEC Investor.gov, Investing Basics Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Market Makers; Liquidity (or Marketability); Market Order",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

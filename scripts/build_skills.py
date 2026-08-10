@@ -251,10 +251,25 @@ def build_eval(batch_number, profiles):
         cases.append({
             "skill_name": profile["skill_name"],
             "concept_id": profile["concept_id"],
-            "positive_queries": profile["trigger_phrases"][:2],
+            "positive_queries": [
+                profile["display_name"], f'explain {profile["display_name"]}',
+            ],
             "expected_intents": INTENTS,
         })
     return {"schema_version": 1, "batch_number": batch_number, "cases": cases}
+
+
+def rebuild_evals(root=ROOT):
+    manifest = read_json(root / "skills" / "manifest.json")
+    by_batch = {}
+    for profile in manifest["skills"]:
+        by_batch.setdefault(profile["batch_number"], []).append(profile)
+    for batch_number, profiles in sorted(by_batch.items()):
+        write_json(
+            root / "skills" / "evals" / f"batch-{batch_number:03d}.json",
+            build_eval(batch_number, profiles),
+        )
+    return len(by_batch)
 
 
 def next_batch(root=ROOT):
@@ -422,10 +437,15 @@ def main(argv=None):
     sub.add_parser("next-batch", help="generate the next deterministic batch of 20")
     sub.add_parser("validate", help="validate all skill metadata and packages")
     sub.add_parser("status", help="print rollout progress")
+    sub.add_parser("rebuild-evals", help="rebuild deterministic routing fixtures")
     args = parser.parse_args(argv)
     if args.command == "next-batch":
         batch = next_batch()
         print(json.dumps(batch, ensure_ascii=False, indent=2))
+        return 0
+    if args.command == "rebuild-evals":
+        count = rebuild_evals()
+        print(f"rebuilt routing fixtures for {count} batches")
         return 0
     errors = validate_catalog()
     progress = read_json(PROGRESS_PATH)

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "participants/liquidity-provider",
+  "canonical_sha256": "41d4f479b774a8df64e9d8e3ffbdd48b4390dd61546f7afdeb0964a8940ecc6a",
+  "source_path": "concepts/participants.json",
+  "concept": {
+    "id": "participants/liquidity-provider",
+    "name": "Liquidity provider",
+    "aliases": [
+      "LP",
+      "maker"
+    ],
+    "domain": "Participants",
+    "definition": "A liquidity provider is a market participant that supplies immediacy to a market by posting resting bids and offers — quotes or limit orders that others can trade against — rather than demanding immediate execution. Market makers are the canonical designated liquidity providers, but any participant resting limit orders in the book acts as a liquidity provider.",
+    "intuition": "A liquidity provider is the patient party: it posts a price and waits, letting anyone who needs to trade right now come to it — and earns the spread (or a rebate) for that patience.",
+    "mechanics": "The provider submits non-marketable limit orders that rest in the order book, adding displayed depth. When a liquidity taker's order executes against the resting order, the provider typically earns the spread and, on maker-taker venues, a liquidity rebate; in return it bears adverse-selection and inventory risk. Market makers formalize this role with continuous two-sided quoting obligations.",
+    "formula": "",
+    "relationships": [
+      "Market maker",
+      "Liquidity taker",
+      "Designated market maker",
+      "High-frequency trader",
+      "Dealer"
+    ],
+    "failure_modes": "Posted liquidity is conditional: providers cancel or widen quotes in volatile or informed-flow environments, so visible book depth can vanish in stress (flash-crash dynamics). Providing liquidity to informed flow produces systematic adverse-selection losses.",
+    "misconceptions": "Liquidity provision is not a charitable or risk-free activity, and not all posted quotes represent firm intent — quotes can be flickering or spoofed (the latter illegally). High displayed liquidity does not guarantee executable liquidity in size.",
+    "example": "A trader posts a limit order to buy 1,000 shares at $49.98 when the market is $49.98 x $50.02; when a seller's market order arrives, the resting order executes, and the venue pays the passive side a maker rebate of $0.002 per share.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Market Maker",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "SEC Investor.gov, Investing Basics Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Market Makers; Liquidity (or Marketability)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

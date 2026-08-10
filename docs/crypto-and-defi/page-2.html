@@ -53,6 +53,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 .source-nav{display:flex;gap:.5rem;flex-wrap:wrap;font-family:system-ui;font-size:.82rem;margin:.8rem 0}.source-nav a{border:1px solid #ccc;border-radius:5px;padding:.25rem .5rem}
 .source-file{border:1px solid #ddd;border-radius:7px;margin:.65rem 0;background:#fafaf8}.source-file summary{padding:.7rem .85rem;cursor:pointer;font-family:system-ui;font-weight:700}.source-file pre{border-top:1px solid #ddd;margin:0;border-radius:0;max-height:620px;overflow:auto;white-space:pre-wrap;word-break:break-word}
 .evidence-section{border-top:1px solid #ddd;padding-top:.35rem;margin-top:1rem}.citation-list li{margin:.35rem 0}
+.skill-tabs{display:flex;gap:.45rem;flex-wrap:wrap;margin:1.2rem 0;border-bottom:1px solid #ddd;padding-bottom:.7rem}.skill-tab{border:1px solid #bbb;background:#fff;color:#0b5fff;border-radius:6px;padding:.45rem .7rem;cursor:pointer;font:600 .82rem system-ui}.skill-tab:hover{background:#f4f4f1}.skill-tab[aria-selected="true"]{background:#111;color:#fff;border-color:#111}.skill-panel{min-height:260px}.skill-panel[hidden]{display:none}.skill-panel>pre{max-height:720px;overflow:auto;white-space:pre-wrap;word-break:break-word}
 .domainnav{display:flex;justify-content:space-between;margin-top:2rem;font-family:system-ui;font-size:.85rem}
 .toc{columns:2;font-family:system-ui;font-size:.82rem;background:#fafaf8;border:1px solid #e8e8e5;border-radius:6px;padding:.8rem 1rem}
 .toc a{color:#333}
@@ -168,6 +169,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="slippage-tolerance"><h3>Slippage tolerance <a class="anchor" href="#slippage-tolerance">#</a></h3>
 <div class="field">Slippage tolerance is the maximum deviation a user accepts between the expected price of an on-chain swap and the price it actually executes at; if execution would exceed this bound, the transaction reverts.</div>
+<div class="skill-links"><a href="../skills/tkl-slippage-tolerance/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the &#x27;don&#x27;t fill me worse than X&#x27; dial on a DEX trade — your insurance against the price moving between signing and execution.</div>
 <div class="field"><span class="label">Mechanics:</span> Price slippage is the gap between the quoted price when a swap is submitted and the realized execution price, caused by other trades landing first and by the trade&#x27;s own price impact. Wallets/routers encode slippage tolerance as a minimum output amount; if the pool cannot deliver at least that much, the transaction fails (and only gas is lost).</div>
 <div class="field"><span class="label">Failure modes:</span> Setting tolerance too high invites sandwich attackers to push execution to the worst allowed price; too low, and transactions revert repeatedly in volatile markets, wasting gas without executing.</div>
@@ -301,6 +303,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="liquidation-threshold"><h3>Liquidation threshold <a class="anchor" href="#liquidation-threshold">#</a></h3>
 <div class="field">The liquidation threshold is the per-asset percentage of collateral value at which a borrow position is deemed undercollateralized and becomes eligible for liquidation — effectively the maintenance margin of a DeFi loan.</div>
+<div class="skill-links"><a href="../skills/tkl-liquidation-threshold/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the tripwire on your collateral: once your debt exceeds this share of what you posted, the protocol declares the loan unsafe and lets liquidators step in.</div>
 <div class="field"><span class="label">Mechanics:</span> Aave Governance sets a liquidation threshold per asset (e.g. 80% for ETH, 97-98% for stablecoin E-Mode). The account&#x27;s weighted average threshold enters the health factor formula; when HF falls below 1, a liquidationCall repays up to 50% of debt (100% if deeply insolvent) and seizes collateral at a discount. The threshold sits above LTV, giving borrowers a buffer between max borrow and liquidation.</div>
 <div class="field"><span class="label">Failure modes:</span> Thresholds set too high for volatile assets let insolvency arrive before liquidators can profitably act; governance misconfiguration or oracle errors can liquidate healthy users or fail to liquidate dying ones.</div>

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-foundations/delivery-versus-payment",
+  "canonical_sha256": "33416879f0218a222cddcff0fe30e092468c465047b2a94e419371646827619e",
+  "source_path": "concepts/market-foundations.json",
+  "concept": {
+    "id": "market-foundations/delivery-versus-payment",
+    "name": "Delivery versus payment",
+    "aliases": [
+      "DvP",
+      "DVP"
+    ],
+    "domain": "Market foundations",
+    "definition": "A securities settlement mechanism that links the transfer of securities to the transfer of funds so that delivery occurs if and only if payment occurs, eliminating principal risk — the risk of delivering securities without receiving the money, or vice versa.",
+    "intuition": "The shares and the cash swap hands atomically: neither side can end up having given away its asset without receiving the other side of the deal.",
+    "mechanics": "The settlement system conditions the final transfer of securities on the final transfer of funds within the same process (e.g., DTC book-entry delivery against a simultaneous settlement debit/credit); models range from gross-gross (DvP model 1) to net-net (DvP model 3) in BIS terminology.",
+    "formula": "",
+    "relationships": [
+      "Settlement",
+      "Payment versus payment",
+      "Settlement cycle",
+      "Clearinghouse",
+      "Netting"
+    ],
+    "failure_modes": "DvP removes principal risk but not liquidity or replacement-cost risk: a counterparty can still fail to deliver, forcing a buy-in, and gridlock can arise when participants wait for incoming securities to fund outgoing deliveries.",
+    "misconceptions": "DvP does not guarantee the trade happens — it guarantees that if one leg settles, the other does too; a failed trade under DvP simply does not settle either leg.",
+    "example": "When an investor's share purchase settles T+1 at DTC, the seller's account is credited cash and debited shares in the same settlement pass, so the seller never parts with the stock unpaid.",
+    "citations": [
+      {
+        "source": "BIS CPMI, Glossary of payments and market infrastructure terminology",
+        "url": "https://www.bis.org/cpmi/publ/d00b.htm",
+        "section": "Delivery versus payment (DvP)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

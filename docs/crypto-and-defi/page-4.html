@@ -53,6 +53,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 .source-nav{display:flex;gap:.5rem;flex-wrap:wrap;font-family:system-ui;font-size:.82rem;margin:.8rem 0}.source-nav a{border:1px solid #ccc;border-radius:5px;padding:.25rem .5rem}
 .source-file{border:1px solid #ddd;border-radius:7px;margin:.65rem 0;background:#fafaf8}.source-file summary{padding:.7rem .85rem;cursor:pointer;font-family:system-ui;font-weight:700}.source-file pre{border-top:1px solid #ddd;margin:0;border-radius:0;max-height:620px;overflow:auto;white-space:pre-wrap;word-break:break-word}
 .evidence-section{border-top:1px solid #ddd;padding-top:.35rem;margin-top:1rem}.citation-list li{margin:.35rem 0}
+.skill-tabs{display:flex;gap:.45rem;flex-wrap:wrap;margin:1.2rem 0;border-bottom:1px solid #ddd;padding-bottom:.7rem}.skill-tab{border:1px solid #bbb;background:#fff;color:#0b5fff;border-radius:6px;padding:.45rem .7rem;cursor:pointer;font:600 .82rem system-ui}.skill-tab:hover{background:#f4f4f1}.skill-tab[aria-selected="true"]{background:#111;color:#fff;border-color:#111}.skill-panel{min-height:260px}.skill-panel[hidden]{display:none}.skill-panel>pre{max-height:720px;overflow:auto;white-space:pre-wrap;word-break:break-word}
 .domainnav{display:flex;justify-content:space-between;margin-top:2rem;font-family:system-ui;font-size:.85rem}
 .toc{columns:2;font-family:system-ui;font-size:.82rem;background:#fafaf8;border:1px solid #e8e8e5;border-radius:6px;padding:.8rem 1rem}
 .toc a{color:#333}
@@ -170,6 +171,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="funding-rate"><h3>Funding rate <a class="anchor" href="#funding-rate">#</a></h3>
 <div class="field">The funding rate is a periodic payment exchanged directly between long and short holders of a perpetual futures contract, sized by the gap between the perpetual&#x27;s price and the underlying spot index, designed to pull the perpetual price back toward spot.</div>
+<div class="skill-links"><a href="../skills/tkl-funding-rate/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Perpetuals have no expiry to force convergence, so the market rents a tether instead: whoever is on the crowded, premium side pays the other side every few hours.</div>
 <div class="field"><span class="label">Mechanics:</span> Funding amount = position notional (mark price × size) × funding rate. When the perp trades above spot the rate is positive and longs pay shorts; below spot it is negative and shorts pay longs. On Binance the rate combines a fixed interest component (0.01% per 8h interval by default) with a premium index computed from impact bid/ask prices vs the index, clamped within bounds; only positions open at the funding timestamp pay/receive.</div>
 <div class="field"><span class="label">Failure modes:</span> Deeply negative or positive funding in stressed markets makes holding the paying side ruinously expensive, forcing exits that amplify the move; funding is venue-specific, and extreme events can change intervals or caps with little notice.</div>
@@ -195,6 +197,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="funding-interval"><h3>Funding interval <a class="anchor" href="#funding-interval">#</a></h3>
 <div class="field">The funding interval is the fixed period between funding payments on a perpetual futures contract — the clock that determines how often the funding rate is applied to open positions.</div>
+<div class="skill-links"><a href="../skills/tkl-funding-interval/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the billing cycle of the perp tether: every interval, the payment between longs and shorts settles and the meter resets.</div>
 <div class="field"><span class="label">Mechanics:</span> Binance settles funding every 8 hours at 00:00, 08:00 and 16:00 UTC; only positions open at those timestamps pay or receive (with a ~15-second execution deviation), so closing before the timestamp avoids the charge entirely. In extreme volatility venues can shorten the interval (e.g. to 4h or 1h) to tighten the peg; the default interest component (0.03%/day) is split per interval (0.01% per 8h).</div>
 <div class="field"><span class="label">Failure modes:</span> Interval changes during stress (announced per venue rules) alter the carry economics of open positions mid-trade; timing games around timestamps (closing seconds before, reopening after) add noise and can distort the rate&#x27;s anchoring function.</div>
@@ -207,6 +210,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="perpetual-basis"><h3>Perpetual basis <a class="anchor" href="#perpetual-basis">#</a></h3>
 <div class="field">The perpetual basis is the price difference between a perpetual futures contract and the underlying spot (index) price, typically expressed as a percentage; the funding mechanism exists to keep this basis mean-reverting around zero.</div>
+<div class="skill-links"><a href="../skills/tkl-perpetual-basis/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is how far the tail (perp) wags from the dog (spot): positive when perp buyers pay a premium, negative when perps trade at a discount.</div>
 <div class="field"><span class="label">Mechanics:</span> Basis = perp price − index price (or (perp/index) − 1). Unlike dated futures, whose basis converges at expiry, perp basis is anchored continuously by funding: a persistent positive basis raises funding, charging longs and attracting cash-and-carry arbitrage (buy spot, short perp, collect funding) that compresses it. Binance&#x27;s premium index operationalizes the basis using impact bid/ask prices rather than last trade.</div>
 <div class="field"><span class="label">Failure modes:</span> In liquidation cascades or index outages, the basis can gap violently (perp trading far below spot) before funding arbitrage restores it; basis also embeds the premium index&#x27;s order-book sampling, so thin books give noisy readings.</div>
@@ -220,6 +224,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="liquidation-cascade"><h3>Liquidation cascade <a class="anchor" href="#liquidation-cascade">#</a></h3>
 <div class="field">A liquidation cascade is a self-reinforcing chain of forced position closures: falling prices trigger liquidations whose forced market sells push prices lower still, triggering the next tier of liquidations in rapid succession.</div>
+<div class="skill-links"><a href="../skills/tkl-liquidation-cascade/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is an avalanche on a leveraged mountainside: each margin call knocks loose more snow, and the falling snow triggers the margin calls below.</div>
 <div class="field"><span class="label">Mechanics:</span> Leveraged positions have liquidation prices set by maintenance margin (or health factors in DeFi); when price crosses a dense cluster of them, engines and liquidators market-sell collateral/positions into the book, deepening the move and hitting the next cluster. Open interest collapses, funding and basis gap, and thin order books amplify each leg — visible in Coin Metrics-style analyses combining OI, funding and liquidation data.</div>
 <div class="field"><span class="label">Failure modes:</span> Cascades overshoot any fundamental value — price can wick far below fair levels before recovering (the &#x27;liquidation hunt&#x27; zone); exchange risk systems (ADL, insurance funds) socialize residual losses when liquidations cannot fill in time.</div>
@@ -232,6 +237,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="open-interest-leverage-ratio"><h3>Open interest leverage ratio <a class="anchor" href="#open-interest-leverage-ratio">#</a></h3>
 <div class="field">The open-interest leverage ratio compares total derivatives open interest to the underlying market&#x27;s size (spot market cap or exchange reserves), gauging how much leveraged positioning the market carries relative to its real capital base.</div>
+<div class="skill-links"><a href="../skills/tkl-open-interest-leverage-ratio/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the debt-to-equity ratio of the whole market: how big the tower of leveraged bets is compared to the pile of actual coins it leans on.</div>
 <div class="field"><span class="label">Mechanics:</span> Open interest is the count of outstanding, unsettled derivatives contracts (Coin Metrics collects it per market, ~1-minute cadence, noting venues report one- or two-sided conventions differently). Ratios such as futures OI / market cap or OI / exchange reserve estimate aggregate leverage; elevated readings mean liquidation cascades can move spot violently, and sharp OI drops mark deleveraging events.</div>
 <div class="field"><span class="label">Failure modes:</span> OI conventions differ by venue (one- vs two-sided, contract units), so cross-exchange aggregation can misstate leverage; high OI alone is ambiguous — hedged and arbitrage positions inflate it without directional risk, and spot inflows can quietly lower the ratio.</div>
@@ -257,6 +263,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="cross-margin"><h3>Cross margin <a class="anchor" href="#cross-margin">#</a></h3>
 <div class="field">Cross margin is a margin mode in which all available balance in the margin/futures account is shared as collateral across every open position, so unrealized profits and the whole account equity support each position&#x27;s maintenance margin.</div>
+<div class="skill-links"><a href="../skills/tkl-cross-margin/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is one shared life raft for all your trades: a losing position can drain the entire account to stay afloat — and if it sinks, everything goes down with it.</div>
 <div class="field"><span class="label">Mechanics:</span> Under cross margin, the account&#x27;s total margin balance (wallet balance + unrealized PnL) counts toward every position&#x27;s maintenance requirement, making individual positions harder to liquidate but exposing the entire account to any single failure. Leverage can be adjusted on open cross positions (on Binance); liquidation occurs when account equity falls below the maintenance margin (notional × maintenance margin rate − maintenance amount, per tier).</div>
 <div class="field"><span class="label">Failure modes:</span> A single oversized losing position can consume the equity supporting every other position, turning one bad trade into a whole-account liquidation; correlated losses across positions hit the shared pool simultaneously.</div>
@@ -270,6 +277,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="isolated-margin"><h3>Isolated margin <a class="anchor" href="#isolated-margin">#</a></h3>
 <div class="field">Isolated margin is a margin mode in which each position carries its own dedicated collateral allotment, capping the maximum loss of that position at the margin assigned to it and ring-fencing the rest of the account.</div>
+<div class="skill-links"><a href="../skills/tkl-isolated-margin/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is a fire door between trades: each position burns with only the fuel you loaded into it, never spreading to the rest of the account.</div>
 <div class="field"><span class="label">Mechanics:</span> The trader assigns a fixed margin amount per position (and can manually add more); the position&#x27;s liquidation price is computed from that isolated allotment against the maintenance margin requirement. If breached, only the isolated margin is lost — other positions and wallet balance are untouched. On Binance, leverage on open isolated positions cannot be reduced, and each isolated margin account/pair maintains its own independent risk level.</div>
 <div class="field"><span class="label">Failure modes:</span> Isolated positions liquidate much earlier than cross positions because they lack the account buffer — a normal wick can take out the margin; over-reliance on manual margin top-ups fails exactly in fast markets when you cannot react.</div>

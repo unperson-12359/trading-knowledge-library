@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "participants/central-counterparty",
+  "canonical_sha256": "f07697f31de9e541a5fdb50df837bd54a4d1eb76e04991459b6a142f0a809878",
+  "source_path": "concepts/participants.json",
+  "concept": {
+    "id": "participants/central-counterparty",
+    "name": "Central counterparty",
+    "aliases": [
+      "CCP",
+      "clearing house",
+      "clearing organization"
+    ],
+    "domain": "Participants",
+    "definition": "A central counterparty (CCP) is a clearing organization that interposes itself between the parties to a trade, becoming the buyer to every seller and the seller to every buyer, thereby guaranteeing performance and mutualizing counterparty credit risk. In U.S. futures markets a CCP registered with the CFTC is known as a derivatives clearing organization (DCO).",
+    "intuition": "A CCP is the market's middleman-of-last-resort: after your trade is done, you no longer rely on the stranger you traded with — you rely on the clearing house, which stands behind every trade.",
+    "mechanics": "Through novation, the CCP replaces the original bilateral contract with two contracts against itself. It collects initial and variation margin from clearing members daily, maintains a default fund and other resources, and runs default-management ('waterfall') procedures to absorb a member's failure while continuing to perform on all other trades.",
+    "formula": "",
+    "relationships": [
+      "Clearing member",
+      "Futures commission merchant",
+      "Custodian",
+      "Broker-dealer"
+    ],
+    "failure_modes": "CCPs concentrate risk: a default exceeding margin plus the default fund can force loss mutualization onto surviving members or, in extremis, CCP failure. Procyclical margin increases in stress can drain market-wide liquidity, and CCP risk models can be wrong about tail correlations.",
+    "misconceptions": "Central clearing does not eliminate counterparty risk — it transforms and concentrates it in the CCP with a layered default waterfall. Nor is every cleared product equally safe: clearing guarantees performance, not price outcomes.",
+    "example": "Two firms trade an interest-rate swap cleared at a CCP; when one member later defaults, the CCP uses the defaulter's margin and default-fund contributions to honor the swap, and the surviving counterparty is unaffected.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Central Counterparty; Clearing Organization; Clearing",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CME Group Education Glossary",
+        "url": "https://www.cmegroup.com/education/glossary.html",
+        "section": "Central Counterparty Clearing",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

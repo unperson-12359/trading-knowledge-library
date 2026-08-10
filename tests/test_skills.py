@@ -99,10 +99,13 @@ class ConceptSkillTests(unittest.TestCase):
             detail = ROOT / "docs" / "skills" / profile["skill_name"] / "index.html"
             self.assertTrue(detail.is_file())
             html = detail.read_text(encoding="utf-8")
-            self.assertIn("Concept evidence", html)
-            self.assertIn("Review the source files", html)
+            self.assertIn('data-skill-tab="concept"', html)
+            self.assertIn('id="panel-concept"', html)
+            self.assertIn('id="panel-use"', html)
+            self.assertIn('id="panel-concept-json"', html)
+            self.assertIn("The original concept object from the main library.", html)
             self.assertIn("SKILL.md", html)
-            self.assertIn("references/concept.json", html)
+            self.assertIn("Packaged reference.json", html)
 
 
 if __name__ == "__main__":

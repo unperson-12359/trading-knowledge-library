@@ -53,6 +53,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 .source-nav{display:flex;gap:.5rem;flex-wrap:wrap;font-family:system-ui;font-size:.82rem;margin:.8rem 0}.source-nav a{border:1px solid #ccc;border-radius:5px;padding:.25rem .5rem}
 .source-file{border:1px solid #ddd;border-radius:7px;margin:.65rem 0;background:#fafaf8}.source-file summary{padding:.7rem .85rem;cursor:pointer;font-family:system-ui;font-weight:700}.source-file pre{border-top:1px solid #ddd;margin:0;border-radius:0;max-height:620px;overflow:auto;white-space:pre-wrap;word-break:break-word}
 .evidence-section{border-top:1px solid #ddd;padding-top:.35rem;margin-top:1rem}.citation-list li{margin:.35rem 0}
+.skill-tabs{display:flex;gap:.45rem;flex-wrap:wrap;margin:1.2rem 0;border-bottom:1px solid #ddd;padding-bottom:.7rem}.skill-tab{border:1px solid #bbb;background:#fff;color:#0b5fff;border-radius:6px;padding:.45rem .7rem;cursor:pointer;font:600 .82rem system-ui}.skill-tab:hover{background:#f4f4f1}.skill-tab[aria-selected="true"]{background:#111;color:#fff;border-color:#111}.skill-panel{min-height:260px}.skill-panel[hidden]{display:none}.skill-panel>pre{max-height:720px;overflow:auto;white-space:pre-wrap;word-break:break-word}
 .domainnav{display:flex;justify-content:space-between;margin-top:2rem;font-family:system-ui;font-size:.85rem}
 .toc{columns:2;font-family:system-ui;font-size:.82rem;background:#fafaf8;border:1px solid #e8e8e5;border-radius:6px;padding:.8rem 1rem}
 .toc a{color:#333}
@@ -174,6 +175,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="backtest"><h3>Backtest <a class="anchor" href="#backtest">#</a></h3>
 <div class="field">A historical simulation that applies explicit strategy rules to past data to estimate how the strategy would have behaved under stated assumptions.</div>
+<div class="skill-links"><a href="../skills/tkl-backtest/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It turns an informal trading idea into a claim or design choice that can be evaluated against dated evidence.</div>
 <div class="field"><span class="label">Mechanics:</span> Advance through dated observations, form decisions from the contemporaneous information set, simulate orders and costs, and update cash and positions.</div>
 <div class="field"><span class="label">Failure modes:</span> Results can mislead when hindsight, multiple testing, nonstationarity, costs, or unavailable historical information are ignored.</div>
@@ -205,6 +207,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="walk-forward-analysis"><h3>Walk-forward analysis <a class="anchor" href="#walk-forward-analysis">#</a></h3>
 <div class="field">Sequential evaluation that repeatedly fits or selects a model on past data and tests the frozen result on the next unseen time block.</div>
+<div class="skill-links"><a href="../skills/tkl-walk-forward-analysis/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It estimates how a fitted choice behaves on observations that were not used to fit that choice.</div>
 <div class="field"><span class="label">Mechanics:</span> Move the training and test boundaries forward, refit only on data preceding each test block, and concatenate the non-overlapping test results.</div>
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>
@@ -286,6 +289,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="execution-simulator"><h3>Execution simulator <a class="anchor" href="#execution-simulator">#</a></h3>
 <div class="field">The backtest component that converts hypothetical orders into timestamped fills or rejections under explicit market and brokerage assumptions.</div>
+<div class="skill-links"><a href="../skills/tkl-execution-simulator/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is part of the machinery that converts strategy instructions into simulated positions, cash flows, and performance.</div>
 <div class="field"><span class="label">Mechanics:</span> Apply venue hours, order-type rules, latency, available price and volume, partial-fill logic, costs, and market impact before returning execution events.</div>
 <div class="field"><span class="label">Failure modes:</span> Simplified timing, liquidity, fee, borrow, funding, or corporate-action assumptions can make simulated results unattainable live.</div>

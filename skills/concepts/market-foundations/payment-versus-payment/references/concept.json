@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-foundations/payment-versus-payment",
+  "canonical_sha256": "78d68e35f92696c7b09c6f3b82c9dd137962905aee372cfafb2f6287ce392e6c",
+  "source_path": "concepts/market-foundations.json",
+  "concept": {
+    "id": "market-foundations/payment-versus-payment",
+    "name": "Payment versus payment",
+    "aliases": [
+      "PvP",
+      "PVP"
+    ],
+    "domain": "Market foundations",
+    "definition": "A foreign exchange settlement mechanism that ensures the final transfer of one currency occurs if and only if the final transfer of the countercurrency occurs, eliminating FX settlement (Herstatt) risk — the loss of the full value of a currency paid without receiving the currency bought.",
+    "intuition": "Both currency legs of an FX trade move simultaneously; you can never wire your dollars away and get no euros back because the other bank failed that afternoon.",
+    "mechanics": "A PvP system (notably CLS Bank, per BIS analysis of FX settlement risk) holds both sides' payment instructions and releases the two currency transfers together; where PvP is unavailable, legs settle in different payment systems and time zones, exposing the paying party until the counterleg arrives.",
+    "formula": "",
+    "relationships": [
+      "Delivery versus payment",
+      "Settlement",
+      "Netting",
+      "Over-the-counter market"
+    ],
+    "failure_modes": "PvP eliminates principal risk but not liquidity risk (a party may fail to fund its side, unwinding the day's queue) or replacement-cost risk (re-doing the trade at a worse rate); coverage gaps leave non-eligible currencies and counterparties exposed.",
+    "misconceptions": "PvP is not automatic in FX — it requires settlement through a PvP mechanism such as CLS, and a large share of global FX turnover historically settled with one leg at risk (the 1974 Bankhaus Herstatt failure being the canonical loss).",
+    "example": "A USD/EUR trade settles through CLS: the member's dollar payment and euro receipt are released simultaneously at settlement, so neither bank is exposed for the full principal if the other fails intraday.",
+    "citations": [
+      {
+        "source": "BIS CPMI, Glossary of payments and market infrastructure terminology",
+        "url": "https://www.bis.org/cpmi/publ/d00b.htm",
+        "section": "Payment versus payment (PvP)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "BIS, Settlement risk in foreign exchange transactions (CPSS, March 1996)",
+        "url": "https://www.bis.org/cpmi/publ/d17.pdf",
+        "section": "Payment versus payment discussion",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "participants/arbitrageur",
+  "canonical_sha256": "c5189c4c8bc4890634b353fe4edf06954e85ee37a61d7b6a8529208c513ff734",
+  "source_path": "concepts/participants.json",
+  "concept": {
+    "id": "participants/arbitrageur",
+    "name": "Arbitrageur",
+    "aliases": [
+      "arb"
+    ],
+    "domain": "Participants",
+    "definition": "An arbitrageur is a market participant who engages in arbitrage: the simultaneous purchase and sale of identical or equivalent instruments in two or more markets in order to benefit from a discrepancy in their price relationship. Arbitrage activity links related markets and is the economic force that keeps prices of equivalent claims aligned.",
+    "intuition": "An arbitrageur is a price policeman: if the same thing sells for $10 in one market and $10.20 in another, they buy cheap and sell dear at the same time, pocketing the difference and pushing the prices back together.",
+    "mechanics": "The arbitrageur monitors equivalent instruments (e.g., a stock and its ADR, an ETF and its basket, spot and futures linked by cost of carry) and, when prices diverge beyond transaction costs, simultaneously buys the cheap leg and sells the rich leg, locking in the convergence. Profit requires the price gap to exceed all frictions: fees, borrow costs, funding, and execution risk.",
+    "formula": "Arbitrage profit = (P_rich - P_cheap) - total transaction and carry costs; a trade is viable only when this is positive.",
+    "relationships": [
+      "Hedger",
+      "Speculator",
+      "High-frequency trader",
+      "Authorized participant",
+      "Market maker"
+    ],
+    "failure_modes": "Real-world arbitrage faces execution leg risk (one side fills, the other doesn't), borrow unavailability for short legs, funding constraints, and convergence risk — mispricings can widen before they close, forcing losses on marked-to-market positions.",
+    "misconceptions": "Arbitrage is rarely the textbook riskless, costless trade; 'risk arbitrage' (e.g., merger arb) explicitly involves deal-completion risk and is closer to speculation. Also, apparent arbitrage opportunities on screens often disappear once all fees and market impact are included.",
+    "example": "An ETF trades at a 0.3% discount to the value of its underlying basket; an arbitrageur buys the ETF shares and shorts the basket, then uses the creation/redemption mechanism to close both legs at parity.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Arbitrage",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
