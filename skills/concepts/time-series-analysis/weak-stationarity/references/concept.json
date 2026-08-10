@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/weak-stationarity",
+  "canonical_sha256": "866c66402eddeefe206e76ce87da7f6c429ebfaee5cd01a3276f4a2d494eac65",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/weak-stationarity",
+    "name": "Weak stationarity",
+    "aliases": [
+      "covariance stationarity",
+      "second-order stationarity",
+      "wide-sense stationarity"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A form of stationarity in which only the first two moments of a process are required to be time-invariant: the mean and variance are constant and the autocovariance between two points depends only on the lag between them, not on their location in time. This is the assumption underlying ARMA modeling and most time-series inference.",
+    "intuition": "Weak stationarity demands only that the series' average level, spread, and lag-pattern of correlation stay the same over time - a much weaker requirement than the full probability distribution being unchanging.",
+    "mechanics": "Formally: E[X_t] = mu (constant), Var(X_t) = sigma^2 (finite and constant), and Cov(X_t, X_{t+h}) = gamma(h) depends only on lag h. Gaussian processes that are weakly stationary are also strictly stationary; heavy-tailed processes can be weakly stationary without being strictly so.",
+    "formula": "E[X_t] = mu; Var(X_t) = sigma^2 < infinity; Cov(X_t, X_{t+h}) = gamma(h) for all t, h.",
+    "relationships": [
+      "Stationarity",
+      "Autocorrelation",
+      "ARMA model",
+      "White noise"
+    ],
+    "failure_modes": "Weak stationarity says nothing about higher moments or the full distribution, so volatility clustering or regime changes can persist in a covariance-stationary-looking series and break models that assume more. Financial returns often exhibit time-varying variance, violating it.",
+    "misconceptions": "That weak stationarity implies the series is normally distributed or has constant conditional volatility; only the unconditional mean, variance, and autocovariances are constrained.",
+    "example": "A GARCH-modeled return series can be weakly stationary (constant unconditional mean and variance) even though its conditional variance changes every day.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods, Section 6.4.4.2 Stationarity",
+        "url": "https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc442.htm",
+        "section": "6.4.4.2",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

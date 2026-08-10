@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/time-series",
+  "canonical_sha256": "4e6b3a9c4a251e74a9f11ab6d72b7239e94c7470d8577f10d938449d5c957a23",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/time-series",
+    "name": "Time series",
+    "aliases": [
+      "time-series data",
+      "temporal data"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A sequence of observations on a variable recorded in time order, typically at equally spaced intervals, in which data points may have internal structure such as autocorrelation, trend, or seasonal variation that must be accounted for when modeling. In trading, prices, returns, volumes, and indicators are all time series.",
+    "intuition": "Unlike a random sample, the order of observations matters: yesterday's price is informative about today's, so time series methods model the dependence across time rather than treating points as independent draws.",
+    "mechanics": "A univariate time series is a set of scalar observations {x_t} indexed by time t. Analysis proceeds by characterizing trend, seasonality, autocorrelation, and volatility structure, then fitting models (e.g., ARMA, state-space) that exploit that dependence for description, inference, or forecasting.",
+    "formula": "A univariate time series is written x_1, x_2, ..., x_T where t indexes time; time is an implicit variable even though only the values are recorded.",
+    "relationships": [
+      "Stationarity",
+      "Autocorrelation",
+      "AR model",
+      "White noise",
+      "State-space model"
+    ],
+    "failure_modes": "Standard i.i.d. statistical procedures (tests, standard errors) break down when applied to autocorrelated or trending series, producing spurious significance. Non-equally-spaced or missing data complicate many standard methods.",
+    "misconceptions": "That any sequence of numbers is a valid time series for analysis regardless of sampling frequency or missing values; and that time ordering can be ignored when computing summary statistics or running regressions.",
+    "example": "Daily closing prices of the S&P 500 from 2015-2025 form a time series; the strong correlation between consecutive closes violates the independence assumption of ordinary statistical methods.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods, Section 6.4.4 Univariate Time Series Models",
+        "url": "https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc44.htm",
+        "section": "6.4.4",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

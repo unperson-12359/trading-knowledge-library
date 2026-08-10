@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/autocorrelation",
+  "canonical_sha256": "5c6b05ae3dd2adf43bf336c6000e5c61c23a2179dbad17c2bc8041f8f6738980",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/autocorrelation",
+    "name": "Autocorrelation",
+    "aliases": [
+      "serial correlation",
+      "lagged correlation"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The correlation of a time series with itself at different time lags: a measure of how strongly an observation is linearly related to observations h periods earlier or later. Significant nonzero autocorrelation means the series is not random white noise.",
+    "intuition": "Autocorrelation asks: does a high value today tend to be followed by high values tomorrow (positive) or by low values (negative), or is there no relationship at all?",
+    "mechanics": "The sample autocorrelation at lag h is R_h = C_h / C_0, where C_h = (1/N)*sum_{t=1}^{N-h}(Y_t - mean)(Y_{t+h} - mean) is the sample autocovariance and C_0 the sample variance. Under randomness, autocorrelations should lie within bands of about +/-z_{1-alpha/2}/sqrt(N); systematic patterns signal structure and are used to identify AR/MA model orders.",
+    "formula": "R_h = C_h / C_0, with C_h = (1/N) * sum_{t=1}^{N-h} (Y_t - Ybar)(Y_{t+h} - Ybar); R_h lies in [-1, 1].",
+    "relationships": [
+      "Autocorrelation function",
+      "Partial autocorrelation",
+      "White noise",
+      "Stationarity",
+      "AR model"
+    ],
+    "failure_modes": "Absence of autocorrelation does not imply randomness: nonlinear dependence (e.g., volatility clustering in squared returns) survives zero linear autocorrelation. In non-stationary series, sample autocorrelations are spuriously large and slow-decaying.",
+    "misconceptions": "That zero autocorrelation proves independence (uncorrelated is not independent), and that significant daily-return autocorrelation in stock indexes is directly exploitable profit after transaction costs (usually it is not).",
+    "example": "The autocorrelation plot of a strongly autoregressive series shows large positive R_1 decaying gradually; the same plot for white noise shows all R_h near zero within the 95% bands.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods, Section 1.3.3.1 Autocorrelation Plot",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/autocopl.htm",
+        "section": "1.3.3.1",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

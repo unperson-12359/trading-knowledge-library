@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/consistency",
+  "canonical_sha256": "bc6bf0172599f064b7b6126887a866f612f579cc13d7c6ddfbb6f34da3191cbf",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/consistency",
+    "name": "Consistency",
+    "aliases": [
+      "consistent estimator",
+      "asymptotic consistency"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "A property of a sequence of estimators: as the sample size grows without bound, the estimates converge in probability to the true parameter value (weak consistency; almost-sure convergence gives strong consistency). The distribution of the estimates concentrates ever more tightly around the truth.",
+    "intuition": "A consistent estimator is one that is guaranteed to home in on the true value if you feed it enough data - the more you observe, the closer you get, with probability approaching certainty.",
+    "mechanics": "Formally, T_n is weakly consistent for θ if P(|T_n - θ| > epsilon) -> 0 as n -> infinity for every epsilon > 0. The law of large numbers is the workhorse for proving consistency (e.g., the sample mean is consistent for mu); the continuous mapping theorem carries consistency through continuous transformations.",
+    "formula": "T_n converges in probability to θ: for all epsilon > 0, P(|T_n - θ| >= epsilon) -> 0 as n -> infinity, where T_n is the estimator based on n observations.",
+    "relationships": [
+      "Law of large numbers",
+      "Estimator bias",
+      "Estimator efficiency",
+      "Sample mean",
+      "Convergence in probability"
+    ],
+    "failure_modes": "Consistency is an asymptotic guarantee that says nothing about the sample sizes actually available - decades of daily data may still be 'small' for slow-moving parameters. It also collapses under structural change: no amount of data makes an estimator converge to a parameter that itself keeps moving (non-stationarity).",
+    "misconceptions": "Consistent does not mean unbiased, and vice versa: the n-divisor sample variance is biased yet consistent, while the estimator T_n = x_n (use only the last observation) is unbiased for the mean but not consistent. 'Converges' also does not say how fast.",
+    "example": "The sample mean of daily returns is consistent for the true mean under stationarity: its variance sigma^2/n shrinks to zero, so with 25 years of data it is tightly concentrated around mu - assuming mu has not drifted over those 25 years.",
+    "citations": [
+      {
+        "source": "Wikipedia, 'Consistent estimator' (citing Amemiya 1985; Lehmann & Casella 1998)",
+        "url": "https://en.wikipedia.org/wiki/Consistent_estimator",
+        "section": "Definition; Bias versus consistency",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

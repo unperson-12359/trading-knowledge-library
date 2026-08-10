@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/stationarity",
+  "canonical_sha256": "4bd1c411b9e3c0982b17edf740f01150e2e3a86d493cb1a5d7d736b78854292a",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/stationarity",
+    "name": "Stationarity",
+    "aliases": [
+      "stationary process"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The property of a stochastic process whose statistical behavior does not change over time. A strictly stationary process has all joint distributions invariant to time shifts; in practice stationarity usually means a flat-looking series with no trend, constant variance, a constant autocorrelation structure, and no periodic fluctuations.",
+    "intuition": "A stationary series behaves the same in 2020 as in 2010: it fluctuates around a stable level with stable variability, so its past behavior is a usable guide to its future behavior.",
+    "mechanics": "Stationarity is assessed from run-sequence plots, ACF behavior, and formal unit-root tests (e.g., augmented Dickey-Fuller). Non-stationary series are transformed by differencing (Y_t = Z_t - Z_{t-1}), detrending (modeling residuals from a fitted trend), or variance-stabilizing transforms such as the logarithm.",
+    "formula": "Strict stationarity: for all h and k, the joint distribution of (X_t1, ..., X_tk) equals that of (X_{t1+h}, ..., X_{tk+h}). Differencing operator: Y_t = Z_t - Z_{t-1}.",
+    "relationships": [
+      "Weak stationarity",
+      "Unit root",
+      "Random walk",
+      "ARMA model",
+      "Cointegration"
+    ],
+    "failure_modes": "Applying stationary methods (ARMA, ordinary regression) to non-stationary data yields spurious regressions with misleadingly high R-squared and significance. Structural breaks can make a locally stationary model fail even when tests pass.",
+    "misconceptions": "That a stationary series must have no variation (it only needs time-invariant statistical properties), and that detrending and differencing are interchangeable (they address different types of non-stationarity).",
+    "example": "Daily S&P 500 returns are approximately stationary, fluctuating around a near-constant mean; the price level is non-stationary and is typically differenced (into returns) before fitting an ARMA model.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods, Section 6.4.4.2 Stationarity",
+        "url": "https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc442.htm",
+        "section": "6.4.4.2",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

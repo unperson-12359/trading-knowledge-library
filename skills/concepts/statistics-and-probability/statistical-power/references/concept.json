@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/statistical-power",
+  "canonical_sha256": "3542d03488fa3f086b37a78518d98b77e4c65b26603539eedb24a7327774e8d1",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/statistical-power",
+    "name": "Statistical power",
+    "aliases": [
+      "power of a test",
+      "power"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The probability that a hypothesis test correctly rejects the null hypothesis when it is false, equal to 1 - beta where beta is the Type II error probability. It measures the test's ability to detect a real effect of a given size.",
+    "intuition": "It is the sensitivity of your detector: high power means that if a strategy truly has an edge, your test will almost surely notice; low power means real edges slip through as 'not significant'.",
+    "mechanics": "Power increases with the true effect size, the sample size, and the significance level alpha, and decreases with the noise (standard deviation) of the data. Prospective power analysis solves for the sample size needed to reach a target power (often 0.8 or 0.9) for a hypothesized effect.",
+    "formula": "Power = 1 - beta = P(reject H0 | H0 is false), where beta is the Type II error probability; increasing the sample size increases power.",
+    "relationships": [
+      "Type II error",
+      "Type I error",
+      "Effect size",
+      "Null hypothesis",
+      "Standard error"
+    ],
+    "failure_modes": "Power computed under idealized assumptions (independence, normality) overstates real power on autocorrelated, fat-tailed return data. Underpowered backtests not only miss true effects but also inflate the effect sizes of the few that do reach significance (winner's curse).",
+    "misconceptions": "High power does not make a significant result economically meaningful - with huge samples even trivial edges are detected reliably. Nor is power a property of a single result; it is a property of the test design relative to a specified true effect.",
+    "example": "Detecting a 0.1% mean daily edge with daily sigma 1.5% at alpha = 0.05 (two-sided) requires roughly (1.96 + 0.84)^2 * (1.5/0.1)^2 ~ 1,764 trading days (~7 years) for 80% power - far more history than most backtests use.",
+    "citations": [
+      {
+        "source": "OpenStax, Introductory Statistics",
+        "url": "https://openstax.org/books/introductory-statistics/pages/9-2-outcomes-and-the-type-i-and-type-ii-errors",
+        "section": "9.2 (power = 1 - beta)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

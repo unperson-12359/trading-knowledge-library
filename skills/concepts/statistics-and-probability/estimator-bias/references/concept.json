@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/estimator-bias",
+  "canonical_sha256": "8c8202ab5a3b4d01328f647ebf2cbd792c21fd772325ef19474eac7fb04b445d",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/estimator-bias",
+    "name": "Estimator bias",
+    "aliases": [
+      "bias of an estimator",
+      "statistical bias"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The difference between the expected value of an estimator and the true value of the parameter it estimates. An estimator with zero bias is called unbiased; bias is an objective, long-run property of the estimation rule, not of any single estimate.",
+    "intuition": "It measures systematic error: if you repeated your estimation procedure on many fresh samples, would the average of the estimates land on the truth (unbiased) or consistently above/below it (biased)?",
+    "mechanics": "Bias(θ_hat) = E[θ_hat] - θ. Classic example: the sample variance with divisor n has expected value ((n-1)/n)*sigma^2, a downward bias removed by Bessel's correction (divisor n - 1). Bias combines with variance into mean squared error: MSE = bias^2 + variance, so a slightly biased estimator can be the better estimator overall.",
+    "formula": "Bias(θ_hat, θ) = E[θ_hat] - θ, where θ_hat is the estimator and θ the parameter; unbiased if this equals zero for all θ. MSE(θ_hat) = Bias^2 + Var(θ_hat).",
+    "relationships": [
+      "Estimator efficiency",
+      "Consistency",
+      "Sample variance",
+      "Expected value",
+      "Mean squared error"
+    ],
+    "failure_modes": "Unbiasedness is not preserved under nonlinear transformations: the square root of the unbiased sample variance is a biased estimator of the standard deviation. In finance, biases also enter through data selection - survivorship-biased fund samples make any return estimator upward biased regardless of its algebraic properties.",
+    "misconceptions": "Unbiased is not automatically better: a biased estimator with much lower variance can have lower mean squared error (e.g., shrinking variance estimates). Bias also says nothing about any single estimate - an unbiased estimator can be far off in your one sample.",
+    "example": "Estimating sigma^2 from n = 10 returns with the n-divisor gives E[S^2] = 0.9*sigma^2, a 10% downward bias; switching to the n - 1 divisor removes it, which is why s^2 = SS/(n-1) is standard.",
+    "citations": [
+      {
+        "source": "Wikipedia, 'Bias of an estimator' (citing Dekking 2005; DeGroot 1986)",
+        "url": "https://en.wikipedia.org/wiki/Bias_of_an_estimator",
+        "section": "Definition; Examples: Sample variance; Bias, variance and mean squared error",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

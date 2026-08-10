@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/partial-autocorrelation",
+  "canonical_sha256": "23c0b4f08e35dc3fa7efb81d18d32733a6c63029e0c0da43c0574ffa8eff12ed",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/partial-autocorrelation",
+    "name": "Partial autocorrelation",
+    "aliases": [
+      "PACF coefficient",
+      "partial serial correlation"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The correlation between a time series value and its value h periods earlier after removing the linear effect of all intervening lags (1 through h-1). It isolates the direct lag-h relationship that the ordinary autocorrelation confounds with indirect chains of correlation.",
+    "intuition": "If today's value correlates with last week's only because both depend on yesterday, the partial autocorrelation at lag 7 removes that indirect path and shows whether a genuine direct link remains.",
+    "mechanics": "Computed as the coefficient on the h-th lag in a regression of X_t on X_{t-1}, ..., X_{t-h}, or equivalently via Yule-Walker equations, Levinson-Durbin recursion, or Burg's estimator. For an AR(p) process the partial autocorrelation cuts off after lag p, making it a key tool for identifying autoregressive order.",
+    "formula": "pacf(h) = coefficient phi_hh in the regression X_t = phi_h1*X_{t-1} + ... + phi_hh*X_{t-h} + e_t.",
+    "relationships": [
+      "Autocorrelation",
+      "Partial autocorrelation function",
+      "AR model",
+      "Autocorrelation function"
+    ],
+    "failure_modes": "Sample estimates differ across estimation methods (Yule-Walker, OLS, Burg) especially in short samples; misspecified lag selection can make cutoff identification ambiguous. Non-stationary data invalidate the interpretation.",
+    "misconceptions": "That partial autocorrelation at lag h is just the autocorrelation at lag h 'cleaned up' numerically - it answers a different question (direct vs total dependence) and can differ in sign and magnitude.",
+    "example": "For an AR(2) process, the sample PACF shows significant spikes at lags 1 and 2 and near-zero values beyond lag 2, identifying the AR order.",
+    "citations": [
+      {
+        "source": "statsmodels documentation, statsmodels.tsa.stattools.pacf (Partial autocorrelation estimate)",
+        "url": "https://www.statsmodels.org/dev/generated/statsmodels.tsa.stattools.pacf.html",
+        "section": "Parameters and Notes",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

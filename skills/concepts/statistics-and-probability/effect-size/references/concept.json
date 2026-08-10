@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/effect-size",
+  "canonical_sha256": "4e899e8be556e901a402b8b63fa65fa5b94dd074292ca7aa533c0ec1ab89cce7",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/effect-size",
+    "name": "Effect size",
+    "aliases": [
+      "magnitude of effect",
+      "Cohen's d (for mean differences)"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "A quantitative measure of the magnitude of a phenomenon, such as the correlation between two variables, a mean difference, or a risk difference, reported separately from its statistical significance. Standardized versions like Cohen's d express the effect in units of standard deviation so studies can be compared.",
+    "intuition": "The p-value asks 'is there anything there?'; the effect size asks 'how much is there?' A strategy can be statistically significant yet economically trivial - effect size is what reveals that.",
+    "mechanics": "For two groups, Cohen's d divides the difference in means by the pooled standard deviation; correlation-based measures (r, r^2) express shared variance. Cohen's rough benchmarks (d = 0.2 small, 0.5 medium, 0.8 large) are context-dependent conventions, not laws.",
+    "formula": "Cohen's d = (x_bar_1 - x_bar_2) / s_pooled, where s_pooled = sqrt( [ (n1-1)s1^2 + (n2-1)s2^2 ] / (n1 + n2 - 2) ), with group means x_bar_i, standard deviations s_i, and sizes n_i.",
+    "relationships": [
+      "Statistical power",
+      "P-value",
+      "Pearson correlation",
+      "Confidence interval",
+      "Type II error"
+    ],
+    "failure_modes": "Effect sizes estimated from small or selected samples are biased upward (publication and winner's-curse effects), and standardized measures like d become unstable when the reference standard deviation is regime-dependent - a 'large' effect in a low-volatility regime may be unremarkable in a high-volatility one. Cohen's benchmarks are frequently misapplied across domains.",
+    "misconceptions": "Statistical significance is not effect size: with enough data, a 1-basis-point edge is 'significant' but negligible after costs. Conversely, a large observed effect that is not significant can still be real - just not yet distinguishable from noise.",
+    "example": "Strategy A beats its benchmark by 0.6% per month with a monthly standard deviation of 3% (d = 0.2, a 'small' standardized effect), while strategy B adds 1.5% with the same volatility (d = 0.5); the effect sizes, not the p-values, drive the capital-allocation decision.",
+    "citations": [
+      {
+        "source": "Wikipedia, 'Effect size' (citing Cohen 1988; Kelley & Preacher 2012, Psychological Methods 17(2))",
+        "url": "https://en.wikipedia.org/wiki/Effect_size",
+        "section": "Overview; Cohen's d",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

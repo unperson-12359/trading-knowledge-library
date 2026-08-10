@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/unit-root",
+  "canonical_sha256": "cf954ebb8220f98299e7fb699fed98c5ec8b0af16b7ada3af5e6e55b4fb1441f",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/unit-root",
+    "name": "Unit root",
+    "aliases": [
+      "unit root process",
+      "integrated of order one",
+      "I(1)"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A property of a time series whose autoregressive representation has a root equal to one, making it difference-stationary rather than level-stationary: shocks have permanent effects and the series follows a stochastic trend. A unit-root process becomes stationary only after differencing.",
+    "intuition": "A series with a unit root has no tendency to return to any fixed level; every shock shifts it permanently, like a drunken walk that wanders without an anchor.",
+    "mechanics": "Detected with unit-root tests such as the augmented Dickey-Fuller (ADF) test, which regresses the change in the series on its lagged level and lagged changes; the null hypothesis is that a unit root exists (series is non-stationary). Rejection supports stationarity. MacKinnon critical values or p-values are used for significance.",
+    "formula": "ADF regression: Delta y_t = alpha + beta*y_{t-1} + sum_{i=1..k} gamma_i*Delta y_{t-i} + e_t; null hypothesis beta = 0 (unit root present) versus beta < 0 (stationary).",
+    "relationships": [
+      "Stationarity",
+      "Random walk",
+      "ARIMA model",
+      "Cointegration",
+      "Drift"
+    ],
+    "failure_modes": "Unit-root tests have low power against near-stationary alternatives and against trend-stationary processes with structural breaks, frequently failing to reject non-stationarity even when it is false (and vice versa). Spurious regressions arise when unit-root series are regressed on each other without cointegration checks.",
+    "misconceptions": "That failing to reject the ADF null proves a unit root (the test only fails to find evidence against it), and that a trending series must have a unit root (deterministic trends are stationary around the trend).",
+    "example": "Testing log S&P 500 prices with the ADF test typically fails to reject the unit-root null, while testing daily returns rejects it, consistent with prices being I(1) and returns I(0).",
+    "citations": [
+      {
+        "source": "statsmodels documentation, statsmodels.tsa.stattools.adfuller (Augmented Dickey-Fuller unit root test)",
+        "url": "https://www.statsmodels.org/dev/generated/statsmodels.tsa.stattools.adfuller.html",
+        "section": "Notes and References",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/random-walk",
+  "canonical_sha256": "953d381224c7b287e6cf1a37e08da0ec08dc6f883443bc590d2f781e0b95150f",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/random-walk",
+    "name": "Random walk",
+    "aliases": [
+      "random walk hypothesis",
+      "random walk process"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A stochastic process in which each value equals the previous value plus an unpredictable increment (white noise), so the best forecast of tomorrow's value is today's. In finance, the random-walk hypothesis holds that price changes are unpredictable because new information is incorporated into prices immediately.",
+    "intuition": "Each step is a fresh coin flip added to where you stand now; knowing the whole history of steps tells you nothing about the next one.",
+    "mechanics": "X_t = X_{t-1} + epsilon_t with epsilon_t white noise (zero mean, constant variance, uncorrelated). The process is a unit-root process: its variance grows with time and it never reverts to a mean. A random walk with drift adds a constant c per period: X_t = c + X_{t-1} + epsilon_t.",
+    "formula": "X_t = X_{t-1} + epsilon_t, epsilon_t ~ WN(0, sigma^2); with drift: X_t = c + X_{t-1} + epsilon_t. Then Var(X_t) grows linearly in t.",
+    "relationships": [
+      "Unit root",
+      "White noise",
+      "Drift",
+      "Stationarity",
+      "Innovation"
+    ],
+    "failure_modes": "Real prices deviate from a pure random walk through autocorrelated returns at short horizons, volatility clustering, and longer-horizon predictability documented in the asset-pricing literature; treating prices as an exact random walk misses these features.",
+    "misconceptions": "That the random-walk hypothesis says prices move randomly for no reason (it says price changes reflect unpredictable news, not that prices are arbitrary), and that it rules out all predictability over all horizons (evidence mainly concerns short horizons).",
+    "example": "Fama's work beginning in the 1960s found stock prices extremely difficult to predict in the short run, consistent with price changes behaving approximately like random-walk increments.",
+    "citations": [
+      {
+        "source": "The Royal Swedish Academy of Sciences, Prize in Economic Sciences 2013 press release (Fama, Hansen, Shiller)",
+        "url": "https://www.nobelprize.org/prizes/economic-sciences/2013/press-release/",
+        "section": "Press release, 14 October 2013",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

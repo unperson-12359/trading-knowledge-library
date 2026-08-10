@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/law-of-large-numbers",
+  "canonical_sha256": "0cc9645bf1286c58ced789a9c8c8952195ed36e9fe95c7d5c7743fbd0c6d2093",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/law-of-large-numbers",
+    "name": "Law of large numbers",
+    "aliases": [
+      "LLN"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The theorem that, as the number of independent trials grows, the sample average (or relative frequency of an event) converges to the expected value (or theoretical probability). The difference between the theoretical probability and the observed relative frequency approaches zero as trials increase.",
+    "intuition": "Luck averages out with repetition: a few trades can go anywhere, but over thousands of trades your win rate and mean return settle toward their true underlying values.",
+    "mechanics": "For i.i.d. variables with finite mean mu, the sample mean converges to mu (in probability for the weak law, almost surely for the strong law). OpenStax's canonical illustration: Karl Pearson tossed a fair coin 24,000 times and got 12,012 heads - 50.05% versus the theoretical 50%.",
+    "formula": "For i.i.d. X_1, ..., X_n with E[X_i] = mu: (1/n) * SUM X_i -> mu as n -> infinity (in probability, weak law; almost surely, strong law).",
+    "relationships": [
+      "Expected value",
+      "Central limit theorem",
+      "Sample mean",
+      "Consistency"
+    ],
+    "failure_modes": "The LLN requires independent draws from a fixed distribution with a finite mean; serial dependence, regime shifts, or infinite-mean (Cauchy-like) behavior all break it. It is also asymptotic - it guarantees nothing about how many trials are 'enough', which in trading can exceed any feasible track record.",
+    "misconceptions": "The LLN does not say deviations get 'corrected' - after a run of losses, the expected remaining number of losses is unchanged (no gambler's fallacy balancing). Convergence is in proportions, not in raw counts: the absolute gap between heads and tails can keep growing while the percentage gap shrinks.",
+    "example": "A strategy with a true 52% win rate may show 45% over 40 trades but will approach 52% as the number of trades grows into the thousands - if its edge and the market regime remain stable.",
+    "citations": [
+      {
+        "source": "OpenStax, Introductory Statistics",
+        "url": "https://openstax.org/books/introductory-statistics/pages/4-2-mean-or-expected-value-and-standard-deviation",
+        "section": "4.2 (Law of Large Numbers; Pearson coin-toss illustration)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

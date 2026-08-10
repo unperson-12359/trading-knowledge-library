@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/population-mean",
+  "canonical_sha256": "041cba5d772be40fe433eea57d10e5a21a09ba46c05414714730a3e4e2afe29b",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/population-mean",
+    "name": "Population mean",
+    "aliases": [
+      "mu",
+      "true mean"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The mean of the entire population (or data-generating process), denoted mu; equivalently, the expected value of the underlying probability distribution. It is a fixed but typically unknown parameter that sample statistics estimate.",
+    "intuition": "It is the 'true average' you would get if you could observe every possible outcome - the quantity your sample mean is trying to approximate.",
+    "mechanics": "For a finite population of N items, mu = (1/N) SUM x_i; for a probability distribution, mu = E[X] (the probability-weighted average). Because the population is rarely fully observable, mu is estimated by the sample mean, with uncertainty quantified by the standard error and confidence intervals.",
+    "formula": "Finite population: mu = (1/N) * SUM_{i=1..N} x_i. Distributional: mu = E[X] = SUM x*P(x) (discrete) or integral x*f(x) dx (continuous).",
+    "relationships": [
+      "Sample mean",
+      "Expected value",
+      "Arithmetic mean",
+      "Standard error",
+      "Confidence interval"
+    ],
+    "failure_modes": "In non-stationary markets the population mean is a moving target - the 'true' mean return of one regime does not describe the next - so even a perfectly estimated historical mu has limited forward content. For distributions without a finite first moment, mu does not exist at all.",
+    "misconceptions": "Mu is not 'the average of a big sample'; it is a parameter of the underlying process, conceptually independent of any data. And a long sample does not guarantee the sample mean is close to a current mu when the process drifts.",
+    "example": "The sample mean of 10 years of daily equity returns is an estimate of mu, but the 2020 volatility regime change means the pre-2020 mu may no longer describe the current process.",
+    "citations": [
+      {
+        "source": "OpenStax, Introductory Statistics",
+        "url": "https://openstax.org/books/introductory-statistics/pages/2-7-measures-of-the-spread-of-the-data",
+        "section": "2.7 (mu vs x-bar notation and definitions)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "OpenStax, Introductory Statistics",
+        "url": "https://openstax.org/books/introductory-statistics/pages/4-2-mean-or-expected-value-and-standard-deviation",
+        "section": "4.2 (mu as expected value)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

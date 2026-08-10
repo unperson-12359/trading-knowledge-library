@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/drift",
+  "canonical_sha256": "c62776091c638c985c7717352cf373eef0179dde28c82a376b5d2159a5083588",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/drift",
+    "name": "Drift",
+    "aliases": [
+      "drift term",
+      "trend drift"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The deterministic, systematic component of a stochastic process - the average rate at which the process is expected to move per unit of time, distinct from its random fluctuations. In a geometric Brownian motion or random walk with drift, it is the constant expected change per period.",
+    "intuition": "Drift is the steady current in a river; the waves are random, but the current carries you in one direction on average.",
+    "mechanics": "In a random walk with drift X_t = c + X_{t-1} + epsilon_t, c is the drift and the process trends upward (or downward) by c per period on average. In continuous time, dS_t = mu*S_t*dt + sigma*S_t*dW_t has drift mu*S_t, the expected instantaneous return. Drift is estimated as a sample mean of increments and is hard to estimate precisely because estimation error shrinks only with the length of the time span, not the sampling frequency.",
+    "formula": "Random walk with drift: X_t = c + X_{t-1} + epsilon_t, so E[X_t - X_{t-1}] = c. GBM: dS_t = mu*S_t*dt + sigma*S_t*dW_t, with mu the drift (expected return).",
+    "relationships": [
+      "Random walk",
+      "Unit root",
+      "Stationarity",
+      "Stochastic volatility model"
+    ],
+    "failure_modes": "Drift estimates over short samples are extremely imprecise: decades of daily data still leave wide confidence intervals on annual expected returns. Assuming a constant drift fails when expected returns are time-varying or regime-dependent.",
+    "misconceptions": "That more frequent sampling (e.g., minute data) improves drift estimates - it does not, because drift uncertainty depends on the total time span; and that a visible trend in a short sample establishes a nonzero drift.",
+    "example": "U.S. equity prices are often modeled as a random walk with positive drift of roughly 6-8% per year, but estimating that drift from a 20-year sample carries a standard error of several percentage points.",
+    "citations": [
+      {
+        "source": "Wikipedia, Stochastic volatility (definition of drift in geometric Brownian motion)",
+        "url": "https://en.wikipedia.org/wiki/Stochastic_volatility",
+        "section": "Basic model",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

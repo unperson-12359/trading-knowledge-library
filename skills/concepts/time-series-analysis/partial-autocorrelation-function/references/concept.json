@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/partial-autocorrelation-function",
+  "canonical_sha256": "e23074fa6e84241189b78ddc2f341f1ab4c590800403f758d2a7cb20ceb36858",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/partial-autocorrelation-function",
+    "name": "Partial autocorrelation function",
+    "aliases": [
+      "PACF",
+      "partial correlogram"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The partial autocorrelations of a time series viewed as a function of lag h, plotted with confidence bands. Whereas the ACF measures total dependence at each lag, the PACF measures only the direct dependence net of intermediate lags, and its cutoff after lag p is the classic signature of an AR(p) process.",
+    "intuition": "The PACF is a lag-by-lag scan asking: after accounting for everything in between, does the value h steps back still tell me anything new about today?",
+    "mechanics": "Estimated at each lag h as the final coefficient of an order-h autoregression (Yule-Walker, OLS, Levinson-Durbin, or Burg methods). Used jointly with the ACF for Box-Jenkins model identification: AR(p) shows PACF cutoff at p with decaying ACF; MA(q) shows ACF cutoff at q with decaying PACF; ARMA shows decay in both.",
+    "formula": "PACF(h) = phi_hh, the coefficient on X_{t-h} in X_t = sum_{j=1..h} phi_hj*X_{t-j} + e_t, computed recursively from the autocovariances.",
+    "relationships": [
+      "Partial autocorrelation",
+      "Autocorrelation function",
+      "AR model",
+      "ARMA model"
+    ],
+    "failure_modes": "Cutoff identification is judgmental in real data where estimates are noisy and series are short or seasonal; over-reliance on visual cutoffs leads to over- or under-specified models. Non-stationarity produces slowly decaying, uninformative PACFs.",
+    "misconceptions": "That the PACF is a redundant duplicate of the ACF; the two answer different questions and are used together because they have complementary cutoff/decay signatures.",
+    "example": "A monthly sales series with a PACF spike at lag 1 and lag 12 only, and an ACF that decays, suggests an AR structure with a seasonal lag-12 term.",
+    "citations": [
+      {
+        "source": "statsmodels documentation, statsmodels.tsa.stattools.pacf (Partial autocorrelation estimate)",
+        "url": "https://www.statsmodels.org/dev/generated/statsmodels.tsa.stattools.pacf.html",
+        "section": "Parameters and Notes",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

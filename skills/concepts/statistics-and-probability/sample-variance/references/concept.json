@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/sample-variance",
+  "canonical_sha256": "dcf3317e7edea5f78105a070a73f79c830da67848eb233a2f7d37f9881d7294f",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/sample-variance",
+    "name": "Sample variance",
+    "aliases": [
+      "s^2",
+      "empirical variance"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The average squared deviation of sample observations from the sample mean, computed with divisor n - 1 (Bessel's correction). The n - 1 divisor makes it an unbiased estimator of the population variance; the naive n-divisor version is biased downward.",
+    "intuition": "It is the variance you compute from the data you have, adjusted slightly upward because estimating the mean from the same data eats one degree of freedom.",
+    "mechanics": "Compute the sample mean, sum the squared deviations from it, and divide by n - 1. Dividing by n instead systematically underestimates sigma^2 by the factor (n-1)/n because the sample mean sits closer to the sample points than the true mean does; its square root is the sample standard deviation.",
+    "formula": "s^2 = SUM_{i=1..n} (x_i - x_bar)^2 / (n - 1), where x_bar is the sample mean and n the sample size; the uncorrected version (divisor n) has E[S^2] = ((n-1)/n) * sigma^2.",
+    "relationships": [
+      "Variance",
+      "Standard deviation",
+      "Estimator bias",
+      "Sample mean",
+      "Population mean"
+    ],
+    "failure_modes": "Like all moment-based spread measures it is dominated by tail observations and unreliable for heavy-tailed data; for returns with volatility clustering it also varies strongly across sub-periods, so a single full-sample s^2 averages over regimes. It is undefined (as a population quantity) when the second moment does not exist.",
+    "misconceptions": "The n - 1 divisor is not a small-sample 'fudge factor' to ignore; it is exactly the correction that removes the downward bias, and with n = 30 the naive estimator is still about 3% low. Also, unbiasedness of s^2 does not carry over to its square root: the sample standard deviation remains slightly biased for sigma.",
+    "example": "Five daily returns with sum of squared deviations from their mean equal to 0.001 give s^2 = 0.001/4 = 0.00025 (s = 1.58% daily); dividing by n = 5 instead would give 0.0002, an underestimate.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm",
+        "section": "1.3.5.6, 'Measures of Scale'",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia, 'Bias of an estimator'",
+        "url": "https://en.wikipedia.org/wiki/Bias_of_an_estimator",
+        "section": "Examples: Sample variance (Bessel's correction)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
