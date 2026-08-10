@@ -10,7 +10,7 @@ Use the repository catalog as evidence for research and decision support. Do not
 ## Route the request
 
 1. Identify the user's intent: explain, compare, apply, or diagnose a misconception.
-2. Run `python scripts/search.py "<query>" --limit 5` from this skill directory. Add `--core-only` for perpetual-futures workflow questions when appropriate.
+2. Run `python scripts/search.py "<query>" --limit 5` from this skill directory. Add `--core-only` for perpetual-futures workflow questions when appropriate. The router resolves retired identifiers and binds numbered requests such as “20-period simple return” to the canonical N-period skill with `periods=20`.
 3. Select at most three concepts whose definitions and mechanics directly address the request. If the top matches represent materially different meanings, state the ambiguity before continuing.
 4. Read each selected package's `skill.json`, `SKILL.md`, and `references/concept.json`. Treat `references/concept.json` as a generated projection; its `canonical_sha256` must match the package profile.
 5. Apply the selected concept workflows. Keep sourced facts, analytical inferences, and missing live context visibly separate.
@@ -25,6 +25,6 @@ Never invent prices, positions, venue rules, or other live inputs. Never promise
 ## Catalog locations
 
 - Local manifest: `../../../skills/manifest.json`
+- Compatibility aliases: `../../../aliases/concept-aliases.json`
 - Concept packages: `../../../skills/concepts/`
 - Public catalog fallback: `https://unperson-12359.github.io/trading-knowledge-library/api/v1/skills.json`
-

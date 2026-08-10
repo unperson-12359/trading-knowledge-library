@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-aliases.schema.json",
+  "title": "Trading concept compatibility aliases",
+  "type": "object",
+  "required": ["$schema", "schema_version", "families"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": 1},
+    "families": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "description", "parameter", "legacy_concept_id_template", "legacy_skill_name_template", "legacy_display_name_template", "legacy_term_templates", "canonical_concept_id", "canonical_skill_name"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+          "description": {"type": "string"},
+          "parameter": {
+            "type": "object",
+            "required": ["name", "type", "minimum", "maximum"],
+            "properties": {
+              "name": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+              "type": {"const": "integer"},
+              "minimum": {"type": "integer", "minimum": 1},
+              "maximum": {"type": "integer", "minimum": 1}
+            },
+            "additionalProperties": false
+          },
+          "legacy_concept_id_template": {"type": "string"},
+          "legacy_skill_name_template": {"type": "string"},
+          "legacy_display_name_template": {"type": "string"},
+          "legacy_term_templates": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "canonical_concept_id": {"type": "string"},
+          "canonical_skill_name": {"type": "string", "pattern": "^[a-z0-9-]{1,63}$"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

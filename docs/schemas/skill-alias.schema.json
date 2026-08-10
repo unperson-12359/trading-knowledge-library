@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unperson-12359.github.io/trading-knowledge-library/schemas/skill-alias.schema.json",
+  "title": "Resolved concept and skill compatibility alias",
+  "type": "object",
+  "required": ["$schema", "schema_version", "type", "legacy_concept_id", "legacy_skill_name", "legacy_display_name", "legacy_terms", "canonical_concept_id", "canonical_skill_name", "parameters", "canonical_detail_url", "canonical_profile_url"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": 1},
+    "type": {"const": "alias"},
+    "legacy_concept_id": {"type": "string"},
+    "legacy_skill_name": {"type": "string"},
+    "legacy_display_name": {"type": "string"},
+    "legacy_terms": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "canonical_concept_id": {"type": "string"},
+    "canonical_skill_name": {"type": "string"},
+    "parameters": {
+      "type": "object",
+      "required": ["periods"],
+      "properties": {"periods": {"type": "integer", "minimum": 1}},
+      "additionalProperties": false
+    },
+    "canonical_detail_url": {"type": "string"},
+    "canonical_profile_url": {"type": "string"}
+  },
+  "additionalProperties": false
+}

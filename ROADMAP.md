@@ -29,13 +29,13 @@ verified on GitHub Pages before the next checkpoint begins.
 |---|---|
 | Research and document the router-plus-catalog architecture | Complete |
 | Add router, schemas, generator, validation, API, and review catalog | Complete |
-| Generate all 1,500 concept packages in core-first groups of 20 | Complete (1,500/1,500) |
+| Generate the complete GitHub-first concept-skill catalog | Complete |
 | Consolidate public browsing into one catalog and unified concept pages | Complete |
+| Consolidate numbered simple returns into one parameterized concept | Complete (1,438 canonical + 63 aliases) |
 
-The authoritative live checkpoint is `skills/progress.json`. Every completed
-batch contains exactly 20 packages, a batch manifest, and retrieval evaluation
-fixtures; it is committed, pushed, and production-verified before the next
-batch is generated.
+The authoritative catalog is `skills/manifest.json`, generated from canonical
+concept JSON. Compatibility aliases preserve retired identifiers without
+duplicating concept or skill packages.
 
 ## Core source-audit batches
 

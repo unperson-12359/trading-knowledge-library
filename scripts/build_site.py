@@ -23,6 +23,8 @@ import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
 
+from build_skills import expand_aliases
+
 ROOT = Path(__file__).resolve().parent.parent
 CONCEPTS = ROOT / "concepts"
 DOCS = ROOT / "docs"
@@ -89,6 +91,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 #search-results .sr-domain{color:#888;font-size:.72rem}
 .catalog-tools{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin:.8rem 0}.letter-nav{display:flex;gap:.2rem;flex-wrap:wrap;font:600 .78rem system-ui}.letter-nav a{padding:.2rem .4rem;border-radius:4px;border:1px solid #ddd;color:#444}.letter-nav a.active,.letter-nav a:hover{background:#111;color:#fff;text-decoration:none;border-color:#111}.catalog-pagination{display:flex;gap:.35rem;justify-content:center;align-items:center;margin:1.2rem 0;font-family:system-ui}.catalog-pagination a,.catalog-pagination span{border:1px solid #ccc;border-radius:5px;padding:.35rem .65rem}.catalog-pagination .current{background:#111;color:#fff;border-color:#111}.catalog-pagination a:hover{background:#f3f3f0;text-decoration:none}
 .redirect-card{max-width:620px;margin:12vh auto;padding:1.5rem;border:1px solid #ddd;border-radius:10px;font-family:system-ui;background:#fff}
+.parameter-note{background:#eef6ff;border-left:4px solid #0b5fff;padding:.7rem 1rem;margin:1rem 0;font-family:system-ui}
 @media(max-width:820px){
  .global-header{position:static}.header-inner{align-items:flex-start;gap:.6rem;flex-wrap:wrap}.global-nav{order:3;width:100%}.github-link{margin-left:0}
  main{padding:1rem}
@@ -101,37 +104,38 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 }
 """
 
-CATALOG_JS = """
+CATALOG_JS = r"""
 (function(){
   var form=document.getElementById('catalog-controls'),out=document.getElementById('catalog-results'),count=document.getElementById('catalog-count'),letters=document.getElementById('letter-nav'),pager=document.getElementById('catalog-pagination');
   if(!form||!out)return;
-  var state={skills:[],concepts:{}},pageSize=60,fields=['q','domain','regime','letter','sort'];
+  var state={skills:[],concepts:{},aliases:{}},pageSize=60,fields=['q','domain','regime','letter','sort'];
   function h(s){return String(s==null?'':s).replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]});}
   function applyUrl(){var p=new URLSearchParams(location.search);fields.forEach(function(k){if(p.has(k)&&form.elements[k])form.elements[k].value=p.get(k)});form.elements.core.checked=p.get('core')==='1';}
   function params(page){var p=new URLSearchParams();fields.forEach(function(k){var v=form.elements[k].value.trim();if(v&&!(k==='sort'&&v==='az'))p.set(k,v)});if(form.elements.core.checked)p.set('core','1');if(page>1)p.set('page',page);return p;}
   function href(changes){var p=params(1);Object.keys(changes).forEach(function(k){var v=changes[k];if(v)p.set(k,v);else p.delete(k)});return 'index.html'+(p.toString()?'?'+p:'');}
   function updateUrl(page){var p=params(page);history.replaceState(null,'',location.pathname+(p.toString()?'?'+p:''));}
   function render(){
-    var q=form.elements.q.value.trim().toLowerCase(),domain=form.elements.domain.value,regime=form.elements.regime.value,letter=form.elements.letter.value.toUpperCase(),core=form.elements.core.checked,sort=form.elements.sort.value;
-    var rows=state.skills.filter(function(x){var c=state.concepts[x.concept_id]||{},text=[x.display_name,x.concept_id,x.description,(x.trigger_phrases||[]).join(' '),(c.aliases||[]).join(' '),c.definition,c.intuition,c.mechanics,c.failure_modes,c.misconceptions].join(' ').toLowerCase(),regimes=((c.regime_annotation||{}).regime_relevance||[]);return (!q||text.indexOf(q)!==-1)&&(!domain||x.concept_id.split('/')[0]===domain)&&(!core||x.core)&&(!regime||regimes.indexOf(regime)!==-1)&&(!letter||x.display_name.charAt(0).toUpperCase()===letter);});
+    var q=form.elements.q.value.trim().toLowerCase(),domain=form.elements.domain.value,regime=form.elements.regime.value,letter=form.elements.letter.value.toUpperCase(),core=form.elements.core.checked,sort=form.elements.sort.value,periodMatch=q.match(/\b(\d+|n)[\s-]*periods?[\s-]+(?:(?:simple|price|holding[\s-]+period)[\s-]+)?returns?\b/i);
+    var rows=state.skills.filter(function(x){var c=state.concepts[x.concept_id]||{},aliasText=(state.aliases[x.concept_id]||[]).map(function(a){return [a.legacy_display_name,a.legacy_concept_id,a.legacy_skill_name,(a.legacy_terms||[]).join(' ')].join(' ')}).join(' '),text=[x.display_name,x.concept_id,x.description,(x.trigger_phrases||[]).join(' '),(c.aliases||[]).join(' '),aliasText,c.definition,c.intuition,c.mechanics,c.failure_modes,c.misconceptions].join(' ').toLowerCase(),regimes=((c.regime_annotation||{}).regime_relevance||[]),parameterHit=periodMatch&&x.concept_id==='parameterized-analytics/n-period-simple-return';return (!q||text.indexOf(q)!==-1||parameterHit)&&(!domain||x.concept_id.split('/')[0]===domain)&&(!core||x.core)&&(!regime||regimes.indexOf(regime)!==-1)&&(!letter||x.display_name.charAt(0).toUpperCase()===letter);});
     rows.sort(function(a,b){if(sort==='domain'){var d=a.domain.localeCompare(b.domain);if(d)return d;}return a.display_name.localeCompare(b.display_name);});
     var requested=parseInt(new URLSearchParams(location.search).get('page')||'1',10),pages=Math.max(1,Math.ceil(rows.length/pageSize)),page=Math.min(Math.max(requested,1),pages),shown=rows.slice((page-1)*pageSize,page*pageSize);
     updateUrl(page);count.innerHTML=rows.length+' of '+state.skills.length+' concepts'+(rows.length?' &middot; showing '+((page-1)*pageSize+1)+'&ndash;'+Math.min(page*pageSize,rows.length):'');
-    out.innerHTML=shown.map(function(x){var c=state.concepts[x.concept_id]||{},url='skills/'+encodeURIComponent(x.skill_name)+'/';return '<article class="skill-card"><h2><a href="'+url+'">'+h(x.display_name)+'</a><span class="skill-arrow">&rarr;</span></h2><div class="meta">'+h(x.domain)+(x.core?' &middot; core collection':'')+'</div><p>'+h(c.definition||x.description)+'</p><div class="skill-links"><a href="'+url+'">Open concept</a> &middot; <a href="api/v1/skills/'+encodeURIComponent(x.skill_name)+'.json">JSON</a></div></article>';}).join('')||(state.skills.length?'<p>No concepts match these filters.</p>':'<p>The concept catalog is being prepared.</p>');
+    out.innerHTML=shown.map(function(x){var c=state.concepts[x.concept_id]||{},url='skills/'+encodeURIComponent(x.skill_name)+'/'+(periodMatch&&x.concept_id==='parameterized-analytics/n-period-simple-return'&&periodMatch[1]!=='n'?'?periods='+encodeURIComponent(periodMatch[1]):'');return '<article class="skill-card"><h2><a href="'+url+'">'+h(x.display_name)+'</a><span class="skill-arrow">&rarr;</span></h2><div class="meta">'+h(x.domain)+(x.core?' &middot; core collection':'')+'</div><p>'+h(c.definition||x.description)+'</p><div class="skill-links"><a href="'+url+'">Open concept</a> &middot; <a href="api/v1/skills/'+encodeURIComponent(x.skill_name)+'.json">JSON</a></div></article>';}).join('')||(state.skills.length?'<p>No concepts match these filters.</p>':'<p>The concept catalog is being prepared.</p>');
     var alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');letters.innerHTML='<a href="'+h(href({letter:''}))+'"'+(!letter?' class="active"':'')+'>All</a>'+alphabet.map(function(x){return '<a href="'+h(href({letter:x}))+'"'+(letter===x?' class="active"':'')+'>'+x+'</a>';}).join('');
     var nav=[];if(page>1)nav.push('<a href="'+h(href({page:String(page-1)}))+'">&larr; Previous</a>');nav.push('<span class="current">'+page+' of '+pages+'</span>');if(page<pages)nav.push('<a href="'+h(href({page:String(page+1)}))+'">Next &rarr;</a>');pager.innerHTML=nav.join('');
   }
-  applyUrl();Promise.all([fetch('api/v1/skills.json').then(function(r){return r.json()}),fetch('api/v1/concepts.json').then(function(r){return r.json()})]).then(function(data){state.skills=data[0].skills||[];data[1].forEach(function(c){state.concepts[c.id]=c});render();});
+  applyUrl();Promise.all([fetch('api/v1/skills.json').then(function(r){return r.json()}),fetch('api/v1/concepts.json').then(function(r){return r.json()}),fetch('api/v1/concept-aliases.json').then(function(r){return r.json()})]).then(function(data){state.skills=data[0].skills||[];data[1].forEach(function(c){state.concepts[c.id]=c});(data[2].aliases||[]).forEach(function(a){(state.aliases[a.canonical_concept_id]||(state.aliases[a.canonical_concept_id]=[])).push(a)});render();});
   form.addEventListener('input',function(){history.replaceState(null,'',location.pathname);render();});form.addEventListener('change',function(){history.replaceState(null,'',location.pathname);render();});form.addEventListener('submit',function(e){e.preventDefault();render();});
 })();
 """
 
-COPY_JS = """
+COPY_JS = r"""
 (function(){
   var tabs=[].slice.call(document.querySelectorAll('[data-skill-tab]'));
   function show(id,updateHash){tabs.forEach(function(tab){var selected=tab.getAttribute('data-skill-tab')===id;tab.setAttribute('aria-selected',selected?'true':'false');var panel=document.getElementById(tab.getAttribute('aria-controls'));if(panel)panel.hidden=!selected;});if(updateHash)history.replaceState(null,'','#'+id);}
   tabs.forEach(function(tab){tab.addEventListener('click',function(){show(tab.getAttribute('data-skill-tab'),true);});});
   if(tabs.length){var requested=location.hash.replace(/^#/,'');show(tabs.some(function(tab){return tab.getAttribute('data-skill-tab')===requested;})?requested:'concept',false);}
+  var periodNote=document.getElementById('selected-period'),periods=new URLSearchParams(location.search).get('periods');if(periodNote&&/^\d+$/.test(periods||'')&&Number(periods)>0){periodNote.hidden=false;periodNote.innerHTML='<strong>Selected lookback:</strong> '+Number(periods)+' periods. Use this value for <code>n</code> and interpret it with the chosen bar frequency.';}
   document.querySelectorAll('[data-copy]').forEach(function(button){
     button.addEventListener('click',function(){var target=document.getElementById(button.getAttribute('data-copy'));if(!target)return;navigator.clipboard.writeText(target.textContent).then(function(){var old=button.textContent;button.textContent='Copied';setTimeout(function(){button.textContent=old},1400);});});
   });
@@ -373,9 +377,7 @@ def main():
     skill_manifest = json.loads(
         (ROOT / "skills" / "manifest.json").read_text(encoding="utf-8")
     )
-    skill_progress = json.loads(
-        (ROOT / "skills" / "progress.json").read_text(encoding="utf-8")
-    )
+    compatibility_aliases = expand_aliases(ROOT)
     skill_architecture = json.loads(
         (ROOT / "skills" / "architecture.json").read_text(encoding="utf-8")
     )
@@ -391,6 +393,9 @@ def main():
     concept_names = {}
     concept_by_id = {}
     term_ids = {}
+    aliases_by_canonical = {}
+    for alias in compatibility_aliases:
+        aliases_by_canonical.setdefault(alias["canonical_concept_id"], []).append(alias)
     for slug, data in domains:
         for index, entry in enumerate(data):
             page_no = index // PER_PAGE + 1
@@ -402,7 +407,12 @@ def main():
             search_index.append({
                 "n": entry["name"], "d": entry["domain"],
                 "u": concept_urls[entry["id"]],
-                "a": " ".join(entry.get("aliases", [])),
+                "a": " ".join(
+                    entry.get("aliases", []) + [
+                        alias["legacy_display_name"]
+                        for alias in aliases_by_canonical.get(entry["id"], [])
+                    ]
+                ),
                 "x": " ".join([entry.get("definition", ""), entry.get("intuition", "")]),
             })
             for term in [entry["name"], *entry.get("aliases", [])]:
@@ -443,6 +453,35 @@ def main():
             written.add(rel)
             redirects.add(rel)
 
+    # ---- retired numbered return domain URLs -> parameterized concept ----
+    return_alias_pages = {}
+    for alias in compatibility_aliases:
+        periods = alias["parameters"]["periods"]
+        page_no = (periods - 2) // PER_PAGE + 1
+        return_alias_pages.setdefault(page_no, {})[anchor(alias["legacy_display_name"])] = (
+            "../skills/tkl-n-period-simple-return/?periods=" + str(periods)
+        )
+    return_alias_pages.setdefault(1, {})[anchor("N-period simple return")] = (
+        "../skills/tkl-n-period-simple-return/"
+    )
+    return_dir = DOCS / "parameterized-analytics"
+    return_dir.mkdir(exist_ok=True)
+    for page_no, routes in sorted(return_alias_pages.items()):
+        fname = "index.html" if page_no == 1 else f"page-{page_no}.html"
+        fallback = "../index.html?domain=parameterized-analytics"
+        script = (
+            "(function(){var routes=" + json.dumps(routes, ensure_ascii=False) +
+            ",key=decodeURIComponent(location.hash.slice(1));"
+            f"location.replace(routes[key]||{json.dumps(fallback)});}})();"
+        )
+        rel = f"parameterized-analytics/{fname}"
+        (return_dir / fname).write_text(
+            redirect_document("Parameterized analytics", fallback, script),
+            encoding="utf-8",
+        )
+        written.add(rel)
+        redirects.add(rel)
+
     # ---- compatibility A-Z route ----
     all_script = "location.replace('index.html'+location.search+location.hash);"
     (DOCS / "all.html").write_text(
@@ -466,7 +505,7 @@ def main():
     index_body = (
         '<div class="crumbs">Library</div>'
         '<section class="skills-hero"><h1>Trading Knowledge Library</h1>'
-        '<p>Search 1,500 trading concepts. Every result opens one complete page with the '
+        f'<p>Search {total:,} canonical trading concepts. Every result opens one complete page with the '
         'human explanation, AI skill instructions, canonical JSON, packaged references, '
         'failure modes, misconceptions, and citations.</p>'
         f'<p class="catalog-stat"><strong>{total}</strong> concepts across '
@@ -489,7 +528,7 @@ def main():
     index_html = page(
         "Pakupai Trading Knowledge Library", index_body, "", "", domains,
         extra_head=f'<link rel="canonical" href="{BASE}/">',
-        description="Search 1,500 unified trading concept and AI skill pages."
+        description=f"Search {total:,} unified trading concept and AI skill pages."
     ).replace("</body>", f"<script>{CATALOG_JS}</script></body>")
     (DOCS / "index.html").write_text(index_html, encoding="utf-8")
     written.add("index.html")
@@ -611,11 +650,17 @@ def main():
             f'<ul>{"".join(related_links)}</ul></div>' if related_links else ""
         )
         domain_slug = profile["concept_id"].split("/", 1)[0]
+        parameter_note = (
+            '<div id="selected-period" class="parameter-note" hidden></div>'
+            if profile["concept_id"] == "parameterized-analytics/n-period-simple-return"
+            else ""
+        )
         detail_body = (
             '<div class="crumbs"><a href="../../index.html">Library</a> / '
             f'<a href="../../index.html?domain={esc(domain_slug)}">{esc(profile["domain"])}</a> / '
             + esc(profile["display_name"]) + '</div>'
-            f'<h1>{esc(profile["display_name"])}</h1><p>{esc(profile["description"])}</p>'
+            f'<h1>{esc(profile["display_name"])}</h1>' + parameter_note +
+            f'<p>{esc(profile["description"])}</p>'
             f'<div>{aliases}</div>'
             '<div class="skill-identity">'
             f'<div><strong>Skill package</strong><span>{esc(profile["skill_name"])}</span></div>'
@@ -667,6 +712,24 @@ def main():
         ).replace("</body>", f"<script>{COPY_JS}</script></body>")
         (detail_dir / "index.html").write_text(detail_html, encoding="utf-8")
         written.add(f'skills/{profile["skill_name"]}/index.html')
+
+    # Retired numbered skill URLs retain lightweight redirects with the bound period.
+    for alias in compatibility_aliases:
+        alias_dir = skill_dir / alias["legacy_skill_name"]
+        alias_dir.mkdir()
+        periods = alias["parameters"]["periods"]
+        fallback = f'../tkl-n-period-simple-return/?periods={periods}'
+        script = (
+            f"location.replace('../tkl-n-period-simple-return/?periods={periods}'"
+            "+location.hash);"
+        )
+        rel = f'skills/{alias["legacy_skill_name"]}/index.html'
+        (alias_dir / "index.html").write_text(
+            redirect_document(alias["legacy_display_name"], fallback, script),
+            encoding="utf-8",
+        )
+        written.add(rel)
+        redirects.add(rel)
 
     # ---- research playbooks ----
     playbook_dir = DOCS / "playbooks"
@@ -834,32 +897,62 @@ def main():
         (skill_api_dir / f'{profile["skill_name"]}.json').write_text(
             json.dumps(api_profile, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
         )
-    public_skill_catalog = {
+
+    public_aliases = []
+    for alias in compatibility_aliases:
+        periods = alias["parameters"]["periods"]
+        public_alias = {
+            "$schema": f"{BASE}/schemas/skill-alias.schema.json",
+            "schema_version": 1,
+            "type": "alias",
+            **alias,
+            "canonical_detail_url": (
+                f"{BASE}/skills/{alias['canonical_skill_name']}/?periods={periods}"
+            ),
+            "canonical_profile_url": (
+                f"{BASE}/api/v1/skills/{alias['canonical_skill_name']}.json"
+            ),
+        }
+        public_aliases.append(public_alias)
+        (skill_api_dir / f'{alias["legacy_skill_name"]}.json').write_text(
+            json.dumps(public_alias, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+    public_alias_catalog = {
+        "$schema": f"{BASE}/schemas/skill-alias-catalog.schema.json",
         "schema_version": 1,
-        "target_count": skill_manifest["target_count"],
-        "completed_count": len(public_skills),
+        "alias_count": len(public_aliases),
+        "aliases": public_aliases,
+    }
+    (api_dir / "concept-aliases.json").write_text(
+        json.dumps(public_alias_catalog, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    public_skill_catalog = {
+        "schema_version": 2,
+        "concept_count": skill_manifest["concept_count"],
+        "skill_count": len(public_skills),
+        "alias_count": len(public_aliases),
         "skills": public_skills,
     }
     (api_dir / "skills.json").write_text(
         json.dumps(public_skill_catalog, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
-    (api_dir / "skill-progress.json").write_text(
-        json.dumps(skill_progress, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-    )
     (api_dir / "skill-architecture.json").write_text(
         json.dumps(skill_architecture, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     manifest = {
-        "schema_version": 1,
+        "schema_version": 2,
         "generated": date.today().isoformat(),
-        "counts": {"concepts": total, "core_concepts": len(core_ids), "concept_skills": len(public_skills), "playbooks": len(playbooks), "research_specs": len(research_specs), "datasets": len(dataset_manifests), "research_results": len(research_results)},
+        "counts": {"concepts": total, "core_concepts": len(core_ids), "concept_skills": len(public_skills), "compatibility_aliases": len(public_aliases), "playbooks": len(playbooks), "research_specs": len(research_specs), "datasets": len(dataset_manifests), "research_results": len(research_results)},
         "endpoints": {
             "concepts": "concepts.json", "core_perps": "core-perps.json",
             "regimes": "regimes.json", "playbooks": "playbooks.json",
             "research_specs": "research-specs.json", "datasets": "dataset-manifests.json",
             "research_results": "research-results.json", "skills": "skills.json",
-            "skill_progress": "skill-progress.json", "skill_architecture": "skill-architecture.json"
+            "concept_aliases": "concept-aliases.json",
+            "skill_architecture": "skill-architecture.json"
         },
         "relationship_resolution": {
             "total_references": relationship_count,

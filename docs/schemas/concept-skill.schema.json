@@ -3,11 +3,11 @@
   "$id": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
   "title": "Installable trading concept skill profile",
   "type": "object",
-  "required": ["$schema", "schema_version", "version", "skill_name", "concept_id", "display_name", "domain", "description", "trigger_phrases", "supported_intents", "context_requirements", "workflow", "constraints", "output_contract", "core", "batch_number", "package_path", "canonical", "related_concept_ids"],
+  "required": ["$schema", "schema_version", "version", "skill_name", "concept_id", "display_name", "domain", "description", "trigger_phrases", "supported_intents", "context_requirements", "workflow", "constraints", "output_contract", "core", "package_path", "canonical", "related_concept_ids"],
   "properties": {
     "$schema": {"type": "string"},
-    "schema_version": {"const": 1},
-    "version": {"const": 1},
+    "schema_version": {"const": 2},
+    "version": {"const": 2},
     "skill_name": {"type": "string", "pattern": "^[a-z0-9-]{1,63}$"},
     "concept_id": {"type": "string"},
     "display_name": {"type": "string"},
@@ -20,7 +20,6 @@
     "constraints": {"type": "array", "minItems": 4, "items": {"type": "string"}},
     "output_contract": {"type": "object", "required": ["format", "required_fields"], "properties": {"format": {"const": "human-readable-or-json-on-request"}, "required_fields": {"type": "array", "minItems": 7, "items": {"type": "string"}}}, "additionalProperties": false},
     "core": {"type": "boolean"},
-    "batch_number": {"type": "integer", "minimum": 1, "maximum": 75},
     "package_path": {"type": "string", "pattern": "^skills/concepts/[a-z0-9-]+/[a-z0-9-]+$"},
     "canonical": {"type": "object", "required": ["source_path", "sha256"], "properties": {"source_path": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}, "additionalProperties": false},
     "related_concept_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}

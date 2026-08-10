@@ -1,0 +1,85 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 2,
+  "version": 2,
+  "skill_name": "tkl-n-period-simple-return",
+  "concept_id": "parameterized-analytics/n-period-simple-return",
+  "display_name": "N-period simple return",
+  "domain": "Parameterized analytics",
+  "description": "Calculate, explain, compare, or apply an N-period simple return for any positive-integer lookback. Use for requests such as 20-period return, multi-period simple return, lookback return, rolling return, or period simple returns; require the period count and sampling frequency.",
+  "trigger_phrases": [
+    "N-period simple return",
+    "period simple return",
+    "period simple returns",
+    "multi-period simple return",
+    "n-period return",
+    "lookback return",
+    "rolling simple return",
+    "explain N-period simple return",
+    "apply N-period simple return to a trading question",
+    "common misconception about N-period simple return"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context",
+      "periods (a positive integer lookback)"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints",
+      "price field",
+      "adjustment policy",
+      "sampling frequency"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "package_path": "skills/concepts/parameterized-analytics/n-period-simple-return",
+  "canonical": {
+    "source_path": "concepts/parameterized-analytics.json",
+    "sha256": "1113df0268f74606b4a77bd3800250048897018adb6e888ed2278fa35f9c7838"
+  },
+  "related_concept_ids": [
+    "statistics-and-probability/simple-return",
+    "statistics-and-probability/log-return"
+  ]
+}

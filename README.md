@@ -1,6 +1,6 @@
 # Pakupai Trading Knowledge Library
 
-A machine-readable library of 1,500 trading concepts across 29 domains. This
+A machine-readable library of 1,438 canonical trading concepts across 29 domains. This
 is the canonical knowledge foundation for Pakupai's AI skills, workflows,
 research playbooks, and future trading IDE.
 
@@ -15,7 +15,7 @@ research playbooks, and future trading IDE.
 - `collections/core-perps.json` fixes the 50-concept generic-perpetual core;
   each core concept has at least two citations and an explicit regime note.
 - `.agents/skills/tkl-concept-router/` is the one automatically discoverable
-  repository skill. It searches the catalog instead of loading 1,500 skill
+  repository skill. It searches the catalog instead of loading 1,438 skill
   descriptions into every model context.
 - `skills/concepts/` contains individually installable, self-contained concept
   packages. Each has human-readable instructions and JSON evidence tied to the
@@ -54,14 +54,12 @@ research/datasets/        immutable normalized market-data snapshots
 research/results/         deterministic metrics and headline trade logs
 skills/architecture.json  machine-readable router/catalog design decision
 skills/manifest.json      generated concept-skill catalog
-skills/progress.json      resumable 20-package rollout checkpoint
 skills/concepts/          organized installable concept packages by domain
-skills/batches/            immutable 20-package batch manifests
-skills/evals/              retrieval fixtures for each generated batch
+aliases/                  compact machine-readable compatibility mappings
 .agents/skills/            small auto-discovered repository router
 schemas/                  machine-readable structured-data schemas
 scripts/status.py       validate the complete catalog
-scripts/build_skills.py generate or validate one 20-package batch
+scripts/build_skills.py build or validate the complete skill catalog
 scripts/export_master.py generate exports/master_v2.txt
 scripts/build_site.py   generate the GitHub Pages site in docs/
 exports/                 generated text output
@@ -81,7 +79,7 @@ impact, and funding models before evaluation.
 ## Consolidated library and static API
 
 The dependency-free public catalog is generated at `docs/index.html`. It
-filters all 1,500 concepts by text, domain, core membership, regime, and first
+filters all 1,438 canonical concepts by text, domain, core membership, regime, and first
 letter, with sorting and pagination retained in the URL for sharing. The former
 A-Z, structured-query, skill-catalog, and domain pages are compatibility routes
 that forward visitors to this catalog or directly to the relevant unified page.
@@ -101,9 +99,14 @@ Versioned JSON endpoints live in `docs/api/v1/`:
 - `research-results.json` and `results/<run-id>/` expose deterministic study
   metrics and the headline-scenario trade log. The human-readable reports in
   `docs/research/` are generated from these same JSON records.
-- `skills.json`, `skill-progress.json`, and `skill-architecture.json` expose
-  the installable skill catalog, exact rollout checkpoint, and design decision.
+- `skills.json`, `concept-aliases.json`, and `skill-architecture.json` expose
+  the installable skill catalog, compatibility mappings, and design decision.
   Individual profiles live under `skills/<skill-name>.json`.
+
+The former 2-period through 64-period simple-return concepts resolve to one
+`N-period simple return` concept with an explicit `periods` parameter. Alias
+records preserve old IDs, skill names, and URLs without counting them as
+canonical concepts.
 
 Every concept has one unified page under `docs/skills/<skill-name>/`. Its
 default tab is the human-readable trading concept; adjacent tabs switch in
@@ -120,9 +123,8 @@ Edit canonical JSON, then validate and regenerate outputs:
 
 ```bash
 python scripts/status.py
+python scripts/build_skills.py build
 python scripts/build_skills.py validate
-# Maintainers: generate exactly one resumable package batch
-python scripts/build_skills.py next-batch
 python scripts/export_master.py
 python scripts/build_site.py
 python scripts/research.py fetch

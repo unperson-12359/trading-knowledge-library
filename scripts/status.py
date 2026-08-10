@@ -15,6 +15,7 @@ from urllib.parse import urlparse
 from build_skills import validate_catalog
 
 ROOT = Path(__file__).resolve().parent.parent
+EXPECTED_CONCEPT_COUNT = 1438
 PLACEHOLDER = "A trading concept within"
 REQUIRED_TEXT = (
     "id", "name", "domain", "definition", "intuition", "mechanics",
@@ -136,16 +137,20 @@ def main():
     ids = [entry.get("id") for entry in entries]
     names = [str(entry.get("name", "")).casefold() for entry in entries]
     indexes = [entry.get("master_index") for entry in entries]
-    if len(entries) != 1500:
-        failures.append(f"expected 1500 entries, found {len(entries)}")
+    if len(entries) != EXPECTED_CONCEPT_COUNT:
+        failures.append(
+            f"expected {EXPECTED_CONCEPT_COUNT} canonical entries, found {len(entries)}"
+        )
     if len(set(ids)) != len(ids):
         failures.append("duplicate or missing IDs exist")
     if len(set(names)) != len(names):
         failures.append("duplicate or missing names exist")
     if not all(isinstance(index, int) for index in indexes):
         failures.append("all master_index values must be integers")
-    elif sorted(indexes) != list(range(1, 1501)):
-        failures.append("master_index must cover 1..1500 exactly once")
+    elif sorted(indexes) != list(range(1, EXPECTED_CONCEPT_COUNT + 1)):
+        failures.append(
+            f"master_index must cover 1..{EXPECTED_CONCEPT_COUNT} exactly once"
+        )
 
     valid_regime_tags = set()
     taxonomy_path = ROOT / "regimes" / "taxonomy.json"
@@ -317,7 +322,10 @@ def main():
     required_schemas = {
         "playbook.schema.json", "research-spec.schema.json",
         "dataset-manifest.schema.json", "trade-log.schema.json",
-        "research-result.schema.json",
+        "research-result.schema.json", "concept-skill.schema.json",
+        "concept-aliases.schema.json", "skill-alias.schema.json",
+        "skill-alias-catalog.schema.json", "skill-manifest.schema.json",
+        "skill-architecture.schema.json",
     }
     schema_paths = {path.name: path for path in (ROOT / "schemas").glob("*.json")}
     missing_schemas = sorted(required_schemas - set(schema_paths))
@@ -472,13 +480,12 @@ def main():
     citations = sum(len(entry.get("citations", [])) for entry in entries)
     skill_errors = validate_catalog(ROOT)
     failures.extend(f"skill catalog: {error}" for error in skill_errors)
-    skill_progress = json.loads(
-        (ROOT / "skills" / "progress.json").read_text(encoding="utf-8")
+    skill_manifest = json.loads(
+        (ROOT / "skills" / "manifest.json").read_text(encoding="utf-8")
     )
     print(
-        f"CONCEPT SKILLS {skill_progress['completed_count']}/"
-        f"{skill_progress['target_count']} in "
-        f"{skill_progress['completed_batches']}/{skill_progress['total_batches']} batches"
+        f"CONCEPT SKILLS {skill_manifest['skill_count']} canonical; "
+        f"{skill_manifest['alias_count']} compatibility aliases"
     )
     print(
         f"\nTOTAL entries={len(entries)} citations={citations} "

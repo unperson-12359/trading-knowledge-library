@@ -58,6 +58,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 #search-results .sr-domain{color:#888;font-size:.72rem}
 .catalog-tools{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin:.8rem 0}.letter-nav{display:flex;gap:.2rem;flex-wrap:wrap;font:600 .78rem system-ui}.letter-nav a{padding:.2rem .4rem;border-radius:4px;border:1px solid #ddd;color:#444}.letter-nav a.active,.letter-nav a:hover{background:#111;color:#fff;text-decoration:none;border-color:#111}.catalog-pagination{display:flex;gap:.35rem;justify-content:center;align-items:center;margin:1.2rem 0;font-family:system-ui}.catalog-pagination a,.catalog-pagination span{border:1px solid #ccc;border-radius:5px;padding:.35rem .65rem}.catalog-pagination .current{background:#111;color:#fff;border-color:#111}.catalog-pagination a:hover{background:#f3f3f0;text-decoration:none}
 .redirect-card{max-width:620px;margin:12vh auto;padding:1.5rem;border:1px solid #ddd;border-radius:10px;font-family:system-ui;background:#fff}
+.parameter-note{background:#eef6ff;border-left:4px solid #0b5fff;padding:.7rem 1rem;margin:1rem 0;font-family:system-ui}
 @media(max-width:820px){
  .global-header{position:static}.header-inner{align-items:flex-start;gap:.6rem;flex-wrap:wrap}.global-nav{order:3;width:100%}.github-link{margin-left:0}
  main{padding:1rem}
@@ -86,8 +87,8 @@ Use this skill for research and decision support involving **Last point of suppl
 Do not use this concept alone as a trade instruction. Educational research and decision support only; not financial advice, a trade recommendation, or evidence of profitability.
 </pre></section><section class="skill-panel" id="panel-skill-json" role="tabpanel" hidden><h2>skill.json</h2><pre class="json">{
   &quot;$schema&quot;: &quot;../../../../schemas/concept-skill.schema.json&quot;,
-  &quot;schema_version&quot;: 1,
-  &quot;version&quot;: 1,
+  &quot;schema_version&quot;: 2,
+  &quot;version&quot;: 2,
   &quot;skill_name&quot;: &quot;tkl-last-point-of-supply&quot;,
   &quot;concept_id&quot;: &quot;wyckoff/last-point-of-supply&quot;,
   &quot;display_name&quot;: &quot;Last point of supply&quot;,
@@ -150,7 +151,6 @@ Do not use this concept alone as a trade instruction. Educational research and d
     ]
   },
   &quot;core&quot;: false,
-  &quot;batch_number&quot;: 44,
   &quot;package_path&quot;: &quot;skills/concepts/wyckoff/last-point-of-supply&quot;,
   &quot;canonical&quot;: {
     &quot;source_path&quot;: &quot;concepts/wyckoff.json&quot;,
@@ -247,6 +247,7 @@ policy:
   function show(id,updateHash){tabs.forEach(function(tab){var selected=tab.getAttribute('data-skill-tab')===id;tab.setAttribute('aria-selected',selected?'true':'false');var panel=document.getElementById(tab.getAttribute('aria-controls'));if(panel)panel.hidden=!selected;});if(updateHash)history.replaceState(null,'','#'+id);}
   tabs.forEach(function(tab){tab.addEventListener('click',function(){show(tab.getAttribute('data-skill-tab'),true);});});
   if(tabs.length){var requested=location.hash.replace(/^#/,'');show(tabs.some(function(tab){return tab.getAttribute('data-skill-tab')===requested;})?requested:'concept',false);}
+  var periodNote=document.getElementById('selected-period'),periods=new URLSearchParams(location.search).get('periods');if(periodNote&&/^\d+$/.test(periods||'')&&Number(periods)>0){periodNote.hidden=false;periodNote.innerHTML='<strong>Selected lookback:</strong> '+Number(periods)+' periods. Use this value for <code>n</code> and interpret it with the chosen bar frequency.';}
   document.querySelectorAll('[data-copy]').forEach(function(button){
     button.addEventListener('click',function(){var target=document.getElementById(button.getAttribute('data-copy'));if(!target)return;navigator.clipboard.writeText(target.textContent).then(function(){var old=button.textContent;button.textContent='Copied';setTimeout(function(){button.textContent=old},1400);});});
   });

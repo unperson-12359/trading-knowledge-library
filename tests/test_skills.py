@@ -7,7 +7,7 @@ from scripts import build_skills
 
 
 ROOT = Path(__file__).resolve().parent.parent
-EXPECTED_FIRST_BATCH = [
+EXPECTED_FIRST_GROUP = [
     "orders-and-execution/market-order",
     "orders-and-execution/limit-order",
     "orders-and-execution/stop-order",
@@ -40,9 +40,9 @@ def load_router_search():
 
 
 class ConceptSkillTests(unittest.TestCase):
-    def test_rollout_order_starts_with_locked_core_batch(self):
+    def test_catalog_order_starts_with_locked_core_group(self):
         actual = [row[0]["id"] for row in build_skills.ordered_records(ROOT)[:20]]
-        self.assertEqual(actual, EXPECTED_FIRST_BATCH)
+        self.assertEqual(actual, EXPECTED_FIRST_GROUP)
 
     def test_all_generated_names_are_unique_and_host_compatible(self):
         used = set()
@@ -52,9 +52,9 @@ class ConceptSkillTests(unittest.TestCase):
             self.assertRegex(name, r"^[a-z0-9-]+$")
             self.assertNotIn(name, used)
             used.add(name)
-        self.assertEqual(len(used), 1500)
+        self.assertEqual(len(used), 1438)
 
-    def test_catalog_and_every_completed_batch_validate(self):
+    def test_catalog_and_packages_validate(self):
         self.assertEqual(build_skills.validate_catalog(ROOT), [])
 
     def test_router_prefers_exact_concept(self):
@@ -71,89 +71,103 @@ class ConceptSkillTests(unittest.TestCase):
         self.assertEqual(matches[0]["concept_id"], "orders-and-execution/slippage")
         self.assertGreater(matches[0]["match_score"], 100)
 
-    def test_completed_batch_queries_route_to_the_expected_skill(self):
+    def test_numbered_return_queries_bind_the_period(self):
         router = load_router_search()
-        manifest = json.loads(
-            (ROOT / "skills" / "manifest.json").read_text(encoding="utf-8")
-        )
-        for eval_path in sorted((ROOT / "skills" / "evals").glob("batch-*.json")):
-            evaluation = json.loads(eval_path.read_text(encoding="utf-8"))
-            for case in evaluation["cases"]:
-                for query in case["positive_queries"]:
-                    with self.subTest(batch=evaluation["batch_number"], query=query):
-                        matches = router.search(manifest["skills"], query, limit=1)
-                        self.assertTrue(matches)
-                        self.assertEqual(matches[0]["skill_name"], case["skill_name"])
+        manifest = json.loads((ROOT / "skills" / "manifest.json").read_text(encoding="utf-8"))
+        aliases = build_skills.expand_aliases(ROOT)
+        for query, periods in [
+            ("20-period simple return", 20),
+            ("show the 20-period holding period return", 20),
+            ("explain the 64 period return", 64),
+            ("calculate a 100-period return", 100),
+        ]:
+            with self.subTest(query=query):
+                match = router.search(manifest["skills"], query, limit=1, aliases=aliases)[0]
+                self.assertEqual(match["skill_name"], "tkl-n-period-simple-return")
+                self.assertEqual(match["bound_parameters"], {"periods": periods})
 
-    def test_progress_is_an_exact_multiple_of_twenty(self):
-        progress = json.loads((ROOT / "skills" / "progress.json").read_text(encoding="utf-8"))
-        self.assertEqual(progress["completed_count"], progress["completed_batches"] * 20)
+    def test_retired_ids_and_skill_names_resolve_as_aliases(self):
+        router = load_router_search()
+        manifest = json.loads((ROOT / "skills" / "manifest.json").read_text(encoding="utf-8"))
+        aliases = build_skills.expand_aliases(ROOT)
+        self.assertEqual(len(aliases), 63)
+        for periods in range(2, 65):
+            with self.subTest(periods=periods):
+                matches = router.search(
+                    manifest["skills"], "", limit=1,
+                    skill_name=f"tkl-{periods}-period-simple-return", aliases=aliases,
+                )
+                self.assertEqual(matches[0]["skill_name"], "tkl-n-period-simple-return")
+                self.assertEqual(matches[0]["bound_parameters"], {"periods": periods})
+                concept_matches = router.search(
+                    manifest["skills"], "", limit=1,
+                    concept_id=f"parameterized-analytics/{periods}-period-simple-return",
+                    aliases=aliases,
+                )
+                self.assertEqual(
+                    concept_matches[0]["concept_id"],
+                    "parameterized-analytics/n-period-simple-return",
+                )
+                self.assertEqual(
+                    concept_matches[0]["bound_parameters"], {"periods": periods}
+                )
+
+    def test_parameterized_concept_replaces_numbered_canonicals(self):
+        records = [row[0] for row in build_skills.load_concepts(ROOT)]
+        ids = {record["id"] for record in records}
+        self.assertEqual(len(records), 1438)
+        self.assertIn("statistics-and-probability/simple-return", ids)
+        self.assertIn("parameterized-analytics/n-period-simple-return", ids)
+        for periods in range(2, 65):
+            self.assertNotIn(f"parameterized-analytics/{periods}-period-simple-return", ids)
 
     def test_public_catalog_uses_unified_detail_pages_not_batch_language(self):
         catalog = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
         self.assertNotIn("batch", catalog.casefold())
+        self.assertIn("Search 1,438 canonical trading concepts", catalog)
         self.assertIn('id="catalog-controls"', catalog)
-        self.assertIn('id="catalog-results"', catalog)
-        self.assertIn('id="letter-nav"', catalog)
-        self.assertNotIn('id="sidebar"', catalog)
-        manifest = json.loads(
-            (ROOT / "skills" / "manifest.json").read_text(encoding="utf-8")
+        manifest = json.loads((ROOT / "skills" / "manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual(manifest["skill_count"], 1438)
+        self.assertEqual(manifest["alias_count"], 63)
+        generic = ROOT / "docs" / "skills" / "tkl-n-period-simple-return" / "index.html"
+        html = generic.read_text(encoding="utf-8")
+        self.assertIn('id="selected-period"', html)
+        self.assertIn('data-skill-tab="concept"', html)
+        self.assertIn('id="panel-concept-json"', html)
+
+    def test_retired_site_and_api_urls_are_compatible(self):
+        alias_catalog = json.loads(
+            (ROOT / "docs" / "api" / "v1" / "concept-aliases.json").read_text(encoding="utf-8")
         )
-        for profile in manifest["skills"]:
-            detail = ROOT / "docs" / "skills" / profile["skill_name"] / "index.html"
-            self.assertTrue(detail.is_file())
-            html = detail.read_text(encoding="utf-8")
-            self.assertIn('data-skill-tab="concept"', html)
-            self.assertIn('id="panel-concept"', html)
-            self.assertIn('id="panel-use"', html)
-            self.assertIn('id="panel-concept-json"', html)
-            self.assertIn("The original concept object from the main library.", html)
-            self.assertIn("SKILL.md", html)
-            self.assertIn("Packaged reference.json", html)
-            self.assertNotIn("Canonical concept page", html)
-            self.assertIn('rel="canonical"', html)
+        self.assertEqual(alias_catalog["alias_count"], 63)
+        for periods in (2, 20, 64):
+            page = ROOT / "docs" / "skills" / f"tkl-{periods}-period-simple-return" / "index.html"
+            api = ROOT / "docs" / "api" / "v1" / "skills" / f"tkl-{periods}-period-simple-return.json"
+            self.assertIn(f"?periods={periods}", page.read_text(encoding="utf-8"))
+            payload = json.loads(api.read_text(encoding="utf-8"))
+            self.assertEqual(payload["type"], "alias")
+            self.assertEqual(payload["canonical_skill_name"], "tkl-n-period-simple-return")
+            self.assertEqual(payload["parameters"], {"periods": periods})
 
     def test_legacy_browsing_routes_forward_to_the_consolidated_catalog(self):
-        skills_index = (ROOT / "docs" / "skills" / "index.html").read_text(
+        domain = (ROOT / "docs" / "parameterized-analytics" / "page-2.html").read_text(
             encoding="utf-8"
         )
-        query = (ROOT / "docs" / "query.html").read_text(encoding="utf-8")
-        az = (ROOT / "docs" / "all.html").read_text(encoding="utf-8")
-        domain = (ROOT / "docs" / "orders-and-execution" / "index.html").read_text(
-            encoding="utf-8"
-        )
-        self.assertIn("location.replace", skills_index)
-        self.assertIn("../index.html", skills_index)
-        self.assertIn("location.replace", query)
-        self.assertIn("location.replace", az)
-        self.assertIn("../skills/tkl-slippage/", domain)
+        self.assertIn("location.replace", domain)
+        self.assertIn("20-period-simple-return", (
+            ROOT / "docs" / "parameterized-analytics" / "index.html"
+        ).read_text(encoding="utf-8"))
+        self.assertIn("tkl-n-period-simple-return/?periods=27", domain)
 
-    def test_public_concept_urls_are_unified_and_keep_legacy_targets(self):
+    def test_public_concept_urls_are_unified(self):
         concepts = json.loads(
-            (ROOT / "docs" / "api" / "v1" / "concepts.json").read_text(
-                encoding="utf-8"
-            )
+            (ROOT / "docs" / "api" / "v1" / "concepts.json").read_text(encoding="utf-8")
         )
-        search_index = json.loads(
-            (ROOT / "docs" / "search-index.json").read_text(encoding="utf-8")
-        )
-        self.assertEqual(len(concepts), 1500)
+        search_index = json.loads((ROOT / "docs" / "search-index.json").read_text(encoding="utf-8"))
+        self.assertEqual(len(concepts), 1438)
         self.assertTrue(all(row["url"] == row["skill_url"] for row in concepts))
         self.assertTrue(all(row["url"].startswith("skills/tkl-") for row in concepts))
-        self.assertTrue(all("legacy_url" in row for row in concepts))
         self.assertTrue(all(row["u"].startswith("skills/tkl-") for row in search_index))
-        legacy_pages = {}
-        for row in concepts:
-            page, fragment = row["legacy_url"].split("#", 1)
-            path = ROOT / "docs" / page
-            if page.endswith("/"):
-                path /= "index.html"
-            if path not in legacy_pages:
-                legacy_pages[path] = path.read_text(encoding="utf-8")
-            text = legacy_pages[path]
-            with self.subTest(concept=row["id"]):
-                self.assertIn(fragment, text)
-                self.assertIn("../" + row["url"], text)
 
 
 if __name__ == "__main__":

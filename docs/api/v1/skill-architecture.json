@@ -1,21 +1,21 @@
 {
   "$schema": "../schemas/skill-architecture.schema.json",
-  "schema_version": 1,
-  "id": "github-first-concept-skill-library-v1",
+  "schema_version": 2,
+  "id": "github-first-concept-skill-library-v2",
   "title": "GitHub-first trading concept skill library",
-  "decision": "Expose one repository router skill and keep each concept as an individually installable, self-contained catalog skill outside automatic discovery.",
+  "decision": "Expose one repository router skill and keep each canonical concept as an individually installable, self-contained catalog skill outside automatic discovery.",
   "rationale": [
-    "Skills package reusable workflows; the existing concept JSON remains the factual source of truth.",
-    "A 1,500-skill discovery list can exceed the host metadata budget and cause descriptions or skills to be omitted.",
-    "A router preserves reliable discovery while individual catalog packages remain portable and directly readable from GitHub.",
-    "Generated concept references carry canonical hashes so duplicated package data cannot silently drift."
+    "Skills package reusable workflows; the concept JSON remains the factual source of truth.",
+    "Parameterized concepts use explicit inputs instead of duplicated skills for every numeric value.",
+    "A large discovery list can exceed host metadata budgets, so a router preserves reliable discovery while individual packages remain portable.",
+    "Generated concept references carry canonical hashes so package data cannot silently drift."
   ],
   "organization": {
     "discoverable_router": ".agents/skills/tkl-concept-router",
     "concept_packages": "skills/concepts/<domain>/<concept-slug>",
-    "batch_manifests": "skills/batches",
+    "compatibility_aliases": "aliases/concept-aliases.json",
     "canonical_knowledge": "concepts/*.json",
-    "human_review": "docs/skills/index.html",
+    "human_review": "docs/index.html",
     "public_api": "docs/api/v1/skills.json"
   },
   "behavior": {
@@ -33,12 +33,11 @@
       "presentation of educational analysis as personalized financial advice"
     ]
   },
-  "batching": {
-    "batch_size": 20,
-    "target_count": 1500,
-    "total_batches": 75,
+  "catalog": {
+    "build": "deterministic full-catalog generation from canonical concept JSON",
     "order": "core-perps concepts by master_index, then all remaining concepts by master_index",
-    "deployment": "validate, commit, push, and verify GitHub Pages after every batch"
+    "count_policy": "derive concept, skill, and alias counts from canonical files",
+    "compatibility_policy": "retired numbered concepts resolve through parameter-bearing aliases and are not counted as canonical entries"
   },
   "sources": [
     {

@@ -1,8 +1,9 @@
-"""Parse sources/master_v1.txt into concepts/<domain>.json files.
+"""Parse the immutable 1,500-entry legacy import into a separate directory.
 
-Stdlib only. Asserts exactly 1,500 unique entries and normalizes the stray
-micro-domains from the original import into the canonical domains.
+This archival utility refuses to write into concepts/, whose current JSON is
+the source of truth and includes post-import consolidation decisions.
 """
+import argparse
 import json
 import re
 import sys
@@ -53,7 +54,16 @@ def parse_master(path: Path):
     return entries
 
 
-def main():
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--output-dir", required=True,
+        help="separate directory for the legacy 1,500-entry projection",
+    )
+    args = parser.parse_args(argv)
+    output_dir = Path(args.output_dir).resolve()
+    if output_dir == CONCEPTS_DIR.resolve():
+        parser.error("refusing to overwrite canonical concepts/ with the legacy import")
     raw_entries = parse_master(MASTER)
     assert len(raw_entries) == 1500, f"expected 1500 entries, got {len(raw_entries)}"
 
@@ -84,11 +94,11 @@ def main():
         }
         domains.setdefault(domain, []).append(entry)
 
-    CONCEPTS_DIR.mkdir(exist_ok=True)
-    for old in CONCEPTS_DIR.glob("*.json"):
+    output_dir.mkdir(parents=True, exist_ok=True)
+    for old in output_dir.glob("*.json"):
         old.unlink()
     for domain, entries in sorted(domains.items()):
-        out = CONCEPTS_DIR / f"{slugify(domain)}.json"
+        out = output_dir / f"{slugify(domain)}.json"
         out.write_text(json.dumps(entries, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     total = sum(len(v) for v in domains.values())
