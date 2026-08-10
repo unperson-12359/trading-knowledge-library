@@ -43,6 +43,7 @@ concepts/<domain>.json   one file per domain, array of entry objects
 collections/             focused operational concept collections
 regimes/taxonomy.json    controlled market-state vocabulary
 playbooks/                five untested research-hypothesis templates
+research/specs/           frozen machine-executable research contracts
 schemas/                  machine-readable structured-data schemas
 scripts/status.py       validate the complete catalog
 scripts/export_master.py generate exports/master_v2.txt
@@ -74,6 +75,8 @@ Versioned JSON endpoints live in `docs/api/v1/`:
   relationship IDs, core membership, and core regime annotations.
 - `core-perps.json`, `regimes.json`, and `playbooks.json` expose the focused
   collection and its research layer.
+- `research-specs.json` exposes frozen executable rules separately from the
+  conceptual playbooks.
 
 Unambiguous relationship names and aliases become internal links. Ambiguous or
 unresolved terms remain visible as plain text and are reported in the manifest.

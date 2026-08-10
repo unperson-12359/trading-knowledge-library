@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unperson-12359.github.io/trading-knowledge-library/schemas/trade-log.schema.json",
+  "title": "Deterministic research trade log",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "spec_id", "dataset_id", "slippage_bps", "trades"],
+  "properties": {
+    "schema_version": {"const": 1}, "run_id": {"type": "string"}, "spec_id": {"type": "string"}, "dataset_id": {"type": "string"},
+    "slippage_bps": {"type": "number", "minimum": 0},
+    "trades": {"type": "array", "items": {"type": "object", "required": ["trade_id", "asset", "side", "signal_time", "entry_time", "entry_price", "initial_stop", "exit_time", "exit_price", "exit_reason", "holding_bars", "gross_r", "fee_r", "slippage_r", "funding_r", "net_r", "events"], "additionalProperties": false, "properties": {"trade_id": {"type": "string"}, "asset": {"enum": ["BTC", "ETH"]}, "side": {"enum": ["long", "short"]}, "signal_time": {"type": "integer"}, "entry_time": {"type": "integer"}, "entry_price": {"type": "string"}, "initial_stop": {"type": "string"}, "exit_time": {"type": "integer"}, "exit_price": {"type": "string"}, "exit_reason": {"enum": ["stop", "time", "end-of-data"]}, "holding_bars": {"type": "integer", "minimum": 0}, "gross_r": {"type": "number"}, "fee_r": {"type": "number"}, "slippage_r": {"type": "number"}, "funding_r": {"type": "number"}, "net_r": {"type": "number"}, "events": {"type": "array", "items": {"type": "object"}}}}}
+  }
+}

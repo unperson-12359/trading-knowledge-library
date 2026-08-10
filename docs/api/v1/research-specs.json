@@ -1,0 +1,143 @@
+[
+  {
+    "$schema": "../../schemas/research-spec.schema.json",
+    "id": "atr-volatility-breakout-v1",
+    "version": 1,
+    "classification": "preliminary-executable-research-spec",
+    "playbook_id": "atr-volatility-breakout",
+    "market_type": "generic-crypto-perpetual-futures",
+    "data_source": {
+      "provider": "Hyperliquid",
+      "network": "mainnet",
+      "endpoint": "https://api.hyperliquid.xyz/info",
+      "candle_request_type": "candleSnapshot",
+      "funding_request_type": "fundingHistory",
+      "maximum_candles": 5000,
+      "source_urls": [
+        "https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/info-endpoint",
+        "https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/info-endpoint/perpetuals",
+        "https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/rate-limits-and-user-limits"
+      ]
+    },
+    "assets": [
+      "BTC",
+      "ETH"
+    ],
+    "timeframes": {
+      "signal": "15m",
+      "context": [
+        "1h",
+        "4h"
+      ]
+    },
+    "indicators": {
+      "atr": {
+        "method": "wilder",
+        "period_bars": 14,
+        "input": "true_range"
+      },
+      "compression": {
+        "metric": "atr_divided_by_close",
+        "lookback_bars": 192,
+        "quantile": 0.2,
+        "quantile_method": "nearest-rank",
+        "exclude_current_bar": true
+      },
+      "breakout": {
+        "lookback_bars": 16,
+        "confirmation_atr": 0.1,
+        "exclude_current_bar": true
+      },
+      "volume": {
+        "method": "median",
+        "lookback_bars": 20,
+        "comparison": "strictly-greater",
+        "exclude_current_bar": true
+      },
+      "context_trend": {
+        "timeframes": [
+          "1h",
+          "4h"
+        ],
+        "ema_period_bars": 20,
+        "slope_lookback_bars": 3,
+        "established_trend_requires_both_timeframes": true
+      }
+    },
+    "signal_rules": {
+      "long": [
+        "compression=true",
+        "close>prior_high+0.1*atr",
+        "volume>prior_volume_median",
+        "context!=established_downtrend"
+      ],
+      "short": [
+        "compression=true",
+        "close<prior_low-0.1*atr",
+        "volume>prior_volume_median",
+        "context!=established_uptrend"
+      ]
+    },
+    "execution": {
+      "entry_fill": "next-bar-open",
+      "one_position_per_asset": true,
+      "pyramiding": false,
+      "initial_stop_atr": 2.0,
+      "trailing_stop_atr": 2.0,
+      "trailing_reference": "most-favorable-completed-bar-close",
+      "trailing_activation": "next-bar",
+      "maximum_holding_bars": 32,
+      "time_exit_fill": "following-bar-open",
+      "gap_stop_fill": "worse-of-stop-or-bar-open",
+      "exit_precedence": [
+        "stop",
+        "time"
+      ]
+    },
+    "costs": {
+      "liquidity_role": "taker",
+      "taker_fee_bps": 4.5,
+      "fee_source": {
+        "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees",
+        "accessed": "2026-08-09",
+        "note": "Base-tier perpetual taker fee; user tiers can differ."
+      },
+      "slippage_scenarios_bps": [
+        0.0,
+        2.5,
+        5.0
+      ],
+      "headline_slippage_bps": 2.5,
+      "funding": {
+        "enabled": true,
+        "cadence": "1h",
+        "price_proxy": "latest-closed-15m-close",
+        "long_payment_sign": "negative-when-rate-positive"
+      }
+    },
+    "evaluation": {
+      "pnl_unit": "R-multiple-with-one-normalized-risk-unit",
+      "holdout_fraction": 0.2,
+      "segment_days": 7,
+      "minimum_conclusive_trades": 30,
+      "metrics": [
+        "trade_count",
+        "gross_expectancy_r",
+        "net_expectancy_r",
+        "win_rate",
+        "median_r",
+        "profit_factor",
+        "maximum_drawdown_r",
+        "exposure_fraction",
+        "fee_r",
+        "slippage_r",
+        "funding_r",
+        "long_short_split",
+        "asset_split",
+        "holdout",
+        "seven_day_segments"
+      ]
+    },
+    "warning": "Preliminary limited-window research. Not validated, not financial advice, and not evidence of profitability."
+  }
+]

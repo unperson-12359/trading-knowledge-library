@@ -11,6 +11,15 @@ knowledge rollout.
 | Add five generic-perpetual research playbooks | Complete |
 | Add structured query/API and relationship links | Complete |
 
+## Phase 2: Executable research
+
+| Checkpoint | State |
+|---|---|
+| Add research schemas and frozen ATR-breakout specification | Complete |
+| Add Hyperliquid adapter and immutable BTC/ETH dataset snapshot | In progress |
+| Add deterministic engine and canonical research results | Pending |
+| Generate report/API and deploy the completed research slice | Pending |
+
 Every completed checkpoint is validated, committed to `main`, pushed, and
 verified on GitHub Pages before the next checkpoint begins.
 

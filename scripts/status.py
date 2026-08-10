@@ -39,6 +39,15 @@ PLAYBOOK_REQUIRED = {
     "exit_logic", "regime_profile", "cost_model", "risk_constraints",
     "failure_modes", "validation_plan", "warning",
 }
+RESEARCH_SPEC_REQUIRED = {
+    "$schema", "id", "version", "classification", "playbook_id", "market_type",
+    "data_source", "assets", "timeframes", "indicators", "signal_rules",
+    "execution", "costs", "evaluation", "warning",
+}
+RESEARCH_WARNING = (
+    "Preliminary limited-window research. Not validated, not financial advice, "
+    "and not evidence of profitability."
+)
 
 
 def _valid_date(value):
@@ -301,6 +310,48 @@ def main():
                 failures.append(f"{playbook_path.name}: {field} needs at least {minimum} items")
     if len(set(playbook_ids)) != len(playbook_ids):
         failures.append("playbook IDs must be unique")
+
+    required_schemas = {
+        "playbook.schema.json", "research-spec.schema.json",
+        "dataset-manifest.schema.json", "trade-log.schema.json",
+        "research-result.schema.json",
+    }
+    schema_paths = {path.name: path for path in (ROOT / "schemas").glob("*.json")}
+    missing_schemas = sorted(required_schemas - set(schema_paths))
+    if missing_schemas:
+        failures.append("missing JSON schemas: " + ", ".join(missing_schemas))
+    for schema_name in sorted(required_schemas & set(schema_paths)):
+        try:
+            schema = json.loads(schema_paths[schema_name].read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"{schema_name}: invalid JSON: {exc}")
+            continue
+        if schema.get("$schema") != "https://json-schema.org/draft/2020-12/schema":
+            failures.append(f"{schema_name}: must declare JSON Schema 2020-12")
+
+    research_specs = sorted((ROOT / "research" / "specs").glob("*.json"))
+    if len(research_specs) != 1:
+        failures.append(f"expected exactly 1 executable research spec, found {len(research_specs)}")
+    for spec_path in research_specs:
+        try:
+            spec = json.loads(spec_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"{spec_path.name}: invalid JSON: {exc}")
+            continue
+        if set(spec) != RESEARCH_SPEC_REQUIRED:
+            failures.append(f"{spec_path.name}: executable spec fields do not match the contract")
+        if spec.get("id") != spec_path.stem:
+            failures.append(f"{spec_path.name}: id must match filename")
+        if spec.get("playbook_id") not in set(playbook_ids):
+            failures.append(f"{spec_path.name}: unknown playbook_id")
+        if spec.get("classification") != "preliminary-executable-research-spec":
+            failures.append(f"{spec_path.name}: invalid classification")
+        if spec.get("assets") != ["BTC", "ETH"]:
+            failures.append(f"{spec_path.name}: first study assets must be BTC and ETH")
+        if spec.get("timeframes") != {"signal": "15m", "context": ["1h", "4h"]}:
+            failures.append(f"{spec_path.name}: invalid timeframes")
+        if spec.get("warning") != RESEARCH_WARNING:
+            failures.append(f"{spec_path.name}: required research warning is missing or changed")
 
     placeholders = sum(
         1 for entry in entries

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unperson-12359.github.io/trading-knowledge-library/schemas/research-result.schema.json",
+  "title": "Published trading research result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "created_at", "classification", "status", "spec", "dataset", "headline_scenario", "scenarios", "data_quality", "warnings"],
+  "properties": {
+    "schema_version": {"const": 1}, "run_id": {"type": "string"}, "created_at": {"type": "string", "format": "date-time"},
+    "classification": {"const": "preliminary-limited-window-research"},
+    "status": {"enum": ["preliminary", "inconclusive", "data-quality-failed"]},
+    "spec": {"type": "object", "required": ["id", "version", "sha256", "path"], "additionalProperties": false, "properties": {"id": {"type": "string"}, "version": {"type": "integer"}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "path": {"type": "string"}}},
+    "dataset": {"type": "object", "required": ["id", "sha256", "manifest_path", "effective_start", "effective_end"], "additionalProperties": false, "properties": {"id": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "manifest_path": {"type": "string"}, "effective_start": {"type": "integer"}, "effective_end": {"type": "integer"}}},
+    "headline_scenario": {"type": "number"},
+    "scenarios": {"type": "array", "minItems": 3},
+    "data_quality": {"type": "object"},
+    "warnings": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+  }
+}

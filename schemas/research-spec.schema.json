@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unperson-12359.github.io/trading-knowledge-library/schemas/research-spec.schema.json",
+  "title": "Executable trading research specification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "version", "classification", "playbook_id", "market_type", "data_source", "assets", "timeframes", "indicators", "signal_rules", "execution", "costs", "evaluation", "warning"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*-v[0-9]+$"},
+    "version": {"type": "integer", "minimum": 1},
+    "classification": {"const": "preliminary-executable-research-spec"},
+    "playbook_id": {"type": "string"},
+    "market_type": {"const": "generic-crypto-perpetual-futures"},
+    "data_source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["provider", "network", "endpoint", "candle_request_type", "funding_request_type", "maximum_candles", "source_urls"],
+      "properties": {
+        "provider": {"const": "Hyperliquid"}, "network": {"const": "mainnet"},
+        "endpoint": {"type": "string", "format": "uri"},
+        "candle_request_type": {"const": "candleSnapshot"},
+        "funding_request_type": {"const": "fundingHistory"},
+        "maximum_candles": {"const": 5000},
+        "source_urls": {"type": "array", "items": {"type": "string", "format": "uri"}, "minItems": 1, "uniqueItems": true}
+      }
+    },
+    "assets": {"const": ["BTC", "ETH"]},
+    "timeframes": {
+      "type": "object", "additionalProperties": false,
+      "required": ["signal", "context"],
+      "properties": {"signal": {"const": "15m"}, "context": {"const": ["1h", "4h"]}}
+    },
+    "indicators": {
+      "type": "object", "required": ["atr", "compression", "breakout", "volume", "context_trend"], "additionalProperties": false,
+      "properties": {
+        "atr": {"type": "object", "additionalProperties": false, "required": ["method", "period_bars", "input"], "properties": {"method": {"const": "wilder"}, "period_bars": {"type": "integer", "minimum": 2}, "input": {"const": "true_range"}}},
+        "compression": {"type": "object", "additionalProperties": false, "required": ["metric", "lookback_bars", "quantile", "quantile_method", "exclude_current_bar"], "properties": {"metric": {"const": "atr_divided_by_close"}, "lookback_bars": {"type": "integer", "minimum": 2}, "quantile": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1}, "quantile_method": {"const": "nearest-rank"}, "exclude_current_bar": {"const": true}}},
+        "breakout": {"type": "object", "additionalProperties": false, "required": ["lookback_bars", "confirmation_atr", "exclude_current_bar"], "properties": {"lookback_bars": {"type": "integer", "minimum": 2}, "confirmation_atr": {"type": "number", "minimum": 0}, "exclude_current_bar": {"const": true}}},
+        "volume": {"type": "object", "additionalProperties": false, "required": ["method", "lookback_bars", "comparison", "exclude_current_bar"], "properties": {"method": {"const": "median"}, "lookback_bars": {"type": "integer", "minimum": 2}, "comparison": {"const": "strictly-greater"}, "exclude_current_bar": {"const": true}}},
+        "context_trend": {"type": "object", "additionalProperties": false, "required": ["timeframes", "ema_period_bars", "slope_lookback_bars", "established_trend_requires_both_timeframes"], "properties": {"timeframes": {"const": ["1h", "4h"]}, "ema_period_bars": {"type": "integer", "minimum": 2}, "slope_lookback_bars": {"type": "integer", "minimum": 1}, "established_trend_requires_both_timeframes": {"const": true}}}
+      }
+    },
+    "signal_rules": {"type": "object", "required": ["long", "short"], "additionalProperties": false, "properties": {"long": {"type": "array", "items": {"type": "string"}, "minItems": 1}, "short": {"type": "array", "items": {"type": "string"}, "minItems": 1}}},
+    "execution": {"type": "object", "required": ["entry_fill", "one_position_per_asset", "pyramiding", "initial_stop_atr", "trailing_stop_atr", "trailing_reference", "trailing_activation", "maximum_holding_bars", "time_exit_fill", "gap_stop_fill", "exit_precedence"], "additionalProperties": false, "properties": {"entry_fill": {"const": "next-bar-open"}, "one_position_per_asset": {"const": true}, "pyramiding": {"const": false}, "initial_stop_atr": {"type": "number", "exclusiveMinimum": 0}, "trailing_stop_atr": {"type": "number", "exclusiveMinimum": 0}, "trailing_reference": {"const": "most-favorable-completed-bar-close"}, "trailing_activation": {"const": "next-bar"}, "maximum_holding_bars": {"type": "integer", "minimum": 1}, "time_exit_fill": {"const": "following-bar-open"}, "gap_stop_fill": {"const": "worse-of-stop-or-bar-open"}, "exit_precedence": {"const": ["stop", "time"]}}},
+    "costs": {"type": "object", "required": ["liquidity_role", "taker_fee_bps", "fee_source", "slippage_scenarios_bps", "headline_slippage_bps", "funding"], "additionalProperties": false, "properties": {"liquidity_role": {"const": "taker"}, "taker_fee_bps": {"type": "number", "minimum": 0}, "fee_source": {"type": "object"}, "slippage_scenarios_bps": {"type": "array", "items": {"type": "number", "minimum": 0}, "minItems": 3, "uniqueItems": true}, "headline_slippage_bps": {"type": "number", "minimum": 0}, "funding": {"type": "object"}}},
+    "evaluation": {"type": "object", "required": ["pnl_unit", "holdout_fraction", "segment_days", "minimum_conclusive_trades", "metrics"], "additionalProperties": false, "properties": {"pnl_unit": {"const": "R-multiple-with-one-normalized-risk-unit"}, "holdout_fraction": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1}, "segment_days": {"type": "integer", "minimum": 1}, "minimum_conclusive_trades": {"type": "integer", "minimum": 1}, "metrics": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true}}},
+    "warning": {"const": "Preliminary limited-window research. Not validated, not financial advice, and not evidence of profitability."}
+  }
+}

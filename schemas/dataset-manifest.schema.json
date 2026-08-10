@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unperson-12359.github.io/trading-knowledge-library/schemas/dataset-manifest.schema.json",
+  "title": "Immutable research dataset manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["dataset_id", "schema_version", "provider", "network", "retrieved_at", "effective_start", "effective_end", "assets", "files", "requests", "quality", "dataset_sha256", "warning"],
+  "properties": {
+    "dataset_id": {"type": "string"}, "schema_version": {"const": 1},
+    "provider": {"const": "Hyperliquid"}, "network": {"const": "mainnet"},
+    "retrieved_at": {"type": "string", "format": "date-time"},
+    "effective_start": {"type": "integer"}, "effective_end": {"type": "integer"},
+    "assets": {"const": ["BTC", "ETH"]},
+    "files": {"type": "array", "minItems": 4, "items": {"type": "object", "required": ["asset", "kind", "path", "rows", "sha256"], "additionalProperties": false, "properties": {"asset": {"enum": ["BTC", "ETH"]}, "kind": {"enum": ["candles", "funding"]}, "path": {"type": "string"}, "rows": {"type": "integer", "minimum": 1}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}}},
+    "requests": {"type": "array", "minItems": 4, "items": {"type": "object", "required": ["request_type", "asset", "start_time", "end_time", "source_url"], "additionalProperties": false, "properties": {"request_type": {"enum": ["candleSnapshot", "fundingHistory"]}, "asset": {"enum": ["BTC", "ETH"]}, "start_time": {"type": "integer"}, "end_time": {"type": "integer"}, "source_url": {"type": "string", "format": "uri"}}}},
+    "quality": {"type": "object", "required": ["valid", "closed_candles_only", "duplicates", "missing_intervals", "funding_gaps", "notes"], "additionalProperties": false, "properties": {"valid": {"type": "boolean"}, "closed_candles_only": {"type": "boolean"}, "duplicates": {"type": "integer", "minimum": 0}, "missing_intervals": {"type": "integer", "minimum": 0}, "funding_gaps": {"type": "integer", "minimum": 0}, "notes": {"type": "array", "items": {"type": "string"}}}},
+    "dataset_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "warning": {"const": "Hyperliquid exposes only the most recent 5000 candles. This snapshot is preliminary and does not represent a full market cycle."}
+  }
+}

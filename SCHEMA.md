@@ -55,6 +55,15 @@ import-only `source_hint` and `master_index` fields and adds `type`, `url`,
 included only when its name or alias resolves to exactly one concept; the
 original relationship text is always preserved.
 
+## Executable research contracts
+
+Conceptual playbooks remain descriptive research hypotheses. Files in
+`research/specs/` are separate frozen contracts that turn one playbook into
+deterministic data, signal, execution, cost, and evaluation rules. Dataset
+manifests, trade logs, and research results each have their own JSON Schema so
+AI consumers can distinguish an idea, a runnable specification, its evidence,
+and its reported output.
+
 ## Rules
 
 - Every entry must contain the full explanatory fields and at least one valid
