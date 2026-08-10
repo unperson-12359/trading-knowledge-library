@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unperson-12359.github.io/trading-knowledge-library/schemas/analysis-context-request.schema.json",
+  "title": "Read-only market analysis context request",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "assets": {"type": "array", "items": {"enum": ["BTC", "ETH"]}, "minItems": 1, "uniqueItems": true},
+    "as_of": {"type": "integer", "minimum": 1},
+    "playbook_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+  }
+}
