@@ -2,7 +2,7 @@
   "$schema": "../schemas/skill-manifest.schema.json",
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 120,
+  "completed_count": 140,
   "skills": [
     {
       "$schema": "../../../../schemas/concept-skill.schema.json",
@@ -9609,6 +9609,1601 @@
         "participants/futures-commission-merchant",
         "participants/introducing-broker",
         "participants/broker-dealer"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-execution-broker",
+      "concept_id": "participants/execution-broker",
+      "display_name": "Execution broker",
+      "domain": "Participants",
+      "description": "Explain, compare, or apply Execution broker using the library's structured Participants reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Execution broker",
+        "executing broker",
+        "executing firm",
+        "explain Execution broker",
+        "apply Execution broker to a trading question",
+        "common misconception about Execution broker"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/participants/execution-broker",
+      "canonical": {
+        "source_path": "concepts/participants.json",
+        "sha256": "f352da84a5825cea3ebf023b6074f7fb69b2d92b28c11e8cdea7ec99fe383957"
+      },
+      "related_concept_ids": [
+        "participants/prime-broker",
+        "participants/agency-broker",
+        "participants/futures-commission-merchant",
+        "participants/institutional-investor",
+        "participants/broker"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-agency-broker",
+      "concept_id": "participants/agency-broker",
+      "display_name": "Agency broker",
+      "domain": "Participants",
+      "description": "Explain, compare, or apply Agency broker using the library's structured Participants reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Agency broker",
+        "agency-only broker",
+        "agent",
+        "explain Agency broker",
+        "apply Agency broker to a trading question",
+        "common misconception about Agency broker"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/participants/agency-broker",
+      "canonical": {
+        "source_path": "concepts/participants.json",
+        "sha256": "9aef764f9051a4f55259b937dde15edc2f6218f102711b81089e1b07996ed073"
+      },
+      "related_concept_ids": [
+        "participants/broker",
+        "participants/principal-trader",
+        "participants/execution-broker",
+        "participants/broker-dealer",
+        "participants/dealer"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-principal-trader",
+      "concept_id": "participants/principal-trader",
+      "display_name": "Principal trader",
+      "domain": "Participants",
+      "description": "Explain, compare, or apply Principal trader using the library's structured Participants reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Principal trader",
+        "principal",
+        "riskless principal trader",
+        "explain Principal trader",
+        "apply Principal trader to a trading question",
+        "common misconception about Principal trader"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/participants/principal-trader",
+      "canonical": {
+        "source_path": "concepts/participants.json",
+        "sha256": "73b9fd5dd8ff252799d1c56e5d697c8bb61dc4b9ef7c5b10f157fa2468fe8bd5"
+      },
+      "related_concept_ids": [
+        "participants/dealer",
+        "participants/proprietary-trader",
+        "participants/agency-broker",
+        "participants/market-maker",
+        "participants/broker-dealer"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-market-data-vendor",
+      "concept_id": "participants/market-data-vendor",
+      "display_name": "Market data vendor",
+      "domain": "Participants",
+      "description": "Explain, compare, or apply Market data vendor using the library's structured Participants reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Market data vendor",
+        "market data provider",
+        "data vendor",
+        "explain Market data vendor",
+        "apply Market data vendor to a trading question",
+        "common misconception about Market data vendor"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/participants/market-data-vendor",
+      "canonical": {
+        "source_path": "concepts/participants.json",
+        "sha256": "27e74e381faf78ec9654c9fd15545a591d29175f85990f48a934f4be09b16763"
+      },
+      "related_concept_ids": [
+        "participants/index-provider",
+        "participants/broker-dealer",
+        "participants/high-frequency-trader",
+        "participants/institutional-investor"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-index-provider",
+      "concept_id": "participants/index-provider",
+      "display_name": "Index provider",
+      "domain": "Participants",
+      "description": "Explain, compare, or apply Index provider using the library's structured Participants reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Index provider",
+        "index administrator",
+        "benchmark administrator",
+        "explain Index provider",
+        "apply Index provider to a trading question",
+        "common misconception about Index provider"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/participants/index-provider",
+      "canonical": {
+        "source_path": "concepts/participants.json",
+        "sha256": "f30e8f103d0b13932574091d39c971f335acec13f1ca45eff3c38706b3327fbc"
+      },
+      "related_concept_ids": [
+        "participants/market-data-vendor",
+        "participants/authorized-participant",
+        "participants/institutional-investor",
+        "participants/custodian"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-transfer-agent",
+      "concept_id": "participants/transfer-agent",
+      "display_name": "Transfer agent",
+      "domain": "Participants",
+      "description": "Explain, compare, or apply Transfer agent using the library's structured Participants reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Transfer agent",
+        "registrar and transfer agent",
+        "explain Transfer agent",
+        "apply Transfer agent to a trading question",
+        "common misconception about Transfer agent"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/participants/transfer-agent",
+      "canonical": {
+        "source_path": "concepts/participants.json",
+        "sha256": "8efd4564dc67d702366cce1980d54d5dc4ceee4224da449c5e0aa64795f84065"
+      },
+      "related_concept_ids": [
+        "participants/custodian",
+        "participants/broker-dealer",
+        "participants/authorized-participant"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-authorized-participant",
+      "concept_id": "participants/authorized-participant",
+      "display_name": "Authorized participant",
+      "domain": "Participants",
+      "description": "Explain, compare, or apply Authorized participant using the library's structured Participants reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Authorized participant",
+        "AP",
+        "explain Authorized participant",
+        "apply Authorized participant to a trading question",
+        "common misconception about Authorized participant"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/participants/authorized-participant",
+      "canonical": {
+        "source_path": "concepts/participants.json",
+        "sha256": "11ff7c58c86037e6f4976df09028843fd6c7784a1ff79d9a9d865d69c9ed0d10"
+      },
+      "related_concept_ids": [
+        "participants/arbitrageur",
+        "participants/market-maker",
+        "participants/custodian",
+        "participants/transfer-agent"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-designated-market-maker",
+      "concept_id": "participants/designated-market-maker",
+      "display_name": "Designated market maker",
+      "domain": "Participants",
+      "description": "Explain, compare, or apply Designated market maker using the library's structured Participants reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Designated market maker",
+        "DMM",
+        "specialist (predecessor role)",
+        "explain Designated market maker",
+        "apply Designated market maker to a trading question",
+        "common misconception about Designated market maker"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/participants/designated-market-maker",
+      "canonical": {
+        "source_path": "concepts/participants.json",
+        "sha256": "dbf80f5dcd75bc87ef67fed98becc841fd0305b3155a93f2595eb9e1c6720ec4"
+      },
+      "related_concept_ids": [
+        "participants/market-maker",
+        "participants/dealer",
+        "participants/authorized-participant",
+        "participants/high-frequency-trader"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-cash-market",
+      "concept_id": "instruments/cash-market",
+      "display_name": "Cash market",
+      "domain": "Instruments",
+      "description": "Explain, compare, or apply Cash market using the library's structured Instruments reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Cash market",
+        "Spot market",
+        "Physical market",
+        "Actuals",
+        "explain Cash market",
+        "apply Cash market to a trading question",
+        "common misconception about Cash market"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/instruments/cash-market",
+      "canonical": {
+        "source_path": "concepts/instruments.json",
+        "sha256": "1e7265b3f5b5351850091026b3460732c4c6370bda307f5ac18c486c13ebe82d"
+      },
+      "related_concept_ids": [
+        "instruments/spot-transaction",
+        "instruments/futures-contract",
+        "instruments/forward-contract",
+        "instruments/commodity",
+        "futures-and-spreads/basis"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-swap",
+      "concept_id": "instruments/swap",
+      "display_name": "Swap",
+      "domain": "Instruments",
+      "description": "Explain, compare, or apply Swap using the library's structured Instruments reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Swap",
+        "OTC swap",
+        "Swap agreement",
+        "explain Swap",
+        "apply Swap to a trading question",
+        "common misconception about Swap"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/instruments/swap",
+      "canonical": {
+        "source_path": "concepts/instruments.json",
+        "sha256": "b725f39a131c1b91a8d62e076c8ed561a052672d074fd53dc7c1627d425944fd"
+      },
+      "related_concept_ids": [
+        "instruments/interest-rate-swap",
+        "instruments/currency-swap",
+        "instruments/credit-default-swap",
+        "instruments/total-return-swap",
+        "instruments/variance-swap",
+        "instruments/forward-contract"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-interest-rate-swap",
+      "concept_id": "instruments/interest-rate-swap",
+      "display_name": "Interest rate swap",
+      "domain": "Instruments",
+      "description": "Explain, compare, or apply Interest rate swap using the library's structured Instruments reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Interest rate swap",
+        "IRS",
+        "Plain vanilla swap",
+        "explain Interest rate swap",
+        "apply Interest rate swap to a trading question",
+        "common misconception about Interest rate swap"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/instruments/interest-rate-swap",
+      "canonical": {
+        "source_path": "concepts/instruments.json",
+        "sha256": "62a79cdb1ae947b58b90e92043783c48024990896c4497456f8ddd72e9b5cf4a"
+      },
+      "related_concept_ids": [
+        "instruments/swap",
+        "instruments/forward-rate-agreement",
+        "instruments/interest-rate-future",
+        "instruments/currency-swap"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-currency-swap",
+      "concept_id": "instruments/currency-swap",
+      "display_name": "Currency swap",
+      "domain": "Instruments",
+      "description": "Explain, compare, or apply Currency swap using the library's structured Instruments reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Currency swap",
+        "Cross-currency swap",
+        "explain Currency swap",
+        "apply Currency swap to a trading question",
+        "common misconception about Currency swap"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/instruments/currency-swap",
+      "canonical": {
+        "source_path": "concepts/instruments.json",
+        "sha256": "3ecae599d51d9231f26de84254306f6716d2c9021a0e5cdbd38705772ef0d7e0"
+      },
+      "related_concept_ids": [
+        "instruments/swap",
+        "instruments/interest-rate-swap",
+        "instruments/currency-pair",
+        "instruments/forward-contract",
+        "instruments/fx-future"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-total-return-swap",
+      "concept_id": "instruments/total-return-swap",
+      "display_name": "Total return swap",
+      "domain": "Instruments",
+      "description": "Explain, compare, or apply Total return swap using the library's structured Instruments reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Total return swap",
+        "TRS",
+        "TRORS",
+        "explain Total return swap",
+        "apply Total return swap to a trading question",
+        "common misconception about Total return swap"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/instruments/total-return-swap",
+      "canonical": {
+        "source_path": "concepts/instruments.json",
+        "sha256": "a0d7902f4b1704328ea78c5ad76dd8b29e68b9f696f4d784e7a4d86e70a9ccb2"
+      },
+      "related_concept_ids": [
+        "instruments/swap",
+        "instruments/credit-default-swap",
+        "instruments/synthetic-asset",
+        "instruments/contract-for-difference"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-credit-default-swap",
+      "concept_id": "instruments/credit-default-swap",
+      "display_name": "Credit default swap",
+      "domain": "Instruments",
+      "description": "Explain, compare, or apply Credit default swap using the library's structured Instruments reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Credit default swap",
+        "CDS",
+        "Credit swap",
+        "explain Credit default swap",
+        "apply Credit default swap to a trading question",
+        "common misconception about Credit default swap"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/instruments/credit-default-swap",
+      "canonical": {
+        "source_path": "concepts/instruments.json",
+        "sha256": "eb31ba711b593a598374830c492a9d663f84d0f0e0fb1c6b74552d7a49c7215e"
+      },
+      "related_concept_ids": [
+        "instruments/swap",
+        "instruments/total-return-swap",
+        "instruments/corporate-bond",
+        "instruments/government-bond"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-contract-for-difference",
+      "concept_id": "instruments/contract-for-difference",
+      "display_name": "Contract for difference",
+      "domain": "Instruments",
+      "description": "Explain, compare, or apply Contract for difference using the library's structured Instruments reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Contract for difference",
+        "CFD",
+        "explain Contract for difference",
+        "apply Contract for difference to a trading question",
+        "common misconception about Contract for difference"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/instruments/contract-for-difference",
+      "canonical": {
+        "source_path": "concepts/instruments.json",
+        "sha256": "5521f38316726dd1fa56e6e100cf17cf7e4a350acb5b7f4f1f1f9be0547f74c3"
+      },
+      "related_concept_ids": [
+        "instruments/total-return-swap",
+        "risk-and-performance/margin",
+        "instruments/futures-contract",
+        "instruments/forward-contract"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-exchange-traded-fund",
+      "concept_id": "instruments/exchange-traded-fund",
+      "display_name": "Exchange-traded fund",
+      "domain": "Instruments",
+      "description": "Explain, compare, or apply Exchange-traded fund using the library's structured Instruments reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Exchange-traded fund",
+        "ETF",
+        "explain Exchange-traded fund",
+        "apply Exchange-traded fund to a trading question",
+        "common misconception about Exchange-traded fund"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/instruments/exchange-traded-fund",
+      "canonical": {
+        "source_path": "concepts/instruments.json",
+        "sha256": "bc51ac0ca6162ec73985cb3582f5bb8812d764decef02409afbd7331dd8359d3"
+      },
+      "related_concept_ids": [
+        "instruments/mutual-fund",
+        "instruments/closed-end-fund",
+        "instruments/exchange-traded-note"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-exchange-traded-note",
+      "concept_id": "instruments/exchange-traded-note",
+      "display_name": "Exchange-traded note",
+      "domain": "Instruments",
+      "description": "Explain, compare, or apply Exchange-traded note using the library's structured Instruments reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Exchange-traded note",
+        "ETN",
+        "explain Exchange-traded note",
+        "apply Exchange-traded note to a trading question",
+        "common misconception about Exchange-traded note"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/instruments/exchange-traded-note",
+      "canonical": {
+        "source_path": "concepts/instruments.json",
+        "sha256": "0c31762c2f02387c648a390398f14b580d112ffbb8d510a51358bb457f80fbeb"
+      },
+      "related_concept_ids": [
+        "instruments/exchange-traded-fund",
+        "instruments/corporate-bond"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-mutual-fund",
+      "concept_id": "instruments/mutual-fund",
+      "display_name": "Mutual fund",
+      "domain": "Instruments",
+      "description": "Explain, compare, or apply Mutual fund using the library's structured Instruments reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Mutual fund",
+        "Open-end fund",
+        "Open-end investment company",
+        "explain Mutual fund",
+        "apply Mutual fund to a trading question",
+        "common misconception about Mutual fund"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/instruments/mutual-fund",
+      "canonical": {
+        "source_path": "concepts/instruments.json",
+        "sha256": "7d9c4d44b173a79df5f34424806953764060b4944dde7e4888643942dc91fcc6"
+      },
+      "related_concept_ids": [
+        "instruments/exchange-traded-fund",
+        "instruments/closed-end-fund",
+        "portfolio-management/portfolio"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-closed-end-fund",
+      "concept_id": "instruments/closed-end-fund",
+      "display_name": "Closed-end fund",
+      "domain": "Instruments",
+      "description": "Explain, compare, or apply Closed-end fund using the library's structured Instruments reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Closed-end fund",
+        "CEF",
+        "explain Closed-end fund",
+        "apply Closed-end fund to a trading question",
+        "common misconception about Closed-end fund"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/instruments/closed-end-fund",
+      "canonical": {
+        "source_path": "concepts/instruments.json",
+        "sha256": "620e606a014fe54ffdc8d1114549d1d6b8b52229e671495d058dd0e8022d73c3"
+      },
+      "related_concept_ids": [
+        "instruments/mutual-fund",
+        "instruments/exchange-traded-fund"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-common-stock",
+      "concept_id": "instruments/common-stock",
+      "display_name": "Common stock",
+      "domain": "Instruments",
+      "description": "Explain, compare, or apply Common stock using the library's structured Instruments reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Common stock",
+        "Ordinary shares",
+        "Equities",
+        "Shares",
+        "explain Common stock",
+        "apply Common stock to a trading question",
+        "common misconception about Common stock"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 7,
+      "package_path": "skills/concepts/instruments/common-stock",
+      "canonical": {
+        "source_path": "concepts/instruments.json",
+        "sha256": "399b59f177ddb77bee0167127b620ddc5821ae381577bdd94210446d7dfe1f69"
+      },
+      "related_concept_ids": [
+        "instruments/preferred-stock",
+        "instruments/depositary-receipt",
+        "instruments/exchange-traded-fund",
+        "instruments/equity-index-future"
       ]
     }
   ]

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/interest-rate-swap",
+  "canonical_sha256": "62a79cdb1ae947b58b90e92043783c48024990896c4497456f8ddd72e9b5cf4a",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/interest-rate-swap",
+    "name": "Interest rate swap",
+    "aliases": [
+      "IRS",
+      "Plain vanilla swap"
+    ],
+    "domain": "Instruments",
+    "definition": "A swap in which the two counterparties agree to exchange interest rate cash flows on a specified notional principal. In the standard plain-vanilla form, one party pays a fixed rate and the other pays a floating rate tied to a reference rate on a series of payment dates; the principal itself is not exchanged.",
+    "intuition": "Two parties swap the character of their interest payments — fixed for floating — so each ends up with the rate exposure it wants.",
+    "mechanics": "Each leg accrues interest on the same notional using its own rate and day-count convention, and payments are netted on each date. The fixed (swap) rate is set at inception so that the present value of the fixed leg equals the present value of the expected floating leg; thereafter the swap's mark-to-market moves with rates. Standardized IRS are now largely centrally cleared.",
+    "formula": "Fixed leg payment = N x R_fixed x alpha; floating leg payment = N x R_float x alpha, where N is notional and alpha the day-count fraction. At inception, the swap rate sets PV(fixed leg) = PV(floating leg).",
+    "relationships": [
+      "Swap",
+      "Forward rate agreement",
+      "Interest rate future",
+      "Currency swap"
+    ],
+    "failure_modes": "Benchmark reform (LIBOR to SOFR and other risk-free rates) changed floating-leg economics for legacy contracts. Rising rates create large negative mark-to-market for fixed-rate payers, generating collateral calls on cleared or margined swaps.",
+    "misconceptions": "That counterparties exchange principal — they do not; the notional only scales interest payments. Also, a swap does not create new borrowing; it transforms the rate exposure of existing obligations.",
+    "example": "On $100 million of 5-year notional, Party A pays 4% fixed semiannually and receives compounded SOFR; if SOFR averages 4.6% over a period, A receives the net 0.6% on the notional for that period.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Interest Rate Swap",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

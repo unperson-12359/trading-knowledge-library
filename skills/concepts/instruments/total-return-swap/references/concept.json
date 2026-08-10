@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/total-return-swap",
+  "canonical_sha256": "a0d7902f4b1704328ea78c5ad76dd8b29e68b9f696f4d784e7a4d86e70a9ccb2",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/total-return-swap",
+    "name": "Total return swap",
+    "aliases": [
+      "TRS",
+      "TRORS"
+    ],
+    "domain": "Instruments",
+    "definition": "A swap in which one party (the total return payer) transfers the full economic performance of a reference asset — its income plus any price appreciation or depreciation — to the other party, which in return pays a financing rate (a reference rate plus a spread) on the notional. It transfers the asset's returns without transferring ownership and is classed among the common credit derivatives.",
+    "intuition": "A total return swap lets you collect everything a stock, bond, or index pays and earns — as if you owned it — while posting only a fraction of its value as margin and paying a financing charge.",
+    "mechanics": "On each payment date the payer passes through coupons or dividends plus the mark-to-market change in the reference asset; if the asset fell, the receiver pays the loss. The receiver thus holds leveraged synthetic exposure, while the payer (often a dealer that owns or hedges the asset) sheds its price risk.",
+    "formula": "Total return payment = income received on the reference asset + (P_end - P_start) x notional quantity; financing leg = notional x (reference rate + spread) x day-count fraction.",
+    "relationships": [
+      "Swap",
+      "Credit default swap",
+      "Synthetic asset",
+      "Contract for difference"
+    ],
+    "failure_modes": "The receiver bears the full downside of the reference asset plus counterparty risk, and the embedded leverage is largely invisible on the balance sheet — the 2021 Archegos collapse was built on equity total return swaps. Financing spreads can also widen or financing be withdrawn in stress.",
+    "misconceptions": "That receiving total return confers shareholder rights — it transfers economics only, not voting or ownership. Also, dealers are not betting against the client by default; they typically hedge the reference asset.",
+    "example": "A fund receives the total return on $50 million notional of an equity basket and pays SOFR plus 60 basis points quarterly; a 4% rise in the basket over a quarter nets it roughly $2 million minus financing.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Credit Derivative (lists total return swaps among common credit derivatives)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

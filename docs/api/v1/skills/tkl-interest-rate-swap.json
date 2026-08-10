@@ -1,0 +1,80 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-interest-rate-swap",
+  "concept_id": "instruments/interest-rate-swap",
+  "display_name": "Interest rate swap",
+  "domain": "Instruments",
+  "description": "Explain, compare, or apply Interest rate swap using the library's structured Instruments reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Interest rate swap",
+    "IRS",
+    "Plain vanilla swap",
+    "explain Interest rate swap",
+    "apply Interest rate swap to a trading question",
+    "common misconception about Interest rate swap"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 7,
+  "package_path": "skills/concepts/instruments/interest-rate-swap",
+  "canonical": {
+    "source_path": "concepts/instruments.json",
+    "sha256": "62a79cdb1ae947b58b90e92043783c48024990896c4497456f8ddd72e9b5cf4a"
+  },
+  "related_concept_ids": [
+    "instruments/swap",
+    "instruments/forward-rate-agreement",
+    "instruments/interest-rate-future",
+    "instruments/currency-swap"
+  ]
+}

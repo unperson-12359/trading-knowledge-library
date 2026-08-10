@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "participants/execution-broker",
+  "canonical_sha256": "f352da84a5825cea3ebf023b6074f7fb69b2d92b28c11e8cdea7ec99fe383957",
+  "source_path": "concepts/participants.json",
+  "concept": {
+    "id": "participants/execution-broker",
+    "name": "Execution broker",
+    "aliases": [
+      "executing broker",
+      "executing firm"
+    ],
+    "domain": "Participants",
+    "definition": "An execution broker is a broker engaged by a client to execute trades in the market, as distinct from the firm that carries, clears, or custodies the account. In prime brokerage and give-up arrangements, the executing broker executes the trade and then 'gives up' the trade at the execution price to the client's designated carrying firm (prime broker or FCM) for clearing and settlement.",
+    "intuition": "An execution broker is the hired hand who actually goes into the market and gets the trade done; afterward the trade is handed off to the firm's main broker, which holds and settles the position.",
+    "mechanics": "The client routes an order to the execution broker for market access and best execution; once filled, the trade is allocated or given up (e.g., via CME's Allocation Claim System) to the carrying firm, which books, margines, and settles the position. This separation lets institutions use many execution brokers for research, access, or pricing while centralizing positions at one carrying firm.",
+    "formula": "",
+    "relationships": [
+      "Prime broker",
+      "Agency broker",
+      "Futures commission merchant",
+      "Institutional investor",
+      "Broker"
+    ],
+    "failure_modes": "Give-up and allocation chains add operational risk: misallocated or unmatched trades, and disputes over execution quality when execution and clearing are split. Reliance on the executing broker for best execution requires monitoring that clients often underperform.",
+    "misconceptions": "The executing broker is not the firm that ends up holding the position — confusing execution with carrying/custody misattributes where assets and margin actually sit. 'Execution-only' also implies no advice, but it does not imply best execution is automatic.",
+    "example": "A hedge fund directs an order to a regional broker for execution in a stock; the fill is given up to the fund's prime broker, which settles the trade into the fund's master account.",
+    "citations": [
+      {
+        "source": "CME Group Education Glossary",
+        "url": "https://www.cmegroup.com/education/glossary.html",
+        "section": "Allocation Claim System (executing firms giving up trades to carrying firms)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "SEC, Division of Trading and Markets, Guide to Broker-Dealer Registration",
+        "url": "https://www.sec.gov/divisions/marketreg/bdguide.htm",
+        "section": "Part V.A.3 (Duty of Best Execution)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

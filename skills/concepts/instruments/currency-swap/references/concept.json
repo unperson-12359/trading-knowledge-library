@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/currency-swap",
+  "canonical_sha256": "3ecae599d51d9231f26de84254306f6716d2c9021a0e5cdbd38705772ef0d7e0",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/currency-swap",
+    "name": "Currency swap",
+    "aliases": [
+      "Cross-currency swap"
+    ],
+    "domain": "Instruments",
+    "definition": "A swap that involves the exchange of one currency for another on a specified schedule. Counterparties typically exchange principal amounts in two currencies at inception, exchange interest payments in each currency during the life of the contract, and re-exchange the principals at maturity at the pre-agreed rate.",
+    "intuition": "Each party borrows in the currency where it has an advantage, then swaps the proceeds and the interest obligations, so each ends up servicing debt in the currency it actually needs.",
+    "mechanics": "Principals are exchanged at the spot rate at inception and re-exchanged at the same (or a contracted) rate at maturity, while periodic interest flows — fixed or floating — in the two currencies are paid in between. This structure hedges both interest rate and exchange rate exposure over the contract's life.",
+    "formula": "",
+    "relationships": [
+      "Swap",
+      "Interest rate swap",
+      "Currency pair",
+      "Forward contract",
+      "FX future"
+    ],
+    "failure_modes": "Because principals are re-exchanged at a fixed rate, a large exchange-rate move creates substantial mark-to-market exposure to the counterparty over long tenors. Cross-currency basis can also move against hedgers, making synthetic funding more expensive than direct funding.",
+    "misconceptions": "That a currency swap is the same as an FX swap (a spot purchase plus an offsetting forward); a currency swap exchanges ongoing interest payments as well as principal. Also, unlike an interest rate swap, principal typically is exchanged here.",
+    "example": "A U.S. firm swaps $100 million for euros with a European firm at inception, pays euro interest and receives dollar interest for seven years, then re-exchanges the same principal amounts at maturity.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Currency Swap",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

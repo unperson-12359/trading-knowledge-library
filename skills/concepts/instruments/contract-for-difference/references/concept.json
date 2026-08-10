@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/contract-for-difference",
+  "canonical_sha256": "5521f38316726dd1fa56e6e100cf17cf7e4a350acb5b7f4f1f1f9be0547f74c3",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/contract-for-difference",
+    "name": "Contract for difference",
+    "aliases": [
+      "CFD"
+    ],
+    "domain": "Instruments",
+    "definition": "A leveraged over-the-counter derivative between a client and a provider in which the parties exchange the difference between the opening and closing price of an underlying asset — a share, index, currency, or commodity — without either party owning the underlying. The FCA classifies CFDs as complex, high-risk products that carry a considerable risk of substantial losses.",
+    "intuition": "A CFD is a cash-settled bet on a price move: you gain or lose the full change in the asset's price while posting only a fraction of its value as margin.",
+    "mechanics": "A position is opened with initial margin; profit or loss equals the price change times position size, and long positions pay daily financing on the full notional. Regulators such as the FCA restrict retail leverage (between 30:1 and 2:1 depending on the underlying), mandate margin close-out, and provide negative balance protection for retail clients.",
+    "formula": "PnL (long) = (P_close - P_open) x quantity, minus financing and any commissions.",
+    "relationships": [
+      "Total return swap",
+      "Margin",
+      "Futures contract",
+      "Forward contract"
+    ],
+    "failure_modes": "High leverage means small adverse moves can wipe out the deposit quickly; a large majority of retail CFD accounts lose money. The client also bears provider counterparty risk, and overnight financing charges erode positions held for long periods.",
+    "misconceptions": "That a CFD confers ownership or voting rights in the underlying — it is purely a price-difference contract. Also, stop-losses do not guarantee an exit price in gapping markets.",
+    "example": "Buying 1,000 share CFDs at GBP 10.00 with 20% margin requires GBP 2,000; if the price rises to GBP 10.50, the gain is GBP 500 minus financing — a 25% return on margin from a 5% price move, with symmetric downside.",
+    "citations": [
+      {
+        "source": "UK Financial Conduct Authority, press release: FCA warns investors in CFDs risk losing out on protections",
+        "url": "https://www.fca.org.uk/news/press-releases/fca-warns-investors-cfds-risk-losing-out-protections",
+        "section": "Notes to editors: definition and risk characterization of CFDs",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

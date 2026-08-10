@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "participants/index-provider",
+  "canonical_sha256": "f30e8f103d0b13932574091d39c971f335acec13f1ca45eff3c38706b3327fbc",
+  "source_path": "concepts/participants.json",
+  "concept": {
+    "id": "participants/index-provider",
+    "name": "Index provider",
+    "aliases": [
+      "index administrator",
+      "benchmark administrator"
+    ],
+    "domain": "Participants",
+    "definition": "An index provider (benchmark administrator) is the natural or legal person that has control over the provision of a benchmark: it administers the arrangements for determining the index, collects and analyzes the input data, calculates the index value according to a published methodology, and publishes it. Examples include providers of equity, bond, and commodity indices used for benchmarking, index funds, and derivatives settlement.",
+    "intuition": "An index provider is the scorekeeper of a market segment: it decides which securities are in the index, how they are weighted, and publishes the number everyone else trades and measures against.",
+    "mechanics": "The provider publishes a methodology (universe, eligibility, weighting, rebalancing schedule), applies it to market data to compute index levels, runs periodic reconstitutions and rebalances, and licenses the index to ETF issuers, asset managers, and derivatives exchanges. Because index composition changes force trading by tracking funds, rebalance announcements have real market impact.",
+    "formula": "Price-weighted index: I = sum(p_i) / D, where p_i are constituent prices and D is the divisor; market-cap-weighted index: I = (sum(p_i * s_i * f_i) / B) * base value, with s_i shares, f_i free-float factor, B base-period divisor.",
+    "relationships": [
+      "Market data vendor",
+      "Authorized participant",
+      "Institutional investor",
+      "Custodian"
+    ],
+    "failure_modes": "Methodology choices (survivorship in constituent selection, free-float adjustments, corporate-action handling) embed judgment, and index changes can be front-run, moving prices against trackers. Governance failures in benchmarks (e.g., LIBOR manipulation) led to formal benchmark regulation.",
+    "misconceptions": "An index is not a neutral law of nature — it is a designed product whose provider makes discretionary methodology choices. Being in a famous index also does not certify an investment's quality, only that it met published rules.",
+    "example": "An index provider announces its large-cap index will add a fast-growing company at the quarterly rebalance; tracking funds must buy the stock on the effective date, and arbitrageurs position ahead of that forced demand.",
+    "citations": [
+      {
+        "source": "Regulation (EU) 2016/1011 (EU Benchmarks Regulation)",
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R1011",
+        "section": "Recital (16) and Article 3(1): definition of 'administrator' and 'provision of a benchmark'",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

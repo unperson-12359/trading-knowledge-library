@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "participants/agency-broker",
+  "canonical_sha256": "9aef764f9051a4f55259b937dde15edc2f6218f102711b81089e1b07996ed073",
+  "source_path": "concepts/participants.json",
+  "concept": {
+    "id": "participants/agency-broker",
+    "name": "Agency broker",
+    "aliases": [
+      "agency-only broker",
+      "agent"
+    ],
+    "domain": "Participants",
+    "definition": "An agency broker is a broker that executes customer orders strictly as agent — arranging trades with third parties for a disclosed commission — and never takes the other side of the customer's trade as principal. The agency/principal capacity must be disclosed on customer confirmations under Exchange Act Rule 10b-10.",
+    "intuition": "An agency broker is a pure matchmaker: it finds a counterparty for your trade in the market and charges a commission, without ever selling you anything out of its own pocket.",
+    "mechanics": "The broker routes the customer's order to an exchange, market maker, or other venue for execution against third-party interest, charging an explicit commission. Because the broker has no inventory position in the trade, it avoids the principal-trade conflicts of markups and trading against the customer, though routing conflicts (payment for order flow) can remain.",
+    "formula": "",
+    "relationships": [
+      "Broker",
+      "Principal trader",
+      "Execution broker",
+      "Broker-dealer",
+      "Dealer"
+    ],
+    "failure_modes": "Agency status removes principal conflicts but not routing conflicts: order-routing payments and affiliated-venue routing can still compromise execution quality. Agency-only models are also capacity-constrained in illiquid markets where principal risk-taking is what actually finds liquidity.",
+    "misconceptions": "'Agency' does not guarantee best execution or the absence of all conflicts — it only means no principal capacity in the trade. Customers also often cannot tell from the fill alone whether the firm acted as agent or principal; the confirmation discloses capacity.",
+    "example": "An adviser instructs its agency broker to buy 50,000 shares; the broker works the order on exchanges and dark pools against other investors, charges $0.01 per share commission, and buys nothing for its own account.",
+    "citations": [
+      {
+        "source": "SEC, Division of Trading and Markets, Guide to Broker-Dealer Registration",
+        "url": "https://www.sec.gov/divisions/marketreg/bdguide.htm",
+        "section": "Part II.A-B (broker as agent vs. dealer as principal); Part V.A.4 (capacity disclosure on confirmations)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/swap",
+  "canonical_sha256": "b725f39a131c1b91a8d62e076c8ed561a052672d074fd53dc7c1627d425944fd",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/swap",
+    "name": "Swap",
+    "aliases": [
+      "OTC swap",
+      "Swap agreement"
+    ],
+    "domain": "Instruments",
+    "definition": "A derivative in which two counterparties agree to exchange streams of cash flows over a specified period, computed by applying agreed rates, prices, or formulas to a notional amount. Under the detailed statutory definition in the Commodity Exchange Act (as amended by the Dodd-Frank Act), the term includes interest rate swaps, commodity swaps, currency swaps, equity swaps, and credit default swaps.",
+    "intuition": "A swap lets two parties trade one kind of payment obligation for another — for example, exchanging a fixed interest bill for a floating one — without trading the underlying asset itself.",
+    "mechanics": "Cash flows are typically netted on each payment date against a notional principal that is usually not exchanged. Swaps are documented under ISDA master agreements; post-Dodd-Frank, many standardized swaps must be centrally cleared through a derivatives clearing organization, executed on swap execution facilities, and reported to swap data repositories.",
+    "formula": "Net payment on a payment date = Notional x (rate paid - rate received) x day-count fraction.",
+    "relationships": [
+      "Interest rate swap",
+      "Currency swap",
+      "Credit default swap",
+      "Total return swap",
+      "Variance swap",
+      "Forward contract"
+    ],
+    "failure_modes": "Uncleared swaps carry bilateral counterparty credit risk over long tenors. Hedged exposures can mismatch the swap's terms (basis risk), and benchmark transitions (e.g., LIBOR cessation) can strand legacy contracts.",
+    "misconceptions": "That the notional principal changes hands — in most swaps it never does and exists only to compute payments. Also, swaps are often seen as exotic speculation, but their most common use is routine balance-sheet hedging.",
+    "example": "A company with floating-rate debt enters a five-year pay-fixed/receive-floating interest rate swap on $50 million notional, converting its interest expense to a fixed rate.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Swap",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

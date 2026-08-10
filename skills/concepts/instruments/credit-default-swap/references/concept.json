@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/credit-default-swap",
+  "canonical_sha256": "eb31ba711b593a598374830c492a9d663f84d0f0e0fb1c6b74552d7a49c7215e",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/credit-default-swap",
+    "name": "Credit default swap",
+    "aliases": [
+      "CDS",
+      "Credit swap"
+    ],
+    "domain": "Instruments",
+    "definition": "A bilateral over-the-counter credit derivative in which the protection seller agrees to make a payment to the protection buyer in the event of a specified credit event (such as a default or bankruptcy) of a reference entity, in exchange for a fixed payment or series of fixed payments. It is the most common type of credit derivative.",
+    "intuition": "A CDS works like default insurance on a borrower: you pay a periodic premium, and if the borrower suffers a credit event, you are compensated for the loss in value of its debt.",
+    "mechanics": "The buyer pays a periodic spread on the notional until maturity or a credit event. After a credit event is determined by the ISDA determinations committee, the contract settles either physically (the buyer delivers defaulted debt and receives par) or in cash at an auction-determined recovery value (the seller pays par minus recovery).",
+    "formula": "Premium leg approximately N x spread x day-count fraction per period; protection leg approximately N x (1 - recovery rate) on a credit event.",
+    "relationships": [
+      "Swap",
+      "Total return swap",
+      "Corporate bond",
+      "Government bond"
+    ],
+    "failure_modes": "The CDS-bond basis can diverge, so hedges are imperfect. Concentrated seller exposure can transmit losses across the system (AIG in 2008), and disputes over what constitutes a credit event can delay or reduce payouts.",
+    "misconceptions": "That the buyer must own the reference entity's bonds — 'naked' CDS positions are permitted, so open CDS notional can exceed the debt outstanding. Also, a CDS is not legally an insurance contract and carries no insurable-interest requirement.",
+    "example": "An investor buys 5-year CDS protection on $10 million of XYZ Corp at a 200 basis point spread, paying about $200,000 per year; if XYZ defaults and the auction recovery is 40%, the seller pays roughly $6 million.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Credit Default Swap",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
