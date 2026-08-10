@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/forward-test",
+  "canonical_sha256": "46bf9b17f5b039924ccef59bce01f5acb573f88016b1f944001803b2f8855129",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/forward-test",
+    "name": "Forward test",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "Prospective evaluation of a frozen strategy on market data that arrives after development, without risking capital necessarily.",
+    "intuition": "It estimates how a fitted choice behaves on observations that were not used to fit that choice.",
+    "mechanics": "Version the rules, parameters, and code; record signals and simulated fills as new data arrive; compare results with prespecified expectations.",
+    "formula": "",
+    "relationships": [
+      "Out-of-sample period",
+      "Paper trading",
+      "Shadow trading"
+    ],
+    "failure_modes": "Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.",
+    "misconceptions": "Validation measures conditional generalization under a split design; it does not guarantee future market performance.",
+    "example": "A strategy frozen on June 30 produces timestamped shadow orders from July through December before any launch decision.",
+    "citations": [
+      {
+        "source": "SEC, Investment Adviser Advertisements; Compensation for Solicitations",
+        "url": "https://www.sec.gov/rules/proposed/2019/ia-5407.pdf",
+        "section": "Backtested and hypothetical performance, pp. 159-174",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

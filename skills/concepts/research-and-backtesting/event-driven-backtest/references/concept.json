@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/event-driven-backtest",
+  "canonical_sha256": "711c71cb0d225d4c4fd0233b3cccd05d5eb11f2ee2be4f459747c5151541ba07",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/event-driven-backtest",
+    "name": "Event-driven backtest",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A backtest in which a clock processes market, signal, order, fill, and portfolio events in timestamp order.",
+    "intuition": "It is part of the machinery that converts strategy instructions into simulated positions, cash flows, and performance.",
+    "mechanics": "Each event updates state and may enqueue later events, preventing strategy logic from reading beyond the current time frontier.",
+    "formula": "",
+    "relationships": [
+      "Backtest",
+      "Backtest engine",
+      "Execution simulator"
+    ],
+    "failure_modes": "Simplified timing, liquidity, fee, borrow, funding, or corporate-action assumptions can make simulated results unattainable live.",
+    "misconceptions": "A detailed simulator reduces modeling error but cannot reproduce every queue event or future market condition.",
+    "example": "A 09:30 quote triggers an order event; a later trade event partially fills it and then updates cash.",
+    "citations": [
+      {
+        "source": "QuantConnect LEAN documentation, Algorithm Engine",
+        "url": "https://www.quantconnect.com/docs/v2/writing-algorithms/key-concepts/algorithm-engine",
+        "section": "Streaming event flow in backtest and live modes",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

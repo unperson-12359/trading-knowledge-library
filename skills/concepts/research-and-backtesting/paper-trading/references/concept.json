@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/paper-trading",
+  "canonical_sha256": "078b6c340db34bf2686807a70433f209e730ada46bf183501a4e2bb92c22eab7",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/paper-trading",
+    "name": "Paper trading",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "Running a strategy against live or delayed market data with simulated orders and account balances instead of real executions and capital.",
+    "intuition": "It is part of the machinery that converts strategy instructions into simulated positions, cash flows, and performance.",
+    "mechanics": "Submit orders to a simulated brokerage model, record assumed fills, fees, and buying power, and reconcile those assumptions with observable markets.",
+    "formula": "",
+    "relationships": [
+      "Forward test",
+      "Shadow trading",
+      "Live trading"
+    ],
+    "failure_modes": "Simplified timing, liquidity, fee, borrow, funding, or corporate-action assumptions can make simulated results unattainable live.",
+    "misconceptions": "A detailed simulator reduces modeling error but cannot reproduce every queue event or future market condition.",
+    "example": "A paper account buys 100 shares, but its immediate full fill is flagged as optimistic because only 20 shares were displayed.",
+    "citations": [
+      {
+        "source": "QuantConnect LEAN documentation, Paper Trading Brokerage Model",
+        "url": "https://www.quantconnect.com/docs/v2/writing-algorithms/reality-modeling/brokerages/supported-models/quantconnect-paper-trading",
+        "section": "Paper fills, fees, slippage, and buying power",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

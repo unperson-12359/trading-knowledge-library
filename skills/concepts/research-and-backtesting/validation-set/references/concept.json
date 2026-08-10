@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/validation-set",
+  "canonical_sha256": "33200b9fc580fb7ef85e4ee4100f5d3474e6be4ddca15b8542f55d3409e0e2f8",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/validation-set",
+    "name": "Validation set",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "Held-out observations used during development to compare models, tune hyperparameters, or choose stopping points.",
+    "intuition": "It estimates how a fitted choice behaves on observations that were not used to fit that choice.",
+    "mechanics": "Evaluate candidate choices on this set while keeping the final test set untouched until the design is frozen.",
+    "formula": "",
+    "relationships": [
+      "Training set",
+      "Test set",
+      "Hyperparameter"
+    ],
+    "failure_modes": "Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.",
+    "misconceptions": "Validation measures conditional generalization under a split design; it does not guarantee future market performance.",
+    "example": "Models with depths 2, 4, and 8 are trained on 2015-2020 and compared on 2021 validation data.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide, Cross-validation",
+        "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+        "section": "Training, validation, test sets and cross-validation",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

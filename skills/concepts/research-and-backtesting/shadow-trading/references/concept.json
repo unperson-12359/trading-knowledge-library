@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/shadow-trading",
+  "canonical_sha256": "4c4c32a3e9272e7b4ee8dc93721927d5b126414396f3e6303fb97792e8121e54",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/shadow-trading",
+    "name": "Shadow trading",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A prospective test that generates and records production-intended orders alongside a live process but does not route those orders for execution.",
+    "intuition": "It is part of the machinery that converts strategy instructions into simulated positions, cash flows, and performance.",
+    "mechanics": "Feed the production data stream through frozen logic, retain intended order timestamps and quantities, and compare them with executable quotes and actual system latency.",
+    "formula": "",
+    "relationships": [
+      "Forward test",
+      "Paper trading",
+      "Live trading"
+    ],
+    "failure_modes": "Simplified timing, liquidity, fee, borrow, funding, or corporate-action assumptions can make simulated results unattainable live.",
+    "misconceptions": "A detailed simulator reduces modeling error but cannot reproduce every queue event or future market condition.",
+    "example": "A shadow strategy logs a 10:00:00 buy and later measures the ask available when the order would have reached the venue.",
+    "citations": [
+      {
+        "source": "QuantConnect LEAN documentation, Algorithm Engine",
+        "url": "https://www.quantconnect.com/docs/v2/writing-algorithms/key-concepts/algorithm-engine",
+        "section": "Streaming event flow in backtest and live modes",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/out-of-sample-period",
+  "canonical_sha256": "e0c1cf1bac3b63b0b8bd6811b1062be2e7052e422300288baa4fd4d867219fca",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/out-of-sample-period",
+    "name": "Out-of-sample period",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A later or otherwise untouched interval not used to formulate, fit, or select the evaluated strategy.",
+    "intuition": "It estimates how a fitted choice behaves on observations that were not used to fit that choice.",
+    "mechanics": "Freeze the design before revealing results, simulate decisions using only contemporaneously available data, and disclose any later reuse for tuning.",
+    "formula": "",
+    "relationships": [
+      "In-sample period",
+      "Test set",
+      "Forward test"
+    ],
+    "failure_modes": "Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.",
+    "misconceptions": "Validation measures conditional generalization under a split design; it does not guarantee future market performance.",
+    "example": "A strategy finalized with data through 2021 is first evaluated on 2022-2023, making those years out-of-sample for that test.",
+    "citations": [
+      {
+        "source": "SEC, Investment Adviser Advertisements; Compensation for Solicitations",
+        "url": "https://www.sec.gov/rules/proposed/2019/ia-5407.pdf",
+        "section": "Backtested and hypothetical performance, pp. 159-174",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/test-set",
+  "canonical_sha256": "6154693068e5a18f2c9b52aa03fc9c170b51053e72820061ef5bd69e2500b8cb",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/test-set",
+    "name": "Test set",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A final held-out sample used once to estimate performance after model and hyperparameter choices are fixed.",
+    "intuition": "It estimates how a fitted choice behaves on observations that were not used to fit that choice.",
+    "mechanics": "Lock the pipeline first, apply it without refitting to the test observations, and report all prespecified metrics and costs.",
+    "formula": "",
+    "relationships": [
+      "Training set",
+      "Validation set",
+      "Out-of-sample period"
+    ],
+    "failure_modes": "Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.",
+    "misconceptions": "Validation measures conditional generalization under a split design; it does not guarantee future market performance.",
+    "example": "After choosing depth on 2021 validation data, the frozen model is evaluated once on 2022-2023 test data.",
+    "citations": [
+      {
+        "source": "scikit-learn User Guide, Cross-validation",
+        "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+        "section": "Training, validation, test sets and cross-validation",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

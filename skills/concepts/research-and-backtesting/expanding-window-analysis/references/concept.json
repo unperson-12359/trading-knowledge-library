@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/expanding-window-analysis",
+  "canonical_sha256": "89c52442c3bc9c72bd69e21307c4ef5228ff9212afaac6c911d8a4253550e6b1",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/expanding-window-analysis",
+    "name": "Expanding-window analysis",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "Walk-forward analysis whose training set begins at a fixed origin and grows as each new block becomes available.",
+    "intuition": "It estimates how a fitted choice behaves on observations that were not used to fit that choice.",
+    "mechanics": "Fit on all observations up to a cutoff, test on the next block, add that block to training, and repeat.",
+    "formula": "",
+    "relationships": [
+      "Walk-forward analysis",
+      "Rolling-window analysis"
+    ],
+    "failure_modes": "Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.",
+    "misconceptions": "Validation measures conditional generalization under a split design; it does not guarantee future market performance.",
+    "example": "Fit through 2020 and test 2021; then fit through 2021 and test 2022.",
+    "citations": [
+      {
+        "source": "scikit-learn API, TimeSeriesSplit",
+        "url": "https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html",
+        "section": "Time-ordered train/test splits and gap parameter",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

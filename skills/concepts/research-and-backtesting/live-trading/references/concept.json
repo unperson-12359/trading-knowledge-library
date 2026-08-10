@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/live-trading",
+  "canonical_sha256": "1854a9dc67b4884349eb0a957a4dfe54b587edac11a1e34ae85e79bc61475ba0",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/live-trading",
+    "name": "Live trading",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "Execution of a strategy using current market data and real orders, capital, fills, fees, and operational constraints.",
+    "intuition": "It is part of the machinery that converts strategy instructions into simulated positions, cash flows, and performance.",
+    "mechanics": "Receive streaming data, create and route orders, handle asynchronous fills and failures, update portfolio state, and monitor risk controls.",
+    "formula": "",
+    "relationships": [
+      "Paper trading",
+      "Shadow trading",
+      "Execution simulator"
+    ],
+    "failure_modes": "Simplified timing, liquidity, fee, borrow, funding, or corporate-action assumptions can make simulated results unattainable live.",
+    "misconceptions": "A detailed simulator reduces modeling error but cannot reproduce every queue event or future market condition.",
+    "example": "A live limit order receives two partial fills and the strategy updates its remaining quantity after each broker event.",
+    "citations": [
+      {
+        "source": "QuantConnect LEAN documentation, Algorithm Engine",
+        "url": "https://www.quantconnect.com/docs/v2/writing-algorithms/key-concepts/algorithm-engine",
+        "section": "Streaming event flow in backtest and live modes",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

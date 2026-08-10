@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/market-impact-model",
+  "canonical_sha256": "fdcb1803e53743229e740a58519890b1aa9b34b7f3ec58638a090628725f691d",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/market-impact-model",
+    "name": "Market-impact model",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A model of price movement caused by the strategy's own trading, often separated into temporary and persistent components.",
+    "intuition": "It is part of the machinery that converts strategy instructions into simulated positions, cash flows, and performance.",
+    "mechanics": "Estimate impact from participation, order size, volatility, liquidity, execution time, and calibrated coefficients; feed it into simulated fills and later prices if modeled.",
+    "formula": "",
+    "relationships": [
+      "Slippage model",
+      "Capacity",
+      "Liquidity"
+    ],
+    "failure_modes": "Simplified timing, liquidity, fee, borrow, funding, or corporate-action assumptions can make simulated results unattainable live.",
+    "misconceptions": "A detailed simulator reduces modeling error but cannot reproduce every queue event or future market condition.",
+    "example": "A 10% participation order receives more impact than a 1% participation order in the same stock and volatility regime.",
+    "citations": [
+      {
+        "source": "QuantConnect LEAN documentation, Slippage Models",
+        "url": "https://www.quantconnect.com/docs/v2/writing-algorithms/reality-modeling/slippage/supported-models",
+        "section": "Constant, volume-share, and market-impact models",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

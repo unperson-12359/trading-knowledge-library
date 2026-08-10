@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/borrow-cost-model",
+  "canonical_sha256": "c3beab29eca106258e77bdcddd56697b87e7fb2d7834b3831c37b750a29b7eea",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/borrow-cost-model",
+    "name": "Borrow-cost model",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A model of fees and constraints incurred when maintaining short positions in borrowed securities.",
+    "intuition": "It is part of the machinery that converts strategy instructions into simulated positions, cash flows, and performance.",
+    "mechanics": "For each short position, apply the dated borrow rate and availability to market value over elapsed time, accrue the charge, and reject or recall unavailable borrow when modeled.",
+    "formula": "",
+    "relationships": [
+      "Short selling",
+      "Transaction cost",
+      "Capacity"
+    ],
+    "failure_modes": "Simplified timing, liquidity, fee, borrow, funding, or corporate-action assumptions can make simulated results unattainable live.",
+    "misconceptions": "A detailed simulator reduces modeling error but cannot reproduce every queue event or future market condition.",
+    "example": "Borrowing $100,000 of stock for 30 days at 6% annualized accrues about $493 on an actual/365 basis.",
+    "citations": [
+      {
+        "source": "CFA Institute Research Foundation, Investment Model Validation",
+        "url": "https://rpc.cfainstitute.org/research/foundation/2024/investment-model-validation",
+        "section": "Overview and model-validation framework",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

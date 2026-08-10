@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/rolling-window-analysis",
+  "canonical_sha256": "b39906ee4ad5cfb1f4bc7531117f83faec360588b274b64225b3aeee751b3b88",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/rolling-window-analysis",
+    "name": "Rolling-window analysis",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "Walk-forward analysis whose training window has fixed length and drops the oldest observations as it advances.",
+    "intuition": "It estimates how a fitted choice behaves on observations that were not used to fit that choice.",
+    "mechanics": "Choose train and test lengths, fit on each trailing window, and evaluate on the immediately following block.",
+    "formula": "",
+    "relationships": [
+      "Walk-forward analysis",
+      "Expanding-window analysis"
+    ],
+    "failure_modes": "Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.",
+    "misconceptions": "Validation measures conditional generalization under a split design; it does not guarantee future market performance.",
+    "example": "Use the prior 36 months to fit each model and predict the next month, then roll both boundaries forward one month.",
+    "citations": [
+      {
+        "source": "CFA Institute, Backtesting & Simulation",
+        "url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/backtesting-and-simulation",
+        "section": "Summary: rolling-window backtesting, bias, simulation, and sensitivity analysis",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

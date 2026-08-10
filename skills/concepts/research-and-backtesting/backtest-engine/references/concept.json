@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/backtest-engine",
+  "canonical_sha256": "3f60f4dff76b1fa3a1ec7e2cc3752ebc395a706fc5b100cb97ffda22148b068a",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/backtest-engine",
+    "name": "Backtest engine",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "Software that coordinates historical data, the simulation clock, strategy callbacks, order state, portfolio accounting, and performance output.",
+    "intuition": "It is part of the machinery that converts strategy instructions into simulated positions, cash flows, and performance.",
+    "mechanics": "Load dated data, enforce a time frontier, dispatch events or bars, call strategy logic, pass orders to reality models, and persist results.",
+    "formula": "",
+    "relationships": [
+      "Backtest",
+      "Event-driven backtest",
+      "Execution simulator"
+    ],
+    "failure_modes": "Simplified timing, liquidity, fee, borrow, funding, or corporate-action assumptions can make simulated results unattainable live.",
+    "misconceptions": "A detailed simulator reduces modeling error but cannot reproduce every queue event or future market condition.",
+    "example": "The engine advances to 10:01, invokes the algorithm, sends its order to a fill model, and books the returned execution.",
+    "citations": [
+      {
+        "source": "QuantConnect LEAN documentation, Algorithm Engine",
+        "url": "https://www.quantconnect.com/docs/v2/writing-algorithms/key-concepts/algorithm-engine",
+        "section": "Streaming event flow in backtest and live modes",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

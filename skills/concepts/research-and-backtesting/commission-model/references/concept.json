@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/commission-model",
+  "canonical_sha256": "2591f7d96f75e45962b26fb68323e9523dd0247db3c92bca7890d0f1787f5b68",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/commission-model",
+    "name": "Commission model",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A model that deducts broker, exchange, clearing, and regulatory charges from simulated trading results.",
+    "intuition": "It is part of the machinery that converts strategy instructions into simulated positions, cash flows, and performance.",
+    "mechanics": "Map each fill's venue, instrument, quantity, price, side, and account tier to a fee, then debit it when the fill is booked.",
+    "formula": "",
+    "relationships": [
+      "Execution simulator",
+      "Transaction cost",
+      "Slippage model"
+    ],
+    "failure_modes": "Simplified timing, liquidity, fee, borrow, funding, or corporate-action assumptions can make simulated results unattainable live.",
+    "misconceptions": "A detailed simulator reduces modeling error but cannot reproduce every queue event or future market condition.",
+    "example": "At $0.005 per share with a $1 minimum, a 100-share fill incurs $1 rather than $0.50.",
+    "citations": [
+      {
+        "source": "QuantConnect LEAN documentation, Paper Trading Brokerage Model",
+        "url": "https://www.quantconnect.com/docs/v2/writing-algorithms/reality-modeling/brokerages/supported-models/quantconnect-paper-trading",
+        "section": "Paper fills, fees, slippage, and buying power",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

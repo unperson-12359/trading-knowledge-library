@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/vectorized-backtest",
+  "canonical_sha256": "8a3fbe5481148711b88109ae2ccd2d8da3833e599da81a025c9dd3b193b22340",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/vectorized-backtest",
+    "name": "Vectorized backtest",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A backtest that computes signals, positions, and returns primarily as aligned array operations rather than replaying individual events.",
+    "intuition": "It is part of the machinery that converts strategy instructions into simulated positions, cash flows, and performance.",
+    "mechanics": "Construct lagged positions and return series, align them explicitly, and apply turnover and cost adjustments across the arrays.",
+    "formula": "",
+    "relationships": [
+      "Backtest",
+      "Event-driven backtest",
+      "Look-ahead bias"
+    ],
+    "failure_modes": "Simplified timing, liquidity, fee, borrow, funding, or corporate-action assumptions can make simulated results unattainable live.",
+    "misconceptions": "A detailed simulator reduces modeling error but cannot reproduce every queue event or future market condition.",
+    "example": "Daily signal s at row t is shifted one row before multiplying return r at t, preventing same-close look-ahead.",
+    "citations": [
+      {
+        "source": "QuantConnect LEAN documentation, Algorithm Engine",
+        "url": "https://www.quantconnect.com/docs/v2/writing-algorithms/key-concepts/algorithm-engine",
+        "section": "Streaming event flow in backtest and live modes",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

@@ -2,7 +2,7 @@
   "$schema": "../schemas/skill-manifest.schema.json",
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 1260,
+  "completed_count": 1280,
   "skills": [
     {
       "$schema": "../../../../schemas/concept-skill.schema.json",
@@ -101986,6 +101986,1541 @@
         "research-and-backtesting/validation-set",
         "research-and-backtesting/test-set",
         "research-and-backtesting/in-sample-period"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-validation-set",
+      "concept_id": "research-and-backtesting/validation-set",
+      "display_name": "Validation set",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Validation set using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Validation set",
+        "explain Validation set",
+        "apply Validation set to a trading question",
+        "common misconception about Validation set"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/validation-set",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "33200b9fc580fb7ef85e4ee4100f5d3474e6be4ddca15b8542f55d3409e0e2f8"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/training-set",
+        "research-and-backtesting/test-set",
+        "research-and-backtesting/hyperparameter"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-test-set",
+      "concept_id": "research-and-backtesting/test-set",
+      "display_name": "Test set",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Test set using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Test set",
+        "explain Test set",
+        "apply Test set to a trading question",
+        "common misconception about Test set"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/test-set",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "6154693068e5a18f2c9b52aa03fc9c170b51053e72820061ef5bd69e2500b8cb"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/training-set",
+        "research-and-backtesting/validation-set",
+        "research-and-backtesting/out-of-sample-period"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-in-sample-period",
+      "concept_id": "research-and-backtesting/in-sample-period",
+      "display_name": "In-sample period",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply In-sample period using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "In-sample period",
+        "explain In-sample period",
+        "apply In-sample period to a trading question",
+        "common misconception about In-sample period"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/in-sample-period",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "6bbb7d5159ffb31a83e49286bf264b3dc82695b057065be00c8f483e0b419c8e"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/out-of-sample-period",
+        "research-and-backtesting/training-set",
+        "research-and-backtesting/backtest"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-out-of-sample-period",
+      "concept_id": "research-and-backtesting/out-of-sample-period",
+      "display_name": "Out-of-sample period",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Out-of-sample period using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Out-of-sample period",
+        "explain Out-of-sample period",
+        "apply Out-of-sample period to a trading question",
+        "common misconception about Out-of-sample period"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/out-of-sample-period",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "e0c1cf1bac3b63b0b8bd6811b1062be2e7052e422300288baa4fd4d867219fca"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/in-sample-period",
+        "research-and-backtesting/test-set",
+        "research-and-backtesting/forward-test"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-event-driven-backtest",
+      "concept_id": "research-and-backtesting/event-driven-backtest",
+      "display_name": "Event-driven backtest",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Event-driven backtest using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Event-driven backtest",
+        "explain Event-driven backtest",
+        "apply Event-driven backtest to a trading question",
+        "common misconception about Event-driven backtest"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/event-driven-backtest",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "711c71cb0d225d4c4fd0233b3cccd05d5eb11f2ee2be4f459747c5151541ba07"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/backtest",
+        "research-and-backtesting/backtest-engine",
+        "research-and-backtesting/execution-simulator"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-vectorized-backtest",
+      "concept_id": "research-and-backtesting/vectorized-backtest",
+      "display_name": "Vectorized backtest",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Vectorized backtest using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Vectorized backtest",
+        "explain Vectorized backtest",
+        "apply Vectorized backtest to a trading question",
+        "common misconception about Vectorized backtest"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/vectorized-backtest",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "8a3fbe5481148711b88109ae2ccd2d8da3833e599da81a025c9dd3b193b22340"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/backtest",
+        "research-and-backtesting/event-driven-backtest",
+        "time-series-analysis/look-ahead-bias"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-rolling-window-analysis",
+      "concept_id": "research-and-backtesting/rolling-window-analysis",
+      "display_name": "Rolling-window analysis",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Rolling-window analysis using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Rolling-window analysis",
+        "explain Rolling-window analysis",
+        "apply Rolling-window analysis to a trading question",
+        "common misconception about Rolling-window analysis"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/rolling-window-analysis",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "b39906ee4ad5cfb1f4bc7531117f83faec360588b274b64225b3aeee751b3b88"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/walk-forward-analysis",
+        "research-and-backtesting/expanding-window-analysis"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-expanding-window-analysis",
+      "concept_id": "research-and-backtesting/expanding-window-analysis",
+      "display_name": "Expanding-window analysis",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Expanding-window analysis using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Expanding-window analysis",
+        "explain Expanding-window analysis",
+        "apply Expanding-window analysis to a trading question",
+        "common misconception about Expanding-window analysis"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/expanding-window-analysis",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "89c52442c3bc9c72bd69e21307c4ef5228ff9212afaac6c911d8a4253550e6b1"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/walk-forward-analysis",
+        "research-and-backtesting/rolling-window-analysis"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-forward-test",
+      "concept_id": "research-and-backtesting/forward-test",
+      "display_name": "Forward test",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Forward test using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Forward test",
+        "explain Forward test",
+        "apply Forward test to a trading question",
+        "common misconception about Forward test"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/forward-test",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "46bf9b17f5b039924ccef59bce01f5acb573f88016b1f944001803b2f8855129"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/out-of-sample-period",
+        "research-and-backtesting/paper-trading",
+        "research-and-backtesting/shadow-trading"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-paper-trading",
+      "concept_id": "research-and-backtesting/paper-trading",
+      "display_name": "Paper trading",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Paper trading using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Paper trading",
+        "explain Paper trading",
+        "apply Paper trading to a trading question",
+        "common misconception about Paper trading"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/paper-trading",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "078b6c340db34bf2686807a70433f209e730ada46bf183501a4e2bb92c22eab7"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/forward-test",
+        "research-and-backtesting/shadow-trading",
+        "research-and-backtesting/live-trading"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-shadow-trading",
+      "concept_id": "research-and-backtesting/shadow-trading",
+      "display_name": "Shadow trading",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Shadow trading using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Shadow trading",
+        "explain Shadow trading",
+        "apply Shadow trading to a trading question",
+        "common misconception about Shadow trading"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/shadow-trading",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "4c4c32a3e9272e7b4ee8dc93721927d5b126414396f3e6303fb97792e8121e54"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/forward-test",
+        "research-and-backtesting/paper-trading",
+        "research-and-backtesting/live-trading"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-live-trading",
+      "concept_id": "research-and-backtesting/live-trading",
+      "display_name": "Live trading",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Live trading using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Live trading",
+        "explain Live trading",
+        "apply Live trading to a trading question",
+        "common misconception about Live trading"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/live-trading",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "1854a9dc67b4884349eb0a957a4dfe54b587edac11a1e34ae85e79bc61475ba0"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/paper-trading",
+        "research-and-backtesting/shadow-trading",
+        "research-and-backtesting/execution-simulator"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-backtest-engine",
+      "concept_id": "research-and-backtesting/backtest-engine",
+      "display_name": "Backtest engine",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Backtest engine using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Backtest engine",
+        "explain Backtest engine",
+        "apply Backtest engine to a trading question",
+        "common misconception about Backtest engine"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/backtest-engine",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "3f60f4dff76b1fa3a1ec7e2cc3752ebc395a706fc5b100cb97ffda22148b068a"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/backtest",
+        "research-and-backtesting/event-driven-backtest",
+        "research-and-backtesting/execution-simulator"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-fill-model",
+      "concept_id": "research-and-backtesting/fill-model",
+      "display_name": "Fill model",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Fill model using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Fill model",
+        "explain Fill model",
+        "apply Fill model to a trading question",
+        "common misconception about Fill model"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/fill-model",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "772b426df9cdde4b98ad13cd83d09cf76f05c1bbbd31199bc72f969291fa000c"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/execution-simulator",
+        "research-and-backtesting/slippage-model",
+        "orders-and-execution/partial-fill"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-commission-model",
+      "concept_id": "research-and-backtesting/commission-model",
+      "display_name": "Commission model",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Commission model using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Commission model",
+        "explain Commission model",
+        "apply Commission model to a trading question",
+        "common misconception about Commission model"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/commission-model",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "2591f7d96f75e45962b26fb68323e9523dd0247db3c92bca7890d0f1787f5b68"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/execution-simulator",
+        "research-and-backtesting/slippage-model"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-slippage-model",
+      "concept_id": "research-and-backtesting/slippage-model",
+      "display_name": "Slippage model",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Slippage model using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Slippage model",
+        "explain Slippage model",
+        "apply Slippage model to a trading question",
+        "common misconception about Slippage model"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/slippage-model",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "aba482c881cfcd93252aa9ede40ab22086ee90f4877556bbec47525b260c1b1e"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/execution-simulator",
+        "research-and-backtesting/fill-model",
+        "research-and-backtesting/market-impact-model"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-market-impact-model",
+      "concept_id": "research-and-backtesting/market-impact-model",
+      "display_name": "Market-impact model",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Market-impact model using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Market-impact model",
+        "explain Market-impact model",
+        "apply Market-impact model to a trading question",
+        "common misconception about Market-impact model"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/market-impact-model",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "fdcb1803e53743229e740a58519890b1aa9b34b7f3ec58638a090628725f691d"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/slippage-model",
+        "research-and-backtesting/capacity",
+        "microstructure/liquidity"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-borrow-cost-model",
+      "concept_id": "research-and-backtesting/borrow-cost-model",
+      "display_name": "Borrow-cost model",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Borrow-cost model using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Borrow-cost model",
+        "explain Borrow-cost model",
+        "apply Borrow-cost model to a trading question",
+        "common misconception about Borrow-cost model"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/borrow-cost-model",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "c3beab29eca106258e77bdcddd56697b87e7fb2d7834b3831c37b750a29b7eea"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/capacity"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-corporate-action-adjustment",
+      "concept_id": "research-and-backtesting/corporate-action-adjustment",
+      "display_name": "Corporate-action adjustment",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Corporate-action adjustment using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Corporate-action adjustment",
+        "explain Corporate-action adjustment",
+        "apply Corporate-action adjustment to a trading question",
+        "common misconception about Corporate-action adjustment"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/corporate-action-adjustment",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "6ceca1e6b5412d9119bd7169f7531477f54028474fc08c6f2c8105a837155da7"
+      },
+      "related_concept_ids": [
+        "market-data/adjusted-close",
+        "research-and-backtesting/point-in-time-data",
+        "time-series-analysis/survivorship-bias"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-point-in-time-data",
+      "concept_id": "research-and-backtesting/point-in-time-data",
+      "display_name": "Point-in-time data",
+      "domain": "Research and backtesting",
+      "description": "Explain, compare, or apply Point-in-time data using the library's structured Research and backtesting reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Point-in-time data",
+        "explain Point-in-time data",
+        "apply Point-in-time data to a trading question",
+        "common misconception about Point-in-time data"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 64,
+      "package_path": "skills/concepts/research-and-backtesting/point-in-time-data",
+      "canonical": {
+        "source_path": "concepts/research-and-backtesting.json",
+        "sha256": "fefa93b0c4147aaeb9a806c3bda4bf691ee28f60a504f34e023f4018ea787ae3"
+      },
+      "related_concept_ids": [
+        "research-and-backtesting/data-revision",
+        "time-series-analysis/look-ahead-bias",
+        "time-series-analysis/survivorship-bias"
       ]
     }
   ]

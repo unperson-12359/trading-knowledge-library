@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/corporate-action-adjustment",
+  "canonical_sha256": "6ceca1e6b5412d9119bd7169f7531477f54028474fc08c6f2c8105a837155da7",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/corporate-action-adjustment",
+    "name": "Corporate-action adjustment",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "The point-in-time treatment of splits, dividends, mergers, spinoffs, and other issuer events in prices, positions, orders, and cash flows.",
+    "intuition": "It controls what information the model receives and in what numerical representation.",
+    "mechanics": "On the event's effective timestamp, adjust quantities and reference prices or book the economic distribution without using later-known terms early.",
+    "formula": "",
+    "relationships": [
+      "Adjusted price",
+      "Point-in-time data",
+      "Survivorship bias"
+    ],
+    "failure_modes": "Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.",
+    "misconceptions": "A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.",
+    "example": "A 2-for-1 split changes 100 shares at a $60 basis into 200 shares at a $30 per-share basis without creating profit.",
+    "citations": [
+      {
+        "source": "QuantConnect LEAN documentation, Paper Trading Brokerage Model",
+        "url": "https://www.quantconnect.com/docs/v2/writing-algorithms/reality-modeling/brokerages/supported-models/quantconnect-paper-trading",
+        "section": "Paper fills, fees, slippage, and buying power",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

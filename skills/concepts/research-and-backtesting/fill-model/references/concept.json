@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/fill-model",
+  "canonical_sha256": "772b426df9cdde4b98ad13cd83d09cf76f05c1bbbd31199bc72f969291fa000c",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/fill-model",
+    "name": "Fill model",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A rule set that determines whether, when, at what price, and in what quantity a simulated order executes.",
+    "intuition": "It is part of the machinery that converts strategy instructions into simulated positions, cash flows, and performance.",
+    "mechanics": "Evaluate the order type against eligible post-order market data, enforce price conditions, and emit full, partial, or no fill with a timestamp.",
+    "formula": "",
+    "relationships": [
+      "Execution simulator",
+      "Slippage model",
+      "Partial fill"
+    ],
+    "failure_modes": "Simplified timing, liquidity, fee, borrow, funding, or corporate-action assumptions can make simulated results unattainable live.",
+    "misconceptions": "A detailed simulator reduces modeling error but cannot reproduce every queue event or future market condition.",
+    "example": "A buy limit at 100 fills 40 shares when a later trade prints 99.95 with only 40 shares allowed by the volume cap.",
+    "citations": [
+      {
+        "source": "QuantConnect LEAN documentation, Trade Fill Models",
+        "url": "https://www.quantconnect.com/docs/v2/writing-algorithms/reality-modeling/trade-fills/key-concepts",
+        "section": "Fill price, quantity, partial-fill, and stale-fill modeling",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

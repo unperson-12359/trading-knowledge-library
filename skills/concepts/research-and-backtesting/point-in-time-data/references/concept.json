@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/point-in-time-data",
+  "canonical_sha256": "fefa93b0c4147aaeb9a806c3bda4bf691ee28f60a504f34e023f4018ea787ae3",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/point-in-time-data",
+    "name": "Point-in-time data",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "Historical data stored as it was known or effective at each past decision time, including vintage dates and later revisions.",
+    "intuition": "It controls what information the model receives and in what numerical representation.",
+    "mechanics": "For every value and universe membership, select the version whose release timestamp was no later than the simulated decision timestamp.",
+    "formula": "",
+    "relationships": [
+      "Data revision",
+      "Look-ahead bias",
+      "Survivorship bias"
+    ],
+    "failure_modes": "Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.",
+    "misconceptions": "A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.",
+    "example": "A March backtest uses the GDP estimate released in February, not the revised value published in June.",
+    "citations": [
+      {
+        "source": "CFA Institute Research Foundation, Investment Model Validation",
+        "url": "https://rpc.cfainstitute.org/research/foundation/2024/investment-model-validation",
+        "section": "Overview and model-validation framework",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

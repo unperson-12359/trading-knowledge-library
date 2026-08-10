@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/slippage-model",
+  "canonical_sha256": "aba482c881cfcd93252aa9ede40ab22086ee90f4877556bbec47525b260c1b1e",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/slippage-model",
+    "name": "Slippage model",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A model of the difference between a decision or reference price and the simulated execution price attributable to spread, delay, liquidity, and impact.",
+    "intuition": "It is part of the machinery that converts strategy instructions into simulated positions, cash flows, and performance.",
+    "mechanics": "Estimate an adverse price adjustment from order size, volume, volatility, latency, or a calibrated constant and apply it to the fill price.",
+    "formula": "",
+    "relationships": [
+      "Execution simulator",
+      "Fill model",
+      "Market-impact model"
+    ],
+    "failure_modes": "Simplified timing, liquidity, fee, borrow, funding, or corporate-action assumptions can make simulated results unattainable live.",
+    "misconceptions": "A detailed simulator reduces modeling error but cannot reproduce every queue event or future market condition.",
+    "example": "A buy order with 8 basis points of modeled slippage fills at 100.08 when the reference price is 100.",
+    "citations": [
+      {
+        "source": "QuantConnect LEAN documentation, Slippage Models",
+        "url": "https://www.quantconnect.com/docs/v2/writing-algorithms/reality-modeling/slippage/supported-models",
+        "section": "Constant, volume-share, and market-impact models",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}
