@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "concept_id": "parameterized-analytics/24-period-simple-return",
+  "canonical_sha256": "803309007359a04401b8847c9eae5bec5b488ea6e62f32748102a0bfc06d1e61",
+  "source_path": "concepts/parameterized-analytics.json",
+  "concept": {
+    "id": "parameterized-analytics/24-period-simple-return",
+    "name": "24-period simple return",
+    "aliases": [
+      "24-period return",
+      "24-period holding period return",
+      "24-period price return"
+    ],
+    "domain": "Parameterized analytics",
+    "definition": "The simple (holding-period) return of an asset between the current observation and the observation 24 periods earlier, expressed as the fractional change in price over that span. It is the standard discrete, non-compounded return measure applied to a 24-period lookback on any bar frequency (minutes, days, weeks, etc.).",
+    "intuition": "It answers: 'how much did the price move, in percentage terms, over the last 24 bars?' A 24-period simple return of 0.05 means the price is 5% higher than it was 24 periods ago.",
+    "mechanics": "Divide the current closing price by the closing price 24 periods earlier and subtract 1; the result is a fraction (multiply by 100 for a percentage). Standard implementation convention: pandas Series.pct_change(periods=24), which leaves the first 24 values undefined (NaN) because 24 prior observations are required; the span covers 24 sampling intervals and therefore uses 25 prices. Use split- and dividend-adjusted prices for a total-return measure; raw closes yield a price return only.",
+    "formula": "R_t(24) = P_t / P_(t-24) - 1 = (P_t - P_(t-24)) / P_(t-24), where P_t is the (adjusted) closing price at observation t and 24 is the lookback in periods. Multiply by 100 to express the result as a percentage.",
+    "relationships": [
+      "Simple return",
+      "Holding period return",
+      "Log return",
+      "Rate of change (ROC)",
+      "Momentum",
+      "Total return"
+    ],
+    "failure_modes": "The measure depends only on the two endpoint prices, so a single outlier, stale quote, or illiquid print at either end distorts it, and it ignores the path taken in between. Overlapping 24-period windows also induce strong serial correlation in the resulting series, which invalidates naive statistical tests.",
+    "misconceptions": "A 24-period simple return is not 24 times the average one-period return (multi-period gains compound: R = product of (1 + r_i) - 1), and a +x% move is not cancelled by a later -x% move. It also excludes dividends unless adjusted prices are used, so it understates the total return of income-paying assets.",
+    "example": "On daily bars, a stock closed at $64.00 24 trading days ago and closes at $65.28 today; the 24-period simple return is 65.28/64.00 - 1 = +2.00%.",
+    "citations": [
+      {
+        "source": "Business Finance (Mishra, Deakin University, 2023, CAUL OER Collective) — Topic 2: Risk and Return Part I, Concept 1: Measures of return (holding period return, percentage returns)",
+        "url": "https://oer.uinsyahada.ac.id/files/original/05c3f1413aa8e4d238fed45431db5239.pdf",
+        "section": "Topic 2, pp. 14-16 (holding period return; capital gains yield = (ending price - beginning price)/beginning price)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "pandas.DataFrame.pct_change — pandas 3.0.5 documentation",
+        "url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pct_change.html",
+        "section": "Parameters: periods (int, default 1) — periods to shift for forming percent change",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
