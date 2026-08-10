@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/time-value",
+  "canonical_sha256": "2a8d4c24fd1ad2048df428e98c9e1dc6e0d6add077b9c7c2f46ef7f14c0cfd53",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/time-value",
+    "name": "Time value",
+    "aliases": [
+      "extrinsic value",
+      "time premium"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "That portion of an option's premium that exceeds its intrinsic value; it reflects the probability that the option will move (further) into the money before expiration, so the longer the time remaining, the greater the time value, all else equal.",
+    "intuition": "Time value is the price of possibility: with more days left, there is more chance for the underlying to move in your favor, and the market charges for that chance.",
+    "mechanics": "Time value = premium - intrinsic value. It decays as expiration approaches (theta decay), with decay accelerating in the final weeks and being most pronounced for at-the-money options; higher implied volatility raises it, and it reaches zero at expiration.",
+    "formula": "Time value = option premium - intrinsic value.",
+    "relationships": [
+      "Extrinsic value",
+      "Intrinsic value",
+      "Option premium",
+      "Theta",
+      "Expiration date",
+      "Implied volatility"
+    ],
+    "failure_modes": "Long-option positions lose time value every day even when the underlying is flat, so a correct directional view can still lose money if the move comes too slowly; decay is nonlinear, so linear extrapolation of daily decay underestimates late-life erosion.",
+    "misconceptions": "Time value does not measure how much time is left in a literal sense — two options with identical time to expiry can have very different time values because volatility and moneyness differ.",
+    "example": "A two-week $32.50 call on a $32.80 stock priced at $1.10 has $0.80 of time value; at expiration, if the stock is still $32.80, the premium collapses to roughly its $0.30 intrinsic value.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Time Value",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "The Options Industry Council (OIC): Options Pricing",
+        "url": "https://www.optionseducation.org/optionsoverview/options-pricing",
+        "section": "Time Value",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

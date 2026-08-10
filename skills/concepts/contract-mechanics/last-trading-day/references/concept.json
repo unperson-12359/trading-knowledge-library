@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/last-trading-day",
+  "canonical_sha256": "0b2526a495dd6818d910fd162510d8cfab7593c7b676c86b4be114a0d9a5527e",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/last-trading-day",
+    "name": "Last trading day",
+    "aliases": [
+      "LTD",
+      "final trading day"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The final day on which a futures or options contract may be traded on the exchange; after the close of the last trading day, remaining open positions proceed to settlement or delivery.",
+    "intuition": "The last trading day is the deadline for closing a position on your own terms — miss it, and the contract's settlement machinery decides the outcome for you.",
+    "mechanics": "Each product's specification fixes the last trading day: for standard U.S. equity options it is the expiration Friday (third Friday of the month), while for many European-style index options it is the Thursday before expiration Friday; futures contracts typically stop trading a set number of days before or within the delivery month, after which delivery or final cash settlement occurs.",
+    "formula": "",
+    "relationships": [
+      "Expiration date",
+      "First notice day",
+      "Delivery month",
+      "Final settlement price",
+      "Contract rollover"
+    ],
+    "failure_modes": "Positions held past the last trading day lose the ability to be closed competitively and are exposed to the exchange's settlement procedure, which can produce prices far from recent trades; low liquidity on the last day also degrades exit quality.",
+    "misconceptions": "The last trading day is not always the same as the expiration date — for many index options trading stops the day before expiration — and it differs by product, so assuming the equity-option convention generalizes is unsafe.",
+    "example": "A trader long a European-style index call who wants out must sell by the Thursday before expiration Friday; after that close, only the expiration-day settlement value determines the payoff.",
+    "citations": [
+      {
+        "source": "The Options Industry Council (OIC), FAQ: Options Exercise",
+        "url": "https://www.optionseducation.org/referencelibrary/faq/options-exercise",
+        "section": "Last trading day conventions for equity and index options",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Spot Month; Notice Day; Delivery Month",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

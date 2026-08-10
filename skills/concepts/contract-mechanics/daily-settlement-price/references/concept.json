@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/daily-settlement-price",
+  "canonical_sha256": "d13f775fef699c8182cb45d66bb634da3cd98ac6e065515337c3b7cc62c16cfd",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/daily-settlement-price",
+    "name": "Daily settlement price",
+    "aliases": [
+      "settlement price",
+      "daily settle",
+      "settle"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The official daily price at which the clearing organization clears all trades and settles all accounts between clearing members for each contract month; it is the benchmark used for marking positions to market, computing margin calls, and invoicing deliveries.",
+    "intuition": "The daily settlement price is the exchange's official 'score' for the day: everyone's futures P&L and margin requirements are recomputed against it every session.",
+    "mechanics": "Exchanges derive it from trading activity near the close (e.g., a volume-weighted average over a designated closing period, with exchange discretion in illiquid conditions). All open positions are marked to this price daily: gains are credited and losses debited (variation margin), and for physically delivered contracts it feeds the delivery invoice price.",
+    "formula": "",
+    "relationships": [
+      "Final settlement price",
+      "Marking to market",
+      "Margin",
+      "Daily price limit",
+      "Physical settlement"
+    ],
+    "failure_modes": "In illiquid or disorderly closes the settlement price may differ from the last trade, so P&L and margin calls can move against a trader even when their executed prices looked favorable; it is also a manipulation target ('banging the close').",
+    "misconceptions": "The settlement price is not necessarily the last traded price or the simple closing quote — exchanges use defined closing-period procedures; and daily price limits are measured against the prior day's settlement, not the last trade.",
+    "example": "If yesterday's settle on a corn future was 450 cents and today's settle is 460, a long one-contract position is credited 10 cents x 5,000 bushels = $500 of variation margin overnight.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Settlement Price",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CME Group, A Trader's Guide to Futures",
+        "url": "https://www.cmegroup.com/education/files/a-traders-guide-to-futures.pdf",
+        "section": "Section 3 (marking positions to market twice daily)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

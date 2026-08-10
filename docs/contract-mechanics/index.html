@@ -210,6 +210,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="intrinsic-value"><h3>Intrinsic value <a class="anchor" href="#intrinsic-value">#</a></h3>
 <div class="field">The value an option would have if exercised immediately: the amount by which the underlying price exceeds the strike for a call, or by which the strike exceeds the underlying price for a put; only in-the-money options have intrinsic value.</div>
+<div class="skill-links"><a href="../skills/tkl-intrinsic-value/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Intrinsic value is the cash you could capture right now by exercising and trading out of the underlying — everything above that in the premium is hope, not substance.</div>
 <div class="field"><span class="label">Mechanics:</span> For a call with underlying price S and strike K, intrinsic value = max(S - K, 0); for a put, max(K - S, 0). It sets a lower bound on an American-style option&#x27;s premium, since selling the option for less than intrinsic value would invite immediate-exercise arbitrage.</div>
 <div class="field"><span class="label">Failure modes:</span> For deep-in-the-money or hard-to-borrow underlyings, quoted premiums can briefly deviate from intrinsic value when the underlying&#x27;s price is stale or early exercise is optimal, so &#x27;intrinsic value&#x27; computed from a stale quote misleads.</div>
@@ -223,6 +224,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="extrinsic-value"><h3>Extrinsic value <a class="anchor" href="#extrinsic-value">#</a></h3>
 <div class="field">The portion of an option&#x27;s premium in excess of its intrinsic value, reflecting the market&#x27;s payment for the possibility that the option gains value before expiration; in standard usage it is synonymous with time value, though it embeds volatility, carry, and dividend effects as well as time.</div>
+<div class="skill-links"><a href="../skills/tkl-extrinsic-value/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Extrinsic value is the &#x27;maybe&#x27; premium: the extra amount buyers pay over immediate-exercise value for the chance the underlying moves favorably before expiry.</div>
 <div class="field"><span class="label">Mechanics:</span> Extrinsic value = premium - intrinsic value. It is largest for at-the-money options with long time to expiration and high implied volatility, and it erodes toward zero as expiration approaches (time decay) or as the option moves deep in- or out-of-the-money.</div>
 <div class="field"><span class="label">Failure modes:</span> Because extrinsic value decays nonlinearly (fastest near expiration and near the money), hedged strategies built on a constant-decay assumption misestimate carry; volatility collapses can erase extrinsic value even when the underlying is unchanged.</div>
@@ -236,6 +238,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="time-value"><h3>Time value <a class="anchor" href="#time-value">#</a></h3>
 <div class="field">That portion of an option&#x27;s premium that exceeds its intrinsic value; it reflects the probability that the option will move (further) into the money before expiration, so the longer the time remaining, the greater the time value, all else equal.</div>
+<div class="skill-links"><a href="../skills/tkl-time-value/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Time value is the price of possibility: with more days left, there is more chance for the underlying to move in your favor, and the market charges for that chance.</div>
 <div class="field"><span class="label">Mechanics:</span> Time value = premium - intrinsic value. It decays as expiration approaches (theta decay), with decay accelerating in the final weeks and being most pronounced for at-the-money options; higher implied volatility raises it, and it reaches zero at expiration.</div>
 <div class="field"><span class="label">Failure modes:</span> Long-option positions lose time value every day even when the underlying is flat, so a correct directional view can still lose money if the move comes too slowly; decay is nonlinear, so linear extrapolation of daily decay underestimates late-life erosion.</div>
@@ -249,6 +252,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="american-style-option"><h3>American-style option <a class="anchor" href="#american-style-option">#</a></h3>
 <div class="field">An option that the holder may exercise at any time on or before the expiration date; all standardized U.S. exchange-traded equity options use American-style exercise.</div>
+<div class="skill-links"><a href="../skills/tkl-american-style-option/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> An American option is a standing offer: any day before expiry, the holder can invoke the strike and take or deliver the underlying.</div>
 <div class="field"><span class="label">Mechanics:</span> Early exercise is a right, not an obligation, and exercising early forfeits any remaining time value, so holders usually sell rather than exercise; early exercise of a call becomes rational mainly to capture an impending dividend, and of a deep in-the-money put to receive strike proceeds sooner. Because the writer can be assigned at any time, short American options carry early-assignment risk.</div>
 <div class="field"><span class="label">Failure modes:</span> Writers who ignore dividend dates or deep-in-the-money scenarios can be assigned early at inopportune times, e.g., losing stock plus dividend entitlements or facing unexpected margin and stock-delivery obligations.</div>
@@ -261,6 +265,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="european-style-option"><h3>European-style option <a class="anchor" href="#european-style-option">#</a></h3>
 <div class="field">An option that may be exercised only on its expiration date; most (but not all) U.S. index options use European-style exercise.</div>
+<div class="skill-links"><a href="../skills/tkl-european-style-option/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A European option is a single-day right: you can trade the contract any time, but you can invoke the strike only on expiration day itself.</div>
 <div class="field"><span class="label">Mechanics:</span> The holder can always close the position by selling the option in the market before expiration; only exercise is restricted to the expiry date (and the last trading day is typically the day before expiration for index options). With no early-exercise possibility, European options are simpler to price (e.g., Black-Scholes applies directly) and writers face no early-assignment risk.</div>
 <div class="field"><span class="label">Failure modes:</span> Holders needing to monetize before expiry must sell into the market, so wide bid-ask spreads or halted trading can trap value; confusing a European index option&#x27;s last trading day with its expiration date can leave a position held unintentionally through settlement.</div>
@@ -273,6 +278,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="bermudan-option"><h3>Bermudan option <a class="anchor" href="#bermudan-option">#</a></h3>
 <div class="field">An exotic option that can be exercised only on a specified set of predetermined dates during its life, an exercise style intermediate between American (any time) and European (at expiry only).</div>
+<div class="skill-links"><a href="../skills/tkl-bermudan-option/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A Bermudan option opens the exercise window on a schedule — say, the first business day of each month — rather than every day (American) or just once at the end (European).</div>
 <div class="field"><span class="label">Mechanics:</span> The contract lists the permissible exercise dates in advance. Its value sits between that of the equivalent European and American options, and pricing typically requires numerical methods (trees or simulation) that check optimal exercise at each permitted date.</div>
 <div class="field"><span class="label">Failure modes:</span> Missing an exercise window is irreversible until the next scheduled date, so holders carry gap risk between windows; pricing models that ignore the discrete exercise schedule misvalue the option relative to both limiting styles.</div>
@@ -284,6 +290,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="option-exercise"><h3>Option exercise <a class="anchor" href="#option-exercise">#</a></h3>
 <div class="field">The act by which the holder of an option invokes the contractual right to buy (call) or sell (put) the underlying at the strike price, converting the option position into a transaction or position in the underlying.</div>
+<div class="skill-links"><a href="../skills/tkl-option-exercise/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Exercising is cashing in the ticket: instead of selling the option, you use it to force the trade at the strike.</div>
 <div class="field"><span class="label">Mechanics:</span> The holder gives irrevocable exercise instructions to their broker, which routes them to the clearing organization (OCC for U.S. securities options) before exercise cut-off times; settlement then proceeds as a purchase or sale of the underlying (physical) or a cash payment. At expiration, OCC&#x27;s &#x27;exercise by exception&#x27; automatically exercises options in-the-money by at least $0.01 unless contrary instructions are submitted. Exercising early forfeits remaining time value, so holders often prefer selling the option.</div>
 <div class="field"><span class="label">Failure modes:</span> Exercise requires the cash or stock to complete the underlying transaction; holders without it may be restricted by their broker. Failing to submit explicit instructions around thresholds or after-hours price moves can produce unintended exercises or lapses of in-the-money value.</div>
@@ -296,6 +303,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="option-assignment"><h3>Option assignment <a class="anchor" href="#option-assignment">#</a></h3>
 <div class="field">The designation by the clearing organization of an option writer who must fulfill the contract — selling the underlying at the strike (assigned call) or buying it at the strike (assigned put) — when a holder exercises.</div>
+<div class="skill-links"><a href="../skills/tkl-option-assignment/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Assignment is the other side of exercise: when a holder invokes the ticket, a writer is tapped on the shoulder and must honor the deal.</div>
 <div class="field"><span class="label">Mechanics:</span> When exercise notices reach the clearing organization, OCC assigns them randomly to clearing members carrying short positions in that series; members in turn allocate assignments to their customers (by random selection or first-in-first-out). Writers of American-style options can be assigned any trading day, with likelihood rising for in-the-money options near ex-dividend dates (calls) or deep in-the-money (puts).</div>
 <div class="field"><span class="label">Failure modes:</span> Writers can be assigned overnight and discover the resulting stock position only the next morning, leaving them exposed to opening gaps; assignment near ex-dividend dates can also force delivery of stock plus dividend obligations.</div>
@@ -308,6 +316,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="physical-settlement"><h3>Physical settlement <a class="anchor" href="#physical-settlement">#</a></h3>
 <div class="field">A provision in a futures or other derivative contract requiring delivery of the actual underlying commodity or asset (or a delivery instrument such as a warehouse receipt) to satisfy the contract at maturity.</div>
+<div class="skill-links"><a href="../skills/tkl-physical-settlement/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> With physical settlement, holding the contract to the end means real goods or securities change hands — not just a check for the price difference.</div>
 <div class="field"><span class="label">Mechanics:</span> After the last trading day, remaining shorts tender delivery notices through the clearing organization, and remaining longs must accept delivery and pay the invoice price (e.g., for bond futures, invoice price = contract size x futures settlement price x conversion factor + accrued interest). Delivery occurs at exchange-approved facilities during the delivery period.</div>
 <div class="field"><span class="label">Failure modes:</span> Traders who fail to close longs before first notice day can be obligated to take (and pay for) full physical delivery, including storage, transport, and financing; squeezes on deliverable supply can distort prices near expiry.</div>
@@ -319,6 +328,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="cash-settlement"><h3>Cash settlement <a class="anchor" href="#cash-settlement">#</a></h3>
 <div class="field">A method of settling futures, options, and other derivatives whereby the seller pays the buyer the cash value of the underlying, or a cash amount based on the level of an index or price, according to a procedure specified in the contract, instead of delivering the asset itself.</div>
+<div class="skill-links"><a href="../skills/tkl-cash-settlement/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Cash settlement settles the score in money only: at expiry the contract simply pays out the difference, so no barrels, shares, or bonds ever move.</div>
 <div class="field"><span class="label">Mechanics:</span> At maturity, positions are valued against the final settlement price computed by the exchange&#x27;s specified procedure (e.g., a special opening quotation of an index), and the clearing organization credits or debits the difference. Cash settlement is standard where the underlying is not practically deliverable, such as equity indexes.</div>
 <div class="field"><span class="label">Failure modes:</span> The settlement procedure itself becomes the point of fragility: if the reference price is derived from a short window or a manipulable market, the final settlement value can be distorted, and hedges calibrated to continuous prices can slip.</div>
@@ -330,6 +340,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="final-settlement-price"><h3>Final settlement price <a class="anchor" href="#final-settlement-price">#</a></h3>
 <div class="field">The price at which a cash-settled futures (or option) contract is settled at maturity, determined pursuant to a procedure specified by the exchange.</div>
+<div class="skill-links"><a href="../skills/tkl-final-settlement-price/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The final settlement price is the official last mark of a contract&#x27;s life — the single number that decides the terminal cash flows for everyone still holding it.</div>
 <div class="field"><span class="label">Mechanics:</span> The exchange&#x27;s contract rules define exactly how it is computed: common procedures include a special opening quotation based on constituent opening prices (equity index futures) or a volume-weighted average over a defined window. The clearing organization settles all remaining open positions against this price, and it need not equal the last traded price of the contract.</div>
 <div class="field"><span class="label">Failure modes:</span> Because the final settlement price follows its own procedure, it can deviate sharply from the contract&#x27;s last traded price (e.g., an opening-rotation quotation after an overnight event), producing unexpected P&amp;L for positions marked against the close.</div>
@@ -341,6 +352,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="daily-settlement-price"><h3>Daily settlement price <a class="anchor" href="#daily-settlement-price">#</a></h3>
 <div class="field">The official daily price at which the clearing organization clears all trades and settles all accounts between clearing members for each contract month; it is the benchmark used for marking positions to market, computing margin calls, and invoicing deliveries.</div>
+<div class="skill-links"><a href="../skills/tkl-daily-settlement-price/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The daily settlement price is the exchange&#x27;s official &#x27;score&#x27; for the day: everyone&#x27;s futures P&amp;L and margin requirements are recomputed against it every session.</div>
 <div class="field"><span class="label">Mechanics:</span> Exchanges derive it from trading activity near the close (e.g., a volume-weighted average over a designated closing period, with exchange discretion in illiquid conditions). All open positions are marked to this price daily: gains are credited and losses debited (variation margin), and for physically delivered contracts it feeds the delivery invoice price.</div>
 <div class="field"><span class="label">Failure modes:</span> In illiquid or disorderly closes the settlement price may differ from the last trade, so P&amp;L and margin calls can move against a trader even when their executed prices looked favorable; it is also a manipulation target (&#x27;banging the close&#x27;).</div>
@@ -353,6 +365,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="delivery-month"><h3>Delivery month <a class="anchor" href="#delivery-month">#</a></h3>
 <div class="field">The specified month within which a futures contract matures and can be settled by delivery, or within which the delivery period begins, as defined in the contract specification.</div>
+<div class="skill-links"><a href="../skills/tkl-delivery-month/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The delivery month is the contract&#x27;s calendar label: &#x27;December corn&#x27; means the corn future whose obligations fall due in December.</div>
 <div class="field"><span class="label">Mechanics:</span> Exchanges list a cycle of delivery months per product (e.g., March, May, July, September, December for many grains). Each month trades as a distinct contract with its own price and open interest; the nearest is the spot/front month, later ones are back months, and prices across months embed carrying costs (contango) or discounts (backwardation).</div>
 <div class="field"><span class="label">Failure modes:</span> Liquidity migrates from the front month to the next month well before expiry, so trading the wrong month late in its life means wide spreads and delivery risk; confusing the delivery month with the last trading day (which usually precedes it) is a common operational error.</div>
@@ -365,6 +378,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="first-notice-day"><h3>First notice day <a class="anchor" href="#first-notice-day">#</a></h3>
 <div class="field">The first day on which notices of intent to deliver the actual commodity against open short futures positions can be issued (received by longs); the date varies by commodity and exchange.</div>
+<div class="skill-links"><a href="../skills/tkl-first-notice-day/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> First notice day is when holding a long futures position stops being purely financial: from then on, a long can be handed a delivery notice and be obliged to pay for and take the goods.</div>
 <div class="field"><span class="label">Mechanics:</span> In physically delivered markets, shorts may tender delivery notices from first notice day through the delivery period; the clearing organization assigns them to longs, who must pay the invoice price. First notice day often falls before the delivery month and before the last trading day, so speculators typically exit or roll long positions beforehand.</div>
 <div class="field"><span class="label">Failure modes:</span> Longs who overlook first notice day can be assigned delivery against their will, requiring full contract-value funding and triggering liquidation by brokers who do not support delivery; liquidity also thins as commercials dominate the final sessions.</div>
@@ -376,6 +390,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="last-trading-day"><h3>Last trading day <a class="anchor" href="#last-trading-day">#</a></h3>
 <div class="field">The final day on which a futures or options contract may be traded on the exchange; after the close of the last trading day, remaining open positions proceed to settlement or delivery.</div>
+<div class="skill-links"><a href="../skills/tkl-last-trading-day/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The last trading day is the deadline for closing a position on your own terms — miss it, and the contract&#x27;s settlement machinery decides the outcome for you.</div>
 <div class="field"><span class="label">Mechanics:</span> Each product&#x27;s specification fixes the last trading day: for standard U.S. equity options it is the expiration Friday (third Friday of the month), while for many European-style index options it is the Thursday before expiration Friday; futures contracts typically stop trading a set number of days before or within the delivery month, after which delivery or final cash settlement occurs.</div>
 <div class="field"><span class="label">Failure modes:</span> Positions held past the last trading day lose the ability to be closed competitively and are exposed to the exchange&#x27;s settlement procedure, which can produce prices far from recent trades; low liquidity on the last day also degrades exit quality.</div>

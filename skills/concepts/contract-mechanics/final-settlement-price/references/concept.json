@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/final-settlement-price",
+  "canonical_sha256": "21d5edb65968c0ad69e8a1611fbd03f6495f7b99b4d1abebb322ab945d8f0f9a",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/final-settlement-price",
+    "name": "Final settlement price",
+    "aliases": [
+      "final settlement value",
+      "expiry settlement price"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The price at which a cash-settled futures (or option) contract is settled at maturity, determined pursuant to a procedure specified by the exchange.",
+    "intuition": "The final settlement price is the official last mark of a contract's life — the single number that decides the terminal cash flows for everyone still holding it.",
+    "mechanics": "The exchange's contract rules define exactly how it is computed: common procedures include a special opening quotation based on constituent opening prices (equity index futures) or a volume-weighted average over a defined window. The clearing organization settles all remaining open positions against this price, and it need not equal the last traded price of the contract.",
+    "formula": "",
+    "relationships": [
+      "Cash settlement",
+      "Daily settlement price",
+      "Last trading day",
+      "Expiration date"
+    ],
+    "failure_modes": "Because the final settlement price follows its own procedure, it can deviate sharply from the contract's last traded price (e.g., an opening-rotation quotation after an overnight event), producing unexpected P&L for positions marked against the close.",
+    "misconceptions": "It is not simply the closing price of the futures contract on the last trading day; each product's rulebook defines a distinct calculation, and the two can differ materially.",
+    "example": "Quarterly S&P 500 index options settle against the special opening quotation (SOQ) of the index on expiration morning, so a trader holding through expiry is exposed to opening prices of the 500 constituents, not the prior close.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Final Settlement Price",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/extrinsic-value",
+  "canonical_sha256": "89144c1afe690ffd2cf0cbea901ac329d2fbc1dfa11a5e57099b988ee27a51b7",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/extrinsic-value",
+    "name": "Extrinsic value",
+    "aliases": [
+      "time value (broad sense)"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The portion of an option's premium in excess of its intrinsic value, reflecting the market's payment for the possibility that the option gains value before expiration; in standard usage it is synonymous with time value, though it embeds volatility, carry, and dividend effects as well as time.",
+    "intuition": "Extrinsic value is the 'maybe' premium: the extra amount buyers pay over immediate-exercise value for the chance the underlying moves favorably before expiry.",
+    "mechanics": "Extrinsic value = premium - intrinsic value. It is largest for at-the-money options with long time to expiration and high implied volatility, and it erodes toward zero as expiration approaches (time decay) or as the option moves deep in- or out-of-the-money.",
+    "formula": "Extrinsic value = option premium - intrinsic value.",
+    "relationships": [
+      "Time value",
+      "Intrinsic value",
+      "Option premium",
+      "Implied volatility",
+      "Theta"
+    ],
+    "failure_modes": "Because extrinsic value decays nonlinearly (fastest near expiration and near the money), hedged strategies built on a constant-decay assumption misestimate carry; volatility collapses can erase extrinsic value even when the underlying is unchanged.",
+    "misconceptions": "Extrinsic value is often equated purely with time; in fact implied volatility, interest rates, and dividends also inflate or deflate it, which is why the term is preferred when discussing non-time influences.",
+    "example": "A $32.50-strike call trading at $1.10 with the stock at $32.80 carries $0.80 of extrinsic value ($1.10 premium minus $0.30 intrinsic), which an early exerciser forfeits.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Extrinsic Value (see Time Value); Time Value",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "The Options Industry Council (OIC): Options Pricing",
+        "url": "https://www.optionseducation.org/optionsoverview/options-pricing",
+        "section": "Time Value; Major Factors Influencing Options Premium",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

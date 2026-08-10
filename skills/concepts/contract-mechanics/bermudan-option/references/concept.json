@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/bermudan-option",
+  "canonical_sha256": "eaf5703ce287ad1c75c4905591410e201fbcd0cd63d6d7793f43dc481fb0248b",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/bermudan-option",
+    "name": "Bermudan option",
+    "aliases": [
+      "Bermuda option",
+      "mid-Atlantic option",
+      "quasi-American option"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "An exotic option that can be exercised only on a specified set of predetermined dates during its life, an exercise style intermediate between American (any time) and European (at expiry only).",
+    "intuition": "A Bermudan option opens the exercise window on a schedule — say, the first business day of each month — rather than every day (American) or just once at the end (European).",
+    "mechanics": "The contract lists the permissible exercise dates in advance. Its value sits between that of the equivalent European and American options, and pricing typically requires numerical methods (trees or simulation) that check optimal exercise at each permitted date.",
+    "formula": "",
+    "relationships": [
+      "American-style option",
+      "European-style option",
+      "Exotic option",
+      "Option exercise"
+    ],
+    "failure_modes": "Missing an exercise window is irreversible until the next scheduled date, so holders carry gap risk between windows; pricing models that ignore the discrete exercise schedule misvalue the option relative to both limiting styles.",
+    "misconceptions": "Bermudan options are not a blend or average of American and European contracts — they are a distinct exercise schedule, and the name (like the other styles) has no geographic meaning.",
+    "example": "A Bermudan swaption might allow the holder to enter the underlying interest rate swap only on the swap's quarterly coupon dates during a five-year window.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Bermudan Option",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

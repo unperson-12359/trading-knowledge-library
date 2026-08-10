@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/intrinsic-value",
+  "canonical_sha256": "6226cb3e96894dcae23d8ba9f197000e473ceb51c09cc3a166655438166a94ae",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/intrinsic-value",
+    "name": "Intrinsic value",
+    "aliases": [
+      "in-the-money amount",
+      "exercise value"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The value an option would have if exercised immediately: the amount by which the underlying price exceeds the strike for a call, or by which the strike exceeds the underlying price for a put; only in-the-money options have intrinsic value.",
+    "intuition": "Intrinsic value is the cash you could capture right now by exercising and trading out of the underlying — everything above that in the premium is hope, not substance.",
+    "mechanics": "For a call with underlying price S and strike K, intrinsic value = max(S - K, 0); for a put, max(K - S, 0). It sets a lower bound on an American-style option's premium, since selling the option for less than intrinsic value would invite immediate-exercise arbitrage.",
+    "formula": "Call: IV = max(S - K, 0); Put: IV = max(K - S, 0), where S = current underlying price and K = strike price.",
+    "relationships": [
+      "Extrinsic value",
+      "Time value",
+      "Option premium",
+      "Strike price",
+      "Moneyness"
+    ],
+    "failure_modes": "For deep-in-the-money or hard-to-borrow underlyings, quoted premiums can briefly deviate from intrinsic value when the underlying's price is stale or early exercise is optimal, so 'intrinsic value' computed from a stale quote misleads.",
+    "misconceptions": "Intrinsic value is not the same as profit: an in-the-money option still loses money for its buyer if the premium paid exceeds the intrinsic value realized.",
+    "example": "With the underlying stock at $32.80, a $32.50-strike call has $0.30 of intrinsic value; if its premium is $1.10, the remaining $0.80 is time value.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Intrinsic Value",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "The Options Industry Council (OIC): Options Pricing",
+        "url": "https://www.optionseducation.org/optionsoverview/options-pricing",
+        "section": "Intrinsic Value (Calls/Puts)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

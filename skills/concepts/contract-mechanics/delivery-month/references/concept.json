@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/delivery-month",
+  "canonical_sha256": "3eda7d0a391e05a0a7d0649d48e875b6820aa25dfd7319fdf563c8fc2556b76f",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/delivery-month",
+    "name": "Delivery month",
+    "aliases": [
+      "contract month",
+      "delivery cycle month"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The specified month within which a futures contract matures and can be settled by delivery, or within which the delivery period begins, as defined in the contract specification.",
+    "intuition": "The delivery month is the contract's calendar label: 'December corn' means the corn future whose obligations fall due in December.",
+    "mechanics": "Exchanges list a cycle of delivery months per product (e.g., March, May, July, September, December for many grains). Each month trades as a distinct contract with its own price and open interest; the nearest is the spot/front month, later ones are back months, and prices across months embed carrying costs (contango) or discounts (backwardation).",
+    "formula": "",
+    "relationships": [
+      "First notice day",
+      "Last trading day",
+      "Delivery notice",
+      "Contract rollover",
+      "Contango",
+      "Backwardation"
+    ],
+    "failure_modes": "Liquidity migrates from the front month to the next month well before expiry, so trading the wrong month late in its life means wide spreads and delivery risk; confusing the delivery month with the last trading day (which usually precedes it) is a common operational error.",
+    "misconceptions": "The delivery month is not a single date but a window: the exact first/last trading and notice days are set per product and can fall in the prior month.",
+    "example": "A trader long 'ZCZ25' holds December 2025 corn futures; as December approaches, volume and open interest shift to the March 2026 contract, prompting most traders to roll rather than risk delivery.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Delivery Month; Back Months; Spot Month",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Encyclopaedia Britannica Money: Volume & Open Interest in Futures Trading",
+        "url": "https://www.britannica.com/money/futures-volume-open-interest",
+        "section": "Identify contract rollover periods",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

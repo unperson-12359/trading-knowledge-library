@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/cash-settlement",
+  "canonical_sha256": "fb7a7b0c53af2bb6c7a5ec916aec14259154322bcdc45767421f22a4c07eea7f",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/cash-settlement",
+    "name": "Cash settlement",
+    "aliases": [
+      "financial settlement"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "A method of settling futures, options, and other derivatives whereby the seller pays the buyer the cash value of the underlying, or a cash amount based on the level of an index or price, according to a procedure specified in the contract, instead of delivering the asset itself.",
+    "intuition": "Cash settlement settles the score in money only: at expiry the contract simply pays out the difference, so no barrels, shares, or bonds ever move.",
+    "mechanics": "At maturity, positions are valued against the final settlement price computed by the exchange's specified procedure (e.g., a special opening quotation of an index), and the clearing organization credits or debits the difference. Cash settlement is standard where the underlying is not practically deliverable, such as equity indexes.",
+    "formula": "",
+    "relationships": [
+      "Physical settlement",
+      "Final settlement price",
+      "Daily settlement price",
+      "Underlying asset"
+    ],
+    "failure_modes": "The settlement procedure itself becomes the point of fragility: if the reference price is derived from a short window or a manipulable market, the final settlement value can be distorted, and hedges calibrated to continuous prices can slip.",
+    "misconceptions": "Cash-settled does not mean 'synthetic' or less connected to the underlying — arbitrage against the cash market still enforces convergence to the settlement value; nor does it mean daily P&L differs, since all futures are marked to market daily regardless of final settlement style.",
+    "example": "At expiration, an E-mini S&P 500 futures position is settled in cash against the special opening quotation of the S&P 500 index; no shares of the 500 companies are delivered.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Cash Settlement",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

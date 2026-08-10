@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/european-style-option",
+  "canonical_sha256": "076f980ec3beb206c5dbc624b08fb3336977db08c6124e17ff0febe37d77f54c",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/european-style-option",
+    "name": "European-style option",
+    "aliases": [
+      "European option",
+      "European-style exercise"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "An option that may be exercised only on its expiration date; most (but not all) U.S. index options use European-style exercise.",
+    "intuition": "A European option is a single-day right: you can trade the contract any time, but you can invoke the strike only on expiration day itself.",
+    "mechanics": "The holder can always close the position by selling the option in the market before expiration; only exercise is restricted to the expiry date (and the last trading day is typically the day before expiration for index options). With no early-exercise possibility, European options are simpler to price (e.g., Black-Scholes applies directly) and writers face no early-assignment risk.",
+    "formula": "",
+    "relationships": [
+      "American-style option",
+      "Bermudan option",
+      "Option exercise",
+      "Expiration date",
+      "Black-Scholes model",
+      "Cash settlement"
+    ],
+    "failure_modes": "Holders needing to monetize before expiry must sell into the market, so wide bid-ask spreads or halted trading can trap value; confusing a European index option's last trading day with its expiration date can leave a position held unintentionally through settlement.",
+    "misconceptions": "European-style does not mean the position is locked until expiry — closing trades are always possible; nor does the name imply the option trades in Europe.",
+    "example": "A European-style index call can only be exercised at expiration, and its last trading day is usually the Thursday before expiration Friday; a holder wanting out on Tuesday simply sells the option on the exchange.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "European Option",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "The Options Industry Council (OIC), FAQ: Options Exercise",
+        "url": "https://www.optionseducation.org/referencelibrary/faq/options-exercise",
+        "section": "European-style exercise; index option last trading day",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

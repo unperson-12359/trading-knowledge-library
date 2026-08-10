@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/option-assignment",
+  "canonical_sha256": "3bc0310fae4672984b35b951694dba6bd0ae12837dd185091696b4ac17b73670",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/option-assignment",
+    "name": "Option assignment",
+    "aliases": [
+      "assignment",
+      "being assigned"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The designation by the clearing organization of an option writer who must fulfill the contract — selling the underlying at the strike (assigned call) or buying it at the strike (assigned put) — when a holder exercises.",
+    "intuition": "Assignment is the other side of exercise: when a holder invokes the ticket, a writer is tapped on the shoulder and must honor the deal.",
+    "mechanics": "When exercise notices reach the clearing organization, OCC assigns them randomly to clearing members carrying short positions in that series; members in turn allocate assignments to their customers (by random selection or first-in-first-out). Writers of American-style options can be assigned any trading day, with likelihood rising for in-the-money options near ex-dividend dates (calls) or deep in-the-money (puts).",
+    "formula": "",
+    "relationships": [
+      "Option exercise",
+      "American-style option",
+      "Option writer",
+      "Strike price",
+      "Covered call"
+    ],
+    "failure_modes": "Writers can be assigned overnight and discover the resulting stock position only the next morning, leaving them exposed to opening gaps; assignment near ex-dividend dates can also force delivery of stock plus dividend obligations.",
+    "misconceptions": "Assignment is not directed at a specific writer by the exercising holder — it is allocated by the clearing organization, so no short writer can predict or prevent being selected; also, closing the short (buy to close) eliminates assignment risk only if done before assignment.",
+    "example": "An investor short an OICX 60 call wakes to find the call was exercised: they must sell 100 shares at $60 regardless of the current $68 market price, an immediate $8-per-share adverse fill versus the market.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Assignment",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "The Options Industry Council (OIC), FAQ: Options Exercise",
+        "url": "https://www.optionseducation.org/referencelibrary/faq/options-exercise",
+        "section": "Assignment allocation; dividends and early assignment",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

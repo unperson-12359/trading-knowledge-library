@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/notional-value",
+  "canonical_sha256": "140dbf6afc70687c201cadcf71a669a70d4274788660de938f8a52271d4c79d3",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/notional-value",
+    "name": "Notional value",
+    "aliases": [
+      "notional amount",
+      "notional principal",
+      "contract value",
+      "reference amount"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The total face or reference value of the underlying exposure controlled by a derivative contract — the amount to which prices, rates, or percentage changes are applied to compute payments or P&L — as distinct from the much smaller premium or margin actually exchanged.",
+    "intuition": "Notional value is the size of the position you economically control, not the cash you put up: a small margin deposit can steer a very large notional ship.",
+    "mechanics": "For futures, notional value = contract price x contract size (or index level x multiplier), e.g., an E-mini S&P 500 future near 4,500 controls roughly $225,000. For swaps, the notional principal is the amount to which the fixed and floating rates are applied to compute periodic payments; it is typically never exchanged, which is why it is 'notional'.",
+    "formula": "Futures notional value = quoted price x contract size (or index level x multiplier); swap periodic payment = notional principal x rate x day-count fraction.",
+    "relationships": [
+      "Contract size",
+      "Contract multiplier",
+      "Margin",
+      "Leverage",
+      "Tick value"
+    ],
+    "failure_modes": "Sizing positions by margin posted rather than notional controlled hides true leverage and loss potential; aggregate notional figures (e.g., in derivatives statistics) also overstate economic exposure because notionals gross up offsetting contracts.",
+    "misconceptions": "Notional value is not the amount at risk in full for most derivatives — actual loss potential depends on price movement applied to the notional, not on losing the notional itself — yet for leveraged positions losses can still far exceed the margin posted.",
+    "example": "An investor posts about $6,000 performance bond to control an E-mini S&P 500 contract worth roughly $67,500 of notional; a 1% index move changes the position value by about $675.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Notional Principal",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CME Group, A Trader's Guide to Futures",
+        "url": "https://www.cmegroup.com/education/files/a-traders-guide-to-futures.pdf",
+        "section": "Section 3: What do we mean by leveraged? (E-mini contract value example)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

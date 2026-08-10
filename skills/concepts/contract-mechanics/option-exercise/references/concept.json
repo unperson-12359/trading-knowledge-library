@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/option-exercise",
+  "canonical_sha256": "86451eb151756f819865ae0c6165feea2b1911b46dd37ab04bc0616d5f9dfdd5",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/option-exercise",
+    "name": "Option exercise",
+    "aliases": [
+      "exercise",
+      "exercising an option"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The act by which the holder of an option invokes the contractual right to buy (call) or sell (put) the underlying at the strike price, converting the option position into a transaction or position in the underlying.",
+    "intuition": "Exercising is cashing in the ticket: instead of selling the option, you use it to force the trade at the strike.",
+    "mechanics": "The holder gives irrevocable exercise instructions to their broker, which routes them to the clearing organization (OCC for U.S. securities options) before exercise cut-off times; settlement then proceeds as a purchase or sale of the underlying (physical) or a cash payment. At expiration, OCC's 'exercise by exception' automatically exercises options in-the-money by at least $0.01 unless contrary instructions are submitted. Exercising early forfeits remaining time value, so holders often prefer selling the option.",
+    "formula": "",
+    "relationships": [
+      "Option assignment",
+      "Strike price",
+      "American-style option",
+      "European-style option",
+      "Intrinsic value",
+      "Expiration date"
+    ],
+    "failure_modes": "Exercise requires the cash or stock to complete the underlying transaction; holders without it may be restricted by their broker. Failing to submit explicit instructions around thresholds or after-hours price moves can produce unintended exercises or lapses of in-the-money value.",
+    "misconceptions": "Exercise is not the usual way to realize an option's value — most long options are closed by sale (historically roughly 70% of contracts are closed out and only a small share are exercised), because selling preserves time value that exercise destroys.",
+    "example": "Exercising an OICX 60 call means buying 100 shares at $60 each; if the stock is $68 and the call trades at $8.50, selling the call realizes $8.50 while exercise-plus-sale realizes only the $8 intrinsic value.",
+    "citations": [
+      {
+        "source": "The Options Industry Council (OIC), FAQ: Options Exercise",
+        "url": "https://www.optionseducation.org/referencelibrary/faq/options-exercise",
+        "section": "How do I exercise?; Exercise by exception",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Automatic Exercise; Exercise Price (Strike Price)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-delivery-month",
+  "concept_id": "contract-mechanics/delivery-month",
+  "display_name": "Delivery month",
+  "domain": "Contract mechanics",
+  "description": "Explain, compare, or apply Delivery month using the library's structured Contract mechanics reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Delivery month",
+    "contract month",
+    "delivery cycle month",
+    "explain Delivery month",
+    "apply Delivery month to a trading question",
+    "common misconception about Delivery month"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints",
+      "contract specification",
+      "funding and margin state"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 10,
+  "package_path": "skills/concepts/contract-mechanics/delivery-month",
+  "canonical": {
+    "source_path": "concepts/contract-mechanics.json",
+    "sha256": "3eda7d0a391e05a0a7d0649d48e875b6820aa25dfd7319fdf563c8fc2556b76f"
+  },
+  "related_concept_ids": [
+    "contract-mechanics/first-notice-day",
+    "contract-mechanics/last-trading-day",
+    "contract-mechanics/delivery-notice",
+    "futures-and-spreads/contango",
+    "futures-and-spreads/backwardation"
+  ]
+}
