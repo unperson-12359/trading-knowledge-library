@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "psychology-and-process/outcome-metric",
+  "canonical_sha256": "6ec4c31f62ddc773f0868e7c76bd6e6f36fa21c3fd0623e753c79f879687a801",
+  "source_path": "concepts/psychology-and-process.json",
+  "concept": {
+    "id": "psychology-and-process/outcome-metric",
+    "name": "Outcome metric",
+    "aliases": [
+      "Performance metric"
+    ],
+    "domain": "Psychology and process",
+    "definition": "A measure of trading results - net P&L, expectancy, win rate, average R-multiple, drawdown, risk-adjusted return - capturing what the strategy earned rather than how it was executed. Outcome metrics are the ultimate test of a process but are noisy and must not be read trade by trade.",
+    "intuition": "Outcomes are the scoreboard, but over any small number of games the scoreboard mostly measures luck.",
+    "mechanics": "Computed from closed trades: expectancy combines win rate with average win and loss sizes; R-distributions, maximum drawdown, and risk-adjusted returns complete the picture. Interpreted over adequate samples and paired with process metrics to attribute results to skill, system, or variance.",
+    "formula": "Expectancy E = p_w * W_avg - p_l * L_avg, where p_w = win rate, W_avg = average win, p_l = loss rate, L_avg = average loss (in R-multiples or currency).",
+    "relationships": [
+      "Process metric",
+      "Outcome bias",
+      "Post-trade review",
+      "Trading journal",
+      "Process orientation"
+    ],
+    "failure_modes": "Short-horizon outcome metrics are dominated by variance: dozens to hundreds of trades may be needed before expectancy estimates stabilize. Maximizing outcome metrics directly invites overfitting, hidden tail risk, and outcome-biased self-assessment.",
+    "misconceptions": "A profitable month does not prove a process improvement, and a losing month does not disprove one - sample size governs what outcome metrics can say. A high win rate alone is meaningless without the sizes of wins and losses.",
+    "example": "Over 200 journaled trades a system shows a 42% win rate, average win 2.3R, average loss 1.0R - expectancy about +0.39R per trade, a positive edge invisible in any single week.",
+    "citations": [
+      {
+        "source": "Wikipedia: Outcome bias",
+        "url": "https://en.wikipedia.org/wiki/Outcome_bias",
+        "section": "Overview (outcomes vs. decision quality)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Mike Bellafiore, One Good Trade: Inside the Highly Competitive World of Proprietary Trading (Wiley, 2010) - publisher page",
+        "url": "https://www.wiley.com/en-us/One+Good+Trade%3A+Inside+the+Highly+Competitive+World+of+Proprietary+Trading-p-9780470529409",
+        "section": "Book description and table of contents",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

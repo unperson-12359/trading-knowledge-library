@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/retrieval-augmented-generation",
+  "canonical_sha256": "5184c5a83074c3b9728e8b3c91d00289625cb0da71abecef1206313b9bc7b094",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/retrieval-augmented-generation",
+    "name": "Retrieval-augmented generation",
+    "aliases": [
+      "RAG"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "An architecture in which a generative language model is conditioned on documents fetched by a retrieval system at inference time, combining parametric memory (model weights) with non-parametric memory (an external index). Introduced by Lewis et al. (2020) as a way to give seq2seq models explicit, updatable access to knowledge and provenance for their outputs.",
+    "intuition": "Instead of forcing the model to memorize everything, give it an open-book exam: look up the relevant passages first, then write the answer with those passages in front of it.",
+    "mechanics": "A query encoder embeds the input, a retriever finds the top-k nearest passages in a dense vector index, and the generator produces output conditioned on the input plus retrieved passages. The index can be updated with new documents without retraining the generator.",
+    "formula": "p(y|x) ≈ Σ_z p_eta(z|x) · p_theta(y|x,z), where the sum marginalizes over the top-k retrieved documents z; p_eta is the retriever distribution and p_theta is the generator distribution.",
+    "relationships": [
+      "Embedding",
+      "Vector database",
+      "Grounding",
+      "Hallucination",
+      "Source provenance"
+    ],
+    "failure_modes": "Fails when retrieval returns irrelevant, stale, or poisoned documents, since the generator tends to trust its context; also degrades on questions requiring synthesis across many documents rather than lookup of one passage.",
+    "misconceptions": "RAG does not eliminate hallucination — models can ignore, misread, or over-trust retrieved context. It also does not make the model's parametric knowledge current; only the retrieved portion is up to date.",
+    "example": "A trading assistant asked 'What is the current CFTC position limit on WTI crude futures?' retrieves the relevant CME/CFTC rulebook passages and answers from them, citing the document, instead of relying on potentially outdated training data.",
+    "citations": [
+      {
+        "source": "Lewis et al., 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks' (NeurIPS 2020)",
+        "url": "https://arxiv.org/abs/2005.11401",
+        "section": "Abstract; Sections 2-3 (RAG-Sequence and RAG-Token formulations)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
