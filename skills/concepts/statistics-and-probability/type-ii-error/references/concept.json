@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/type-ii-error",
+  "canonical_sha256": "3c57b8afe16cbf69bef8a7dfff98c32d467e9b68cfbd3e0b43d978781f084662",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/type-ii-error",
+    "name": "Type II error",
+    "aliases": [
+      "false negative",
+      "beta error"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "Failing to reject the null hypothesis when it is actually false - a false negative. Its probability is denoted beta, and 1 - beta is the power of the test.",
+    "intuition": "It is missing a real edge: the strategy genuinely works, but your sample was too small or noisy for the test to detect it.",
+    "mechanics": "Beta depends on the true effect size, the sample size, the significance level, and the noise level: larger effects and larger samples shrink beta, while a stricter alpha (to avoid Type I errors) increases it. The two error types trade off against each other for a fixed design.",
+    "formula": "beta = P(do not reject H0 | H0 is false); power = 1 - beta.",
+    "relationships": [
+      "Type I error",
+      "Statistical power",
+      "Null hypothesis",
+      "Effect size",
+      "P-value"
+    ],
+    "failure_modes": "Small samples are the main culprit: with 20 trades, only a very large edge is detectable, so most genuinely positive strategies fail to reach significance. Heteroskedastic or autocorrelated returns inflate the effective noise and raise beta beyond the textbook value.",
+    "misconceptions": "Failing to reject H0 is not evidence that H0 is true - a high-beta test simply could not see the effect. Also, alpha and beta are not complements (alpha + beta != 1); they are error rates under different states of the world.",
+    "example": "A strategy with a true 0.1% mean daily edge tested on 50 days will usually yield p > 0.05 - a Type II error - because the standard error swamps the small true effect at that sample size.",
+    "citations": [
+      {
+        "source": "OpenStax, Introductory Statistics",
+        "url": "https://openstax.org/books/introductory-statistics/pages/9-2-outcomes-and-the-type-i-and-type-ii-errors",
+        "section": "9.2",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/exponential-distribution",
+  "canonical_sha256": "5b5b9ea2a71d9a03ec87c569ca7559f204719567e0c2a54cc3f9f487c277b896",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/exponential-distribution",
+    "name": "Exponential distribution",
+    "aliases": [
+      "negative exponential distribution"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "A continuous probability distribution on the non-negative reals modeling the waiting time between events that occur at a constant rate, with a constant hazard function. It is the unique continuous memoryless distribution: the probability of waiting t more time units is independent of time already waited.",
+    "intuition": "It answers 'how long until the next event?' when events strike at a steady average rate. Past waiting tells you nothing about remaining waiting - the process has no memory.",
+    "mechanics": "With scale parameter beta (mean waiting time), the density decays exponentially from its start; mean and standard deviation both equal beta and the hazard rate is the constant 1/beta. It is the inter-arrival-time distribution of a Poisson process and is widely used in reliability and duration modeling.",
+    "formula": "f(x) = (1/beta) * exp(-x/beta) for x >= 0, where beta > 0 is the scale parameter (mean waiting time); CDF F(x) = 1 - exp(-x/beta); mean = SD = beta. (Rate form: lambda = 1/beta.)",
+    "relationships": [
+      "Poisson distribution",
+      "Probability distribution",
+      "Hazard rate",
+      "Poisson process"
+    ],
+    "failure_modes": "The constant-hazard (memoryless) assumption fails whenever risk changes with age or state - trade durations and default times typically show time-varying hazard, making Weibull or other models more appropriate. It also cannot represent zero-inflated or multi-modal waiting data.",
+    "misconceptions": "Memorylessness does not mean events are 'due' after a long quiet period - the gambler's-fallacy intuition contradicts the model. And the exponential distribution is not 'the distribution of an exponential trend'; it describes random waiting times.",
+    "example": "If order-book price changes arrive at an average rate of one every beta = 30 seconds, the probability that the next change takes more than 60 seconds is exp(-60/30) = e^(-2) = 0.135.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda3667.htm",
+        "section": "1.3.6.6.7, 'Exponential Distribution'",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

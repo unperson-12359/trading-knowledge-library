@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/p-value",
+  "canonical_sha256": "df4d5a76d8aef51e528ddeca49e62880c1fbefcff0d5f257482815897d99dabb",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/p-value",
+    "name": "P-value",
+    "aliases": [
+      "p value",
+      "observed significance level"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "In null-hypothesis significance testing, the probability - computed assuming the null hypothesis is true - of obtaining a test statistic at least as extreme as the one actually observed. The smaller the p-value, the more incompatible the data are with the null model.",
+    "intuition": "It answers: 'If there were really no effect, how often would luck alone produce a result this strong?' A p-value of 0.01 means only 1% of no-effect worlds give data this extreme.",
+    "mechanics": "Specify H0, a test statistic, and whether the test is one- or two-tailed; then compute the tail probability of the observed statistic under the null sampling distribution. H0 is rejected at significance level alpha when p <= alpha; the 0.05 convention traces to Fisher (1925).",
+    "formula": "p = P(T >= t_obs | H0) for a right-tailed test (analogously for left- or two-tailed tests), where T is the test statistic and t_obs its observed value.",
+    "relationships": [
+      "Null hypothesis",
+      "Alternative hypothesis",
+      "Type I error",
+      "Statistical power",
+      "Effect size",
+      "Confidence interval"
+    ],
+    "failure_modes": "P-values shrink with sample size regardless of economic importance, so a trivially small edge becomes 'significant' with enough trades. They are invalidated by data snooping, optional stopping, and multiple testing (testing many signals guarantees small p-values by chance), and they assume the null model, including its distribution, is correctly specified.",
+    "misconceptions": "A p-value is NOT the probability that the null hypothesis is true, nor the probability the result arose by chance alone; and p > 0.05 is not evidence of no effect (absence of evidence). The ASA's 2016 statement stresses that p-values measure neither effect size nor the importance of a result.",
+    "example": "A fair coin lands heads 14 times in 20 flips; the two-tailed p-value under H0: p = 0.5 is 0.115, above 0.05, so fairness is not rejected - one more head (15/20) would give p = 0.041 and a rejection.",
+    "citations": [
+      {
+        "source": "Wikipedia, 'P-value' (citing Wasserstein & Lazar 2016, 'The ASA's Statement on p-Values', The American Statistician 70(2))",
+        "url": "https://en.wikipedia.org/wiki/P-value",
+        "section": "Definition and interpretation; coin-flip example",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

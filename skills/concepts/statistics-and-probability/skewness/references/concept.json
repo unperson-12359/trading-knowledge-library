@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/skewness",
+  "canonical_sha256": "71a9539ae4b4b297309fb023e5c63278bb14125f4606829cf44c783b82f72486",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/skewness",
+    "name": "Skewness",
+    "aliases": [
+      "third standardized moment",
+      "Fisher-Pearson coefficient of skewness"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "A measure of the asymmetry of a distribution about its mean, defined as the third standardized moment. Zero indicates symmetry, positive values indicate a longer right tail, and negative values a longer left tail.",
+    "intuition": "It tells you which side the surprises live on: negatively skewed returns have occasional large crashes amid small gains; positively skewed returns have occasional large wins amid small losses.",
+    "mechanics": "Average the cubed deviations from the mean and divide by the cube of the standard deviation; cubing preserves sign, so the heavy tail determines the sign. Software typically reports the sample-size-adjusted Fisher-Pearson coefficient, with the correction factor approaching 1 for large N.",
+    "formula": "g1 = [SUM_{i=1..N}(Y_i - Y_bar)^3 / N] / s^3, where Y_bar is the mean and s is the standard deviation computed with N in the denominator; adjusted version G1 = [sqrt(N(N-1))/(N-2)] * g1.",
+    "relationships": [
+      "Kurtosis",
+      "Normal distribution",
+      "Mean",
+      "Median",
+      "Moments"
+    ],
+    "failure_modes": "Sample skewness is extremely sensitive to outliers - NIST's Cauchy example yields a sample skewness of 70 from a symmetric distribution - and multimodality can flip its sign, so it cannot be read at face value without a histogram. It is also undefined when the third moment does not exist.",
+    "misconceptions": "Skewness zero does not prove normality (many non-normal distributions are symmetric), and the sign describes the tail, not where most of the mass sits - a right-skewed distribution typically has most observations below its mean.",
+    "example": "Daily equity-index returns commonly show skewness around -0.3 to -1, quantifying the crash-prone left tail that a symmetric normal model would miss.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm",
+        "section": "1.3.5, 'Measures of Skewness and Kurtosis'",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

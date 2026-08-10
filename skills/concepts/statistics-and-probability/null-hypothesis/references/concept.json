@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/null-hypothesis",
+  "canonical_sha256": "6a1710101319f33542e1cd7f12abacbf349e4cdd893c309e96a325b169b0689c",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/null-hypothesis",
+    "name": "Null hypothesis",
+    "aliases": [
+      "H0"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The default statement in a hypothesis test that there is no effect or no difference - the status quo that sample evidence must argue against. It always contains a statement of equality (e.g., mu = mu_0) and is the claim that is rejected or not rejected, never 'proven'.",
+    "intuition": "It is the skeptical position: 'this strategy has no edge, the apparent performance is luck.' Testing asks whether the data are surprising enough under that assumption to abandon it.",
+    "mechanics": "The null specifies a parameter value or distribution (e.g., H0: mu = mu_0). A test statistic is computed from the sample, and if its value falls in the critical region defined by the significance level alpha, H0 is rejected in favor of the alternative; otherwise the conclusion is 'do not reject', not 'accept'.",
+    "formula": "Typical form: H0: mu = mu_0 (or H0: p <= p_0), versus the alternative Ha: mu != mu_0 (or p > p_0); test statistic for a mean: T = (Y_bar - mu_0) / (s/sqrt(N)).",
+    "relationships": [
+      "Alternative hypothesis",
+      "P-value",
+      "Type I error",
+      "Type II error",
+      "Confidence interval"
+    ],
+    "failure_modes": "Failing to reject H0 does not establish it as true - an underpowered test on few trades will fail to reject almost any null. The framework also only evaluates the stated null, so a misspecified model (wrong distribution, ignored costs) makes rejection or non-rejection meaningless.",
+    "misconceptions": "One never 'accepts the null hypothesis'; absence of evidence against H0 is not evidence for it. Also, the null need not be 'zero effect' in every application - it is whatever default statement the analyst sets up to test.",
+    "example": "Testing a trading signal, H0: mean daily excess return = 0; with T = 2.8 exceeding the 5% critical value 1.97, the null of no edge is rejected - though this says nothing about whether the edge covers transaction costs.",
+    "citations": [
+      {
+        "source": "OpenStax, Introductory Statistics",
+        "url": "https://openstax.org/books/introductory-statistics/pages/9-1-null-and-alternative-hypotheses",
+        "section": "9.1",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm",
+        "section": "1.3.5.2 (hypothesis test form)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

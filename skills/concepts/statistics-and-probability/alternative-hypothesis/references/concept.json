@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/alternative-hypothesis",
+  "canonical_sha256": "b9bcc3f733be6fcd3110888ec4698fed5b7fb4b199e647295ec0948054078810",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/alternative-hypothesis",
+    "name": "Alternative hypothesis",
+    "aliases": [
+      "Ha",
+      "H1"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The claim about the population that contradicts the null hypothesis - typically what the researcher suspects or hopes to demonstrate - and the conclusion adopted when the null is rejected. It never contains an equality, taking forms mu != mu_0, mu > mu_0, or mu < mu_0.",
+    "intuition": "It is the contender: 'this strategy does have an edge.' You get to assert it only by showing the data are inconsistent with the null.",
+    "mechanics": "The choice of alternative determines the rejection region: a two-sided Ha (mu != mu_0) splits alpha into both tails, while one-sided alternatives (mu > mu_0 or mu < mu_0) place the entire critical region in one tail, changing the critical value and the power against effects in that direction.",
+    "formula": "Forms: Ha: mu != mu_0 with rejection region |T| > t_{1-alpha/2}; Ha: mu > mu_0 with T > t_{1-alpha}; Ha: mu < mu_0 with T < t_{alpha}, where T is the test statistic and t the appropriate t-distribution critical value.",
+    "relationships": [
+      "Null hypothesis",
+      "P-value",
+      "Statistical power",
+      "Type I error",
+      "Type II error"
+    ],
+    "failure_modes": "Choosing the alternative after seeing the data (deciding on a one-sided test because the sign is known) invalidates the stated error rates. A test is only powerful against alternatives in the direction specified, so a wrong-sided or overly narrow Ha can fail to detect a real effect.",
+    "misconceptions": "Rejecting H0 does not prove Ha is true or economically important - it only means the data are sufficiently inconsistent with H0. Nor may the alternative contain an equality; by convention the equality always belongs to the null.",
+    "example": "For a mean-reversion signal the analyst sets H0: mu >= 0 against Ha: mu < 0 (expected negative mean spread change); a one-sided rejection region in the left tail concentrates all power on detecting the predicted direction.",
+    "citations": [
+      {
+        "source": "OpenStax, Introductory Statistics",
+        "url": "https://openstax.org/books/introductory-statistics/pages/9-1-null-and-alternative-hypotheses",
+        "section": "9.1",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm",
+        "section": "1.3.5.2 (three alternative forms and rejection regions)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

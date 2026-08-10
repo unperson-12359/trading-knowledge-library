@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/poisson-distribution",
+  "canonical_sha256": "36838c54c957d70d13cfe28155d434068f0a7fd86d9648e1f7230cc9ce6a2de0",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/poisson-distribution",
+    "name": "Poisson distribution",
+    "aliases": [
+      "Poisson"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The discrete probability distribution of the number of events occurring in a fixed interval of time or space when events occur independently at a constant average rate lambda. Both its mean and its variance equal lambda.",
+    "intuition": "It models rare, independent arrivals: 'If on average 2 news shocks hit per day, what is the chance of 5 tomorrow?' One rate parameter determines everything.",
+    "mechanics": "The probability of x events decays factorially in x: e^(-lambda) lambda^x / x!. Key properties: mean = variance = lambda, standard deviation sqrt(lambda), and the maximum likelihood estimate of lambda is the sample mean of counts; inter-arrival times follow the exponential distribution.",
+    "formula": "P(X = x) = e^(-lambda) * lambda^x / x! for x = 0, 1, 2, ..., where lambda is the average number of events per interval; mean = lambda, variance = lambda.",
+    "relationships": [
+      "Exponential distribution",
+      "Binomial distribution",
+      "Probability distribution",
+      "Poisson process"
+    ],
+    "failure_modes": "It assumes a constant rate and independence, so clustered events - such as volatility spikes or order-flow bursts that bunch together - are badly fit: real count data often show variance exceeding the mean (overdispersion), which Poisson cannot represent.",
+    "misconceptions": "Poisson is not a model for any count data: if events cluster or the rate varies over time (non-stationarity), the equal mean-variance property breaks. Also, lambda need not be small - the distribution works for large rates too and approaches normality as lambda grows.",
+    "example": "If a stock experiences on average lambda = 3 price gaps per month, the probability of a month with zero gaps is e^(-3) = 0.0498, about 5%.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda366j.htm",
+        "section": "1.3.6.6.19, 'Poisson Distribution'",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

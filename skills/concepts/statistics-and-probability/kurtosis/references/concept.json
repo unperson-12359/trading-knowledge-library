@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/kurtosis",
+  "canonical_sha256": "77a004b43f95726fdc1364eb59165167870d289b5557a1431dff08759a56349f",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/kurtosis",
+    "name": "Kurtosis",
+    "aliases": [
+      "fourth standardized moment"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "A measure of whether data are heavy-tailed or light-tailed relative to a normal distribution, defined as the fourth standardized moment. High kurtosis indicates heavy tails (frequent outliers); low kurtosis indicates light tails, and the normal distribution has kurtosis 3.",
+    "intuition": "It quantifies tail risk: two distributions with the same mean and variance can differ enormously in how often extreme moves occur, and kurtosis captures that.",
+    "mechanics": "Average the fourth powers of the deviations from the mean and divide by the fourth power of the standard deviation. The fourth power makes the measure almost entirely driven by tail observations; the standard normal value of 3 is the reference point.",
+    "formula": "kurtosis = [SUM_{i=1..N}(Y_i - Y_bar)^4 / N] / s^4, where Y_bar is the mean and s the standard deviation computed with N in the denominator; for a standard normal distribution the value is 3.",
+    "relationships": [
+      "Skewness",
+      "Excess kurtosis",
+      "Normal distribution",
+      "Variance",
+      "Moments",
+      "Fat tails"
+    ],
+    "failure_modes": "Kurtosis is even more outlier-sensitive than skewness - NIST's Cauchy example produces a sample kurtosis of 6,693 - and it does not exist for distributions lacking a finite fourth moment. It conflates tail weight with peakedness, so high values do not diagnose which feature dominates.",
+    "misconceptions": "Kurtosis is not a measure of 'peakedness' alone; modern interpretation emphasizes tail weight. And a kurtosis of 3 is not 'zero kurtosis' - 3 is the normal benchmark, which is why excess kurtosis (minus 3) is often reported instead.",
+    "example": "A double-exponential (Laplace) sample has kurtosis about 5.9 versus the normal's 3, reflecting its heavier tails; daily stock returns often show sample kurtosis of 5-10, far above normal.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm",
+        "section": "1.3.5, 'Measures of Skewness and Kurtosis'",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

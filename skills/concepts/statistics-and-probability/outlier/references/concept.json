@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/outlier",
+  "canonical_sha256": "1d3aaf0dcecc69af47596887cf50f39671dd0def51cff4f44696d4a128698cb0",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/outlier",
+    "name": "Outlier",
+    "aliases": [
+      "extreme value",
+      "anomalous observation"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "A data point that is significantly different from the other observations in a sample - potentially an error, an abnormality, or a key to understanding the data. The standard box-plot rule flags points more than 1.5 times the interquartile range beyond the quartiles as potential outliers (and beyond 3*IQR as extreme outliers).",
+    "intuition": "It is an observation that does not fit the pattern of the rest - the one day in a quiet series when the market moved 10%.",
+    "mechanics": "Under the Tukey box-plot convention, compute Q1, Q3, and IQR; points below Q1 - 1.5*IQR or above Q3 + 1.5*IQR are mild outliers, and points beyond 3*IQR from the quartiles are extreme outliers. Flagged points require investigation, not automatic deletion.",
+    "formula": "Mild outlier if x < Q1 - 1.5*IQR or x > Q3 + 1.5*IQR; extreme outlier if x < Q1 - 3*IQR or x > Q3 + 3*IQR, where Q1 and Q3 are the quartiles and IQR = Q3 - Q1.",
+    "relationships": [
+      "Interquartile range",
+      "Percentile",
+      "Z-score",
+      "Median",
+      "Robust statistics"
+    ],
+    "failure_modes": "The 1.5*IQR rule assumes roughly symmetric, light-tailed data; for genuinely heavy-tailed financial returns it flags legitimate tail events as 'outliers', inviting the deletion of exactly the observations that drive risk. Masking effects also occur: multiple outliers can inflate the IQR so that none are flagged.",
+    "misconceptions": "An outlier is not automatically a data error to be removed - in finance the extremes are often the most informative points (crashes, halts). Conversely, 'far from the mean' is not the definition: the fences are defined from quartiles, and in skewed data far points may be perfectly normal.",
+    "example": "In NIST's 90-observation data set with Q1 = 429.75 and Q3 = 742.25, the upper inner fence is 1211.0; the value 1441 exceeds it and is flagged as a mild outlier, with no extreme outliers present.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods",
+        "url": "https://www.itl.nist.gov/div898/handbook/prc/section1/prc16.htm",
+        "section": "7.1.6, 'What are outliers in the data?'",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "OpenStax, Introductory Statistics",
+        "url": "https://openstax.org/books/introductory-statistics/pages/2-3-measures-of-the-location-of-the-data",
+        "section": "2.3 (potential outliers)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

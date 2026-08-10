@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/bernoulli-distribution",
+  "canonical_sha256": "a05d720a121db7f8c42b2088ee929f038c04046d63d8cd6d4e075b128c11a388",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/bernoulli-distribution",
+    "name": "Bernoulli distribution",
+    "aliases": [
+      "Bernoulli trial",
+      "binary distribution"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The probability distribution of a single trial with exactly two outcomes, conventionally 'success' (X = 1) with probability p and 'failure' (X = 0) with probability 1 - p. It is the building block of the binomial distribution, which counts successes across n independent Bernoulli trials.",
+    "intuition": "It models any one-shot yes/no event: will this trade close in profit, will this coin land heads? Only one number - p - fully describes it.",
+    "mechanics": "The random variable takes value 1 with probability p and 0 with probability q = 1 - p. Its mean is p and variance is p(1 - p); summing n independent Bernoulli variables with the same p gives a Binomial(n, p) variable.",
+    "formula": "P(X = 1) = p, P(X = 0) = 1 - p; E[X] = p; Var(X) = p(1 - p), where p is the success probability.",
+    "relationships": [
+      "Binomial distribution",
+      "Probability distribution",
+      "Expected value"
+    ],
+    "failure_modes": "It only fits single binary trials with a fixed success probability; applying it to sequences requires independence and constant p, both of which often fail in trading (regime shifts, path dependence). It carries no information about magnitude - a 'win' of 1% and 50% are the same event.",
+    "misconceptions": "A Bernoulli trial is not any two-outcome situation: the probabilities must be fixed and, for sequences, the trials independent - drawing without replacement violates the setup. Also, p = 0.5 is not required; 'binary' does not mean 'fair'.",
+    "example": "Modeling one trade as a Bernoulli variable with win probability p = 0.55 gives expected value 0.55 and variance 0.2475; a 20-trade win count then follows a Binomial(20, 0.55) distribution.",
+    "citations": [
+      {
+        "source": "OpenStax, Introductory Statistics",
+        "url": "https://openstax.org/books/introductory-statistics/pages/4-3-binomial-distribution",
+        "section": "4.3 (Bernoulli trial definition)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

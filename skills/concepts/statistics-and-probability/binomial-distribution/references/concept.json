@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/binomial-distribution",
+  "canonical_sha256": "ed87c56f06320e1a3aae697d2ccc93bb25420c539b2a43d6d0eb0c37b5d0db14",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/binomial-distribution",
+    "name": "Binomial distribution",
+    "aliases": [
+      "B(n, p)",
+      "binomial probability distribution"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The discrete probability distribution of the number of successes in n independent trials, each with exactly two outcomes and the same success probability p. It is the sum of n independent Bernoulli variables and is probably the most commonly used discrete distribution.",
+    "intuition": "It answers: 'If each trade wins with probability p, what are the chances of exactly x wins in n trades?' The win count, not the order of wins, is what matters.",
+    "mechanics": "The probability of x successes equals the number of ways to choose which x trials succeed (the binomial coefficient) times p^x(1-p)^(n-x). It requires a fixed number of trials, two outcomes per trial, constant p, and independence; the maximum likelihood estimate of p from data is x/n.",
+    "formula": "P(X = x) = C(n,x) * p^x * (1-p)^(n-x) for x = 0..n, where C(n,x) = n!/(x!(n-x)!); mean = np, variance = np(1-p).",
+    "relationships": [
+      "Bernoulli distribution",
+      "Poisson distribution",
+      "Probability distribution",
+      "Normal distribution"
+    ],
+    "failure_modes": "The independence and constant-p assumptions fail under regime changes, serial correlation, or sampling without replacement, in which case binomial probabilities misstate tail odds. For large n and small p it is better approximated by the Poisson distribution, and for large n with moderate p by the normal.",
+    "misconceptions": "The binomial counts successes without regard to order or payoff size - it cannot price P&L, only event counts. And 'more wins than expected' over n trades is not proof of skill; with p = 0.5, 12+ wins in 20 trials still occurs about 25% of the time.",
+    "example": "A strategy wins with p = 0.55 per trade; the probability of exactly 15 wins in 20 trades is C(20,15) * 0.55^15 * 0.45^5, about 0.037.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda366i.htm",
+        "section": "Gallery of Distributions, 'Binomial Distribution'",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "OpenStax, Introductory Statistics",
+        "url": "https://openstax.org/books/introductory-statistics/pages/4-3-binomial-distribution",
+        "section": "4.3",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

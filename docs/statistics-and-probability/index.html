@@ -337,6 +337,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="student-s-t-distribution"><h3>Student&#x27;s t-distribution <a class="anchor" href="#student-s-t-distribution">#</a></h3>
 <div class="field">A symmetric, bell-shaped probability distribution with heavier tails than the normal, parameterized by the degrees of freedom nu. It is the exact sampling distribution of the standardized sample mean when the population standard deviation is estimated from a small sample, and it converges to the normal distribution as nu grows.</div>
+<div class="skill-links"><a href="../skills/tkl-student-s-t-distribution/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the &#x27;cautious normal&#x27;: when you estimate spread from limited data, the extra uncertainty fattens the tails, so extreme values are more likely than the bell curve suggests.</div>
 <div class="field"><span class="label">Mechanics:</span> With shape parameter nu (a positive integer in testing contexts), the t density resembles the normal but with tail weight decreasing as nu increases; nu = 1 gives the Cauchy distribution and nu &gt; 30 is practically normal. Its variance nu/(nu-2) exists only for nu &gt; 2, and kurtosis only for nu &gt; 4.</div>
 <div class="field"><span class="label">Failure modes:</span> Low degrees of freedom imply very heavy tails - the mean is undefined at nu = 1 and the variance at nu &lt;= 2 - so low-nu t models can break variance-based risk metrics. As a model for returns it captures symmetric fat tails but not skewness or volatility clustering.</div>
@@ -349,6 +350,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="bernoulli-distribution"><h3>Bernoulli distribution <a class="anchor" href="#bernoulli-distribution">#</a></h3>
 <div class="field">The probability distribution of a single trial with exactly two outcomes, conventionally &#x27;success&#x27; (X = 1) with probability p and &#x27;failure&#x27; (X = 0) with probability 1 - p. It is the building block of the binomial distribution, which counts successes across n independent Bernoulli trials.</div>
+<div class="skill-links"><a href="../skills/tkl-bernoulli-distribution/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It models any one-shot yes/no event: will this trade close in profit, will this coin land heads? Only one number - p - fully describes it.</div>
 <div class="field"><span class="label">Mechanics:</span> The random variable takes value 1 with probability p and 0 with probability q = 1 - p. Its mean is p and variance is p(1 - p); summing n independent Bernoulli variables with the same p gives a Binomial(n, p) variable.</div>
 <div class="field"><span class="label">Failure modes:</span> It only fits single binary trials with a fixed success probability; applying it to sequences requires independence and constant p, both of which often fail in trading (regime shifts, path dependence). It carries no information about magnitude - a &#x27;win&#x27; of 1% and 50% are the same event.</div>
@@ -361,6 +363,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="binomial-distribution"><h3>Binomial distribution <a class="anchor" href="#binomial-distribution">#</a></h3>
 <div class="field">The discrete probability distribution of the number of successes in n independent trials, each with exactly two outcomes and the same success probability p. It is the sum of n independent Bernoulli variables and is probably the most commonly used discrete distribution.</div>
+<div class="skill-links"><a href="../skills/tkl-binomial-distribution/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It answers: &#x27;If each trade wins with probability p, what are the chances of exactly x wins in n trades?&#x27; The win count, not the order of wins, is what matters.</div>
 <div class="field"><span class="label">Mechanics:</span> The probability of x successes equals the number of ways to choose which x trials succeed (the binomial coefficient) times p^x(1-p)^(n-x). It requires a fixed number of trials, two outcomes per trial, constant p, and independence; the maximum likelihood estimate of p from data is x/n.</div>
 <div class="field"><span class="label">Failure modes:</span> The independence and constant-p assumptions fail under regime changes, serial correlation, or sampling without replacement, in which case binomial probabilities misstate tail odds. For large n and small p it is better approximated by the Poisson distribution, and for large n with moderate p by the normal.</div>
@@ -374,6 +377,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="poisson-distribution"><h3>Poisson distribution <a class="anchor" href="#poisson-distribution">#</a></h3>
 <div class="field">The discrete probability distribution of the number of events occurring in a fixed interval of time or space when events occur independently at a constant average rate lambda. Both its mean and its variance equal lambda.</div>
+<div class="skill-links"><a href="../skills/tkl-poisson-distribution/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It models rare, independent arrivals: &#x27;If on average 2 news shocks hit per day, what is the chance of 5 tomorrow?&#x27; One rate parameter determines everything.</div>
 <div class="field"><span class="label">Mechanics:</span> The probability of x events decays factorially in x: e^(-lambda) lambda^x / x!. Key properties: mean = variance = lambda, standard deviation sqrt(lambda), and the maximum likelihood estimate of lambda is the sample mean of counts; inter-arrival times follow the exponential distribution.</div>
 <div class="field"><span class="label">Failure modes:</span> It assumes a constant rate and independence, so clustered events - such as volatility spikes or order-flow bursts that bunch together - are badly fit: real count data often show variance exceeding the mean (overdispersion), which Poisson cannot represent.</div>
@@ -386,6 +390,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="exponential-distribution"><h3>Exponential distribution <a class="anchor" href="#exponential-distribution">#</a></h3>
 <div class="field">A continuous probability distribution on the non-negative reals modeling the waiting time between events that occur at a constant rate, with a constant hazard function. It is the unique continuous memoryless distribution: the probability of waiting t more time units is independent of time already waited.</div>
+<div class="skill-links"><a href="../skills/tkl-exponential-distribution/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It answers &#x27;how long until the next event?&#x27; when events strike at a steady average rate. Past waiting tells you nothing about remaining waiting - the process has no memory.</div>
 <div class="field"><span class="label">Mechanics:</span> With scale parameter beta (mean waiting time), the density decays exponentially from its start; mean and standard deviation both equal beta and the hazard rate is the constant 1/beta. It is the inter-arrival-time distribution of a Poisson process and is widely used in reliability and duration modeling.</div>
 <div class="field"><span class="label">Failure modes:</span> The constant-hazard (memoryless) assumption fails whenever risk changes with age or state - trade durations and default times typically show time-varying hazard, making Weibull or other models more appropriate. It also cannot represent zero-inflated or multi-modal waiting data.</div>

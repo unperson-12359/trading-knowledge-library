@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/type-i-error",
+  "canonical_sha256": "b2144eb4f9997ffd9be35174cf42beb9266632a3e22e1f3fe1dd3a5f8e28cd4e",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/type-i-error",
+    "name": "Type I error",
+    "aliases": [
+      "false positive",
+      "alpha error"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "Rejecting the null hypothesis when it is actually true - a false positive. Its probability is denoted alpha and is controlled by the chosen significance level of the test.",
+    "intuition": "It is declaring a lucky strategy to be skill: you concluded there is an edge when in truth there is none.",
+    "mechanics": "Setting the significance level alpha (commonly 0.05) caps the probability of a Type I error under the null at alpha: the null is rejected only when the test statistic falls in the extreme critical region, which happens with probability alpha when H0 holds.",
+    "formula": "alpha = P(reject H0 | H0 is true); by construction of the test, alpha equals the significance level.",
+    "relationships": [
+      "Type II error",
+      "Null hypothesis",
+      "P-value",
+      "Statistical power",
+      "Multiple comparisons"
+    ],
+    "failure_modes": "The nominal alpha holds per test: running many tests (signal mining across hundreds of strategies) multiplies false-positive chances far beyond alpha unless corrected. Model misspecification (wrong null distribution for fat-tailed returns) also breaks the guarantee that the true Type I rate equals the stated alpha.",
+    "misconceptions": "A Type I error is not 'the data were unlucky' after the fact - it is a property of the testing procedure, not of any single outcome. Nor does a small alpha eliminate false positives; it only caps their rate among true nulls.",
+    "example": "With alpha = 0.05, a backtest of a genuinely useless signal (H0: zero edge, true) will still produce a 'significant' t-statistic about 5% of the time - a Type I error that can launch a doomed strategy.",
+    "citations": [
+      {
+        "source": "OpenStax, Introductory Statistics",
+        "url": "https://openstax.org/books/introductory-statistics/pages/9-2-outcomes-and-the-type-i-and-type-ii-errors",
+        "section": "9.2",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

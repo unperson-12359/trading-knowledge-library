@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/percentile",
+  "canonical_sha256": "72af914c9de4aafeead7b0e5e2fd5669b6d61c975030b8f01cfde0f5dac32dfc",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/percentile",
+    "name": "Percentile",
+    "aliases": [
+      "centile"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The 100-quantiles of a distribution or ordered data set: the kth percentile is the value at or below which k percent of the observations fall. Percentiles express the relative standing of a value within a data set.",
+    "intuition": "Scoring in the 90th percentile means 90% of values are at or below yours and 10% above - a rank statement, not a statement about the score itself.",
+    "mechanics": "Order the data; for the kth percentile compute the rank index i = (k/100)(n + 1) - if i is an integer take that data value, otherwise average the two neighboring ordered values (other packages use different interpolation rules). Quartiles are the 25th, 50th, and 75th percentiles.",
+    "formula": "Index for the kth percentile: i = (k/100) * (n + 1), where n is the number of ordered observations; the percentile is the ith ordered value if i is integral, else the average of the two bracketing values (one common convention of several).",
+    "relationships": [
+      "Quantile",
+      "Median",
+      "Interquartile range",
+      "Outlier"
+    ],
+    "failure_modes": "Percentile values depend on the interpolation convention and are unstable in small samples, especially near the extremes. In non-stationary series, a percentile rank computed on one regime says little about standing in another.",
+    "misconceptions": "The 90th percentile does not mean scoring 90% - it is a statement of relative position. Nor is the difference between the 90th and 10th percentiles 'the middle 80% of values' by magnitude; it is by count.",
+    "example": "A fund's one-day return of -4% is worse than 99% of its historical daily returns, putting it at the 1st percentile - an extreme-tail day by its own history.",
+    "citations": [
+      {
+        "source": "OpenStax, Introductory Statistics",
+        "url": "https://openstax.org/books/introductory-statistics/pages/2-3-measures-of-the-location-of-the-data",
+        "section": "2.3 (percentiles and quartiles)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

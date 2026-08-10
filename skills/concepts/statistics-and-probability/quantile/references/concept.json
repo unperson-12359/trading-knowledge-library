@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/quantile",
+  "canonical_sha256": "64e344523848db84222a254f83be077bb2e01a0047949629bc2b88b5c0b0d601",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/quantile",
+    "name": "Quantile",
+    "aliases": [
+      "fractile",
+      "percent point"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "Cut points that divide the range of a probability distribution (or an ordered sample) into intervals of equal probability. The p-quantile Q(p) is the value below which a proportion p of the probability mass falls, i.e., the inverse of the cumulative distribution function; special cases include quartiles, deciles, and percentiles.",
+    "intuition": "Quantiles answer 'what value marks the bottom 5%?' - the 0.05-quantile of a return distribution is the loss level that is exceeded only 5% of the time, the basis of Value-at-Risk.",
+    "mechanics": "For a known distribution, Q(p) = F^{-1}(p), the inverse CDF evaluated at p. From a sample of N ordered values, quantiles are estimated by rank indexing or interpolation between adjacent order statistics; Hyndman and Fan document nine different conventions used across software packages, so the same query can give slightly different numbers.",
+    "formula": "Q(p) = F^{-1}(p) = inf{ x : F(x) >= p }, where F is the cumulative distribution function and 0 < p < 1; the k-th q-quantile is Q(k/q).",
+    "relationships": [
+      "Percentile",
+      "Median",
+      "Interquartile range",
+      "Probability distribution",
+      "Value at risk"
+    ],
+    "failure_modes": "Sample quantiles of the extreme tails (p near 0 or 1) are estimated very imprecisely and depend heavily on the interpolation convention, so tail risk figures differ across software. For heavy-tailed data, extreme quantiles shift drastically when a few observations change.",
+    "misconceptions": "Quantiles are not uniquely defined by 'the value below which p of the data falls' - different packages use different order-statistic interpolations (Hyndman-Fan types), which matters for small samples. A quantile is also a statement about the distribution, not a forecast of an individual outcome.",
+    "example": "For 10 ordered values [3, 6, 7, 8, 8, 10, 13, 15, 16, 20], the first quartile Q1 (0.25-quantile) is 7 under the nearest-rank rule, while interpolated methods give values between 6.75 and 7.75.",
+    "citations": [
+      {
+        "source": "Wikipedia, 'Quantile'",
+        "url": "https://en.wikipedia.org/wiki/Quantile",
+        "section": "Quantiles of a population; Estimating quantiles from a sample",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

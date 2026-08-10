@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/excess-kurtosis",
+  "canonical_sha256": "c749c766318b6ea56df00f20633365ead0a66bf9d2ded222e6102a03d5492d96",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/excess-kurtosis",
+    "name": "Excess kurtosis",
+    "aliases": [
+      "excess"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The kurtosis of a distribution minus 3, the kurtosis of the standard normal distribution, so that the normal reference value becomes zero. Positive excess kurtosis indicates heavier-than-normal tails; negative values indicate lighter-than-normal tails.",
+    "intuition": "It is kurtosis re-zeroed at the bell curve: 0 means normal-like tails, positive means fatter tails than normal, negative means thinner.",
+    "mechanics": "Compute the fourth standardized moment and subtract 3. Many software packages and financial texts report excess kurtosis while calling it simply 'kurtosis', so the convention in use must be checked before comparing numbers.",
+    "formula": "excess kurtosis = [SUM_{i=1..N}(Y_i - Y_bar)^4 / N] / s^4 - 3, i.e., the fourth standardized moment minus the normal value of 3.",
+    "relationships": [
+      "Kurtosis",
+      "Normal distribution",
+      "Skewness",
+      "Fat tails"
+    ],
+    "failure_modes": "It inherits all the outlier sensitivity and existence problems of kurtosis, amplified by convention confusion: comparing an excess-kurtosis figure against a raw-kurtosis figure creates a spurious difference of 3. Small samples produce wildly unstable estimates.",
+    "misconceptions": "A reported 'kurtosis of 2' may mean raw kurtosis 2 (thinner tails than normal) or excess kurtosis 2 (fatter tails, raw = 5) - the two conventions say opposite things, and sources often fail to state which they use.",
+    "example": "Daily S&P 500 returns over long samples show excess kurtosis well above 0 (often 5 or more), quantifying crash-frequency beyond what a normal model predicts.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm",
+        "section": "1.3.5, 'Measures of Skewness and Kurtosis' (Alternative Definition of Kurtosis)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

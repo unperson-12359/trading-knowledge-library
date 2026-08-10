@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "statistics-and-probability/standard-error",
+  "canonical_sha256": "19e80ca93f2a2fc3a3b931e5b2320eeb042ed9920b6b6a859d782d8a35e3bf21",
+  "source_path": "concepts/statistics-and-probability.json",
+  "concept": {
+    "id": "statistics-and-probability/standard-error",
+    "name": "Standard error",
+    "aliases": [
+      "SE",
+      "standard error of the mean"
+    ],
+    "domain": "Statistics and probability",
+    "definition": "The standard deviation of the sampling distribution of a statistic - most commonly the standard error of the mean, which measures how much a sample mean would vary from sample to sample. It shrinks with the square root of the sample size.",
+    "intuition": "The standard deviation describes spread of individual data points; the standard error describes the spread of your estimate. It answers 'how precisely does my sample pin down the average?'",
+    "mechanics": "For the sample mean of n independent observations with population standard deviation sigma, the standard error is sigma/sqrt(n), estimated in practice by s/sqrt(n). Quadrupling the sample size halves the standard error, and it is the denominator ingredient of t-statistics and confidence-interval widths.",
+    "formula": "SE(x_bar) = sigma / sqrt(n), where sigma is the population standard deviation and n the sample size; estimated as s / sqrt(n) from a sample.",
+    "relationships": [
+      "Standard deviation",
+      "Confidence interval",
+      "Central limit theorem",
+      "Sample mean",
+      "Z-score"
+    ],
+    "failure_modes": "The sigma/sqrt(n) form assumes independent observations; with autocorrelated returns (volatility clustering, momentum), true standard errors are larger and naive intervals are too narrow. It also measures only sampling variability, not model or estimation bias.",
+    "misconceptions": "Standard error is not the standard deviation of the data and does not shrink the spread of individual returns as n grows - only the uncertainty of the mean. A small SE also does not validate the model; biased sampling yields precise but wrong estimates.",
+    "example": "Daily returns with sigma = 1.5% over n = 250 trading days give a standard error of the mean of 1.5%/sqrt(250) = 0.095%, so the estimated mean daily return carries about +/-0.19% (two SE) of sampling uncertainty.",
+    "citations": [
+      {
+        "source": "OpenStax, Introductory Statistics",
+        "url": "https://openstax.org/books/introductory-statistics/pages/7-1-the-central-limit-theorem-for-sample-means-averages",
+        "section": "7.1 (standard error of the mean)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
