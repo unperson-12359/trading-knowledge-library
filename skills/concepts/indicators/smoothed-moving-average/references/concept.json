@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/smoothed-moving-average",
+  "canonical_sha256": "4445eea6af37395ac0adbfca8baa1abd4f399a9e312da730a7830b0eec93e01d",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/smoothed-moving-average",
+    "name": "Smoothed moving average",
+    "aliases": [
+      "SMMA",
+      "Modified moving average",
+      "Running moving average",
+      "MMA"
+    ],
+    "domain": "Indicators",
+    "definition": "A recursive moving average (also called modified or running moving average) equivalent to an EMA with smoothing constant 1/n, so it smooths far more heavily than a same-length standard EMA.",
+    "intuition": "The gentlest common average: each new price is absorbed at only 1/n weight, so the line moves slowly and filters a great deal of noise.",
+    "mechanics": "Seeded with an n-period SMA; thereafter SMMA_t = (SMMA_{t-1}*(n-1) + P_t)/n. This is the smoothing Welles Wilder used for RSI, ATR, and ADX, and the average used in Bill Williams' Alligator lines.",
+    "formula": "SMMA_t = (SMMA_{t-1} * (n - 1) + P_t) / n; first value = SMA of the first n prices.",
+    "relationships": [
+      "Exponential moving average",
+      "Simple moving average",
+      "Alligator indicator",
+      "Average true range"
+    ],
+    "failure_modes": "Very heavy lag; early values depend strongly on the seed and need long histories to stabilize, so short data sets give unreliable readings.",
+    "misconceptions": "SMMA(n) is not the same as EMA(n): its alpha is 1/n rather than 2/(n+1), so a 14-period SMMA responds roughly like a 27-period standard EMA.",
+    "example": "If the prior 14-period SMMA is 50 and the new close is 52, SMMA = (50*13 + 52)/14 = 50.14.",
+    "citations": [
+      {
+        "source": "Moving Average - MetaTrader 5 Help",
+        "url": "https://www.metatrader5.com/en/terminal/help/indicators/trend_indicators/ma",
+        "section": "Smoothed Moving Average (SMMA)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/macd-line",
+  "canonical_sha256": "52c8fb407f0e2bf6acd9e6c033cae691ab662dcb84d974576edcf08a97b76a0a",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/macd-line",
+    "name": "MACD line",
+    "aliases": [
+      "Fast MACD line"
+    ],
+    "domain": "Indicators",
+    "definition": "The core series of the MACD: the fast (default 12-period) EMA minus the slow (default 26-period) EMA of closing prices, oscillating around zero as the two averages converge and diverge.",
+    "intuition": "The spread between a fast and a slow average: positive and widening means upside momentum is building.",
+    "mechanics": "Computed each bar as EMA_12(C) - EMA_26(C); it crosses zero exactly when the two EMAs cross, and its distance from zero measures how far the averages have diverged.",
+    "formula": "MACD line = EMA_12(Close) - EMA_26(Close).",
+    "relationships": [
+      "Moving average convergence divergence",
+      "MACD signal line",
+      "MACD histogram",
+      "Moving average crossover"
+    ],
+    "failure_modes": "As an EMA spread it lags and whipsaws in trendless markets; absolute values are price-scale dependent and not comparable across securities (use the PPO for that).",
+    "misconceptions": "A falling MACD line is not the same as falling prices — the EMA spread can shrink while prices are still rising, reflecting decelerating momentum only.",
+    "example": "A 12-day EMA of 50 and a 26-day EMA of 48 give a MACD line of +2: the fast average sits 2 points above the slow one.",
+    "citations": [
+      {
+        "source": "MACD (Moving Average Convergence/Divergence Oscillator) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/macd-moving-average-convergence-divergence-oscillator",
+        "section": "How Do You Calculate the MACD?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

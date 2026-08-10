@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/variable-index-dynamic-average",
+  "canonical_sha256": "b9c400b4d855f2ce9f030e896a12152338070f7ae55913debc9a77c840b39cc2",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/variable-index-dynamic-average",
+    "name": "Variable index dynamic average",
+    "aliases": [
+      "VIDYA"
+    ],
+    "domain": "Indicators",
+    "definition": "Tushar Chande's Variable Index Dynamic Average: an exponential-style moving average whose smoothing constant is scaled each bar by a volatility index — the absolute Chande Momentum Oscillator — so it reacts faster in decisive, volatile markets and slower in quiet ones.",
+    "intuition": "An adaptive average that automatically speeds up when the market is moving decisively and slows down when it is drifting.",
+    "mechanics": "VIDYA_t = VIDYA_{t-1} + alpha * |CMO_t|/100 * (P_t - VIDYA_{t-1}), with alpha = 2/(n+1). When |CMO| nears 100 (one-way market) VIDYA behaves like a fast EMA; when CMO nears 0 it barely moves.",
+    "formula": "VIDYA_t = VIDYA_{t-1} + alpha * (|CMO_t|/100) * (P_t - VIDYA_{t-1}); alpha = 2/(n+1); CMO = 100*(Su - Sd)/(Su + Sd) with Su, Sd the sums of up and down close-to-close changes over the look-back.",
+    "relationships": [
+      "Exponential moving average",
+      "Kaufman adaptive moving average",
+      "Chande momentum oscillator"
+    ],
+    "failure_modes": "In choppy markets CMO hovers near zero and VIDYA effectively freezes, missing genuine moves; results are sensitive to the CMO look-back choice.",
+    "misconceptions": "VIDYA is not the same as KAMA: KAMA adapts via an efficiency ratio (net change over path length), while VIDYA adapts via a momentum-volatility index.",
+    "example": "If alpha = 0.2 and the CMO reads +60, the effective smoothing constant is 0.12; at CMO = +10 it falls to 0.02.",
+    "citations": [
+      {
+        "source": "Chande's Variable Index Dynamic Average (VIDYA) - CQG News",
+        "url": "https://news.cqg.com/blogs/indicators/2016/08/chandes-variable-index-dynamic-average-vidya",
+        "section": "VIDYA definition, formula, and CMO-based smoothing discussion",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

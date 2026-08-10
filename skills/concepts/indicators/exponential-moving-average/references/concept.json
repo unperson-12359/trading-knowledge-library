@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/exponential-moving-average",
+  "canonical_sha256": "ca0df789f3b5e2460bd7fe6a455f29e2a4ad444eaace6c269895e2a07ff08635",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/exponential-moving-average",
+    "name": "Exponential moving average",
+    "aliases": [
+      "EMA"
+    ],
+    "domain": "Indicators",
+    "definition": "A recursively computed moving average whose weights decay geometrically with age, giving recent observations more influence and reducing lag relative to a same-length simple moving average.",
+    "intuition": "Like a simple average, but today's price counts more than last week's, so it reacts faster to new information.",
+    "mechanics": "EMA_t = k*P_t + (1-k)*EMA_{t-1} with k = 2/(n+1), seeded with an SMA. Because each value depends on all previous values, a long history (hundreds of bars) is needed for the series to converge to accurate values.",
+    "formula": "EMA_t = k * P_t + (1 - k) * EMA_{t-1}; k = 2/(n+1); P_t = current price; n = period.",
+    "relationships": [
+      "Simple moving average",
+      "MACD line",
+      "Double exponential moving average",
+      "Smoothed moving average"
+    ],
+    "failure_modes": "Still a lagging trend-follower: less lag than an SMA means more sensitivity to noise, so it whipsaws sooner and more often in trading ranges.",
+    "misconceptions": "An EMA is not inherently better than an SMA — it trades lag for noise sensitivity. Also, early EMA values depend on the seed, so short data histories yield inaccurate values.",
+    "example": "A 10-day EMA applies an 18.18% weight (2/11) to the latest close; a 20-day EMA applies 9.52% (2/21).",
+    "citations": [
+      {
+        "source": "Moving Averages - Simple and Exponential | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/moving-averages-simple-and-exponential",
+        "section": "Exponential Moving Average Formulas",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

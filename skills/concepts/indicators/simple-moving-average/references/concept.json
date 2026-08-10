@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/simple-moving-average",
+  "canonical_sha256": "147211cb0acec1ac3ba52124717e37ee5d4d74d1dbaaf60c004ea1666083f9a2",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/simple-moving-average",
+    "name": "Simple moving average",
+    "aliases": [
+      "SMA"
+    ],
+    "domain": "Indicators",
+    "definition": "The unweighted arithmetic mean of the last n observations (usually closing prices), recomputed each period as the window slides forward; the most basic trend-following overlay.",
+    "intuition": "A rolling average that smooths day-to-day noise so the underlying trend is easier to see. Every observation in the window counts equally.",
+    "mechanics": "Sum the last n prices and divide by n; each new bar drops the oldest point and adds the newest, so the average moves through time. Used to define trend direction, support/resistance zones, and as a building block for other indicators such as Bollinger Bands and MACD.",
+    "formula": "SMA(n) = (P_1 + P_2 + ... + P_n) / n, where P_i are the last n prices (usually closes) and n is the window length.",
+    "relationships": [
+      "Exponential moving average",
+      "Weighted moving average",
+      "Moving average crossover",
+      "Bollinger Bands",
+      "Golden cross"
+    ],
+    "failure_modes": "It is a lagging, trend-following measure: the longer the window the greater the lag, and in sideways, trendless markets price crosses it repeatedly, producing whipsaws.",
+    "misconceptions": "A moving average does not predict future prices; it defines the current trend from past data. Nor is any single length (e.g. the 200-day) inherently significant beyond convention and self-reinforcing usage.",
+    "example": "Closes of 11, 12, 13, 14, 15 give a 5-day SMA of 13; when the next close is 16, the SMA becomes (12+13+14+15+16)/5 = 14.",
+    "citations": [
+      {
+        "source": "Moving Averages - Simple and Exponential | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/moving-averages-simple-and-exponential",
+        "section": "Simple Moving Average Formulas",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

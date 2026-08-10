@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/zero-lag-exponential-moving-average",
+  "canonical_sha256": "3c6baf7470e8f2c81c20f42bfeebdcc5fa6195e6597770efb3bb8d82ba1c707e",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/zero-lag-exponential-moving-average",
+    "name": "Zero-lag exponential moving average",
+    "aliases": [
+      "ZLEMA",
+      "Zero-lag EMA"
+    ],
+    "domain": "Indicators",
+    "definition": "A lag-corrected EMA (John Ehlers and Ric Way, 'Zero Lag (Well, Almost)', TASC 2010): an EMA applied to de-lagged data — price plus the difference between the current price and the price (n-1)/2 bars ago — compensating for the EMA's inherent lag.",
+    "intuition": "Pre-correct the data for the lag you know the EMA will add, so the smoothed output lands close to the current price.",
+    "mechanics": "Form the adjusted series Z_t = P_t + (P_t - P_{t-lag}) with lag = floor((n-1)/2), then take a standard n-period EMA of Z. The construction is related to Mulloy's DEMA/TEMA lag-cancellation idea.",
+    "formula": "lag = floor((n-1)/2); Z_t = P_t + (P_t - P_{t-lag}); ZLEMA_t = EMA_n(Z)_t with k = 2/(n+1).",
+    "relationships": [
+      "Exponential moving average",
+      "Double exponential moving average",
+      "Hull moving average"
+    ],
+    "failure_modes": "The de-lagging term amplifies noise and overshoots on sharp reversals; in sideways markets it whipsaws more than a plain EMA.",
+    "misconceptions": "Zero lag is aspirational: the correction removes the systematic EMA lag in smooth trends but cannot anticipate turning points, where lag remains.",
+    "example": "For n = 10, lag = 4; if P_t = 105 and P_{t-4} = 100, the EMA is applied to 110 instead of 105, pulling the average up toward the trending price.",
+    "citations": [
+      {
+        "source": "Zero-Lag Exponential Moving Average - Tulip Indicators",
+        "url": "https://tulipindicators.org/zlema",
+        "section": "Description",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

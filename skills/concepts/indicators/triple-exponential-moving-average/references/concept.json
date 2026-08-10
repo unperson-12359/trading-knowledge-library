@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/triple-exponential-moving-average",
+  "canonical_sha256": "ef4d8b881392f4cc87a2074711df2bbb2ee9e1c0a57aaf7087dfdaf847425a0a",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/triple-exponential-moving-average",
+    "name": "Triple exponential moving average",
+    "aliases": [
+      "TEMA"
+    ],
+    "domain": "Indicators",
+    "definition": "Patrick Mulloy's Triple Exponential Moving Average, which extends DEMA with a third smoothing layer, combining single, double, and triple EMAs to remove even more lag for short-term trading.",
+    "intuition": "DEMA with one more correction term — closer still to price, noisier still.",
+    "mechanics": "TEMA = 3*EMA1 - 3*EMA2 + EMA3, where EMA2 = EMA(EMA1) and EMA3 = EMA(EMA2). Used via price crosses or fast/slow TEMA crossovers, which fire earlier than equivalent DEMA or EMA crosses; default 20 periods.",
+    "formula": "TEMA = 3*EMA_n(P) - 3*EMA_n(EMA_n(P)) + EMA_n(EMA_n(EMA_n(P))).",
+    "relationships": [
+      "Double exponential moving average",
+      "Exponential moving average",
+      "TRIX"
+    ],
+    "failure_modes": "Minimal lag means minimal noise filtering — it whipsaws the most of the EMA family in sideways markets, and some lag is actually useful for longer-term analysis.",
+    "misconceptions": "Faster is not universally better: TEMA's responsiveness amplifies noise, so it is not a straight upgrade over EMA or DEMA. Also, TEMA is not TRIX — TRIX is the 1-period rate of change of a triple EMA.",
+    "example": "If EMA1 = 50, EMA2 = 48, EMA3 = 46, TEMA = 3*50 - 3*48 + 46 = 52.",
+    "citations": [
+      {
+        "source": "Triple Exponential Moving Average (TEMA) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/triple-exponential-moving-average-tema",
+        "section": "Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

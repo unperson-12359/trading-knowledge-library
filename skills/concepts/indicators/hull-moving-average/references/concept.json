@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/hull-moving-average",
+  "canonical_sha256": "c8b0364e65d814be7431e398e73a46aba2a7145ba4a7e80f07eeb8c017870618",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/hull-moving-average",
+    "name": "Hull moving average",
+    "aliases": [
+      "HMA"
+    ],
+    "domain": "Indicators",
+    "definition": "Alan Hull's moving average (2005), engineered to nearly eliminate lag while retaining smoothness by combining weighted moving averages of different lengths with a lag-canceling correction term.",
+    "intuition": "An average designed to hug price closely without becoming jagged — fast like a short WMA, smooth like a long one.",
+    "mechanics": "Compute WMA(n/2) and WMA(n) of price, form the raw series 2*WMA(n/2) - WMA(n) to cancel lag, then smooth the result with a WMA of length sqrt(n), rounding non-integer periods to whole numbers.",
+    "formula": "HMA(n) = WMA( 2*WMA(P, n/2) - WMA(P, n), sqrt(n) ), where WMA(P, m) is the m-period weighted moving average of price.",
+    "relationships": [
+      "Weighted moving average",
+      "Zero-lag exponential moving average",
+      "Double exponential moving average"
+    ],
+    "failure_modes": "Reduced lag means reduced noise filtering: it whipsaws in sideways markets and remains a trend-follower, not a predictor.",
+    "misconceptions": "Hull himself advises against HMA crossover systems — crossovers exploit lag differences that the HMA was built to remove; use turns in the HMA's direction instead.",
+    "example": "For an 11-period HMA, use WMA(6) and WMA(11) for the raw line, then smooth with a 3-period WMA (sqrt(11) = 3.3 rounds to 3).",
+    "citations": [
+      {
+        "source": "Hull Moving Average (HMA) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/hull-moving-average-hma",
+        "section": "Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

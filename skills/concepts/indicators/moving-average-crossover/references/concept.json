@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/moving-average-crossover",
+  "canonical_sha256": "5d4f28cfda1061b5f39737e3581a4bacd5c7d7d6d972616f0a7a5bcdd374bef3",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/moving-average-crossover",
+    "name": "Moving average crossover",
+    "aliases": [
+      "Double crossover method",
+      "MA crossover"
+    ],
+    "domain": "Indicators",
+    "definition": "A signal framework in which a shorter-period moving average crossing a longer-period one (or price crossing a moving average) is read as a shift in trend direction; John Murphy calls the two-average version the double crossover method. It is an analytical convention, not a proven predictive law.",
+    "intuition": "When the fast average overtakes the slow one, recent prices have moved enough to bend the trend measure — a simple, mechanical trend-change rule.",
+    "mechanics": "Bullish signal: the short MA crosses above the long MA; bearish: short crosses below. Common pairs are 5/35 (short-term) and 50/200 (long-term); a triple-crossover variant uses three averages. MACD(12,26,1) quantifies EMA crossovers as the fast-minus-slow difference.",
+    "formula": "",
+    "relationships": [
+      "Golden cross",
+      "Death cross",
+      "Simple moving average",
+      "Moving average convergence divergence"
+    ],
+    "failure_modes": "Both averages lag, so signals are late by construction and whipsaw repeatedly in trendless markets; the documented Home Depot example shows three whipsaws before one successful 20%+ signal.",
+    "misconceptions": "A crossover describes what has already happened; it does not predict continuation. Unfiltered crossover systems are unreliable — price or time filters are typically needed.",
+    "example": "A 10-day EMA crossing above a 50-day EMA is a bullish crossover; with MACD(10,50,1), the MACD line crossing zero marks the same event.",
+    "citations": [
+      {
+        "source": "Moving Averages - Simple and Exponential | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/moving-averages-simple-and-exponential",
+        "section": "Double Moving Average Crossovers",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

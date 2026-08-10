@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/kaufman-adaptive-moving-average",
+  "canonical_sha256": "b65cf01bed0da861e10fd3f7c629486908222a62dea79bbac136aca63f3dba05",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/kaufman-adaptive-moving-average",
+    "name": "Kaufman adaptive moving average",
+    "aliases": [
+      "KAMA"
+    ],
+    "domain": "Indicators",
+    "definition": "Perry Kaufman's adaptive moving average, which varies its smoothing constant with an Efficiency Ratio measuring how directional (versus noisy) recent price movement has been, hugging price in trends and going flat in chop.",
+    "intuition": "An average that asks how much of the recent movement is real trend versus random wiggle, and speeds up only when the answer is mostly trend.",
+    "mechanics": "ER = |Close - Close_n| / sum|Close - prior Close| over n bars (0 to 1); SC = [ER*(fast - slow) + slow]^2 with fast = 2/(2+1) and slow = 2/(30+1); KAMA_t = KAMA_{t-1} + SC*(P_t - KAMA_{t-1}). Recommended settings KAMA(10,2,30); the first value is seeded with an SMA.",
+    "formula": "ER = |P_t - P_{t-n}| / sum(|P_i - P_{i-1}|, i=t-n+1..t); SC = [ER*(2/3 - 2/31) + 2/31]^2; KAMA_t = KAMA_{t-1} + SC*(P_t - KAMA_{t-1}).",
+    "relationships": [
+      "Exponential moving average",
+      "Variable index dynamic average",
+      "Efficiency ratio"
+    ],
+    "failure_modes": "A simple price/KAMA crossover system still whipsaws without price or time filters, and in persistently choppy markets ER stays low, leaving KAMA flat and uninformative.",
+    "misconceptions": "Lengthening the ER look-back does not necessarily improve the indicator — the documented guidance is to adjust the fast (middle) parameter for smoothing, not the ER period.",
+    "example": "If price rises for 10 straight bars, change equals volatility so ER = 1 and KAMA tracks a 2-period EMA; if price ends unchanged after 10 choppy bars, ER is near 0 and KAMA barely moves.",
+    "citations": [
+      {
+        "source": "Kaufman's Adaptive Moving Average (KAMA) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/kaufmans-adaptive-moving-average-kama",
+        "section": "Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

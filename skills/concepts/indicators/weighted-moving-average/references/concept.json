@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/weighted-moving-average",
+  "canonical_sha256": "2605b118c1d1f4c93050ff19cb789fd1717ed8ff3d7d2bc1a7a38142b7e15498",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/weighted-moving-average",
+    "name": "Weighted moving average",
+    "aliases": [
+      "WMA",
+      "Linearly weighted moving average",
+      "LWMA"
+    ],
+    "domain": "Indicators",
+    "definition": "A moving average that weights observations linearly by recency — the newest price gets weight n, the next n-1, down to 1 — so recent data dominates while the window length stays fixed.",
+    "intuition": "A compromise between the SMA and EMA: recent prices matter more, but the weights decline in a straight line rather than exponentially.",
+    "mechanics": "Multiply each of the last n prices by its recency rank, sum the products, and divide by the sum of the weights n(n+1)/2. Recomputed fresh each bar; not recursive.",
+    "formula": "WMA(n) = sum(i * P_i, i=1..n) / sum(i, i=1..n), with P_n the most recent price; the denominator equals n(n+1)/2.",
+    "relationships": [
+      "Simple moving average",
+      "Exponential moving average",
+      "Hull moving average",
+      "Triangular moving average"
+    ],
+    "failure_modes": "Lags like all averages and whipsaws in ranges; the abrupt weight cutoff at the window edge makes it twitchy when a large old value exits the window.",
+    "misconceptions": "A WMA is not an EMA: WMA weights decline linearly over a fixed window, whereas EMA weights decay exponentially over an effectively infinite history.",
+    "example": "With closes 10, 11, 12, the 3-period WMA = (1*10 + 2*11 + 3*12)/6 = 68/6 = 11.33, versus an SMA of 11.",
+    "citations": [
+      {
+        "source": "What Is The Weighted Moving Average? - Fidelity Investments",
+        "url": "https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/wma",
+        "section": "Description",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Moving Average - MetaTrader 5 Help",
+        "url": "https://www.metatrader5.com/en/terminal/help/indicators/trend_indicators/ma",
+        "section": "Linear Weighted Moving Average (LWMA)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

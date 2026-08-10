@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/double-exponential-moving-average",
+  "canonical_sha256": "c6d1784c1c755f27972c2e42fdb948a1594cb35d316f41b0d4491fb11b7935e6",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/double-exponential-moving-average",
+    "name": "Double exponential moving average",
+    "aliases": [
+      "DEMA"
+    ],
+    "domain": "Indicators",
+    "definition": "Patrick Mulloy's Double Exponential Moving Average (Technical Analysis of Stocks & Commodities, January 1994): a composite of a single and a double EMA that subtracts the extra lag of the double-smoothed series from the single-smoothed one to track price more closely.",
+    "intuition": "Measure how much double-smoothing lags single-smoothing, and add that gap back to the fast EMA as a correction.",
+    "mechanics": "EMA1 = EMA(price), EMA2 = EMA(EMA1); DEMA = 2*EMA1 - EMA2. The double-smoothed EMA2 serves only as a lag-correction term, not as the output. Default 20 periods; signals via price/line crosses or fast/slow DEMA crossovers, which occur earlier than equivalent EMA crossovers.",
+    "formula": "DEMA = 2*EMA_n(P) - EMA_n(EMA_n(P)).",
+    "relationships": [
+      "Exponential moving average",
+      "Triple exponential moving average",
+      "Zero-lag exponential moving average"
+    ],
+    "failure_modes": "Greater responsiveness means more noise and more false signals in choppy markets; long-term investors may be better served by a traditional, smoother average.",
+    "misconceptions": "DEMA is not simply the EMA of an EMA — that double-smoothed series alone would lag more, not less; the output is 2*EMA1 - EMA2.",
+    "example": "If EMA1 = 50 and EMA2 = 48, DEMA = 2*50 - 48 = 52, pulling the average above EMA1 toward current price.",
+    "citations": [
+      {
+        "source": "Double Exponential Moving Average (DEMA) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/double-exponential-moving-average-dema",
+        "section": "Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/triangular-moving-average",
+  "canonical_sha256": "e3cda8b816311b426fddae08d85dde719e07ff3b31da57af9f22105e62cf3e81",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/triangular-moving-average",
+    "name": "Triangular moving average",
+    "aliases": [
+      "TMA"
+    ],
+    "domain": "Indicators",
+    "definition": "A double-smoothed simple moving average — an SMA of an SMA — whose effective weights form a triangle that peaks at the middle of the window, giving mid-window data the most influence.",
+    "intuition": "Averaging an average: extra smooth at the cost of extra lag, with the middle of the window weighted most.",
+    "mechanics": "TMA(n) = SMA( SMA(P, m1), m2 ) with m1 = ceil((n+1)/2) and m2 = floor((n+1)/2); equivalently a single convolution with triangular weights 1, 2, ..., m, ..., 2, 1.",
+    "formula": "TMA(n) = SMA( SMA(P, ceil((n+1)/2)), floor((n+1)/2) ).",
+    "relationships": [
+      "Simple moving average",
+      "Weighted moving average"
+    ],
+    "failure_modes": "Twice the smoothing means roughly twice the lag of its component SMA, so it is poor for timing and usable mainly as a slow trend reference.",
+    "misconceptions": "Despite the peaked weighting it is not centered in the signal sense — it uses past data only and still lags; a true centered moving average uses future data and cannot be computed in real time.",
+    "example": "A 5-period TMA = SMA(SMA(P, 3), 3); if the last three 3-period SMA values are 10, 11, 12, the TMA is 11.",
+    "citations": [
+      {
+        "source": "Triangular Moving Average - Tulip Indicators",
+        "url": "https://tulipindicators.org/trima",
+        "section": "Description",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

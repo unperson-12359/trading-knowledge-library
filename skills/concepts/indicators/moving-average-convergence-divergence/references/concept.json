@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/moving-average-convergence-divergence",
+  "canonical_sha256": "b522517bb96b513a022b25fe7748caee25b48fe564f9e351a6a654c9e2d7714e",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/moving-average-convergence-divergence",
+    "name": "Moving average convergence divergence",
+    "aliases": [
+      "MACD"
+    ],
+    "domain": "Indicators",
+    "definition": "Gerald Appel's Moving Average Convergence/Divergence oscillator (late 1970s): a momentum indicator built from the difference between a fast and a slow EMA (default 12 and 26) with a 9-period EMA signal line, combining trend-following and momentum information in one unbounded oscillator.",
+    "intuition": "When the fast average pulls away from the slow one, momentum is accelerating; when they converge, the move is running out of steam.",
+    "mechanics": "MACD line = EMA(12) - EMA(26) of closes; signal line = 9-period EMA of the MACD line; histogram = line minus signal. Signals include signal-line crossovers, zero-line (centerline) crossovers — equivalent to the underlying EMA crossover — and divergences with price.",
+    "formula": "MACD = EMA_12(Close) - EMA_26(Close); Signal = EMA_9(MACD); Histogram = MACD - Signal.",
+    "relationships": [
+      "MACD line",
+      "MACD signal line",
+      "MACD histogram",
+      "Exponential moving average",
+      "Percentage price oscillator"
+    ],
+    "failure_modes": "Signal-line crossovers whipsaw in flat or volatile markets, and crossovers at extremes often mark momentum exhaustion rather than reversal; being unbounded, MACD cannot flag overbought or oversold conditions.",
+    "misconceptions": "MACD is not a bounded oscillator, so high readings are not inherently overbought; nor does a signal-line cross guarantee a trend change.",
+    "example": "If the 12-day EMA is 102 and the 26-day EMA is 100, MACD = +2; with a 9-day signal line at 1.5, the histogram reads +0.5.",
+    "citations": [
+      {
+        "source": "MACD (Moving Average Convergence/Divergence Oscillator) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/macd-moving-average-convergence-divergence-oscillator",
+        "section": "How Do You Calculate the MACD?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
