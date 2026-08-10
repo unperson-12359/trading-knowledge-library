@@ -107,6 +107,10 @@ Versioned JSON endpoints live in `docs/api/v1/`:
 - `citation-audit.json`, `source-policy.json`, and `relationship-vocabulary.json`
   expose citation accessibility, source-quality policy, and typed external
   relationship terms for automated consumers.
+- `analysis-context-contract.json` exposes the JSON response contract for the
+  local, read-only Hyperliquid market-context command. Run
+  `python scripts/analyze_market.py --pretty`; it never accepts credentials,
+  account data, or order parameters.
 
 The former 2-period through 64-period simple-return concepts resolve to one
 `N-period simple return` concept with an explicit `periods` parameter. Alias
@@ -134,6 +138,7 @@ python scripts/build_skills.py validate
 python scripts/export_master.py
 python scripts/build_site.py
 python scripts/audit_citations.py
+python scripts/analyze_market.py --pretty
 python scripts/research.py fetch
 python scripts/research.py run
 ```

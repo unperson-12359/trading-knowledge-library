@@ -46,3 +46,11 @@ duplicating concept or skill packages.
 | C | Execution and microstructure | Complete |
 | D | Signals and context | Complete |
 | E | Risk and research | Complete |
+
+## Phase 4: Read-only analysis context
+
+| Checkpoint | State |
+|---|---|
+| Add versioned Hyperliquid market-context contract and local CLI | Complete |
+| Add fixture validation, router workflow, static API contract, and human review page | Complete |
+| Add open-interest history, liquidation/trade feeds, and evaluated playbook conditions | Planned |
