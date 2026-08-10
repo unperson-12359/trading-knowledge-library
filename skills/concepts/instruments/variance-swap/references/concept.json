@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/variance-swap",
+  "canonical_sha256": "6c12aadf3f22128df3b94437155b4e71ec4acc9f24e8c03902f0b39c0861c774",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/variance-swap",
+    "name": "Variance swap",
+    "aliases": [
+      "Var swap"
+    ],
+    "domain": "Instruments",
+    "definition": "An over-the-counter forward contract on the realized variance of an underlying's returns: at maturity one party pays the difference between the variance realized over the contract period and a pre-agreed variance strike, scaled by the variance notional. It gives pure exposure to realized variance without directional exposure to the underlying.",
+    "intuition": "A variance swap is a bet on how violently an asset will actually move, settled on measured squared daily moves — no view on direction needed.",
+    "mechanics": "Realized variance is computed from the squared log returns of daily closes over the contract period (annualized). Because a static strip of options across strikes, dynamically hedged, replicates realized variance under diffusion assumptions, the fair strike is linked to the implied volatility skew — the central result of the canonical Goldman Sachs treatment by Demeterfi, Derman, Kamal, and Zou (1999).",
+    "formula": "Payoff = N_var x (sigma_R^2 - K_var), where sigma_R^2 = (252/n) x sum of ln^2(S_i / S_{i-1}) is realized variance, K_var the variance strike, and N_var the variance notional (payoff per variance point).",
+    "relationships": [
+      "Volatility swap",
+      "Option",
+      "Swap",
+      "VIX"
+    ],
+    "failure_modes": "Price jumps and discrete sampling break the log-contract replication, so the hedge can diverge sharply from realized variance in crashes. Realized-variance spikes dominate P&L because the payoff is quadratic, and quoted strikes embed the skew, which itself moves.",
+    "misconceptions": "That a variance swap is a bet on future implied volatility — it settles on realized variance over the life of the contract, whatever implieds do. Also, variance strikes are quoted in volatility terms (e.g., '20'), but the contract's strike is that number squared.",
+    "example": "A 1-year S&P 500 variance swap is struck at (20%)^2 = 400 variance points with $100,000 of variance notional; if realized variance over the year is (25%)^2 = 625, the buyer receives (625 - 400) x $100,000 = $22.5 million.",
+    "citations": [
+      {
+        "source": "Demeterfi, Derman, Kamal, Zou: More Than You Ever Wanted to Know About Volatility Swaps, Goldman Sachs Quantitative Strategies Research Notes, March 1999",
+        "url": "https://emanuelderman.com/wp-content/uploads/1999/02/gs-volatility_swaps.pdf",
+        "section": "Variance Swaps; Replicating Variance Swaps",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

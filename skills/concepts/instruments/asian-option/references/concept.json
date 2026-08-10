@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/asian-option",
+  "canonical_sha256": "693c15636e6b666c2ba37386e1bab58c66da846ccea47c374b32e155064b876f",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/asian-option",
+    "name": "Asian option",
+    "aliases": [
+      "Average price option",
+      "Average rate option"
+    ],
+    "domain": "Instruments",
+    "definition": "An exotic option whose payoff depends on the average price of the underlying asset during some portion of the life of the option, rather than on the underlying's price at a single date.",
+    "intuition": "An Asian option pays on the average price over time instead of the price on one day, smoothing out spikes and dips — useful when your real exposure is to an average cost or rate.",
+    "mechanics": "An average-price call pays max(A - K, 0), where A is the average of the underlying over the contracted fixing schedule (daily, weekly, monthly; arithmetic or geometric); average-strike variants use A as the strike. Averaging reduces volatility of the payoff determinant, so Asian options are generally cheaper than comparable vanillas, and they hedge exposures to average prices, such as monthly commodity purchases.",
+    "formula": "Average-price call payoff = max(A - K, 0) with A = (1/n) x sum of S_i over the n fixings (arithmetic) or A = (product of S_i)^(1/n) (geometric).",
+    "relationships": [
+      "Option",
+      "Lookback option",
+      "Barrier option",
+      "Commodity future"
+    ],
+    "failure_modes": "Averaging mutes exactly the extreme moves an option buyer may want to capture; a late price spike barely moves the payoff. Arithmetic-average Asians have no simple closed-form price under standard models, and contracts referencing few fixings are vulnerable to fixing-window manipulation.",
+    "misconceptions": "That the lower premium makes an Asian option a better deal — the discount reflects a genuinely smaller payoff distribution. Also, the 'average' is of prices on scheduled fixing dates, not of every traded price.",
+    "example": "An airline buys a 12-month average-price call on monthly jet fuel fixings to cap its average annual fuel cost rather than any single month's price.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Asian Option; Exotic Options",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/contract-size",
+  "canonical_sha256": "79b4119db32eb32f663c140e92245815862431de8c5e14bfea0f9674916b382a",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/contract-size",
+    "name": "Contract size",
+    "aliases": [
+      "contract unit",
+      "trading unit"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The actual quantity of the underlying asset represented by one futures or derivative contract, as standardized by the exchange in the contract specification.",
+    "intuition": "One 'contract' is a fixed bundle — contract size tells you how big the bundle is, so one futures contract on crude oil always means the same number of barrels.",
+    "mechanics": "The exchange sets the contract size (e.g., 1,000 barrels for WTI crude futures) so that every contract is fungible. Position exposure equals number of contracts x contract size, and delivery obligations are stated in multiples of the contract size.",
+    "formula": "Exposure (units of underlying) = N x CS, where N = number of contracts and CS = contract size; dollar notional = N x CS x price for unit-quoted contracts.",
+    "relationships": [
+      "Contract multiplier",
+      "Notional value",
+      "Tick value",
+      "Physical settlement"
+    ],
+    "failure_modes": "Hedgers whose actual exposure is not a multiple of the contract size are left with partial (basis) exposure; mini/micro variants exist partly because the standard size is too coarse for smaller exposures.",
+    "misconceptions": "Contract size is sometimes confused with margin: the full value controlled by a contract is price x contract size, while margin is only the small good-faith deposit posted against it.",
+    "example": "One CME WTI crude oil futures contract represents 1,000 barrels, so a trader long 3 contracts controls 3,000 barrels of exposure; if price rises $1 per barrel, the position gains $3,000.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Contract Size / Contract Unit",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Encyclopaedia Britannica Money: Volume & Open Interest in Futures Trading",
+        "url": "https://www.britannica.com/money/futures-volume-open-interest",
+        "section": "What is trading volume? (WTI contract = 1,000 barrels)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/lookback-option",
+  "canonical_sha256": "24cfd5b86fd1d4404bc7169bf87f3c81c5d4549fe8a6b0e97e6f743f56f89819",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/lookback-option",
+    "name": "Lookback option",
+    "aliases": [
+      "Hindsight option"
+    ],
+    "domain": "Instruments",
+    "definition": "An exotic option whose payoff depends on the minimum or maximum price of the underlying asset during some portion of the life of the option, allowing the buyer to pay or receive the most favorable underlying price observed during the lookback period.",
+    "intuition": "A lookback option gives you perfect hindsight: it settles as if you had traded at the best price the market offered during the option's life.",
+    "mechanics": "A fixed-strike lookback call pays max(S_max - K, 0), where S_max is the highest underlying price over the lookback period; a floating-strike lookback call pays S_T - S_min, effectively buying at the period's low. Because the payoff embeds the most favorable extreme, lookbacks are expensive and their prices are highly sensitive to volatility assumptions.",
+    "formula": "Fixed-strike lookback call payoff = max(S_max - K, 0); floating-strike lookback call payoff = S_T - S_min.",
+    "relationships": [
+      "Option",
+      "Asian option",
+      "Barrier option"
+    ],
+    "failure_modes": "The rich premium can consume the hindsight advantage: realized payoffs often fail to recoup the upfront cost. Payoffs are hostage to brief, possibly unrepresentative price spikes, and pricing is model-dependent because the extreme-value distribution is hard to estimate.",
+    "misconceptions": "That a lookback lets you 'buy low, sell high' for free — the privilege of perfect hindsight is fully priced into the premium at inception. Also, the extremum is taken over observed prices in the lookback window as defined in the contract, not over any price you remember seeing.",
+    "example": "A floating-strike lookback call on a stock that traded as low as $40 and ended at $55 pays $55 - $40 = $15, as if the holder had bought at the period's lowest price.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Lookback Option",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

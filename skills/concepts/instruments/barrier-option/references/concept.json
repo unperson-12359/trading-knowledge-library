@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/barrier-option",
+  "canonical_sha256": "688c1930e17098a1cd21bca6482687fd67d9bbf0d3a7df2ae2a58cc7bb2db9a9",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/barrier-option",
+    "name": "Barrier option",
+    "aliases": [
+      "Knock-in option",
+      "Knock-out option"
+    ],
+    "domain": "Instruments",
+    "definition": "A path-dependent exotic option that either comes into existence (knock-in) or ceases to exist (knock-out) if the underlying's price reaches a specified barrier level during the option's life. In standard FX market documentation, 'Barrier Option' means a knock-in option or a knock-out option, with a designated barrier determination agent deciding whether the trigger event occurred.",
+    "intuition": "A barrier option is a regular option with a tripwire: cross the price barrier and the option is either switched on or killed outright, which makes it cheaper than a plain option.",
+    "mechanics": "The contract specifies the barrier level, the barrier period (typically trade date to expiry), and the monitoring style (continuous or discrete fixings). Variants are named by barrier position and effect — up-and-out, down-and-in, and so on. Knock-out options extinguish immediately upon a trigger regardless of where the price goes afterward.",
+    "formula": "In-out parity: knock-in + knock-out (same strike, barrier, and expiry) = the corresponding vanilla option.",
+    "relationships": [
+      "Option",
+      "Binary option",
+      "Asian option",
+      "Lookback option"
+    ],
+    "failure_modes": "Gap moves through the barrier leave hedges mismatched, and the discontinuous payoff near the barrier produces extreme Greeks that are hard to hedge. Large barrier positions can also incentivize 'barrier hunting' — attempts to push the underlying through the trigger.",
+    "misconceptions": "That a knock-out behaves like a stop-loss on a position — the option is permanently extinguished at the trigger and cannot recover if the price reverses. Also, cheaper does not mean better: the discount buys the risk of losing the protection entirely.",
+    "example": "A 3-month EUR/USD call struck at 1.08 with a 1.15 knock-out expires worthless the moment EUR/USD touches 1.15, even if the pair later falls back below 1.08.",
+    "citations": [
+      {
+        "source": "Federal Reserve Bank of New York, Foreign Exchange Committee: Example of Confirmation for an FX Knock-In/Knock-Out Option (1995 Annual Report)",
+        "url": "https://www.newyorkfed.org/medialibrary/microsites/fxc/files/annualreports/ar1995/fxar95ko.pdf",
+        "section": "Section 1, Definitions: Barrier Option, Barrier Determination Agent, Barrier Period",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

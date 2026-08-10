@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/binary-option",
+  "canonical_sha256": "8eaef180459e2435a952757f321c9ee8718abbf54ae198a9588e32eec4880b47",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/binary-option",
+    "name": "Binary option",
+    "aliases": [
+      "Digital option",
+      "All-or-nothing option",
+      "Fixed-return option"
+    ],
+    "domain": "Instruments",
+    "definition": "A type of option whose payoff is either a fixed amount or zero, depending on the outcome of a yes/no proposition — typically whether the price of an asset will be above or below a strike at a specified time. It is also called a digital option.",
+    "intuition": "A binary option is a fixed-odds bet on a market event: pick the right side of the line and you collect the full payout; pick wrong and you get nothing.",
+    "mechanics": "A cash-or-nothing call pays a fixed cash amount if the underlying finishes above the strike and zero otherwise (asset-or-nothing variants pay the asset). Because the payout is fixed, the option's price — between zero and the payout — reflects the market-implied probability of the event, discounted.",
+    "formula": "Cash-or-nothing call payoff = Q if S_T > K, else 0, where Q is the fixed payout, S_T the underlying price at expiry, and K the strike.",
+    "relationships": [
+      "Option",
+      "Barrier option",
+      "Asian option",
+      "Lookback option"
+    ],
+    "failure_modes": "The all-or-nothing payoff forfeits the entire premium on a narrow miss, and discontinuous payoffs near the strike make hedging unstable (gamma explosion at expiry). The retail binary-options industry has been riddled with unregistered platforms and outright fraud, prompting repeated SEC and CFTC warnings.",
+    "misconceptions": "That binaries are a simple, low-risk way to trade — typical retail terms embed negative expected value, and the fixed payout caps gains while losses take the whole stake. Also, a binary's price is not 'the probability'; it approximates a discounted, risk-adjusted probability.",
+    "example": "A binary option pays $100 if EUR/USD closes above 1.0900 on Friday and $0 otherwise; a market price of $42 for the option implies roughly a 42% assessed probability of finishing above the strike.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Binary Option",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "SEC Investor.gov Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Binary options",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

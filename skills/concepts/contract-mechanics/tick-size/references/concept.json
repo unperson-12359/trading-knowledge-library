@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/tick-size",
+  "canonical_sha256": "ff1d98cb5c5efc73dc7465d4dce60bb31fda1296c802275c79c68a617cbc1d9c",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/tick-size",
+    "name": "Tick size",
+    "aliases": [
+      "minimum price fluctuation",
+      "minimum tick",
+      "minimum price increment"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The smallest increment by which the price of a given contract is permitted to move up or down, as fixed by the rules of the exchange.",
+    "intuition": "Prices on an exchange ladder are not continuous — they move on rungs, and the tick size is the spacing between rungs.",
+    "mechanics": "All bids, offers, and trades must be quoted in whole multiples of the tick size. Exchanges set it per contract (and sometimes per spread type or venue), balancing price granularity against order-book depth; a tick that is too large widens effective spreads, one too small fragments liquidity.",
+    "formula": "",
+    "relationships": [
+      "Tick value",
+      "Contract size",
+      "Bid-ask spread",
+      "Daily price limit"
+    ],
+    "failure_modes": "A tick size that is large relative to price makes the minimum spread economically significant and can queue transactions; in fast markets, limit orders resting at a tick level may be skipped as prices jump multiple ticks.",
+    "misconceptions": "Tick size is not a measure of volatility or of how far price 'usually' moves — it is purely the minimum quoting increment, and price can move many ticks in one trade.",
+    "example": "If an equity index future has a tick size of 0.25 index points, an order at 5,000.10 is rejected as invalid, and the nearest valid quotes are 5,000.00 and 5,000.25.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Minimum Price Fluctuation (Minimum Tick); Tick",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

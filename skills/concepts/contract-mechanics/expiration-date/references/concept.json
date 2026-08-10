@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/expiration-date",
+  "canonical_sha256": "e91b802d5e2cd6a400d2e43329e17c2905bef7455c8eff7d306e9c5ff54a24f5",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/expiration-date",
+    "name": "Expiration date",
+    "aliases": [
+      "expiry",
+      "expiration",
+      "option expiration"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The date on which an option contract automatically expires and ceases to exist; it is the last day on which the option may be exercised (and for American-style options, the end of the exercise window).",
+    "intuition": "An option is a wasting asset with a printed shelf life: after the expiration date the contract is gone, worth whatever final settlement paid — usually zero for out-of-the-money options.",
+    "mechanics": "At expiration, in-the-money options are typically exercised 'by exception' above small thresholds (OCC uses $0.01 for equity options) unless contrary instructions are given, while out-of-the-money options expire worthless. Time value decays toward zero as expiration approaches, and for standard monthly U.S. equity options expiration falls on the third Friday of the expiration month.",
+    "formula": "",
+    "relationships": [
+      "Last trading day",
+      "Option exercise",
+      "Time value",
+      "American-style option",
+      "European-style option"
+    ],
+    "failure_modes": "Traders who treat expiration day like any other trading day face pin risk (underlying closing near the strike), after-hours price moves that flip moneyness after the close, and automatic-exercise outcomes they did not intend.",
+    "misconceptions": "Expiration date is not always the last trading day: for many European-style index options the last trading day is the Thursday before expiration Friday, and the exercise style is set in each product's specifications.",
+    "example": "A standard U.S. equity option expiring in July ceases to exist after the third Friday of July; a holder who does not sell or exercise it by then keeps only any automatic-exercise value.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Expiration Date; Automatic Exercise",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "The Options Industry Council (OIC), FAQ: Options Exercise",
+        "url": "https://www.optionseducation.org/referencelibrary/faq/options-exercise",
+        "section": "Exercise by exception; last trading day",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

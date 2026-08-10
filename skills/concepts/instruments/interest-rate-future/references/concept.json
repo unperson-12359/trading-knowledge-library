@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/interest-rate-future",
+  "canonical_sha256": "0c346bf8faa2c348ac8a5757dd506611304de0be9ca64895294da0f50134db5b",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/interest-rate-future",
+    "name": "Interest rate future",
+    "aliases": [
+      "STIR future",
+      "Financial future"
+    ],
+    "domain": "Instruments",
+    "definition": "A standardized, exchange-traded futures contract whose underlying is an interest rate or an interest-bearing instrument — such as U.S. Treasury, SOFR, or Fed Funds futures — used to hedge or express views on interest rates at maturities from one week to 30 years.",
+    "intuition": "An interest rate future lets you lock in or bet on where rates will be months or years from now, in a standardized, centrally cleared contract.",
+    "mechanics": "Contracts are margined and marked to market daily with central clearing. Short-term interest rate (STIR) futures are quoted on an index basis as 100 minus the implied forward rate; Treasury futures are settled by delivery of eligible bonds or notes, with exchange-published conversion factors making a range of maturities deliverable and creating a cheapest-to-deliver.",
+    "formula": "STIR futures price (IMM index convention) = 100 - implied forward rate. Treasury futures invoice price = contract size x futures settlement price x conversion factor + accrued interest.",
+    "relationships": [
+      "Futures contract",
+      "Forward rate agreement",
+      "Interest rate swap",
+      "Treasury note",
+      "Treasury bond"
+    ],
+    "failure_modes": "STIR futures carry a convexity bias relative to FRAs and swaps, so naive rate readings are off. Treasury futures hedges face basis and cheapest-to-deliver shifts, and daily marking generates margin calls in fast-moving rate markets.",
+    "misconceptions": "That a rising STIR futures price means rising rates — under the 100-minus-rate convention it means the opposite. Also, buying a Treasury future is not buying a specific bond; the short chooses which eligible bond to deliver.",
+    "example": "A pension manager sells 10-year Treasury futures to shorten portfolio duration ahead of an expected rate rise, offsetting losses on its cash bond holdings.",
+    "citations": [
+      {
+        "source": "CME Group: Interest Rate futures and options",
+        "url": "https://www.cmegroup.com/markets/interest-rates.html",
+        "section": "Product overview (U.S. Treasuries, SOFR, Fed Funds)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Conversion Factor; Cheapest to Deliver",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

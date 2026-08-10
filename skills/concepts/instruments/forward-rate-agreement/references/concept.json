@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/forward-rate-agreement",
+  "canonical_sha256": "c7dbab159ffd122c230a11c979ded40f2c511237ab89f67d2daafd12d83adc40",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/forward-rate-agreement",
+    "name": "Forward rate agreement",
+    "aliases": [
+      "FRA"
+    ],
+    "domain": "Instruments",
+    "definition": "An OTC forward contract on a short-term interest rate. The buyer of a FRA is a notional borrower who commits to pay a fixed rate of interest on a notional amount that is never actually exchanged, while the seller agrees notionally to lend; settlement exchanges the value of the difference between the contracted rate and the realized reference rate.",
+    "intuition": "A FRA locks in today the interest rate on a loan you will take (or make) in the future — only the rate difference ever changes hands, never the principal.",
+    "mechanics": "FRAs are quoted by start and end of the notional period, e.g., a '3x6 FRA' covers a 3-month rate beginning in 3 months. Because payment is made at the start of the notional period rather than the end, the settlement amount is discounted at the realized reference rate. FRAs are building blocks for the money-market yield curve and hedges for future borrowing or lending.",
+    "formula": "Settlement = N x (R_ref - R_FRA) x (d/360) / (1 + R_ref x (d/360)), where N is notional, R_ref the realized reference rate, R_FRA the contracted rate, and d the days in the notional period.",
+    "relationships": [
+      "Interest rate swap",
+      "Interest rate future",
+      "Forward contract",
+      "Swap"
+    ],
+    "failure_modes": "Benchmark reform stranded the LIBOR-based FRA market, migrating activity to risk-free-rate futures and swaps. FRAs also carry a convexity difference versus short-rate futures, and uncleared FRAs leave bilateral counterparty exposure on the settlement amount.",
+    "misconceptions": "That a FRA involves lending or borrowing the notional — no principal moves; only the discounted rate differential settles. Also, the quoted dates describe the notional loan period, not when the contract is traded.",
+    "example": "A treasurer expecting to borrow $10 million in 3 months buys a 3x6 FRA at 5.0%; if the 3-month reference rate fixes at 5.6%, she receives the discounted value of 0.6% on $10 million for 90 days, offsetting the higher borrowing cost.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Forward Rate Agreement (FRA)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

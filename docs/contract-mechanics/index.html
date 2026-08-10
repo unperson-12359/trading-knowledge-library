@@ -89,6 +89,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="underlying-asset"><h3>Underlying asset <a class="anchor" href="#underlying-asset">#</a></h3>
 <div class="field">The cash commodity, security, futures contract, index, rate, or other reference item on which a derivative contract is based and from which its value is derived; for options, it is what must be delivered or accepted if the option is exercised.</div>
+<div class="skill-links"><a href="../skills/tkl-underlying-asset/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A derivative is a bet or a hedge on something else — that &#x27;something else&#x27; is the underlying. The contract never stands alone; its price moves because the underlying&#x27;s price moves.</div>
 <div class="field"><span class="label">Mechanics:</span> The derivative&#x27;s payoff is defined contractually as a function of the underlying&#x27;s price (e.g., a call&#x27;s payoff at expiry is max(S - K, 0), where S is the underlying price). The contract specification names the underlying, its grade or composition, and how its price is observed for settlement.</div>
 <div class="field"><span class="label">Failure modes:</span> When the underlying is illiquid, hard to observe, or itself manipulated (e.g., a thin index or a squeezed cash market), the derivative&#x27;s price and settlement can be distorted even if the contract terms are sound.</div>
@@ -101,6 +102,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="contract-multiplier"><h3>Contract multiplier <a class="anchor" href="#contract-multiplier">#</a></h3>
 <div class="field">The fixed dollar amount per unit of quoted price (or per index point) set by the exchange in the contract specification, which converts a quoted price into the total monetary value of one contract; for equity options the standardized multiplier is typically 100 shares per contract.</div>
+<div class="skill-links"><a href="../skills/tkl-contract-multiplier/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Quotes come in points, but money moves in dollars — the multiplier is the exchange-fixed exchange rate between the two.</div>
 <div class="field"><span class="label">Mechanics:</span> Contract dollar value = quoted price x contract multiplier (for unit-quoted contracts, price x contract size plays the same role). A one-point price move changes the position value by exactly one multiplier unit, which is also how tick value is derived (tick size x multiplier).</div>
 <div class="field"><span class="label">Failure modes:</span> Using the wrong multiplier (e.g., confusing standard, mini, or micro variants of the same product) scales P&amp;L, margin, and hedge ratios incorrectly — a 10x or 50x error in position sizing.</div>
@@ -114,6 +116,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="contract-size"><h3>Contract size <a class="anchor" href="#contract-size">#</a></h3>
 <div class="field">The actual quantity of the underlying asset represented by one futures or derivative contract, as standardized by the exchange in the contract specification.</div>
+<div class="skill-links"><a href="../skills/tkl-contract-size/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> One &#x27;contract&#x27; is a fixed bundle — contract size tells you how big the bundle is, so one futures contract on crude oil always means the same number of barrels.</div>
 <div class="field"><span class="label">Mechanics:</span> The exchange sets the contract size (e.g., 1,000 barrels for WTI crude futures) so that every contract is fungible. Position exposure equals number of contracts x contract size, and delivery obligations are stated in multiples of the contract size.</div>
 <div class="field"><span class="label">Failure modes:</span> Hedgers whose actual exposure is not a multiple of the contract size are left with partial (basis) exposure; mini/micro variants exist partly because the standard size is too coarse for smaller exposures.</div>
@@ -127,6 +130,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="tick-size"><h3>Tick size <a class="anchor" href="#tick-size">#</a></h3>
 <div class="field">The smallest increment by which the price of a given contract is permitted to move up or down, as fixed by the rules of the exchange.</div>
+<div class="skill-links"><a href="../skills/tkl-tick-size/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Prices on an exchange ladder are not continuous — they move on rungs, and the tick size is the spacing between rungs.</div>
 <div class="field"><span class="label">Mechanics:</span> All bids, offers, and trades must be quoted in whole multiples of the tick size. Exchanges set it per contract (and sometimes per spread type or venue), balancing price granularity against order-book depth; a tick that is too large widens effective spreads, one too small fragments liquidity.</div>
 <div class="field"><span class="label">Failure modes:</span> A tick size that is large relative to price makes the minimum spread economically significant and can queue transactions; in fast markets, limit orders resting at a tick level may be skipped as prices jump multiple ticks.</div>
@@ -138,6 +142,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="tick-value"><h3>Tick value <a class="anchor" href="#tick-value">#</a></h3>
 <div class="field">The monetary profit or loss on one contract resulting from a one-tick (minimum price fluctuation) move in the contract&#x27;s price.</div>
+<div class="skill-links"><a href="../skills/tkl-tick-value/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Tick size tells you the smallest price step; tick value tells you how many dollars that step is worth in your account.</div>
 <div class="field"><span class="label">Mechanics:</span> Tick value = tick size x contract size (for unit-quoted contracts) or tick size x contract multiplier (for point-quoted contracts). It is the atomic unit of P&amp;L: total P&amp;L = number of ticks moved x tick value x number of contracts.</div>
 <div class="field"><span class="label">Failure modes:</span> Assuming a single tick value across contract variants (standard vs micro) or across currencies misstates risk; for contracts quoted in foreign currencies the tick value also varies with the FX rate.</div>
@@ -151,6 +156,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="strike-price"><h3>Strike price <a class="anchor" href="#strike-price">#</a></h3>
 <div class="field">The price, specified in the option contract, at which the underlying security, futures contract, or commodity will be bought (call) or sold (put) if the option is exercised.</div>
+<div class="skill-links"><a href="../skills/tkl-strike-price/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The strike is the deal price locked in at contract creation: it is the yardstick that decides whether exercising the option is worth anything.</div>
 <div class="field"><span class="label">Mechanics:</span> Exchanges list standardized series of strikes around the current underlying price. The strike fixes intrinsic value (max(S-K,0) for a call, max(K-S,0) for a put) and moneyness: calls are in-the-money when the underlying trades above the strike, puts when it trades below.</div>
 <div class="field"><span class="label">Failure modes:</span> Comparing options across different strikes as if the premium alone measures cheapness ignores that the strike determines both payoff and probability of finishing in-the-money.</div>
@@ -164,6 +170,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="expiration-date"><h3>Expiration date <a class="anchor" href="#expiration-date">#</a></h3>
 <div class="field">The date on which an option contract automatically expires and ceases to exist; it is the last day on which the option may be exercised (and for American-style options, the end of the exercise window).</div>
+<div class="skill-links"><a href="../skills/tkl-expiration-date/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> An option is a wasting asset with a printed shelf life: after the expiration date the contract is gone, worth whatever final settlement paid — usually zero for out-of-the-money options.</div>
 <div class="field"><span class="label">Mechanics:</span> At expiration, in-the-money options are typically exercised &#x27;by exception&#x27; above small thresholds (OCC uses $0.01 for equity options) unless contrary instructions are given, while out-of-the-money options expire worthless. Time value decays toward zero as expiration approaches, and for standard monthly U.S. equity options expiration falls on the third Friday of the expiration month.</div>
 <div class="field"><span class="label">Failure modes:</span> Traders who treat expiration day like any other trading day face pin risk (underlying closing near the strike), after-hours price moves that flip moneyness after the close, and automatic-exercise outcomes they did not intend.</div>
@@ -176,6 +183,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="maturity-date"><h3>Maturity date <a class="anchor" href="#maturity-date">#</a></h3>
 <div class="field">The specified date on which the principal (face value) of a debt instrument such as a bond is scheduled to be repaid to the investor; for futures, &#x27;maturity&#x27; refers to the period within which the contract can be settled by delivery.</div>
+<div class="skill-links"><a href="../skills/tkl-maturity-date/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The maturity date is the loan&#x27;s end date: it is when the borrower&#x27;s promise to hand back the principal comes due.</div>
 <div class="field"><span class="label">Mechanics:</span> A bond pays coupons on a regular schedule until maturity, when the final coupon plus the face value are paid. Time to maturity shortens as time passes, and together with the coupon rate it drives interest-rate sensitivity: longer maturities generally carry greater interest rate risk.</div>
 <div class="field"><span class="label">Failure modes:</span> Selling before maturity exposes the holder to whatever price the market dictates, so &#x27;getting your principal back&#x27; holds only if the bond is held to maturity and the issuer does not default; callable bonds can be retired before the stated maturity.</div>
@@ -188,6 +196,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="option-premium"><h3>Option premium <a class="anchor" href="#option-premium">#</a></h3>
 <div class="field">The price the buyer of an option pays (and the writer receives) for the rights granted by the contract; it is the market price of the option itself, composed of intrinsic value plus time value.</div>
+<div class="skill-links"><a href="../skills/tkl-option-premium/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The premium is what you pay for the right-but-not-the-obligation: it is the cost of insurance or of a leveraged bet, paid up front and never refundable.</div>
 <div class="field"><span class="label">Mechanics:</span> Premiums are determined by supply and demand in the options market and are driven mainly by the underlying price, strike, time to expiration, implied volatility, and secondarily by dividends and interest rates. Quoted per share (or per unit), the dollar premium equals the quote times the contract multiplier (typically 100 for U.S. equity options).</div>
 <div class="field"><span class="label">Failure modes:</span> Treating a low premium as &#x27;cheap&#x27; ignores implied volatility and moneyness: a $0.10 far out-of-the-money option can be overpriced relative to its probability-weighted payoff.</div>

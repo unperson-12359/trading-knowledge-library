@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/option-premium",
+  "canonical_sha256": "ff077d5ffba7afd884ee7ba080792ec4f1238b4c52452fe92d6e68bbe53d1013",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/option-premium",
+    "name": "Option premium",
+    "aliases": [
+      "premium",
+      "option price"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The price the buyer of an option pays (and the writer receives) for the rights granted by the contract; it is the market price of the option itself, composed of intrinsic value plus time value.",
+    "intuition": "The premium is what you pay for the right-but-not-the-obligation: it is the cost of insurance or of a leveraged bet, paid up front and never refundable.",
+    "mechanics": "Premiums are determined by supply and demand in the options market and are driven mainly by the underlying price, strike, time to expiration, implied volatility, and secondarily by dividends and interest rates. Quoted per share (or per unit), the dollar premium equals the quote times the contract multiplier (typically 100 for U.S. equity options).",
+    "formula": "Premium = intrinsic value + time value; dollar premium per contract = quoted premium x contract multiplier.",
+    "relationships": [
+      "Intrinsic value",
+      "Extrinsic value",
+      "Time value",
+      "Strike price",
+      "Implied volatility",
+      "Contract multiplier"
+    ],
+    "failure_modes": "Treating a low premium as 'cheap' ignores implied volatility and moneyness: a $0.10 far out-of-the-money option can be overpriced relative to its probability-weighted payoff.",
+    "misconceptions": "The option writer does not 'return' the premium at expiration — the writer keeps it regardless of outcome; and for the buyer, the premium is a sunk cost that must be subtracted from any exercise or resale proceeds to compute net profit.",
+    "example": "Buying one equity call quoted at $2.50 costs $250 (2.50 x 100 shares); if the option is later sold for $4.00, the net profit before commissions is $150.",
+    "citations": [
+      {
+        "source": "The Options Industry Council (OIC): What is an Option?",
+        "url": "https://www.optionseducation.org/optionsoverview/what-is-an-option",
+        "section": "At a Premium; The Value of Options",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "The Options Industry Council (OIC): Options Pricing",
+        "url": "https://www.optionseducation.org/optionsoverview/options-pricing",
+        "section": "Major Factors Influencing Options Premium",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/volatility-swap",
+  "canonical_sha256": "e88c49a1f8c42c6f7f69ac2ecbdb091353f7a0e3fc4dc2e1378c7c73425c6bb9",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/volatility-swap",
+    "name": "Volatility swap",
+    "aliases": [
+      "Vol swap"
+    ],
+    "domain": "Instruments",
+    "definition": "A forward contract on realized volatility — the standard deviation of an underlying's returns — settling at maturity on the difference between realized volatility and a pre-agreed volatility strike, times the vega notional. Because its payoff is linear in volatility rather than variance, it is described in the canonical literature as the cleanest and easiest way to trade volatility.",
+    "intuition": "A volatility swap is a pure bet on how much an asset will move, measured in plain volatility points rather than squared ones.",
+    "mechanics": "At maturity the contract pays the notional times (realized volatility minus the volatility strike), with realized volatility computed as the square root of realized variance from daily returns. The square-root payoff makes the contract concave in variance, so it cannot be replicated exactly by a static option strip; its fair strike sits below the variance-swap-implied volatility by a convexity adjustment.",
+    "formula": "Payoff = N_vega x (sigma_R - K_vol), where sigma_R = sqrt(realized variance) and K_vol is the volatility strike.",
+    "relationships": [
+      "Variance swap",
+      "Option",
+      "Swap",
+      "VIX"
+    ],
+    "failure_modes": "There is no exact static replication, so hedging is model-dependent and the convexity adjustment must be estimated; errors in it shift fair value materially. The result is also sensitive to the realized-volatility calculation conventions (sampling frequency, mean subtraction), and jumps distort the estimate.",
+    "misconceptions": "That a volatility swap is interchangeable with a variance swap — the vol swap's strike is lower than the var swap's implied volatility because of Jensen's inequality (the convexity adjustment), and its hedging is harder. Also, it trades realized, not implied, volatility.",
+    "example": "A trader sells a 6-month volatility swap on an index at a 22 strike with $100,000 vega notional; realized volatility comes in at 18, so the seller receives (22 - 18) x $100,000 = $400,000.",
+    "citations": [
+      {
+        "source": "Demeterfi, Derman, Kamal, Zou: More Than You Ever Wanted to Know About Volatility Swaps, Goldman Sachs Quantitative Strategies Research Notes, March 1999",
+        "url": "https://emanuelderman.com/wp-content/uploads/1999/02/gs-volatility_swaps.pdf",
+        "section": "Volatility Swaps; hedging volatility swaps with variance swaps",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

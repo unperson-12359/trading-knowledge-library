@@ -1,0 +1,83 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-maturity-date",
+  "concept_id": "contract-mechanics/maturity-date",
+  "display_name": "Maturity date",
+  "domain": "Contract mechanics",
+  "description": "Explain, compare, or apply Maturity date using the library's structured Contract mechanics reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Maturity date",
+    "maturity",
+    "due date",
+    "explain Maturity date",
+    "apply Maturity date to a trading question",
+    "common misconception about Maturity date"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints",
+      "contract specification",
+      "funding and margin state"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 9,
+  "package_path": "skills/concepts/contract-mechanics/maturity-date",
+  "canonical": {
+    "source_path": "concepts/contract-mechanics.json",
+    "sha256": "7fb8d18dbb7636f44474c7d1bb365abd3ce2126a0005eb602c1c0067318ce53b"
+  },
+  "related_concept_ids": [
+    "contract-mechanics/par-value",
+    "contract-mechanics/coupon-rate",
+    "contract-mechanics/yield-to-maturity",
+    "contract-mechanics/duration",
+    "contract-mechanics/delivery-month"
+  ]
+}

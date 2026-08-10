@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/contract-multiplier",
+  "canonical_sha256": "551412df7dd96f06df6cc1a5c2ff7b0e427aa92ad06cb175c3d551dd1f32e739",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/contract-multiplier",
+    "name": "Contract multiplier",
+    "aliases": [
+      "point multiplier",
+      "point value",
+      "dollar multiplier"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The fixed dollar amount per unit of quoted price (or per index point) set by the exchange in the contract specification, which converts a quoted price into the total monetary value of one contract; for equity options the standardized multiplier is typically 100 shares per contract.",
+    "intuition": "Quotes come in points, but money moves in dollars — the multiplier is the exchange-fixed exchange rate between the two.",
+    "mechanics": "Contract dollar value = quoted price x contract multiplier (for unit-quoted contracts, price x contract size plays the same role). A one-point price move changes the position value by exactly one multiplier unit, which is also how tick value is derived (tick size x multiplier).",
+    "formula": "Contract value = P x M, where P = quoted futures price (or index level) and M = contract multiplier ($ per point); equity option premium in dollars = quoted premium x 100 (shares per contract).",
+    "relationships": [
+      "Contract size",
+      "Tick value",
+      "Notional value",
+      "Tick size"
+    ],
+    "failure_modes": "Using the wrong multiplier (e.g., confusing standard, mini, or micro variants of the same product) scales P&L, margin, and hedge ratios incorrectly — a 10x or 50x error in position sizing.",
+    "misconceptions": "The multiplier is not chosen by the trader and is not universal: it is fixed per contract by the exchange and differs across products (e.g., $50 per point for E-mini S&P 500 vs $5 for the Micro E-mini).",
+    "example": "A U.S. listed equity call quoted at $2.50 represents $250 per contract because standardized equity options use a 100-share multiplier; likewise an index future quoted at 5,000 with a $50 multiplier controls $250,000 of notional.",
+    "citations": [
+      {
+        "source": "The Options Industry Council (OIC), FAQ: Basics",
+        "url": "https://www.optionseducation.org/referencelibrary/faq/basics",
+        "section": "What is a call option? (100 shares per contract)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CME Group, A Trader's Guide to Futures",
+        "url": "https://www.cmegroup.com/education/files/a-traders-guide-to-futures.pdf",
+        "section": "Section 3: Why Trade Futures (E-mini S&P 500 contract value example)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

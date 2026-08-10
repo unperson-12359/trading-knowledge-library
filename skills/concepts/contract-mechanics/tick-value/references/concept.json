@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/tick-value",
+  "canonical_sha256": "ae2136f5c864b79f8545462b92a8735cd7997d33f1d2ca1a707c7b7cbe9b2df2",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/tick-value",
+    "name": "Tick value",
+    "aliases": [
+      "minimum price fluctuation value",
+      "dollar value of a tick"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The monetary profit or loss on one contract resulting from a one-tick (minimum price fluctuation) move in the contract's price.",
+    "intuition": "Tick size tells you the smallest price step; tick value tells you how many dollars that step is worth in your account.",
+    "mechanics": "Tick value = tick size x contract size (for unit-quoted contracts) or tick size x contract multiplier (for point-quoted contracts). It is the atomic unit of P&L: total P&L = number of ticks moved x tick value x number of contracts.",
+    "formula": "Tick value = tick size x contract size (e.g., $0.01/barrel x 1,000 barrels = $10 per contract for WTI crude oil futures).",
+    "relationships": [
+      "Tick size",
+      "Contract size",
+      "Contract multiplier",
+      "Notional value",
+      "Margin"
+    ],
+    "failure_modes": "Assuming a single tick value across contract variants (standard vs micro) or across currencies misstates risk; for contracts quoted in foreign currencies the tick value also varies with the FX rate.",
+    "misconceptions": "Traders sometimes quote risk in ticks without converting to dollars, which hides that identical tick counts imply very different dollar risks across products.",
+    "example": "With WTI crude futures at a tick size of $0.01 per barrel and a contract size of 1,000 barrels, a 12-tick favorable move on one contract earns 12 x $10 = $120.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Minimum Price Fluctuation (Minimum Tick); Contract Size",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Encyclopaedia Britannica Money: Volume & Open Interest in Futures Trading",
+        "url": "https://www.britannica.com/money/futures-volume-open-interest",
+        "section": "What is trading volume? (WTI contract = 1,000 barrels)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/strike-price",
+  "canonical_sha256": "0c2f252dadf0cc24f0459bd3d63b22dd9bc13fab3da1da63c7e71e385994870b",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/strike-price",
+    "name": "Strike price",
+    "aliases": [
+      "exercise price",
+      "striking price",
+      "strike"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The price, specified in the option contract, at which the underlying security, futures contract, or commodity will be bought (call) or sold (put) if the option is exercised.",
+    "intuition": "The strike is the deal price locked in at contract creation: it is the yardstick that decides whether exercising the option is worth anything.",
+    "mechanics": "Exchanges list standardized series of strikes around the current underlying price. The strike fixes intrinsic value (max(S-K,0) for a call, max(K-S,0) for a put) and moneyness: calls are in-the-money when the underlying trades above the strike, puts when it trades below.",
+    "formula": "Call intrinsic value = max(S - K, 0); put intrinsic value = max(K - S, 0), where S = underlying price and K = strike price.",
+    "relationships": [
+      "Intrinsic value",
+      "Option premium",
+      "Option exercise",
+      "Moneyness",
+      "Expiration date"
+    ],
+    "failure_modes": "Comparing options across different strikes as if the premium alone measures cheapness ignores that the strike determines both payoff and probability of finishing in-the-money.",
+    "misconceptions": "The strike is not a price target or forecast — it is a contractual term chosen from listed series, and an at-the-money option is not 'fairly priced' by definition.",
+    "example": "A holder of an OICX July 60 call can buy the underlying stock at $60 per share until expiration; if the stock trades at $68, the call has $8 of intrinsic value.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Exercise Price (Strike Price)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "The Options Industry Council (OIC), FAQ: Basics",
+        "url": "https://www.optionseducation.org/referencelibrary/faq/basics",
+        "section": "What is the strike price?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

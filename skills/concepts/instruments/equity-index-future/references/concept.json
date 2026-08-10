@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/equity-index-future",
+  "canonical_sha256": "23b8ee38524f9b5971fe00de01442414f4aedf42683515b3dde56ef605f4ba0e",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/equity-index-future",
+    "name": "Equity index future",
+    "aliases": [
+      "Stock index future",
+      "Index future",
+      "E-mini"
+    ],
+    "domain": "Instruments",
+    "definition": "A standardized, exchange-traded futures contract on a stock index — such as the S&P 500 or Nasdaq-100 — that provides cash-settled exposure to the index level without holding any of the constituent stocks.",
+    "intuition": "An equity index future is the whole stock market in one leveraged ticket: you gain or lose the index's move times a fixed multiplier, cash-settled, with no shares ever changing hands.",
+    "mechanics": "Contract value equals the index level times a fixed multiplier (e.g., $50 per index point for the E-mini S&P 500). Positions are margined and marked to market daily, trade nearly around the clock, and settle in cash to the index value at expiry; rolling from one quarterly expiry to the next maintains continuous exposure.",
+    "formula": "Contract notional = index level x multiplier (e.g., E-mini S&P 500: $50 x index level).",
+    "relationships": [
+      "Futures contract",
+      "Common stock",
+      "Exchange-traded fund",
+      "Market index",
+      "Variance swap"
+    ],
+    "failure_modes": "Leverage magnifies losses, and prices can gap outside cash-market hours, so positions move when the underlying stock market is closed. Rolling expiring contracts incurs basis costs, and index concentration means a handful of large constituents can dominate the exposure.",
+    "misconceptions": "That an index future holds the underlying stocks — it is pure cash-settled price exposure with no ownership, dividends, or voting rights. Also, the futures price is not a forecast of where the index will be; it reflects spot plus financing minus expected dividends.",
+    "example": "Buying one E-mini S&P 500 future at an index level of 6,000 controls $300,000 of exposure; a 100-point index rise earns 100 x $50 = $5,000.",
+    "citations": [
+      {
+        "source": "CME Group: Equity futures and options",
+        "url": "https://www.cmegroup.com/markets/equities.html",
+        "section": "Product overview (S&P, Nasdaq, Russell, Dow Jones index futures)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
