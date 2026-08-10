@@ -19,7 +19,7 @@ verified on GitHub Pages before the next checkpoint begins.
 | Batch | Focus | State |
 |---|---|---|
 | A | Contract foundation | Complete |
-| B | Funding and liquidation | In progress |
-| C | Execution and microstructure | Pending |
+| B | Funding and liquidation | Complete |
+| C | Execution and microstructure | In progress |
 | D | Signals and context | Pending |
 | E | Risk and research | Pending |
