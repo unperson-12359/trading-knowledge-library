@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/forward-points",
+  "canonical_sha256": "d9fda55abcaaee814281f340e806e39a3ea308897c37854f1d27fe48c5af3b88",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/forward-points",
+    "name": "Forward points",
+    "aliases": [
+      "swap points",
+      "FX points"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "The difference between the forward exchange rate and the spot exchange rate for a given tenor, i.e. the adjustment added to or subtracted from the spot rate to obtain the outright forward rate. FX swaps are typically quoted in forward points rather than outright rates.",
+    "intuition": "Forward points are the 'time value' of a currency pair — how much the forward rate differs from spot because of the interest-rate gap.",
+    "mechanics": "Under covered interest parity, forward points are approximately proportional to the interest rate differential between the two currencies times the tenor; when the quote-currency interest rate exceeds the base-currency rate, points are positive (forward above spot), and vice versa. Deviations from the parity-implied level appear as the cross-currency basis. Points are expressed in pips of the exchange rate.",
+    "formula": "Forward points = F - S = S x [(1 + r_q x T)/(1 + r_b x T) - 1] ~= S x (r_q - r_b) x T for small r_b x T; S = spot, F = forward, r_q and r_b = quote- and base-currency rates, T = tenor in years.",
+    "relationships": [
+      "FX forward",
+      "FX swap",
+      "Covered interest parity",
+      "Forward premium",
+      "Forward discount",
+      "Pip"
+    ],
+    "failure_modes": "Forward points reflect relative funding costs, not expected currency moves; since the 2008 crisis, balance-sheet constraints and hedging demand have driven persistent non-zero bases, so realized points can diverge from the simple interest-differential formula.",
+    "misconceptions": "Positive forward points do not mean the market expects the base currency to appreciate; they mainly encode the interest differential between the two currencies.",
+    "example": "With NZD/USD spot at 0.8325 and 1-year forward points quoted at -270 pips, the outright 1-year forward rate is 0.8055 (= 0.8325 - 0.0270).",
+    "citations": [
+      {
+        "source": "BIS Quarterly Review, September 2016 — Covered interest parity lost: understanding the cross-currency basis (Borio, McCauley, McGuire, Sushko)",
+        "url": "https://www.bis.org/publ/qtrpdf/r_qt1609e.htm",
+        "section": "Box A: CIP, FX swaps, cross-currency swaps and the factors that move the basis",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia — Foreign exchange swap",
+        "url": "https://en.wikipedia.org/wiki/Foreign_exchange_swap",
+        "section": "Pricing",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

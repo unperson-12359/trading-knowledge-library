@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/quote-currency",
+  "canonical_sha256": "dea13553eed1c77e60d1b233669068b1d56495998156054352fac2175befeaab",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/quote-currency",
+    "name": "Quote currency",
+    "aliases": [
+      "counter currency",
+      "terms currency",
+      "currency 2 (CCY2)"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "The second currency in a currency-pair quotation, i.e. the currency in which the price of one unit of the base currency is expressed. In EUR/USD 1.2500, USD is the quote (counter) currency and the rate states that 1 euro is exchanged for 1.25 US dollars.",
+    "intuition": "The quote currency is the 'money you pay with' in the pair — the quoted number is an amount of it.",
+    "mechanics": "The pair price Q is measured in quote-currency units per base-currency unit. Profit and loss on an FX position accrues in the quote currency and is then converted to the account currency; the quote currency's interest rate enters forward pricing through covered interest parity.",
+    "formula": "Quote-currency amount = base-currency amount x Q, where Q is the quoted pair rate.",
+    "relationships": [
+      "Base currency",
+      "Cross rate",
+      "Interest rate parity"
+    ],
+    "failure_modes": "Confusing base and quote currencies inverts the meaning of an appreciation and of position P&L; the CCY1/CCY2 convention exists partly to remove this ambiguity.",
+    "misconceptions": "It is wrong to think the quote currency is 'always the dollar'; the dollar is the quote currency in EUR/USD but the base currency in USD/JPY.",
+    "example": "If EUR/USD rises from 1.2500 to 1.2600, it takes more of the quote currency (USD) to buy one euro, so the euro (base) has appreciated against the dollar (quote).",
+    "citations": [
+      {
+        "source": "Wikipedia — Currency pair",
+        "url": "https://en.wikipedia.org/wiki/Currency_pair",
+        "section": "lead and 'Syntax and quotation'",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

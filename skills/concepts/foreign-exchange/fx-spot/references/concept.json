@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/fx-spot",
+  "canonical_sha256": "9fdb440aee6e159d0333cf5c294de03cc9d764385bd50bd27788820842949de6",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/fx-spot",
+    "name": "FX spot",
+    "aliases": [
+      "spot foreign exchange",
+      "spot FX transaction"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "A transaction for the exchange of two currencies at a rate agreed on the trade date for settlement on the standard spot value date, normally two business days later (T+2). Spot is one of the core OTC FX instrument categories in the BIS Triennial Survey and accounted for 28% of the $7.5 trillion average daily global FX turnover in April 2022.",
+    "intuition": "A spot FX deal is 'buy currency now at today's rate', with the actual exchange of funds settling a couple of business days later.",
+    "mechanics": "Counterparties agree a rate and amounts on the trade date; the two currency legs are delivered on the spot value date (T+2 for most major pairs, T+1 for some such as USD/CAD). Spot transactions settle delivery-versus-payment through systems like CLS for eligible currencies and form the price base from which forwards and swaps are derived.",
+    "formula": "",
+    "relationships": [
+      "Value date",
+      "FX forward",
+      "FX swap",
+      "Tom-next swap"
+    ],
+    "failure_modes": "Spot quotes embed the T+2 settlement convention, so around holidays the actual value date shifts; settlement (Herstatt) risk exists for non-CLS-settled currencies, and spot prices can gap over weekends when the OTC market is closed.",
+    "misconceptions": "'Spot' does not mean immediate same-day settlement — the standard is T+2 — and spot FX is overwhelmingly an OTC interbank/dealer market, not an exchange-traded one.",
+    "example": "On Monday a corporate treasurer buys EUR 1 million against USD at 1.0850; the euros and dollars are exchanged on Wednesday, the T+2 spot value date.",
+    "citations": [
+      {
+        "source": "BIS — OTC foreign exchange turnover in April 2022 (Triennial Central Bank Survey)",
+        "url": "https://www.bis.org/statistics/rpfx22_fx.htm",
+        "section": "Turnover by instrument",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia — Value date",
+        "url": "https://en.wikipedia.org/wiki/Value_date",
+        "section": "lead",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

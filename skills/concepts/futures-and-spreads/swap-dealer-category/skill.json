@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-swap-dealer-category",
+  "concept_id": "futures-and-spreads/swap-dealer-category",
+  "display_name": "Swap dealer category",
+  "domain": "Futures and spreads",
+  "description": "Explain, compare, or apply Swap dealer category using the library's structured Futures and spreads reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Swap dealer category",
+    "swap dealers (COT)",
+    "swap dealer classification",
+    "explain Swap dealer category",
+    "apply Swap dealer category to a trading question",
+    "common misconception about Swap dealer category"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 51,
+  "package_path": "skills/concepts/futures-and-spreads/swap-dealer-category",
+  "canonical": {
+    "source_path": "concepts/futures-and-spreads.json",
+    "sha256": "86aa07624afe576f368197be5da57337668efe8a93af88e8f185ce7a4c8c969a"
+  },
+  "related_concept_ids": [
+    "futures-and-spreads/commercial-trader",
+    "futures-and-spreads/producer-merchant-processor-user",
+    "futures-and-spreads/managed-money",
+    "futures-and-spreads/commitments-of-traders-report"
+  ]
+}

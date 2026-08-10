@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/forward-premium",
+  "canonical_sha256": "ee9030ef0f18e5fc27bee6aefbc2d1bff909c955a2ddc2a5bb90f0209f3ebbd1",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/forward-premium",
+    "name": "Forward premium",
+    "aliases": [],
+    "domain": "Foreign exchange",
+    "definition": "The situation in which a currency's forward exchange rate is above its spot rate, i.e. the currency trades at a premium for future delivery (equivalently, positive forward points). Under covered interest parity, a currency trades at a forward premium when its interest rate is below that of the other currency in the pair.",
+    "intuition": "A currency at a forward premium costs more in the forward market than in the spot market — the mirror image of its lower interest rate.",
+    "mechanics": "With the exchange rate quoted as quote currency per base currency, positive forward points (F > S) mean the base currency is at a forward premium and the quote currency at a forward discount. The size of the premium, annualized as (F - S)/S, is tied by covered interest parity to the interest differential, plus any cross-currency basis.",
+    "formula": "Annualized forward premium = (F - S) / S x (360 / days to maturity); F = forward rate, S = spot rate.",
+    "relationships": [
+      "Forward discount",
+      "Forward points",
+      "Covered interest parity",
+      "FX forward"
+    ],
+    "failure_modes": "The premium is an arithmetic consequence of interest differentials and carries no information about expected appreciation; treating it as a bullish signal is an error. Basis deviations can also make the observed premium differ from the parity-implied value.",
+    "misconceptions": "A forward premium does not indicate that the market expects the currency to strengthen — under CIP it simply compensates for the currency's lower interest rate.",
+    "example": "If the yen's interest rate is below the dollar's and USD/JPY spot is 150.00 with a 1-year forward of 146.50, the dollar is at a forward discount and the yen at a forward premium of roughly 2.3% annualized.",
+    "citations": [
+      {
+        "source": "BIS Quarterly Review, September 2016 — Covered interest parity lost: understanding the cross-currency basis (Borio, McCauley, McGuire, Sushko)",
+        "url": "https://www.bis.org/publ/qtrpdf/r_qt1609e.htm",
+        "section": "Box A",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia — Exchange rate",
+        "url": "https://en.wikipedia.org/wiki/Exchange_rate",
+        "section": "Uncovered interest rate parity model (premium/discount usage)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

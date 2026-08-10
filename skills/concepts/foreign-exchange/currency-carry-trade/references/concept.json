@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/currency-carry-trade",
+  "canonical_sha256": "ccdd1554fa2ca85fbac2f8dcbdb3ddbbd9a137d155cf56bc65150ca034873e08",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/currency-carry-trade",
+    "name": "Currency carry trade",
+    "aliases": [
+      "carry trade",
+      "FX carry"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "A strategy of borrowing (funding) in a low-interest-rate currency and investing in a high-interest-rate currency without hedging the exchange-rate exposure, aiming to earn the interest rate differential. Its profitability violates uncovered interest parity, and research documents that carry-trade returns are negatively skewed — subject to sudden crash risk when funding liquidity falls and positions unwind en masse.",
+    "intuition": "Collect the interest-rate gap between two currencies and hope the exchange rate doesn't move against you before you exit.",
+    "mechanics": "The trader shorts the funding currency (e.g. a low-yielder) and goes long the investment currency, earning the rate differential as 'carry' plus or minus any exchange-rate change. Because UIP predicts the high-rate currency should depreciate by the differential, persistent carry profits are a pricing anomaly; unwind episodes cluster when risk appetite and funding liquidity decline, producing negatively skewed, crash-prone returns and excess co-movement among currencies with similar interest rates.",
+    "formula": "Approximate carry-trade return = (r_invest - r_funding) + percentage change in the exchange rate (investment currency vs funding currency) over the holding period.",
+    "relationships": [
+      "Uncovered interest parity",
+      "Interest rate parity",
+      "FX spot"
+    ],
+    "failure_modes": "Carry trades crash during liquidity squeezes and risk-off episodes: sudden unwinding produces large depreciations of high-yield currencies (negative skewness), e.g. 2008. Losses can exceed years of accumulated carry, and funding-liquidity constraints force deleveraging exactly when prices gap.",
+    "misconceptions": "The interest differential is not a free lunch: it is compensation for crash risk, not a market inefficiency that can be harvested risklessly; carry strategies are not reliably profitable on a risk-adjusted basis.",
+    "example": "Borrowing Japanese yen at a near-zero rate to buy Australian dollars yielding several percent more earns the differential while AUD/JPY is stable, but a sharp yen rally during a global risk-off episode can wipe out the position.",
+    "citations": [
+      {
+        "source": "NBER Working Paper 14473 — Carry Trades and Currency Crashes (Brunnermeier, Nagel, Pedersen)",
+        "url": "https://www.nber.org/papers/w14473",
+        "section": "abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

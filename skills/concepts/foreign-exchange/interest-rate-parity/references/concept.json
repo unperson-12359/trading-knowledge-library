@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/interest-rate-parity",
+  "canonical_sha256": "c702d57cf933c7fd474b07f24adf2cb7297cd6ebb7a0b0b7c3f81480ffad4ea5",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/interest-rate-parity",
+    "name": "Interest rate parity",
+    "aliases": [
+      "IRP"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "The family of equilibrium conditions linking spot and forward exchange rates to interest rate differentials between two currencies. It comprises covered interest parity — a no-arbitrage condition tying the forward premium to the interest differential — and uncovered interest parity, which relates the interest differential to the expected change in the spot rate.",
+    "intuition": "Money should earn the same total return wherever it is parked once currency effects are accounted for; IRP is the statement of that idea, hedged (covered) or unhedged (uncovered).",
+    "mechanics": "In its covered form, borrowing in one currency, converting at spot, investing in the other, and locking in the conversion back with a forward must yield no riskless profit, forcing F/S to equal the ratio of gross interest returns. The uncovered form replaces the forward rate with the expected future spot rate and is a hypothesis about expectations rather than a pure arbitrage condition. Spot/forward pricing of FX swaps is read off these parity relations.",
+    "formula": "Covered: F/S = (1 + r_q x T)/(1 + r_b x T). Uncovered: E[S_T]/S = (1 + r_q x T)/(1 + r_b x T), with S and F in quote currency per base currency, r_q and r_b the two interest rates, T the tenor.",
+    "relationships": [
+      "Covered interest parity",
+      "Uncovered interest parity",
+      "Forward points",
+      "FX swap",
+      "Currency carry trade"
+    ],
+    "failure_modes": "CIP has been systematically violated since 2008 (persistent cross-currency basis) because of hedging demand and limits to arbitrage from bank balance-sheet constraints. UIP fails empirically as well: high-interest-rate currencies tend to appreciate rather than depreciate, the 'forward premium puzzle'.",
+    "misconceptions": "IRP is not a law that markets obey at all times; only the covered version is arbitrage-enforced, and even it has broken down persistently since the financial crisis.",
+    "example": "If 1-year rates are 5% in USD and 1% in JPY, CIP requires the 1-year USD/JPY forward to trade roughly 4% below spot; a materially different forward would open a covered arbitrage.",
+    "citations": [
+      {
+        "source": "BIS Quarterly Review, September 2016 — Covered interest parity lost: understanding the cross-currency basis (Borio, McCauley, McGuire, Sushko)",
+        "url": "https://www.bis.org/publ/qtrpdf/r_qt1609e.htm",
+        "section": "Box A",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia — Exchange rate",
+        "url": "https://en.wikipedia.org/wiki/Exchange_rate",
+        "section": "Uncovered interest rate parity model",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

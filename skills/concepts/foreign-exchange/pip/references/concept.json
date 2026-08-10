@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/pip",
+  "canonical_sha256": "b4b2980db46b02f1affba2b7c99ca270299c6d463cccf61e0d656b2be82889c8",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/pip",
+    "name": "Pip",
+    "aliases": [
+      "percentage in point",
+      "price interest point"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "The conventional smallest whole-unit increment of an FX exchange rate quote. For most major currency pairs (priced to four decimal places) one pip is one unit of the fourth decimal place (0.0001); for yen pairs one pip is one unit of the second decimal place (0.01).",
+    "intuition": "A pip is the FX market's standard 'cent' for talking about exchange-rate moves and spreads.",
+    "mechanics": "Price changes, bid-ask spreads and forward points are quoted in pips. The monetary value of a pip in quote-currency terms equals the pip size multiplied by the position size in base-currency units; a pip is distinct from the tick size, which in a given market may be a fraction (e.g. 1/2 pip) or multiple of a pip.",
+    "formula": "Pip value (quote currency) = pip size x position size (base units); pip size = 0.0001 for most pairs, 0.01 for JPY pairs.",
+    "relationships": [
+      "Pipette",
+      "Forward points",
+      "Base currency",
+      "Quote currency"
+    ],
+    "failure_modes": "The four-decimal convention breaks down for pairs quoted with more or fewer decimals (e.g. JPY pairs at 0.01, or pairs priced to five decimals), so 'pip' must be re-anchored per pair; confusing pips with basis points or ticks misstates spread and P&L figures.",
+    "misconceptions": "A pip is not a universal 0.01% move in the exchange rate — its percentage value varies with the level of the rate and the pair's decimal convention.",
+    "example": "If EUR/USD moves from 1.3000 to 1.3010, the pair has risen 10 pips; on a 500,000 EUR position that move is worth 500,000 x 0.0010 = USD 500.",
+    "citations": [
+      {
+        "source": "Wikipedia — Percentage in point",
+        "url": "https://en.wikipedia.org/wiki/Percentage_in_point",
+        "section": "lead and 'Example'",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

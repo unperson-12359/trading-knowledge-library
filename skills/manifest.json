@@ -2,7 +2,7 @@
   "$schema": "../schemas/skill-manifest.schema.json",
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 1000,
+  "completed_count": 1020,
   "skills": [
     {
       "$schema": "../../../../schemas/concept-skill.schema.json",
@@ -81040,6 +81040,1601 @@
         "futures-and-spreads/producer-merchant-processor-user",
         "futures-and-spreads/swap-dealer-category",
         "futures-and-spreads/open-interest-change"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-commercial-trader",
+      "concept_id": "futures-and-spreads/commercial-trader",
+      "display_name": "Commercial trader",
+      "domain": "Futures and spreads",
+      "description": "Explain, compare, or apply Commercial trader using the library's structured Futures and spreads reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Commercial trader",
+        "commercials",
+        "hedgers (COT context)",
+        "explain Commercial trader",
+        "apply Commercial trader to a trading question",
+        "common misconception about Commercial trader"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/futures-and-spreads/commercial-trader",
+      "canonical": {
+        "source_path": "concepts/futures-and-spreads.json",
+        "sha256": "14d263a43e668e721d170adea523292ac896b57cb07c8e8dda9bba3244cdc532"
+      },
+      "related_concept_ids": [
+        "futures-and-spreads/noncommercial-trader",
+        "futures-and-spreads/producer-merchant-processor-user",
+        "futures-and-spreads/swap-dealer-category",
+        "futures-and-spreads/commitments-of-traders-report",
+        "futures-and-spreads/basis"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-noncommercial-trader",
+      "concept_id": "futures-and-spreads/noncommercial-trader",
+      "display_name": "Noncommercial trader",
+      "domain": "Futures and spreads",
+      "description": "Explain, compare, or apply Noncommercial trader using the library's structured Futures and spreads reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Noncommercial trader",
+        "non-commercials",
+        "large speculators",
+        "speculators (COT context)",
+        "explain Noncommercial trader",
+        "apply Noncommercial trader to a trading question",
+        "common misconception about Noncommercial trader"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/futures-and-spreads/noncommercial-trader",
+      "canonical": {
+        "source_path": "concepts/futures-and-spreads.json",
+        "sha256": "6307413a6b691e7472f05d1a5793889a178c7208245694faa82ecf2bd9115f37"
+      },
+      "related_concept_ids": [
+        "futures-and-spreads/commercial-trader",
+        "futures-and-spreads/managed-money",
+        "futures-and-spreads/commitments-of-traders-report",
+        "futures-and-spreads/open-interest-change"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-managed-money",
+      "concept_id": "futures-and-spreads/managed-money",
+      "display_name": "Managed money",
+      "domain": "Futures and spreads",
+      "description": "Explain, compare, or apply Managed money using the library's structured Futures and spreads reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Managed money",
+        "money managers (COT)",
+        "managed money category",
+        "explain Managed money",
+        "apply Managed money to a trading question",
+        "common misconception about Managed money"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/futures-and-spreads/managed-money",
+      "canonical": {
+        "source_path": "concepts/futures-and-spreads.json",
+        "sha256": "40fbe7d42d0482d2662035004905fc40fc8ce102b63aed652dad980d88c1be34"
+      },
+      "related_concept_ids": [
+        "futures-and-spreads/noncommercial-trader",
+        "futures-and-spreads/commitments-of-traders-report",
+        "futures-and-spreads/swap-dealer-category",
+        "futures-and-spreads/open-interest-change"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-producer-merchant-processor-user",
+      "concept_id": "futures-and-spreads/producer-merchant-processor-user",
+      "display_name": "Producer merchant processor user",
+      "domain": "Futures and spreads",
+      "description": "Explain, compare, or apply Producer merchant processor user using the library's structured Futures and spreads reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Producer merchant processor user",
+        "PMPU",
+        "producer/merchant/processor/user",
+        "explain Producer merchant processor user",
+        "apply Producer merchant processor user to a trading question",
+        "common misconception about Producer merchant processor user"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/futures-and-spreads/producer-merchant-processor-user",
+      "canonical": {
+        "source_path": "concepts/futures-and-spreads.json",
+        "sha256": "b596d6bff6c58dd3577ad61363a4ae8f2a0a1183d08085bdeb029bb4aea1ad1d"
+      },
+      "related_concept_ids": [
+        "futures-and-spreads/commercial-trader",
+        "futures-and-spreads/swap-dealer-category",
+        "futures-and-spreads/managed-money",
+        "futures-and-spreads/commitments-of-traders-report",
+        "futures-and-spreads/basis"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-swap-dealer-category",
+      "concept_id": "futures-and-spreads/swap-dealer-category",
+      "display_name": "Swap dealer category",
+      "domain": "Futures and spreads",
+      "description": "Explain, compare, or apply Swap dealer category using the library's structured Futures and spreads reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Swap dealer category",
+        "swap dealers (COT)",
+        "swap dealer classification",
+        "explain Swap dealer category",
+        "apply Swap dealer category to a trading question",
+        "common misconception about Swap dealer category"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/futures-and-spreads/swap-dealer-category",
+      "canonical": {
+        "source_path": "concepts/futures-and-spreads.json",
+        "sha256": "86aa07624afe576f368197be5da57337668efe8a93af88e8f185ce7a4c8c969a"
+      },
+      "related_concept_ids": [
+        "futures-and-spreads/commercial-trader",
+        "futures-and-spreads/producer-merchant-processor-user",
+        "futures-and-spreads/managed-money",
+        "futures-and-spreads/commitments-of-traders-report"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-base-currency",
+      "concept_id": "foreign-exchange/base-currency",
+      "display_name": "Base currency",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Base currency using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Base currency",
+        "transaction currency",
+        "currency 1 (CCY1)",
+        "explain Base currency",
+        "apply Base currency to a trading question",
+        "common misconception about Base currency"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/foreign-exchange/base-currency",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "f626ef26ce4388b2abcf8a18a2f7bf61464d3acc7674d8b2e8b72204c2ef452c"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/quote-currency",
+        "foreign-exchange/pip",
+        "foreign-exchange/direct-quotation"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-quote-currency",
+      "concept_id": "foreign-exchange/quote-currency",
+      "display_name": "Quote currency",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Quote currency using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Quote currency",
+        "counter currency",
+        "terms currency",
+        "currency 2 (CCY2)",
+        "explain Quote currency",
+        "apply Quote currency to a trading question",
+        "common misconception about Quote currency"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/foreign-exchange/quote-currency",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "dea13553eed1c77e60d1b233669068b1d56495998156054352fac2175befeaab"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/base-currency",
+        "foreign-exchange/interest-rate-parity"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-direct-quotation",
+      "concept_id": "foreign-exchange/direct-quotation",
+      "display_name": "Direct quotation",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Direct quotation using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Direct quotation",
+        "price quotation",
+        "explain Direct quotation",
+        "apply Direct quotation to a trading question",
+        "common misconception about Direct quotation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/foreign-exchange/direct-quotation",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "9023d42789dd9ff3b62f819733db24e80fa379157967cb3f51003ccf6f18d0a0"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/indirect-quotation",
+        "foreign-exchange/base-currency",
+        "foreign-exchange/quote-currency"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-indirect-quotation",
+      "concept_id": "foreign-exchange/indirect-quotation",
+      "display_name": "Indirect quotation",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Indirect quotation using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Indirect quotation",
+        "quantity quotation",
+        "reciprocal quotation",
+        "explain Indirect quotation",
+        "apply Indirect quotation to a trading question",
+        "common misconception about Indirect quotation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/foreign-exchange/indirect-quotation",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "073a05221ace4731b2c8b07657b4cbe3bc3888b7967c3a4f577c845a0fc17352"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/direct-quotation",
+        "foreign-exchange/base-currency",
+        "foreign-exchange/quote-currency"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-pip",
+      "concept_id": "foreign-exchange/pip",
+      "display_name": "Pip",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Pip using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Pip",
+        "percentage in point",
+        "price interest point",
+        "explain Pip",
+        "apply Pip to a trading question",
+        "common misconception about Pip"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/foreign-exchange/pip",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "b4b2980db46b02f1affba2b7c99ca270299c6d463cccf61e0d656b2be82889c8"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/pipette",
+        "foreign-exchange/forward-points",
+        "foreign-exchange/base-currency",
+        "foreign-exchange/quote-currency"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-pipette",
+      "concept_id": "foreign-exchange/pipette",
+      "display_name": "Pipette",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Pipette using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Pipette",
+        "fractional pip",
+        "point (tenth of a pip)",
+        "explain Pipette",
+        "apply Pipette to a trading question",
+        "common misconception about Pipette"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/foreign-exchange/pipette",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "4d5513a16eb9ccb122c763771647933136f170e206c84063b678f1c54df46d1d"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/pip",
+        "foreign-exchange/fx-spot"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-fx-spot",
+      "concept_id": "foreign-exchange/fx-spot",
+      "display_name": "FX spot",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply FX spot using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "FX spot",
+        "spot foreign exchange",
+        "spot FX transaction",
+        "explain FX spot",
+        "apply FX spot to a trading question",
+        "common misconception about FX spot"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/foreign-exchange/fx-spot",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "9fdb440aee6e159d0333cf5c294de03cc9d764385bd50bd27788820842949de6"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/value-date",
+        "foreign-exchange/fx-forward",
+        "foreign-exchange/fx-swap",
+        "foreign-exchange/tom-next-swap"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-fx-forward",
+      "concept_id": "foreign-exchange/fx-forward",
+      "display_name": "FX forward",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply FX forward using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "FX forward",
+        "outright forward",
+        "forward outright",
+        "explain FX forward",
+        "apply FX forward to a trading question",
+        "common misconception about FX forward"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/foreign-exchange/fx-forward",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "cf97c2253039242382554848c5052069021e4f5e48eb2b384898c6e8792d6d6e"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/fx-spot",
+        "foreign-exchange/fx-swap",
+        "foreign-exchange/forward-points",
+        "foreign-exchange/covered-interest-parity",
+        "foreign-exchange/forward-premium"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-fx-swap",
+      "concept_id": "foreign-exchange/fx-swap",
+      "display_name": "FX swap",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply FX swap using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "FX swap",
+        "forex swap",
+        "explain FX swap",
+        "apply FX swap to a trading question",
+        "common misconception about FX swap"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/foreign-exchange/fx-swap",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "2746a17136747b178bc0536705c94e22c8fffd4d8660eeead7f9b2d65ef581ec"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/fx-spot",
+        "foreign-exchange/fx-forward",
+        "foreign-exchange/forward-points",
+        "foreign-exchange/covered-interest-parity",
+        "foreign-exchange/tom-next-swap"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-currency-carry-trade",
+      "concept_id": "foreign-exchange/currency-carry-trade",
+      "display_name": "Currency carry trade",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Currency carry trade using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Currency carry trade",
+        "carry trade",
+        "FX carry",
+        "explain Currency carry trade",
+        "apply Currency carry trade to a trading question",
+        "common misconception about Currency carry trade"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/foreign-exchange/currency-carry-trade",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "ccdd1554fa2ca85fbac2f8dcbdb3ddbbd9a137d155cf56bc65150ca034873e08"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/uncovered-interest-parity",
+        "foreign-exchange/interest-rate-parity",
+        "foreign-exchange/fx-spot"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-forward-points",
+      "concept_id": "foreign-exchange/forward-points",
+      "display_name": "Forward points",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Forward points using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Forward points",
+        "swap points",
+        "FX points",
+        "explain Forward points",
+        "apply Forward points to a trading question",
+        "common misconception about Forward points"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/foreign-exchange/forward-points",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "d9fda55abcaaee814281f340e806e39a3ea308897c37854f1d27fe48c5af3b88"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/fx-forward",
+        "foreign-exchange/fx-swap",
+        "foreign-exchange/covered-interest-parity",
+        "foreign-exchange/forward-premium",
+        "foreign-exchange/forward-discount",
+        "foreign-exchange/pip"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-forward-premium",
+      "concept_id": "foreign-exchange/forward-premium",
+      "display_name": "Forward premium",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Forward premium using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Forward premium",
+        "explain Forward premium",
+        "apply Forward premium to a trading question",
+        "common misconception about Forward premium"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/foreign-exchange/forward-premium",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "ee9030ef0f18e5fc27bee6aefbc2d1bff909c955a2ddc2a5bb90f0209f3ebbd1"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/forward-discount",
+        "foreign-exchange/forward-points",
+        "foreign-exchange/covered-interest-parity",
+        "foreign-exchange/fx-forward"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-forward-discount",
+      "concept_id": "foreign-exchange/forward-discount",
+      "display_name": "Forward discount",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Forward discount using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Forward discount",
+        "explain Forward discount",
+        "apply Forward discount to a trading question",
+        "common misconception about Forward discount"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/foreign-exchange/forward-discount",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "ab587afed123fbf7b5691aaa7ab1773c55d901a90afe8a8e2342d547d315233b"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/forward-premium",
+        "foreign-exchange/forward-points",
+        "foreign-exchange/covered-interest-parity",
+        "foreign-exchange/currency-carry-trade"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-interest-rate-parity",
+      "concept_id": "foreign-exchange/interest-rate-parity",
+      "display_name": "Interest rate parity",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Interest rate parity using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Interest rate parity",
+        "IRP",
+        "explain Interest rate parity",
+        "apply Interest rate parity to a trading question",
+        "common misconception about Interest rate parity"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/foreign-exchange/interest-rate-parity",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "c702d57cf933c7fd474b07f24adf2cb7297cd6ebb7a0b0b7c3f81480ffad4ea5"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/covered-interest-parity",
+        "foreign-exchange/uncovered-interest-parity",
+        "foreign-exchange/forward-points",
+        "foreign-exchange/fx-swap",
+        "foreign-exchange/currency-carry-trade"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-covered-interest-parity",
+      "concept_id": "foreign-exchange/covered-interest-parity",
+      "display_name": "Covered interest parity",
+      "domain": "Foreign exchange",
+      "description": "Explain, compare, or apply Covered interest parity using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Covered interest parity",
+        "CIP",
+        "covered interest rate parity",
+        "explain Covered interest parity",
+        "apply Covered interest parity to a trading question",
+        "common misconception about Covered interest parity"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 51,
+      "package_path": "skills/concepts/foreign-exchange/covered-interest-parity",
+      "canonical": {
+        "source_path": "concepts/foreign-exchange.json",
+        "sha256": "e3346f9d898085d796ad64a5e76af77064e19664ce57812ef7819c06de769939"
+      },
+      "related_concept_ids": [
+        "foreign-exchange/interest-rate-parity",
+        "foreign-exchange/uncovered-interest-parity",
+        "foreign-exchange/forward-points",
+        "foreign-exchange/fx-swap",
+        "foreign-exchange/fx-forward"
       ]
     }
   ]

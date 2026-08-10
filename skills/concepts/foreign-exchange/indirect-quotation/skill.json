@@ -1,0 +1,79 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-indirect-quotation",
+  "concept_id": "foreign-exchange/indirect-quotation",
+  "display_name": "Indirect quotation",
+  "domain": "Foreign exchange",
+  "description": "Explain, compare, or apply Indirect quotation using the library's structured Foreign exchange reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Indirect quotation",
+    "quantity quotation",
+    "reciprocal quotation",
+    "explain Indirect quotation",
+    "apply Indirect quotation to a trading question",
+    "common misconception about Indirect quotation"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 51,
+  "package_path": "skills/concepts/foreign-exchange/indirect-quotation",
+  "canonical": {
+    "source_path": "concepts/foreign-exchange.json",
+    "sha256": "073a05221ace4731b2c8b07657b4cbe3bc3888b7967c3a4f577c845a0fc17352"
+  },
+  "related_concept_ids": [
+    "foreign-exchange/direct-quotation",
+    "foreign-exchange/base-currency",
+    "foreign-exchange/quote-currency"
+  ]
+}

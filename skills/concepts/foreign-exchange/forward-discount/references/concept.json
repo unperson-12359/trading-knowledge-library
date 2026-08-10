@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/forward-discount",
+  "canonical_sha256": "ab587afed123fbf7b5691aaa7ab1773c55d901a90afe8a8e2342d547d315233b",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/forward-discount",
+    "name": "Forward discount",
+    "aliases": [],
+    "domain": "Foreign exchange",
+    "definition": "The situation in which a currency's forward exchange rate is below its spot rate, i.e. the currency trades at a discount for future delivery (equivalently, negative forward points for that currency). Under covered interest parity, a currency trades at a forward discount when its interest rate is above that of the other currency in the pair.",
+    "intuition": "A currency at a forward discount costs less forward than spot — the arithmetic counterpart of its higher interest rate.",
+    "mechanics": "With the rate quoted as quote currency per base currency, negative forward points (F < S) mean the base currency is at a forward discount and the quote currency at a forward premium. The annualized discount (F - S)/S is tied by covered interest parity to the interest differential, plus any cross-currency basis. High-yielding (carry target) currencies normally trade at a forward discount.",
+    "formula": "Annualized forward discount = (F - S) / S x (360 / days to maturity) < 0; F = forward rate, S = spot rate.",
+    "relationships": [
+      "Forward premium",
+      "Forward points",
+      "Covered interest parity",
+      "Currency carry trade"
+    ],
+    "failure_modes": "The discount is not a forecast of depreciation; uncovered interest parity — which would turn the discount into an expected spot change — fails empirically, and high-rate currencies often appreciate instead, which is the basis of the carry trade.",
+    "misconceptions": "Selling a currency 'because it is at a forward discount' double-counts the interest differential: hedging a high-yielder via forwards surrenders exactly the carry that the discount reflects.",
+    "example": "If USD/MXN spot is 18.00 and Mexican rates exceed US rates, the 1-year forward might be 19.10: the peso is at a forward discount (it buys fewer dollars forward than spot).",
+    "citations": [
+      {
+        "source": "BIS Quarterly Review, September 2016 — Covered interest parity lost: understanding the cross-currency basis (Borio, McCauley, McGuire, Sushko)",
+        "url": "https://www.bis.org/publ/qtrpdf/r_qt1609e.htm",
+        "section": "Box A",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia — Exchange rate",
+        "url": "https://en.wikipedia.org/wiki/Exchange_rate",
+        "section": "Uncovered interest rate parity model (premium/discount usage)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

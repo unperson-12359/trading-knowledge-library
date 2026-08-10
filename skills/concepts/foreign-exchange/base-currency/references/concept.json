@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/base-currency",
+  "canonical_sha256": "f626ef26ce4388b2abcf8a18a2f7bf61464d3acc7674d8b2e8b72204c2ef452c",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/base-currency",
+    "name": "Base currency",
+    "aliases": [
+      "transaction currency",
+      "currency 1 (CCY1)"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "The first currency in a currency-pair quotation, i.e. the currency being priced. The quoted exchange rate expresses how many units of the quote (counter) currency are needed to buy one unit of the base currency, as in EUR/USD 1.2500 meaning one euro exchanges for 1.25 US dollars, with EUR as the base.",
+    "intuition": "The base currency is the 'thing being bought or sold' in an FX quote; the number tells you its price in the other currency.",
+    "mechanics": "Pairs are written by concatenating the ISO 4217 codes of the base and quote currencies (e.g. EUR/USD, sometimes EURUSD or EUR-USD). Market convention fixes a priority ranking of major currencies (EUR > GBP > AUD > USD > CAD > CHF > JPY) that determines which currency appears as the base; buying the pair means buying the base and selling the quote.",
+    "formula": "Pair quote Q = units of quote currency per 1 unit of base currency; base amount = quote amount / Q.",
+    "relationships": [
+      "Quote currency",
+      "Cross rate",
+      "Pip",
+      "Direct quotation"
+    ],
+    "failure_modes": "The term is ambiguous: it can also denote a firm's or bank's functional (accounting) currency, so some desks use the unambiguous labels CCY1/CCY2 instead. Misreading which currency is the base inverts profit/loss and risk calculations.",
+    "misconceptions": "A common error is assuming the domestic currency is always the base; the base is set by market quotation convention, not by the trader's location.",
+    "example": "In GBP/USD 1.2700, GBP is the base currency: buying 100,000 GBP/USD means buying 100,000 pounds and paying 127,000 US dollars.",
+    "citations": [
+      {
+        "source": "Wikipedia — Currency pair",
+        "url": "https://en.wikipedia.org/wiki/Currency_pair",
+        "section": "lead and 'Syntax and quotation'",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

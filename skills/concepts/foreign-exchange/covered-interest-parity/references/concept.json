@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/covered-interest-parity",
+  "canonical_sha256": "e3346f9d898085d796ad64a5e76af77064e19664ce57812ef7819c06de769939",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/covered-interest-parity",
+    "name": "Covered interest parity",
+    "aliases": [
+      "CIP",
+      "covered interest rate parity"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "The no-arbitrage condition that interest rates on two otherwise identical assets in different currencies must be equal once the foreign currency risk is hedged in the forward market: the interest rate differential should equal the differential between the forward and spot exchange rates. Often described as the closest thing to a physical law in international finance, it has been systematically violated since the 2008 financial crisis, visible in a persistent cross-currency basis.",
+    "intuition": "If you fully hedge the currency risk, borrowing dollars to invest in yen (or vice versa) should earn nothing extra — CIP is what makes that true.",
+    "mechanics": "If CIP fails, an arbitrageur can borrow the cheaper currency in the cash market, swap it via an FX swap (sell spot, repurchase forward), and lock in a riskless profit; such trades should close the gap. Post-crisis, CIP deviations persist because FX hedging demand (from banks, institutional investors and bond issuers) meets limits to arbitrage: arbitrageurs' balance-sheet space is costly, so the basis is not competed away. The deviation is measured by the cross-currency basis — the amount by which swap-implied funding costs differ from cash-market rates.",
+    "formula": "(1 + r) = (F/S) x (1 + r*), where S = spot and F = forward in US dollars per foreign currency, r = USD interest rate, r* = foreign interest rate (BIS Box A convention).",
+    "relationships": [
+      "Interest rate parity",
+      "Uncovered interest parity",
+      "Forward points",
+      "FX swap",
+      "FX forward"
+    ],
+    "failure_modes": "CIP breaks down when arbitrage is balance-sheet-constrained: during the GFC, the euro-area crisis, and persistently since 2014, the cross-currency basis has stayed non-zero, with quarter-end spikes reflecting regulatory reporting constraints. Deviations mean synthetic dollar funding via FX swaps can be costlier (or cheaper) than direct funding.",
+    "misconceptions": "CIP is not enforced by nature — it requires arbitrageurs with free balance-sheet capacity, so 'riskless' CIP arbitrage in practice consumes capital, carries counterparty and liquidity risk, and may not be executable at scale.",
+    "example": "If borrowing dollars via a USD/JPY FX swap costs 25 bp more than borrowing dollars directly in the cash market, the dollar is said to command a premium in swaps — a CIP violation measured by the negative cross-currency basis.",
+    "citations": [
+      {
+        "source": "BIS Quarterly Review, September 2016 — Covered interest parity lost: understanding the cross-currency basis (Borio, McCauley, McGuire, Sushko)",
+        "url": "https://www.bis.org/publ/qtrpdf/r_qt1609e.htm",
+        "section": "whole feature, esp. Box A",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

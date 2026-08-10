@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/fx-swap",
+  "canonical_sha256": "2746a17136747b178bc0536705c94e22c8fffd4d8660eeead7f9b2d65ef581ec",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/fx-swap",
+    "name": "FX swap",
+    "aliases": [
+      "forex swap"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "A contract combining a spot purchase (sale) of one currency against another with a simultaneous offsetting forward sale (purchase) of the same amounts. In the spot leg one party lends one currency and borrows the other at the spot rate; in the forward leg the exchange is reversed at a pre-agreed forward rate, making the instrument economically similar to collateralized borrowing and lending. FX swaps were the most traded FX instrument, at $3.8 trillion per day (51% of global turnover) in April 2022.",
+    "intuition": "An FX swap is like a repo with a currency instead of a security: you swap currencies today and swap them back later at a pre-set rate.",
+    "mechanics": "Because the two legs offset, an FX swap creates no net open currency position; its price is the difference between the forward and spot legs, quoted in forward (swap) points that reflect the interest rate differential plus any cross-currency basis. Typical maturities are very short — instruments maturing within a week accounted for about 70% of FX swap turnover in April 2022 — and the instrument is used for funding liquidity management, hedging and rolling forward positions.",
+    "formula": "Swap cost is quoted as forward points = F - S, with F = S x (1 + r_q x T) / (1 + r_b x T) under covered interest parity; S = spot, F = forward rate, r_q and r_b = quote- and base-currency interest rates, T = tenor.",
+    "relationships": [
+      "FX spot",
+      "FX forward",
+      "Forward points",
+      "Covered interest parity",
+      "Tom-next swap"
+    ],
+    "failure_modes": "FX swap markets are vulnerable to funding squeezes — during the 2008 crisis and March 2020 dollar borrowers faced sharply higher rates when lenders stepped back. Persistent deviations from covered interest parity (the cross-currency basis) mean swap-implied funding costs can differ materially from cash-market rates.",
+    "misconceptions": "An FX swap is not a bet on the exchange rate (the legs offset, so there is no open FX position), and it differs from a cross-currency swap, a longer-term instrument that also exchanges periodic interest payments.",
+    "example": "A Dutch pension fund borrows dollars and lends euros in the spot leg of a 3-month FX swap, then repays the dollars and receives back euros in the forward leg at the pre-agreed rate, hedging its dollar assets without an open currency position.",
+    "citations": [
+      {
+        "source": "BIS Quarterly Review, December 2022 — Dollar debt in FX swaps and forwards: huge, missing and growing",
+        "url": "https://www.bis.org/publ/qtrpdf/r_qt2212h.htm",
+        "section": "introduction and stylised facts",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "BIS — OTC foreign exchange turnover in April 2022 (Triennial Central Bank Survey)",
+        "url": "https://www.bis.org/statistics/rpfx22_fx.htm",
+        "section": "Turnover by instrument",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

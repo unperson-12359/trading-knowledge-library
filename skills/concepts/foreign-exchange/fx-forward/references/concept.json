@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "foreign-exchange/fx-forward",
+  "canonical_sha256": "cf97c2253039242382554848c5052069021e4f5e48eb2b384898c6e8792d6d6e",
+  "source_path": "concepts/foreign-exchange.json",
+  "concept": {
+    "id": "foreign-exchange/fx-forward",
+    "name": "FX forward",
+    "aliases": [
+      "outright forward",
+      "forward outright"
+    ],
+    "domain": "Foreign exchange",
+    "definition": "An over-the-counter contract to exchange one currency for another at a rate fixed today for settlement on a specific future date beyond the spot value date. Outright forwards are used mainly to hedge future currency payments and receipts, and accounted for 15% of global OTC FX turnover in April 2022.",
+    "intuition": "An FX forward locks in today the exchange rate for a currency trade you will make weeks or months from now.",
+    "mechanics": "The forward rate equals the spot rate adjusted by forward points reflecting the interest rate differential between the two currencies over the contract tenor (covered interest parity). A single outright forward involves one exchange of principals at maturity; non-deliverable forwards (NDFs) settle only the net value difference in a convertible currency. Unlike futures, forwards are bilateral OTC contracts and carry counterparty risk.",
+    "formula": "F = S x (1 + r_q x T) / (1 + r_b x T), where F = forward rate, S = spot rate (quote per base), r_q = quote-currency interest rate, r_b = base-currency interest rate, T = tenor in years under the applicable day-count convention.",
+    "relationships": [
+      "FX spot",
+      "FX swap",
+      "Forward points",
+      "Covered interest parity",
+      "Forward premium"
+    ],
+    "failure_modes": "Forward rates are a no-arbitrage pricing output, not forecasts of future spot rates; since 2008 persistent cross-currency basis deviations mean forward pricing also embeds balance-sheet costs. Bilateral forwards carry counterparty credit risk absent in centrally cleared instruments.",
+    "misconceptions": "A forward rate is not the market's expected future exchange rate; it is mechanically derived from the spot rate and money-market rates.",
+    "example": "A US importer owing EUR 10 million in six months buys a 6-month EUR/USD forward at 1.0920; whatever the spot rate is at maturity, the euros cost exactly USD 10.92 million.",
+    "citations": [
+      {
+        "source": "BIS Quarterly Review, December 2022 — Dollar debt in FX swaps and forwards: huge, missing and growing",
+        "url": "https://www.bis.org/publ/qtrpdf/r_qt2212h.htm",
+        "section": "FX swaps/forwards and currency swaps: some stylised facts",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "BIS — OTC foreign exchange turnover in April 2022 (Triennial Central Bank Survey)",
+        "url": "https://www.bis.org/statistics/rpfx22_fx.htm",
+        "section": "Turnover by instrument",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
