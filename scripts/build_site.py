@@ -68,6 +68,10 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 .playbook-card{border:1px solid #ddd;border-radius:6px;padding:.8rem 1rem;margin:.8rem 0}
 .playbook-card h2{margin:.1rem 0 .35rem;font-size:1.15rem}
 .json{white-space:pre-wrap;background:#f4f4f4;padding:.7rem;border-radius:4px;font-family:Consolas,monospace;font-size:.8rem}
+.query-controls{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:.55rem;margin:1rem 0;font-family:system-ui}
+.query-controls input,.query-controls select{width:100%;padding:.5rem;border:1px solid #bbb;border-radius:5px;background:#fff}
+.query-controls label{font-size:.78rem;color:#555}.query-controls .check{display:flex;align-items:end;padding-bottom:.5rem}
+.query-result{border-bottom:1px solid #ddd;padding:.8rem 0}.query-result h2{font-size:1.05rem;margin:0 0 .2rem}
 .domainnav{display:flex;justify-content:space-between;margin-top:2rem;font-family:system-ui;font-size:.85rem}
 .toc{columns:2;font-family:system-ui;font-size:.82rem;background:#fafaf8;border:1px solid #e8e8e5;border-radius:6px;padding:.8rem 1rem}
 .toc a{color:#333}
@@ -81,6 +85,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
  nav#sidebar details.tocwrap:not([open]) .navlist{display:none}
  main{padding:1rem}
  .toc{columns:1}
+ .query-controls{grid-template-columns:1fr 1fr}
 }
 """
 
@@ -94,12 +99,32 @@ SEARCH_JS = """
     var q=box.value.trim().toLowerCase();res.innerHTML='';
     if(q.length<2)return;
     load().then(function(data){
-      var hits=data.filter(function(e){return e.n.toLowerCase().indexOf(q)!==-1}).slice(0,12);
+      var hits=data.filter(function(e){return (e.n+' '+(e.a||'')+' '+(e.x||'')).toLowerCase().indexOf(q)!==-1}).slice(0,12);
       res.innerHTML=hits.map(function(e){
         return '<li><a href="'+e.u+'">'+e.n+'</a> <span class="sr-domain">'+e.d+'</span></li>';
       }).join('')||'<li class="meta">No matches</li>';
     });
   });
+})();
+"""
+
+QUERY_JS = """
+(function(){
+  var form=document.getElementById('query-controls'),out=document.getElementById('query-results'),count=document.getElementById('query-count');
+  if(!form||!out)return;
+  var state={concepts:[],playbooks:[]},fields=['q','type','domain','required_input','regime'];
+  function h(s){return String(s).replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]});}
+  function applyUrl(){var p=new URLSearchParams(location.search);fields.forEach(function(k){if(p.has(k))form.elements[k].value=p.get(k)});form.elements.core.checked=p.get('core')==='1';}
+  function updateUrl(){var p=new URLSearchParams();fields.forEach(function(k){var v=form.elements[k].value.trim();if(v)p.set(k,v)});if(form.elements.core.checked)p.set('core','1');history.replaceState(null,'',location.pathname+(p.toString()?'?'+p:''));}
+  function concept(c){return {type:'concept',title:c.name,domain:c.domain,url:c.url,core:c.core,regimes:(c.regime_annotation||{}).regime_relevance||[],required:[],summary:c.definition,text:[c.name,(c.aliases||[]).join(' '),c.definition,c.intuition,c.mechanics,c.failure_modes,c.misconceptions].join(' ').toLowerCase()};}
+  function playbook(p){return {type:'playbook',title:p.title,domain:'Research playbooks',url:'playbooks/'+p.id+'.html',core:true,regimes:(p.regime_profile.favored||[]).concat(p.regime_profile.avoid||[]),required:(p.required_data||[]).map(function(x){return x.field}),summary:p.hypothesis,text:[p.title,p.hypothesis,(p.failure_modes||[]).join(' '),(p.concept_ids||[]).join(' ')].join(' ').toLowerCase()};}
+  function run(){updateUrl();var q=form.elements.q.value.trim().toLowerCase(),type=form.elements.type.value,domain=form.elements.domain.value,required=form.elements.required_input.value,regime=form.elements.regime.value,core=form.elements.core.checked;
+    var rows=state.concepts.map(concept).concat(state.playbooks.map(playbook)).filter(function(x){return (!q||x.text.indexOf(q)!==-1)&&(!type||x.type===type)&&(!domain||x.domain===domain)&&(!core||x.core)&&(!required||x.required.indexOf(required)!==-1)&&(!regime||x.regimes.indexOf(regime)!==-1)}).slice(0,200);
+    count.textContent=rows.length+(rows.length===200?' (first 200)':'')+' results';
+    out.innerHTML=rows.map(function(x){return '<article class="query-result"><h2><a href="'+h(x.url)+'">'+h(x.title)+'</a></h2><div class="meta">'+h(x.type)+' &middot; '+h(x.domain)+(x.core?' &middot; core':'')+'</div><p>'+h(x.summary)+'</p></article>'}).join('')||'<p>No matching records.</p>';
+  }
+  applyUrl();Promise.all([fetch('api/v1/concepts.json').then(function(r){return r.json()}),fetch('api/v1/playbooks.json').then(function(r){return r.json()})]).then(function(data){state.concepts=data[0];state.playbooks=data[1];run()});
+  form.addEventListener('input',run);form.addEventListener('change',run);form.addEventListener('submit',function(e){e.preventDefault();run()});
 })();
 """
 
@@ -116,7 +141,7 @@ def anchor(name):
     return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
 
-def render_entry(e, prefix):
+def render_entry(e, prefix, relationship_lookup, concept_urls):
     parts = [f'<article class="entry" id="{anchor(e["name"])}"><h3>{esc(e["name"])} '
              f'<a class="anchor" href="#{anchor(e["name"])}">#</a></h3>']
     parts.append(f'<div class="field">{esc(e["definition"])}</div>')
@@ -128,7 +153,16 @@ def render_entry(e, prefix):
     if e.get("aliases"):
         parts.append(f'<div class="field"><span class="label">Aliases:</span> {esc(", ".join(e["aliases"]))}</div>')
     if e.get("relationships"):
-        rel = "".join(f"<li>{esc(r)}</li>" for r in e["relationships"])
+        rendered = []
+        for relationship in e["relationships"]:
+            concept_id = relationship_lookup.get(relationship.casefold())
+            if concept_id:
+                rendered.append(
+                    f'<li><a href="{prefix}{concept_urls[concept_id]}">{esc(relationship)}</a></li>'
+                )
+            else:
+                rendered.append(f"<li>{esc(relationship)}</li>")
+        rel = "".join(rendered)
         parts.append(f'<div class="field"><span class="label">Related:</span><ul class="rel">{rel}</ul></div>')
     for c in e.get("citations", []):
         url = esc(c.get("url", ""))
@@ -155,7 +189,9 @@ def page(title, body, prefix, slug, domains, extra_head="", description=""):
            + (' class="active"' if slug == "all" else "")
            + f'>A–Z index</a></li><li><a href="{prefix}about.html"'
            + (' class="active"' if slug == "about" else "")
-           + f'>About &amp; Methodology</a></li><li><a href="{prefix}playbooks/"'
+           + f'>About &amp; Methodology</a></li><li><a href="{prefix}query.html"'
+           + (' class="active"' if slug == "query" else "")
+           + f'>Structured query</a></li><li><a href="{prefix}playbooks/"'
            + (' class="active"' if slug == "playbooks" else "")
            + f'>Research playbooks</a></li>{"".join(links)}</ul></details></nav>')
     desc = f'<meta name="description" content="{esc(description)}">' if description else ""
@@ -244,11 +280,34 @@ def main():
         json.loads(path.read_text(encoding="utf-8"))
         for path in sorted((ROOT / "playbooks").glob("*.json"))
     ]
+    taxonomy = json.loads((ROOT / "regimes" / "taxonomy.json").read_text(encoding="utf-8"))
+    core_collection = json.loads(
+        (ROOT / "collections" / "core-perps.json").read_text(encoding="utf-8")
+    )
     written = set()      # relative paths of generated pages, for the link checker
     search_index = []    # {n, d, u}
     az = {}              # letter -> [(name, url)]
     concept_urls = {}
     concept_names = {}
+    term_ids = {}
+    for slug, data in domains:
+        for index, entry in enumerate(data):
+            page_no = index // PER_PAGE + 1
+            url = f"{slug}/" if page_no == 1 else f"{slug}/page-{page_no}.html"
+            url += f"#{anchor(entry['name'])}"
+            concept_urls[entry["id"]] = url
+            concept_names[entry["id"]] = entry["name"]
+            for term in [entry["name"], *entry.get("aliases", [])]:
+                term_ids.setdefault(term.casefold(), set()).add(entry["id"])
+    relationship_lookup = {
+        term: next(iter(ids_for_term))
+        for term, ids_for_term in term_ids.items() if len(ids_for_term) == 1
+    }
+    unresolved_relationships = sorted({
+        relationship for _, data in domains for entry in data
+        for relationship in entry.get("relationships", [])
+        if relationship.casefold() not in relationship_lookup
+    })
 
     # ---- domain pages (paginated) ----
     for di, (slug, data) in enumerate(domains):
@@ -267,8 +326,11 @@ def main():
             for e in chunk:
                 url = f"{slug}/" if pno == 1 else f"{slug}/page-{pno}.html"
                 url += f"#{anchor(e['name'])}"
-                search_index.append({"n": e["name"], "d": data[0]["domain"],
-                                     "u": url})
+                search_index.append({
+                    "n": e["name"], "d": data[0]["domain"], "u": url,
+                    "a": " ".join(e.get("aliases", [])),
+                    "x": " ".join([e.get("definition", ""), e.get("intuition", "")]),
+                })
                 concept_urls[e["id"]] = url
                 concept_names[e["id"]] = e["name"]
                 az.setdefault(e["name"][0].upper(), []).append((e["name"], url))
@@ -294,7 +356,10 @@ def main():
                     f'<span class="showing">showing {lo}–{hi} of {n}</span></p>'
                     + (toc if pno == 1 else "")
                     + pager(slug, pno, n_pages)
-                    + "\n".join(render_entry(e, "../") for e in chunk)
+                    + "\n".join(
+                        render_entry(e, "../", relationship_lookup, concept_urls)
+                        for e in chunk
+                    )
                     + pager(slug, pno, n_pages) + domnav)
             title = f"{data[0]['domain']}" + (f" — page {pno}" if pno > 1 else "")
             (ddir / fname).write_text(
@@ -333,6 +398,9 @@ def main():
         f"<p><strong>{total} concepts across {len(domains)} domains</strong></p>"
         "<p class='meta'>Built with AI systems. Read the "
         "<a href='about.html'>About &amp; Methodology</a> disclosure before using the material.</p>"
+        "<p><a href='query.html'><strong>Open the structured query</strong></a> &middot; "
+        "<a href='playbooks/'>Browse research playbooks</a> &middot; "
+        "<a href='api/v1/manifest.json'>API manifest</a></p>"
         "<h2>Domains</h2>"
         "<table><tr><th>Domain</th><th>Concepts</th></tr>"
         + "".join(rows) + "</table>")
@@ -355,7 +423,8 @@ def main():
         "<h2>How the library is organized</h2>"
         "<p>The canonical data lives in structured JSON. This website and the text export are "
         "generated from that data. Entries emphasize mechanics, failure modes, misconceptions, "
-        "worked examples, relationships, and direct citations.</p>"
+        "worked examples, relationships, and direct citations. The structured query and static "
+        "JSON API are dependency-free generated views of the same canonical material.</p>"
         "<h2>Source policy</h2>"
         "<p>Direct regulatory, exchange, protocol, technical, and canonical research sources "
         "are preferred. Secondary sources are used when direct material is unavailable. A "
@@ -368,6 +437,44 @@ def main():
              description="AI disclosure and methodology for the Pakupai Trading Knowledge Library."),
         encoding="utf-8")
     written.add("about.html")
+
+    # ---- structured query ----
+    domain_options = "".join(
+        f'<option value="{esc(data[0]["domain"])}">{esc(data[0]["domain"])}</option>'
+        for _, data in domains
+    )
+    required_inputs = sorted({
+        item["field"] for playbook in playbooks for item in playbook["required_data"]
+    })
+    required_options = "".join(
+        f'<option value="{esc(value)}">{esc(value)}</option>' for value in required_inputs
+    )
+    regime_tags = [
+        f'{dimension["id"]}.{state["id"]}'
+        for dimension in taxonomy["dimensions"] for state in dimension["states"]
+    ]
+    regime_options = "".join(
+        f'<option value="{esc(value)}">{esc(value)}</option>' for value in regime_tags
+    )
+    query_body = (
+        '<div class="crumbs"><a href="index.html">Home</a> / Structured query</div>'
+        '<h1>Structured knowledge query</h1>'
+        '<p>Search concepts and research playbooks, then narrow by type, domain, core membership, required data, or regime context. The URL updates as you filter so a query can be shared.</p>'
+        '<form id="query-controls" class="query-controls">'
+        '<label>Search<input name="q" type="search" placeholder="funding liquidation VWAP..."></label>'
+        '<label>Record type<select name="type"><option value="">All types</option><option value="concept">Concept</option><option value="playbook">Playbook</option></select></label>'
+        f'<label>Domain<select name="domain"><option value="">All domains</option><option value="Research playbooks">Research playbooks</option>{domain_options}</select></label>'
+        f'<label>Regime<select name="regime"><option value="">All regimes</option>{regime_options}</select></label>'
+        f'<label>Required input<select name="required_input"><option value="">Any input</option>{required_options}</select></label>'
+        '<label class="check"><input name="core" type="checkbox" style="width:auto;margin-right:.4rem">Core only</label>'
+        '</form><p id="query-count" class="meta">Loading structured data...</p><div id="query-results"></div>'
+    )
+    query_html = page(
+        "Structured knowledge query", query_body, "", "query", domains,
+        description="Filter trading concepts and untested research playbooks by structured context."
+    ).replace("</body>", f"<script>{QUERY_JS}</script></body>")
+    (DOCS / "query.html").write_text(query_html, encoding="utf-8")
+    written.add("query.html")
 
     # ---- research playbooks ----
     playbook_dir = DOCS / "playbooks"
@@ -410,10 +517,6 @@ def main():
         json.dumps(search_index, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     api_dir = DOCS / "api" / "v1"
     api_dir.mkdir(parents=True)
-    taxonomy = json.loads((ROOT / "regimes" / "taxonomy.json").read_text(encoding="utf-8"))
-    core_collection = json.loads(
-        (ROOT / "collections" / "core-perps.json").read_text(encoding="utf-8")
-    )
     regime_api = {
         "taxonomy": taxonomy,
         "collection_id": core_collection["id"],
@@ -424,6 +527,60 @@ def main():
     )
     (api_dir / "playbooks.json").write_text(
         json.dumps(playbooks, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    core_ids = set(core_collection["concept_ids"])
+    public_concepts = []
+    resolved_relationship_count = 0
+    relationship_count = 0
+    for _, data in domains:
+        for entry in data:
+            public_entry = {
+                key: value for key, value in entry.items()
+                if key not in {"source_hint", "master_index"}
+            }
+            relationship_ids = []
+            for relationship in entry.get("relationships", []):
+                relationship_count += 1
+                concept_id = relationship_lookup.get(relationship.casefold())
+                if concept_id:
+                    relationship_ids.append(concept_id)
+                    resolved_relationship_count += 1
+            public_entry.update({
+                "type": "concept",
+                "url": concept_urls[entry["id"]],
+                "core": entry["id"] in core_ids,
+                "regime_annotation": core_collection["annotations"].get(entry["id"]),
+                "relationship_ids": relationship_ids,
+            })
+            public_concepts.append(public_entry)
+    (api_dir / "concepts.json").write_text(
+        json.dumps(public_concepts, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    core_api = {
+        key: value for key, value in core_collection.items()
+        if key in {"id", "name", "description", "market_scope", "concept_ids", "annotations"}
+    }
+    (api_dir / "core-perps.json").write_text(
+        json.dumps(core_api, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    manifest = {
+        "schema_version": 1,
+        "generated": date.today().isoformat(),
+        "counts": {"concepts": total, "core_concepts": len(core_ids), "playbooks": len(playbooks)},
+        "endpoints": {
+            "concepts": "concepts.json", "core_perps": "core-perps.json",
+            "regimes": "regimes.json", "playbooks": "playbooks.json"
+        },
+        "relationship_resolution": {
+            "total_references": relationship_count,
+            "resolved_references": resolved_relationship_count,
+            "unresolved_references": relationship_count - resolved_relationship_count,
+            "unresolved_terms": unresolved_relationships,
+        },
+        "ai_disclosure": "Built and maintained with AI systems; verify cited sources independently. Nothing here is financial advice or evidence of profitability."
+    }
+    (api_dir / "manifest.json").write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     urls = [f"{BASE}/{w.replace('index.html', '')}" for w in sorted(written)]
     (DOCS / "sitemap.xml").write_text(
@@ -452,7 +609,10 @@ def main():
                 broken.append(f"{rel} -> {target}")
     assert not broken, f"broken internal links:\n" + "\n".join(broken[:20])
 
-    print(f"site built: {len(written)} pages, {total} entries, 0 broken links")
+    print(
+        f"site built: {len(written)} pages, {total} entries, 0 broken links; "
+        f"relationships {resolved_relationship_count}/{relationship_count} resolved"
+    )
 
 
 if __name__ == "__main__":

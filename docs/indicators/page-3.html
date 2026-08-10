@@ -36,6 +36,10 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 .playbook-card{border:1px solid #ddd;border-radius:6px;padding:.8rem 1rem;margin:.8rem 0}
 .playbook-card h2{margin:.1rem 0 .35rem;font-size:1.15rem}
 .json{white-space:pre-wrap;background:#f4f4f4;padding:.7rem;border-radius:4px;font-family:Consolas,monospace;font-size:.8rem}
+.query-controls{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:.55rem;margin:1rem 0;font-family:system-ui}
+.query-controls input,.query-controls select{width:100%;padding:.5rem;border:1px solid #bbb;border-radius:5px;background:#fff}
+.query-controls label{font-size:.78rem;color:#555}.query-controls .check{display:flex;align-items:end;padding-bottom:.5rem}
+.query-result{border-bottom:1px solid #ddd;padding:.8rem 0}.query-result h2{font-size:1.05rem;margin:0 0 .2rem}
 .domainnav{display:flex;justify-content:space-between;margin-top:2rem;font-family:system-ui;font-size:.85rem}
 .toc{columns:2;font-family:system-ui;font-size:.82rem;background:#fafaf8;border:1px solid #e8e8e5;border-radius:6px;padding:.8rem 1rem}
 .toc a{color:#333}
@@ -49,8 +53,9 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
  nav#sidebar details.tocwrap:not([open]) .navlist{display:none}
  main{padding:1rem}
  .toc{columns:1}
+ .query-controls{grid-template-columns:1fr 1fr}
 }
-</style></head><body><nav id="sidebar" aria-label="Domains"><h2><a href="../index.html" style="color:#111">Trading Library</a></h2><input id="search" type="search" placeholder="Search 1,500 concepts…" data-index="../search-index.json" aria-label="Search concepts"><ul id="search-results"></ul><details class="tocwrap" open><summary class="meta">Domains</summary><ul class="navlist"><li><a href="../all.html">A–Z index</a></li><li><a href="../about.html">About &amp; Methodology</a></li><li><a href="../playbooks/">Research playbooks</a></li><li><a href="../ai-and-knowledge-engineering/">AI and knowledge engineering <span class="count">38</span></a></li><li><a href="../candlestick-patterns/">Candlestick patterns <span class="count">37</span></a></li><li><a href="../chart-patterns/">Chart patterns <span class="count">26</span></a></li><li><a href="../contract-mechanics/">Contract mechanics <span class="count">38</span></a></li><li><a href="../crypto-and-defi/">Crypto and DeFi <span class="count">92</span></a></li><li><a href="../fixed-income-and-rates/">Fixed income and rates <span class="count">32</span></a></li><li><a href="../foreign-exchange/">Foreign exchange <span class="count">25</span></a></li><li><a href="../futures-and-spreads/">Futures and spreads <span class="count">33</span></a></li><li><a href="../indicators/" class="active">Indicators <span class="count">79</span></a></li><li><a href="../instruments/">Instruments <span class="count">48</span></a></li><li><a href="../macro-and-fundamentals/">Macro and fundamentals <span class="count">57</span></a></li><li><a href="../market-abuse-and-ethics/">Market abuse and ethics <span class="count">31</span></a></li><li><a href="../market-data/">Market data <span class="count">33</span></a></li><li><a href="../market-foundations/">Market foundations <span class="count">35</span></a></li><li><a href="../microstructure/">Microstructure <span class="count">54</span></a></li><li><a href="../options/">Options <span class="count">85</span></a></li><li><a href="../orders-and-execution/">Orders and execution <span class="count">71</span></a></li><li><a href="../parameterized-analytics/">Parameterized analytics <span class="count">63</span></a></li><li><a href="../participants/">Participants <span class="count">28</span></a></li><li><a href="../portfolio-management/">Portfolio management <span class="count">45</span></a></li><li><a href="../price-action-and-technical-analysis/">Price action and technical analysis <span class="count">58</span></a></li><li><a href="../psychology-and-process/">Psychology and process <span class="count">55</span></a></li><li><a href="../research-and-backtesting/">Research and backtesting <span class="count">94</span></a></li><li><a href="../risk-and-performance/">Risk and performance <span class="count">82</span></a></li><li><a href="../statistics-and-probability/">Statistics and probability <span class="count">50</span></a></li><li><a href="../time-series-analysis/">Time-series analysis <span class="count">63</span></a></li><li><a href="../trading-systems/">Trading systems <span class="count">56</span></a></li><li><a href="../volume-and-order-flow/">Volume and order flow <span class="count">56</span></a></li><li><a href="../wyckoff/">Wyckoff <span class="count">36</span></a></li></ul></details></nav><main><div class="crumbs"><a href="../index.html">Home</a> / <a href="./">Indicators</a> / page 3</div><h1>Indicators</h1><p class="meta">79 concepts · <span class="showing">showing 51–75 of 79</span></p><div class="pager" role="navigation" aria-label="Pagination"><a href="index.html" rel="first">First</a><a href="page-2.html" rel="prev">Prev</a><a href="index.html">1</a><a href="page-2.html">2</a><span class="cur" aria-current="page">3</span><a href="page-4.html">4</a><a href="page-4.html" rel="next">Next</a><a href="page-4.html" rel="last">Last</a></div><article class="entry" id="negative-volume-index"><h3>Negative volume index <a class="anchor" href="#negative-volume-index">#</a></h3>
+</style></head><body><nav id="sidebar" aria-label="Domains"><h2><a href="../index.html" style="color:#111">Trading Library</a></h2><input id="search" type="search" placeholder="Search 1,500 concepts…" data-index="../search-index.json" aria-label="Search concepts"><ul id="search-results"></ul><details class="tocwrap" open><summary class="meta">Domains</summary><ul class="navlist"><li><a href="../all.html">A–Z index</a></li><li><a href="../about.html">About &amp; Methodology</a></li><li><a href="../query.html">Structured query</a></li><li><a href="../playbooks/">Research playbooks</a></li><li><a href="../ai-and-knowledge-engineering/">AI and knowledge engineering <span class="count">38</span></a></li><li><a href="../candlestick-patterns/">Candlestick patterns <span class="count">37</span></a></li><li><a href="../chart-patterns/">Chart patterns <span class="count">26</span></a></li><li><a href="../contract-mechanics/">Contract mechanics <span class="count">38</span></a></li><li><a href="../crypto-and-defi/">Crypto and DeFi <span class="count">92</span></a></li><li><a href="../fixed-income-and-rates/">Fixed income and rates <span class="count">32</span></a></li><li><a href="../foreign-exchange/">Foreign exchange <span class="count">25</span></a></li><li><a href="../futures-and-spreads/">Futures and spreads <span class="count">33</span></a></li><li><a href="../indicators/" class="active">Indicators <span class="count">79</span></a></li><li><a href="../instruments/">Instruments <span class="count">48</span></a></li><li><a href="../macro-and-fundamentals/">Macro and fundamentals <span class="count">57</span></a></li><li><a href="../market-abuse-and-ethics/">Market abuse and ethics <span class="count">31</span></a></li><li><a href="../market-data/">Market data <span class="count">33</span></a></li><li><a href="../market-foundations/">Market foundations <span class="count">35</span></a></li><li><a href="../microstructure/">Microstructure <span class="count">54</span></a></li><li><a href="../options/">Options <span class="count">85</span></a></li><li><a href="../orders-and-execution/">Orders and execution <span class="count">71</span></a></li><li><a href="../parameterized-analytics/">Parameterized analytics <span class="count">63</span></a></li><li><a href="../participants/">Participants <span class="count">28</span></a></li><li><a href="../portfolio-management/">Portfolio management <span class="count">45</span></a></li><li><a href="../price-action-and-technical-analysis/">Price action and technical analysis <span class="count">58</span></a></li><li><a href="../psychology-and-process/">Psychology and process <span class="count">55</span></a></li><li><a href="../research-and-backtesting/">Research and backtesting <span class="count">94</span></a></li><li><a href="../risk-and-performance/">Risk and performance <span class="count">82</span></a></li><li><a href="../statistics-and-probability/">Statistics and probability <span class="count">50</span></a></li><li><a href="../time-series-analysis/">Time-series analysis <span class="count">63</span></a></li><li><a href="../trading-systems/">Trading systems <span class="count">56</span></a></li><li><a href="../volume-and-order-flow/">Volume and order flow <span class="count">56</span></a></li><li><a href="../wyckoff/">Wyckoff <span class="count">36</span></a></li></ul></details></nav><main><div class="crumbs"><a href="../index.html">Home</a> / <a href="./">Indicators</a> / page 3</div><h1>Indicators</h1><p class="meta">79 concepts · <span class="showing">showing 51–75 of 79</span></p><div class="pager" role="navigation" aria-label="Pagination"><a href="index.html" rel="first">First</a><a href="page-2.html" rel="prev">Prev</a><a href="index.html">1</a><a href="page-2.html">2</a><span class="cur" aria-current="page">3</span><a href="page-4.html">4</a><a href="page-4.html" rel="next">Next</a><a href="page-4.html" rel="last">Last</a></div><article class="entry" id="negative-volume-index"><h3>Negative volume index <a class="anchor" href="#negative-volume-index">#</a></h3>
 <div class="field">Paul Dysart&#x27;s cumulative index (1930s; popularized by Norman Fosback in Stock Market Logic) that accumulates percentage price changes only on periods when volume declines, on the theory that informed &#x27;smart money&#x27; acts on quiet days while the crowd trades on high-volume days.</div>
 <div class="field"><span class="label">Intuition:</span> Strip out the noisy high-volume days and watch what remains: if price grinds higher on falling-volume days, quiet accumulation is presumed.</div>
 <div class="field"><span class="label">Mechanics:</span> Fosback&#x27;s version (used by StockCharts): start the index at 1000; when volume falls versus the prior period, apply the period&#x27;s percentage price change to the index; when volume rises, leave it unchanged. Signals come from NVI relative to its 255-day EMA - above it favors a bull market, below it a bear market.</div>
@@ -59,7 +64,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> From NVI 1000: volume falls and price rises 0.8%, so NVI = 1008; next day volume rises and price rises 1%, and NVI stays 1008.</div>
 <div class="formula">If V_t &lt; V_{t-1}: NVI_t = NVI_{t-1} x (1 + (C_t - C_{t-1})/C_{t-1}); else NVI_t = NVI_{t-1}. Dysart&#x27;s original accumulated net market advances instead of percentage price change.</div>
 <div class="field"><span class="label">Aliases:</span> NVI</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Positive volume index</li><li>On-balance volume</li><li>Accumulation distribution line</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-3.html#positive-volume-index">Positive volume index</a></li><li><a href="../indicators/page-2.html#on-balance-volume">On-balance volume</a></li><li><a href="../indicators/page-2.html#accumulation-distribution-line">Accumulation distribution line</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/negative-volume-index-nvi" rel="noopener">Negative Volume Index (NVI) | ChartSchool | StockCharts.com</a> — SharpCharts Calculation</div>
 </article>
 <article class="entry" id="positive-volume-index"><h3>Positive volume index <a class="anchor" href="#positive-volume-index">#</a></h3>
@@ -71,7 +76,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> From PVI 1000: volume jumps and price rises 1.2%, so PVI = 1012; next day volume falls and price drops 0.5%, and PVI stays 1012.</div>
 <div class="formula">If V_t &gt; V_{t-1}: PVI_t = PVI_{t-1} + ((C_t - C_{t-1})/C_{t-1}) x PVI_{t-1}; else PVI_t = PVI_{t-1}.</div>
 <div class="field"><span class="label">Aliases:</span> PVI</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Negative volume index</li><li>On-balance volume</li><li>Volume oscillator</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-3.html#negative-volume-index">Negative volume index</a></li><li><a href="../indicators/page-2.html#on-balance-volume">On-balance volume</a></li><li><a href="../indicators/page-3.html#volume-oscillator">Volume oscillator</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.investopedia.com/terms/p/pvi.asp" rel="noopener">Positive Volume Index (PVI) - Investopedia</a> — The Formula for the Positive Volume Index (PVI)</div>
 </article>
 <article class="entry" id="volume-weighted-average-price"><h3>Volume-weighted average price <a class="anchor" href="#volume-weighted-average-price">#</a></h3>
@@ -83,7 +88,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> StockCharts&#x27; IBM example: over the first 30 one-minute bars prices ranged 126.67-127.36 while VWAP ran 127.09-127.21 through the middle.</div>
 <div class="formula">VWAP = sum(TypicalPrice_i x Volume_i) / sum(Volume_i), TypicalPrice = (High + Low + Close)/3, accumulated from the day&#x27;s open.</div>
 <div class="field"><span class="label">Aliases:</span> VWAP</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Anchored VWAP</li><li>Moving VWAP</li><li>Volume-weighted moving average</li><li>Simple moving average</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-3.html#anchored-vwap">Anchored VWAP</a></li><li><a href="../indicators/page-3.html#moving-vwap">Moving VWAP</a></li><li><a href="../indicators/page-3.html#volume-weighted-moving-average">Volume-weighted moving average</a></li><li>Simple moving average</li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/volume-weighted-average-price-vwap" rel="noopener">Volume-Weighted Average Price (VWAP) | ChartSchool | StockCharts.com</a> — VWAP Formulas</div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.tradingview.com/support/solutions/43000502018-volume-weighted-average-price-vwap/" rel="noopener">TradingView - Volume Weighted Average Price</a> — Calculation and inputs</div>
 </article>
@@ -96,7 +101,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> StockCharts&#x27; TSLA example: the session VWAP from the open was skewed by the first 20 minutes, while an AVWAP anchored at the morning low better tracked midday trade.</div>
 <div class="formula">AVWAP = sum(TypicalPrice_i x Volume_i, from anchor to t) / sum(Volume_i, from anchor to t).</div>
 <div class="field"><span class="label">Aliases:</span> AVWAP</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Volume-weighted average price</li><li>Moving VWAP</li><li>Volume-weighted moving average</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-3.html#volume-weighted-average-price">Volume-weighted average price</a></li><li><a href="../indicators/page-3.html#moving-vwap">Moving VWAP</a></li><li><a href="../indicators/page-3.html#volume-weighted-moving-average">Volume-weighted moving average</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/anchored-vwap" rel="noopener">Anchored VWAP | ChartSchool | StockCharts.com</a> — How Do You Calculate the Anchored VWAP?</div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.tradingview.com/support/solutions/43000669764-anchored-vwap/" rel="noopener">TradingView - Anchored VWAP drawing tool</a> — Anchor point and calculation behavior</div>
 </article>
@@ -109,7 +114,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If the last five daily VWAP values are 100, 101, 101.5, 102, 102.5, the 5-period MVWAP = 101.4.</div>
 <div class="formula">MVWAP(n) = (1/n) x sum of the last n VWAP values, where each VWAP = sum(TypicalPrice x Volume) / sum(Volume) over its calculation window.</div>
 <div class="field"><span class="label">Aliases:</span> MVWAP</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Volume-weighted average price</li><li>Anchored VWAP</li><li>Volume-weighted moving average</li><li>Simple moving average</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-3.html#volume-weighted-average-price">Volume-weighted average price</a></li><li><a href="../indicators/page-3.html#anchored-vwap">Anchored VWAP</a></li><li><a href="../indicators/page-3.html#volume-weighted-moving-average">Volume-weighted moving average</a></li><li>Simple moving average</li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.investopedia.com/articles/trading/11/trading-with-vwap-mvwap.asp" rel="noopener">Trading With VWAP and MVWAP - Investopedia</a> — Calculating VWAP</div>
 </article>
 <article class="entry" id="volume-weighted-moving-average"><h3>Volume-weighted moving average <a class="anchor" href="#volume-weighted-moving-average">#</a></h3>
@@ -121,7 +126,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> Tulip Indicators&#x27; worked example: closes 81.59-83.61 with volumes around 3.8-7.7M give a first 5-period VWMA of 82.33, versus an equal-weighted SMA of 82.63.</div>
 <div class="formula">VWMA(n) = sum(C_{t-i} x V_{t-i}, i=0..n-1) / sum(V_{t-i}, i=0..n-1).</div>
 <div class="field"><span class="label">Aliases:</span> VWMA</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Volume-weighted average price</li><li>Simple moving average</li><li>Weighted moving average</li><li>Moving VWAP</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-3.html#volume-weighted-average-price">Volume-weighted average price</a></li><li>Simple moving average</li><li><a href="../indicators/#weighted-moving-average">Weighted moving average</a></li><li><a href="../indicators/page-3.html#moving-vwap">Moving VWAP</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://tulipindicators.org/vwma" rel="noopener">Volume Weighted Moving Average - Tulip Indicators</a> — Description</div>
 </article>
 <article class="entry" id="relative-volume"><h3>Relative volume <a class="anchor" href="#relative-volume">#</a></h3>
@@ -133,7 +138,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> A stock averaging 300,000 shares a day that trades 1,000,000 has RVOL ~ 3.3; TradingSim notes SIGA traded 37M shares versus a ~130k average on its May 2022 news day.</div>
 <div class="formula">RVOL = V_current / Average(V, n); time-adjusted form: RVOL(t) = CumV(today, up to t) / Average_n(CumV(up to same time t)).</div>
 <div class="field"><span class="label">Aliases:</span> RVOL, Relative Volume (RVOL)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Volume oscillator</li><li>On-balance volume</li><li>Volume-weighted average price</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-3.html#volume-oscillator">Volume oscillator</a></li><li><a href="../indicators/page-2.html#on-balance-volume">On-balance volume</a></li><li><a href="../indicators/page-3.html#volume-weighted-average-price">Volume-weighted average price</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.tradingsim.com/blog/relative-volume-rvol" rel="noopener">Relative Volume (RVOL) - TradingSim</a> — How is relative volume calculated?</div>
 </article>
 <article class="entry" id="volume-oscillator"><h3>Volume oscillator <a class="anchor" href="#volume-oscillator">#</a></h3>
@@ -145,7 +150,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> A 12-day volume EMA of 3.0M against a 26-day EMA of 2.5M gives PVO = +20, matching the surge level StockCharts shows confirming ADM&#x27;s resistance and support breaks.</div>
 <div class="formula">PVO = ((EMA(V,12) - EMA(V,26)) / EMA(V,26)) x 100; Signal = EMA(PVO, 9); Histogram = PVO - Signal.</div>
 <div class="field"><span class="label">Aliases:</span> PVO, Percentage Volume Oscillator, Volume Oscillator (VO)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Moving average convergence divergence</li><li>On-balance volume</li><li>Relative volume</li><li>Force index</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/#moving-average-convergence-divergence">Moving average convergence divergence</a></li><li><a href="../indicators/page-2.html#on-balance-volume">On-balance volume</a></li><li><a href="../indicators/page-3.html#relative-volume">Relative volume</a></li><li><a href="../indicators/page-2.html#force-index">Force index</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/percentage-volume-oscillator-pvo" rel="noopener">Percentage Volume Oscillator (PVO) | ChartSchool | StockCharts.com</a> — Calculating the Percentage Volume Oscillator</div>
 </article>
 <article class="entry" id="chaikin-oscillator"><h3>Chaikin oscillator <a class="anchor" href="#chaikin-oscillator">#</a></h3>
@@ -157,7 +162,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If the 3-day EMA of the ADL is 12,000 and the 10-day EMA is 11,000, the oscillator reads +1,000 - the threshold StockCharts uses in its bullish scan.</div>
 <div class="formula">Chaikin Oscillator = EMA(ADL, 3) - EMA(ADL, 10), with ADL the running sum of [((C-L) - (H-C)) / (H-L)] x V.</div>
 <div class="field"><span class="label">Aliases:</span> CO, Chaikin Osc</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Accumulation distribution line</li><li>Chaikin money flow</li><li>Moving average convergence divergence</li><li>On-balance volume</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#accumulation-distribution-line">Accumulation distribution line</a></li><li><a href="../indicators/page-2.html#chaikin-money-flow">Chaikin money flow</a></li><li><a href="../indicators/#moving-average-convergence-divergence">Moving average convergence divergence</a></li><li><a href="../indicators/page-2.html#on-balance-volume">On-balance volume</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/chaikin-oscillator" rel="noopener">Chaikin Oscillator | ChartSchool | StockCharts.com</a> — Calculating the Chaikin Oscillator</div>
 </article>
 <article class="entry" id="aroon-up"><h3>Aroon up <a class="anchor" href="#aroon-up">#</a></h3>
@@ -169,7 +174,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> With n = 25 and the 25-day high made 5 days ago: Aroon-Up = (25-5)/25 x 100 = 80.</div>
 <div class="formula">Aroon-Up(n) = ((n - PeriodsSinceHighestHigh(n)) / n) x 100.</div>
 <div class="field"><span class="label">Aliases:</span> Aroon-Up, Aroon Up</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Aroon down</li><li>Aroon oscillator</li><li>Average directional index</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-3.html#aroon-down">Aroon down</a></li><li><a href="../indicators/page-3.html#aroon-oscillator">Aroon oscillator</a></li><li><a href="../indicators/page-2.html#average-directional-index">Average directional index</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/aroon" rel="noopener">Aroon | ChartSchool | StockCharts.com</a> — How To Calculate the Aroon Indicators</div>
 </article>
 <article class="entry" id="aroon-down"><h3>Aroon down <a class="anchor" href="#aroon-down">#</a></h3>
@@ -181,7 +186,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> With n = 25 and the 25-day low set 10 days ago: Aroon-Down = (25-10)/25 x 100 = 60.</div>
 <div class="formula">Aroon-Down(n) = ((n - PeriodsSinceLowestLow(n)) / n) x 100.</div>
 <div class="field"><span class="label">Aliases:</span> Aroon-Down, Aroon Down</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Aroon up</li><li>Aroon oscillator</li><li>Average directional index</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-3.html#aroon-up">Aroon up</a></li><li><a href="../indicators/page-3.html#aroon-oscillator">Aroon oscillator</a></li><li><a href="../indicators/page-2.html#average-directional-index">Average directional index</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/aroon" rel="noopener">Aroon | ChartSchool | StockCharts.com</a> — How To Calculate the Aroon Indicators</div>
 </article>
 <article class="entry" id="aroon-oscillator"><h3>Aroon oscillator <a class="anchor" href="#aroon-oscillator">#</a></h3>
@@ -193,7 +198,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> Aroon-Up 80 and Aroon-Down 20 give an oscillator of +60, an upside bias; +100 requires Up = 100 and Down = 0 simultaneously.</div>
 <div class="formula">AroonOsc(n) = AroonUp(n) - AroonDown(n) = 100 x (PeriodsSinceLowestLow(n) - PeriodsSinceHighestHigh(n)) / n.</div>
 <div class="field"><span class="label">Aliases:</span> Aroon Osc</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Aroon up</li><li>Aroon down</li><li>Average directional index</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-3.html#aroon-up">Aroon up</a></li><li><a href="../indicators/page-3.html#aroon-down">Aroon down</a></li><li><a href="../indicators/page-2.html#average-directional-index">Average directional index</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/aroon-oscillator" rel="noopener">Aroon Oscillator | ChartSchool | StockCharts.com</a> — How To Calculate the Aroon Oscillator</div>
 </article>
 <article class="entry" id="chande-momentum-oscillator"><h3>Chande momentum oscillator <a class="anchor" href="#chande-momentum-oscillator">#</a></h3>
@@ -205,7 +210,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> Over 20 days with up-moves totaling 30 points and down-moves 10: CMO = 100 x (30-10)/(30+10) = +50.</div>
 <div class="formula">CMO(n) = 100 x (Su - Sd) / (Su + Sd), where Su = sum of max(C_i - C_{i-1}, 0) and Sd = sum of max(C_{i-1} - C_i, 0) over n periods.</div>
 <div class="field"><span class="label">Aliases:</span> CMO</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Relative strength index</li><li>Variable index dynamic average</li><li>Rate of change</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/#relative-strength-index">Relative strength index</a></li><li><a href="../indicators/#variable-index-dynamic-average">Variable index dynamic average</a></li><li><a href="../indicators/#rate-of-change">Rate of change</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.investopedia.com/terms/c/chandemomentumoscillator.asp" rel="noopener">Chande Momentum Oscillator - Investopedia</a> — How to Calculate the Chande Momentum Oscillator</div>
 </article>
 <article class="entry" id="ultimate-oscillator"><h3>Ultimate oscillator <a class="anchor" href="#ultimate-oscillator">#</a></h3>
@@ -217,7 +222,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If Avg7 = 0.60, Avg14 = 0.50 and Avg28 = 0.40, UO = 100 x (2.4 + 1.0 + 0.4)/7 ~ 54.3.</div>
 <div class="formula">UO = 100 x (4 x Avg7 + 2 x Avg14 + 1 x Avg28) / (4+2+1), with Avg_k = sum(BP, k) / sum(TR, k).</div>
 <div class="field"><span class="label">Aliases:</span> UO, Ultimate Osc</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Williams percent R</li><li>Relative strength index</li><li>Average true range</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/#williams-percent-r">Williams percent R</a></li><li><a href="../indicators/#relative-strength-index">Relative strength index</a></li><li><a href="../indicators/page-2.html#average-true-range">Average true range</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/ultimate-oscillator" rel="noopener">Ultimate Oscillator | ChartSchool | StockCharts.com</a> — Calculating the Ultimate Oscillator</div>
 </article>
 <article class="entry" id="trix"><h3>TRIX <a class="anchor" href="#trix">#</a></h3>
@@ -229,7 +234,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If the triple-smoothed EMA rises from 100.0 to 100.2, TRIX prints +0.2 (percent) for that bar.</div>
 <div class="formula">EMA1 = EMA(C, n); EMA2 = EMA(EMA1, n); EMA3 = EMA(EMA2, n); TRIX = 100 x (EMA3_t - EMA3_{t-1}) / EMA3_{t-1}.</div>
 <div class="field"><span class="label">Aliases:</span> TRIX, Triple exponential average oscillator</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Moving average convergence divergence</li><li>Exponential moving average</li><li>Triple exponential moving average</li><li>Rate of change</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/#moving-average-convergence-divergence">Moving average convergence divergence</a></li><li><a href="../indicators/#exponential-moving-average">Exponential moving average</a></li><li><a href="../indicators/#triple-exponential-moving-average">Triple exponential moving average</a></li><li><a href="../indicators/#rate-of-change">Rate of change</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/trix" rel="noopener">TRIX | ChartSchool | StockCharts.com</a> — Calculating TRIX</div>
 </article>
 <article class="entry" id="detrended-price-oscillator"><h3>Detrended price oscillator <a class="anchor" href="#detrended-price-oscillator">#</a></h3>
@@ -241,7 +246,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> 20-day DPO with the close 11 days ago at 103 and the 20-day SMA at 100: DPO = +3; troughs about 20 bars apart suggest a 20-day cycle.</div>
 <div class="formula">DPO(n) = Price_{t-(n/2 + 1)} - SMA(Price, n)_t.</div>
 <div class="field"><span class="label">Aliases:</span> DPO</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Simple moving average</li><li>Rate of change</li><li>Moving average envelope</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Simple moving average</li><li><a href="../indicators/#rate-of-change">Rate of change</a></li><li><a href="../indicators/page-2.html#moving-average-envelope">Moving average envelope</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/detrended-price-oscillator-dpo" rel="noopener">Detrended Price Oscillator (DPO) | ChartSchool | StockCharts.com</a> — Calculation</div>
 </article>
 <article class="entry" id="know-sure-thing-oscillator"><h3>Know Sure Thing oscillator <a class="anchor" href="#know-sure-thing-oscillator">#</a></h3>
@@ -253,7 +258,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If the four smoothed ROCs read +2, +3, +4, +5, then KST = 2 + 6 + 12 + 20 = +40.</div>
 <div class="formula">KST = sum(i x SMA(ROC(r_i), s_i), i=1..4) with (r,s) = (10,10), (15,10), (20,10), (30,15); Signal = SMA(KST, 9).</div>
 <div class="field"><span class="label">Aliases:</span> KST, Know Sure Thing, Pring&#x27;s KST</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Rate of change</li><li>Moving average convergence divergence</li><li>TRIX</li><li>Coppock curve</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/#rate-of-change">Rate of change</a></li><li><a href="../indicators/#moving-average-convergence-divergence">Moving average convergence divergence</a></li><li><a href="../indicators/page-3.html#trix">TRIX</a></li><li><a href="../indicators/page-3.html#coppock-curve">Coppock curve</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/prings-know-sure-thing-kst" rel="noopener">Pring&#x27;s Know Sure Thing (KST) | ChartSchool | StockCharts.com</a> — SharpCharts Calculation</div>
 </article>
 <article class="entry" id="coppock-curve"><h3>Coppock curve <a class="anchor" href="#coppock-curve">#</a></h3>
@@ -265,7 +270,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> After a decline, if the 14-month and 11-month ROCs sum to +3 and rise, the 10-month WMA climbs toward +3, crossing zero for the classic buy signal.</div>
 <div class="formula">Coppock = WMA(10) of [ROC(14) + ROC(11)], ROC(n) = ((C_t - C_{t-n}) / C_{t-n}) x 100.</div>
 <div class="field"><span class="label">Aliases:</span> Coppock Curve, Coppock guide</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Rate of change</li><li>Weighted moving average</li><li>Know Sure Thing oscillator</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/#rate-of-change">Rate of change</a></li><li><a href="../indicators/#weighted-moving-average">Weighted moving average</a></li><li><a href="../indicators/page-3.html#know-sure-thing-oscillator">Know Sure Thing oscillator</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/coppock-curve" rel="noopener">Coppock Curve | ChartSchool | StockCharts.com</a> — SharpCharts Calculation</div>
 </article>
 <article class="entry" id="fisher-transform"><h3>Fisher transform <a class="anchor" href="#fisher-transform">#</a></h3>
@@ -277,7 +282,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If normalized X = 0.9, Fisher = 0.5 x ln(1.9/0.1) ~ 1.47 - a stretched extreme reading that flags a potential turn when it hooks down.</div>
 <div class="formula">Fisher = 0.5 x ln((1 + X) / (1 - X)), where X is price normalized to (-1, +1) over the look-back (inputs clamped just inside +/-1).</div>
 <div class="field"><span class="label">Aliases:</span> Fisher Transform indicator</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Stochastic oscillator</li><li>Zero-lag exponential moving average</li><li>Relative vigor index</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/#stochastic-oscillator">Stochastic oscillator</a></li><li><a href="../indicators/#zero-lag-exponential-moving-average">Zero-lag exponential moving average</a></li><li><a href="../indicators/page-4.html#relative-vigor-index">Relative vigor index</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://help.tc2000.com/m/69445/l/760135-fisher-transform" rel="noopener">Fisher Transform - TC2000 Help Site (Personal Criteria Formulas)</a> — Fisher Transform definition, formula, and parameters</div>
 </article>
 <article class="entry" id="zigzag-indicator"><h3>Zigzag indicator <a class="anchor" href="#zigzag-indicator">#</a></h3>
@@ -289,7 +294,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> From a 100 low, price rises to 112 (+12%): the leg extends to 112; only a decline to 100.8 (-10% with a 10% setting) confirms a new down leg.</div>
 <div class="formula">A pivot is confirmed when |P_t - P_pivot| / P_pivot &gt;= threshold (e.g., 5%); legs connect successive confirmed pivots.</div>
 <div class="field"><span class="label">Aliases:</span> ZigZag, Zig Zag</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Fractal indicator</li><li>Alligator indicator</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-3.html#fractal-indicator">Fractal indicator</a></li><li><a href="../indicators/page-3.html#alligator-indicator">Alligator indicator</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/zigzag" rel="noopener">ZigZag | ChartSchool | StockCharts.com</a> — ZigZag Calculation</div>
 </article>
 <article class="entry" id="fractal-indicator"><h3>Fractal indicator <a class="anchor" href="#fractal-indicator">#</a></h3>
@@ -301,7 +306,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> Five bars with highs 10, 11, 12, 11, 10 put an up fractal on the middle bar (high 12), confirmed two bars later.</div>
 <div class="formula">Up fractal at bar t: H_t &gt; H_{t-1}, H_t &gt; H_{t-2}, H_t &gt; H_{t+1}, H_t &gt; H_{t+2}; down fractal: L_t below the four surrounding lows.</div>
 <div class="field"><span class="label">Aliases:</span> Williams fractals, Fractals (Bill Williams)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Alligator indicator</li><li>Zigzag indicator</li><li>Awesome oscillator</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-3.html#alligator-indicator">Alligator indicator</a></li><li><a href="../indicators/page-3.html#zigzag-indicator">Zigzag indicator</a></li><li><a href="../indicators/page-3.html#awesome-oscillator">Awesome oscillator</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.metatrader5.com/en/terminal/help/indicators/bw_indicators/fractals" rel="noopener">Fractals - MetaTrader 5 Help</a> — Fractals indicator definition and interpretation</div>
 </article>
 <article class="entry" id="alligator-indicator"><h3>Alligator indicator <a class="anchor" href="#alligator-indicator">#</a></h3>
@@ -313,7 +318,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If the SMMA(13) of the median price is 100, it is drawn 8 bars ahead as the Jaw; when the Lips cross above the Teeth and then the Jaw and all three fan upward, the alligator is &#x27;awake and eating&#x27;.</div>
 <div class="formula">Jaw = SMMA(MedianPrice, 13) shifted +8; Teeth = SMMA(MedianPrice, 8) shifted +5; Lips = SMMA(MedianPrice, 5) shifted +3; MedianPrice = (High + Low)/2.</div>
 <div class="field"><span class="label">Aliases:</span> Williams Alligator, Alligator (Bill Williams)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Smoothed moving average</li><li>Gator oscillator</li><li>Fractal indicator</li><li>Awesome oscillator</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/#smoothed-moving-average">Smoothed moving average</a></li><li><a href="../indicators/page-3.html#gator-oscillator">Gator oscillator</a></li><li><a href="../indicators/page-3.html#fractal-indicator">Fractal indicator</a></li><li><a href="../indicators/page-3.html#awesome-oscillator">Awesome oscillator</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.metatrader5.com/en/terminal/help/indicators/bw_indicators/alligator" rel="noopener">Alligator - MetaTrader 5 Help</a> — Calculation</div>
 </article>
 <article class="entry" id="awesome-oscillator"><h3>Awesome oscillator <a class="anchor" href="#awesome-oscillator">#</a></h3>
@@ -325,7 +330,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If the 5-bar midpoint SMA is 102 and the 34-bar is 100, AO = +2.0; a bar printing +1.8 next paints red even though still positive.</div>
 <div class="formula">AO = SMA(MP, 5) - SMA(MP, 34), where MP = (High + Low)/2.</div>
 <div class="field"><span class="label">Aliases:</span> AO</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Moving average convergence divergence</li><li>Alligator indicator</li><li>Gator oscillator</li><li>Fractal indicator</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/#moving-average-convergence-divergence">Moving average convergence divergence</a></li><li><a href="../indicators/page-3.html#alligator-indicator">Alligator indicator</a></li><li><a href="../indicators/page-3.html#gator-oscillator">Gator oscillator</a></li><li><a href="../indicators/page-3.html#fractal-indicator">Fractal indicator</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.tradingsim.com/blog/awesome-oscillator" rel="noopener">Awesome Oscillator - TradingSim</a> — So, what is the Awesome Oscillator Indicator?</div>
 </article>
 <article class="entry" id="gator-oscillator"><h3>Gator oscillator <a class="anchor" href="#gator-oscillator">#</a></h3>
@@ -337,7 +342,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> With Jaw = 100, Teeth = 101, Lips = 103: upper bar = 1, lower bar = -2; if yesterday&#x27;s bars were 0.8 and -1.5, both expanded - the gator is &#x27;eating&#x27;.</div>
 <div class="formula">Upper = |SMMA(MP,13,+8) - SMMA(MP,8,+5)|; Lower = -|SMMA(MP,8,+5) - SMMA(MP,5,+3)|.</div>
 <div class="field"><span class="label">Aliases:</span> GO, Gator Oscillator</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Alligator indicator</li><li>Awesome oscillator</li><li>Smoothed moving average</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-3.html#alligator-indicator">Alligator indicator</a></li><li><a href="../indicators/page-3.html#awesome-oscillator">Awesome oscillator</a></li><li><a href="../indicators/#smoothed-moving-average">Smoothed moving average</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.motivewave.com/studies/gator_oscillator.htm" rel="noopener">Gator Oscillator - MotiveWave Studies</a> — Calculation</div>
 </article>
 <article class="entry" id="elder-ray-index"><h3>Elder Ray index <a class="anchor" href="#elder-ray-index">#</a></h3>
@@ -349,7 +354,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> With the 13-day EMA at 50, a bar&#x27;s high of 51.5 and low of 48.5 give Bull Power +1.5 and Bear Power -1.5; Bear Power rising from -2.0 to -1.0 while the EMA climbs is Elder&#x27;s buy configuration.</div>
 <div class="formula">Bull Power = High - EMA(Close, 13); Bear Power = Low - EMA(Close, 13).</div>
 <div class="field"><span class="label">Aliases:</span> Elder-Ray, Bull Power and Bear Power</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Exponential moving average</li><li>Force index</li><li>Average directional index</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/#exponential-moving-average">Exponential moving average</a></li><li><a href="../indicators/page-2.html#force-index">Force index</a></li><li><a href="../indicators/page-2.html#average-directional-index">Average directional index</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.investopedia.com/terms/e/elderray.asp" rel="noopener">Elder-Ray Index Definition and Uses - Investopedia</a> — Elder-Ray Index Calculation</div>
 </article><div class="pager" role="navigation" aria-label="Pagination"><a href="index.html" rel="first">First</a><a href="page-2.html" rel="prev">Prev</a><a href="index.html">1</a><a href="page-2.html">2</a><span class="cur" aria-current="page">3</span><a href="page-4.html">4</a><a href="page-4.html" rel="next">Next</a><a href="page-4.html" rel="last">Last</a></div><div class="domainnav"><a href="../futures-and-spreads/">&larr; Futures and spreads</a><a href="../instruments/">Instruments &rarr;</a></div><p class='meta'>Generated 2026-08-09 · <a href='../about.html'>About &amp; Methodology</a> · <a href='https://github.com/unperson-12359/trading-knowledge-library'>GitHub</a></p></main><script>
 (function(){
@@ -361,7 +366,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
     var q=box.value.trim().toLowerCase();res.innerHTML='';
     if(q.length<2)return;
     load().then(function(data){
-      var hits=data.filter(function(e){return e.n.toLowerCase().indexOf(q)!==-1}).slice(0,12);
+      var hits=data.filter(function(e){return (e.n+' '+(e.a||'')+' '+(e.x||'')).toLowerCase().indexOf(q)!==-1}).slice(0,12);
       res.innerHTML=hits.map(function(e){
         return '<li><a href="'+e.u+'">'+e.n+'</a> <span class="sr-domain">'+e.d+'</span></li>';
       }).join('')||'<li class="meta">No matches</li>';

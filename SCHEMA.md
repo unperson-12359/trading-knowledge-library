@@ -47,6 +47,14 @@ failure modes, and chronological validation plans. Their classification and
 warning are fixed: they are untested hypotheses, not recommendations or proof
 of profitability.
 
+## Public API projection
+
+`docs/api/v1/concepts.json` is generated from canonical concepts. It omits the
+import-only `source_hint` and `master_index` fields and adds `type`, `url`,
+`core`, `regime_annotation`, and `relationship_ids`. A relationship ID is
+included only when its name or alias resolves to exactly one concept; the
+original relationship text is always preserved.
+
 ## Rules
 
 - Every entry must contain the full explanatory fields and at least one valid

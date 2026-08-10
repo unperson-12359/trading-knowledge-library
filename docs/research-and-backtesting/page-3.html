@@ -36,6 +36,10 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 .playbook-card{border:1px solid #ddd;border-radius:6px;padding:.8rem 1rem;margin:.8rem 0}
 .playbook-card h2{margin:.1rem 0 .35rem;font-size:1.15rem}
 .json{white-space:pre-wrap;background:#f4f4f4;padding:.7rem;border-radius:4px;font-family:Consolas,monospace;font-size:.8rem}
+.query-controls{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:.55rem;margin:1rem 0;font-family:system-ui}
+.query-controls input,.query-controls select{width:100%;padding:.5rem;border:1px solid #bbb;border-radius:5px;background:#fff}
+.query-controls label{font-size:.78rem;color:#555}.query-controls .check{display:flex;align-items:end;padding-bottom:.5rem}
+.query-result{border-bottom:1px solid #ddd;padding:.8rem 0}.query-result h2{font-size:1.05rem;margin:0 0 .2rem}
 .domainnav{display:flex;justify-content:space-between;margin-top:2rem;font-family:system-ui;font-size:.85rem}
 .toc{columns:2;font-family:system-ui;font-size:.82rem;background:#fafaf8;border:1px solid #e8e8e5;border-radius:6px;padding:.8rem 1rem}
 .toc a{color:#333}
@@ -49,15 +53,16 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
  nav#sidebar details.tocwrap:not([open]) .navlist{display:none}
  main{padding:1rem}
  .toc{columns:1}
+ .query-controls{grid-template-columns:1fr 1fr}
 }
-</style></head><body><nav id="sidebar" aria-label="Domains"><h2><a href="../index.html" style="color:#111">Trading Library</a></h2><input id="search" type="search" placeholder="Search 1,500 concepts…" data-index="../search-index.json" aria-label="Search concepts"><ul id="search-results"></ul><details class="tocwrap" open><summary class="meta">Domains</summary><ul class="navlist"><li><a href="../all.html">A–Z index</a></li><li><a href="../about.html">About &amp; Methodology</a></li><li><a href="../playbooks/">Research playbooks</a></li><li><a href="../ai-and-knowledge-engineering/">AI and knowledge engineering <span class="count">38</span></a></li><li><a href="../candlestick-patterns/">Candlestick patterns <span class="count">37</span></a></li><li><a href="../chart-patterns/">Chart patterns <span class="count">26</span></a></li><li><a href="../contract-mechanics/">Contract mechanics <span class="count">38</span></a></li><li><a href="../crypto-and-defi/">Crypto and DeFi <span class="count">92</span></a></li><li><a href="../fixed-income-and-rates/">Fixed income and rates <span class="count">32</span></a></li><li><a href="../foreign-exchange/">Foreign exchange <span class="count">25</span></a></li><li><a href="../futures-and-spreads/">Futures and spreads <span class="count">33</span></a></li><li><a href="../indicators/">Indicators <span class="count">79</span></a></li><li><a href="../instruments/">Instruments <span class="count">48</span></a></li><li><a href="../macro-and-fundamentals/">Macro and fundamentals <span class="count">57</span></a></li><li><a href="../market-abuse-and-ethics/">Market abuse and ethics <span class="count">31</span></a></li><li><a href="../market-data/">Market data <span class="count">33</span></a></li><li><a href="../market-foundations/">Market foundations <span class="count">35</span></a></li><li><a href="../microstructure/">Microstructure <span class="count">54</span></a></li><li><a href="../options/">Options <span class="count">85</span></a></li><li><a href="../orders-and-execution/">Orders and execution <span class="count">71</span></a></li><li><a href="../parameterized-analytics/">Parameterized analytics <span class="count">63</span></a></li><li><a href="../participants/">Participants <span class="count">28</span></a></li><li><a href="../portfolio-management/">Portfolio management <span class="count">45</span></a></li><li><a href="../price-action-and-technical-analysis/">Price action and technical analysis <span class="count">58</span></a></li><li><a href="../psychology-and-process/">Psychology and process <span class="count">55</span></a></li><li><a href="../research-and-backtesting/" class="active">Research and backtesting <span class="count">94</span></a></li><li><a href="../risk-and-performance/">Risk and performance <span class="count">82</span></a></li><li><a href="../statistics-and-probability/">Statistics and probability <span class="count">50</span></a></li><li><a href="../time-series-analysis/">Time-series analysis <span class="count">63</span></a></li><li><a href="../trading-systems/">Trading systems <span class="count">56</span></a></li><li><a href="../volume-and-order-flow/">Volume and order flow <span class="count">56</span></a></li><li><a href="../wyckoff/">Wyckoff <span class="count">36</span></a></li></ul></details></nav><main><div class="crumbs"><a href="../index.html">Home</a> / <a href="./">Research and backtesting</a> / page 3</div><h1>Research and backtesting</h1><p class="meta">94 concepts · <span class="showing">showing 51–75 of 94</span></p><div class="pager" role="navigation" aria-label="Pagination"><a href="index.html" rel="first">First</a><a href="page-2.html" rel="prev">Prev</a><a href="index.html">1</a><a href="page-2.html">2</a><span class="cur" aria-current="page">3</span><a href="page-4.html">4</a><a href="page-4.html" rel="next">Next</a><a href="page-4.html" rel="last">Last</a></div><article class="entry" id="ensemble-model"><h3>Ensemble model <a class="anchor" href="#ensemble-model">#</a></h3>
+</style></head><body><nav id="sidebar" aria-label="Domains"><h2><a href="../index.html" style="color:#111">Trading Library</a></h2><input id="search" type="search" placeholder="Search 1,500 concepts…" data-index="../search-index.json" aria-label="Search concepts"><ul id="search-results"></ul><details class="tocwrap" open><summary class="meta">Domains</summary><ul class="navlist"><li><a href="../all.html">A–Z index</a></li><li><a href="../about.html">About &amp; Methodology</a></li><li><a href="../query.html">Structured query</a></li><li><a href="../playbooks/">Research playbooks</a></li><li><a href="../ai-and-knowledge-engineering/">AI and knowledge engineering <span class="count">38</span></a></li><li><a href="../candlestick-patterns/">Candlestick patterns <span class="count">37</span></a></li><li><a href="../chart-patterns/">Chart patterns <span class="count">26</span></a></li><li><a href="../contract-mechanics/">Contract mechanics <span class="count">38</span></a></li><li><a href="../crypto-and-defi/">Crypto and DeFi <span class="count">92</span></a></li><li><a href="../fixed-income-and-rates/">Fixed income and rates <span class="count">32</span></a></li><li><a href="../foreign-exchange/">Foreign exchange <span class="count">25</span></a></li><li><a href="../futures-and-spreads/">Futures and spreads <span class="count">33</span></a></li><li><a href="../indicators/">Indicators <span class="count">79</span></a></li><li><a href="../instruments/">Instruments <span class="count">48</span></a></li><li><a href="../macro-and-fundamentals/">Macro and fundamentals <span class="count">57</span></a></li><li><a href="../market-abuse-and-ethics/">Market abuse and ethics <span class="count">31</span></a></li><li><a href="../market-data/">Market data <span class="count">33</span></a></li><li><a href="../market-foundations/">Market foundations <span class="count">35</span></a></li><li><a href="../microstructure/">Microstructure <span class="count">54</span></a></li><li><a href="../options/">Options <span class="count">85</span></a></li><li><a href="../orders-and-execution/">Orders and execution <span class="count">71</span></a></li><li><a href="../parameterized-analytics/">Parameterized analytics <span class="count">63</span></a></li><li><a href="../participants/">Participants <span class="count">28</span></a></li><li><a href="../portfolio-management/">Portfolio management <span class="count">45</span></a></li><li><a href="../price-action-and-technical-analysis/">Price action and technical analysis <span class="count">58</span></a></li><li><a href="../psychology-and-process/">Psychology and process <span class="count">55</span></a></li><li><a href="../research-and-backtesting/" class="active">Research and backtesting <span class="count">94</span></a></li><li><a href="../risk-and-performance/">Risk and performance <span class="count">82</span></a></li><li><a href="../statistics-and-probability/">Statistics and probability <span class="count">50</span></a></li><li><a href="../time-series-analysis/">Time-series analysis <span class="count">63</span></a></li><li><a href="../trading-systems/">Trading systems <span class="count">56</span></a></li><li><a href="../volume-and-order-flow/">Volume and order flow <span class="count">56</span></a></li><li><a href="../wyckoff/">Wyckoff <span class="count">36</span></a></li></ul></details></nav><main><div class="crumbs"><a href="../index.html">Home</a> / <a href="./">Research and backtesting</a> / page 3</div><h1>Research and backtesting</h1><p class="meta">94 concepts · <span class="showing">showing 51–75 of 94</span></p><div class="pager" role="navigation" aria-label="Pagination"><a href="index.html" rel="first">First</a><a href="page-2.html" rel="prev">Prev</a><a href="index.html">1</a><a href="page-2.html">2</a><span class="cur" aria-current="page">3</span><a href="page-4.html">4</a><a href="page-4.html" rel="next">Next</a><a href="page-4.html" rel="last">Last</a></div><article class="entry" id="ensemble-model"><h3>Ensemble model <a class="anchor" href="#ensemble-model">#</a></h3>
 <div class="field">A predictor that combines outputs from multiple component models to improve stability, accuracy, or coverage of different patterns.</div>
 <div class="field"><span class="label">Intuition:</span> It is a learnable mapping or representation used to turn features into predictions or groups.</div>
 <div class="field"><span class="label">Mechanics:</span> Train diverse base estimators and aggregate their predictions by averaging, voting, weighted blending, or a learned meta-model.</div>
 <div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> Three return forecasts of 0.2%, -0.1%, and 0.5% are equally averaged into a 0.2% ensemble forecast.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Bagging</li><li>Boosting</li><li>Random forest</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#bagging">Bagging</a></li><li><a href="../research-and-backtesting/page-3.html#boosting">Boosting</a></li><li><a href="../research-and-backtesting/page-3.html#random-forest">Random forest</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.ensemble.html" rel="noopener">scikit-learn API, ensemble methods</a> — Bagging, boosting, random forests, voting, and stacking</div>
 </article>
 <article class="entry" id="bagging"><h3>Bagging <a class="anchor" href="#bagging">#</a></h3>
@@ -67,7 +72,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> One hundred trees trained on bootstrap samples vote 62 to 38 for the positive class.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Ensemble model</li><li>Random forest</li><li>Boosting</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#ensemble-model">Ensemble model</a></li><li><a href="../research-and-backtesting/page-3.html#random-forest">Random forest</a></li><li><a href="../research-and-backtesting/page-3.html#boosting">Boosting</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.ensemble.html" rel="noopener">scikit-learn API, ensemble methods</a> — Bagging, boosting, random forests, voting, and stacking</div>
 </article>
 <article class="entry" id="boosting"><h3>Boosting <a class="anchor" href="#boosting">#</a></h3>
@@ -77,7 +82,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> A second stump focuses on observations misclassified by the first and its weighted vote is added to the score.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Ensemble model</li><li>Gradient boosting</li><li>Bagging</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#ensemble-model">Ensemble model</a></li><li><a href="../research-and-backtesting/page-3.html#gradient-boosting">Gradient boosting</a></li><li><a href="../research-and-backtesting/page-3.html#bagging">Bagging</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.ensemble.html" rel="noopener">scikit-learn API, ensemble methods</a> — Bagging, boosting, random forests, voting, and stacking</div>
 </article>
 <article class="entry" id="random-forest"><h3>Random forest <a class="anchor" href="#random-forest">#</a></h3>
@@ -87,7 +92,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> Five hundred trees each consider sqrt(p) features per split; 310 vote for an up day, producing class 1.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Bagging</li><li>Decision tree</li><li>Ensemble model</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#bagging">Bagging</a></li><li>Decision tree</li><li><a href="../research-and-backtesting/page-3.html#ensemble-model">Ensemble model</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.ensemble.html" rel="noopener">scikit-learn API, ensemble methods</a> — Bagging, boosting, random forests, voting, and stacking</div>
 </article>
 <article class="entry" id="gradient-boosting"><h3>Gradient boosting <a class="anchor" href="#gradient-boosting">#</a></h3>
@@ -97,7 +102,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> A regression tree fitted to residual-like gradients is multiplied by 0.05 and added as iteration 20.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Boosting</li><li>XGBoost</li><li>Objective function</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#boosting">Boosting</a></li><li><a href="../research-and-backtesting/page-3.html#xgboost">XGBoost</a></li><li><a href="../research-and-backtesting/page-2.html#objective-function">Objective function</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.ensemble.html" rel="noopener">scikit-learn API, ensemble methods</a> — Bagging, boosting, random forests, voting, and stacking</div>
 </article>
 <article class="entry" id="xgboost"><h3>XGBoost <a class="anchor" href="#xgboost">#</a></h3>
@@ -108,7 +113,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> A binary classifier adds 200 shallow trees at learning rate 0.05 and converts the summed margin through a logistic link.</div>
 <div class="formula">Prediction = sum of tree leaf scores; objective = loss + sum of tree penalties</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Gradient boosting</li><li>Regularization</li><li>Ensemble model</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#gradient-boosting">Gradient boosting</a></li><li><a href="../research-and-backtesting/page-2.html#regularization">Regularization</a></li><li><a href="../research-and-backtesting/page-3.html#ensemble-model">Ensemble model</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://arxiv.org/abs/1603.02754" rel="noopener">Chen and Guestrin, XGBoost: A Scalable Tree Boosting System</a> — Regularized objective and gradient tree boosting</div>
 </article>
 <article class="entry" id="neural-network"><h3>Neural network <a class="anchor" href="#neural-network">#</a></h3>
@@ -118,7 +123,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> A network maps 20 features through 32 ReLU units to one sigmoid probability and updates weights using minibatch gradients.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Objective function</li><li>Regularization</li><li>Recurrent neural network</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#objective-function">Objective function</a></li><li><a href="../research-and-backtesting/page-2.html#regularization">Regularization</a></li><li><a href="../research-and-backtesting/page-3.html#recurrent-neural-network">Recurrent neural network</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://keras.io/api/layers/recurrent_layers/" rel="noopener">Keras API, Recurrent layers</a> — SimpleRNN and LSTM layers</div>
 </article>
 <article class="entry" id="recurrent-neural-network"><h3>Recurrent neural network <a class="anchor" href="#recurrent-neural-network">#</a></h3>
@@ -129,7 +134,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> A 30-day return sequence updates one hidden state per day and the final state predicts day 31 direction.</div>
 <div class="formula">h_t = f(W_x x_t + W_h h_(t-1) + b)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Neural network</li><li>Long short-term memory network</li><li>Time series</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#neural-network">Neural network</a></li><li><a href="../research-and-backtesting/page-3.html#long-short-term-memory-network">Long short-term memory network</a></li><li><a href="../time-series-analysis/#time-series">Time series</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://keras.io/api/layers/recurrent_layers/" rel="noopener">Keras API, Recurrent layers</a> — SimpleRNN and LSTM layers</div>
 </article>
 <article class="entry" id="long-short-term-memory-network"><h3>Long short-term memory network <a class="anchor" href="#long-short-term-memory-network">#</a></h3>
@@ -140,7 +145,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> An LSTM reads 60 daily feature vectors and uses its final hidden state to forecast the next five-day return.</div>
 <div class="formula">c_t = f_t c_(t-1) + i_t g_t; h_t = o_t tanh(c_t)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Recurrent neural network</li><li>Neural network</li><li>Attention mechanism</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#recurrent-neural-network">Recurrent neural network</a></li><li><a href="../research-and-backtesting/page-3.html#neural-network">Neural network</a></li><li><a href="../research-and-backtesting/page-3.html#attention-mechanism">Attention mechanism</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://keras.io/api/layers/recurrent_layers/" rel="noopener">Keras API, Recurrent layers</a> — SimpleRNN and LSTM layers</div>
 </article>
 <article class="entry" id="transformer-model"><h3>Transformer model <a class="anchor" href="#transformer-model">#</a></h3>
@@ -151,7 +156,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> A Transformer attends across 128 return observations in parallel and pools the encoded sequence for classification.</div>
 <div class="formula">Attention(Q,K,V) = softmax(Q K^T / sqrt(d_k)) V</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Attention mechanism</li><li>Neural network</li><li>Time series</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#attention-mechanism">Attention mechanism</a></li><li><a href="../research-and-backtesting/page-3.html#neural-network">Neural network</a></li><li><a href="../time-series-analysis/#time-series">Time series</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://arxiv.org/abs/1706.03762" rel="noopener">Vaswani et al., Attention Is All You Need</a> — Sections 1 and 3: attention and Transformer architecture</div>
 </article>
 <article class="entry" id="attention-mechanism"><h3>Attention mechanism <a class="anchor" href="#attention-mechanism">#</a></h3>
@@ -162,7 +167,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> A query for the current day assigns 60% of its weight to a recent volatility shock and smaller weights to other days.</div>
 <div class="formula">Attention(Q,K,V) = softmax(Q K^T / sqrt(d_k)) V</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Transformer model</li><li>Neural network</li><li>Time series</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#transformer-model">Transformer model</a></li><li><a href="../research-and-backtesting/page-3.html#neural-network">Neural network</a></li><li><a href="../time-series-analysis/#time-series">Time series</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://arxiv.org/abs/1706.03762" rel="noopener">Vaswani et al., Attention Is All You Need</a> — Sections 1 and 3: attention and Transformer architecture</div>
 </article>
 <article class="entry" id="classification"><h3>Classification <a class="anchor" href="#classification">#</a></h3>
@@ -172,7 +177,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> A model estimates 0.68 probability that next-day return is positive and classifies it as up at a 0.60 threshold.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Regression task</li><li>Confusion matrix</li><li>Label</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#regression-task">Regression task</a></li><li><a href="../research-and-backtesting/page-3.html#confusion-matrix">Confusion matrix</a></li><li><a href="../research-and-backtesting/#label">Label</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/user_guide.html" rel="noopener">scikit-learn User Guide</a> — Supervised learning, unsupervised learning, model selection, and inspection</div>
 </article>
 <article class="entry" id="regression-task"><h3>Regression task <a class="anchor" href="#regression-task">#</a></h3>
@@ -182,7 +187,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> A model predicts a next-week excess return of 0.7% rather than an up/down class.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Classification</li><li>Mean squared error</li><li>Target variable</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#classification">Classification</a></li><li><a href="../research-and-backtesting/page-4.html#mean-squared-error">Mean squared error</a></li><li><a href="../research-and-backtesting/#target-variable">Target variable</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/user_guide.html" rel="noopener">scikit-learn User Guide</a> — Supervised learning, unsupervised learning, model selection, and inspection</div>
 </article>
 <article class="entry" id="clustering"><h3>Clustering <a class="anchor" href="#clustering">#</a></h3>
@@ -192,7 +197,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> Assets represented by return correlations are grouped into four clusters without supplying sector labels.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>K-means clustering</li><li>Hierarchical clustering</li><li>Unsupervised learning</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#k-means-clustering">K-means clustering</a></li><li><a href="../research-and-backtesting/page-3.html#hierarchical-clustering">Hierarchical clustering</a></li><li>Unsupervised learning</li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.cluster.html" rel="noopener">scikit-learn API, clustering</a> — K-means and agglomerative clustering</div>
 </article>
 <article class="entry" id="k-means-clustering"><h3>K-means clustering <a class="anchor" href="#k-means-clustering">#</a></h3>
@@ -203,7 +208,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> Six asset feature vectors are partitioned around two centroids, then centroids are recomputed from the assigned members.</div>
 <div class="formula">Inertia = sum of squared distances from each point to its assigned centroid</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Clustering</li><li>Hierarchical clustering</li><li>Centroid</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#clustering">Clustering</a></li><li><a href="../research-and-backtesting/page-3.html#hierarchical-clustering">Hierarchical clustering</a></li><li>Centroid</li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.cluster.html" rel="noopener">scikit-learn API, clustering</a> — K-means and agglomerative clustering</div>
 </article>
 <article class="entry" id="hierarchical-clustering"><h3>Hierarchical clustering <a class="anchor" href="#hierarchical-clustering">#</a></h3>
@@ -213,7 +218,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> Ten assets begin as singletons; average-linkage merges them until a dendrogram cut yields three clusters.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Clustering</li><li>K-means clustering</li><li>Dendrogram</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#clustering">Clustering</a></li><li><a href="../research-and-backtesting/page-3.html#k-means-clustering">K-means clustering</a></li><li>Dendrogram</li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.cluster.html" rel="noopener">scikit-learn API, clustering</a> — K-means and agglomerative clustering</div>
 </article>
 <article class="entry" id="principal-component-analysis"><h3>Principal component analysis <a class="anchor" href="#principal-component-analysis">#</a></h3>
@@ -224,7 +229,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> Three correlated yield features are projected onto a first component explaining 85% of their training variance.</div>
 <div class="formula">PC scores = centered X times loading vectors</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Independent component analysis</li><li>Feature engineering</li><li>Dimensionality reduction</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#independent-component-analysis">Independent component analysis</a></li><li><a href="../research-and-backtesting/page-2.html#feature-engineering">Feature engineering</a></li><li>Dimensionality reduction</li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/user_guide.html" rel="noopener">scikit-learn User Guide</a> — Supervised learning, unsupervised learning, model selection, and inspection</div>
 </article>
 <article class="entry" id="independent-component-analysis"><h3>Independent component analysis <a class="anchor" href="#independent-component-analysis">#</a></h3>
@@ -235,7 +240,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> ICA separates two mixed return drivers into components interpreted as market and sector shocks.</div>
 <div class="formula">S = W X, where rows of S are estimated independent sources</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Principal component analysis</li><li>Feature engineering</li><li>Latent variable</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#principal-component-analysis">Principal component analysis</a></li><li><a href="../research-and-backtesting/page-2.html#feature-engineering">Feature engineering</a></li><li>Latent variable</li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/user_guide.html" rel="noopener">scikit-learn User Guide</a> — Supervised learning, unsupervised learning, model selection, and inspection</div>
 </article>
 <article class="entry" id="autoencoder"><h3>Autoencoder <a class="anchor" href="#autoencoder">#</a></h3>
@@ -246,7 +251,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> An autoencoder trained on normal returns flags a day whose reconstruction error exceeds the training threshold as anomalous.</div>
 <div class="formula">Reconstruction error = loss(x, decoder(encoder(x)))</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Neural network</li><li>Principal component analysis</li><li>Anomaly detection</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#neural-network">Neural network</a></li><li><a href="../research-and-backtesting/page-3.html#principal-component-analysis">Principal component analysis</a></li><li>Anomaly detection</li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://keras.io/examples/timeseries/timeseries_anomaly_detection/" rel="noopener">Keras example, Timeseries anomaly detection using an Autoencoder</a> — Reconstruction autoencoder workflow</div>
 </article>
 <article class="entry" id="confusion-matrix"><h3>Confusion matrix <a class="anchor" href="#confusion-matrix">#</a></h3>
@@ -256,7 +261,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Class imbalance, threshold choice, unequal error costs, outliers, and dependence can make the summary inappropriate or unstable.</div>
 <div class="field"><span class="label">Misconceptions:</span> No single metric captures economic utility, turnover, risk, calibration, and trading costs at once.</div>
 <div class="field"><span class="label">Example:</span> For 100 cases, TP=30, FP=10, TN=50, and FN=10 form the binary confusion matrix.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Precision</li><li>Recall</li><li>Specificity</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#precision">Precision</a></li><li><a href="../research-and-backtesting/page-3.html#recall">Recall</a></li><li><a href="../research-and-backtesting/page-3.html#specificity">Specificity</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.metrics.html" rel="noopener">scikit-learn API, metrics</a> — Classification, ranking, probabilistic, and regression metrics</div>
 </article>
 <article class="entry" id="precision"><h3>Precision <a class="anchor" href="#precision">#</a></h3>
@@ -267,7 +272,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> No single metric captures economic utility, turnover, risk, calibration, and trading costs at once.</div>
 <div class="field"><span class="label">Example:</span> With 30 true positives and 10 false positives, precision is 30/40 = 0.75.</div>
 <div class="formula">Precision = TP / (TP + FP)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Recall</li><li>F1 score</li><li>Confusion matrix</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#recall">Recall</a></li><li><a href="../research-and-backtesting/page-3.html#f1-score">F1 score</a></li><li><a href="../research-and-backtesting/page-3.html#confusion-matrix">Confusion matrix</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.metrics.html" rel="noopener">scikit-learn API, metrics</a> — Classification, ranking, probabilistic, and regression metrics</div>
 </article>
 <article class="entry" id="recall"><h3>Recall <a class="anchor" href="#recall">#</a></h3>
@@ -278,7 +283,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> No single metric captures economic utility, turnover, risk, calibration, and trading costs at once.</div>
 <div class="field"><span class="label">Example:</span> With 30 true positives and 10 false negatives, recall is 30/40 = 0.75.</div>
 <div class="formula">Recall = TP / (TP + FN)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Precision</li><li>Specificity</li><li>F1 score</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#precision">Precision</a></li><li><a href="../research-and-backtesting/page-3.html#specificity">Specificity</a></li><li><a href="../research-and-backtesting/page-3.html#f1-score">F1 score</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.metrics.html" rel="noopener">scikit-learn API, metrics</a> — Classification, ranking, probabilistic, and regression metrics</div>
 </article>
 <article class="entry" id="specificity"><h3>Specificity <a class="anchor" href="#specificity">#</a></h3>
@@ -289,7 +294,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> No single metric captures economic utility, turnover, risk, calibration, and trading costs at once.</div>
 <div class="field"><span class="label">Example:</span> With 50 true negatives and 10 false positives, specificity is 50/60 = 0.833.</div>
 <div class="formula">Specificity = TN / (TN + FP)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Recall</li><li>ROC curve</li><li>Confusion matrix</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#recall">Recall</a></li><li><a href="../research-and-backtesting/page-3.html#roc-curve">ROC curve</a></li><li><a href="../research-and-backtesting/page-3.html#confusion-matrix">Confusion matrix</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.metrics.html" rel="noopener">scikit-learn API, metrics</a> — Classification, ranking, probabilistic, and regression metrics</div>
 </article>
 <article class="entry" id="f1-score"><h3>F1 score <a class="anchor" href="#f1-score">#</a></h3>
@@ -300,7 +305,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> No single metric captures economic utility, turnover, risk, calibration, and trading costs at once.</div>
 <div class="field"><span class="label">Example:</span> Precision 0.75 and recall 0.60 give F1 = 0.667.</div>
 <div class="formula">F1 = 2 precision recall / (precision + recall)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Precision</li><li>Recall</li><li>Confusion matrix</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-3.html#precision">Precision</a></li><li><a href="../research-and-backtesting/page-3.html#recall">Recall</a></li><li><a href="../research-and-backtesting/page-3.html#confusion-matrix">Confusion matrix</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.metrics.html" rel="noopener">scikit-learn API, metrics</a> — Classification, ranking, probabilistic, and regression metrics</div>
 </article>
 <article class="entry" id="roc-curve"><h3>ROC curve <a class="anchor" href="#roc-curve">#</a></h3>
@@ -311,7 +316,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> No single metric captures economic utility, turnover, risk, calibration, and trading costs at once.</div>
 <div class="field"><span class="label">Example:</span> Lowering a threshold raises TPR from 0.60 to 0.80 while FPR rises from 0.10 to 0.25, adding a point to the ROC curve.</div>
 <div class="formula">TPR = TP/(TP+FN); FPR = FP/(FP+TN)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Area under ROC curve</li><li>Recall</li><li>Specificity</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-4.html#area-under-roc-curve">Area under ROC curve</a></li><li><a href="../research-and-backtesting/page-3.html#recall">Recall</a></li><li><a href="../research-and-backtesting/page-3.html#specificity">Specificity</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/api/sklearn.metrics.html" rel="noopener">scikit-learn API, metrics</a> — Classification, ranking, probabilistic, and regression metrics</div>
 </article><div class="pager" role="navigation" aria-label="Pagination"><a href="index.html" rel="first">First</a><a href="page-2.html" rel="prev">Prev</a><a href="index.html">1</a><a href="page-2.html">2</a><span class="cur" aria-current="page">3</span><a href="page-4.html">4</a><a href="page-4.html" rel="next">Next</a><a href="page-4.html" rel="last">Last</a></div><div class="domainnav"><a href="../psychology-and-process/">&larr; Psychology and process</a><a href="../risk-and-performance/">Risk and performance &rarr;</a></div><p class='meta'>Generated 2026-08-09 · <a href='../about.html'>About &amp; Methodology</a> · <a href='https://github.com/unperson-12359/trading-knowledge-library'>GitHub</a></p></main><script>
 (function(){
@@ -323,7 +328,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
     var q=box.value.trim().toLowerCase();res.innerHTML='';
     if(q.length<2)return;
     load().then(function(data){
-      var hits=data.filter(function(e){return e.n.toLowerCase().indexOf(q)!==-1}).slice(0,12);
+      var hits=data.filter(function(e){return (e.n+' '+(e.a||'')+' '+(e.x||'')).toLowerCase().indexOf(q)!==-1}).slice(0,12);
       res.innerHTML=hits.map(function(e){
         return '<li><a href="'+e.u+'">'+e.n+'</a> <span class="sr-domain">'+e.d+'</span></li>';
       }).join('')||'<li class="meta">No matches</li>';

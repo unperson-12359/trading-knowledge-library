@@ -36,6 +36,10 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 .playbook-card{border:1px solid #ddd;border-radius:6px;padding:.8rem 1rem;margin:.8rem 0}
 .playbook-card h2{margin:.1rem 0 .35rem;font-size:1.15rem}
 .json{white-space:pre-wrap;background:#f4f4f4;padding:.7rem;border-radius:4px;font-family:Consolas,monospace;font-size:.8rem}
+.query-controls{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:.55rem;margin:1rem 0;font-family:system-ui}
+.query-controls input,.query-controls select{width:100%;padding:.5rem;border:1px solid #bbb;border-radius:5px;background:#fff}
+.query-controls label{font-size:.78rem;color:#555}.query-controls .check{display:flex;align-items:end;padding-bottom:.5rem}
+.query-result{border-bottom:1px solid #ddd;padding:.8rem 0}.query-result h2{font-size:1.05rem;margin:0 0 .2rem}
 .domainnav{display:flex;justify-content:space-between;margin-top:2rem;font-family:system-ui;font-size:.85rem}
 .toc{columns:2;font-family:system-ui;font-size:.82rem;background:#fafaf8;border:1px solid #e8e8e5;border-radius:6px;padding:.8rem 1rem}
 .toc a{color:#333}
@@ -49,15 +53,16 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
  nav#sidebar details.tocwrap:not([open]) .navlist{display:none}
  main{padding:1rem}
  .toc{columns:1}
+ .query-controls{grid-template-columns:1fr 1fr}
 }
-</style></head><body><nav id="sidebar" aria-label="Domains"><h2><a href="../index.html" style="color:#111">Trading Library</a></h2><input id="search" type="search" placeholder="Search 1,500 concepts…" data-index="../search-index.json" aria-label="Search concepts"><ul id="search-results"></ul><details class="tocwrap" open><summary class="meta">Domains</summary><ul class="navlist"><li><a href="../all.html">A–Z index</a></li><li><a href="../about.html">About &amp; Methodology</a></li><li><a href="../playbooks/">Research playbooks</a></li><li><a href="../ai-and-knowledge-engineering/">AI and knowledge engineering <span class="count">38</span></a></li><li><a href="../candlestick-patterns/">Candlestick patterns <span class="count">37</span></a></li><li><a href="../chart-patterns/">Chart patterns <span class="count">26</span></a></li><li><a href="../contract-mechanics/">Contract mechanics <span class="count">38</span></a></li><li><a href="../crypto-and-defi/">Crypto and DeFi <span class="count">92</span></a></li><li><a href="../fixed-income-and-rates/">Fixed income and rates <span class="count">32</span></a></li><li><a href="../foreign-exchange/">Foreign exchange <span class="count">25</span></a></li><li><a href="../futures-and-spreads/">Futures and spreads <span class="count">33</span></a></li><li><a href="../indicators/">Indicators <span class="count">79</span></a></li><li><a href="../instruments/">Instruments <span class="count">48</span></a></li><li><a href="../macro-and-fundamentals/">Macro and fundamentals <span class="count">57</span></a></li><li><a href="../market-abuse-and-ethics/">Market abuse and ethics <span class="count">31</span></a></li><li><a href="../market-data/">Market data <span class="count">33</span></a></li><li><a href="../market-foundations/">Market foundations <span class="count">35</span></a></li><li><a href="../microstructure/">Microstructure <span class="count">54</span></a></li><li><a href="../options/">Options <span class="count">85</span></a></li><li><a href="../orders-and-execution/">Orders and execution <span class="count">71</span></a></li><li><a href="../parameterized-analytics/">Parameterized analytics <span class="count">63</span></a></li><li><a href="../participants/">Participants <span class="count">28</span></a></li><li><a href="../portfolio-management/">Portfolio management <span class="count">45</span></a></li><li><a href="../price-action-and-technical-analysis/">Price action and technical analysis <span class="count">58</span></a></li><li><a href="../psychology-and-process/">Psychology and process <span class="count">55</span></a></li><li><a href="../research-and-backtesting/" class="active">Research and backtesting <span class="count">94</span></a></li><li><a href="../risk-and-performance/">Risk and performance <span class="count">82</span></a></li><li><a href="../statistics-and-probability/">Statistics and probability <span class="count">50</span></a></li><li><a href="../time-series-analysis/">Time-series analysis <span class="count">63</span></a></li><li><a href="../trading-systems/">Trading systems <span class="count">56</span></a></li><li><a href="../volume-and-order-flow/">Volume and order flow <span class="count">56</span></a></li><li><a href="../wyckoff/">Wyckoff <span class="count">36</span></a></li></ul></details></nav><main><div class="crumbs"><a href="../index.html">Home</a> / <a href="./">Research and backtesting</a> / page 2</div><h1>Research and backtesting</h1><p class="meta">94 concepts · <span class="showing">showing 26–50 of 94</span></p><div class="pager" role="navigation" aria-label="Pagination"><a href="index.html" rel="first">First</a><a href="index.html" rel="prev">Prev</a><a href="index.html">1</a><span class="cur" aria-current="page">2</span><a href="page-3.html">3</a><a href="page-4.html">4</a><a href="page-3.html" rel="next">Next</a><a href="page-4.html" rel="last">Last</a></div><article class="entry" id="market-impact-model"><h3>Market-impact model <a class="anchor" href="#market-impact-model">#</a></h3>
+</style></head><body><nav id="sidebar" aria-label="Domains"><h2><a href="../index.html" style="color:#111">Trading Library</a></h2><input id="search" type="search" placeholder="Search 1,500 concepts…" data-index="../search-index.json" aria-label="Search concepts"><ul id="search-results"></ul><details class="tocwrap" open><summary class="meta">Domains</summary><ul class="navlist"><li><a href="../all.html">A–Z index</a></li><li><a href="../about.html">About &amp; Methodology</a></li><li><a href="../query.html">Structured query</a></li><li><a href="../playbooks/">Research playbooks</a></li><li><a href="../ai-and-knowledge-engineering/">AI and knowledge engineering <span class="count">38</span></a></li><li><a href="../candlestick-patterns/">Candlestick patterns <span class="count">37</span></a></li><li><a href="../chart-patterns/">Chart patterns <span class="count">26</span></a></li><li><a href="../contract-mechanics/">Contract mechanics <span class="count">38</span></a></li><li><a href="../crypto-and-defi/">Crypto and DeFi <span class="count">92</span></a></li><li><a href="../fixed-income-and-rates/">Fixed income and rates <span class="count">32</span></a></li><li><a href="../foreign-exchange/">Foreign exchange <span class="count">25</span></a></li><li><a href="../futures-and-spreads/">Futures and spreads <span class="count">33</span></a></li><li><a href="../indicators/">Indicators <span class="count">79</span></a></li><li><a href="../instruments/">Instruments <span class="count">48</span></a></li><li><a href="../macro-and-fundamentals/">Macro and fundamentals <span class="count">57</span></a></li><li><a href="../market-abuse-and-ethics/">Market abuse and ethics <span class="count">31</span></a></li><li><a href="../market-data/">Market data <span class="count">33</span></a></li><li><a href="../market-foundations/">Market foundations <span class="count">35</span></a></li><li><a href="../microstructure/">Microstructure <span class="count">54</span></a></li><li><a href="../options/">Options <span class="count">85</span></a></li><li><a href="../orders-and-execution/">Orders and execution <span class="count">71</span></a></li><li><a href="../parameterized-analytics/">Parameterized analytics <span class="count">63</span></a></li><li><a href="../participants/">Participants <span class="count">28</span></a></li><li><a href="../portfolio-management/">Portfolio management <span class="count">45</span></a></li><li><a href="../price-action-and-technical-analysis/">Price action and technical analysis <span class="count">58</span></a></li><li><a href="../psychology-and-process/">Psychology and process <span class="count">55</span></a></li><li><a href="../research-and-backtesting/" class="active">Research and backtesting <span class="count">94</span></a></li><li><a href="../risk-and-performance/">Risk and performance <span class="count">82</span></a></li><li><a href="../statistics-and-probability/">Statistics and probability <span class="count">50</span></a></li><li><a href="../time-series-analysis/">Time-series analysis <span class="count">63</span></a></li><li><a href="../trading-systems/">Trading systems <span class="count">56</span></a></li><li><a href="../volume-and-order-flow/">Volume and order flow <span class="count">56</span></a></li><li><a href="../wyckoff/">Wyckoff <span class="count">36</span></a></li></ul></details></nav><main><div class="crumbs"><a href="../index.html">Home</a> / <a href="./">Research and backtesting</a> / page 2</div><h1>Research and backtesting</h1><p class="meta">94 concepts · <span class="showing">showing 26–50 of 94</span></p><div class="pager" role="navigation" aria-label="Pagination"><a href="index.html" rel="first">First</a><a href="index.html" rel="prev">Prev</a><a href="index.html">1</a><span class="cur" aria-current="page">2</span><a href="page-3.html">3</a><a href="page-4.html">4</a><a href="page-3.html" rel="next">Next</a><a href="page-4.html" rel="last">Last</a></div><article class="entry" id="market-impact-model"><h3>Market-impact model <a class="anchor" href="#market-impact-model">#</a></h3>
 <div class="field">A model of price movement caused by the strategy&#x27;s own trading, often separated into temporary and persistent components.</div>
 <div class="field"><span class="label">Intuition:</span> It is part of the machinery that converts strategy instructions into simulated positions, cash flows, and performance.</div>
 <div class="field"><span class="label">Mechanics:</span> Estimate impact from participation, order size, volatility, liquidity, execution time, and calibrated coefficients; feed it into simulated fills and later prices if modeled.</div>
 <div class="field"><span class="label">Failure modes:</span> Simplified timing, liquidity, fee, borrow, funding, or corporate-action assumptions can make simulated results unattainable live.</div>
 <div class="field"><span class="label">Misconceptions:</span> A detailed simulator reduces modeling error but cannot reproduce every queue event or future market condition.</div>
 <div class="field"><span class="label">Example:</span> A 10% participation order receives more impact than a 1% participation order in the same stock and volatility regime.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Slippage model</li><li>Capacity</li><li>Liquidity</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/#slippage-model">Slippage model</a></li><li><a href="../research-and-backtesting/page-4.html#capacity">Capacity</a></li><li><a href="../microstructure/#liquidity">Liquidity</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.quantconnect.com/docs/v2/writing-algorithms/reality-modeling/slippage/supported-models" rel="noopener">QuantConnect LEAN documentation, Slippage Models</a> — Constant, volume-share, and market-impact models</div>
 </article>
 <article class="entry" id="borrow-cost-model"><h3>Borrow-cost model <a class="anchor" href="#borrow-cost-model">#</a></h3>
@@ -67,7 +72,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Simplified timing, liquidity, fee, borrow, funding, or corporate-action assumptions can make simulated results unattainable live.</div>
 <div class="field"><span class="label">Misconceptions:</span> A detailed simulator reduces modeling error but cannot reproduce every queue event or future market condition.</div>
 <div class="field"><span class="label">Example:</span> Borrowing $100,000 of stock for 30 days at 6% annualized accrues about $493 on an actual/365 basis.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Short selling</li><li>Transaction cost</li><li>Capacity</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Short selling</li><li>Transaction cost</li><li><a href="../research-and-backtesting/page-4.html#capacity">Capacity</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://rpc.cfainstitute.org/research/foundation/2024/investment-model-validation" rel="noopener">CFA Institute Research Foundation, Investment Model Validation</a> — Overview and model-validation framework</div>
 </article>
 <article class="entry" id="funding-cost-model"><h3>Funding-cost model <a class="anchor" href="#funding-cost-model">#</a></h3>
@@ -77,7 +82,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Simplified timing, liquidity, fee, borrow, funding, or corporate-action assumptions can make simulated results unattainable live.</div>
 <div class="field"><span class="label">Misconceptions:</span> A detailed simulator reduces modeling error but cannot reproduce every queue event or future market condition.</div>
 <div class="field"><span class="label">Example:</span> A $200,000 debit balance funded for 10 days at 7% annualized costs about $384 on an actual/365 basis.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Borrow-cost model</li><li>Margin</li><li>Transaction cost</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#borrow-cost-model">Borrow-cost model</a></li><li><a href="../risk-and-performance/#margin">Margin</a></li><li>Transaction cost</li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://rpc.cfainstitute.org/research/foundation/2024/investment-model-validation" rel="noopener">CFA Institute Research Foundation, Investment Model Validation</a> — Overview and model-validation framework</div>
 <div class="field"><span class="label">Source:</span> <a href="https://hyperliquid.gitbook.io/hyperliquid-docs/trading/funding" rel="noopener">Hyperliquid Docs - Funding</a> — Funding calculation, premium, interest component, and hourly payments</div>
 </article>
@@ -88,7 +93,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.</div>
 <div class="field"><span class="label">Misconceptions:</span> A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.</div>
 <div class="field"><span class="label">Example:</span> A 2-for-1 split changes 100 shares at a $60 basis into 200 shares at a $30 per-share basis without creating profit.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Adjusted price</li><li>Point-in-time data</li><li>Survivorship bias</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#adjusted-close">Adjusted price</a></li><li><a href="../research-and-backtesting/page-2.html#point-in-time-data">Point-in-time data</a></li><li><a href="../time-series-analysis/page-3.html#survivorship-bias">Survivorship bias</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.quantconnect.com/docs/v2/writing-algorithms/reality-modeling/brokerages/supported-models/quantconnect-paper-trading" rel="noopener">QuantConnect LEAN documentation, Paper Trading Brokerage Model</a> — Paper fills, fees, slippage, and buying power</div>
 </article>
 <article class="entry" id="point-in-time-data"><h3>Point-in-time data <a class="anchor" href="#point-in-time-data">#</a></h3>
@@ -98,7 +103,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.</div>
 <div class="field"><span class="label">Misconceptions:</span> A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.</div>
 <div class="field"><span class="label">Example:</span> A March backtest uses the GDP estimate released in February, not the revised value published in June.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Data revision</li><li>Look-ahead bias</li><li>Survivorship bias</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#data-revision">Data revision</a></li><li><a href="../time-series-analysis/page-3.html#look-ahead-bias">Look-ahead bias</a></li><li><a href="../time-series-analysis/page-3.html#survivorship-bias">Survivorship bias</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://rpc.cfainstitute.org/research/foundation/2024/investment-model-validation" rel="noopener">CFA Institute Research Foundation, Investment Model Validation</a> — Overview and model-validation framework</div>
 </article>
 <article class="entry" id="data-revision"><h3>Data revision <a class="anchor" href="#data-revision">#</a></h3>
@@ -108,7 +113,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.</div>
 <div class="field"><span class="label">Misconceptions:</span> A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.</div>
 <div class="field"><span class="label">Example:</span> An earnings value reported as $1.00 in April and restated to $0.80 in August remains $1.00 for a May decision simulation.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Point-in-time data</li><li>Look-ahead bias</li><li>Data cleaning</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#point-in-time-data">Point-in-time data</a></li><li><a href="../time-series-analysis/page-3.html#look-ahead-bias">Look-ahead bias</a></li><li><a href="../research-and-backtesting/page-2.html#data-cleaning">Data cleaning</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://rpc.cfainstitute.org/research/foundation/2024/investment-model-validation" rel="noopener">CFA Institute Research Foundation, Investment Model Validation</a> — Overview and model-validation framework</div>
 </article>
 <article class="entry" id="data-cleaning"><h3>Data cleaning <a class="anchor" href="#data-cleaning">#</a></h3>
@@ -118,7 +123,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.</div>
 <div class="field"><span class="label">Misconceptions:</span> A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.</div>
 <div class="field"><span class="label">Example:</span> A negative share volume is flagged invalid and set missing rather than silently converted to a positive number.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Data normalization</li><li>Winsorization</li><li>Point-in-time data</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#data-normalization">Data normalization</a></li><li><a href="../research-and-backtesting/page-2.html#winsorization">Winsorization</a></li><li><a href="../research-and-backtesting/page-2.html#point-in-time-data">Point-in-time data</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/data_transforms.html" rel="noopener">scikit-learn User Guide, Dataset transformations</a> — Fit/transform semantics and feature representations</div>
 </article>
 <article class="entry" id="data-normalization"><h3>Data normalization <a class="anchor" href="#data-normalization">#</a></h3>
@@ -128,7 +133,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.</div>
 <div class="field"><span class="label">Misconceptions:</span> A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.</div>
 <div class="field"><span class="label">Example:</span> Each return vector is divided by its L2 norm before a similarity model, while the fitted pipeline is reused out of sample.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Standardization</li><li>Min-max scaling</li><li>Feature engineering</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#standardization">Standardization</a></li><li><a href="../research-and-backtesting/page-2.html#min-max-scaling">Min-max scaling</a></li><li><a href="../research-and-backtesting/page-2.html#feature-engineering">Feature engineering</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/modules/preprocessing.html" rel="noopener">scikit-learn User Guide, Preprocessing data</a> — Standardization, range scaling, and outlier-robust transformations</div>
 </article>
 <article class="entry" id="standardization"><h3>Standardization <a class="anchor" href="#standardization">#</a></h3>
@@ -139,7 +144,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.</div>
 <div class="field"><span class="label">Example:</span> Training values 8, 10, and 12 have mean 10 and standard deviation about 1.63, so 12 maps to about 1.22.</div>
 <div class="formula">z = (x - training mean) / training standard deviation</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Data normalization</li><li>Min-max scaling</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#data-normalization">Data normalization</a></li><li><a href="../research-and-backtesting/page-2.html#min-max-scaling">Min-max scaling</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/modules/preprocessing.html" rel="noopener">scikit-learn User Guide, Preprocessing data</a> — Standardization, range scaling, and outlier-robust transformations</div>
 </article>
 <article class="entry" id="min-max-scaling"><h3>Min-max scaling <a class="anchor" href="#min-max-scaling">#</a></h3>
@@ -150,7 +155,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.</div>
 <div class="field"><span class="label">Example:</span> With training minimum 10 and maximum 30, value 20 maps to 0.5 and later value 40 maps to 1.5.</div>
 <div class="formula">x_scaled = (x - min_train) / (max_train - min_train)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Data normalization</li><li>Standardization</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#data-normalization">Data normalization</a></li><li><a href="../research-and-backtesting/page-2.html#standardization">Standardization</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/modules/preprocessing.html" rel="noopener">scikit-learn User Guide, Preprocessing data</a> — Standardization, range scaling, and outlier-robust transformations</div>
 </article>
 <article class="entry" id="winsorization"><h3>Winsorization <a class="anchor" href="#winsorization">#</a></h3>
@@ -161,7 +166,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.</div>
 <div class="field"><span class="label">Example:</span> With caps at -5 and 5, observations -9, 2, and 8 become -5, 2, and 5.</div>
 <div class="formula">x_w = min(max(x, lower_cap), upper_cap)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Data cleaning</li><li>Outlier</li><li>Robust statistics</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#data-cleaning">Data cleaning</a></li><li><a href="../statistics-and-probability/page-2.html#outlier">Outlier</a></li><li>Robust statistics</li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/modules/preprocessing.html" rel="noopener">scikit-learn User Guide, Preprocessing data</a> — Standardization, range scaling, and outlier-robust transformations</div>
 </article>
 <article class="entry" id="feature-engineering"><h3>Feature engineering <a class="anchor" href="#feature-engineering">#</a></h3>
@@ -171,7 +176,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Fitting the operation on the full dataset leaks future information; revisions, outliers, and missing values can also distort results.</div>
 <div class="field"><span class="label">Misconceptions:</span> A cleaner or rescaled dataset is not automatically more truthful; transformations must preserve timing and economic meaning.</div>
 <div class="field"><span class="label">Example:</span> Daily closes are converted into lagged 5-day return, 20-day volatility, and price-to-moving-average features.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Feature</li><li>Feature selection</li><li>Data cleaning</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/#feature">Feature</a></li><li><a href="../research-and-backtesting/page-2.html#feature-selection">Feature selection</a></li><li><a href="../research-and-backtesting/page-2.html#data-cleaning">Data cleaning</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/data_transforms.html" rel="noopener">scikit-learn User Guide, Dataset transformations</a> — Fit/transform semantics and feature representations</div>
 </article>
 <article class="entry" id="feature-selection"><h3>Feature selection <a class="anchor" href="#feature-selection">#</a></h3>
@@ -181,7 +186,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>
 <div class="field"><span class="label">Misconceptions:</span> Validation measures conditional generalization under a split design; it does not guarantee future market performance.</div>
 <div class="field"><span class="label">Example:</span> Within each fold, the 10 highest training-set mutual-information features are selected from 200 candidates.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Feature engineering</li><li>Regularization</li><li>Cross-validation</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#feature-engineering">Feature engineering</a></li><li><a href="../research-and-backtesting/page-2.html#regularization">Regularization</a></li><li><a href="../research-and-backtesting/page-2.html#cross-validation">Cross-validation</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/user_guide.html" rel="noopener">scikit-learn User Guide</a> — Supervised learning, unsupervised learning, model selection, and inspection</div>
 </article>
 <article class="entry" id="cross-validation"><h3>Cross-validation <a class="anchor" href="#cross-validation">#</a></h3>
@@ -191,7 +196,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>
 <div class="field"><span class="label">Misconceptions:</span> Validation measures conditional generalization under a split design; it does not guarantee future market performance.</div>
 <div class="field"><span class="label">Example:</span> Five-fold cross-validation trains on four folds and scores the fifth five times, so every row is evaluated out of fold once.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Training set</li><li>Validation set</li><li>Time-series cross-validation</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/#training-set">Training set</a></li><li><a href="../research-and-backtesting/#validation-set">Validation set</a></li><li><a href="../research-and-backtesting/page-2.html#time-series-cross-validation">Time-series cross-validation</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/modules/cross_validation.html" rel="noopener">scikit-learn User Guide, Cross-validation</a> — Training, validation, test sets and cross-validation</div>
 </article>
 <article class="entry" id="time-series-cross-validation"><h3>Time-series cross-validation <a class="anchor" href="#time-series-cross-validation">#</a></h3>
@@ -201,7 +206,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>
 <div class="field"><span class="label">Misconceptions:</span> Validation measures conditional generalization under a split design; it does not guarantee future market performance.</div>
 <div class="field"><span class="label">Example:</span> Train on months 1-24 and test 25-30, then train on 1-30 and test 31-36.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Cross-validation</li><li>Walk-forward analysis</li><li>Purged cross-validation</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#cross-validation">Cross-validation</a></li><li><a href="../research-and-backtesting/#walk-forward-analysis">Walk-forward analysis</a></li><li><a href="../research-and-backtesting/page-2.html#purged-cross-validation">Purged cross-validation</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html" rel="noopener">scikit-learn API, TimeSeriesSplit</a> — Time-ordered train/test splits and gap parameter</div>
 </article>
 <article class="entry" id="purged-cross-validation"><h3>Purged cross-validation <a class="anchor" href="#purged-cross-validation">#</a></h3>
@@ -211,7 +216,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>
 <div class="field"><span class="label">Misconceptions:</span> Validation measures conditional generalization under a split design; it does not guarantee future market performance.</div>
 <div class="field"><span class="label">Example:</span> If a Friday label uses returns through Wednesday, training rows whose labels also use that Monday-Wednesday interval are removed when Friday is tested.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Time-series cross-validation</li><li>Embargo period</li><li>Look-ahead bias</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#time-series-cross-validation">Time-series cross-validation</a></li><li><a href="../research-and-backtesting/page-2.html#embargo-period">Embargo period</a></li><li><a href="../time-series-analysis/page-3.html#look-ahead-bias">Look-ahead bias</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9521884/" rel="noopener">A Bayesian-based classification framework for financial time series trend prediction</a> — Combinatorial purged K-fold cross-validation</div>
 </article>
 <article class="entry" id="embargo-period"><h3>Embargo period <a class="anchor" href="#embargo-period">#</a></h3>
@@ -221,7 +226,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>
 <div class="field"><span class="label">Misconceptions:</span> Validation measures conditional generalization under a split design; it does not guarantee future market performance.</div>
 <div class="field"><span class="label">Example:</span> A five-day embargo after a March test fold prevents early-April rows from entering that fold&#x27;s training set.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Purged cross-validation</li><li>Time-series cross-validation</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#purged-cross-validation">Purged cross-validation</a></li><li><a href="../research-and-backtesting/page-2.html#time-series-cross-validation">Time-series cross-validation</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9521884/" rel="noopener">A Bayesian-based classification framework for financial time series trend prediction</a> — Combinatorial purged K-fold cross-validation</div>
 </article>
 <article class="entry" id="hyperparameter"><h3>Hyperparameter <a class="anchor" href="#hyperparameter">#</a></h3>
@@ -231,7 +236,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> Tree depths 2, 4, and 6 are hyperparameter candidates; depth 4 is selected by mean validation log loss.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Grid search</li><li>Random search</li><li>Bayesian optimization</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#grid-search">Grid search</a></li><li><a href="../research-and-backtesting/page-2.html#random-search">Random search</a></li><li><a href="../research-and-backtesting/page-2.html#bayesian-optimization">Bayesian optimization</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/user_guide.html" rel="noopener">scikit-learn User Guide</a> — Supervised learning, unsupervised learning, model selection, and inspection</div>
 </article>
 <article class="entry" id="grid-search"><h3>Grid search <a class="anchor" href="#grid-search">#</a></h3>
@@ -241,7 +246,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>
 <div class="field"><span class="label">Misconceptions:</span> Validation measures conditional generalization under a split design; it does not guarantee future market performance.</div>
 <div class="field"><span class="label">Example:</span> Three learning rates times four tree depths produce 12 configurations, each evaluated on the same time folds.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Hyperparameter</li><li>Random search</li><li>Objective function</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#hyperparameter">Hyperparameter</a></li><li><a href="../research-and-backtesting/page-2.html#random-search">Random search</a></li><li><a href="../research-and-backtesting/page-2.html#objective-function">Objective function</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/user_guide.html" rel="noopener">scikit-learn User Guide</a> — Supervised learning, unsupervised learning, model selection, and inspection</div>
 </article>
 <article class="entry" id="random-search"><h3>Random search <a class="anchor" href="#random-search">#</a></h3>
@@ -251,7 +256,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>
 <div class="field"><span class="label">Misconceptions:</span> Validation measures conditional generalization under a split design; it does not guarantee future market performance.</div>
 <div class="field"><span class="label">Example:</span> Twenty pairs of log-uniform learning rate and integer tree depth are drawn from a space containing thousands of possibilities.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Hyperparameter</li><li>Grid search</li><li>Bayesian optimization</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#hyperparameter">Hyperparameter</a></li><li><a href="../research-and-backtesting/page-2.html#grid-search">Grid search</a></li><li><a href="../research-and-backtesting/page-2.html#bayesian-optimization">Bayesian optimization</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/user_guide.html" rel="noopener">scikit-learn User Guide</a> — Supervised learning, unsupervised learning, model selection, and inspection</div>
 </article>
 <article class="entry" id="bayesian-optimization"><h3>Bayesian optimization <a class="anchor" href="#bayesian-optimization">#</a></h3>
@@ -261,7 +266,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>
 <div class="field"><span class="label">Misconceptions:</span> Validation measures conditional generalization under a split design; it does not guarantee future market performance.</div>
 <div class="field"><span class="label">Example:</span> After eight initial trials, expected improvement proposes a lower learning rate near the best observed region for trial nine.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Hyperparameter</li><li>Random search</li><li>Objective function</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#hyperparameter">Hyperparameter</a></li><li><a href="../research-and-backtesting/page-2.html#random-search">Random search</a></li><li><a href="../research-and-backtesting/page-2.html#objective-function">Objective function</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://scikit-learn.org/stable/user_guide.html" rel="noopener">scikit-learn User Guide</a> — Supervised learning, unsupervised learning, model selection, and inspection</div>
 </article>
 <article class="entry" id="objective-function"><h3>Objective function <a class="anchor" href="#objective-function">#</a></h3>
@@ -272,7 +277,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> A model minimizes validation log loss plus 0.01 times the sum of squared weights.</div>
 <div class="formula">Objective = data loss + regularization penalty</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Loss function</li><li>Regularization</li><li>Constraint</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Loss function</li><li><a href="../research-and-backtesting/page-2.html#regularization">Regularization</a></li><li><a href="../research-and-backtesting/page-2.html#constraint">Constraint</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://arxiv.org/abs/1603.02754" rel="noopener">Chen and Guestrin, XGBoost: A Scalable Tree Boosting System</a> — Regularized objective and gradient tree boosting</div>
 </article>
 <article class="entry" id="constraint"><h3>Constraint <a class="anchor" href="#constraint">#</a></h3>
@@ -282,7 +287,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.</div>
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> A portfolio optimizer requires every weight between 0% and 5% and all weights to sum to 100%.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Objective function</li><li>Optimization</li><li>Regularization</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#objective-function">Objective function</a></li><li>Optimization</li><li><a href="../research-and-backtesting/page-2.html#regularization">Regularization</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://rpc.cfainstitute.org/research/foundation/2024/investment-model-validation" rel="noopener">CFA Institute Research Foundation, Investment Model Validation</a> — Overview and model-validation framework</div>
 </article>
 <article class="entry" id="regularization"><h3>Regularization <a class="anchor" href="#regularization">#</a></h3>
@@ -293,7 +298,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.</div>
 <div class="field"><span class="label">Example:</span> Increasing an L2 penalty from 0 to 0.1 shrinks a fitted coefficient from 2.4 to 1.7.</div>
 <div class="formula">Regularized objective = empirical loss + lambda times penalty</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Objective function</li><li>Early stopping</li><li>Feature selection</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#objective-function">Objective function</a></li><li><a href="../research-and-backtesting/page-2.html#early-stopping">Early stopping</a></li><li><a href="../research-and-backtesting/page-2.html#feature-selection">Feature selection</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://arxiv.org/abs/1603.02754" rel="noopener">Chen and Guestrin, XGBoost: A Scalable Tree Boosting System</a> — Regularized objective and gradient tree boosting</div>
 </article>
 <article class="entry" id="early-stopping"><h3>Early stopping <a class="anchor" href="#early-stopping">#</a></h3>
@@ -303,7 +308,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Failure modes:</span> Random splitting, overlapping labels, repeated tuning, or an unprotected final test set can produce optimistic estimates.</div>
 <div class="field"><span class="label">Misconceptions:</span> Validation measures conditional generalization under a split design; it does not guarantee future market performance.</div>
 <div class="field"><span class="label">Example:</span> Validation loss bottoms at epoch 42 and fails to improve for 10 epochs, so training stops at 52 and restores epoch 42.</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Regularization</li><li>Validation set</li><li>Hyperparameter</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../research-and-backtesting/page-2.html#regularization">Regularization</a></li><li><a href="../research-and-backtesting/#validation-set">Validation set</a></li><li><a href="../research-and-backtesting/page-2.html#hyperparameter">Hyperparameter</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://xgboost.readthedocs.io/en/stable/get_started.html" rel="noopener">XGBoost documentation, Get Started</a> — XGBoost training and prediction interfaces</div>
 </article><div class="pager" role="navigation" aria-label="Pagination"><a href="index.html" rel="first">First</a><a href="index.html" rel="prev">Prev</a><a href="index.html">1</a><span class="cur" aria-current="page">2</span><a href="page-3.html">3</a><a href="page-4.html">4</a><a href="page-3.html" rel="next">Next</a><a href="page-4.html" rel="last">Last</a></div><div class="domainnav"><a href="../psychology-and-process/">&larr; Psychology and process</a><a href="../risk-and-performance/">Risk and performance &rarr;</a></div><p class='meta'>Generated 2026-08-09 · <a href='../about.html'>About &amp; Methodology</a> · <a href='https://github.com/unperson-12359/trading-knowledge-library'>GitHub</a></p></main><script>
 (function(){
@@ -315,7 +320,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
     var q=box.value.trim().toLowerCase();res.innerHTML='';
     if(q.length<2)return;
     load().then(function(data){
-      var hits=data.filter(function(e){return e.n.toLowerCase().indexOf(q)!==-1}).slice(0,12);
+      var hits=data.filter(function(e){return (e.n+' '+(e.a||'')+' '+(e.x||'')).toLowerCase().indexOf(q)!==-1}).slice(0,12);
       res.innerHTML=hits.map(function(e){
         return '<li><a href="'+e.u+'">'+e.n+'</a> <span class="sr-domain">'+e.d+'</span></li>';
       }).join('')||'<li class="meta">No matches</li>';

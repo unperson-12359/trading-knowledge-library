@@ -9,7 +9,7 @@ knowledge rollout.
 | Build and source-audit the 50-concept core | Complete |
 | Add regime taxonomy and core annotations | Complete |
 | Add five generic-perpetual research playbooks | Complete |
-| Add structured query/API and relationship links | In progress |
+| Add structured query/API and relationship links | Complete |
 
 Every completed checkpoint is validated, committed to `main`, pushed, and
 verified on GitHub Pages before the next checkpoint begins.

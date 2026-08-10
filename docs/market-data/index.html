@@ -36,6 +36,10 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 .playbook-card{border:1px solid #ddd;border-radius:6px;padding:.8rem 1rem;margin:.8rem 0}
 .playbook-card h2{margin:.1rem 0 .35rem;font-size:1.15rem}
 .json{white-space:pre-wrap;background:#f4f4f4;padding:.7rem;border-radius:4px;font-family:Consolas,monospace;font-size:.8rem}
+.query-controls{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:.55rem;margin:1rem 0;font-family:system-ui}
+.query-controls input,.query-controls select{width:100%;padding:.5rem;border:1px solid #bbb;border-radius:5px;background:#fff}
+.query-controls label{font-size:.78rem;color:#555}.query-controls .check{display:flex;align-items:end;padding-bottom:.5rem}
+.query-result{border-bottom:1px solid #ddd;padding:.8rem 0}.query-result h2{font-size:1.05rem;margin:0 0 .2rem}
 .domainnav{display:flex;justify-content:space-between;margin-top:2rem;font-family:system-ui;font-size:.85rem}
 .toc{columns:2;font-family:system-ui;font-size:.82rem;background:#fafaf8;border:1px solid #e8e8e5;border-radius:6px;padding:.8rem 1rem}
 .toc a{color:#333}
@@ -49,8 +53,9 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
  nav#sidebar details.tocwrap:not([open]) .navlist{display:none}
  main{padding:1rem}
  .toc{columns:1}
+ .query-controls{grid-template-columns:1fr 1fr}
 }
-</style></head><body><nav id="sidebar" aria-label="Domains"><h2><a href="../index.html" style="color:#111">Trading Library</a></h2><input id="search" type="search" placeholder="Search 1,500 concepts…" data-index="../search-index.json" aria-label="Search concepts"><ul id="search-results"></ul><details class="tocwrap" open><summary class="meta">Domains</summary><ul class="navlist"><li><a href="../all.html">A–Z index</a></li><li><a href="../about.html">About &amp; Methodology</a></li><li><a href="../playbooks/">Research playbooks</a></li><li><a href="../ai-and-knowledge-engineering/">AI and knowledge engineering <span class="count">38</span></a></li><li><a href="../candlestick-patterns/">Candlestick patterns <span class="count">37</span></a></li><li><a href="../chart-patterns/">Chart patterns <span class="count">26</span></a></li><li><a href="../contract-mechanics/">Contract mechanics <span class="count">38</span></a></li><li><a href="../crypto-and-defi/">Crypto and DeFi <span class="count">92</span></a></li><li><a href="../fixed-income-and-rates/">Fixed income and rates <span class="count">32</span></a></li><li><a href="../foreign-exchange/">Foreign exchange <span class="count">25</span></a></li><li><a href="../futures-and-spreads/">Futures and spreads <span class="count">33</span></a></li><li><a href="../indicators/">Indicators <span class="count">79</span></a></li><li><a href="../instruments/">Instruments <span class="count">48</span></a></li><li><a href="../macro-and-fundamentals/">Macro and fundamentals <span class="count">57</span></a></li><li><a href="../market-abuse-and-ethics/">Market abuse and ethics <span class="count">31</span></a></li><li><a href="../market-data/" class="active">Market data <span class="count">33</span></a></li><li><a href="../market-foundations/">Market foundations <span class="count">35</span></a></li><li><a href="../microstructure/">Microstructure <span class="count">54</span></a></li><li><a href="../options/">Options <span class="count">85</span></a></li><li><a href="../orders-and-execution/">Orders and execution <span class="count">71</span></a></li><li><a href="../parameterized-analytics/">Parameterized analytics <span class="count">63</span></a></li><li><a href="../participants/">Participants <span class="count">28</span></a></li><li><a href="../portfolio-management/">Portfolio management <span class="count">45</span></a></li><li><a href="../price-action-and-technical-analysis/">Price action and technical analysis <span class="count">58</span></a></li><li><a href="../psychology-and-process/">Psychology and process <span class="count">55</span></a></li><li><a href="../research-and-backtesting/">Research and backtesting <span class="count">94</span></a></li><li><a href="../risk-and-performance/">Risk and performance <span class="count">82</span></a></li><li><a href="../statistics-and-probability/">Statistics and probability <span class="count">50</span></a></li><li><a href="../time-series-analysis/">Time-series analysis <span class="count">63</span></a></li><li><a href="../trading-systems/">Trading systems <span class="count">56</span></a></li><li><a href="../volume-and-order-flow/">Volume and order flow <span class="count">56</span></a></li><li><a href="../wyckoff/">Wyckoff <span class="count">36</span></a></li></ul></details></nav><main><div class="crumbs"><a href="../index.html">Home</a> / <a href="./">Market data</a></div><h1>Market data</h1><p class="meta">33 concepts · <span class="showing">showing 1–25 of 33</span></p><div class="toc"><div><a href="#trading-volume">Trading volume</a></div><div><a href="#quote-volume">Quote volume</a></div><div><a href="#dollar-volume">Dollar volume</a></div><div><a href="#turnover">Turnover</a></div><div><a href="#open-price">Open price</a></div><div><a href="#high-price">High price</a></div><div><a href="#low-price">Low price</a></div><div><a href="#close-price">Close price</a></div><div><a href="#adjusted-close">Adjusted close</a></div><div><a href="#ohlc-bar">OHLC bar</a></div><div><a href="#ohlcv-bar">OHLCV bar</a></div><div><a href="#tick-data">Tick data</a></div><div><a href="#time-bar">Time bar</a></div><div><a href="#tick-bar">Tick bar</a></div><div><a href="#volume-bar">Volume bar</a></div><div><a href="#dollar-bar">Dollar bar</a></div><div><a href="#range-bar">Range bar</a></div><div><a href="#renko-bar">Renko bar</a></div><div><a href="#point-and-figure-chart">Point-and-figure chart</a></div><div><a href="#heikin-ashi-candle">Heikin-Ashi candle</a></div><div><a href="#typical-price">Typical price</a></div><div><a href="#median-price">Median price</a></div><div><a href="#weighted-close">Weighted close</a></div><div><a href="#average-price">Average price</a></div><div><a href="#true-range">True range</a></div><div><a href="#rolling-maximum">Rolling maximum</a></div><div><a href="#rolling-minimum">Rolling minimum</a></div><div><a href="#rolling-mean">Rolling mean</a></div><div><a href="#rolling-median">Rolling median</a></div><div><a href="#rolling-standard-deviation">Rolling standard deviation</a></div><div><a href="#rolling-correlation">Rolling correlation</a></div><div><a href="#rolling-beta">Rolling beta</a></div><div><a href="#rolling-z-score">Rolling z-score</a></div></div><div class="pager" role="navigation" aria-label="Pagination"><span class="cur" aria-current="page">1</span><a href="page-2.html">2</a><a href="page-2.html" rel="next">Next</a><a href="page-2.html" rel="last">Last</a></div><article class="entry" id="trading-volume"><h3>Trading volume <a class="anchor" href="#trading-volume">#</a></h3>
+</style></head><body><nav id="sidebar" aria-label="Domains"><h2><a href="../index.html" style="color:#111">Trading Library</a></h2><input id="search" type="search" placeholder="Search 1,500 concepts…" data-index="../search-index.json" aria-label="Search concepts"><ul id="search-results"></ul><details class="tocwrap" open><summary class="meta">Domains</summary><ul class="navlist"><li><a href="../all.html">A–Z index</a></li><li><a href="../about.html">About &amp; Methodology</a></li><li><a href="../query.html">Structured query</a></li><li><a href="../playbooks/">Research playbooks</a></li><li><a href="../ai-and-knowledge-engineering/">AI and knowledge engineering <span class="count">38</span></a></li><li><a href="../candlestick-patterns/">Candlestick patterns <span class="count">37</span></a></li><li><a href="../chart-patterns/">Chart patterns <span class="count">26</span></a></li><li><a href="../contract-mechanics/">Contract mechanics <span class="count">38</span></a></li><li><a href="../crypto-and-defi/">Crypto and DeFi <span class="count">92</span></a></li><li><a href="../fixed-income-and-rates/">Fixed income and rates <span class="count">32</span></a></li><li><a href="../foreign-exchange/">Foreign exchange <span class="count">25</span></a></li><li><a href="../futures-and-spreads/">Futures and spreads <span class="count">33</span></a></li><li><a href="../indicators/">Indicators <span class="count">79</span></a></li><li><a href="../instruments/">Instruments <span class="count">48</span></a></li><li><a href="../macro-and-fundamentals/">Macro and fundamentals <span class="count">57</span></a></li><li><a href="../market-abuse-and-ethics/">Market abuse and ethics <span class="count">31</span></a></li><li><a href="../market-data/" class="active">Market data <span class="count">33</span></a></li><li><a href="../market-foundations/">Market foundations <span class="count">35</span></a></li><li><a href="../microstructure/">Microstructure <span class="count">54</span></a></li><li><a href="../options/">Options <span class="count">85</span></a></li><li><a href="../orders-and-execution/">Orders and execution <span class="count">71</span></a></li><li><a href="../parameterized-analytics/">Parameterized analytics <span class="count">63</span></a></li><li><a href="../participants/">Participants <span class="count">28</span></a></li><li><a href="../portfolio-management/">Portfolio management <span class="count">45</span></a></li><li><a href="../price-action-and-technical-analysis/">Price action and technical analysis <span class="count">58</span></a></li><li><a href="../psychology-and-process/">Psychology and process <span class="count">55</span></a></li><li><a href="../research-and-backtesting/">Research and backtesting <span class="count">94</span></a></li><li><a href="../risk-and-performance/">Risk and performance <span class="count">82</span></a></li><li><a href="../statistics-and-probability/">Statistics and probability <span class="count">50</span></a></li><li><a href="../time-series-analysis/">Time-series analysis <span class="count">63</span></a></li><li><a href="../trading-systems/">Trading systems <span class="count">56</span></a></li><li><a href="../volume-and-order-flow/">Volume and order flow <span class="count">56</span></a></li><li><a href="../wyckoff/">Wyckoff <span class="count">36</span></a></li></ul></details></nav><main><div class="crumbs"><a href="../index.html">Home</a> / <a href="./">Market data</a></div><h1>Market data</h1><p class="meta">33 concepts · <span class="showing">showing 1–25 of 33</span></p><div class="toc"><div><a href="#trading-volume">Trading volume</a></div><div><a href="#quote-volume">Quote volume</a></div><div><a href="#dollar-volume">Dollar volume</a></div><div><a href="#turnover">Turnover</a></div><div><a href="#open-price">Open price</a></div><div><a href="#high-price">High price</a></div><div><a href="#low-price">Low price</a></div><div><a href="#close-price">Close price</a></div><div><a href="#adjusted-close">Adjusted close</a></div><div><a href="#ohlc-bar">OHLC bar</a></div><div><a href="#ohlcv-bar">OHLCV bar</a></div><div><a href="#tick-data">Tick data</a></div><div><a href="#time-bar">Time bar</a></div><div><a href="#tick-bar">Tick bar</a></div><div><a href="#volume-bar">Volume bar</a></div><div><a href="#dollar-bar">Dollar bar</a></div><div><a href="#range-bar">Range bar</a></div><div><a href="#renko-bar">Renko bar</a></div><div><a href="#point-and-figure-chart">Point-and-figure chart</a></div><div><a href="#heikin-ashi-candle">Heikin-Ashi candle</a></div><div><a href="#typical-price">Typical price</a></div><div><a href="#median-price">Median price</a></div><div><a href="#weighted-close">Weighted close</a></div><div><a href="#average-price">Average price</a></div><div><a href="#true-range">True range</a></div><div><a href="#rolling-maximum">Rolling maximum</a></div><div><a href="#rolling-minimum">Rolling minimum</a></div><div><a href="#rolling-mean">Rolling mean</a></div><div><a href="#rolling-median">Rolling median</a></div><div><a href="#rolling-standard-deviation">Rolling standard deviation</a></div><div><a href="#rolling-correlation">Rolling correlation</a></div><div><a href="#rolling-beta">Rolling beta</a></div><div><a href="#rolling-z-score">Rolling z-score</a></div></div><div class="pager" role="navigation" aria-label="Pagination"><span class="cur" aria-current="page">1</span><a href="page-2.html">2</a><a href="page-2.html" rel="next">Next</a><a href="page-2.html" rel="last">Last</a></div><article class="entry" id="trading-volume"><h3>Trading volume <a class="anchor" href="#trading-volume">#</a></h3>
 <div class="field">Trading volume is the total number of units of a security (shares, contracts, or coins) that changed hands in executed trades during a given period. It is the standard measure of market activity and is reported per instrument, per venue, or consolidated across venues.</div>
 <div class="field"><span class="label">Intuition:</span> Volume counts how much of an asset actually traded. It tells you how active and liquid the market was, not which direction prices moved.</div>
 <div class="field"><span class="label">Mechanics:</span> Each executed trade contributes its quantity to the period total; volume is typically aggregated per bar (e.g., daily) and reported alongside OHLC prices. Average volume over a longer window is total volume divided by the number of periods.</div>
@@ -59,7 +64,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If 2.1 million shares of AAPL trade on a given day, that day&#x27;s volume is 2.1 million shares; if the 30-day average is 55 million shares, the day was unusually quiet.</div>
 <div class="formula">V = Σ_i q_i, where q_i is the quantity of trade i executed during the period. Average volume = Σ V_t / N over N periods.</div>
 <div class="field"><span class="label">Aliases:</span> volume, share volume, turnover volume</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Quote volume</li><li>Dollar volume</li><li>Turnover</li><li>OHLCV bar</li><li>Tick data</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#quote-volume">Quote volume</a></li><li><a href="../market-data/#dollar-volume">Dollar volume</a></li><li>Turnover</li><li><a href="../market-data/#ohlcv-bar">OHLCV bar</a></li><li><a href="../market-data/#tick-data">Tick data</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Volume_(finance)" rel="noopener">Wikipedia: Volume (finance)</a> — Lead section</div>
 </article>
 <article class="entry" id="quote-volume"><h3>Quote volume <a class="anchor" href="#quote-volume">#</a></h3>
@@ -71,7 +76,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> A BTC/USDT hourly bar with 100 BTC traded at an average price of 60,000 USDT has base volume 100 BTC and quote volume of roughly 6,000,000 USDT.</div>
 <div class="formula">QV = Σ_i p_i · q_i, where p_i is the trade price in quote currency and q_i is the quantity in base units.</div>
 <div class="field"><span class="label">Aliases:</span> quote asset volume, quote currency volume</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Trading volume</li><li>Dollar volume</li><li>OHLCV bar</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#trading-volume">Trading volume</a></li><li><a href="../market-data/#dollar-volume">Dollar volume</a></li><li><a href="../market-data/#ohlcv-bar">OHLCV bar</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://raw.githubusercontent.com/binance/binance-spot-api-docs/master/rest-api.md" rel="noopener">Binance Spot API documentation (rest-api.md)</a> — Kline/Candlestick data — response fields (Quote asset volume)</div>
 </article>
 <article class="entry" id="dollar-volume"><h3>Dollar volume <a class="anchor" href="#dollar-volume">#</a></h3>
@@ -83,7 +88,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> A stock closing at $20 that traded 1.5 million shares has a daily dollar volume of roughly $30 million; a fund requiring $25M minimum average daily dollar volume would consider it borderline tradable.</div>
 <div class="formula">DV = Σ_i p_i · q_i, where p_i is the trade price and q_i the shares in trade i; approximated as DV ≈ P_avg · V for daily bars.</div>
 <div class="field"><span class="label">Aliases:</span> dollar-volume liquidity, value traded, turnover value</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Trading volume</li><li>Quote volume</li><li>Turnover</li><li>Dollar bar</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#trading-volume">Trading volume</a></li><li><a href="../market-data/#quote-volume">Quote volume</a></li><li>Turnover</li><li><a href="../market-data/#dollar-bar">Dollar bar</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.trade-ideas.com/learning-center/technical-indicators/dollar-volume-explained/" rel="noopener">Trade Ideas Learning Center: Dollar Volume Explained</a> — Opening definition</div>
 </article>
 <article class="entry" id="turnover"><h3>Turnover <a class="anchor" href="#turnover">#</a></h3>
@@ -95,7 +100,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> A company with 100 million shares outstanding that trades 5 million shares in a day has a daily share turnover of 5%.</div>
 <div class="formula">Turnover = (total shares traded over period) / (shares outstanding during period), often expressed as a percentage.</div>
 <div class="field"><span class="label">Aliases:</span> share turnover, share turnover ratio, velocity</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Trading volume</li><li>Dollar volume</li><li>Free float</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#trading-volume">Trading volume</a></li><li><a href="../market-data/#dollar-volume">Dollar volume</a></li><li>Free float</li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://economictimes.indiatimes.com/definition/share-turnover" rel="noopener">The Economic Times: Definition of Share Turnover</a> — Definition and formula</div>
 </article>
 <article class="entry" id="open-price"><h3>Open price <a class="anchor" href="#open-price">#</a></h3>
@@ -106,7 +111,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> The open is not necessarily close to the previous close — overnight gaps are common — and it is not a consensus &#x27;fair value&#x27;, just the first executed price.</div>
 <div class="field"><span class="label">Example:</span> If a stock&#x27;s first trade of the session executes at $102.40 after a positive earnings surprise, the daily open is $102.40 regardless of where it traded for the rest of the day.</div>
 <div class="field"><span class="label">Aliases:</span> opening price, open</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>OHLC bar</li><li>Close price</li><li>High price</li><li>Low price</li><li>Opening auction</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#ohlc-bar">OHLC bar</a></li><li><a href="../market-data/#close-price">Close price</a></li><li><a href="../market-data/#high-price">High price</a></li><li><a href="../market-data/#low-price">Low price</a></li><li><a href="../market-foundations/#opening-auction">Opening auction</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Open-high-low-close_chart" rel="noopener">Wikipedia: Open-high-low-close chart</a> — Lead section (definition of opening price tick)</div>
 </article>
 <article class="entry" id="high-price"><h3>High price <a class="anchor" href="#high-price">#</a></h3>
@@ -118,7 +123,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If a stock trades between $50.10 and $51.80 during the day, the daily high is $51.80 even if only one lot traded there.</div>
 <div class="formula">H = max(p_i) over all trades i in the period.</div>
 <div class="field"><span class="label">Aliases:</span> high, session high, period high</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Low price</li><li>OHLC bar</li><li>True range</li><li>Rolling maximum</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#low-price">Low price</a></li><li><a href="../market-data/#ohlc-bar">OHLC bar</a></li><li><a href="../market-data/#true-range">True range</a></li><li><a href="../market-data/page-2.html#rolling-maximum">Rolling maximum</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Open-high-low-close_chart" rel="noopener">Wikipedia: Open-high-low-close chart</a> — Lead section (price range definition)</div>
 </article>
 <article class="entry" id="low-price"><h3>Low price <a class="anchor" href="#low-price">#</a></h3>
@@ -130,7 +135,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If a stock&#x27;s trades during the day range from $48.25 to $50.00, the daily low is $48.25 even if price immediately bounced from that print.</div>
 <div class="formula">L = min(p_i) over all trades i in the period.</div>
 <div class="field"><span class="label">Aliases:</span> low, session low, period low</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>High price</li><li>OHLC bar</li><li>True range</li><li>Rolling minimum</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#high-price">High price</a></li><li><a href="../market-data/#ohlc-bar">OHLC bar</a></li><li><a href="../market-data/#true-range">True range</a></li><li><a href="../market-data/page-2.html#rolling-minimum">Rolling minimum</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Open-high-low-close_chart" rel="noopener">Wikipedia: Open-high-low-close chart</a> — Lead section (price range definition)</div>
 </article>
 <article class="entry" id="close-price"><h3>Close price <a class="anchor" href="#close-price">#</a></h3>
@@ -141,7 +146,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> The close is not necessarily the price you could have traded at in size — closing auctions have their own liquidity profile. Nor is the 4:00 p.m. print comparable to after-hours prices, which trade in thinner conditions.</div>
 <div class="field"><span class="label">Example:</span> If the NYSE closing auction for a stock clears at $87.55 at 4:00 p.m., that is the official daily close used for the day&#x27;s return calculation.</div>
 <div class="field"><span class="label">Aliases:</span> closing price, close, last price</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>OHLC bar</li><li>Open price</li><li>Adjusted close</li><li>Closing auction</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#ohlc-bar">OHLC bar</a></li><li><a href="../market-data/#open-price">Open price</a></li><li><a href="../market-data/#adjusted-close">Adjusted close</a></li><li><a href="../market-foundations/#closing-auction">Closing auction</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.investor.gov/introduction-investing/investing-basics/glossary" rel="noopener">SEC Investor.gov Glossary</a> — Closing Price</div>
 </article>
 <article class="entry" id="adjusted-close"><h3>Adjusted close <a class="anchor" href="#adjusted-close">#</a></h3>
@@ -153,7 +158,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If a stock trading at $100 pays a $2 dividend, pre-ex adjusted closes are multiplied by 0.98; a $100 pre-ex close becomes $98.00 in the adjusted series.</div>
 <div class="formula">AdjClose_t = Close_t × F_t, where F_t is the cumulative product of split and dividend adjustment factors for all corporate actions after date t.</div>
 <div class="field"><span class="label">Aliases:</span> adjusted closing price, adjusted price</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Close price</li><li>Stock split</li><li>Dividend</li><li>Total return</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#close-price">Close price</a></li><li><a href="../macro-and-fundamentals/page-2.html#stock-split">Stock split</a></li><li><a href="../macro-and-fundamentals/page-3.html#cash-dividend">Dividend</a></li><li>Total return</li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.alphavantage.co/documentation/" rel="noopener">Alpha Vantage API Documentation</a> — TIME_SERIES_DAILY_ADJUSTED (adjusted close values and historical split/dividend events)</div>
 </article>
 <article class="entry" id="ohlc-bar"><h3>OHLC bar <a class="anchor" href="#ohlc-bar">#</a></h3>
@@ -165,7 +170,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> A daily bar of O=100, H=103, L=99, C=102 says the session opened at 100, ranged from 99 to 103, and settled at 102 — nothing more about the order of events.</div>
 <div class="formula">O = p_first; H = max(p_i); L = min(p_i); C = p_last, over trades i in the interval.</div>
 <div class="field"><span class="label">Aliases:</span> price bar, bar, OHLC</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>OHLCV bar</li><li>Open price</li><li>High price</li><li>Low price</li><li>Close price</li><li>Candlestick chart</li><li>Time bar</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#ohlcv-bar">OHLCV bar</a></li><li><a href="../market-data/#open-price">Open price</a></li><li><a href="../market-data/#high-price">High price</a></li><li><a href="../market-data/#low-price">Low price</a></li><li><a href="../market-data/#close-price">Close price</a></li><li>Candlestick chart</li><li><a href="../market-data/#time-bar">Time bar</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Open-high-low-close_chart" rel="noopener">Wikipedia: Open-high-low-close chart</a> — Lead section</div>
 </article>
 <article class="entry" id="ohlcv-bar"><h3>OHLCV bar <a class="anchor" href="#ohlcv-bar">#</a></h3>
@@ -177,7 +182,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> A 5-minute AAPL bar of O=189.10, H=189.45, L=189.00, C=189.30, V=412,000 summarizes all trades in that five-minute window.</div>
 <div class="formula">O = p_first; H = max(p_i); L = min(p_i); C = p_last; V = Σ q_i, over trades i in the interval.</div>
 <div class="field"><span class="label">Aliases:</span> OHLCV, candle, bar with volume</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>OHLC bar</li><li>Trading volume</li><li>Quote volume</li><li>Time bar</li><li>Candlestick chart</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#ohlc-bar">OHLC bar</a></li><li><a href="../market-data/#trading-volume">Trading volume</a></li><li><a href="../market-data/#quote-volume">Quote volume</a></li><li><a href="../market-data/#time-bar">Time bar</a></li><li>Candlestick chart</li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.alphavantage.co/documentation/" rel="noopener">Alpha Vantage API Documentation</a> — Time Series Stock Data APIs (OHLCV time series; &#x27;candles&#x27;)</div>
 </article>
 <article class="entry" id="tick-data"><h3>Tick data <a class="anchor" href="#tick-data">#</a></h3>
@@ -188,7 +193,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> A &#x27;tick&#x27; in tick data is any recorded event, not the minimum price increment (tick size) — the two uses of the word are unrelated. Also, the consolidated tape is not identical to any single exchange&#x27;s feed.</div>
 <div class="field"><span class="label">Example:</span> A single second of AAPL tick data might contain 40 trade prints across NYSE, Nasdaq, and other venues plus hundreds of bid/ask updates — all collapsed into one OHLCV bar if aggregated per second.</div>
 <div class="field"><span class="label">Aliases:</span> tick-by-tick data, trade and quote data, TAQ data</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>OHLCV bar</li><li>Tick bar</li><li>Consolidated tape</li><li>Market data</li><li>Trading volume</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#ohlcv-bar">OHLCV bar</a></li><li><a href="../market-data/#tick-bar">Tick bar</a></li><li><a href="../market-foundations/#consolidated-tape">Consolidated tape</a></li><li>Market data</li><li><a href="../market-data/#trading-volume">Trading volume</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Market_data" rel="noopener">Wikipedia: Market data</a> — Data structure (trade data and quote data feeds)</div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.investor.gov/introduction-investing/investing-basics/glossary" rel="noopener">SEC Investor.gov Glossary</a> — Consolidated Tape</div>
 </article>
@@ -200,7 +205,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> Uniform clock sampling does not produce uniform information sampling — a 1-minute bar at the open and one at lunch carry very different amounts of market information.</div>
 <div class="field"><span class="label">Example:</span> A 1-minute time-bar series of EUR/USD produces 1,440 bars per day even though overnight bars may contain a handful of trades while London-open bars contain thousands.</div>
 <div class="field"><span class="label">Aliases:</span> time-based bar, fixed-interval bar, calendar bar</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>OHLCV bar</li><li>Tick bar</li><li>Volume bar</li><li>Dollar bar</li><li>Tick data</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#ohlcv-bar">OHLCV bar</a></li><li><a href="../market-data/#tick-bar">Tick bar</a></li><li><a href="../market-data/#volume-bar">Volume bar</a></li><li><a href="../market-data/#dollar-bar">Dollar bar</a></li><li><a href="../market-data/#tick-data">Tick data</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.wiley.com/en-us/Advances+in+Financial+Machine+Learning-p-9781119482086" rel="noopener">López de Prado, Advances in Financial Machine Learning (Wiley, 2018)</a> — Chapter 2: Financial Data Structures (time bars)</div>
 </article>
 <article class="entry" id="tick-bar"><h3>Tick bar <a class="anchor" href="#tick-bar">#</a></h3>
@@ -211,7 +216,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> A tick bar is not one bar per tick — it aggregates N trades, and &#x27;tick&#x27; here means transaction, not minimum price increment.</div>
 <div class="field"><span class="label">Example:</span> With 1,000-trade tick bars on ES futures, a bar may complete in seconds around the U.S. open but take minutes overnight.</div>
 <div class="field"><span class="label">Aliases:</span> trade bar, tick-based bar</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Time bar</li><li>Volume bar</li><li>Dollar bar</li><li>Tick data</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#time-bar">Time bar</a></li><li><a href="../market-data/#volume-bar">Volume bar</a></li><li><a href="../market-data/#dollar-bar">Dollar bar</a></li><li><a href="../market-data/#tick-data">Tick data</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.wiley.com/en-us/Advances+in+Financial+Machine+Learning-p-9781119482086" rel="noopener">López de Prado, Advances in Financial Machine Learning (Wiley, 2018)</a> — Chapter 2: Financial Data Structures (tick bars)</div>
 </article>
 <article class="entry" id="volume-bar"><h3>Volume bar <a class="anchor" href="#volume-bar">#</a></h3>
@@ -222,7 +227,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> Volume bars do not have identical volumes in strict tick-level implementations unless trades are allowed to be split; many charting platforms approximate them from already-aggregated data, distorting the construction.</div>
 <div class="field"><span class="label">Example:</span> With 50,000-share volume bars, if the tape prints 30k, 15k, and then 10k shares, the bar closes partway through the third print after exactly 50k shares have traded.</div>
 <div class="field"><span class="label">Aliases:</span> volume-based bar, shares bar</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Tick bar</li><li>Dollar bar</li><li>Time bar</li><li>Trading volume</li><li>OHLCV bar</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#tick-bar">Tick bar</a></li><li><a href="../market-data/#dollar-bar">Dollar bar</a></li><li><a href="../market-data/#time-bar">Time bar</a></li><li><a href="../market-data/#trading-volume">Trading volume</a></li><li><a href="../market-data/#ohlcv-bar">OHLCV bar</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.wiley.com/en-us/Advances+in+Financial+Machine+Learning-p-9781119482086" rel="noopener">López de Prado, Advances in Financial Machine Learning (Wiley, 2018)</a> — Chapter 2: Financial Data Structures (volume bars)</div>
 </article>
 <article class="entry" id="dollar-bar"><h3>Dollar bar <a class="anchor" href="#dollar-bar">#</a></h3>
@@ -233,7 +238,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> Dollar bars are not just volume bars at a different scale — because they normalize by value, they remain economically comparable across price levels where share-volume bars do not.</div>
 <div class="field"><span class="label">Example:</span> With $5M dollar bars on a large-cap stock, about 20 bars form on a $100M day, versus only 4 on a quiet $20M day.</div>
 <div class="field"><span class="label">Aliases:</span> dollar-based bar, value bar</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Volume bar</li><li>Tick bar</li><li>Time bar</li><li>Dollar volume</li><li>OHLCV bar</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#volume-bar">Volume bar</a></li><li><a href="../market-data/#tick-bar">Tick bar</a></li><li><a href="../market-data/#time-bar">Time bar</a></li><li><a href="../market-data/#dollar-volume">Dollar volume</a></li><li><a href="../market-data/#ohlcv-bar">OHLCV bar</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.wiley.com/en-us/Advances+in+Financial+Machine+Learning-p-9781119482086" rel="noopener">López de Prado, Advances in Financial Machine Learning (Wiley, 2018)</a> — Chapter 2: Financial Data Structures (dollar bars)</div>
 </article>
 <article class="entry" id="range-bar"><h3>Range bar <a class="anchor" href="#range-bar">#</a></h3>
@@ -244,7 +249,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> Equal-sized bars do not imply equal information per bar, and a range bar&#x27;s tidy structure is a construction artifact, not evidence of orderly market behavior.</div>
 <div class="field"><span class="label">Example:</span> With a 10-tick range setting on crude oil futures, each bar closes once price has traveled $0.10 from its open extreme, whether that takes two seconds or two hours.</div>
 <div class="field"><span class="label">Aliases:</span> range chart, range bars</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Renko bar</li><li>Point-and-figure chart</li><li>Time bar</li><li>True range</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#renko-bar">Renko bar</a></li><li><a href="../market-data/#point-and-figure-chart">Point-and-figure chart</a></li><li><a href="../market-data/#time-bar">Time bar</a></li><li><a href="../market-data/#true-range">True range</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.tradingview.com/support/solutions/43000474007-understanding-range-charts/" rel="noopener">TradingView Support: Understanding range charts</a> — What are range bars</div>
 </article>
 <article class="entry" id="renko-bar"><h3>Renko bar <a class="anchor" href="#renko-bar">#</a></h3>
@@ -255,7 +260,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> Renko &#x27;signals&#x27; are a repackaging of price movement, not independent confirmation — and because bricks form only after the required move, entries shown on the chart were not available at the brick&#x27;s open price.</div>
 <div class="field"><span class="label">Example:</span> With a $1 brick size on a stock closing at 50.00, 50.40, 51.10, 51.30, two up-bricks are drawn (50→51, 51→52 requires 52.00, so only one) — only the 50→51 brick prints.</div>
 <div class="field"><span class="label">Aliases:</span> Renko brick, Renko chart, renko</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Point-and-figure chart</li><li>Range bar</li><li>Kagi chart</li><li>OHLC bar</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#point-and-figure-chart">Point-and-figure chart</a></li><li><a href="../market-data/#range-bar">Range bar</a></li><li>Kagi chart</li><li><a href="../market-data/#ohlc-bar">OHLC bar</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Renko_chart" rel="noopener">Wikipedia: Renko chart</a> — Construction rules</div>
 </article>
 <article class="entry" id="point-and-figure-chart"><h3>Point-and-figure chart <a class="anchor" href="#point-and-figure-chart">#</a></h3>
@@ -266,7 +271,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Misconceptions:</span> P&amp;F columns are not time periods — a column can span days or minutes — and the filtered chart understates how much price action actually occurred.</div>
 <div class="field"><span class="label">Example:</span> With a $1 box and 3-box reversal, a stock rising from $50 to $54 draws four Xs; it must fall to $51 before a column of Os begins.</div>
 <div class="field"><span class="label">Aliases:</span> P&amp;F chart, point and figure, P&amp;F</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Renko bar</li><li>Kagi chart</li><li>Range bar</li><li>OHLC bar</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#renko-bar">Renko bar</a></li><li>Kagi chart</li><li><a href="../market-data/#range-bar">Range bar</a></li><li><a href="../market-data/#ohlc-bar">OHLC bar</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Point_and_figure_chart" rel="noopener">Wikipedia: Point and figure chart</a> — Construction and history</div>
 </article>
 <article class="entry" id="heikin-ashi-candle"><h3>Heikin-Ashi candle <a class="anchor" href="#heikin-ashi-candle">#</a></h3>
@@ -278,7 +283,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If a real bar is O=100, H=103, L=99, C=102 and the prior HA candle had HA_O=99, HA_C=100.5, then HA_C=101.0 and HA_O=99.75 — not equal to any real print.</div>
 <div class="formula">HA_C = (O+H+L+C)/4; HA_O = (HA_O_prev + HA_C_prev)/2; HA_H = max(H, HA_O, HA_C); HA_L = min(L, HA_O, HA_C), where O,H,L,C are the real bar&#x27;s prices.</div>
 <div class="field"><span class="label">Aliases:</span> Heikin-Ashi, average bar, HA candle</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>OHLC bar</li><li>OHLCV bar</li><li>Average price</li><li>Candlestick chart</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#ohlc-bar">OHLC bar</a></li><li><a href="../market-data/#ohlcv-bar">OHLCV bar</a></li><li><a href="../market-data/#average-price">Average price</a></li><li>Candlestick chart</li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Candlestick_chart" rel="noopener">Wikipedia: Candlestick chart</a> — Heikin-Ashi candlesticks</div>
 </article>
 <article class="entry" id="typical-price"><h3>Typical price <a class="anchor" href="#typical-price">#</a></h3>
@@ -290,7 +295,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> For a bar with H=105, L=100, C=103, the typical price is (105+100+103)/3 = 102.67.</div>
 <div class="formula">TP = (H + L + C) / 3, where H, L, C are the bar&#x27;s high, low, and close.</div>
 <div class="field"><span class="label">Aliases:</span> HLC average, HLC/3</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Median price</li><li>Weighted close</li><li>Average price</li><li>Money flow index</li><li>Commodity channel index</li><li>OHLC bar</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#median-price">Median price</a></li><li><a href="../market-data/#weighted-close">Weighted close</a></li><li><a href="../market-data/#average-price">Average price</a></li><li><a href="../indicators/page-2.html#money-flow-index">Money flow index</a></li><li><a href="../indicators/#commodity-channel-index">Commodity channel index</a></li><li><a href="../market-data/#ohlc-bar">OHLC bar</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/typical-price" rel="noopener">StockCharts ChartSchool: Typical Price</a> — Calculating the Typical Price Indicator</div>
 </article>
 <article class="entry" id="median-price"><h3>Median price <a class="anchor" href="#median-price">#</a></h3>
@@ -302,7 +307,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> For a bar with H=48.20 and L=46.80, the median price is 47.50 regardless of whether the close was 47.00 or 48.10.</div>
 <div class="formula">MP = (H + L) / 2, where H and L are the bar&#x27;s high and low.</div>
 <div class="field"><span class="label">Aliases:</span> midpoint price, HL average, HL/2</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Typical price</li><li>Weighted close</li><li>Average price</li><li>OHLC bar</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#typical-price">Typical price</a></li><li><a href="../market-data/#weighted-close">Weighted close</a></li><li><a href="../market-data/#average-price">Average price</a></li><li><a href="../market-data/#ohlc-bar">OHLC bar</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/median-price" rel="noopener">StockCharts ChartSchool: Median Price</a> — How Is the Median Price Indicator Calculated?</div>
 </article>
 <article class="entry" id="weighted-close"><h3>Weighted close <a class="anchor" href="#weighted-close">#</a></h3>
@@ -314,7 +319,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> For a bar with H=210, L=200, C=206, the weighted close is (210+200+2×206)/4 = 205.50.</div>
 <div class="formula">WC = (H + L + 2C) / 4, where H, L, C are the bar&#x27;s high, low, and close.</div>
 <div class="field"><span class="label">Aliases:</span> HLC close-weighted average, HLCC/4</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Typical price</li><li>Median price</li><li>Average price</li><li>Close price</li><li>OHLC bar</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#typical-price">Typical price</a></li><li><a href="../market-data/#median-price">Median price</a></li><li><a href="../market-data/#average-price">Average price</a></li><li><a href="../market-data/#close-price">Close price</a></li><li><a href="../market-data/#ohlc-bar">OHLC bar</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/weighted-close" rel="noopener">StockCharts ChartSchool: Weighted Close</a> — How To Calculate the Weighted Close Indicator</div>
 </article>
 <article class="entry" id="average-price"><h3>Average price <a class="anchor" href="#average-price">#</a></h3>
@@ -326,7 +331,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> For a bar with O=100, H=103, L=99, C=102, the average price is (100+103+99+102)/4 = 101.00, which is also that bar&#x27;s Heikin-Ashi close.</div>
 <div class="formula">AP = (O + H + L + C) / 4, where O, H, L, C are the bar&#x27;s four prices.</div>
 <div class="field"><span class="label">Aliases:</span> OHLC average, OHLC/4, mean price</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Typical price</li><li>Median price</li><li>Weighted close</li><li>Heikin-Ashi candle</li><li>OHLC bar</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../market-data/#typical-price">Typical price</a></li><li><a href="../market-data/#median-price">Median price</a></li><li><a href="../market-data/#weighted-close">Weighted close</a></li><li><a href="../market-data/#heikin-ashi-candle">Heikin-Ashi candle</a></li><li><a href="../market-data/#ohlc-bar">OHLC bar</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Candlestick_chart" rel="noopener">Wikipedia: Candlestick chart</a> — Heikin-Ashi candlesticks (Close = (open+high+low+close)/4)</div>
 <div class="field"><span class="label">Source:</span> <a href="https://raw.githubusercontent.com/binance/binance-spot-api-docs/master/rest-api.md" rel="noopener">Binance Spot API documentation (rest-api.md)</a> — Current average price endpoint</div>
 </article>
@@ -339,7 +344,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If yesterday closed at 50 and today trades between 48 and 49, plain range is 1 but true range is max(1, 2, 1) = 2, capturing the gap down.</div>
 <div class="formula">TR_t = max(H_t − L_t, |H_t − C_{t−1}|, |L_t − C_{t−1}|), where H_t, L_t are the current high and low and C_{t−1} is the previous close.</div>
 <div class="field"><span class="label">Aliases:</span> TR</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Average true range</li><li>High price</li><li>Low price</li><li>Close price</li><li>OHLC bar</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#average-true-range">Average true range</a></li><li><a href="../market-data/#high-price">High price</a></li><li><a href="../market-data/#low-price">Low price</a></li><li><a href="../market-data/#close-price">Close price</a></li><li><a href="../market-data/#ohlc-bar">OHLC bar</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://en.wikipedia.org/wiki/Average_true_range" rel="noopener">Wikipedia: Average true range</a> — True range definition (citing Wilder, New Concepts in Technical Trading Systems, 1978)</div>
 </article><div class="pager" role="navigation" aria-label="Pagination"><span class="cur" aria-current="page">1</span><a href="page-2.html">2</a><a href="page-2.html" rel="next">Next</a><a href="page-2.html" rel="last">Last</a></div><div class="domainnav"><a href="../market-abuse-and-ethics/">&larr; Market abuse and ethics</a><a href="../market-foundations/">Market foundations &rarr;</a></div><p class='meta'>Generated 2026-08-09 · <a href='../about.html'>About &amp; Methodology</a> · <a href='https://github.com/unperson-12359/trading-knowledge-library'>GitHub</a></p></main><script>
 (function(){
@@ -351,7 +356,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
     var q=box.value.trim().toLowerCase();res.innerHTML='';
     if(q.length<2)return;
     load().then(function(data){
-      var hits=data.filter(function(e){return e.n.toLowerCase().indexOf(q)!==-1}).slice(0,12);
+      var hits=data.filter(function(e){return (e.n+' '+(e.a||'')+' '+(e.x||'')).toLowerCase().indexOf(q)!==-1}).slice(0,12);
       res.innerHTML=hits.map(function(e){
         return '<li><a href="'+e.u+'">'+e.n+'</a> <span class="sr-domain">'+e.d+'</span></li>';
       }).join('')||'<li class="meta">No matches</li>';

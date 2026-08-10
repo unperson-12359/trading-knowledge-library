@@ -36,6 +36,10 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 .playbook-card{border:1px solid #ddd;border-radius:6px;padding:.8rem 1rem;margin:.8rem 0}
 .playbook-card h2{margin:.1rem 0 .35rem;font-size:1.15rem}
 .json{white-space:pre-wrap;background:#f4f4f4;padding:.7rem;border-radius:4px;font-family:Consolas,monospace;font-size:.8rem}
+.query-controls{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:.55rem;margin:1rem 0;font-family:system-ui}
+.query-controls input,.query-controls select{width:100%;padding:.5rem;border:1px solid #bbb;border-radius:5px;background:#fff}
+.query-controls label{font-size:.78rem;color:#555}.query-controls .check{display:flex;align-items:end;padding-bottom:.5rem}
+.query-result{border-bottom:1px solid #ddd;padding:.8rem 0}.query-result h2{font-size:1.05rem;margin:0 0 .2rem}
 .domainnav{display:flex;justify-content:space-between;margin-top:2rem;font-family:system-ui;font-size:.85rem}
 .toc{columns:2;font-family:system-ui;font-size:.82rem;background:#fafaf8;border:1px solid #e8e8e5;border-radius:6px;padding:.8rem 1rem}
 .toc a{color:#333}
@@ -49,8 +53,9 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
  nav#sidebar details.tocwrap:not([open]) .navlist{display:none}
  main{padding:1rem}
  .toc{columns:1}
+ .query-controls{grid-template-columns:1fr 1fr}
 }
-</style></head><body><nav id="sidebar" aria-label="Domains"><h2><a href="../index.html" style="color:#111">Trading Library</a></h2><input id="search" type="search" placeholder="Search 1,500 concepts…" data-index="../search-index.json" aria-label="Search concepts"><ul id="search-results"></ul><details class="tocwrap" open><summary class="meta">Domains</summary><ul class="navlist"><li><a href="../all.html">A–Z index</a></li><li><a href="../about.html">About &amp; Methodology</a></li><li><a href="../playbooks/">Research playbooks</a></li><li><a href="../ai-and-knowledge-engineering/">AI and knowledge engineering <span class="count">38</span></a></li><li><a href="../candlestick-patterns/">Candlestick patterns <span class="count">37</span></a></li><li><a href="../chart-patterns/">Chart patterns <span class="count">26</span></a></li><li><a href="../contract-mechanics/">Contract mechanics <span class="count">38</span></a></li><li><a href="../crypto-and-defi/">Crypto and DeFi <span class="count">92</span></a></li><li><a href="../fixed-income-and-rates/">Fixed income and rates <span class="count">32</span></a></li><li><a href="../foreign-exchange/">Foreign exchange <span class="count">25</span></a></li><li><a href="../futures-and-spreads/">Futures and spreads <span class="count">33</span></a></li><li><a href="../indicators/" class="active">Indicators <span class="count">79</span></a></li><li><a href="../instruments/">Instruments <span class="count">48</span></a></li><li><a href="../macro-and-fundamentals/">Macro and fundamentals <span class="count">57</span></a></li><li><a href="../market-abuse-and-ethics/">Market abuse and ethics <span class="count">31</span></a></li><li><a href="../market-data/">Market data <span class="count">33</span></a></li><li><a href="../market-foundations/">Market foundations <span class="count">35</span></a></li><li><a href="../microstructure/">Microstructure <span class="count">54</span></a></li><li><a href="../options/">Options <span class="count">85</span></a></li><li><a href="../orders-and-execution/">Orders and execution <span class="count">71</span></a></li><li><a href="../parameterized-analytics/">Parameterized analytics <span class="count">63</span></a></li><li><a href="../participants/">Participants <span class="count">28</span></a></li><li><a href="../portfolio-management/">Portfolio management <span class="count">45</span></a></li><li><a href="../price-action-and-technical-analysis/">Price action and technical analysis <span class="count">58</span></a></li><li><a href="../psychology-and-process/">Psychology and process <span class="count">55</span></a></li><li><a href="../research-and-backtesting/">Research and backtesting <span class="count">94</span></a></li><li><a href="../risk-and-performance/">Risk and performance <span class="count">82</span></a></li><li><a href="../statistics-and-probability/">Statistics and probability <span class="count">50</span></a></li><li><a href="../time-series-analysis/">Time-series analysis <span class="count">63</span></a></li><li><a href="../trading-systems/">Trading systems <span class="count">56</span></a></li><li><a href="../volume-and-order-flow/">Volume and order flow <span class="count">56</span></a></li><li><a href="../wyckoff/">Wyckoff <span class="count">36</span></a></li></ul></details></nav><main><div class="crumbs"><a href="../index.html">Home</a> / <a href="./">Indicators</a> / page 2</div><h1>Indicators</h1><p class="meta">79 concepts · <span class="showing">showing 26–50 of 79</span></p><div class="pager" role="navigation" aria-label="Pagination"><a href="index.html" rel="first">First</a><a href="index.html" rel="prev">Prev</a><a href="index.html">1</a><span class="cur" aria-current="page">2</span><a href="page-3.html">3</a><a href="page-4.html">4</a><a href="page-3.html" rel="next">Next</a><a href="page-4.html" rel="last">Last</a></div><article class="entry" id="average-directional-index"><h3>Average directional index <a class="anchor" href="#average-directional-index">#</a></h3>
+</style></head><body><nav id="sidebar" aria-label="Domains"><h2><a href="../index.html" style="color:#111">Trading Library</a></h2><input id="search" type="search" placeholder="Search 1,500 concepts…" data-index="../search-index.json" aria-label="Search concepts"><ul id="search-results"></ul><details class="tocwrap" open><summary class="meta">Domains</summary><ul class="navlist"><li><a href="../all.html">A–Z index</a></li><li><a href="../about.html">About &amp; Methodology</a></li><li><a href="../query.html">Structured query</a></li><li><a href="../playbooks/">Research playbooks</a></li><li><a href="../ai-and-knowledge-engineering/">AI and knowledge engineering <span class="count">38</span></a></li><li><a href="../candlestick-patterns/">Candlestick patterns <span class="count">37</span></a></li><li><a href="../chart-patterns/">Chart patterns <span class="count">26</span></a></li><li><a href="../contract-mechanics/">Contract mechanics <span class="count">38</span></a></li><li><a href="../crypto-and-defi/">Crypto and DeFi <span class="count">92</span></a></li><li><a href="../fixed-income-and-rates/">Fixed income and rates <span class="count">32</span></a></li><li><a href="../foreign-exchange/">Foreign exchange <span class="count">25</span></a></li><li><a href="../futures-and-spreads/">Futures and spreads <span class="count">33</span></a></li><li><a href="../indicators/" class="active">Indicators <span class="count">79</span></a></li><li><a href="../instruments/">Instruments <span class="count">48</span></a></li><li><a href="../macro-and-fundamentals/">Macro and fundamentals <span class="count">57</span></a></li><li><a href="../market-abuse-and-ethics/">Market abuse and ethics <span class="count">31</span></a></li><li><a href="../market-data/">Market data <span class="count">33</span></a></li><li><a href="../market-foundations/">Market foundations <span class="count">35</span></a></li><li><a href="../microstructure/">Microstructure <span class="count">54</span></a></li><li><a href="../options/">Options <span class="count">85</span></a></li><li><a href="../orders-and-execution/">Orders and execution <span class="count">71</span></a></li><li><a href="../parameterized-analytics/">Parameterized analytics <span class="count">63</span></a></li><li><a href="../participants/">Participants <span class="count">28</span></a></li><li><a href="../portfolio-management/">Portfolio management <span class="count">45</span></a></li><li><a href="../price-action-and-technical-analysis/">Price action and technical analysis <span class="count">58</span></a></li><li><a href="../psychology-and-process/">Psychology and process <span class="count">55</span></a></li><li><a href="../research-and-backtesting/">Research and backtesting <span class="count">94</span></a></li><li><a href="../risk-and-performance/">Risk and performance <span class="count">82</span></a></li><li><a href="../statistics-and-probability/">Statistics and probability <span class="count">50</span></a></li><li><a href="../time-series-analysis/">Time-series analysis <span class="count">63</span></a></li><li><a href="../trading-systems/">Trading systems <span class="count">56</span></a></li><li><a href="../volume-and-order-flow/">Volume and order flow <span class="count">56</span></a></li><li><a href="../wyckoff/">Wyckoff <span class="count">36</span></a></li></ul></details></nav><main><div class="crumbs"><a href="../index.html">Home</a> / <a href="./">Indicators</a> / page 2</div><h1>Indicators</h1><p class="meta">79 concepts · <span class="showing">showing 26–50 of 79</span></p><div class="pager" role="navigation" aria-label="Pagination"><a href="index.html" rel="first">First</a><a href="index.html" rel="prev">Prev</a><a href="index.html">1</a><span class="cur" aria-current="page">2</span><a href="page-3.html">3</a><a href="page-4.html">4</a><a href="page-3.html" rel="next">Next</a><a href="page-4.html" rel="last">Last</a></div><article class="entry" id="average-directional-index"><h3>Average directional index <a class="anchor" href="#average-directional-index">#</a></h3>
 <div class="field">Welles Wilder&#x27;s trend-strength gauge (New Concepts in Technical Trading Systems, 1978): the Wilder-smoothed average of the Directional Movement Index (DX), which measures the spread between +DI and -DI relative to their sum; ADX quantifies trend strength on a 0-100 scale regardless of direction.</div>
 <div class="field"><span class="label">Intuition:</span> ADX answers &#x27;is the market trending at all?&#x27;, not which way - Wilder suggested readings above 25 indicate a strong trend and below 20 the absence of one.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute +DM, -DM and True Range, smooth each with Wilder&#x27;s technique over 14 periods, derive +DI and -DI, then DX = 100 x |+DI - -DI| / (+DI + -DI); ADX is the 14-period Wilder-smoothed average of DX. Roughly 150 periods of data are needed for stable values.</div>
@@ -59,7 +64,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If +DI = 32 and -DI = 12, DX = 100 x 20/44 ~ 45.5; sustained DX values near this level push ADX above 25, Wilder&#x27;s strong-trend threshold.</div>
 <div class="formula">DX = 100 x |+DI14 - -DI14| / (+DI14 + -DI14); first ADX = 14-period average of DX, then ADX_t = ((ADX_{t-1} x 13) + DX_t) / 14.</div>
 <div class="field"><span class="label">Aliases:</span> ADX, Average directional movement index</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Positive directional indicator</li><li>Negative directional indicator</li><li>Average true range</li><li>Parabolic SAR</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#positive-directional-indicator">Positive directional indicator</a></li><li><a href="../indicators/page-2.html#negative-directional-indicator">Negative directional indicator</a></li><li><a href="../indicators/page-2.html#average-true-range">Average true range</a></li><li><a href="../indicators/page-2.html#parabolic-sar">Parabolic SAR</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/average-directional-index-adx" rel="noopener">Average Directional Index (ADX) | ChartSchool | StockCharts.com</a> — Step by Step ADX Calculation</div>
 </article>
 <article class="entry" id="positive-directional-indicator"><h3>Positive directional indicator <a class="anchor" href="#positive-directional-indicator">#</a></h3>
@@ -71,7 +76,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> Today&#x27;s high 52 vs prior 50 (+2) while lows moved down only 0.5: +DM = 2; if the smoothed +DM is 20 against a smoothed TR of 100, +DI = 20.</div>
 <div class="formula">+DI14 = 100 x (Wilder-smoothed +DM14) / (Wilder-smoothed TR14); +DM = max(High_t - High_{t-1}, 0) if High_t - High_{t-1} &gt; Low_{t-1} - Low_t, else 0.</div>
 <div class="field"><span class="label">Aliases:</span> +DI, Plus DI, PDI</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Negative directional indicator</li><li>Average directional index</li><li>Average true range</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#negative-directional-indicator">Negative directional indicator</a></li><li><a href="../indicators/page-2.html#average-directional-index">Average directional index</a></li><li><a href="../indicators/page-2.html#average-true-range">Average true range</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/average-directional-index-adx" rel="noopener">Average Directional Index (ADX) | ChartSchool | StockCharts.com</a> — Step by Step ADX Calculation</div>
 </article>
 <article class="entry" id="negative-directional-indicator"><h3>Negative directional indicator <a class="anchor" href="#negative-directional-indicator">#</a></h3>
@@ -83,7 +88,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> Prior low 48, current low 45 (-3) while highs rose only 1: -DM = 3; if smoothed -DM is 30 against smoothed TR of 100, -DI = 30, above a +DI of 20 - sellers in control.</div>
 <div class="formula">-DI14 = 100 x (Wilder-smoothed -DM14) / (Wilder-smoothed TR14); -DM = max(Low_{t-1} - Low_t, 0) if Low_{t-1} - Low_t &gt; High_t - High_{t-1}, else 0.</div>
 <div class="field"><span class="label">Aliases:</span> -DI, Minus DI, NDI, MDI</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Positive directional indicator</li><li>Average directional index</li><li>Average true range</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#positive-directional-indicator">Positive directional indicator</a></li><li><a href="../indicators/page-2.html#average-directional-index">Average directional index</a></li><li><a href="../indicators/page-2.html#average-true-range">Average true range</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/average-directional-index-adx" rel="noopener">Average Directional Index (ADX) | ChartSchool | StockCharts.com</a> — Step by Step ADX Calculation</div>
 </article>
 <article class="entry" id="average-true-range"><h3>Average true range <a class="anchor" href="#average-true-range">#</a></h3>
@@ -95,7 +100,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> StockCharts&#x27; spreadsheet: the first 14-day ATR comes out at 0.56, and ATR surged as QQQ plunged with long candlesticks in May.</div>
 <div class="formula">TR = max(H - L, |H - C_{t-1}|, |L - C_{t-1}|); ATR(14)_t = (ATR_{t-1} x 13 + TR_t) / 14.</div>
 <div class="field"><span class="label">Aliases:</span> ATR</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Average directional index</li><li>Parabolic SAR</li><li>Supertrend</li><li>Keltner Channel</li><li>Smoothed moving average</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#average-directional-index">Average directional index</a></li><li><a href="../indicators/page-2.html#parabolic-sar">Parabolic SAR</a></li><li><a href="../indicators/page-2.html#supertrend">Supertrend</a></li><li><a href="../indicators/page-2.html#keltner-channel">Keltner Channel</a></li><li><a href="../indicators/#smoothed-moving-average">Smoothed moving average</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/average-true-range-atr-and-average-true-range-percent-atrp" rel="noopener">Average True Range (ATR) | ChartSchool | StockCharts.com</a> — True Range / How To Calculate ATR</div>
 <div class="field"><span class="label">Source:</span> <a href="https://ta-lib.github.io/ta-doc/indicator/ATR.htm" rel="noopener">TA-Lib Technical Analysis Documentation - ATR</a> — Average True Range implementation and source references</div>
 </article>
@@ -108,7 +113,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> SMA(20) = 50 with sigma = 1.5: upper band = 53, lower = 47; a close at 53.4 is above the band - a tag, not a signal.</div>
 <div class="formula">Middle = SMA(P, 20); Upper = Middle + k x StdDev(P, 20); Lower = Middle - k x StdDev(P, 20); k = 2 by default.</div>
 <div class="field"><span class="label">Aliases:</span> BB, Bollinger Bands (20,2)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Bollinger bandwidth</li><li>Percent B</li><li>Keltner Channel</li><li>Standard deviation channel</li><li>Simple moving average</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#bollinger-bandwidth">Bollinger bandwidth</a></li><li><a href="../indicators/page-2.html#percent-b">Percent B</a></li><li><a href="../indicators/page-2.html#keltner-channel">Keltner Channel</a></li><li><a href="../indicators/page-2.html#standard-deviation-channel">Standard deviation channel</a></li><li>Simple moving average</li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/bollinger-bands" rel="noopener">Bollinger Bands | ChartSchool | StockCharts.com</a> — Bollinger Bands Calculation</div>
 </article>
 <article class="entry" id="bollinger-bandwidth"><h3>Bollinger bandwidth <a class="anchor" href="#bollinger-bandwidth">#</a></h3>
@@ -120,7 +125,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> Upper 53, lower 47, middle 50: BandWidth = (53-47)/50 x 100 = 12; StockCharts&#x27; Alaska Airlines squeeze triggered below a BandWidth of 10.</div>
 <div class="formula">BandWidth = ((UpperBand - LowerBand) / MiddleBand) x 100.</div>
 <div class="field"><span class="label">Aliases:</span> BandWidth, BBW, Bollinger BandWidth</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Bollinger Bands</li><li>Percent B</li><li>Mass index</li><li>Average true range</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#bollinger-bands">Bollinger Bands</a></li><li><a href="../indicators/page-2.html#percent-b">Percent B</a></li><li><a href="../indicators/page-4.html#mass-index">Mass index</a></li><li><a href="../indicators/page-2.html#average-true-range">Average true range</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/bollinger-bandwidth" rel="noopener">Bollinger BandWidth | ChartSchool | StockCharts.com</a> — SharpCharts Bollinger BandWidth Calculation</div>
 </article>
 <article class="entry" id="percent-b"><h3>Percent B <a class="anchor" href="#percent-b">#</a></h3>
@@ -132,7 +137,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> Bands 47-53 with a close at 50: %B = (50-47)/(53-47) x 100 = 50; a close at 53.6 gives %B = 110.</div>
 <div class="formula">%B = ((P - LowerBand) / (UpperBand - LowerBand)) x 100, with bands from Bollinger Bands(20, 2) by default.</div>
 <div class="field"><span class="label">Aliases:</span> %B, Percent b, Bollinger %B</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Bollinger Bands</li><li>Bollinger bandwidth</li><li>Keltner Channel</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#bollinger-bands">Bollinger Bands</a></li><li><a href="../indicators/page-2.html#bollinger-bandwidth">Bollinger bandwidth</a></li><li><a href="../indicators/page-2.html#keltner-channel">Keltner Channel</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/percent-b" rel="noopener">Percent B (%B) - Fidelity Investments</a> — Description</div>
 </article>
 <article class="entry" id="keltner-channel"><h3>Keltner Channel <a class="anchor" href="#keltner-channel">#</a></h3>
@@ -144,7 +149,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> EMA(20) = 100 and ATR(10) = 2: upper channel = 104, lower = 96; a close at 105 is an upside channel breakout.</div>
 <div class="formula">Upper = EMA(P, 20) + 2 x ATR(10); Lower = EMA(P, 20) - 2 x ATR(10).</div>
 <div class="field"><span class="label">Aliases:</span> Keltner Channels, KC</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Average true range</li><li>Exponential moving average</li><li>Bollinger Bands</li><li>Supertrend</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#average-true-range">Average true range</a></li><li><a href="../indicators/#exponential-moving-average">Exponential moving average</a></li><li><a href="../indicators/page-2.html#bollinger-bands">Bollinger Bands</a></li><li><a href="../indicators/page-2.html#supertrend">Supertrend</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/keltner-channels" rel="noopener">Keltner Channels | ChartSchool | StockCharts.com</a> — Keltner Channels Calculation</div>
 </article>
 <article class="entry" id="donchian-channel"><h3>Donchian Channel <a class="anchor" href="#donchian-channel">#</a></h3>
@@ -156,7 +161,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> 20-day high 105, low 95: upper band 105, lower 95, midline 100; a close at 106 is an upside breakout.</div>
 <div class="formula">UC = max(High, N); LC = min(Low, N); Middle = (UC + LC)/2, typically N = 20.</div>
 <div class="field"><span class="label">Aliases:</span> Donchian Channels, Price channel</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Bollinger Bands</li><li>Keltner Channel</li><li>Moving average envelope</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#bollinger-bands">Bollinger Bands</a></li><li><a href="../indicators/page-2.html#keltner-channel">Keltner Channel</a></li><li><a href="../indicators/page-2.html#moving-average-envelope">Moving average envelope</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.investopedia.com/terms/d/donchianchannels.asp" rel="noopener">Understanding Donchian Channels - Investopedia</a> — Donchian Channels Formula Explained</div>
 </article>
 <article class="entry" id="standard-deviation-channel"><h3>Standard deviation channel <a class="anchor" href="#standard-deviation-channel">#</a></h3>
@@ -168,7 +173,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> A 40-bar regression of closes gives y = 98 + 0.1x with sigma = 1.2; at the last bar the center is 102, the 2-sigma upper band 104.4 and the lower 99.6.</div>
 <div class="formula">Center: y(x) = a + mx from the least-squares fit over n bars; Upper = y + k x sigma, Lower = y - k x sigma, sigma = standard deviation of the n closes, k typically 2.</div>
 <div class="field"><span class="label">Aliases:</span> Linear regression channel, SDC</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Bollinger Bands</li><li>Standard deviation</li><li>Keltner Channel</li><li>Moving average envelope</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#bollinger-bands">Bollinger Bands</a></li><li><a href="../statistics-and-probability/#standard-deviation">Standard deviation</a></li><li><a href="../indicators/page-2.html#keltner-channel">Keltner Channel</a></li><li><a href="../indicators/page-2.html#moving-average-envelope">Moving average envelope</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.motivewave.com/studies/standard_deviation_channel.htm" rel="noopener">Standard Deviation Channel - MotiveWave Studies</a> — Calculation</div>
 </article>
 <article class="entry" id="moving-average-envelope"><h3>Moving average envelope <a class="anchor" href="#moving-average-envelope">#</a></h3>
@@ -180,7 +185,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> A 20-day SMA of 40 with 2.5% envelopes plots the upper band at 41.0 and the lower at 39.0.</div>
 <div class="formula">Upper = MA(n) x (1 + p); Lower = MA(n) x (1 - p); e.g., MA = SMA(20), p = 0.025.</div>
 <div class="field"><span class="label">Aliases:</span> MA envelopes, Percentage envelope, Trading bands</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Simple moving average</li><li>Bollinger Bands</li><li>Keltner Channel</li><li>Donchian Channel</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li>Simple moving average</li><li><a href="../indicators/page-2.html#bollinger-bands">Bollinger Bands</a></li><li><a href="../indicators/page-2.html#keltner-channel">Keltner Channel</a></li><li><a href="../indicators/page-2.html#donchian-channel">Donchian Channel</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/moving-average-envelopes" rel="noopener">Moving Average Envelopes | ChartSchool | StockCharts.com</a> — Moving Average Envelope Calculation</div>
 </article>
 <article class="entry" id="parabolic-sar"><h3>Parabolic SAR <a class="anchor" href="#parabolic-sar">#</a></h3>
@@ -192,7 +197,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> Prior SAR 48.28, extreme point 49.20, AF 0.14: new SAR = 48.13 + 0.14 x (49.20 - 48.13) = 48.28 (StockCharts&#x27; worked example).</div>
 <div class="formula">Rising: SAR_{t+1} = SAR_t + AF x (EP - SAR_t); Falling: SAR_{t+1} = SAR_t - AF x (SAR_t - EP); AF: start 0.02, +0.02 per new EP, max 0.20.</div>
 <div class="field"><span class="label">Aliases:</span> PSAR, SAR, Parabolic stop and reverse</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Average true range</li><li>Average directional index</li><li>Supertrend</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#average-true-range">Average true range</a></li><li><a href="../indicators/page-2.html#average-directional-index">Average directional index</a></li><li><a href="../indicators/page-2.html#supertrend">Supertrend</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/parabolic-sar" rel="noopener">Parabolic SAR | ChartSchool | StockCharts.com</a> — Calculating the Parabolic SAR</div>
 </article>
 <article class="entry" id="supertrend"><h3>Supertrend <a class="anchor" href="#supertrend">#</a></h3>
@@ -204,7 +209,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> High 20.23, low 19.04, ATR 1.15, multiplier 1: upper band = 19.635 + 1.15 = 20.79, lower = 18.48 (Investopedia&#x27;s worked example).</div>
 <div class="formula">Upper = (High + Low)/2 + Multiplier x ATR(n); Lower = (High + Low)/2 - Multiplier x ATR(n); ATR(n) = (ATR_prev x (n-1) + TR)/n (Wilder smoothing).</div>
 <div class="field"><span class="label">Aliases:</span> SuperTrend</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Average true range</li><li>Parabolic SAR</li><li>Keltner Channel</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#average-true-range">Average true range</a></li><li><a href="../indicators/page-2.html#parabolic-sar">Parabolic SAR</a></li><li><a href="../indicators/page-2.html#keltner-channel">Keltner Channel</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://www.investopedia.com/supertrend-indicator-7976167" rel="noopener">Understanding the Supertrend Indicator - Investopedia</a> — Calculating the Supertrend Indicator: Essential Formulas</div>
 </article>
 <article class="entry" id="ichimoku-kinko-hyo"><h3>Ichimoku Kinko Hyo <a class="anchor" href="#ichimoku-kinko-hyo">#</a></h3>
@@ -216,7 +221,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> 9-day high 55, low 51: Tenkan-sen = 53; with a 26-day midpoint of 50, Senkou A plotted 26 days ahead = 51.5.</div>
 <div class="formula">Tenkan = (max(H,9)+min(L,9))/2; Kijun = (max(H,26)+min(L,26))/2; Senkou A = (Tenkan+Kijun)/2 shifted +26; Senkou B = (max(H,52)+min(L,52))/2 shifted +26; Chikou = Close shifted -26.</div>
 <div class="field"><span class="label">Aliases:</span> Ichimoku Cloud, Ichimoku</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Tenkan-sen</li><li>Kijun-sen</li><li>Senkou Span A</li><li>Senkou Span B</li><li>Chikou Span</li><li>Moving average crossover</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#tenkan-sen">Tenkan-sen</a></li><li><a href="../indicators/page-2.html#kijun-sen">Kijun-sen</a></li><li><a href="../indicators/page-2.html#senkou-span-a">Senkou Span A</a></li><li><a href="../indicators/page-2.html#senkou-span-b">Senkou Span B</a></li><li><a href="../indicators/page-2.html#chikou-span">Chikou Span</a></li><li><a href="../indicators/#moving-average-crossover">Moving average crossover</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/ichimoku-cloud" rel="noopener">Ichimoku Cloud | ChartSchool | StockCharts.com</a> — Ichimoku Cloud Calculation</div>
 </article>
 <article class="entry" id="tenkan-sen"><h3>Tenkan-sen <a class="anchor" href="#tenkan-sen">#</a></h3>
@@ -228,7 +233,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If the last 9 bars posted a highest high of 108 and a lowest low of 100, Tenkan-sen = 104.</div>
 <div class="formula">Tenkan-sen = (max(High, 9) + min(Low, 9)) / 2.</div>
 <div class="field"><span class="label">Aliases:</span> Conversion Line, Tenkan</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Kijun-sen</li><li>Ichimoku Kinko Hyo</li><li>Senkou Span A</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#kijun-sen">Kijun-sen</a></li><li><a href="../indicators/page-2.html#ichimoku-kinko-hyo">Ichimoku Kinko Hyo</a></li><li><a href="../indicators/page-2.html#senkou-span-a">Senkou Span A</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/ichimoku-cloud" rel="noopener">Ichimoku Cloud | ChartSchool | StockCharts.com</a> — Ichimoku Cloud Calculation</div>
 </article>
 <article class="entry" id="kijun-sen"><h3>Kijun-sen <a class="anchor" href="#kijun-sen">#</a></h3>
@@ -240,7 +245,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> With a 26-bar high of 110 and low of 96, Kijun-sen = 103.</div>
 <div class="formula">Kijun-sen = (max(High, 26) + min(Low, 26)) / 2.</div>
 <div class="field"><span class="label">Aliases:</span> Base Line, Kijun</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Tenkan-sen</li><li>Ichimoku Kinko Hyo</li><li>Senkou Span A</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#tenkan-sen">Tenkan-sen</a></li><li><a href="../indicators/page-2.html#ichimoku-kinko-hyo">Ichimoku Kinko Hyo</a></li><li><a href="../indicators/page-2.html#senkou-span-a">Senkou Span A</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/ichimoku-cloud" rel="noopener">Ichimoku Cloud | ChartSchool | StockCharts.com</a> — Ichimoku Cloud Calculation</div>
 </article>
 <article class="entry" id="senkou-span-a"><h3>Senkou Span A <a class="anchor" href="#senkou-span-a">#</a></h3>
@@ -252,7 +257,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> Tenkan 104 and Kijun 103 give Senkou Span A = 103.5, shown 26 bars ahead of today.</div>
 <div class="formula">Senkou Span A = (Tenkan-sen + Kijun-sen) / 2, plotted 26 periods into the future.</div>
 <div class="field"><span class="label">Aliases:</span> Leading Span A, Senkou A</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Senkou Span B</li><li>Tenkan-sen</li><li>Kijun-sen</li><li>Ichimoku Kinko Hyo</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#senkou-span-b">Senkou Span B</a></li><li><a href="../indicators/page-2.html#tenkan-sen">Tenkan-sen</a></li><li><a href="../indicators/page-2.html#kijun-sen">Kijun-sen</a></li><li><a href="../indicators/page-2.html#ichimoku-kinko-hyo">Ichimoku Kinko Hyo</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/ichimoku-cloud" rel="noopener">Ichimoku Cloud | ChartSchool | StockCharts.com</a> — Ichimoku Cloud Calculation</div>
 </article>
 <article class="entry" id="senkou-span-b"><h3>Senkou Span B <a class="anchor" href="#senkou-span-b">#</a></h3>
@@ -264,7 +269,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> With a 52-bar high of 112 and low of 90, Senkou Span B = 101, plotted 26 bars ahead.</div>
 <div class="formula">Senkou Span B = (max(High, 52) + min(Low, 52)) / 2, plotted 26 periods into the future.</div>
 <div class="field"><span class="label">Aliases:</span> Leading Span B, Senkou B</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Senkou Span A</li><li>Ichimoku Kinko Hyo</li><li>Kijun-sen</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#senkou-span-a">Senkou Span A</a></li><li><a href="../indicators/page-2.html#ichimoku-kinko-hyo">Ichimoku Kinko Hyo</a></li><li><a href="../indicators/page-2.html#kijun-sen">Kijun-sen</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/ichimoku-cloud" rel="noopener">Ichimoku Cloud | ChartSchool | StockCharts.com</a> — Ichimoku Cloud Calculation</div>
 </article>
 <article class="entry" id="chikou-span"><h3>Chikou Span <a class="anchor" href="#chikou-span">#</a></h3>
@@ -276,7 +281,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If today&#x27;s close is 105 and the close 26 bars ago was 98, the Chikou point sits above that past price - a bullish confirmation.</div>
 <div class="formula">Chikou Span_t = Close_t, displayed at bar t - 26 (default displacement 26).</div>
 <div class="field"><span class="label">Aliases:</span> Lagging Span, Chikou</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Ichimoku Kinko Hyo</li><li>Tenkan-sen</li><li>Kijun-sen</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#ichimoku-kinko-hyo">Ichimoku Kinko Hyo</a></li><li><a href="../indicators/page-2.html#tenkan-sen">Tenkan-sen</a></li><li><a href="../indicators/page-2.html#kijun-sen">Kijun-sen</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/ichimoku-cloud" rel="noopener">Ichimoku Cloud | ChartSchool | StockCharts.com</a> — Ichimoku Cloud Calculation</div>
 </article>
 <article class="entry" id="on-balance-volume"><h3>On-balance volume <a class="anchor" href="#on-balance-volume">#</a></h3>
@@ -288,7 +293,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> From OBV 100,000: an up close on 8,200 shares takes it to 108,200, and a subsequent down day on 6,000 shares brings it to 102,200.</div>
 <div class="formula">OBV_t = OBV_{t-1} + sign(C_t - C_{t-1}) x V_t (no change when closes are equal).</div>
 <div class="field"><span class="label">Aliases:</span> OBV</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Accumulation distribution line</li><li>Chaikin money flow</li><li>Volume oscillator</li><li>Positive volume index</li><li>Negative volume index</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#accumulation-distribution-line">Accumulation distribution line</a></li><li><a href="../indicators/page-2.html#chaikin-money-flow">Chaikin money flow</a></li><li><a href="../indicators/page-3.html#volume-oscillator">Volume oscillator</a></li><li><a href="../indicators/page-3.html#positive-volume-index">Positive volume index</a></li><li><a href="../indicators/page-3.html#negative-volume-index">Negative volume index</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/on-balance-volume-obv" rel="noopener">On Balance Volume (OBV) | ChartSchool | StockCharts.com</a> — Calculating OBV</div>
 </article>
 <article class="entry" id="accumulation-distribution-line"><h3>Accumulation distribution line <a class="anchor" href="#accumulation-distribution-line">#</a></h3>
@@ -300,7 +305,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> H 50, L 48, C 49.5: multiplier = ((49.5-48) - (50-49.5))/2 = 0.5; on 10,000 shares the Money Flow Volume is +5,000.</div>
 <div class="formula">MFM = ((C - L) - (H - C)) / (H - L); MFV = MFM x V; ADL_t = ADL_{t-1} + MFV_t.</div>
 <div class="field"><span class="label">Aliases:</span> A/D line, ADL, Accumulation/Distribution Line</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>On-balance volume</li><li>Chaikin money flow</li><li>Chaikin oscillator</li><li>Money flow index</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#on-balance-volume">On-balance volume</a></li><li><a href="../indicators/page-2.html#chaikin-money-flow">Chaikin money flow</a></li><li><a href="../indicators/page-3.html#chaikin-oscillator">Chaikin oscillator</a></li><li><a href="../indicators/page-2.html#money-flow-index">Money flow index</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/accumulation-distribution-line" rel="noopener">Accumulation Distribution Line | ChartSchool | StockCharts.com</a> — Calculating the Accumulation Distribution Line</div>
 </article>
 <article class="entry" id="chaikin-money-flow"><h3>Chaikin money flow <a class="anchor" href="#chaikin-money-flow">#</a></h3>
@@ -312,7 +317,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> Over 20 days, if Money Flow Volume sums to 2,000,000 on total volume of 10,000,000, CMF = +0.20, indicating net buying pressure.</div>
 <div class="formula">CMF(n) = sum(MFM_i x V_i, n) / sum(V_i, n), where MFM = ((C - L) - (H - C)) / (H - L).</div>
 <div class="field"><span class="label">Aliases:</span> CMF</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Accumulation distribution line</li><li>Chaikin oscillator</li><li>On-balance volume</li><li>Money flow index</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#accumulation-distribution-line">Accumulation distribution line</a></li><li><a href="../indicators/page-3.html#chaikin-oscillator">Chaikin oscillator</a></li><li><a href="../indicators/page-2.html#on-balance-volume">On-balance volume</a></li><li><a href="../indicators/page-2.html#money-flow-index">Money flow index</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/chaikin-money-flow-cmf" rel="noopener">Chaikin Money Flow (CMF) | ChartSchool | StockCharts.com</a> — Calculating Chaikin Money Flow</div>
 </article>
 <article class="entry" id="money-flow-index"><h3>Money flow index <a class="anchor" href="#money-flow-index">#</a></h3>
@@ -324,7 +329,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If 14-day positive money flow is 120M and negative is 60M, the ratio is 2 and MFI = 100 - 100/3 ~ 66.7.</div>
 <div class="formula">MFI = 100 - 100/(1 + MoneyRatio); MoneyRatio = sum(PositiveMF, 14) / sum(NegativeMF, 14); RawMF = TypicalPrice x Volume; TP = (H+L+C)/3.</div>
 <div class="field"><span class="label">Aliases:</span> MFI, Volume-weighted RSI</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Relative strength index</li><li>On-balance volume</li><li>Accumulation distribution line</li><li>Chaikin money flow</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/#relative-strength-index">Relative strength index</a></li><li><a href="../indicators/page-2.html#on-balance-volume">On-balance volume</a></li><li><a href="../indicators/page-2.html#accumulation-distribution-line">Accumulation distribution line</a></li><li><a href="../indicators/page-2.html#chaikin-money-flow">Chaikin money flow</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/money-flow-index-mfi" rel="noopener">Money Flow Index (MFI) | ChartSchool | StockCharts.com</a> — Calculating the MFI</div>
 </article>
 <article class="entry" id="ease-of-movement"><h3>Ease of movement <a class="anchor" href="#ease-of-movement">#</a></h3>
@@ -336,7 +341,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> If the midpoint rises 1.00 on volume of 20M and a range of 2.00, the box ratio is 0.2/2 = 0.1 and 1-period EMV = 10.0 - an &#x27;easy&#x27; advance.</div>
 <div class="formula">EMV = ((H+L)/2 - (H_prev+L_prev)/2) / ((V/100,000,000)/(H-L)); EMV(14) = SMA(1-period EMV, 14); the volume scale divisor is platform-dependent.</div>
 <div class="field"><span class="label">Aliases:</span> EMV, Ease of Movement (EOM)</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Force index</li><li>On-balance volume</li><li>Volume oscillator</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#force-index">Force index</a></li><li><a href="../indicators/page-2.html#on-balance-volume">On-balance volume</a></li><li><a href="../indicators/page-3.html#volume-oscillator">Volume oscillator</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/ease-of-movement-emv" rel="noopener">Ease of Movement (EMV) | ChartSchool | StockCharts.com</a> — Calculating the EMV</div>
 </article>
 <article class="entry" id="force-index"><h3>Force index <a class="anchor" href="#force-index">#</a></h3>
@@ -348,7 +353,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 <div class="field"><span class="label">Example:</span> A close rising from 50.00 to 50.84 on 162,619 shares gives Force(1) = 0.84 x 162,619 ~ +136,600, the largest reading in StockCharts&#x27; Pfizer example.</div>
 <div class="formula">FI(1) = (Close_t - Close_{t-1}) x Volume_t; FI(13) = EMA(FI(1), 13).</div>
 <div class="field"><span class="label">Aliases:</span> FI, Elder&#x27;s Force Index</div>
-<div class="field"><span class="label">Related:</span><ul class="rel"><li>Ease of movement</li><li>On-balance volume</li><li>Elder Ray index</li><li>Exponential moving average</li></ul></div>
+<div class="field"><span class="label">Related:</span><ul class="rel"><li><a href="../indicators/page-2.html#ease-of-movement">Ease of movement</a></li><li><a href="../indicators/page-2.html#on-balance-volume">On-balance volume</a></li><li><a href="../indicators/page-3.html#elder-ray-index">Elder Ray index</a></li><li><a href="../indicators/#exponential-moving-average">Exponential moving average</a></li></ul></div>
 <div class="field"><span class="label">Source:</span> <a href="https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/force-index" rel="noopener">Force Index | ChartSchool | StockCharts.com</a> — Calculating the Force Index</div>
 </article><div class="pager" role="navigation" aria-label="Pagination"><a href="index.html" rel="first">First</a><a href="index.html" rel="prev">Prev</a><a href="index.html">1</a><span class="cur" aria-current="page">2</span><a href="page-3.html">3</a><a href="page-4.html">4</a><a href="page-3.html" rel="next">Next</a><a href="page-4.html" rel="last">Last</a></div><div class="domainnav"><a href="../futures-and-spreads/">&larr; Futures and spreads</a><a href="../instruments/">Instruments &rarr;</a></div><p class='meta'>Generated 2026-08-09 · <a href='../about.html'>About &amp; Methodology</a> · <a href='https://github.com/unperson-12359/trading-knowledge-library'>GitHub</a></p></main><script>
 (function(){
@@ -360,7 +365,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
     var q=box.value.trim().toLowerCase();res.innerHTML='';
     if(q.length<2)return;
     load().then(function(data){
-      var hits=data.filter(function(e){return e.n.toLowerCase().indexOf(q)!==-1}).slice(0,12);
+      var hits=data.filter(function(e){return (e.n+' '+(e.a||'')+' '+(e.x||'')).toLowerCase().indexOf(q)!==-1}).slice(0,12);
       res.innerHTML=hits.map(function(e){
         return '<li><a href="'+e.u+'">'+e.n+'</a> <span class="sr-domain">'+e.d+'</span></li>';
       }).join('')||'<li class="meta">No matches</li>';

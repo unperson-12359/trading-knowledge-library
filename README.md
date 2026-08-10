@@ -61,6 +61,23 @@ and `docs/api/v1/playbooks.json`. Every playbook is explicitly untested and
 requires caller-supplied risk constraints plus realistic execution, fee,
 impact, and funding models before evaluation.
 
+## Static query API
+
+The dependency-free browser query is generated at `docs/query.html`. It filters
+concepts and playbooks by text, record type, domain, core membership, required
+input, and regime; filters are retained in the URL for sharing.
+
+Versioned JSON endpoints live in `docs/api/v1/`:
+
+- `manifest.json` describes counts, endpoints, and relationship resolution.
+- `concepts.json` provides all public concept fields, stable URLs, resolved
+  relationship IDs, core membership, and core regime annotations.
+- `core-perps.json`, `regimes.json`, and `playbooks.json` expose the focused
+  collection and its research layer.
+
+Unambiguous relationship names and aliases become internal links. Ambiguous or
+unresolved terms remain visible as plain text and are reported in the manifest.
+
 ## Workflow
 
 Edit canonical JSON, then validate and regenerate outputs:
