@@ -71,6 +71,20 @@ class ConceptSkillTests(unittest.TestCase):
         self.assertEqual(matches[0]["concept_id"], "orders-and-execution/slippage")
         self.assertGreater(matches[0]["match_score"], 100)
 
+    def test_completed_batch_queries_route_to_the_expected_skill(self):
+        router = load_router_search()
+        manifest = json.loads(
+            (ROOT / "skills" / "manifest.json").read_text(encoding="utf-8")
+        )
+        for eval_path in sorted((ROOT / "skills" / "evals").glob("batch-*.json")):
+            evaluation = json.loads(eval_path.read_text(encoding="utf-8"))
+            for case in evaluation["cases"]:
+                for query in case["positive_queries"]:
+                    with self.subTest(batch=evaluation["batch_number"], query=query):
+                        matches = router.search(manifest["skills"], query, limit=1)
+                        self.assertTrue(matches)
+                        self.assertEqual(matches[0]["skill_name"], case["skill_name"])
+
     def test_progress_is_an_exact_multiple_of_twenty(self):
         progress = json.loads((ROOT / "skills" / "progress.json").read_text(encoding="utf-8"))
         self.assertEqual(progress["completed_count"], progress["completed_batches"] * 20)

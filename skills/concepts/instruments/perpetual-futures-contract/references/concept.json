@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "instruments/perpetual-futures-contract",
+  "canonical_sha256": "8b57ee4259d313a20a9e14ac801189449ab1f485e1a91a58348b3b1f913fd2b9",
+  "source_path": "concepts/instruments.json",
+  "concept": {
+    "id": "instruments/perpetual-futures-contract",
+    "name": "Perpetual futures contract",
+    "aliases": [
+      "Perpetual swap",
+      "Perp"
+    ],
+    "domain": "Instruments",
+    "definition": "A futures-style derivative contract, predominant in cryptoasset markets, that has no expiry or settlement date, so a position can be held indefinitely. Its price is kept anchored to an underlying spot index price through periodic funding payments exchanged between long and short position holders.",
+    "intuition": "A perpetual is a futures contract you never have to roll. A funding fee paid by the more crowded side keeps its price tethered to spot.",
+    "mechanics": "Positions are leveraged against initial and maintenance margin, marked to a mark price derived from a spot index price, and liquidated if collateral falls below maintenance margin. Funding is paid at fixed intervals (e.g., every 8 hours): when the funding rate is positive, longs pay shorts, and when negative, shorts pay longs; exchanges maintain insurance funds and, as a last resort, auto-deleveraging to absorb bankrupt accounts.",
+    "formula": "Funding payment = position notional x funding rate; the funding rate is typically composed of an interest rate component plus a premium index measuring the perp's deviation from the spot index price.",
+    "relationships": [
+      "Futures contract",
+      "Cryptoasset",
+      "Margin",
+      "Basis"
+    ],
+    "failure_modes": "Funding rates can become extremely expensive in one-sided markets, turning a correct directional view into a losing carry trade. In extreme volatility, liquidation engines and insurance funds can be overwhelmed, triggering auto-deleveraging that socializes losses onto profitable traders.",
+    "misconceptions": "That having no expiry means there is no cost of carry — funding is a recurring carry cost that substitutes for the futures roll. Also, the contract price can still deviate from spot under stress; the anchor is an incentive, not a guarantee.",
+    "example": "A BTCUSDT perpetual trading above its spot index shows a positive funding rate, so every 8 hours long position holders pay shorts a small percentage of their notional, pushing the contract price back toward spot.",
+    "citations": [
+      {
+        "source": "Binance Academy: What Are Perpetual Futures Contracts?",
+        "url": "https://academy.binance.com/en/articles/what-are-perpetual-futures-contracts",
+        "section": "What is a perpetual futures contract?; What is the funding rate?",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Hyperliquid Docs - Funding",
+        "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/funding",
+        "section": "Funding mechanism, premium component, and hourly settlement",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

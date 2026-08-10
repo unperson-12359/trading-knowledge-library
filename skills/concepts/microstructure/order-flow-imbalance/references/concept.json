@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/order-flow-imbalance",
+  "canonical_sha256": "584ce2a4ca854a6a174696b65fbf166e367133078d5dcaaec4d31c53610f1eed",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/order-flow-imbalance",
+    "name": "Order-flow imbalance",
+    "aliases": [
+      "OFI",
+      "order imbalance"
+    ],
+    "domain": "Microstructure",
+    "definition": "The net excess of demand over supply at the best bid and ask, defined by Cont, Kukanov and Stoikov (2014) from all order book events - limit orders, market orders, and cancellations - at the best prices. They show short-horizon price changes are largely driven by this imbalance, with an approximately linear relation whose slope is inversely proportional to market depth.",
+    "intuition": "Prices move on the net pressure of orders arriving and leaving the inside market, not on raw trade counts.",
+    "mechanics": "Each order book event contributes positively when it adds bid-side or removes ask-side quantity and negatively otherwise; the cumulative imbalance over an interval is then related to the contemporaneous mid-price change. Unlike signed trade volume, OFI incorporates quote updates and cancellations.",
+    "formula": "OFI = sum over events e_n, with e_n = +Dq_b for bid-side quantity increases, -Dq_b for bid-side decreases, and symmetric negative contributions for ask-side events (Cont, Kukanov and Stoikov convention).",
+    "relationships": [
+      "Signed volume",
+      "Queue imbalance",
+      "Market depth",
+      "Price impact",
+      "Order book"
+    ],
+    "failure_modes": "The linear relation is a short-horizon statistical regularity that breaks down around news jumps and requires full order-event data; estimates degrade when depth is manipulated or rapidly cancelled.",
+    "misconceptions": "Order-flow imbalance is not just signed trade volume: limit-order submissions and cancellations at the inside move it as much as executed trades do.",
+    "example": "Over one second, 3,000 net shares are added at the best bid while the ask queue thins; the mid-price typically ticks up by an amount inversely proportional to book depth.",
+    "citations": [
+      {
+        "source": "Cont, Kukanov and Stoikov, 'The Price Impact of Order Book Events', Journal of Financial Econometrics 12(1):47-88 (arXiv preprint)",
+        "url": "https://arxiv.org/abs/1011.6402",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Hyperliquid Docs - Order book",
+        "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/order-book",
+        "section": "Order additions and price-time-priority matching",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

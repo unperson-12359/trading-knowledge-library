@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/limit-order",
+  "canonical_sha256": "096199fcec2ccb3600d92a18b1f25cc5b26b7bc244b0e2875097b4fb39fc1f42",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/limit-order",
+    "name": "Limit order",
+    "aliases": [],
+    "domain": "Orders and execution",
+    "definition": "An instruction to buy only at a stated price or lower, or sell only at a stated price or higher.",
+    "intuition": "It is an instruction controlling how an attempt to buy or sell may interact with available liquidity.",
+    "mechanics": "If immediately marketable it executes against eligible prices within the limit; otherwise it rests subject to venue priority until filled, canceled, or expired.",
+    "formula": "",
+    "relationships": [
+      "Market order",
+      "Price-time priority",
+      "Partial fill"
+    ],
+    "failure_modes": "Fast prices, thin depth, venue trigger conventions, and partial fills can produce execution or non-execution different from the displayed quote.",
+    "misconceptions": "An order's trigger or limit constrains its behavior; it does not guarantee both execution and a particular price.",
+    "example": "A buy limit at $10 can fill at $9.98 or $10.00 but cannot fill at $10.01; it may never fill.",
+    "citations": [
+      {
+        "source": "SEC Office of Investor Education, Trading Basics",
+        "url": "https://www.investor.gov/sites/default/files/trading101basics.pdf",
+        "section": "Market, limit, stop, and stop-limit orders, pp. 1-2",
+        "accessed": "2026-08-09"
+      },
+      {
+        "source": "SEC Investor.gov - Types of Orders",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/types-orders",
+        "section": "Limit orders",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/realized-volatility",
+  "canonical_sha256": "8327ac1c27126da1b6eed53711382d097e2398566c3530a1e52d8222e54d6472",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/realized-volatility",
+    "name": "Realized volatility",
+    "aliases": [
+      "realised volatility",
+      "RV"
+    ],
+    "domain": "Risk and performance",
+    "definition": "Volatility computed from returns actually realized over an interval; near-synonymous with actual historical volatility, the term is usually reserved for estimators built from high-frequency intraday returns, where realized variance is the sum of squared intraday returns.",
+    "intuition": "Where close-to-close volatility uses one price per day, realized volatility exploits the full intraday path, extracting far more information about how much the price truly moved.",
+    "mechanics": "Sample returns at a fixed intraday frequency (e.g. 5-minute), square and sum them over the day to obtain realized variance, and take the square root for realized volatility, optionally annualized by the square-root-of-time rule. Sampling too finely imports microstructure noise; too coarsely wastes information.",
+    "formula": "RV_t = sum_{i=1..M} r_{t,i}^2, where r_{t,i} are M intraday log returns on day t; realized volatility = sqrt(RV_t), annualized as sqrt(252 * RV_t) for a daily measure.",
+    "relationships": [
+      "Historical volatility",
+      "Volatility",
+      "Implied volatility"
+    ],
+    "failure_modes": "At very fine sampling, bid-ask bounce and microstructure noise inflate the estimate, while sparse or halted trading distorts it. It remains backward-looking and is an estimator with sampling error, not the 'true' volatility.",
+    "misconceptions": "Realized volatility is not implied volatility: one measures what happened, the other what option prices imply about the future. Nor is higher-frequency always better — beyond a point the estimator measures market microstructure, not price risk.",
+    "example": "Summing squared 5-minute log returns over a trading day gives realized variance of 0.0004, so daily realized volatility is sqrt(0.0004) = 2%, roughly 31.7% annualized.",
+    "citations": [
+      {
+        "source": "Wikipedia: Volatility (finance)",
+        "url": "https://en.wikipedia.org/wiki/Volatility_(finance)",
+        "section": "Volatility terminology (realized volatility)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Andersen, Bollerslev, Diebold and Labys - Modeling and Forecasting Realized Volatility",
+        "url": "https://www.nber.org/papers/w8160",
+        "section": "Abstract and working paper",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

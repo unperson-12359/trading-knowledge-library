@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/maximum-drawdown",
+  "canonical_sha256": "e4eb10aa19843acf7c0c5f2f95a209f8a57da013b8476af3e6fa155ae19f56fa",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/maximum-drawdown",
+    "name": "Maximum drawdown",
+    "aliases": [
+      "max drawdown",
+      "MDD"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The largest observed peak-to-trough decline of an equity or NAV series over an evaluation period, usually quoted as a percentage of the running peak. Formally it is the maximum of the drawdown process over the sample.",
+    "intuition": "It is the worst pain the strategy has actually inflicted: the deepest hole from peak to trough that an investor would have had to sit through.",
+    "mechanics": "Scan the equity curve keeping a running peak, compute the percentage decline from that peak at every point, and take the maximum. It is a single-observation statistic driven by the worst episode in the window.",
+    "formula": "MDD(T) = max_{tau in (0,T)} [ max_{t in (0,tau)} X(t) - X(tau) ], commonly expressed as a percentage of max_{t in (0,tau)} X(t).",
+    "relationships": [
+      "Drawdown",
+      "Drawdown duration",
+      "Calmar ratio",
+      "Sterling ratio",
+      "Time under water"
+    ],
+    "failure_modes": "MDD grows with sample length and is dominated by one event, making it an unstable estimator of tail risk; a backtest without a severe episode shows a deceptively small MDD. For a positive-drift process, expected MDD grows with time, so MDDs across different horizons are not comparable.",
+    "misconceptions": "MDD is not 'the most you can lose' going forward — future drawdowns can exceed the historical maximum — and it is not necessarily the drawdown that lasted longest.",
+    "example": "If an equity curve runs 100 -> 130 -> 91 -> 140, the maximum drawdown is (130 - 91) / 130 = 30%, even though the series later makes new highs.",
+    "citations": [
+      {
+        "source": "Wikipedia: Drawdown (economics)",
+        "url": "https://en.wikipedia.org/wiki/Drawdown_(economics)",
+        "section": "Maximum drawdown definition; Pseudocode",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Magdon-Ismail and Atiya - Maximum Drawdown",
+        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=874069",
+        "section": "Abstract and definition of maximum drawdown",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

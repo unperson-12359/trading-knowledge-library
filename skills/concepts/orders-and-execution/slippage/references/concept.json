@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/slippage",
+  "canonical_sha256": "bedca1707d844e36ff8869b03e1134035ad5c2177b7ef78e20f635b8109f8b83",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/slippage",
+    "name": "Slippage",
+    "aliases": [],
+    "domain": "Orders and execution",
+    "definition": "The difference between an intended or reference price and the actual execution price, signed so adverse execution is a cost.",
+    "intuition": "It is an instruction controlling how an attempt to buy or sell may interact with available liquidity.",
+    "mechanics": "Choose a decision, arrival, or quote benchmark; compare each fill with it; weight by executed quantity; and separate spread, delay, and impact where possible.",
+    "formula": "Buy slippage = fill price - reference price; sell slippage = reference price - fill price",
+    "relationships": [
+      "Market impact",
+      "Transaction cost",
+      "Execution simulator"
+    ],
+    "failure_modes": "Fast prices, thin depth, venue trigger conventions, and partial fills can produce execution or non-execution different from the displayed quote.",
+    "misconceptions": "An order's trigger or limit constrains its behavior; it does not guarantee both execution and a particular price.",
+    "example": "A buy decided at $100 that fills at $100.12 has $0.12, or 12 basis points, of adverse slippage.",
+    "citations": [
+      {
+        "source": "QuantConnect LEAN documentation, Slippage Models",
+        "url": "https://www.quantconnect.com/docs/v2/writing-algorithms/reality-modeling/slippage/supported-models",
+        "section": "Constant, volume-share, and market-impact models",
+        "accessed": "2026-08-09"
+      },
+      {
+        "source": "SEC Investor.gov - Types of Orders",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/types-orders",
+        "section": "Market-order execution price is not guaranteed",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

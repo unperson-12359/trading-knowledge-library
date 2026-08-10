@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/stop-order",
+  "canonical_sha256": "ead03b1e2937bf2544d4fc4221149587a7950ccdc8e66af1fc6ac2906ed1848c",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/stop-order",
+    "name": "Stop order",
+    "aliases": [],
+    "domain": "Orders and execution",
+    "definition": "An instruction that activates when a specified stop condition is met and then becomes a market order.",
+    "intuition": "It is an instruction controlling how an attempt to buy or sell may interact with available liquidity.",
+    "mechanics": "The broker or venue monitors the applicable trade or quote trigger; after activation, the released market order executes at available prices rather than the stop price.",
+    "formula": "",
+    "relationships": [
+      "Stop-limit order",
+      "Market order",
+      "Trigger price"
+    ],
+    "failure_modes": "Fast prices, thin depth, venue trigger conventions, and partial fills can produce execution or non-execution different from the displayed quote.",
+    "misconceptions": "An order's trigger or limit constrains its behavior; it does not guarantee both execution and a particular price.",
+    "example": "A sell stop at $20 triggers during a gap and the resulting market order first fills at $18.75.",
+    "citations": [
+      {
+        "source": "SEC Office of Investor Education, Trading Basics",
+        "url": "https://www.investor.gov/sites/default/files/trading101basics.pdf",
+        "section": "Market, limit, stop, and stop-limit orders, pp. 1-2",
+        "accessed": "2026-08-09"
+      },
+      {
+        "source": "SEC Investor.gov - Types of Orders",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/types-orders",
+        "section": "Stop orders",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

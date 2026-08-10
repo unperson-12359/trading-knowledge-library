@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/trade-expectancy",
+  "canonical_sha256": "66f69f48d0ab37e39258711059fb5e7fa45e24313290cd1a3728dcfa445c586b",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/trade-expectancy",
+    "name": "Trade expectancy",
+    "aliases": [
+      "expectancy",
+      "mathematical expectation per trade"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The average amount a trading system can be expected to make or lose per trade: the probability-weighted mean of trade outcomes, win rate times average winner minus loss rate times average loser. In Van Tharp's framework it is expressed as the mean R-multiple — expected profit per dollar of initial risk.",
+    "intuition": "It is the single number that says whether a system has an edge: how much, on average, each trade adds to or subtracts from the account.",
+    "mechanics": "From a closed-trade sample compute the win rate, average win, and average loss and combine them; equivalently, take the mean of all trade PnLs or R-multiples. Multiply by trade frequency (opportunity) for expected profit per period; position sizing then converts expectancy into actual returns.",
+    "formula": "E = p * avgWin - (1 - p) * avgLoss; in R terms, E[R] = (1/N) * sum_i R_i, where R_i is trade i's PnL divided by its initial risk.",
+    "relationships": [
+      "Win rate",
+      "Payoff ratio",
+      "R-multiple",
+      "Profit factor",
+      "Position sizing",
+      "Breakeven rate"
+    ],
+    "failure_modes": "Expectancy estimated from few trades is dominated by sampling error, and backtested expectancy rarely survives costs, slippage, and regime change. It is a mean: it hides variance and tail risk, so a positive-expectancy system can still be ruined by reckless sizing.",
+    "misconceptions": "Positive expectancy does not mean every sequence of trades profits, and expectancy is not a fixed property of the rules — the same system in a different regime produces a different expectancy. Position sizing cannot rescue a negative-expectancy system.",
+    "example": "A system that wins 40% of trades with 3R average winners and 1R average losers has expectancy 0.4 * 3 - 0.6 * 1 = +0.6R per trade.",
+    "citations": [
+      {
+        "source": "Trade Loss Tracker: extended summary of Van K. Tharp, The Definitive Guide to Position Sizing Strategies",
+        "url": "https://tradelosstracker.com/library/book/781-the-definitive-guide-to-position-sizing-strategies-tharp/extended",
+        "section": "Chapter 4: Expectancy - The True Measure of a System",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CME Group - The Mathematics of Trading Success",
+        "url": "https://www.cmegroup.com/education/courses/trading-psychology/the-mathematics-of-trading-success.hideHeader.hideSubnav.hideFooter.hideAddThisExt.educationIframe.html",
+        "section": "Mathematical expectation formula and win/loss outcomes",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

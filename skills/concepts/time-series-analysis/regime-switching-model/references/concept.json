@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/regime-switching-model",
+  "canonical_sha256": "14cbc14a09cc9096c1319f39b503efae972c2a1fb579a88a6f6452800db35e23",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/regime-switching-model",
+    "name": "Regime-switching model",
+    "aliases": [
+      "Markov-switching model",
+      "Markov regime-switching"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A time-series model in which the parameters change according to a latent discrete state that itself follows a Markov chain, so the series alternates between distinct regimes such as low-volatility expansion and high-volatility contraction. Hamilton (1989) introduced the framework for business-cycle dynamics.",
+    "intuition": "The market behaves like two different machines, calm and stormy, and an invisible switch flips between them; at any moment you only have a probability of which machine is running.",
+    "mechanics": "An unobserved state s_t in {1,...,N} follows a first-order Markov chain with transition probabilities p_ij, and conditional on s_t the observation follows a regime-specific process (e.g., different means and variances). The Hamilton filter computes filtered regime probabilities recursively, parameters are estimated by maximum likelihood, and smoothed probabilities give retrospective regime dating.",
+    "formula": "y_t | s_t ~ f(y_t; theta_{s_t}) with P(s_t = j | s_{t-1} = i) = p_ij; e.g., y_t = mu_{s_t} + phi (y_{t-1} - mu_{s_{t-1}}) + sigma_{s_t} epsilon_t.",
+    "relationships": [
+      "Hidden Markov model",
+      "State-space model",
+      "Stationarity",
+      "Conditional heteroskedasticity"
+    ],
+    "failure_modes": "Regimes are unidentified unless the sample contains enough transitions, and the likelihood is multimodal with label-switching issues. The model assumes abrupt switches, so slowly evolving parameters are forced into spurious extra regimes or poor fits.",
+    "misconceptions": "That filtered regime probabilities are certain knowledge of the current state: they are model-conditional probabilities, and small misspecifications can flip the inferred regime.",
+    "example": "Hamilton modeled U.S. GNP growth with two regimes, positive-growth expansion and negative-growth contraction, whose filtered probabilities closely track NBER recession dates.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.2307/1912559",
+        "url": "https://api.crossref.org/works/10.2307/1912559",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "statsmodels - Markov switching dynamic regression models",
+        "url": "https://www.statsmodels.org/stable/examples/notebooks/generated/markov_regression.html",
+        "section": "Hamilton-type switching regression examples",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

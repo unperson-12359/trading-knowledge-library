@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/market-depth",
+  "canonical_sha256": "bb16e2f1a27bc1b7626054839d44bb046061ff35957637ccf76f60aae544c84e",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/market-depth",
+    "name": "Market depth",
+    "aliases": [
+      "book depth"
+    ],
+    "domain": "Microstructure",
+    "definition": "The volume of orders available in the book at or near the best prices - the size that can be executed with only limited price concession. It is one of the liquidity dimensions catalogued by Sarr and Lybek (IMF, 2002), and Cont, Kukanov and Stoikov (2014) show the price response to order-flow imbalance is inversely proportional to it.",
+    "intuition": "It answers: how much can I trade before my own trading moves the price against me?",
+    "mechanics": "Measured as cumulative displayed size at successive price levels (Regulation NMS depth of book data covers the five price levels beyond the NBBO per venue) or as the price concession per unit volume traded. Empirically, deeper books show smaller price changes for a given order-flow imbalance.",
+    "formula": "",
+    "relationships": [
+      "Depth of market",
+      "Market breadth",
+      "Order-flow imbalance",
+      "Displayed liquidity",
+      "Liquidity"
+    ],
+    "failure_modes": "Depth is endogenous and withdraws during volatility spikes, so it is least available exactly when most needed; displayed depth also excludes hidden and reserve size and can be inflated by spoofed orders.",
+    "misconceptions": "Large size at the best bid and offer alone does not imply a deep market; genuine depth requires substantial size across multiple price levels.",
+    "example": "One stock offers $5 million of displayed size within two ticks of the midpoint while another offers $200,000; a $1 million market order moves the first barely and the second several ticks.",
+    "citations": [
+      {
+        "source": "Sarr and Lybek, 'Measuring Liquidity in Financial Markets', IMF Working Paper WP/02/232",
+        "url": "https://www.elibrary.imf.org/view/journals/001/2002/232/001.2002.issue-232-en.xml",
+        "section": "Abstract (liquidity dimensions)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Cont, Kukanov and Stoikov, 'The Price Impact of Order Book Events', Journal of Financial Econometrics 12(1):47-88 (arXiv preprint)",
+        "url": "https://arxiv.org/abs/1011.6402",
+        "section": "Abstract (slope inversely proportional to market depth)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

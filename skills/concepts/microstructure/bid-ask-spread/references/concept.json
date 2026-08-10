@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/bid-ask-spread",
+  "canonical_sha256": "370fcf4245437ab6223b6ed071c246544f8f5935692ec236f5fec364fa3a48d5",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/bid-ask-spread",
+    "name": "Bid-ask spread",
+    "aliases": [],
+    "domain": "Microstructure",
+    "definition": "The difference between the best available ask price and best available bid price for the same instrument and quotation conditions.",
+    "intuition": "It describes the immediately available terms and ease of trading in an order-driven market.",
+    "mechanics": "Read synchronized best bid and ask quotes and subtract bid from ask; express the result in price units, ticks, or relative basis points.",
+    "formula": "Spread = best ask - best bid",
+    "relationships": [
+      "Bid",
+      "Ask",
+      "Liquidity"
+    ],
+    "failure_modes": "Displayed quotes and depth can cancel, fragment across venues, or vanish under stress, so snapshots can overstate executable liquidity.",
+    "misconceptions": "A quote or narrow spread is not a guarantee that a large order can trade at that price without delay or impact.",
+    "example": "A $49.95 bid and $50.05 ask produce a $0.10 spread, or about 20 basis points relative to the $50 midpoint.",
+    "citations": [
+      {
+        "source": "CFTC Futures Glossary",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Entries for spot, forward contract, futures contract, option, bid, ask, and bid-ask spread",
+        "accessed": "2026-08-09"
+      },
+      {
+        "source": "SEC Investor.gov - Types of Orders",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/types-orders",
+        "section": "Market-order execution at the current bid or ask",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

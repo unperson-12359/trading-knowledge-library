@@ -1,6 +1,1694 @@
 {
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 0,
-  "skills": []
+  "completed_count": 20,
+  "skills": [
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-market-order",
+      "concept_id": "orders-and-execution/market-order",
+      "display_name": "Market order",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Market order using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Market order",
+        "explain Market order",
+        "apply Market order to a trading question",
+        "common misconception about Market order"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/orders-and-execution/market-order",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "0e7bf6e51da1a3c9712349b11545407a687140a3d6e744935ceeca3a7d2bcb11"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/limit-order",
+        "orders-and-execution/slippage",
+        "orders-and-execution/market-impact"
+      ],
+      "concept_url": "../orders-and-execution/#market-order",
+      "profile_url": "../api/v1/skills/tkl-market-order.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/orders-and-execution/market-order/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/orders-and-execution/market-order/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/orders-and-execution/market-order/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-limit-order",
+      "concept_id": "orders-and-execution/limit-order",
+      "display_name": "Limit order",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Limit order using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Limit order",
+        "explain Limit order",
+        "apply Limit order to a trading question",
+        "common misconception about Limit order"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/orders-and-execution/limit-order",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "096199fcec2ccb3600d92a18b1f25cc5b26b7bc244b0e2875097b4fb39fc1f42"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/market-order",
+        "microstructure/price-time-priority",
+        "orders-and-execution/partial-fill"
+      ],
+      "concept_url": "../orders-and-execution/#limit-order",
+      "profile_url": "../api/v1/skills/tkl-limit-order.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/orders-and-execution/limit-order/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/orders-and-execution/limit-order/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/orders-and-execution/limit-order/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-stop-order",
+      "concept_id": "orders-and-execution/stop-order",
+      "display_name": "Stop order",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Stop order using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Stop order",
+        "explain Stop order",
+        "apply Stop order to a trading question",
+        "common misconception about Stop order"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/orders-and-execution/stop-order",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "ead03b1e2937bf2544d4fc4221149587a7950ccdc8e66af1fc6ac2906ed1848c"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/stop-limit-order",
+        "orders-and-execution/market-order"
+      ],
+      "concept_url": "../orders-and-execution/#stop-order",
+      "profile_url": "../api/v1/skills/tkl-stop-order.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/orders-and-execution/stop-order/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/orders-and-execution/stop-order/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/orders-and-execution/stop-order/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-bid-ask-spread",
+      "concept_id": "microstructure/bid-ask-spread",
+      "display_name": "Bid-ask spread",
+      "domain": "Microstructure",
+      "description": "Explain, compare, or apply Bid-ask spread using the library's structured Microstructure reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Bid-ask spread",
+        "explain Bid-ask spread",
+        "apply Bid-ask spread to a trading question",
+        "common misconception about Bid-ask spread"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/microstructure/bid-ask-spread",
+      "canonical": {
+        "source_path": "concepts/microstructure.json",
+        "sha256": "370fcf4245437ab6223b6ed071c246544f8f5935692ec236f5fec364fa3a48d5"
+      },
+      "related_concept_ids": [
+        "microstructure/bid",
+        "microstructure/ask",
+        "microstructure/liquidity"
+      ],
+      "concept_url": "../microstructure/#bid-ask-spread",
+      "profile_url": "../api/v1/skills/tkl-bid-ask-spread.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/microstructure/bid-ask-spread/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/microstructure/bid-ask-spread/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/microstructure/bid-ask-spread/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-market-impact",
+      "concept_id": "orders-and-execution/market-impact",
+      "display_name": "Market impact",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Market impact using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Market impact",
+        "explain Market impact",
+        "apply Market impact to a trading question",
+        "common misconception about Market impact"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/orders-and-execution/market-impact",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "8b5f35d536b2f8a6a786924d7880c08c9a292f638e446c9b4cf7e3b090979f40"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/slippage",
+        "microstructure/liquidity",
+        "research-and-backtesting/market-impact-model"
+      ],
+      "concept_url": "../orders-and-execution/#market-impact",
+      "profile_url": "../api/v1/skills/tkl-market-impact.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/orders-and-execution/market-impact/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/orders-and-execution/market-impact/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/orders-and-execution/market-impact/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-slippage",
+      "concept_id": "orders-and-execution/slippage",
+      "display_name": "Slippage",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Slippage using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Slippage",
+        "explain Slippage",
+        "apply Slippage to a trading question",
+        "common misconception about Slippage"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/orders-and-execution/slippage",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "bedca1707d844e36ff8869b03e1134035ad5c2177b7ef78e20f635b8109f8b83"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/market-impact",
+        "research-and-backtesting/execution-simulator"
+      ],
+      "concept_url": "../orders-and-execution/#slippage",
+      "profile_url": "../api/v1/skills/tkl-slippage.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/orders-and-execution/slippage/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/orders-and-execution/slippage/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/orders-and-execution/slippage/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-open-interest",
+      "concept_id": "contract-mechanics/open-interest",
+      "display_name": "Open interest",
+      "domain": "Contract mechanics",
+      "description": "Explain, compare, or apply Open interest using the library's structured Contract mechanics reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Open interest",
+        "OI",
+        "open contracts",
+        "open commitments",
+        "explain Open interest",
+        "apply Open interest to a trading question",
+        "common misconception about Open interest"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "contract specification",
+          "funding and margin state"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/contract-mechanics/open-interest",
+      "canonical": {
+        "source_path": "concepts/contract-mechanics.json",
+        "sha256": "1944ba127e79f3f56c019f015244c0d05c2551e21cced987687bef484de6738f"
+      },
+      "related_concept_ids": [
+        "market-data/trading-volume",
+        "futures-and-spreads/commitments-of-traders-report",
+        "microstructure/liquidity"
+      ],
+      "concept_url": "../contract-mechanics/#open-interest",
+      "profile_url": "../api/v1/skills/tkl-open-interest.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/contract-mechanics/open-interest/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/contract-mechanics/open-interest/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/contract-mechanics/open-interest/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-margin",
+      "concept_id": "risk-and-performance/margin",
+      "display_name": "Margin",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Margin using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Margin",
+        "explain Margin",
+        "apply Margin to a trading question",
+        "common misconception about Margin"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/risk-and-performance/margin",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "941205d4a87461dabe022234ca2126f40b07865bbd166ea0f90d4fe5b9b45bdb"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/initial-margin",
+        "risk-and-performance/maintenance-margin",
+        "risk-and-performance/leverage"
+      ],
+      "concept_url": "../risk-and-performance/#margin",
+      "profile_url": "../api/v1/skills/tkl-margin.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/margin/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/margin/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/margin/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-initial-margin",
+      "concept_id": "risk-and-performance/initial-margin",
+      "display_name": "Initial margin",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Initial margin using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Initial margin",
+        "explain Initial margin",
+        "apply Initial margin to a trading question",
+        "common misconception about Initial margin"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/risk-and-performance/initial-margin",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "87bd0ab995ca0f81bb309fcdfe3dbf5a2b4774664bfe609077e9845b3abf724b"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/margin",
+        "risk-and-performance/maintenance-margin"
+      ],
+      "concept_url": "../risk-and-performance/#initial-margin",
+      "profile_url": "../api/v1/skills/tkl-initial-margin.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/initial-margin/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/initial-margin/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/initial-margin/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-maintenance-margin",
+      "concept_id": "risk-and-performance/maintenance-margin",
+      "display_name": "Maintenance margin",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Maintenance margin using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Maintenance margin",
+        "explain Maintenance margin",
+        "apply Maintenance margin to a trading question",
+        "common misconception about Maintenance margin"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/risk-and-performance/maintenance-margin",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "abc5dab8769db9dae70812017a4d433cc1b8c08f42ef47fee0456a59ab115392"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/initial-margin",
+        "risk-and-performance/margin-call",
+        "risk-and-performance/forced-liquidation"
+      ],
+      "concept_url": "../risk-and-performance/#maintenance-margin",
+      "profile_url": "../api/v1/skills/tkl-maintenance-margin.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/maintenance-margin/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/maintenance-margin/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/maintenance-margin/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-leverage",
+      "concept_id": "risk-and-performance/leverage",
+      "display_name": "Leverage",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Leverage using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Leverage",
+        "explain Leverage",
+        "apply Leverage to a trading question",
+        "common misconception about Leverage"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/risk-and-performance/leverage",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "757c89630e1aa26d29f44427684617508d97d050bc8b4a8c0dfa5818cb2ab73a"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/margin",
+        "risk-and-performance/gross-exposure"
+      ],
+      "concept_url": "../risk-and-performance/#leverage",
+      "profile_url": "../api/v1/skills/tkl-leverage.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/leverage/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/leverage/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/leverage/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-perpetual-futures-contract",
+      "concept_id": "instruments/perpetual-futures-contract",
+      "display_name": "Perpetual futures contract",
+      "domain": "Instruments",
+      "description": "Explain, compare, or apply Perpetual futures contract using the library's structured Instruments reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Perpetual futures contract",
+        "Perpetual swap",
+        "Perp",
+        "explain Perpetual futures contract",
+        "apply Perpetual futures contract to a trading question",
+        "common misconception about Perpetual futures contract"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/instruments/perpetual-futures-contract",
+      "canonical": {
+        "source_path": "concepts/instruments.json",
+        "sha256": "8b57ee4259d313a20a9e14ac801189449ab1f485e1a91a58348b3b1f913fd2b9"
+      },
+      "related_concept_ids": [
+        "instruments/futures-contract",
+        "instruments/cryptoasset",
+        "risk-and-performance/margin",
+        "futures-and-spreads/basis"
+      ],
+      "concept_url": "../instruments/#perpetual-futures-contract",
+      "profile_url": "../api/v1/skills/tkl-perpetual-futures-contract.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/instruments/perpetual-futures-contract/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/instruments/perpetual-futures-contract/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/instruments/perpetual-futures-contract/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-order-book",
+      "concept_id": "microstructure/order-book",
+      "display_name": "Order book",
+      "domain": "Microstructure",
+      "description": "Explain, compare, or apply Order book using the library's structured Microstructure reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Order book",
+        "book",
+        "explain Order book",
+        "apply Order book to a trading question",
+        "common misconception about Order book"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/microstructure/order-book",
+      "canonical": {
+        "source_path": "concepts/microstructure.json",
+        "sha256": "2ec7ea97b357cdc0b5c024cf735fd18ff6f21cef829de94ffad0c8e6a071a30e"
+      },
+      "related_concept_ids": [
+        "microstructure/limit-order-book",
+        "microstructure/top-of-book",
+        "microstructure/depth-of-market",
+        "microstructure/queue-position"
+      ],
+      "concept_url": "../microstructure/#order-book",
+      "profile_url": "../api/v1/skills/tkl-order-book.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/microstructure/order-book/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/microstructure/order-book/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/microstructure/order-book/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-market-depth",
+      "concept_id": "microstructure/market-depth",
+      "display_name": "Market depth",
+      "domain": "Microstructure",
+      "description": "Explain, compare, or apply Market depth using the library's structured Microstructure reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Market depth",
+        "book depth",
+        "explain Market depth",
+        "apply Market depth to a trading question",
+        "common misconception about Market depth"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/microstructure/market-depth",
+      "canonical": {
+        "source_path": "concepts/microstructure.json",
+        "sha256": "bb16e2f1a27bc1b7626054839d44bb046061ff35957637ccf76f60aae544c84e"
+      },
+      "related_concept_ids": [
+        "microstructure/depth-of-market",
+        "microstructure/market-breadth",
+        "microstructure/displayed-liquidity",
+        "microstructure/liquidity"
+      ],
+      "concept_url": "../microstructure/#market-depth",
+      "profile_url": "../api/v1/skills/tkl-market-depth.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/microstructure/market-depth/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/microstructure/market-depth/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/microstructure/market-depth/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-order-flow-imbalance",
+      "concept_id": "microstructure/order-flow-imbalance",
+      "display_name": "Order-flow imbalance",
+      "domain": "Microstructure",
+      "description": "Explain, compare, or apply Order-flow imbalance using the library's structured Microstructure reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Order-flow imbalance",
+        "OFI",
+        "order imbalance",
+        "explain Order-flow imbalance",
+        "apply Order-flow imbalance to a trading question",
+        "common misconception about Order-flow imbalance"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/microstructure/order-flow-imbalance",
+      "canonical": {
+        "source_path": "concepts/microstructure.json",
+        "sha256": "584ce2a4ca854a6a174696b65fbf166e367133078d5dcaaec4d31c53610f1eed"
+      },
+      "related_concept_ids": [
+        "microstructure/signed-volume",
+        "microstructure/queue-imbalance",
+        "microstructure/market-depth",
+        "microstructure/order-book"
+      ],
+      "concept_url": "../microstructure/page-2.html#order-flow-imbalance",
+      "profile_url": "../api/v1/skills/tkl-order-flow-imbalance.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/microstructure/order-flow-imbalance/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/microstructure/order-flow-imbalance/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/microstructure/order-flow-imbalance/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-regime-switching-model",
+      "concept_id": "time-series-analysis/regime-switching-model",
+      "display_name": "Regime-switching model",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Regime-switching model using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Regime-switching model",
+        "Markov-switching model",
+        "Markov regime-switching",
+        "explain Regime-switching model",
+        "apply Regime-switching model to a trading question",
+        "common misconception about Regime-switching model"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/time-series-analysis/regime-switching-model",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "14cbc14a09cc9096c1319f39b503efae972c2a1fb579a88a6f6452800db35e23"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/hidden-markov-model",
+        "time-series-analysis/state-space-model",
+        "time-series-analysis/stationarity",
+        "time-series-analysis/conditional-heteroskedasticity"
+      ],
+      "concept_url": "../time-series-analysis/page-2.html#regime-switching-model",
+      "profile_url": "../api/v1/skills/tkl-regime-switching-model.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/time-series-analysis/regime-switching-model/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/time-series-analysis/regime-switching-model/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/time-series-analysis/regime-switching-model/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-realized-volatility",
+      "concept_id": "risk-and-performance/realized-volatility",
+      "display_name": "Realized volatility",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Realized volatility using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Realized volatility",
+        "realised volatility",
+        "RV",
+        "explain Realized volatility",
+        "apply Realized volatility to a trading question",
+        "common misconception about Realized volatility"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/risk-and-performance/realized-volatility",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "8327ac1c27126da1b6eed53711382d097e2398566c3530a1e52d8222e54d6472"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/historical-volatility",
+        "risk-and-performance/volatility",
+        "risk-and-performance/implied-volatility"
+      ],
+      "concept_url": "../risk-and-performance/#realized-volatility",
+      "profile_url": "../api/v1/skills/tkl-realized-volatility.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/realized-volatility/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/realized-volatility/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/realized-volatility/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-maximum-drawdown",
+      "concept_id": "risk-and-performance/maximum-drawdown",
+      "display_name": "Maximum drawdown",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Maximum drawdown using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Maximum drawdown",
+        "max drawdown",
+        "MDD",
+        "explain Maximum drawdown",
+        "apply Maximum drawdown to a trading question",
+        "common misconception about Maximum drawdown"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/risk-and-performance/maximum-drawdown",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "e4eb10aa19843acf7c0c5f2f95a209f8a57da013b8476af3e6fa155ae19f56fa"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/drawdown",
+        "risk-and-performance/drawdown-duration",
+        "risk-and-performance/calmar-ratio",
+        "risk-and-performance/sterling-ratio",
+        "risk-and-performance/time-under-water"
+      ],
+      "concept_url": "../risk-and-performance/#maximum-drawdown",
+      "profile_url": "../api/v1/skills/tkl-maximum-drawdown.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/maximum-drawdown/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/maximum-drawdown/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/maximum-drawdown/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-trade-expectancy",
+      "concept_id": "risk-and-performance/trade-expectancy",
+      "display_name": "Trade expectancy",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Trade expectancy using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Trade expectancy",
+        "expectancy",
+        "mathematical expectation per trade",
+        "explain Trade expectancy",
+        "apply Trade expectancy to a trading question",
+        "common misconception about Trade expectancy"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/risk-and-performance/trade-expectancy",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "66f69f48d0ab37e39258711059fb5e7fa45e24313290cd1a3728dcfa445c586b"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/win-rate",
+        "risk-and-performance/payoff-ratio",
+        "risk-and-performance/r-multiple",
+        "risk-and-performance/profit-factor",
+        "risk-and-performance/position-sizing",
+        "risk-and-performance/breakeven-rate"
+      ],
+      "concept_url": "../risk-and-performance/#trade-expectancy",
+      "profile_url": "../api/v1/skills/tkl-trade-expectancy.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/trade-expectancy/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/trade-expectancy/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/trade-expectancy/references/concept.json"
+    },
+    {
+      "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-position-sizing",
+      "concept_id": "risk-and-performance/position-sizing",
+      "display_name": "Position sizing",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Position sizing using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Position sizing",
+        "money management (bet sizing)",
+        "explain Position sizing",
+        "apply Position sizing to a trading question",
+        "common misconception about Position sizing"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": true,
+      "batch_number": 1,
+      "package_path": "skills/concepts/risk-and-performance/position-sizing",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "32e2a4b124fc76d3dd6d53095afe51aa37685959413238d7745f1a1dc3416b7e"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/fixed-fractional-sizing",
+        "risk-and-performance/fixed-ratio-sizing",
+        "risk-and-performance/kelly-criterion",
+        "risk-and-performance/r-multiple",
+        "risk-and-performance/risk-limit",
+        "risk-and-performance/trade-expectancy"
+      ],
+      "concept_url": "../risk-and-performance/#position-sizing",
+      "profile_url": "../api/v1/skills/tkl-position-sizing.json",
+      "raw_skill_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/position-sizing/SKILL.md",
+      "raw_profile_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/position-sizing/skill.json",
+      "raw_reference_url": "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/skills/concepts/risk-and-performance/position-sizing/references/concept.json"
+    }
+  ]
 }

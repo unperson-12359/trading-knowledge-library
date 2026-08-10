@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/position-sizing",
+  "canonical_sha256": "32e2a4b124fc76d3dd6d53095afe51aa37685959413238d7745f1a1dc3416b7e",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/position-sizing",
+    "name": "Position sizing",
+    "aliases": [
+      "money management (bet sizing)"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The process of determining how large each trade or position should be — the 'how much' decision of a trading system — expressed as units, contracts, or the fraction of equity risked per trade. In the practitioner literature (Tharp) it is identified, rather than entry selection, as the dominant determinant of whether a system meets its objectives.",
+    "intuition": "Two traders running the identical profitable system can end with wildly different outcomes — one compounding steadily, one ruined — purely because of how much each risked per trade.",
+    "mechanics": "Given account equity, per-trade risk tolerance, and the trade's initial risk (stop distance times point value), compute the size so a stopped-out trade loses the intended fraction of equity. Models include percent risk (fixed fractional), percent volatility (ATR-based), fixed ratio, and Kelly-style fractions; aggregate caps such as daily loss limits sit on top.",
+    "formula": "Position size = (account equity * risk fraction) / (per-unit risk), where per-unit risk = |entry - stop| * value per point (per contract).",
+    "relationships": [
+      "Fixed fractional sizing",
+      "Fixed ratio sizing",
+      "Kelly criterion",
+      "Volatility targeting",
+      "R-multiple",
+      "Risk limit",
+      "Trade expectancy"
+    ],
+    "failure_modes": "Sizing rules calibrated on a historical R-multiple distribution fail when the regime shifts; percent-risk models suffer lot-rounding distortions on small accounts, and correlated simultaneous positions make aggregate risk far larger than per-trade math suggests.",
+    "misconceptions": "Position sizing cannot turn a negative-expectancy system into a winner — it only determines how the edge (or its absence) is expressed in the equity curve. Fixed lot sizes are not a neutral default: they break compounding and drawdown protection.",
+    "example": "With $50,000 equity, 1% risk per trade, and a 4-point stop worth $200 per contract, the percent-risk size is $500 / $200 = 2 contracts.",
+    "citations": [
+      {
+        "source": "Trade Loss Tracker: extended summary of Van K. Tharp, The Definitive Guide to Position Sizing Strategies",
+        "url": "https://tradelosstracker.com/library/book/781-the-definitive-guide-to-position-sizing-strategies-tharp/extended",
+        "section": "Chapter 1: The Most Important Factor in Your Trading",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Curtis Faith - Original Turtle Trading Rules",
+        "url": "https://www.tradingblox.com/originalturtles/originalturtlerules.pdf",
+        "section": "Position sizing and N-based units",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

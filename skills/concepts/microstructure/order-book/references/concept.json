@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/order-book",
+  "canonical_sha256": "2ec7ea97b357cdc0b5c024cf735fd18ff6f21cef829de94ffad0c8e6a071a30e",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/order-book",
+    "name": "Order book",
+    "aliases": [
+      "book"
+    ],
+    "domain": "Microstructure",
+    "definition": "The collection of unexecuted buy and sell orders for a security maintained by a trading venue, organized by price level and priority. Its state evolves through order book events - limit-order submissions, market orders, and cancellations - which together drive short-horizon price changes (Cont, Kukanov and Stoikov, 2014).",
+    "intuition": "It is the visible queue of supply and demand waiting to trade: who wants to buy, who wants to sell, at what prices, and how much.",
+    "mechanics": "Limit orders rest in the book until matched, cancelled, or expired; incoming marketable orders execute against the best opposing prices, removing liquidity. Data feeds disseminate the book as snapshots and event updates, from which quantities like imbalance and depth are derived.",
+    "formula": "",
+    "relationships": [
+      "Limit order book",
+      "Top of book",
+      "Depth of market",
+      "Order-flow imbalance",
+      "Queue position"
+    ],
+    "failure_modes": "The displayed book understates true liquidity because of hidden, reserve, and off-exchange interest, and snapshot data miss intra-event dynamics. Book liquidity can also evaporate in stress as quotes are cancelled en masse.",
+    "misconceptions": "Size visible in the book is not committed liquidity; orders can be cancelled in milliseconds, so the book is an offer to trade, not a guarantee.",
+    "example": "A book shows five price levels per side; a 10,000-share market buy consumes the best offer and the two levels above it, moving the price up two ticks.",
+    "citations": [
+      {
+        "source": "Cont, Kukanov and Stoikov, 'The Price Impact of Order Book Events', Journal of Financial Econometrics 12(1):47-88 (arXiv preprint)",
+        "url": "https://arxiv.org/abs/1011.6402",
+        "section": "Abstract and introduction",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Hyperliquid Docs - Order book",
+        "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/order-book",
+        "section": "Price-time priority, tick size, and lot size",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

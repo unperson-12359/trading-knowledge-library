@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/market-impact",
+  "canonical_sha256": "8b5f35d536b2f8a6a786924d7880c08c9a292f638e446c9b4cf7e3b090979f40",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/market-impact",
+    "name": "Market impact",
+    "aliases": [],
+    "domain": "Orders and execution",
+    "definition": "The change in execution prices or subsequent market prices attributable to the strategy's own order interacting with finite liquidity.",
+    "intuition": "It is an instruction controlling how an attempt to buy or sell may interact with available liquidity.",
+    "mechanics": "Compare execution and post-trade prices with a pre-trade benchmark while controlling for market movement; model temporary and persistent components as functions of size, liquidity, volatility, and time.",
+    "formula": "",
+    "relationships": [
+      "Slippage",
+      "Liquidity",
+      "Market-impact model"
+    ],
+    "failure_modes": "Fast prices, thin depth, venue trigger conventions, and partial fills can produce execution or non-execution different from the displayed quote.",
+    "misconceptions": "An order's trigger or limit constrains its behavior; it does not guarantee both execution and a particular price.",
+    "example": "A buy equal to 15% of interval volume lifts several ask levels and fills 30 basis points above the arrival midpoint.",
+    "citations": [
+      {
+        "source": "QuantConnect LEAN documentation, Slippage Models",
+        "url": "https://www.quantconnect.com/docs/v2/writing-algorithms/reality-modeling/slippage/supported-models",
+        "section": "Constant, volume-share, and market-impact models",
+        "accessed": "2026-08-09"
+      },
+      {
+        "source": "Cont, Kukanov and Stoikov - The Price Impact of Order Book Events",
+        "url": "https://arxiv.org/abs/1011.6402",
+        "section": "Abstract and introduction",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

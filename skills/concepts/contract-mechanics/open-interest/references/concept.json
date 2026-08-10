@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "contract-mechanics/open-interest",
+  "canonical_sha256": "1944ba127e79f3f56c019f015244c0d05c2551e21cced987687bef484de6738f",
+  "source_path": "concepts/contract-mechanics.json",
+  "concept": {
+    "id": "contract-mechanics/open-interest",
+    "name": "Open interest",
+    "aliases": [
+      "OI",
+      "open contracts",
+      "open commitments"
+    ],
+    "domain": "Contract mechanics",
+    "definition": "The total number of futures or option contracts, long or short, in a delivery month or market that have been entered into and not yet liquidated by an offsetting transaction, exercised, or fulfilled by delivery.",
+    "intuition": "Open interest counts how many contracts are still 'alive' at the end of the day — positions traders are still holding, not how many changed hands (that is volume).",
+    "mechanics": "When a new buyer and a new seller create a contract, open interest rises by one; when an existing long and an existing short offset each other, it falls by one; when one side is new and the other is closing, it is unchanged. Exchanges and clearing organizations compute it daily per contract month and it feeds reports such as the CFTC Commitments of Traders breakdown.",
+    "formula": "OI_t = OI_{t-1} + (contracts opened by new buyer-new seller pairs) - (contracts closed by offsetting pairs), counted as one side of each open contract.",
+    "relationships": [
+      "Volume",
+      "Commitments of Traders report",
+      "Contract rollover",
+      "Liquidity"
+    ],
+    "failure_modes": "Open interest says nothing about the direction of positioning (longs vs shorts balance to zero by construction), so reading it as a bullish or bearish signal on its own misleads. It also collapses mechanically during contract rollover, which can be mistaken for loss of interest.",
+    "misconceptions": "A common error is confusing open interest with trading volume: volume counts every transaction, while open interest counts only outstanding positions. Another is believing high open interest implies the market must move in a particular direction.",
+    "example": "If crude oil futures show 500,000 contracts of open interest and a new buyer and new seller trade 1,000 contracts with each other, open interest rises to 501,000; if instead the seller was closing an old short, open interest stays at 500,000.",
+    "citations": [
+      {
+        "source": "CFTC Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Open Interest",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Encyclopaedia Britannica Money: Volume & Open Interest in Futures Trading",
+        "url": "https://www.britannica.com/money/futures-volume-open-interest",
+        "section": "What is open interest?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
