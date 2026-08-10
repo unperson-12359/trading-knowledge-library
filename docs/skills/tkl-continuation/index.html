@@ -1,0 +1,287 @@
+<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Continuation skill</title><meta name="description" content="Explain, compare, or apply Continuation using the library&#x27;s structured Price action and technical analysis reference, including failure modes and misconceptions."><style>
+*{box-sizing:border-box}
+body{font-family:Georgia,serif;margin:0;color:#1a1a1a;line-height:1.55;display:flex;min-height:100vh}
+a{color:#0b5fff;text-decoration:none}a:hover{text-decoration:underline}
+nav#sidebar{width:250px;flex-shrink:0;background:#f7f7f5;border-right:1px solid #e2e2e0;padding:1rem;position:sticky;top:0;height:100vh;overflow-y:auto;font-family:system-ui;font-size:.85rem}
+nav#sidebar h2{font-size:.95rem;margin:.2rem 0 .6rem}
+nav#sidebar ul{list-style:none;margin:0;padding:0}
+nav#sidebar li{margin:.1rem 0}
+nav#sidebar a{display:block;padding:.18rem .4rem;border-radius:4px;color:#333}
+nav#sidebar a.active{background:#2d6a4f;color:#fff;font-weight:600}
+nav#sidebar a:hover{background:#e6e6e2;text-decoration:none}
+nav#sidebar a.active:hover{background:#2d6a4f}
+nav#sidebar .count{color:#888;font-size:.75rem}
+nav#sidebar a.active .count{color:#cfe8d8}
+main{flex:1;padding:1.5rem 2rem;max-width:900px;min-width:0}
+h1{border-bottom:3px solid #111;padding-bottom:.3rem;font-size:1.6rem}
+.crumbs{font-family:system-ui;font-size:.8rem;color:#666;margin-bottom:1rem}
+.crumbs a{color:#666}
+.entry{border-bottom:1px solid #ddd;padding:1rem 0}
+.entry h3{margin:0 0 .3rem;font-size:1.1rem}
+.entry h3 .anchor{color:#bbb;font-size:.8rem}
+.field{margin:.25rem 0}.label{font-weight:bold;font-family:system-ui;font-size:.75rem;text-transform:uppercase;color:#555}
+.formula{font-family:Consolas,monospace;background:#f4f4f4;padding:.4rem .6rem;border-radius:4px;font-size:.9rem;overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-family:system-ui;font-size:.88rem}
+td,th{border-bottom:1px solid #ddd;padding:.3rem .5rem;text-align:left}
+.meta{color:#666;font-size:.82rem;font-family:system-ui}
+ul.rel{margin:.2rem 0;padding-left:1.2rem}
+.pager{display:flex;gap:.3rem;flex-wrap:wrap;align-items:center;margin:1.2rem 0;font-family:system-ui;font-size:.85rem}
+.pager a,.pager span.cur{padding:.25rem .6rem;border:1px solid #ccc;border-radius:4px}
+.pager a:hover{background:#f0f0ee;text-decoration:none}
+.pager span.cur{background:#2d6a4f;color:#fff;border-color:#2d6a4f;font-weight:600}
+.pager span.gap{border:none}
+.showing{font-family:system-ui;font-size:.8rem;color:#666}
+.warning{background:#fff4d6;border-left:4px solid #d97706;padding:.75rem 1rem;font-family:system-ui;font-size:.88rem}
+.tag{display:inline-block;background:#edf2f7;border-radius:999px;padding:.12rem .5rem;margin:.1rem;font-family:system-ui;font-size:.75rem}
+.playbook-card{border:1px solid #ddd;border-radius:6px;padding:.8rem 1rem;margin:.8rem 0}
+.playbook-card h2{margin:.1rem 0 .35rem;font-size:1.15rem}
+.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.65rem;margin:1rem 0}
+.metric{border:1px solid #ddd;border-radius:6px;padding:.65rem;background:#fafaf8;font-family:system-ui}
+.metric strong{display:block;font-size:1.15rem}.metric span{font-size:.72rem;color:#666}
+.negative{color:#a61b1b}.positive{color:#176b35}
+.json{white-space:pre-wrap;background:#f4f4f4;padding:.7rem;border-radius:4px;font-family:Consolas,monospace;font-size:.8rem}
+.query-controls{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:.55rem;margin:1rem 0;font-family:system-ui}
+.query-controls input,.query-controls select{width:100%;padding:.5rem;border:1px solid #bbb;border-radius:5px;background:#fff}
+.query-controls label{font-size:.78rem;color:#555}.query-controls .check{display:flex;align-items:end;padding-bottom:.5rem}
+.query-result{border-bottom:1px solid #ddd;padding:.8rem 0}.query-result h2{font-size:1.05rem;margin:0 0 .2rem}
+.skills-hero{background:#111;color:#fff;border-radius:10px;padding:1.3rem 1.4rem;margin-bottom:1rem}.skills-hero h1{border:0;margin:.1rem 0}.skills-hero p{max-width:680px}.skills-hero a{color:#ffb08a}
+.catalog-stat{font-family:system-ui;font-size:1.05rem;margin:.8rem 0}.catalog-stat strong{font-size:1.45rem}
+.skill-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin:1rem 0}
+.skill-card{border:1px solid #ccc;border-radius:8px;padding:1rem;background:#fff;display:flex;flex-direction:column;min-height:205px}.skill-card:hover{border-color:#d97745;box-shadow:0 3px 12px #0000000d}.skill-card h2{font-family:system-ui;font-size:1.08rem;margin:0 0 .25rem}.skill-card p{margin:.5rem 0;flex:1}.skill-links{font-family:system-ui;font-size:.82rem;border-top:1px solid #eee;padding-top:.55rem}.skill-arrow{float:right;color:#d05f2c}
+.skill-identity{border:1px solid #ddd;border-radius:8px;padding:.8rem 1rem;font-family:system-ui;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1rem 0}.skill-identity strong{display:block;font-size:.78rem;color:#666}.skill-identity span{overflow-wrap:anywhere}
+.use-panel{border:1px solid #ccc;border-radius:8px;padding:1rem;margin:1rem 0}.copy-row{display:flex;gap:.5rem;align-items:start}.copy-row pre{flex:1;margin:0}.copy-button{border:1px solid #aaa;background:#fff;border-radius:5px;padding:.45rem .65rem;cursor:pointer;font-weight:600}.copy-button:hover{background:#f3f3f0}
+.source-nav{display:flex;gap:.5rem;flex-wrap:wrap;font-family:system-ui;font-size:.82rem;margin:.8rem 0}.source-nav a{border:1px solid #ccc;border-radius:5px;padding:.25rem .5rem}
+.source-file{border:1px solid #ddd;border-radius:7px;margin:.65rem 0;background:#fafaf8}.source-file summary{padding:.7rem .85rem;cursor:pointer;font-family:system-ui;font-weight:700}.source-file pre{border-top:1px solid #ddd;margin:0;border-radius:0;max-height:620px;overflow:auto;white-space:pre-wrap;word-break:break-word}
+.evidence-section{border-top:1px solid #ddd;padding-top:.35rem;margin-top:1rem}.citation-list li{margin:.35rem 0}
+.skill-tabs{display:flex;gap:.45rem;flex-wrap:wrap;margin:1.2rem 0;border-bottom:1px solid #ddd;padding-bottom:.7rem}.skill-tab{border:1px solid #bbb;background:#fff;color:#0b5fff;border-radius:6px;padding:.45rem .7rem;cursor:pointer;font:600 .82rem system-ui}.skill-tab:hover{background:#f4f4f1}.skill-tab[aria-selected="true"]{background:#111;color:#fff;border-color:#111}.skill-panel{min-height:260px}.skill-panel[hidden]{display:none}.skill-panel>pre{max-height:720px;overflow:auto;white-space:pre-wrap;word-break:break-word}
+.domainnav{display:flex;justify-content:space-between;margin-top:2rem;font-family:system-ui;font-size:.85rem}
+.toc{columns:2;font-family:system-ui;font-size:.82rem;background:#fafaf8;border:1px solid #e8e8e5;border-radius:6px;padding:.8rem 1rem}
+.toc a{color:#333}
+#search{width:100%;padding:.4rem .6rem;border:1px solid #ccc;border-radius:6px;font-size:.9rem;margin-bottom:.6rem;font-family:system-ui}
+#search-results{list-style:none;margin:0 0 .8rem;padding:0}
+#search-results li{padding:.25rem .4rem;border-bottom:1px solid #eee}
+#search-results .sr-domain{color:#888;font-size:.72rem}
+@media(max-width:820px){
+ body{display:block}
+ nav#sidebar{width:100%;height:auto;position:static;border-right:none;border-bottom:1px solid #e2e2e0}
+ nav#sidebar details.tocwrap:not([open]) .navlist{display:none}
+ main{padding:1rem}
+ .toc{columns:1}
+ .query-controls{grid-template-columns:1fr 1fr}
+ .metric-grid{grid-template-columns:1fr 1fr}
+ .skill-grid{grid-template-columns:1fr}
+ .skill-identity{grid-template-columns:1fr}
+ .copy-row{display:block}.copy-button{margin-top:.5rem}
+}
+</style></head><body><nav id="sidebar" aria-label="Domains"><h2><a href="../../index.html" style="color:#111">Trading Library</a></h2><input id="search" type="search" placeholder="Search 1,500 concepts…" data-index="../../search-index.json" aria-label="Search concepts"><ul id="search-results"></ul><details class="tocwrap" open><summary class="meta">Domains</summary><ul class="navlist"><li><a href="../../all.html">A–Z index</a></li><li><a href="../../about.html">About &amp; Methodology</a></li><li><a href="../../query.html">Structured query</a></li><li><a href="../../playbooks/">Research playbooks</a></li><li><a href="../../research/">Research results</a></li><li><a href="../../skills/" class="active">Concept skills</a></li><li><a href="../../ai-and-knowledge-engineering/">AI and knowledge engineering <span class="count">38</span></a></li><li><a href="../../candlestick-patterns/">Candlestick patterns <span class="count">37</span></a></li><li><a href="../../chart-patterns/">Chart patterns <span class="count">26</span></a></li><li><a href="../../contract-mechanics/">Contract mechanics <span class="count">38</span></a></li><li><a href="../../crypto-and-defi/">Crypto and DeFi <span class="count">92</span></a></li><li><a href="../../fixed-income-and-rates/">Fixed income and rates <span class="count">32</span></a></li><li><a href="../../foreign-exchange/">Foreign exchange <span class="count">25</span></a></li><li><a href="../../futures-and-spreads/">Futures and spreads <span class="count">33</span></a></li><li><a href="../../indicators/">Indicators <span class="count">79</span></a></li><li><a href="../../instruments/">Instruments <span class="count">48</span></a></li><li><a href="../../macro-and-fundamentals/">Macro and fundamentals <span class="count">57</span></a></li><li><a href="../../market-abuse-and-ethics/">Market abuse and ethics <span class="count">31</span></a></li><li><a href="../../market-data/">Market data <span class="count">33</span></a></li><li><a href="../../market-foundations/">Market foundations <span class="count">35</span></a></li><li><a href="../../microstructure/">Microstructure <span class="count">54</span></a></li><li><a href="../../options/">Options <span class="count">85</span></a></li><li><a href="../../orders-and-execution/">Orders and execution <span class="count">71</span></a></li><li><a href="../../parameterized-analytics/">Parameterized analytics <span class="count">63</span></a></li><li><a href="../../participants/">Participants <span class="count">28</span></a></li><li><a href="../../portfolio-management/">Portfolio management <span class="count">45</span></a></li><li><a href="../../price-action-and-technical-analysis/">Price action and technical analysis <span class="count">58</span></a></li><li><a href="../../psychology-and-process/">Psychology and process <span class="count">55</span></a></li><li><a href="../../research-and-backtesting/">Research and backtesting <span class="count">94</span></a></li><li><a href="../../risk-and-performance/">Risk and performance <span class="count">82</span></a></li><li><a href="../../statistics-and-probability/">Statistics and probability <span class="count">50</span></a></li><li><a href="../../time-series-analysis/">Time-series analysis <span class="count">63</span></a></li><li><a href="../../trading-systems/">Trading systems <span class="count">56</span></a></li><li><a href="../../volume-and-order-flow/">Volume and order flow <span class="count">56</span></a></li><li><a href="../../wyckoff/">Wyckoff <span class="count">36</span></a></li></ul></details></nav><main><div class="crumbs"><a href="../../index.html">Home</a> / <a href="../">Skills</a> / Continuation</div><h1>Continuation</h1><p>Explain, compare, or apply Continuation using the library&#x27;s structured Price action and technical analysis reference, including failure modes and misconceptions.</p><div><span class="tag">trend continuation</span></div><div class="skill-identity"><div><strong>Skill</strong><span>tkl-continuation</span></div><div><strong>Domain</strong><span>Price action and technical analysis</span></div><div><strong>Concept ID</strong><span>price-action-and-technical-analysis/continuation</span></div></div><nav class="skill-tabs" role="tablist" aria-label="Concept and skill files"><button class="skill-tab" data-skill-tab="concept" aria-controls="panel-concept" aria-selected="true">Trading concept</button><button class="skill-tab" data-skill-tab="use" aria-controls="panel-use" aria-selected="false">Use skill</button><button class="skill-tab" data-skill-tab="skill-md" aria-controls="panel-skill-md" aria-selected="false">SKILL.md</button><button class="skill-tab" data-skill-tab="skill-json" aria-controls="panel-skill-json" aria-selected="false">skill.json</button><button class="skill-tab" data-skill-tab="concept-json" aria-controls="panel-concept-json" aria-selected="false">concept.json</button><button class="skill-tab" data-skill-tab="reference-json" aria-controls="panel-reference-json" aria-selected="false">reference.json</button><button class="skill-tab" data-skill-tab="openai-yaml" aria-controls="panel-openai-yaml" aria-selected="false">openai.yaml</button></nav><section class="skill-panel" id="panel-concept" role="tabpanel"><h2>Trading concept</h2><p>The resumption of the prevailing trend after a pause, pullback, or consolidation. In classical chart analysis, continuation is the default expectation associated with congestion patterns and mid-trend gaps — a probabilistic heuristic, not a law.</p><div class="field"><span class="label">Intuition</span><p>The trend catches its breath and then keeps going in the same direction.</p></div><div class="field"><span class="label">Mechanics</span><p>Identified when a counter-move or sideways congestion resolves with a break in the direction of the prior trend — e.g., a consolidation range breaking with the trend, or a runaway (continuation) gap appearing mid-trend on rising volume.</p></div><div class="evidence-section"><h3>Failure modes</h3><p>Not every pause continues the trend — some consolidations are distribution or accumulation that precede reversals, so continuation assumptions fail at trend turning points.</p></div><div class="evidence-section"><h3>Misconceptions</h3><p>That a pause in a trend guarantees continuation; continuation is the base-rate expectation, but each individual congestion can resolve either way.</p></div><div class="evidence-section"><h3>Example</h3><p>A stock trending up pauses in a two-week sideways range, then gaps higher on increased volume — a continuation resolution of the congestion.</p></div><div class="evidence-section"><h3>Citations</h3><ul class="citation-list"><li><a href="https://chartschool.stockcharts.com/table-of-contents/chart-analysis/gaps-and-gap-analysis" rel="noopener">StockCharts ChartSchool — Gaps and Gap Analysis</a> — Types of Gaps</li><li><a href="https://fenefx.com/en/blog/what-is-pullback" rel="noopener">Fenefx — What Is a Price Correction or Pullback?</a> — The Difference Between Pullback, Trend Reversal, and Price Consolidation</li></ul></div><div class="evidence-section"><h3>Related concepts</h3><ul><li><a href="../tkl-trend/">Trend</a></li><li><a href="../tkl-consolidation/">Consolidation</a></li><li><a href="../tkl-pullback/">Pullback</a></li><li><a href="../tkl-runaway-gap/">Runaway gap</a></li><li><a href="../tkl-breakout/">Breakout</a></li></ul></div></section><section class="skill-panel" id="panel-use" role="tabpanel" hidden><h2>Use this skill</h2><div class="use-panel"><p>Use the catalog router in a repository that includes this library:</p><div class="copy-row"><pre id="router-prompt" class="json">Use $tkl-concept-router to find and apply Continuation from the Pakupai Trading Knowledge Library. Separate facts, inferences, and unknowns; include failure modes, misconceptions, and citations.</pre><button class="copy-button" data-copy="router-prompt">Copy prompt</button></div><p class="meta">For a direct repository-local install, copy this package folder to <code>.agents/skills/tkl-continuation/</code>. <a href="https://github.com/unperson-12359/trading-knowledge-library/tree/main/skills/concepts/price-action-and-technical-analysis/continuation">Open the package on GitHub</a>.</p></div></section><section class="skill-panel" id="panel-skill-md" role="tabpanel" hidden><h2>SKILL.md</h2><pre class="json">---
+name: tkl-continuation
+description: &quot;Explain, compare, or apply Continuation using the library&#x27;s structured Price action and technical analysis reference, including failure modes and misconceptions.&quot;
+---
+
+# Continuation
+
+Use this skill for research and decision support involving **Continuation**.
+
+1. Read `skill.json` for the supported intents, required context, workflow, constraints, and output contract.
+2. Read `references/concept.json` for the self-contained concept evidence and citations.
+3. Keep sourced facts separate from inferences and unknown live conditions.
+4. Include failure modes and misconceptions whenever the concept is applied.
+5. Return the answer as JSON when requested.
+
+Do not use this concept alone as a trade instruction. Educational research and decision support only; not financial advice, a trade recommendation, or evidence of profitability.
+</pre></section><section class="skill-panel" id="panel-skill-json" role="tabpanel" hidden><h2>skill.json</h2><pre class="json">{
+  &quot;$schema&quot;: &quot;../../../../schemas/concept-skill.schema.json&quot;,
+  &quot;schema_version&quot;: 1,
+  &quot;version&quot;: 1,
+  &quot;skill_name&quot;: &quot;tkl-continuation&quot;,
+  &quot;concept_id&quot;: &quot;price-action-and-technical-analysis/continuation&quot;,
+  &quot;display_name&quot;: &quot;Continuation&quot;,
+  &quot;domain&quot;: &quot;Price action and technical analysis&quot;,
+  &quot;description&quot;: &quot;Explain, compare, or apply Continuation using the library&#x27;s structured Price action and technical analysis reference, including failure modes and misconceptions.&quot;,
+  &quot;trigger_phrases&quot;: [
+    &quot;Continuation&quot;,
+    &quot;trend continuation&quot;,
+    &quot;explain Continuation&quot;,
+    &quot;apply Continuation to a trading question&quot;,
+    &quot;common misconception about Continuation&quot;
+  ],
+  &quot;supported_intents&quot;: [
+    &quot;explain&quot;,
+    &quot;compare&quot;,
+    &quot;apply&quot;,
+    &quot;diagnose-misconception&quot;
+  ],
+  &quot;context_requirements&quot;: {
+    &quot;required&quot;: [
+      &quot;the user&#x27;s question or claim&quot;,
+      &quot;the intended analysis context&quot;
+    ],
+    &quot;optional&quot;: [
+      &quot;market and venue&quot;,
+      &quot;timeframe&quot;,
+      &quot;current observations&quot;,
+      &quot;risk constraints&quot;,
+      &quot;indicator parameters&quot;,
+      &quot;trend and volatility regime&quot;
+    ]
+  },
+  &quot;workflow&quot;: [
+    &quot;Identify whether the request asks to explain, compare, apply, or diagnose a misconception.&quot;,
+    &quot;Read references/concept.json and verify its canonical_sha256 matches this profile.&quot;,
+    &quot;Use the definition, mechanics, relationships, and citations as sourced facts.&quot;,
+    &quot;Request or label missing context before applying the concept to a market situation.&quot;,
+    &quot;Separate sourced facts from analytical inferences and unknown live conditions.&quot;,
+    &quot;State the concept&#x27;s failure modes and misconceptions before giving a practical implication.&quot;,
+    &quot;Cite the carried sources and return JSON when the user requests machine-readable output.&quot;
+  ],
+  &quot;constraints&quot;: [
+    &quot;Do not invent live market data, venue rules, or user positions.&quot;,
+    &quot;Do not place orders or claim certainty or guaranteed profitability.&quot;,
+    &quot;Do not present educational analysis as personalized financial advice.&quot;,
+    &quot;Do not treat the concept alone as a complete entry, exit, or sizing rule.&quot;,
+    &quot;Flag stale or venue-specific facts that require current official documentation.&quot;
+  ],
+  &quot;output_contract&quot;: {
+    &quot;format&quot;: &quot;human-readable-or-json-on-request&quot;,
+    &quot;required_fields&quot;: [
+      &quot;concept_id&quot;,
+      &quot;intent&quot;,
+      &quot;summary&quot;,
+      &quot;facts&quot;,
+      &quot;inferences&quot;,
+      &quot;unknowns&quot;,
+      &quot;failure_modes&quot;,
+      &quot;misconceptions&quot;,
+      &quot;citations&quot;,
+      &quot;warning&quot;
+    ]
+  },
+  &quot;core&quot;: false,
+  &quot;batch_number&quot;: 32,
+  &quot;package_path&quot;: &quot;skills/concepts/price-action-and-technical-analysis/continuation&quot;,
+  &quot;canonical&quot;: {
+    &quot;source_path&quot;: &quot;concepts/price-action-and-technical-analysis.json&quot;,
+    &quot;sha256&quot;: &quot;d3b22e39a2003c5983c9fa9fc0d539c78f301532afabb5f17b19230334d0a8e1&quot;
+  },
+  &quot;related_concept_ids&quot;: [
+    &quot;price-action-and-technical-analysis/trend&quot;,
+    &quot;price-action-and-technical-analysis/consolidation&quot;,
+    &quot;price-action-and-technical-analysis/pullback&quot;,
+    &quot;price-action-and-technical-analysis/runaway-gap&quot;,
+    &quot;price-action-and-technical-analysis/breakout&quot;
+  ]
+}
+</pre></section><section class="skill-panel" id="panel-concept-json" role="tabpanel" hidden><h2>Canonical concept.json</h2><p class="meta">The original concept object from the main library.</p><pre class="json">{
+  &quot;id&quot;: &quot;price-action-and-technical-analysis/continuation&quot;,
+  &quot;name&quot;: &quot;Continuation&quot;,
+  &quot;aliases&quot;: [
+    &quot;trend continuation&quot;
+  ],
+  &quot;domain&quot;: &quot;Price action and technical analysis&quot;,
+  &quot;definition&quot;: &quot;The resumption of the prevailing trend after a pause, pullback, or consolidation. In classical chart analysis, continuation is the default expectation associated with congestion patterns and mid-trend gaps — a probabilistic heuristic, not a law.&quot;,
+  &quot;intuition&quot;: &quot;The trend catches its breath and then keeps going in the same direction.&quot;,
+  &quot;mechanics&quot;: &quot;Identified when a counter-move or sideways congestion resolves with a break in the direction of the prior trend — e.g., a consolidation range breaking with the trend, or a runaway (continuation) gap appearing mid-trend on rising volume.&quot;,
+  &quot;formula&quot;: &quot;&quot;,
+  &quot;relationships&quot;: [
+    &quot;Trend&quot;,
+    &quot;Consolidation&quot;,
+    &quot;Pullback&quot;,
+    &quot;Runaway gap&quot;,
+    &quot;Breakout&quot;
+  ],
+  &quot;failure_modes&quot;: &quot;Not every pause continues the trend — some consolidations are distribution or accumulation that precede reversals, so continuation assumptions fail at trend turning points.&quot;,
+  &quot;misconceptions&quot;: &quot;That a pause in a trend guarantees continuation; continuation is the base-rate expectation, but each individual congestion can resolve either way.&quot;,
+  &quot;example&quot;: &quot;A stock trending up pauses in a two-week sideways range, then gaps higher on increased volume — a continuation resolution of the congestion.&quot;,
+  &quot;citations&quot;: [
+    {
+      &quot;source&quot;: &quot;StockCharts ChartSchool — Gaps and Gap Analysis&quot;,
+      &quot;url&quot;: &quot;https://chartschool.stockcharts.com/table-of-contents/chart-analysis/gaps-and-gap-analysis&quot;,
+      &quot;section&quot;: &quot;Types of Gaps&quot;,
+      &quot;accessed&quot;: &quot;2026-08-06&quot;
+    },
+    {
+      &quot;source&quot;: &quot;Fenefx — What Is a Price Correction or Pullback?&quot;,
+      &quot;url&quot;: &quot;https://fenefx.com/en/blog/what-is-pullback&quot;,
+      &quot;section&quot;: &quot;The Difference Between Pullback, Trend Reversal, and Price Consolidation&quot;,
+      &quot;accessed&quot;: &quot;2026-08-06&quot;
+    }
+  ],
+  &quot;source_hint&quot;: &quot;Authoritative domain source / exact citation pending&quot;,
+  &quot;master_index&quot;: 603
+}
+</pre></section><section class="skill-panel" id="panel-reference-json" role="tabpanel" hidden><h2>Packaged reference.json</h2><pre class="json">{
+  &quot;schema_version&quot;: 1,
+  &quot;concept_id&quot;: &quot;price-action-and-technical-analysis/continuation&quot;,
+  &quot;canonical_sha256&quot;: &quot;d3b22e39a2003c5983c9fa9fc0d539c78f301532afabb5f17b19230334d0a8e1&quot;,
+  &quot;source_path&quot;: &quot;concepts/price-action-and-technical-analysis.json&quot;,
+  &quot;concept&quot;: {
+    &quot;id&quot;: &quot;price-action-and-technical-analysis/continuation&quot;,
+    &quot;name&quot;: &quot;Continuation&quot;,
+    &quot;aliases&quot;: [
+      &quot;trend continuation&quot;
+    ],
+    &quot;domain&quot;: &quot;Price action and technical analysis&quot;,
+    &quot;definition&quot;: &quot;The resumption of the prevailing trend after a pause, pullback, or consolidation. In classical chart analysis, continuation is the default expectation associated with congestion patterns and mid-trend gaps — a probabilistic heuristic, not a law.&quot;,
+    &quot;intuition&quot;: &quot;The trend catches its breath and then keeps going in the same direction.&quot;,
+    &quot;mechanics&quot;: &quot;Identified when a counter-move or sideways congestion resolves with a break in the direction of the prior trend — e.g., a consolidation range breaking with the trend, or a runaway (continuation) gap appearing mid-trend on rising volume.&quot;,
+    &quot;formula&quot;: &quot;&quot;,
+    &quot;relationships&quot;: [
+      &quot;Trend&quot;,
+      &quot;Consolidation&quot;,
+      &quot;Pullback&quot;,
+      &quot;Runaway gap&quot;,
+      &quot;Breakout&quot;
+    ],
+    &quot;failure_modes&quot;: &quot;Not every pause continues the trend — some consolidations are distribution or accumulation that precede reversals, so continuation assumptions fail at trend turning points.&quot;,
+    &quot;misconceptions&quot;: &quot;That a pause in a trend guarantees continuation; continuation is the base-rate expectation, but each individual congestion can resolve either way.&quot;,
+    &quot;example&quot;: &quot;A stock trending up pauses in a two-week sideways range, then gaps higher on increased volume — a continuation resolution of the congestion.&quot;,
+    &quot;citations&quot;: [
+      {
+        &quot;source&quot;: &quot;StockCharts ChartSchool — Gaps and Gap Analysis&quot;,
+        &quot;url&quot;: &quot;https://chartschool.stockcharts.com/table-of-contents/chart-analysis/gaps-and-gap-analysis&quot;,
+        &quot;section&quot;: &quot;Types of Gaps&quot;,
+        &quot;accessed&quot;: &quot;2026-08-06&quot;
+      },
+      {
+        &quot;source&quot;: &quot;Fenefx — What Is a Price Correction or Pullback?&quot;,
+        &quot;url&quot;: &quot;https://fenefx.com/en/blog/what-is-pullback&quot;,
+        &quot;section&quot;: &quot;The Difference Between Pullback, Trend Reversal, and Price Consolidation&quot;,
+        &quot;accessed&quot;: &quot;2026-08-06&quot;
+      }
+    ]
+  }
+}
+</pre></section><section class="skill-panel" id="panel-openai-yaml" role="tabpanel" hidden><h2>agents/openai.yaml</h2><pre class="json">interface:
+  display_name: &quot;Continuation&quot;
+  short_description: &quot;Apply Continuation with evidence and caveats&quot;
+  default_prompt: &quot;Use $tkl-continuation to answer this question with the concept evidence, failure modes, and citations.&quot;
+policy:
+  allow_implicit_invocation: false
+</pre></section><p class="skill-links"><a href="../../api/v1/skills/tkl-continuation.json">Open profile JSON</a> &middot; <a href="https://github.com/unperson-12359/trading-knowledge-library/tree/main/skills/concepts/price-action-and-technical-analysis/continuation">GitHub source</a> &middot; <a href="../../price-action-and-technical-analysis/#continuation">Canonical concept page</a></p><p class='meta'>Generated 2026-08-10 · <a href='../../about.html'>About &amp; Methodology</a> · <a href='https://github.com/unperson-12359/trading-knowledge-library'>GitHub</a></p></main><script>
+(function(){
+  var box=document.getElementById('search'),res=document.getElementById('search-results');
+  if(!box||!res)return;var idx=null;
+  function load(){if(idx)return Promise.resolve(idx);
+    return fetch(box.getAttribute('data-index')).then(function(r){return r.json()}).then(function(d){idx=d;return d});}
+  box.addEventListener('input',function(){
+    var q=box.value.trim().toLowerCase();res.innerHTML='';
+    if(q.length<2)return;
+    load().then(function(data){
+      var hits=data.filter(function(e){return (e.n+' '+(e.a||'')+' '+(e.x||'')).toLowerCase().indexOf(q)!==-1}).slice(0,12);
+      res.innerHTML=hits.map(function(e){
+        return '<li><a href="'+e.u+'">'+e.n+'</a> <span class="sr-domain">'+e.d+'</span></li>';
+      }).join('')||'<li class="meta">No matches</li>';
+    });
+  });
+})();
+</script><script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('[data-skill-tab]'));
+  function show(id,updateHash){tabs.forEach(function(tab){var selected=tab.getAttribute('data-skill-tab')===id;tab.setAttribute('aria-selected',selected?'true':'false');var panel=document.getElementById(tab.getAttribute('aria-controls'));if(panel)panel.hidden=!selected;});if(updateHash)history.replaceState(null,'','#'+id);}
+  tabs.forEach(function(tab){tab.addEventListener('click',function(){show(tab.getAttribute('data-skill-tab'),true);});});
+  if(tabs.length){var requested=location.hash.replace(/^#/,'');show(tabs.some(function(tab){return tab.getAttribute('data-skill-tab')===requested;})?requested:'concept',false);}
+  document.querySelectorAll('[data-copy]').forEach(function(button){
+    button.addEventListener('click',function(){var target=document.getElementById(button.getAttribute('data-copy'));if(!target)return;navigator.clipboard.writeText(target.textContent).then(function(){var old=button.textContent;button.textContent='Copied';setTimeout(function(){button.textContent=old},1400);});});
+  });
+})();
+</script></body></html>

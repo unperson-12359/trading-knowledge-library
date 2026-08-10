@@ -2,7 +2,7 @@
   "$schema": "../schemas/skill-manifest.schema.json",
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 620,
+  "completed_count": 640,
   "skills": [
     {
       "$schema": "../../../../schemas/concept-skill.schema.json",
@@ -50102,6 +50102,1656 @@
         "price-action-and-technical-analysis/correction",
         "price-action-and-technical-analysis/pullback",
         "price-action-and-technical-analysis/higher-high"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-correction",
+      "concept_id": "price-action-and-technical-analysis/correction",
+      "display_name": "Correction",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Correction using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Correction",
+        "market correction",
+        "explain Correction",
+        "apply Correction to a trading question",
+        "common misconception about Correction"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/correction",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "ab5b0ed9f6958cbc115309a2fa826229667aa037355f4b24537e8dbd12f4ede7"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/pullback",
+        "price-action-and-technical-analysis/retracement",
+        "price-action-and-technical-analysis/downtrend",
+        "price-action-and-technical-analysis/rally"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-retracement",
+      "concept_id": "price-action-and-technical-analysis/retracement",
+      "display_name": "Retracement",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Retracement using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Retracement",
+        "price retracement",
+        "explain Retracement",
+        "apply Retracement to a trading question",
+        "common misconception about Retracement"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/retracement",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "67d9db879c45eb70a4c7d99e8312dca0926ca88579204b3e44517c239d2f8f58"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/pullback",
+        "price-action-and-technical-analysis/correction",
+        "price-action-and-technical-analysis/fibonacci-retracement",
+        "price-action-and-technical-analysis/uptrend"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-reversal",
+      "concept_id": "price-action-and-technical-analysis/reversal",
+      "display_name": "Reversal",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Reversal using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Reversal",
+        "trend reversal",
+        "explain Reversal",
+        "apply Reversal to a trading question",
+        "common misconception about Reversal"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/reversal",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "527ea1062cf1579d7db4423317b35bd397ba77f241a975df1d07ac793da080d5"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/trend",
+        "price-action-and-technical-analysis/uptrend",
+        "price-action-and-technical-analysis/downtrend",
+        "price-action-and-technical-analysis/pullback",
+        "price-action-and-technical-analysis/correction",
+        "price-action-and-technical-analysis/market-structure-break",
+        "price-action-and-technical-analysis/change-of-character"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-continuation",
+      "concept_id": "price-action-and-technical-analysis/continuation",
+      "display_name": "Continuation",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Continuation using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Continuation",
+        "trend continuation",
+        "explain Continuation",
+        "apply Continuation to a trading question",
+        "common misconception about Continuation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/continuation",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "d3b22e39a2003c5983c9fa9fc0d539c78f301532afabb5f17b19230334d0a8e1"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/trend",
+        "price-action-and-technical-analysis/consolidation",
+        "price-action-and-technical-analysis/pullback",
+        "price-action-and-technical-analysis/runaway-gap",
+        "price-action-and-technical-analysis/breakout"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-consolidation",
+      "concept_id": "price-action-and-technical-analysis/consolidation",
+      "display_name": "Consolidation",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Consolidation using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Consolidation",
+        "congestion",
+        "base (contextual)",
+        "explain Consolidation",
+        "apply Consolidation to a trading question",
+        "common misconception about Consolidation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/consolidation",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "a9bb9af67482ba5604f9dfc8e77cbfc5514189da7332889e217e8a4da8394c3a"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/sideways-market",
+        "price-action-and-technical-analysis/continuation",
+        "price-action-and-technical-analysis/compression",
+        "price-action-and-technical-analysis/breakout"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-compression",
+      "concept_id": "price-action-and-technical-analysis/compression",
+      "display_name": "Compression",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Compression using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Compression",
+        "volatility squeeze",
+        "range contraction",
+        "explain Compression",
+        "apply Compression to a trading question",
+        "common misconception about Compression"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/compression",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "b87660abf5b22a5bd0366e05697a1ddc734943dc54bacde75f477cce1af0f19f"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/volatility-contraction",
+        "price-action-and-technical-analysis/expansion",
+        "price-action-and-technical-analysis/consolidation",
+        "price-action-and-technical-analysis/breakout"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-expansion",
+      "concept_id": "price-action-and-technical-analysis/expansion",
+      "display_name": "Expansion",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Expansion using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Expansion",
+        "range expansion",
+        "volatility expansion (synonym in price-action usage)",
+        "explain Expansion",
+        "apply Expansion to a trading question",
+        "common misconception about Expansion"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/expansion",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "0aee6e69a3964fc8b691e8b227bed23cb5acd8e5fc99c37bbe73f0aee08915a4"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/compression",
+        "price-action-and-technical-analysis/volatility-expansion",
+        "price-action-and-technical-analysis/breakout",
+        "price-action-and-technical-analysis/breakdown",
+        "price-action-and-technical-analysis/trend"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-volatility-contraction",
+      "concept_id": "price-action-and-technical-analysis/volatility-contraction",
+      "display_name": "Volatility contraction",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Volatility contraction using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Volatility contraction",
+        "volatility squeeze",
+        "VCP (volatility contraction pattern, Minervini usage)",
+        "explain Volatility contraction",
+        "apply Volatility contraction to a trading question",
+        "common misconception about Volatility contraction"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/volatility-contraction",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "4a3a6b1145a5830fd8cdcf462f21e6b6b990b496d2f0e0e69c57deb233efb881"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/compression",
+        "price-action-and-technical-analysis/volatility-expansion",
+        "price-action-and-technical-analysis/consolidation",
+        "price-action-and-technical-analysis/breakout"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-volatility-expansion",
+      "concept_id": "price-action-and-technical-analysis/volatility-expansion",
+      "display_name": "Volatility expansion",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Volatility expansion using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Volatility expansion",
+        "volatility breakout",
+        "range expansion",
+        "explain Volatility expansion",
+        "apply Volatility expansion to a trading question",
+        "common misconception about Volatility expansion"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/volatility-expansion",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "ce1651c8c3e5d54124b480d84dc879ff3fff12c9deccbced648cfcf3540818f9"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/volatility-contraction",
+        "price-action-and-technical-analysis/expansion",
+        "price-action-and-technical-analysis/breakout",
+        "price-action-and-technical-analysis/breakdown",
+        "price-action-and-technical-analysis/trend"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-gap",
+      "concept_id": "price-action-and-technical-analysis/gap",
+      "display_name": "Gap",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Gap using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Gap",
+        "price gap",
+        "explain Gap",
+        "apply Gap to a trading question",
+        "common misconception about Gap"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/gap",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "fc898832893e7c5064674540c718fbd5a18f510792d5f18c1d4047758728c8a4"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/gap-up",
+        "price-action-and-technical-analysis/gap-down",
+        "price-action-and-technical-analysis/common-gap",
+        "price-action-and-technical-analysis/breakaway-gap",
+        "price-action-and-technical-analysis/runaway-gap",
+        "price-action-and-technical-analysis/exhaustion-gap"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-gap-up",
+      "concept_id": "price-action-and-technical-analysis/gap-up",
+      "display_name": "Gap up",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Gap up using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Gap up",
+        "up gap",
+        "explain Gap up",
+        "apply Gap up to a trading question",
+        "common misconception about Gap up"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/gap-up",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "571aba305a4ca25ea968ffda2073267be733e9e4a48a71952162de390455f007"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/gap",
+        "price-action-and-technical-analysis/gap-down",
+        "price-action-and-technical-analysis/breakaway-gap",
+        "price-action-and-technical-analysis/runaway-gap",
+        "price-action-and-technical-analysis/exhaustion-gap",
+        "price-action-and-technical-analysis/common-gap"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-gap-down",
+      "concept_id": "price-action-and-technical-analysis/gap-down",
+      "display_name": "Gap down",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Gap down using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Gap down",
+        "down gap",
+        "explain Gap down",
+        "apply Gap down to a trading question",
+        "common misconception about Gap down"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/gap-down",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "c6b36fa13b2d23f5ace0f6708c6aeae6e2ac26be7266d0eeabef69fe7c7f1424"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/gap",
+        "price-action-and-technical-analysis/gap-up",
+        "price-action-and-technical-analysis/breakaway-gap",
+        "price-action-and-technical-analysis/runaway-gap",
+        "price-action-and-technical-analysis/exhaustion-gap",
+        "price-action-and-technical-analysis/breakdown"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-exhaustion-gap",
+      "concept_id": "price-action-and-technical-analysis/exhaustion-gap",
+      "display_name": "Exhaustion gap",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Exhaustion gap using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Exhaustion gap",
+        "explain Exhaustion gap",
+        "apply Exhaustion gap to a trading question",
+        "common misconception about Exhaustion gap"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/exhaustion-gap",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "7384a15f9264acf9545aa661f162b453fe93218220c3408bd3a4511d8c0e1e4c"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/gap",
+        "price-action-and-technical-analysis/runaway-gap",
+        "price-action-and-technical-analysis/gap-up",
+        "price-action-and-technical-analysis/gap-down"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-breakaway-gap",
+      "concept_id": "price-action-and-technical-analysis/breakaway-gap",
+      "display_name": "Breakaway gap",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Breakaway gap using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Breakaway gap",
+        "breakout gap",
+        "explain Breakaway gap",
+        "apply Breakaway gap to a trading question",
+        "common misconception about Breakaway gap"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/breakaway-gap",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "519e2a685e0c6ee28aca29816a13eb14b4deeb0c733e267b515a8467387eedcb"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/gap",
+        "price-action-and-technical-analysis/breakout",
+        "price-action-and-technical-analysis/runaway-gap",
+        "price-action-and-technical-analysis/common-gap"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-runaway-gap",
+      "concept_id": "price-action-and-technical-analysis/runaway-gap",
+      "display_name": "Runaway gap",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Runaway gap using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Runaway gap",
+        "continuation gap",
+        "measuring gap",
+        "explain Runaway gap",
+        "apply Runaway gap to a trading question",
+        "common misconception about Runaway gap"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/runaway-gap",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "f67dcc0bd4df5437f466ff4837642bc35617e950902c6e94c0aa599d64eeffd5"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/gap",
+        "price-action-and-technical-analysis/continuation",
+        "price-action-and-technical-analysis/breakaway-gap",
+        "price-action-and-technical-analysis/exhaustion-gap",
+        "price-action-and-technical-analysis/trend"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-common-gap",
+      "concept_id": "price-action-and-technical-analysis/common-gap",
+      "display_name": "Common gap",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Common gap using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Common gap",
+        "trading gap",
+        "area gap",
+        "explain Common gap",
+        "apply Common gap to a trading question",
+        "common misconception about Common gap"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/common-gap",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "c9db5a3f7129fc873f80eac5d0173d8733ae8a098b0068e92fa5569903b0173f"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/gap",
+        "price-action-and-technical-analysis/consolidation",
+        "price-action-and-technical-analysis/breakaway-gap"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-trendline",
+      "concept_id": "price-action-and-technical-analysis/trendline",
+      "display_name": "Trendline",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Trendline using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Trendline",
+        "trend line",
+        "up trendline / down trendline",
+        "explain Trendline",
+        "apply Trendline to a trading question",
+        "common misconception about Trendline"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/trendline",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "98221516bb78477daa475886740fc0ede1e8ff2f06e2cd9705fe6e75d8fb27ba"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/trend",
+        "price-action-and-technical-analysis/uptrend",
+        "price-action-and-technical-analysis/downtrend",
+        "price-action-and-technical-analysis/channel",
+        "price-action-and-technical-analysis/support",
+        "price-action-and-technical-analysis/resistance"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-channel",
+      "concept_id": "price-action-and-technical-analysis/channel",
+      "display_name": "Channel",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Channel using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Channel",
+        "price channel",
+        "trend channel",
+        "explain Channel",
+        "apply Channel to a trading question",
+        "common misconception about Channel"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/channel",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "21cd4592c00ac88a380d61bb920ea252a6e00610aac8ea70fbfe7341cc553d07"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/trendline",
+        "price-action-and-technical-analysis/ascending-channel",
+        "price-action-and-technical-analysis/descending-channel",
+        "price-action-and-technical-analysis/horizontal-channel",
+        "price-action-and-technical-analysis/support",
+        "price-action-and-technical-analysis/resistance"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-ascending-channel",
+      "concept_id": "price-action-and-technical-analysis/ascending-channel",
+      "display_name": "Ascending channel",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Ascending channel using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Ascending channel",
+        "rising channel",
+        "up channel",
+        "explain Ascending channel",
+        "apply Ascending channel to a trading question",
+        "common misconception about Ascending channel"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/ascending-channel",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "65338aaa6ce96640e0dc7947d2549d57b6bf1da04879a51d0d27e18f2f030640"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/channel",
+        "price-action-and-technical-analysis/uptrend",
+        "price-action-and-technical-analysis/trendline",
+        "price-action-and-technical-analysis/descending-channel",
+        "price-action-and-technical-analysis/support",
+        "price-action-and-technical-analysis/resistance"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-descending-channel",
+      "concept_id": "price-action-and-technical-analysis/descending-channel",
+      "display_name": "Descending channel",
+      "domain": "Price action and technical analysis",
+      "description": "Explain, compare, or apply Descending channel using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Descending channel",
+        "falling channel",
+        "down channel",
+        "explain Descending channel",
+        "apply Descending channel to a trading question",
+        "common misconception about Descending channel"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "indicator parameters",
+          "trend and volatility regime"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 32,
+      "package_path": "skills/concepts/price-action-and-technical-analysis/descending-channel",
+      "canonical": {
+        "source_path": "concepts/price-action-and-technical-analysis.json",
+        "sha256": "ead33becd93250fd4d618674d0513f689b866f47a089115ae563bc7c2c8010a6"
+      },
+      "related_concept_ids": [
+        "price-action-and-technical-analysis/channel",
+        "price-action-and-technical-analysis/downtrend",
+        "price-action-and-technical-analysis/trendline",
+        "price-action-and-technical-analysis/ascending-channel",
+        "price-action-and-technical-analysis/support",
+        "price-action-and-technical-analysis/resistance"
       ]
     }
   ]
