@@ -38,6 +38,7 @@ pattern, indicator, or strategy is profitable.
 
 ```text
 concepts/<domain>.json   one file per domain, array of entry objects
+collections/             focused operational concept collections
 scripts/status.py       validate the complete catalog
 scripts/export_master.py generate exports/master_v2.txt
 scripts/build_site.py   generate the GitHub Pages site in docs/

@@ -118,6 +118,23 @@ def main():
     elif sorted(indexes) != list(range(1, 1501)):
         failures.append("master_index must cover 1..1500 exactly once")
 
+    collection_path = ROOT / "collections" / "core-perps.json"
+    if collection_path.exists():
+        try:
+            collection = json.loads(collection_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"core-perps.json: invalid JSON: {exc}")
+        else:
+            concept_ids = collection.get("concept_ids")
+            if not isinstance(concept_ids, list) or len(concept_ids) != 50:
+                failures.append("core-perps collection must contain exactly 50 concept IDs")
+            elif len(set(concept_ids)) != 50:
+                failures.append("core-perps collection contains duplicate concept IDs")
+            else:
+                missing = sorted(set(concept_ids) - set(ids))
+                if missing:
+                    failures.append("core-perps collection has unknown IDs: " + ", ".join(missing))
+
     placeholders = sum(
         1 for entry in entries
         if str(entry.get("definition", "")).startswith(PLACEHOLDER)

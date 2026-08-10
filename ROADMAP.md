@@ -13,3 +13,13 @@ knowledge rollout.
 
 Every completed checkpoint is validated, committed to `main`, pushed, and
 verified on GitHub Pages before the next checkpoint begins.
+
+## Core source-audit batches
+
+| Batch | Focus | State |
+|---|---|---|
+| A | Contract foundation | Complete |
+| B | Funding and liquidation | In progress |
+| C | Execution and microstructure | Pending |
+| D | Signals and context | Pending |
+| E | Risk and research | Pending |
