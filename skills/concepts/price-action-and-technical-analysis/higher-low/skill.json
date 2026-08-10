@@ -1,0 +1,82 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-higher-low",
+  "concept_id": "price-action-and-technical-analysis/higher-low",
+  "display_name": "Higher low",
+  "domain": "Price action and technical analysis",
+  "description": "Explain, compare, or apply Higher low using the library's structured Price action and technical analysis reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Higher low",
+    "HL",
+    "explain Higher low",
+    "apply Higher low to a trading question",
+    "common misconception about Higher low"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints",
+      "indicator parameters",
+      "trend and volatility regime"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 31,
+  "package_path": "skills/concepts/price-action-and-technical-analysis/higher-low",
+  "canonical": {
+    "source_path": "concepts/price-action-and-technical-analysis.json",
+    "sha256": "64d28aa116cddb8ce7835983788b8204c8761d860f15e79e625ea180a57f8cf8"
+  },
+  "related_concept_ids": [
+    "price-action-and-technical-analysis/uptrend",
+    "price-action-and-technical-analysis/higher-high",
+    "price-action-and-technical-analysis/swing-low",
+    "price-action-and-technical-analysis/trend",
+    "price-action-and-technical-analysis/support"
+  ]
+}

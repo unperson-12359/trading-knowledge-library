@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/duration-hedge",
+  "canonical_sha256": "34d99b82a17c0fb60757baa7b139287b92d3191b1a2bf83b04a2ea8752bf65c5",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/duration-hedge",
+    "name": "Duration hedge",
+    "aliases": [
+      "duration-based hedging",
+      "duration-based hedge ratio"
+    ],
+    "domain": "Portfolio management",
+    "definition": "A fixed-income hedging technique that sizes an interest-rate futures (or bond) position so that the dollar sensitivity of the hedge to a small parallel yield change offsets the dollar duration of the portfolio being hedged.",
+    "intuition": "If your bond portfolio loses $X when yields rise 1 basis point, you short enough futures to gain $X on that same move - matching sensitivities rather than face values.",
+    "mechanics": "Price changes are approximated by Delta-P = -P * D_P * Delta-y for the portfolio and Delta-F = -F * D_F * Delta-y for the futures contract; setting the two to cancel gives the duration-based hedge ratio N = -(P * D_P) / (F * D_F). The key assumption is that all rates move by the same amount (parallel yield-curve shifts only).",
+    "formula": "N = -(P * D_P) / (F * D_F), where P and D_P are the portfolio's value and duration and F and D_F the futures contract's price and underlying duration; hedge effectiveness degrades under non-parallel shifts.",
+    "relationships": [
+      "Hedge ratio",
+      "Minimum-variance hedge ratio",
+      "Term factor",
+      "Cross hedge"
+    ],
+    "failure_modes": "Duration is a first-order, parallel-shift approximation: non-parallel curve moves (steepening/flattening), convexity, and cheapest-to-deliver switching in bond futures all create residual risk, and short rates are generally more volatile than long rates in practice.",
+    "misconceptions": "Matching durations is not matching maturities or notionals: two portfolios with the same face value can have very different interest-rate sensitivity, which is why the hedge ratio uses dollar duration (value times duration) rather than par amounts.",
+    "example": "A $10 million bond portfolio with duration 8.8 years is hedged with Treasury futures priced at $91,000 with underlying duration 9.2: N = -(10,000,000*8.8)/(91,000*9.2), about -105 contracts short.",
+    "citations": [
+      {
+        "source": "Jerome Mathis, Derivative Instruments lecture slides, Chapter 6: Interest Rate Futures (based on Hull, Fundamentals of Futures and Options Markets)",
+        "url": "https://jeromemathis.fr/wp-content/uploads/2025/08/Derivatives_Chapter6_completed_4pps.pdf",
+        "section": "Duration-Based Hedging / Duration-Based Hedge Ratio slides",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
