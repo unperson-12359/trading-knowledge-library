@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/model-evaluation",
+  "canonical_sha256": "37a4722de4883802ddb649229e45ecc819a6f26bb1f67a89ec7b7bbd598fe70b",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/model-evaluation",
+    "name": "Model evaluation",
+    "aliases": [
+      "model assessment",
+      "AI system evaluation"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "The systematic measurement of a model's or AI system's performance, behavior, and risks against defined criteria, datasets, and contexts of use. In the NIST AI Risk Management Framework, evaluation sits in the MEASURE function: risks and trustworthiness characteristics are identified, measured, and tracked with appropriate metrics and testing throughout the lifecycle.",
+    "intuition": "Report cards with a rubric: you decide in advance what 'good' means, test against data the model did not train on, and record the results so regressions are visible.",
+    "mechanics": "Evaluation combines quantitative metrics (accuracy, calibration, task benchmarks) computed on held-out or golden datasets, behavioral testing (adversarial probes, edge cases), and human review; results feed go/no-go decisions, monitoring baselines, and drift detection. Effective evaluation matches metrics and test sets to the actual deployment context rather than generic benchmarks.",
+    "formula": "",
+    "relationships": [
+      "Golden dataset",
+      "Adversarial test",
+      "Confidence calibration",
+      "Human-in-the-loop review",
+      "Model drift"
+    ],
+    "failure_modes": "Evaluation on data that leaks into training inflates measured performance; static benchmarks saturate and stop discriminating; metrics chosen for convenience (accuracy on imbalanced data) mislead about deployment behavior. One-time pre-deployment evaluation misses post-deployment drift.",
+    "misconceptions": "A high benchmark score is not evidence of fitness for a specific task — benchmarks measure benchmark performance. Evaluation is also not a one-time gate; NIST frames measurement as continuous across the AI lifecycle.",
+    "example": "Before a knowledge assistant answers compliance questions, it is evaluated on a held-out golden dataset of 200 expert-annotated Q&A pairs, with accuracy, citation correctness, and abstention rate all reported per domain.",
+    "citations": [
+      {
+        "source": "NIST, 'AI Risk Management Framework' (AI RMF 1.0 program page)",
+        "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+        "section": "Overview of the AI RMF (trustworthiness measurement and management functions)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

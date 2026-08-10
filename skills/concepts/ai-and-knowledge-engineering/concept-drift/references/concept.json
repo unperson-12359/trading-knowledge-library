@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/concept-drift",
+  "canonical_sha256": "a0ae399d1f91e6b5f3595be75fd1e510f507bfacc52e465aa670f3cd1edbc1cb",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/concept-drift",
+    "name": "Concept drift",
+    "aliases": [
+      "real concept drift",
+      "posterior shift"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "An unforeseeable change over time in the underlying relationship between inputs and outputs — formally, a change in P(y|X) — so that the mapping a model learned no longer holds even for identical inputs. The concept-drift literature (e.g., Lu et al., IEEE TKDE) organizes the field into drift detection, drift understanding, and drift adaptation.",
+    "intuition": "The rules of the game changed: the same setup that used to mean 'buy' now means nothing — the model's knowledge itself is outdated, not just its inputs.",
+    "mechanics": "Drift may be sudden (structural breaks, rule changes), gradual, incremental, or recurring (regimes). Detection uses error-rate monitoring and statistical change tests; adaptation uses incremental learning, sliding windows, or ensemble reweighting. In trading, crowding out of an anomaly, a central-bank regime shift, or a market-structure rule change are canonical causes.",
+    "formula": "Concept drift between times t0 and t1: P_{t1}(y|X) ≠ P_{t0}(y|X) — the conditional distribution of the label given the features changes, with or without a change in P(X).",
+    "relationships": [
+      "Data drift",
+      "Model drift",
+      "Model evaluation",
+      "Confidence calibration"
+    ],
+    "failure_modes": "Concept drift can be invisible in input statistics (P(X) unchanged), so input-only monitoring misses it while errors accumulate. Adaptation mechanisms risk chasing noise: retraining on every apparent drift whipsaws the model and destroys stability.",
+    "misconceptions": "Concept drift is not the model 'forgetting' or a bug to be patched once — in non-stationary environments like markets it is a permanent operating condition requiring continuous detection and adaptation. Retraining on more old data does not help when the old relationship itself is obsolete.",
+    "example": "A carry-trade signal learned when central banks moved in sync stops working after policy divergence: identical interest-rate inputs now map to different outcomes, and only error-rate monitoring reveals the shift.",
+    "citations": [
+      {
+        "source": "Lu et al., 'Learning under Concept Drift: A Review' (IEEE TKDE, 2018)",
+        "url": "https://arxiv.org/abs/2004.05785",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Google for Developers, 'Machine Learning Glossary'",
+        "url": "https://developers.google.com/machine-learning/glossary",
+        "section": "Glossary entry: concept drift",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/data-drift",
+  "canonical_sha256": "45ce0edb4ce9628c95a9975699676bd79d67036a69a533cb2cae8d2c187fccc0",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/data-drift",
+    "name": "Data drift",
+    "aliases": [
+      "covariate shift",
+      "input drift",
+      "feature drift"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "A change over time in the distribution of a model's input data, P(X), while the relationship between inputs and labels may remain unchanged. In the concept-drift literature it is distinguished from 'real' concept drift: the world looks different, but the rule mapping features to outcomes has not (yet) changed.",
+    "intuition": "The questions arriving at the model change, even if the correct answers to each question would still be computed the same way — like an exam suddenly full of topics the course barely covered.",
+    "mechanics": "Detected by comparing the distribution of live inputs against training/validation baselines using per-feature statistics, population stability indices, or multivariate tests; sustained shift flags inputs the model may handle poorly because they are sparse in training data. Mitigations include retraining on current data, importance weighting, and input validation gates.",
+    "formula": "Data drift at time t: P_t(X) ≠ P_{t0}(X), possibly with P_t(y|X) = P_{t0}(y|X) unchanged, where t0 is the training-distribution reference time.",
+    "relationships": [
+      "Concept drift",
+      "Model drift",
+      "Model evaluation",
+      "Adversarial test"
+    ],
+    "failure_modes": "Distribution-shift detectors fire on benign seasonal or cyclical variation (alert fatigue) while missing slow multivariate drift no single feature reveals. Purely statistical detection cannot tell harmless shift from shift that actually hurts predictions.",
+    "misconceptions": "Data drift is not necessarily a data-quality bug — legitimate market evolution (new participants, new instruments) shifts inputs without any pipeline error. And passing input validation does not mean the model remains accurate on the shifted data.",
+    "example": "After a volatility regime change, the input feature '20-day realized vol' for an index-forex model shifts from a 8-15% range to a 25-40% range; the model now operates mostly on inputs near the edge of its training data.",
+    "citations": [
+      {
+        "source": "Lu et al., 'Learning under Concept Drift: A Review' (IEEE TKDE, 2018)",
+        "url": "https://arxiv.org/abs/2004.05785",
+        "section": "Abstract; taxonomy of drift types",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

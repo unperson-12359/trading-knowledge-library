@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/adversarial-test",
+  "canonical_sha256": "a1d83623b98bd348f4de99c249c470d5d3c4a880b518396480edd21337bbee71",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/adversarial-test",
+    "name": "Adversarial test",
+    "aliases": [
+      "adversarial testing",
+      "red teaming",
+      "attack simulation"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "Deliberately probing an AI system with inputs designed to make it fail — evasion attacks, poisoned data, prompt injections, extraction attempts — in order to find vulnerabilities before an adversary does. NIST's adversarial machine learning taxonomy (NIST AI 100-2) classifies such attacks by ML method, lifecycle stage, and attacker goals, capabilities, and knowledge, and pairs them with mitigations.",
+    "intuition": "Hire the burglar to test the locks: instead of asking 'does it work?', ask 'how can it be made to break?'",
+    "mechanics": "Testers enumerate the attack surface (inputs, retrieved content, tools, training data) and mount attack classes from the taxonomy — e.g., crafting inputs that bypass safety controls or manipulate decisions — then record success rates and trace them to mitigations such as input filtering, least privilege, and human approval for high-risk actions. Penetration-testing practice treats the model as an untrusted user.",
+    "formula": "",
+    "relationships": [
+      "Prompt injection",
+      "Data poisoning",
+      "Model evaluation",
+      "Trading-agent guardrail",
+      "Golden dataset"
+    ],
+    "failure_modes": "A passed adversarial test proves only that the tested attacks failed — novel attack classes and adaptive attackers evolve past any fixed test suite. Tests scoped to the model alone miss system-level paths (tools, retrieval corpora, downstream consumers of output).",
+    "misconceptions": "Adversarial testing is not the same as accuracy testing on hard examples; it assumes an intelligent opponent who adapts. Red teaming once, pre-launch, is not a durable defense — it must recur as the system and attack landscape change.",
+    "example": "Before enabling a trading assistant's report-summarization feature, testers feed it research PDFs containing hidden injected instructions and verify that approval gates and output filters block every attempted policy override.",
+    "citations": [
+      {
+        "source": "NIST AI 100-2 E2025, 'Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations'",
+        "url": "https://csrc.nist.gov/pubs/ai/100/2/e2025/final",
+        "section": "Publication abstract (NIST CSRC)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

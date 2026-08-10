@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/audit-log",
+  "canonical_sha256": "c2d60e019f8f9eb1c4034887f14007a8b2246772ae9d332b15146d6858860899",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/audit-log",
+    "name": "Audit log",
+    "aliases": [
+      "audit trail",
+      "security log"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "A tamper-evident, time-ordered record of significant system events — actions taken, by whom or what, when, and with what inputs and outcomes — maintained for security, accountability, and forensics. NIST SP 800-92 provides guidance on establishing log management infrastructures and processes, covering log generation, protection, storage, analysis, and disposal across an organization.",
+    "intuition": "The black-box recorder of the system: when something goes wrong (or right), you can reconstruct exactly what happened, in order, and prove it wasn't rewritten afterward.",
+    "mechanics": "Components emit structured log records at defined events (authentication, tool calls, orders, approvals, overrides); records are transmitted to protected centralized storage with synchronized timestamps, integrity protection, access controls, and retention policies, and are analyzed for anomalies and compliance reporting.",
+    "formula": "",
+    "relationships": [
+      "Source provenance",
+      "Citation traceability",
+      "Approval gate",
+      "Trading-agent guardrail",
+      "Reproducible analysis"
+    ],
+    "failure_modes": "Logs fail when they are incomplete (the decisive event was never logged), writable by the entity they monitor (the agent or attacker edits history), or too voluminous to analyze. Poor time synchronization across components destroys ordering, which is often the crucial evidence.",
+    "misconceptions": "Logging is not the same as monitoring: an unreviewed log only helps after the fact. Application-level 'history' features (chat transcripts) are not audit logs — they lack integrity protection and completeness guarantees.",
+    "example": "For every order an execution agent submits, the audit log records the model's proposal, the guardrail checks applied, the approver's decision, the broker's acknowledgment, and the fill — enabling reconstruction of any trading day.",
+    "citations": [
+      {
+        "source": "NIST Special Publication 800-92, 'Guide to Computer Security Log Management'",
+        "url": "https://csrc.nist.gov/pubs/sp/800/92/final",
+        "section": "Publication abstract (NIST CSRC)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

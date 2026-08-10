@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/model-drift",
+  "canonical_sha256": "eb7d4be8852acd9ce80febe05736d628e065725d8c68c33db8d3169fead4dade",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/model-drift",
+    "name": "Model drift",
+    "aliases": [
+      "model degradation",
+      "performance drift"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "The decay of a deployed model's predictive performance over time as the world departs from the conditions captured in its training data. It is the observable symptom of underlying data drift or concept drift: the model stays the same, but the mapping it learned fits reality less and less.",
+    "intuition": "The model is a snapshot of how the world worked at training time; as the world moves on, the snapshot yellows — predictions get stale even though nothing in the model changed.",
+    "mechanics": "Production monitoring tracks performance proxies (error rate, calibration, business metrics) and input/output statistics against validation baselines; sustained degradation beyond tolerance triggers investigation into data drift or concept drift and, where warranted, retraining or recalibration. In markets, regime change, crowding of known effects, and structural breaks are the dominant drivers.",
+    "formula": "",
+    "relationships": [
+      "Data drift",
+      "Concept drift",
+      "Model evaluation",
+      "Confidence calibration"
+    ],
+    "failure_modes": "Drift is hard to detect quickly when ground-truth labels arrive late (e.g., long-horizon trade outcomes), so degradation is discovered only after losses accumulate. Retraining on recent data can overfit the newest regime and discard still-valid older structure.",
+    "misconceptions": "Model drift does not mean the model's weights changed — deployed models are usually static; the environment moved. Monitoring aggregate accuracy alone misses drift concentrated in specific segments or regimes.",
+    "example": "A classifier that ranked momentum signals well through a trending year silently degrades after a volatility-regime shift; weekly monitoring shows its precision falling from 0.62 to 0.51 before anyone re-examines the strategy.",
+    "citations": [
+      {
+        "source": "Lu et al., 'Learning under Concept Drift: A Review' (IEEE TKDE, 2018)",
+        "url": "https://arxiv.org/abs/2004.05785",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

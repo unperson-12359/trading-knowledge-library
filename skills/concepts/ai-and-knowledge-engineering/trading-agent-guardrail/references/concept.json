@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/trading-agent-guardrail",
+  "canonical_sha256": "bf1482c7ee07f2b99545e89a409427c4db5fa4ddd280a265ea98619e0ca4e961",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/trading-agent-guardrail",
+    "name": "Trading-agent guardrail",
+    "aliases": [
+      "pre-trade risk control",
+      "agent risk control"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "A deterministic control that bounds what an automated trading agent may do, enforced outside the model: order-size and price limits, credit/capital thresholds, duplicate-order rejection, restricted-instrument lists, and kill switches. The regulatory archetype is SEC Rule 15c3-5, which requires broker-dealers with market access to maintain automated, systematically applied financial and regulatory risk management controls that prevent the entry of erroneous or excessive orders.",
+    "intuition": "The agent proposes; hard code disposes. Whatever the model decides, orders must pass through non-negotiable software checks before they can reach the market.",
+    "mechanics": "Guardrails sit in the execution path as pre-trade checks: each proposed order is validated against pre-set credit or capital thresholds, price and size parameters, duplicative-order detection, and restricted-security lists, and is rejected on violation; post-trade execution reports flow to surveillance. Because they are enforced in code — not in the model's prompt — they cannot be talked around by prompt injection.",
+    "formula": "",
+    "relationships": [
+      "Execution-enabled trading agent",
+      "Read-only trading agent",
+      "Approval gate",
+      "Audit log",
+      "Prompt injection"
+    ],
+    "failure_modes": "Guardrails only bound what they measure: mis-set thresholds, stale restricted lists, or unchecked order types leave holes, and controls allocated to or dependent on third parties weaken accountability. They bound order flow, not reasoning quality — a guardrail-compliant stream of bad trades is still possible.",
+    "misconceptions": "Guardrails in the prompt ('do not exceed X') are not guardrails — model behavior is stochastic and injectable; effective controls are external, deterministic, and under the direct control of the responsible party, as Rule 15c3-5 requires of broker-dealers.",
+    "example": "An execution agent proposes selling 50 ES contracts; the pre-trade layer rejects it because it exceeds the 10-contract per-order size cap and the account's daily loss threshold was already breached that session.",
+    "citations": [
+      {
+        "source": "17 CFR § 240.15c3-5, Risk management controls for brokers or dealers with market access (SEC Market Access Rule)",
+        "url": "https://www.law.cornell.edu/cfr/text/17/240.15c3-5",
+        "section": "Paragraphs (b)-(c): required financial and regulatory risk management controls",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

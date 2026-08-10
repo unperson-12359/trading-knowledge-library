@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/reproducible-analysis",
+  "canonical_sha256": "c819ad2a66fd1762b4f18861160ee4e405f419f81622dce6622855ce1c669fdb",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/reproducible-analysis",
+    "name": "Reproducible analysis",
+    "aliases": [
+      "computational reproducibility",
+      "replicable research"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "An analysis whose results can be independently regenerated from the same data, code, and documented procedure. The U.S. National Academies (2019) distinguish reproducibility — obtaining consistent results using the same input data, computational steps, methods, and code — from replicability, obtaining consistent results across studies aimed at the same question with new data.",
+    "intuition": "Someone else (or you, six months later) should be able to rerun the pipeline from the recorded inputs and get the same numbers — otherwise the result is a story, not a finding.",
+    "mechanics": "Reproducibility is engineered by pinning data versions, code, parameters, random seeds, and environments; recording provenance of every artifact; and automating the pipeline so re-execution is one command. Reports declare assumptions, costs, and evaluation splits so results can be checked rather than trusted.",
+    "formula": "",
+    "relationships": [
+      "Source provenance",
+      "Audit log",
+      "Model evaluation",
+      "Golden dataset",
+      "Trust status"
+    ],
+    "failure_modes": "Silent dependencies break reproduction: unpinned library or data versions, hidden manual steps, nondeterministic components (including LLM calls at nonzero temperature), and lookahead-prone data handling that cannot be reconstructed later. Vendor data that is revised retroactively (e.g., restated fundamentals) makes past inputs unrecoverable unless snapshotted.",
+    "misconceptions": "Reproducibility is not a claim that the result is correct — a wrong analysis can be perfectly reproducible, and a true finding can be irreproducibly presented. 'The code is available' is not enough if the data and environment are not.",
+    "example": "A backtest report ships with the exact data snapshot, commit hash, parameter file, and seed; a reviewer reruns it and regenerates the identical equity curve and drawdown statistics before the strategy is discussed further.",
+    "citations": [
+      {
+        "source": "National Academies of Sciences, Engineering, and Medicine, 'Reproducibility and Replicability in Science' (2019)",
+        "url": "https://nap.nationalacademies.org/catalog/25303/reproducibility-and-replicability-in-science",
+        "section": "Study description (definitions of reproducibility and replicability)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

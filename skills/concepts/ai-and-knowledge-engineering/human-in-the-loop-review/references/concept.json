@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/human-in-the-loop-review",
+  "canonical_sha256": "f171254ecece364de2e9bf6abe6b1ec1e526302ccdc2fac68c7129889c6ae9ca",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/human-in-the-loop-review",
+    "name": "Human-in-the-loop review",
+    "aliases": [
+      "HITL review",
+      "human oversight",
+      "human verification step"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "A workflow design in which human judgment is inserted into an AI system's pipeline — labeling data, reviewing outputs, approving consequential actions — rather than letting the system run end-to-end autonomously. Surveys of human-in-the-loop machine learning organize these roles into data processing, interventional model training, and system-level HITL design.",
+    "intuition": "The AI drafts; a person signs off. Anything the system gets wrong still has to pass a human checkpoint before it counts.",
+    "mechanics": "Outputs or proposed actions are routed to reviewers under defined triggers (low confidence, high stakes, sampled audits); reviewer decisions correct errors, generate training signal, and authorize or block actions. Effective designs manage reviewer load via prioritization and measure inter-rater agreement and reviewer override rates.",
+    "formula": "",
+    "relationships": [
+      "Approval gate",
+      "Trust status",
+      "Model evaluation",
+      "Golden dataset",
+      "Abstention"
+    ],
+    "failure_modes": "Automation bias hollows out the review: humans rubber-stamp model output at volume, so the checkpoint exists on paper but catches little. Review also fails when reviewers lack the domain expertise or the time budget the sampling rate assumes.",
+    "misconceptions": "Putting a human 'in the loop' is not automatically safer — an overloaded or under-informed reviewer is a fig leaf. HITL is also not limited to labeling training data; it spans oversight of live decisions.",
+    "example": "In this library, entries generated or edited by AI can reach 'reviewed' status with citations, but promotion to 'trusted' requires a recorded human or independent review — a structural HITL gate on knowledge quality.",
+    "citations": [
+      {
+        "source": "Wu et al., 'A Survey of Human-in-the-loop for Machine Learning' (Future Generation Computer Systems, 2022)",
+        "url": "https://arxiv.org/abs/2108.00941",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

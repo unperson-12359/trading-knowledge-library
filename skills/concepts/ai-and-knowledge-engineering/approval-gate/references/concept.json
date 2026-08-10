@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/approval-gate",
+  "canonical_sha256": "ee90c7bec67203cc0297819369d549d523165f27a654346bab6edf703c314729",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/approval-gate",
+    "name": "Approval gate",
+    "aliases": [
+      "human approval gate",
+      "authorization checkpoint"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "A control point in an agentic workflow where a designated human must explicitly authorize a proposed action before the system executes it. OWASP lists requiring human approval for high-risk actions — human-in-the-loop controls for privileged operations — as a core mitigation against unauthorized actions by LLM-integrated applications.",
+    "intuition": "The agent can prepare the trade, fill in the ticket, and explain the reasoning — but a person has to click 'confirm' before anything happens.",
+    "mechanics": "The workflow pauses at the gate: the proposed action, its parameters, and supporting evidence are presented to an authorized approver; execution proceeds only on an affirmative decision, and the decision (who, what, when) is written to the audit log. Gates are typically risk-tiered, so routine low-risk actions proceed automatically while consequential ones block.",
+    "formula": "",
+    "relationships": [
+      "Human-in-the-loop review",
+      "Trading-agent guardrail",
+      "Execution-enabled trading agent",
+      "Audit log",
+      "Abstention"
+    ],
+    "failure_modes": "Approval fatigue turns the gate into a rubber stamp: too many requests, or too little context per request, and approvers stop reading. Gates also fail if the approver lacks authority or expertise, or if the same action can be reached by an ungated path.",
+    "misconceptions": "An approval gate is not the same as notifying a human — notification after execution provides no control. Nor does a gate transfer accountability to the model: the approver and the system owner remain responsible for what is approved.",
+    "example": "A trading agent proposes rolling a futures position three days before expiry; the order ticket appears in a review queue and is sent to the broker only after the portfolio owner clicks approve, with the approval recorded in the audit log.",
+    "citations": [
+      {
+        "source": "OWASP, 'LLM01:2025 Prompt Injection' (OWASP Top 10 for LLM Applications)",
+        "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+        "section": "Prevention and Mitigation Strategies, item 5 (require human approval for high-risk actions)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

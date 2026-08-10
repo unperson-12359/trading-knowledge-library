@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/data-poisoning",
+  "canonical_sha256": "020f38a997253e7266cdb950c12d79a12d71a11b95155f438e028429fa39cc60",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/data-poisoning",
+    "name": "Data poisoning",
+    "aliases": [
+      "training-data poisoning",
+      "model poisoning"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "An integrity attack in which pre-training, fine-tuning, or embedding data is manipulated to introduce vulnerabilities, backdoors, or biases into a model — OWASP LLM04 in the Top 10 for LLM Applications. Because tampered training data compromises the model's ability to make accurate predictions, poisoning is classified as an integrity attack, and backdoors may remain dormant until a trigger activates them.",
+    "intuition": "Corrupt the textbook, not the exam: if the training data teaches the model a hidden wrong rule, every future answer can carry the contamination — and you may never see it until a trigger fires.",
+    "mechanics": "Attackers inject crafted examples into training or retrieval corpora (e.g., via split-view or frontrunning poisoning of web-crawled data, or falsified documents in a RAG store), biasing outputs or embedding trigger-activated behaviors. Mitigations include tracking data origins (ML-BOM, data version control), vetting vendors, sandboxing unverified data, anomaly filtering, and red-team testing.",
+    "formula": "",
+    "relationships": [
+      "Prompt injection",
+      "Adversarial test",
+      "Source provenance",
+      "Golden dataset",
+      "Model evaluation"
+    ],
+    "failure_modes": "Detection is inherently hard because poisoned models behave normally except on attacker-chosen triggers or distributions; standard accuracy testing on clean data shows nothing. Retrieval-corpus poisoning works even when the base model is clean, so model-side defenses miss it.",
+    "misconceptions": "Poisoning does not require access to model weights — influencing the data supply chain (web sources, vendors, shared repositories) is enough. Open-source models are not automatically more or less poisoned than proprietary ones; provenance and verification decide, not licensing.",
+    "example": "Falsified 'research' documents are inserted into the web corpus a knowledge system crawls; weeks later, the assistant's answers about a specific illiquid instrument reflect the planted misinformation while appearing fully normal otherwise.",
+    "citations": [
+      {
+        "source": "OWASP, 'LLM04:2025 Data and Model Poisoning' (OWASP Top 10 for LLM Applications)",
+        "url": "https://genai.owasp.org/llmrisk/llm04/",
+        "section": "Vulnerability description; Prevention and Mitigation Strategies",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

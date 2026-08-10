@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "ai-and-knowledge-engineering/confidence-calibration",
+  "canonical_sha256": "b14f45a73defd593583ec95d928cafba12eab6f746e1705ae224c0147ff0436f",
+  "source_path": "concepts/ai-and-knowledge-engineering.json",
+  "concept": {
+    "id": "ai-and-knowledge-engineering/confidence-calibration",
+    "name": "Confidence calibration",
+    "aliases": [
+      "probability calibration"
+    ],
+    "domain": "AI and knowledge engineering",
+    "definition": "The property that a model's stated confidence matches its true correctness likelihood: among predictions made with 80% confidence, about 80% should be correct. Guo et al. (2017) showed modern deep networks are typically poorly calibrated (overconfident) and that simple post-processing such as temperature scaling can substantially fix it.",
+    "intuition": "A well-calibrated model's 'I'm 90% sure' is right nine times out of ten — its confidence number means what it says.",
+    "mechanics": "Calibration is measured with reliability diagrams and metrics such as Expected Calibration Error (bin predictions by confidence, compare average confidence to empirical accuracy). Miscalibration is corrected post-hoc by rescaling the output distribution, e.g., dividing logits by a learned temperature before the softmax.",
+    "formula": "ECE = Σ_m (|B_m|/n) · |acc(B_m) − conf(B_m)|, where predictions are binned into M bins B_m by confidence, acc(B_m) is empirical accuracy in bin m, conf(B_m) is average predicted confidence in bin m, and n is the total number of predictions.",
+    "relationships": [
+      "Abstention",
+      "Model evaluation",
+      "Human-in-the-loop review",
+      "Hallucination"
+    ],
+    "failure_modes": "Calibration is distribution-dependent: it breaks under data or concept drift, so a model calibrated at validation time becomes overconfident in production. Raw LLM verbalized confidence ('I'm fairly sure') is generally much worse calibrated than classifier probabilities.",
+    "misconceptions": "High accuracy does not imply good calibration — a model can be accurate and systematically overconfident. Softmax probabilities are not calibrated confidences by default; calibration must be measured and usually corrected.",
+    "example": "A signal classifier says 0.9 confidence on 100 trades; if only 70 are correct, it is overconfident — after temperature scaling, its 0.9-confidence bucket actually wins about 90% of the time.",
+    "citations": [
+      {
+        "source": "Guo et al., 'On Calibration of Modern Neural Networks' (ICML 2017)",
+        "url": "https://arxiv.org/abs/1706.04599",
+        "section": "Abstract; temperature scaling results",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
