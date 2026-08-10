@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/delta-neutral-trading",
+  "canonical_sha256": "399e7bc5c10de37ac7d96145ea486e5feda3bf9e487d292ea7b9769a5524d0cd",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/delta-neutral-trading",
+    "name": "Delta-neutral trading",
+    "aliases": [
+      "delta-neutral hedging",
+      "delta hedging"
+    ],
+    "domain": "Trading systems",
+    "definition": "A portfolio construction approach that offsets positive and negative deltas so the combined position has near-zero sensitivity to small moves in the underlying's price. Directional risk is neutralized so that other exposures - volatility, time decay, or carry - drive the P&L.",
+    "intuition": "If an option behaves like 40 shares, holding 40 offsetting shares cancels first-order price risk; what remains is the curvature (gamma), the clock (theta), and the volatility exposure (vega).",
+    "mechanics": "Compute the net delta of all legs (option deltas summed per contract times multiplier; stock counts one per share) and trade the underlying to bring net delta to zero, rebalancing as prices, time, and implied volatility shift the Greeks.",
+    "formula": "Delta_portfolio = sum(n_i x Delta_i) = 0, where n_i is the number of contracts or shares and Delta_i the per-unit delta of each leg.",
+    "relationships": [
+      "Gamma scalping",
+      "Options greeks",
+      "Volatility arbitrage",
+      "Hedging"
+    ],
+    "failure_modes": "Delta neutrality holds only for small moves: large gaps or volatility spikes change delta faster than rebalancing can track, and a perfectly delta-neutral book can still lose heavily through vega, theta, and funding costs.",
+    "misconceptions": "That delta-neutral means risk-free; it only neutralizes first-order directional exposure, leaving convexity, volatility, and liquidity risks fully in place.",
+    "example": "Long 10 puts with delta -0.31 plus long 310 shares gives net delta near zero; after a $1.24 drop the put delta moves to -0.43, so the trader buys 120 more shares to re-neutralize.",
+    "citations": [
+      {
+        "source": "Charles Schwab, 'Gamma Scalping: A Primer' (Schwab Center for Financial Research)",
+        "url": "https://www.schwab.com/learn/story/gamma-scalping-primer",
+        "section": "The greeks and gamma scalping",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

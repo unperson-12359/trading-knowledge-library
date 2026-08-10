@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/convertible-arbitrage",
+  "canonical_sha256": "636e891fa191fc98fcdfc73cc4c19b5b5e5ff1c7ecd95c159d655234db4bb43c",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/convertible-arbitrage",
+    "name": "Convertible arbitrage",
+    "aliases": [
+      "convert arb"
+    ],
+    "domain": "Trading systems",
+    "definition": "A market-neutral hedge-fund strategy involving the simultaneous purchase of a convertible security (usually a convertible bond) and the short sale of the same issuer's common stock, designed to exploit inefficient pricing of the convertible relative to the underlying equity. The short stock position is sized to the convertible's equity sensitivity (delta), and the position is dynamically re-hedged.",
+    "intuition": "Buy the convertible bond, short the stock against it: if the bond is cheap relative to the stock-plus-option it embeds, you harvest the difference while staying roughly immune to small stock moves.",
+    "mechanics": "The arbitrageur buys the convertible and shorts a delta-neutral ratio of the underlying shares, capturing the bond's coupon plus the cheapness of the embedded equity option; as the stock moves, the hedge ratio is rebalanced (dynamic delta hedging), and this re-hedging of a long-gamma position adds to returns.",
+    "formula": "Shares shorted = delta_cv x conversion ratio x number of bonds, where delta_cv is the sensitivity of the convertible's price to the underlying stock price.",
+    "relationships": [
+      "Delta-neutral trading",
+      "Gamma scalping",
+      "Volatility arbitrage",
+      "Fixed-income arbitrage"
+    ],
+    "failure_modes": "Credit events hurt both legs at once (e.g., the 2005 GM downgrade: long convertibles lost on credit while short equity rallied); liquidity gaps can also make convertible prices fall faster than the stock hedge gains, as in 1987.",
+    "misconceptions": "That the trade is riskless because it is hedged; it carries credit risk, liquidity risk, and model risk in the delta estimate, and returns depend heavily on cheap financing and borrow availability for the short leg.",
+    "example": "A fund buys $10 million face of a convertible trading below theoretical value and shorts 60,000 shares of the issuer (the delta hedge), earning the coupon and gamma P&L as it re-hedges.",
+    "citations": [
+      {
+        "source": "Wikipedia: Convertible arbitrage",
+        "url": "https://en.wikipedia.org/wiki/Convertible_arbitrage",
+        "section": "Lead and Risks",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

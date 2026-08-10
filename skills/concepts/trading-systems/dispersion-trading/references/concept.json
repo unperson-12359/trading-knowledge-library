@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/dispersion-trading",
+  "canonical_sha256": "c9bacd8a04b854988deb48d6cf4573972310c509f54284a57c72938b8c74fa6f",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/dispersion-trading",
+    "name": "Dispersion trading",
+    "aliases": [
+      "correlation trading (short correlation)",
+      "index-dispersion trade"
+    ],
+    "domain": "Trading systems",
+    "definition": "An options relative-value strategy that trades the spread between the implied volatility of an index and the implied volatilities of its constituent stocks. The classic construction is short index options (straddles or variance) against long options on the components - a position that profits when realized correlation comes in below the correlation embedded in index option prices.",
+    "intuition": "Index option implied volatility embeds an average pairwise correlation among components; if the stocks move less in lockstep than implied, the index's realized volatility undershoots the volatility of its parts, rewarding the short-index/long-components book.",
+    "mechanics": "Sell index options and buy options on index constituents in vega- or notional-weighted proportions, then delta-hedge both legs. P&L is driven by the gap between realized component volatilities and realized index volatility, which scales with realized correlation.",
+    "formula": "sigma_index^2 approx sum(w_i^2 sigma_i^2) + 2 sum_{i<j}(w_i w_j rho_ij sigma_i sigma_j): index variance as a function of component weights w, volatilities sigma, and average correlation rho; dispersion trades short implied rho against expected realized rho.",
+    "relationships": [
+      "Volatility arbitrage",
+      "Gamma scalping",
+      "Delta-neutral trading",
+      "Variance swap",
+      "Statistical arbitrage"
+    ],
+    "failure_modes": "A market crash drives realized correlation toward one, producing large losses for short-correlation books; the position also carries net short-volatility exposure, so implied-volatility spikes hurt even without a correlation shock.",
+    "misconceptions": "That dispersion trading is a pure, hedged correlation bet; imperfect baskets and residual vega and skew exposures mean it is short crash risk, not riskless arbitrage.",
+    "example": "A trader sells a 3-month at-the-money index straddle at 18% implied vol and buys straddles on the 20 largest components averaging 28% implied vol, delta-hedged daily; if realized correlation is 0.30 instead of the implied 0.55, index realized vol prints near 14% and the short index leg gains more than the long legs lose.",
+    "citations": [
+      {
+        "source": "Deng, 'Volatility Dispersion Trading' (SSRN working paper)",
+        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1156620",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

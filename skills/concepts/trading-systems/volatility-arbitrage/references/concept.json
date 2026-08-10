@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/volatility-arbitrage",
+  "canonical_sha256": "6a4005dcd71fa65f3b8e79ff44c0ab0af612c881cbed9c778244499e8d65915c",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/volatility-arbitrage",
+    "name": "Volatility arbitrage",
+    "aliases": [
+      "vol arb"
+    ],
+    "domain": "Trading systems",
+    "definition": "A class of option-based relative-value strategies that trade the difference between an option's implied volatility and a forecast of the underlying's future realized volatility, implemented through a delta-neutral portfolio of options and the underlying. The trader treats volatility, rather than price, as the unit of relative value: buying options delta-hedged is a bet that realized volatility will exceed implied, and selling them is the opposite bet.",
+    "intuition": "If the market is pricing options as if the stock will move 10% but you think it will move 20%, you can buy the options, hedge out the direction, and profit from the extra movement itself.",
+    "mechanics": "Forecast realized volatility (e.g., from historical or high-frequency returns), compare with implied volatility backed out of market option prices, then buy underpriced or sell overpriced options and keep the book delta-neutral by trading the underlying. Profit is realized through the continuous re-hedging (gamma scalping) of the position over the option's life.",
+    "formula": "Option value C = f(S, sigma, ...); implied volatility sigma_imp solves C_market = f(S, sigma_imp, ...). Trade long vol if sigma_imp < sigma_forecast, short vol if sigma_imp > sigma_forecast.",
+    "relationships": [
+      "Delta-neutral trading",
+      "Gamma scalping",
+      "Dispersion trading",
+      "Statistical arbitrage",
+      "Implied volatility"
+    ],
+    "failure_modes": "It is not true arbitrage: the forecast can be wrong, and volatility spikes correlated across markets (black-swan events) cause losses across a whole book, as with LTCM's short-volatility positions.",
+    "misconceptions": "That delta-hedging removes all risk; a delta-neutral book still carries gamma, vega, theta, and jump risk, and 'buying vol cheap' loses steadily through theta if the realized move never comes.",
+    "example": "A trader buys S&P 500 straddles at 12% implied volatility while forecasting 18% realized, delta-hedging daily; if realized vol comes in near 18%, the re-hedging gains exceed the theta paid.",
+    "citations": [
+      {
+        "source": "Wikipedia: Volatility arbitrage",
+        "url": "https://en.wikipedia.org/wiki/Volatility_arbitrage",
+        "section": "Overview, Market (implied) volatility, Mechanism",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

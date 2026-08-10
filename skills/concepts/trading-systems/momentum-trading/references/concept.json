@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/momentum-trading",
+  "canonical_sha256": "0fd660c04fe6424e5fca597a12c6eb54b8312122a91d66e43ea36a7ed34c6abe",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/momentum-trading",
+    "name": "Momentum trading",
+    "aliases": [
+      "relative strength trading",
+      "momentum investing"
+    ],
+    "domain": "Trading systems",
+    "definition": "A family of strategies that buy assets with strong recent performance and sell or short assets with weak recent performance, based on the empirically documented pattern that securities outperforming their peers over the past 3 to 12 months tend to keep outperforming over the following month. Momentum is a well-studied cross-sectional anomaly, not a guaranteed law, and is distinct from time-series momentum, which uses an asset's own past return rather than its rank versus peers.",
+    "intuition": "Winners tend to keep winning for a while, so the momentum trader buys what is already strong and avoids or shorts what is weak.",
+    "mechanics": "Universe securities are ranked on trailing (typically 3- to 12-month) returns, skipping the most recent month to avoid short-term reversal; the portfolio goes long the top decile/quintile and short the bottom, rebalanced periodically. Retail implementations simply buy instruments breaking to new highs or showing high relative strength.",
+    "formula": "Momentum score M_i = R_i(t-12, t-1), the cumulative return of asset i from 12 months to 1 month before formation; portfolios are formed by sorting on M (Jegadeesh and Titman 1993).",
+    "relationships": [
+      "Cross-sectional momentum",
+      "Time-series momentum",
+      "Trend following",
+      "Relative strength rotation",
+      "Breakout trading"
+    ],
+    "failure_modes": "Momentum crashes occur at sharp market reversals (e.g., 2009), when past losers rebound violently and the short leg surges; crowding and transaction costs also erode the gross anomaly.",
+    "misconceptions": "That momentum means simply chasing whatever is up; systematic momentum is a ranked, hedged, periodically rebalanced portfolio construction, and its long-run returns come with occasional severe crashes.",
+    "example": "Each month a quant ranks 500 stocks on their trailing 6-month return, buys the top 30, shorts the bottom 30, and rebalances monthly.",
+    "citations": [
+      {
+        "source": "AQR: Time Series Momentum (Moskowitz, Ooi, Pedersen 2012), discussion of the cross-sectional momentum literature",
+        "url": "https://www.aqr.com/Insights/Research/Journal-Article/Time-Series-Momentum",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

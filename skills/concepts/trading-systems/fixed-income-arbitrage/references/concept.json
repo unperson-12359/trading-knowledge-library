@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/fixed-income-arbitrage",
+  "canonical_sha256": "b81a0c3205f3fce26d69ece941208ec414b8f963682ce15b22cf405da571ec9d",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/fixed-income-arbitrage",
+    "name": "Fixed-income arbitrage",
+    "aliases": [
+      "fixed-income relative value"
+    ],
+    "domain": "Trading systems",
+    "definition": "A group of market-neutral strategies that exploit pricing differences between related fixed-income securities or contracts, such as swap-spread, yield-curve, mortgage, and cash-futures basis trades. Positions pair long and short exposures in economically similar instruments and bet on the convergence of small yield or price discrepancies, usually with substantial leverage.",
+    "intuition": "Two bonds or rates that should be priced almost identically sometimes are not; fixed-income arbs buy the cheap one, short the rich one, and wait for the tiny gap to close.",
+    "mechanics": "Traders identify rich/cheap points using yield-curve models, financing via repo; typical trades include long Treasury/short swap (swap-spread), butterfly structures on the curve, long MBS hedged with Treasuries or swaps, and long cash bond/short futures (basis). Returns per trade are small, so leverage is high.",
+    "formula": "Swap spread = yield to maturity of the Treasury bond minus the fixed rate of the matched-maturity interest-rate swap (sign conventions vary by market).",
+    "relationships": [
+      "Basis trade",
+      "Cash-futures basis trade",
+      "Convertible arbitrage",
+      "Statistical arbitrage",
+      "Volatility arbitrage"
+    ],
+    "failure_modes": "High leverage on small spreads means liquidity and financing shocks force losses: the LTCM collapse (1998) and the March 2020 Treasury basis unwind show convergence trades diverging further before converging, triggering margin spirals.",
+    "misconceptions": "That convergence is guaranteed within a tolerable horizon; 'riskless' relative-value trades can stay mispriced longer than a levered trader can stay solvent.",
+    "example": "A desk buys the cheapest-to-deliver 10-year Treasury, shorts the matched futures contract, finances the bond in repo, and plans to hold the position as the basis converges toward delivery.",
+    "citations": [
+      {
+        "source": "Wikipedia: Fixed income arbitrage",
+        "url": "https://en.wikipedia.org/wiki/Fixed_income_arbitrage",
+        "section": "Lead and strategy sections",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "OFR Brief 20-01: Basis Trades and Treasury Market Illiquidity",
+        "url": "https://www.financialresearch.gov/briefs/2020/07/16/basis-trades-and-treasury-market-illiquidity/",
+        "section": "Brief summary",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

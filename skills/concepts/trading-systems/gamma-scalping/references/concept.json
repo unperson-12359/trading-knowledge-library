@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/gamma-scalping",
+  "canonical_sha256": "72b42caefb8cd2908790080c98ccb00d7f17a8092457425c2f87f25f945c18d2",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/gamma-scalping",
+    "name": "Gamma scalping",
+    "aliases": [
+      "gamma hedging",
+      "delta-neutral scalping"
+    ],
+    "domain": "Trading systems",
+    "definition": "A dynamic-hedging options strategy in which a trader holds a long-gamma options position (such as a straddle) and repeatedly rebalances an offsetting position in the underlying to keep the book delta-neutral, harvesting small gains from realized price oscillations. It monetizes the difference between realized volatility and the implied volatility paid for the options.",
+    "intuition": "Being long gamma means your delta grows when the underlying rises and shrinks when it falls, so re-hedging mechanically forces you to sell high and buy low; if the underlying wiggles more than the implied volatility you paid for, the scalps can outearn the theta decay.",
+    "mechanics": "Buy calls (short underlying) or puts (long underlying) in delta-matched size, then re-hedge as delta changes: sell the underlying as it rises and buy it as it falls. The book is net long gamma and short theta, so it profits only if realized volatility exceeds implied volatility net of hedging costs.",
+    "formula": "Approximate hedging P&L = 0.5 x Gamma x S^2 x (sigma_realized^2 - sigma_implied^2) x t, minus transaction costs, where Gamma is position gamma and S the underlying price.",
+    "relationships": [
+      "Delta-neutral trading",
+      "Volatility arbitrage",
+      "Dispersion trading",
+      "Options greeks"
+    ],
+    "failure_modes": "In quiet markets theta decay bleeds the position faster than scalps accumulate, and frequent re-hedging racks up commissions and slippage that can erase the theoretical volatility edge.",
+    "misconceptions": "That gamma scalping is a directional strategy; it is explicitly non-directional and loses when the underlying trends smoothly without oscillation or sits still.",
+    "example": "Buy 10 calls with delta 0.29 and gamma 0.005 for $12 each and short 290 shares; the stock rises $5, call delta becomes 0.32, so short 30 more shares at $480 and buy them back at $475 - a roughly $150 scalp set against daily theta decay.",
+    "citations": [
+      {
+        "source": "Charles Schwab, 'Gamma Scalping: A Primer' (Schwab Center for Financial Research)",
+        "url": "https://www.schwab.com/learn/story/gamma-scalping-primer",
+        "section": "How gamma scalping works; Gamma scalping examples",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

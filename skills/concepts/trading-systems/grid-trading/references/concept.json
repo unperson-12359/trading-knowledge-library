@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/grid-trading",
+  "canonical_sha256": "0b5f62401cad614f042f45e03e5ba6aed2383f44cf913a17c208068d68beebb7",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/grid-trading",
+    "name": "Grid trading",
+    "aliases": [
+      "grid strategy",
+      "grid bot trading"
+    ],
+    "domain": "Trading systems",
+    "definition": "A systematic order-placement technique that lays a ladder of buy and sell orders at fixed price intervals above and below a reference price, harvesting oscillation or trend mechanically without forecasting direction. With-the-trend grids add exposure as price runs; against-the-trend (range) grids buy lower rungs and sell higher rungs to monetize mean reversion.",
+    "intuition": "Instead of predicting where price will go, the grid turns the price axis into a conveyor belt: each step down triggers a buy and each step back up triggers a sell at the next rung, locking the spacing in as gross profit per completed cycle.",
+    "mechanics": "Choose a base price, an interval (e.g., 10 pips), and a number of rungs, then place resting orders at each level. Range grids place buys below and sells above the base; trend grids do the reverse. Risk control requires a hard stop beyond the outermost rung, because position size grows against an adverse trend.",
+    "formula": "Gross profit per completed grid cycle approx. grid interval x size per rung; with n rungs at spacing s around base P, orders sit at P +/- k*s for k = 1..n.",
+    "relationships": [
+      "Range trading",
+      "Mean reversion",
+      "Scalping",
+      "Trend following"
+    ],
+    "failure_modes": "A sustained trend through the grid accumulates a large losing position (range grid) or forces profit give-back (trend grid); without a stop, a one-way move can exceed the sum of all harvested oscillation profits many times over.",
+    "misconceptions": "That grid trading is a low-risk money machine because it wins frequently; the many small wins are paid for with an unbounded tail loss when price leaves the grid and never returns.",
+    "example": "With EURUSD at 1.1450, place buys every 10 pips down to 1.1390 and sells every 10 pips up to 1.1510 with a stop at 1.1530; each completed down-up oscillation earns 10 pips per unit, while a run to 1.1530 stops the grid for a 270-pip worst case.",
+    "citations": [
+      {
+        "source": "Investopedia, 'Grid Trading Definition'",
+        "url": "https://www.investopedia.com/terms/g/grid-trading.asp",
+        "section": "Understanding Grid Trading; Grid Trading Construction",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

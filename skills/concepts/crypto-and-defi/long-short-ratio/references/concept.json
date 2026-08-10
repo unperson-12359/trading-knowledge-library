@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/long-short-ratio",
+  "canonical_sha256": "2e435276d7948310477036fabd723e6bf97a0b3d8c233798db03ca3dc4ce5501",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/long-short-ratio",
+    "name": "Long-short ratio",
+    "aliases": [
+      "long/short ratio",
+      "LS ratio"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "The long-short ratio is the proportion of long to short positioning in a derivatives market — reported by exchanges either by account count or by position size — used as a sentiment and crowding gauge.",
+    "intuition": "It is the seating chart of the derivatives arena: how many traders are on the bullish side versus the bearish side, and how lopsided the crowd has become.",
+    "mechanics": "Computed as longs / shorts; e.g. a BTCUSDT ratio of 1.8145 means 1.81 long positions per short (64.5% long, 35.5% short). Venues publish variants: all accounts, top-trader positions (dollar-weighted) and top-trader accounts (count-weighted), which can diverge usefully when whales lean one way and the crowd the other. Extreme readings are often used contrarian.",
+    "formula": "Long/short ratio = number (or size) of long positions / number (or size) of short positions.",
+    "relationships": [
+      "Funding rate",
+      "Open interest leverage ratio",
+      "Liquidation cascade",
+      "Perpetual basis"
+    ],
+    "failure_modes": "The ratio says nothing about leverage size per account (count-based) or hedged books — a 'long' account may be hedged short elsewhere; venue-specific populations (retail-heavy Binance vs institutional CME) make cross-venue comparison meaningless.",
+    "misconceptions": "A high ratio is not a bullish signal to follow — extreme one-sidedness historically precedes squeezes in the opposite direction (contrarian use). Account-count ratios also don't measure conviction; one whale can outweigh thousands of minnows in notional terms.",
+    "example": "Binance BTCUSDT top-trader ratio at 2.5 (dollar-weighted) with funding at +0.05% signals crowded, leveraged longs — a setup where a small dip can trigger outsized long liquidations.",
+    "citations": [
+      {
+        "source": "Amberdata docs - Long/Short Ratio",
+        "url": "https://docs.amberdata.io/data-dictionary/market/longshort-ratio",
+        "section": "Definition and details (Binance futures data)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/statistical-arbitrage",
+  "canonical_sha256": "2786e57540646aad52b516c17acb200bc020a79d8a9d33bdea9976b43fae47a8",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/statistical-arbitrage",
+    "name": "Statistical arbitrage",
+    "aliases": [
+      "stat arb",
+      "statistical relative-value trading"
+    ],
+    "domain": "Trading systems",
+    "definition": "A family of quantitative, typically market-neutral strategies that exploit statistical mispricings among large portfolios of related securities, using short-horizon mean reversion and factor models rather than the strict riskless mispricing of classical arbitrage. Pairs trading is the canonical example; profits are expected values over many small trades, not risk-free arbitrage.",
+    "intuition": "Instead of one guaranteed mispricing, stat arb places hundreds of small, hedged bets that each have a slight statistical edge, so the law of large numbers does the work.",
+    "mechanics": "Models estimate expected short-horizon returns from residuals after removing factor exposures; portfolios are built long undervalued and short overvalued securities, neutralized to market and common factors, and turned over quickly. Gatev et al. (2006) link pairs-trading profits to temporary mispricing of close substitutes with a common return factor.",
+    "formula": "",
+    "relationships": [
+      "Pairs trading",
+      "Mean reversion",
+      "Volatility arbitrage",
+      "Index arbitrage"
+    ],
+    "failure_modes": "Model risk and regime shifts: estimated relationships degrade exactly when correlations spike in crises, and deleveraging events (e.g., August 2007 quant unwind) cause many stat-arb books to lose simultaneously.",
+    "misconceptions": "That 'arbitrage' here means riskless profit; statistical arbitrage is a set of probabilistic bets that can and do produce extended losses.",
+    "example": "A fund residuals-neutralizes 2,000 U.S. stocks against sector and style factors, shorts stocks 2 sigma above their model price, buys those 2 sigma below, and rebalances daily.",
+    "citations": [
+      {
+        "source": "Gatev, Goetzmann, Rouwenhorst, Pairs Trading: Performance of a Relative Value Arbitrage Rule (SSRN)",
+        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=141615",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

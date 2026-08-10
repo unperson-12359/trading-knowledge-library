@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/value-averaging",
+  "canonical_sha256": "3a73951c15bcde31719966b32bbb8828c2a502c50c7dc0b0a0f0145fa7a98ed7",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/value-averaging",
+    "name": "Value averaging",
+    "aliases": [
+      "VA",
+      "Edleson value averaging"
+    ],
+    "domain": "Trading systems",
+    "definition": "An accumulation strategy, introduced by Michael Edleson in a 1988 AAII Journal article, in which the investor targets a fixed increase in the portfolio's total value each period (the value path) and invests or sells whatever amount is required to hit that target. Purchases are larger after declines and smaller - or negative - after rallies.",
+    "intuition": "Dollar-cost averaging fixes the dollars you invest; value averaging fixes the growth of your portfolio's value, so the market itself dictates each installment - more when it is cheap, less, or even a sale, when it is rich.",
+    "mechanics": "Set a target value for each period (e.g., initial amount plus $500 per month). At each rebalancing, compute the gap between the current holdings value and the target, then buy the shortfall or sell the excess. Required cash flows are unbounded, so reserves must be planned.",
+    "formula": "Investment at period t = V_target(t) - (shares held x price_t), with V_target(t) = V_0 + t x deltaV for a linear value path.",
+    "relationships": [
+      "Dollar-cost averaging",
+      "Buy and hold",
+      "Rebalancing",
+      "Core-satellite approach"
+    ],
+    "failure_modes": "Deep bear markets demand ever-larger purchases that can exceed available cash, and in taxable accounts the forced sales trigger capital-gains tax; the strategy also requires more monitoring and transactions than DCA.",
+    "misconceptions": "That value averaging is strictly superior to DCA; its lower average cost comes from greater aggressiveness (larger investments after losses), which is a risk choice rather than a free lunch.",
+    "example": "With a $500 monthly value path, a rally that lifts holdings $840 above target prompts a sale of about 7.3 shares ($340) instead of a purchase; a drop from $49.74 to $45.50 forces a $1,182 investment (AAII worked example).",
+    "citations": [
+      {
+        "source": "AAII, 'Value Averaging Spreadsheet' (Computerized Investing, hosted at valueaveraging.ca)",
+        "url": "http://www.valueaveraging.ca/docs/AAII_Value-averaging-spreadsheet.pdf",
+        "section": "Dollar Cost Averaging Versus Value Averaging",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

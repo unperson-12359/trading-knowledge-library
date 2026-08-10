@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/market-making",
+  "canonical_sha256": "f94660a0443df2e0cea2b4fe965ded27a601e63d1fb09863ffb3b4660dc7d27a",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/market-making",
+    "name": "Market making",
+    "aliases": [
+      "dealing",
+      "liquidity provision"
+    ],
+    "domain": "Trading systems",
+    "definition": "A liquidity-provision activity in which a firm continuously quotes two-sided bid and ask prices, earning the spread (and any rebates) on turnover while managing the inventory risk of positions accumulated from filling customer orders. In U.S. equities, registered and off-exchange market makers also internalize a large share of retail order flow under Regulation NMS execution and disclosure rules.",
+    "intuition": "The market maker is a dealer, not an investor: it tries to buy at the bid and sell at the offer thousands of times a day, and its enemy is holding inventory when prices move against it.",
+    "mechanics": "Post limit orders on both sides around a fair-value estimate, adjust quotes as prices and inventory change, and hedge or internalize the resulting flow. The SEC's 2021 staff report describes how a small number of off-exchange market makers execute most individual-investor orders, with payment for order flow creating conflicts governed by best-execution and Rule 605/606 disclosure regimes.",
+    "formula": "",
+    "relationships": [
+      "Scalping",
+      "Bid-ask spread",
+      "Latency arbitrage",
+      "Payment for order flow"
+    ],
+    "failure_modes": "Adverse selection - being run over by better-informed or faster flow - and inventory losses in one-way markets are the core failure modes; the January 2021 meme-stock episode forced extreme inventory and margin stress on off-exchange market makers.",
+    "misconceptions": "That market making is riskless spread capture; losses on individual trades are routine and must be covered by aggregate spread income, and the economics depend on speed, rebates, and flow access unavailable to retail traders.",
+    "example": "A market maker quotes a stock $50.00 bid / $50.02 offered, 1,000 shares up; it buys 500 at the bid and sells 500 at the offer for $10 gross, then hedges residual inventory when a news release moves fair value to $49.90.",
+    "citations": [
+      {
+        "source": "U.S. SEC, Staff Report on Equity and Options Market Structure Conditions in Early 2021",
+        "url": "https://www.sec.gov/files/staff-report-equity-options-market-struction-conditions-early-2021.pdf",
+        "section": "Sections 2.1, 2.4, 3.7",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

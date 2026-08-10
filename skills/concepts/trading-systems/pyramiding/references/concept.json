@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/pyramiding",
+  "canonical_sha256": "137d095581e2093f7105bad59d3fa87e9f4a3221abbd79264b66c75caa0da068",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/pyramiding",
+    "name": "Pyramiding",
+    "aliases": [
+      "adding to winners",
+      "anti-martingale sizing"
+    ],
+    "domain": "Trading systems",
+    "definition": "A position-building tactic that adds to a winning trade in predefined increments as price moves in the position's favor, so that full size is carried only after the trade has proven itself. In trend systems the adds are mechanical - the Turtle rule adds one unit every 0.5N (half the average true range) above the previous fill.",
+    "intuition": "Start small, let the market pay for confirmation, then press: each add is effectively financed by open profit, while stops trail so that the worst case on the full pyramid approximates the risk of the first unit.",
+    "mechanics": "Define the initial unit, the add interval, and the maximum unit count before entry. Turtle construction: enter one unit at the breakout, add one unit per 0.5N advance up to four units, and raise stops on earlier units so total position risk stays near 2% of equity.",
+    "formula": "Add price(k) = fill(k-1) + 0.5 x N for longs, where N is the 20-day exponential average true range; maximum four units in the Turtle system.",
+    "relationships": [
+      "Turtle trading",
+      "Scaling in",
+      "Averaging up",
+      "Trend following"
+    ],
+    "failure_modes": "Late adds sit close to the reversal point, so a sharp give-back can turn a comfortably profitable trade into a scratch or a loss on the final units; in choppy, mean-reverting markets pyramids repeatedly stop out near the top of the range.",
+    "misconceptions": "That pyramiding is the same as averaging down; pyramiding adds only to winners, while averaging down adds to losers - the two have opposite risk dynamics.",
+    "example": "With N = 2.50 and a 55-day breakout at 310.00, buy units at 310.00, 311.25, 312.50, and 313.75, trailing the stop to 2N below the most recent fill (Turtle worked example).",
+    "citations": [
+      {
+        "source": "Curtis Faith, 'The Original Turtle Trading Rules' (originalturtles.org, 2003)",
+        "url": "https://oxfordstrat.com/coasdfASD32/uploads/2016/01/turtle-rules.pdf",
+        "section": "Chapter 4: Entries - Adding Units",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

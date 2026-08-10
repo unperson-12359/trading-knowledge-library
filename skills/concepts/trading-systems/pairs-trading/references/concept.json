@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/pairs-trading",
+  "canonical_sha256": "7bf7bf60165870b619833736b2e8fe1279a2857bce7747dcc9dab79cbbc61e57",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/pairs-trading",
+    "name": "Pairs trading",
+    "aliases": [
+      "pairs trade",
+      "relative-value arbitrage"
+    ],
+    "domain": "Trading systems",
+    "definition": "A market-neutral strategy that matches two securities whose prices historically move together, then goes long the underperformer and short the outperformer when their prices diverge, profiting if the spread between them reconverges. Gatev, Goetzmann, and Rouwenhorst (2006) formalized the canonical version: stocks are paired by minimum distance between normalized historical prices and traded with a simple divergence/convergence rule.",
+    "intuition": "If two similar companies' prices drift apart, bet they will come back together: buy the laggard, short the leader, and you profit on the gap closing regardless of market direction.",
+    "mechanics": "Pairs are formed from a historical estimation window (e.g., 12 months of normalized prices or a cointegration/hedge-ratio regression); a trade opens when the spread widens beyond a threshold (e.g., two standard deviations) and closes on convergence or at the end of a fixed horizon. Dollar-neutral sizing makes the position roughly insensitive to market moves.",
+    "formula": "Spread S_t = ln P_A,t - beta * ln P_B,t, where beta is the hedge ratio from regressing A's log price on B's; trade when z_t = (S_t - mu_S) / sigma_S exceeds an entry band (commonly +/-2), exit when z_t crosses 0.",
+    "relationships": [
+      "Statistical arbitrage",
+      "Mean reversion",
+      "Pairs spread z-score strategy",
+      "Pairs convergence trade",
+      "Pairs divergence trade"
+    ],
+    "failure_modes": "When the historical co-movement breaks for fundamental reasons (e.g., one firm is deteriorating), the spread widens instead of converging; pairs profits also decayed after the strategy became crowded in the 2000s.",
+    "misconceptions": "That a diverging pair must reconverge because it always did before; co-movement is a statistical association that can break permanently, so divergence can signal a real relative-value change rather than a temporary mispricing.",
+    "example": "Coca-Cola and PepsiCo normalized prices diverge by 2.5 standard deviations; the trader shorts the outperformer and buys the underperformer in equal dollar amounts, exiting when the spread returns to its mean.",
+    "citations": [
+      {
+        "source": "Gatev, Goetzmann, Rouwenhorst, Pairs Trading: Performance of a Relative Value Arbitrage Rule (SSRN, Yale ICF Working Paper 08-03)",
+        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=141615",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

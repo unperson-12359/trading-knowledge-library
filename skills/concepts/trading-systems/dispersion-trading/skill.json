@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-dispersion-trading",
+  "concept_id": "trading-systems/dispersion-trading",
+  "display_name": "Dispersion trading",
+  "domain": "Trading systems",
+  "description": "Explain, compare, or apply Dispersion trading using the library's structured Trading systems reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Dispersion trading",
+    "correlation trading (short correlation)",
+    "index-dispersion trade",
+    "explain Dispersion trading",
+    "apply Dispersion trading to a trading question",
+    "common misconception about Dispersion trading"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 61,
+  "package_path": "skills/concepts/trading-systems/dispersion-trading",
+  "canonical": {
+    "source_path": "concepts/trading-systems.json",
+    "sha256": "c9bacd8a04b854988deb48d6cf4573972310c509f54284a57c72938b8c74fa6f"
+  },
+  "related_concept_ids": [
+    "trading-systems/volatility-arbitrage",
+    "trading-systems/gamma-scalping",
+    "trading-systems/delta-neutral-trading",
+    "instruments/variance-swap",
+    "trading-systems/statistical-arbitrage"
+  ]
+}
