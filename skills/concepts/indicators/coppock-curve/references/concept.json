@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/coppock-curve",
+  "canonical_sha256": "f6e082f2b16964fe891acd8041845b9d5109e2585ba144fa6c79cbe7c345583a",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/coppock-curve",
+    "name": "Coppock curve",
+    "aliases": [
+      "Coppock Curve",
+      "Coppock guide"
+    ],
+    "domain": "Indicators",
+    "definition": "Edwin Coppock's long-term momentum indicator (Barron's, October 1965): a 10-period weighted moving average of the sum of the 14-period and 11-period rates of change, designed to flag major stock-market bottoms on monthly charts when it turns up from below zero.",
+    "intuition": "Coppock reportedly chose 11-14 months after hearing that grief over a loss typically runs about that long; the indicator waits out the mourning period and signals when the market has 'recovered.'",
+    "mechanics": "Coppock = WMA(ROC(14) + ROC(11), 10). Classic usage is monthly charts of major indexes, where a cross from negative to positive is the buy signal; platforms also allow shorter timeframes and adjusted parameters (e.g., 20,10,10 on daily charts).",
+    "formula": "Coppock = WMA(10) of [ROC(14) + ROC(11)], ROC(n) = ((C_t - C_{t-n}) / C_{t-n}) x 100.",
+    "relationships": [
+      "Rate of change",
+      "Weighted moving average",
+      "Know Sure Thing oscillator"
+    ],
+    "failure_modes": "On monthly data it signals only every few years and can lag bottoms by months; designed for major equity indexes, on individual stocks or short timeframes it is just another smoothed ROC.",
+    "misconceptions": "Coppock never proposed sell signals - the positive-to-negative 'sell' cross is a later addition - and the 11/14/10 parameters were not statistically optimized.",
+    "example": "After a decline, if the 14-month and 11-month ROCs sum to +3 and rise, the 10-month WMA climbs toward +3, crossing zero for the classic buy signal.",
+    "citations": [
+      {
+        "source": "Coppock Curve | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/coppock-curve",
+        "section": "SharpCharts Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

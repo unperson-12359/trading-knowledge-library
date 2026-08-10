@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/mass-index",
+  "canonical_sha256": "b76bb591d31e39e4fa84dc267662a348d0f33d0ba26b2bbcaff25b2b3f584b95",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/mass-index",
+    "name": "Mass index",
+    "aliases": [
+      "MI",
+      "Donald Dorsey's Mass Index"
+    ],
+    "domain": "Indicators",
+    "definition": "Donald Dorsey's volatility indicator: a 25-period sum of the ratio of a 9-period EMA of the high-low range to a double-smoothed 9-period EMA of that range, designed to spot 'reversal bulges' when the daily range expands abnormally.",
+    "intuition": "When the range EMA swells relative to its own smoothing, the sum bulges - Dorsey's warning that the current trend may be about to reverse.",
+    "mechanics": "Single = EMA(High - Low, 9); Double = EMA(Single, 9); Mass Index = 25-period sum of (Single / Double). Dorsey's signal is a move above 27 followed by a fall back below 26.5 (the 'reversal bulge'); the indicator is directionless - trade direction comes from the prior trend, and Dorsey paired it with TRIX for timing.",
+    "formula": "MI = sum over 25 periods of [EMA(H - L, 9) / EMA(EMA(H - L, 9), 9)].",
+    "relationships": [
+      "Average true range",
+      "Bollinger bandwidth",
+      "TRIX"
+    ],
+    "failure_modes": "Readings above 27 are rare, so signals are few; thresholds need per-security calibration, and the bulge warns of reversal without saying when or confirming direction.",
+    "misconceptions": "It is not directional - a bulge after an uptrend warns of a downside reversal and vice versa, and it must be paired with a directional tool.",
+    "example": "If the EMA ratio runs at 1.04 for 25 straight periods, the Mass Index = 26.0; a push to 27.2 followed by a drop through 26.5 completes a reversal bulge.",
+    "citations": [
+      {
+        "source": "Mass Index | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/mass-index",
+        "section": "Mass Index Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

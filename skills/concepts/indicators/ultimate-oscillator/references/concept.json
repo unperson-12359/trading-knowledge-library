@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/ultimate-oscillator",
+  "canonical_sha256": "88f80db3b6f3e815c9879f5428c522bd7b97a361d20785b3af18c491577001e0",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/ultimate-oscillator",
+    "name": "Ultimate oscillator",
+    "aliases": [
+      "UO",
+      "Ultimate Osc"
+    ],
+    "domain": "Indicators",
+    "definition": "Larry Williams' three-timeframe momentum oscillator (1976; Stocks & Commodities, 1985): a weighted blend (4:2:1) of buying-pressure-to-true-range ratios over 7, 14, and 28 periods, designed to reduce the false divergences of single-timeframe oscillators.",
+    "intuition": "Short-term momentum dominates the blend but is checked by two longer frames, so a divergence must show weakness across multiple horizons to count.",
+    "mechanics": "BP = Close - min(Low, prior Close); TR = max(High, prior Close) - min(Low, prior Close); Average_k = sum(BP, k)/sum(TR, k) for k = 7, 14, 28; UO = 100 x (4xAvg7 + 2xAvg14 + Avg28)/7. Williams' buy signal: a bullish divergence whose oscillator low is below 30, confirmed by a break above the divergence high.",
+    "formula": "UO = 100 x (4 x Avg7 + 2 x Avg14 + 1 x Avg28) / (4+2+1), with Avg_k = sum(BP, k) / sum(TR, k).",
+    "relationships": [
+      "Williams percent R",
+      "Relative strength index",
+      "Average true range"
+    ],
+    "failure_modes": "The fixed 4:2:1 weighting and divergence-plus-level rules are intricate but still whipsaw; on quiet securities the oscillator may never reach 30 or 70 with default settings, inviting parameter fiddling.",
+    "misconceptions": "Despite the name it is not 'ultimate' or proven superior - it is one multi-frame weighting scheme among many, and its signals still require confirmation.",
+    "example": "If Avg7 = 0.60, Avg14 = 0.50 and Avg28 = 0.40, UO = 100 x (2.4 + 1.0 + 0.4)/7 ~ 54.3.",
+    "citations": [
+      {
+        "source": "Ultimate Oscillator | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/ultimate-oscillator",
+        "section": "Calculating the Ultimate Oscillator",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

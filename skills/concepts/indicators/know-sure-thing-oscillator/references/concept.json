@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/know-sure-thing-oscillator",
+  "canonical_sha256": "9e2e48b43bdd7a718a0c9c3cf446a7603259e88e7dec4b7e179c4a935391784c",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/know-sure-thing-oscillator",
+    "name": "Know Sure Thing oscillator",
+    "aliases": [
+      "KST",
+      "Know Sure Thing",
+      "Pring's KST"
+    ],
+    "domain": "Indicators",
+    "definition": "Martin Pring's summed rate-of-change oscillator (Stocks & Commodities, 1992): four rate-of-change series over different periods, each SMA-smoothed, then combined with weights 1-2-3-4 so the longest cycle counts most.",
+    "intuition": "Instead of one momentum look-back, KST blends four cycles - short-term turns nudge it, but only broad multi-timeframe momentum swings really move it.",
+    "mechanics": "RCMA1 = SMA(ROC(10),10); RCMA2 = SMA(ROC(15),10); RCMA3 = SMA(ROC(20),10); RCMA4 = SMA(ROC(30),15); KST = 1xRCMA1 + 2xRCMA2 + 3xRCMA3 + 4xRCMA4, with a 9-period SMA signal line. Signals: signal-line crosses, centerline crosses, and trend-line breaks on the KST line itself.",
+    "formula": "KST = sum(i x SMA(ROC(r_i), s_i), i=1..4) with (r,s) = (10,10), (15,10), (20,10), (30,15); Signal = SMA(KST, 9).",
+    "relationships": [
+      "Rate of change",
+      "Moving average convergence divergence",
+      "TRIX",
+      "Coppock curve"
+    ],
+    "failure_modes": "Unbounded, so no overbought/oversold levels exist, and signal-line crosses whipsaw - bearish crosses in strong uptrends often flag only slowing momentum, not reversal.",
+    "misconceptions": "The name promises certainty it cannot deliver - Pring himself stresses confirmation and warns that one parameter set does not fit all securities.",
+    "example": "If the four smoothed ROCs read +2, +3, +4, +5, then KST = 2 + 6 + 12 + 20 = +40.",
+    "citations": [
+      {
+        "source": "Pring's Know Sure Thing (KST) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/prings-know-sure-thing-kst",
+        "section": "SharpCharts Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/chande-momentum-oscillator",
+  "canonical_sha256": "58b5698c02cca61c513e8608f1618e29e3077e7712762acb434763fb18e4aade",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/chande-momentum-oscillator",
+    "name": "Chande momentum oscillator",
+    "aliases": [
+      "CMO"
+    ],
+    "domain": "Indicators",
+    "definition": "Tushar Chande's momentum oscillator: 100 times the difference between summed up-moves and summed down-moves over n periods divided by their total, bounding raw, unsmoothed momentum between -100 and +100.",
+    "intuition": "It is a tug-of-war score between up days and down days: if all movement over the window was up, CMO is +100; all down, -100.",
+    "mechanics": "Sum the gains of up closes and the losses of down closes separately over n periods; CMO = 100 x (Su - Sd)/(Su + Sd). Readings beyond +/-50 are treated as overbought/oversold; divergences and zero-line crosses give trend signals.",
+    "formula": "CMO(n) = 100 x (Su - Sd) / (Su + Sd), where Su = sum of max(C_i - C_{i-1}, 0) and Sd = sum of max(C_{i-1} - C_i, 0) over n periods.",
+    "relationships": [
+      "Relative strength index",
+      "Variable index dynamic average",
+      "Rate of change"
+    ],
+    "failure_modes": "Unsmoothed, so it is noisier than RSI and reaches its extremes more often; overbought/oversold levels fail in strong trends, as with all bounded oscillators.",
+    "misconceptions": "CMO is not a smoothed RSI - it nets raw sums rather than Wilder-smoothed average gains and losses, and the +/-50 thresholds are conventions, not validated cutoffs.",
+    "example": "Over 20 days with up-moves totaling 30 points and down-moves 10: CMO = 100 x (30-10)/(30+10) = +50.",
+    "citations": [
+      {
+        "source": "Chande Momentum Oscillator - Investopedia",
+        "url": "https://www.investopedia.com/terms/c/chandemomentumoscillator.asp",
+        "section": "How to Calculate the Chande Momentum Oscillator",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

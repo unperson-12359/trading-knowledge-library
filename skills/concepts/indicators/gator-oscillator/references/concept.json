@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/gator-oscillator",
+  "canonical_sha256": "431c89f75f727f3d2552a30d98153a1afaddf9beeb1d59789b8fb5f05ad05eb2",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/gator-oscillator",
+    "name": "Gator oscillator",
+    "aliases": [
+      "GO",
+      "Gator Oscillator"
+    ],
+    "domain": "Indicators",
+    "definition": "Bill Williams' companion to the Alligator: a dual histogram showing the convergence and divergence of the Alligator's balance lines - the upper histogram is |Jaw - Teeth| and the lower is -|Teeth - Lips| - used to time the 'sleeping, awakening, eating, sated' phases.",
+    "intuition": "Instead of eyeballing whether the Alligator's mouth is opening or closing, the Gator plots the mouth's spread directly: expanding bars mean feeding, contracting bars mean sleep.",
+    "mechanics": "Compute the Alligator Jaw, Teeth and Lips (SMMA of the median price, periods 13/8/5 shifted 8/5/3); the top bar is |Jaw - Teeth| above zero and the bottom bar is -|Teeth - Lips| below zero, colored green when larger than the prior bar and red when smaller.",
+    "formula": "Upper = |SMMA(MP,13,+8) - SMMA(MP,8,+5)|; Lower = -|SMMA(MP,8,+5) - SMMA(MP,5,+3)|.",
+    "relationships": [
+      "Alligator indicator",
+      "Awesome oscillator",
+      "Smoothed moving average"
+    ],
+    "failure_modes": "Entirely derived from lagging smoothed averages, so phases are identified late; MotiveWave notes it generates no trading signals of its own - it only visualizes Alligator context.",
+    "misconceptions": "Green bars on both histograms are not a buy signal by themselves - Williams' phases require alignment with the Alligator's line ordering and price position.",
+    "example": "With Jaw = 100, Teeth = 101, Lips = 103: upper bar = 1, lower bar = -2; if yesterday's bars were 0.8 and -1.5, both expanded - the gator is 'eating'.",
+    "citations": [
+      {
+        "source": "Gator Oscillator - MotiveWave Studies",
+        "url": "https://www.motivewave.com/studies/gator_oscillator.htm",
+        "section": "Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

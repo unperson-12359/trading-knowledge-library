@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/fractal-indicator",
+  "canonical_sha256": "854718d6661cc4135fa68fc754ab1fa9b4168c77f0d3c3343c6f1d29f2519e51",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/fractal-indicator",
+    "name": "Fractal indicator",
+    "aliases": [
+      "Williams fractals",
+      "Fractals (Bill Williams)"
+    ],
+    "domain": "Indicators",
+    "definition": "Bill Williams' five-bar reversal marker: an up fractal is a series of at least five successive bars with the highest high in the middle and two lower highs on each side, and a down fractal is the mirror image with lows; one of the five indicators of his Trading Chaos system.",
+    "intuition": "A fractal flags a local extreme where the market pushed to a level and was rejected on both sides - a candidate swing point.",
+    "mechanics": "Mark an up arrow when the middle bar of five has the highest high with two lower highs on each side, and a down arrow symmetrically on lows. Because two bars must follow, the signal is confirmed only two bars late; Williams filtered fractals against the Alligator's Teeth line.",
+    "formula": "Up fractal at bar t: H_t > H_{t-1}, H_t > H_{t-2}, H_t > H_{t+1}, H_t > H_{t+2}; down fractal: L_t below the four surrounding lows.",
+    "relationships": [
+      "Alligator indicator",
+      "Zigzag indicator",
+      "Awesome oscillator"
+    ],
+    "failure_modes": "Five-bar fractals occur constantly and most are noise; the two-bar confirmation lag means entries come after part of the move, and counter-trend fractals fail repeatedly in trends.",
+    "misconceptions": "A fractal arrow is not a standalone trade signal - Williams used it as a level (entry on a break of the fractal) filtered by the Alligator, not as a reversal call by itself.",
+    "example": "Five bars with highs 10, 11, 12, 11, 10 put an up fractal on the middle bar (high 12), confirmed two bars later.",
+    "citations": [
+      {
+        "source": "Fractals - MetaTrader 5 Help",
+        "url": "https://www.metatrader5.com/en/terminal/help/indicators/bw_indicators/fractals",
+        "section": "Fractals indicator definition and interpretation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

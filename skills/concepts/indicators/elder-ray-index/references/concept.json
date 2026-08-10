@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/elder-ray-index",
+  "canonical_sha256": "cc17c0fa09268ba7ec3cc673f94a6dc58491c3ffbd489d6bcb2acd3291221434",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/elder-ray-index",
+    "name": "Elder Ray index",
+    "aliases": [
+      "Elder-Ray",
+      "Bull Power and Bear Power"
+    ],
+    "domain": "Indicators",
+    "definition": "Alexander Elder's two-part oscillator: Bull Power = period high minus a 13-period EMA of closes, and Bear Power = period low minus the same EMA, measuring how far buyers and sellers can push price above and below the market's consensus of value.",
+    "intuition": "The EMA is the agreed value; the high shows the maximum buyers could reach and the low the maximum sellers could reach - their distances from the EMA are the two camps' power.",
+    "mechanics": "Compute EMA(13) of the close; Bull Power = High - EMA13 (typically positive in uptrends) and Bear Power = Low - EMA13 (typically negative). Elder's buy setup: EMA rising with Bear Power negative but rising; sell/short setup: EMA falling with Bull Power positive but falling.",
+    "formula": "Bull Power = High - EMA(Close, 13); Bear Power = Low - EMA(Close, 13).",
+    "relationships": [
+      "Exponential moving average",
+      "Force index",
+      "Average directional index"
+    ],
+    "failure_modes": "Moving-average-based, so it lags and whipsaws around zero - both limitations Investopedia lists explicitly - and signals in fast reversals arrive after much of the move.",
+    "misconceptions": "Positive Bull Power alone is not a buy - Elder's rules require the EMA slope plus the opposing camp weakening (Bear Power below zero and rising), not one component in isolation.",
+    "example": "With the 13-day EMA at 50, a bar's high of 51.5 and low of 48.5 give Bull Power +1.5 and Bear Power -1.5; Bear Power rising from -2.0 to -1.0 while the EMA climbs is Elder's buy configuration.",
+    "citations": [
+      {
+        "source": "Elder-Ray Index Definition and Uses - Investopedia",
+        "url": "https://www.investopedia.com/terms/e/elderray.asp",
+        "section": "Elder-Ray Index Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

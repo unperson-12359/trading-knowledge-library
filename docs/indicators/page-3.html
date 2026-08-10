@@ -233,6 +233,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="chande-momentum-oscillator"><h3>Chande momentum oscillator <a class="anchor" href="#chande-momentum-oscillator">#</a></h3>
 <div class="field">Tushar Chande&#x27;s momentum oscillator: 100 times the difference between summed up-moves and summed down-moves over n periods divided by their total, bounding raw, unsmoothed momentum between -100 and +100.</div>
+<div class="skill-links"><a href="../skills/tkl-chande-momentum-oscillator/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is a tug-of-war score between up days and down days: if all movement over the window was up, CMO is +100; all down, -100.</div>
 <div class="field"><span class="label">Mechanics:</span> Sum the gains of up closes and the losses of down closes separately over n periods; CMO = 100 x (Su - Sd)/(Su + Sd). Readings beyond +/-50 are treated as overbought/oversold; divergences and zero-line crosses give trend signals.</div>
 <div class="field"><span class="label">Failure modes:</span> Unsmoothed, so it is noisier than RSI and reaches its extremes more often; overbought/oversold levels fail in strong trends, as with all bounded oscillators.</div>
@@ -245,6 +246,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="ultimate-oscillator"><h3>Ultimate oscillator <a class="anchor" href="#ultimate-oscillator">#</a></h3>
 <div class="field">Larry Williams&#x27; three-timeframe momentum oscillator (1976; Stocks &amp; Commodities, 1985): a weighted blend (4:2:1) of buying-pressure-to-true-range ratios over 7, 14, and 28 periods, designed to reduce the false divergences of single-timeframe oscillators.</div>
+<div class="skill-links"><a href="../skills/tkl-ultimate-oscillator/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Short-term momentum dominates the blend but is checked by two longer frames, so a divergence must show weakness across multiple horizons to count.</div>
 <div class="field"><span class="label">Mechanics:</span> BP = Close - min(Low, prior Close); TR = max(High, prior Close) - min(Low, prior Close); Average_k = sum(BP, k)/sum(TR, k) for k = 7, 14, 28; UO = 100 x (4xAvg7 + 2xAvg14 + Avg28)/7. Williams&#x27; buy signal: a bullish divergence whose oscillator low is below 30, confirmed by a break above the divergence high.</div>
 <div class="field"><span class="label">Failure modes:</span> The fixed 4:2:1 weighting and divergence-plus-level rules are intricate but still whipsaw; on quiet securities the oscillator may never reach 30 or 70 with default settings, inviting parameter fiddling.</div>
@@ -257,6 +259,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="trix"><h3>TRIX <a class="anchor" href="#trix">#</a></h3>
 <div class="field">Jack Hutson&#x27;s momentum oscillator (Technical Analysis of Stocks &amp; Commodities, early 1980s): the one-period percentage rate of change of a triple-smoothed exponential moving average (EMA of EMA of EMA), engineered to filter out price moves too small to matter.</div>
+<div class="skill-links"><a href="../skills/tkl-trix/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Three rounds of smoothing strip out noise; what remains turning up or down is, in theory, the significant trend cycle.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute EMA(n) of the close, then EMA(n) of that series, then EMA(n) again (default n = 15); TRIX = 100 x (tripleEMA_t - tripleEMA_{t-1}) / tripleEMA_{t-1}. Traded via signal-line (9-period EMA) crosses, zero-line crosses, and divergences.</div>
 <div class="field"><span class="label">Failure modes:</span> The triple smoothing lags substantially - StockCharts&#x27; Intel example shows three of six signal-line crosses whipsawing in one stretch; in flat markets TRIX hugs zero with ambiguous crosses.</div>
@@ -269,6 +272,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="detrended-price-oscillator"><h3>Detrended price oscillator <a class="anchor" href="#detrended-price-oscillator">#</a></h3>
 <div class="field">An oscillator that strips trend from price by subtracting a displaced (effectively centered) moving average: the close (n/2 + 1) periods ago minus the n-period SMA, designed to isolate cycle highs and lows rather than momentum.</div>
+<div class="skill-links"><a href="../skills/tkl-detrended-price-oscillator/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Comparing a past price against a moving average centered on it cancels the trend component, leaving the shorter cycle around the trend visible.</div>
 <div class="field"><span class="label">Mechanics:</span> DPO(n) = Close_{t-(n/2+1)} - SMA(n)_t; for n = 20 the SMA is offset 11 bars to the left, centering it on the look-back window. Because of the displacement, the DPO does not extend to the latest bar and is used to measure cycle length from peak to peak or trough to trough.</div>
 <div class="field"><span class="label">Failure modes:</span> It deliberately does not cover the most recent n/2+1 bars, so it cannot time current action, and it presumes a discoverable cycle exists, which many markets do not have.</div>
@@ -281,6 +285,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="know-sure-thing-oscillator"><h3>Know Sure Thing oscillator <a class="anchor" href="#know-sure-thing-oscillator">#</a></h3>
 <div class="field">Martin Pring&#x27;s summed rate-of-change oscillator (Stocks &amp; Commodities, 1992): four rate-of-change series over different periods, each SMA-smoothed, then combined with weights 1-2-3-4 so the longest cycle counts most.</div>
+<div class="skill-links"><a href="../skills/tkl-know-sure-thing-oscillator/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Instead of one momentum look-back, KST blends four cycles - short-term turns nudge it, but only broad multi-timeframe momentum swings really move it.</div>
 <div class="field"><span class="label">Mechanics:</span> RCMA1 = SMA(ROC(10),10); RCMA2 = SMA(ROC(15),10); RCMA3 = SMA(ROC(20),10); RCMA4 = SMA(ROC(30),15); KST = 1xRCMA1 + 2xRCMA2 + 3xRCMA3 + 4xRCMA4, with a 9-period SMA signal line. Signals: signal-line crosses, centerline crosses, and trend-line breaks on the KST line itself.</div>
 <div class="field"><span class="label">Failure modes:</span> Unbounded, so no overbought/oversold levels exist, and signal-line crosses whipsaw - bearish crosses in strong uptrends often flag only slowing momentum, not reversal.</div>
@@ -293,6 +298,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="coppock-curve"><h3>Coppock curve <a class="anchor" href="#coppock-curve">#</a></h3>
 <div class="field">Edwin Coppock&#x27;s long-term momentum indicator (Barron&#x27;s, October 1965): a 10-period weighted moving average of the sum of the 14-period and 11-period rates of change, designed to flag major stock-market bottoms on monthly charts when it turns up from below zero.</div>
+<div class="skill-links"><a href="../skills/tkl-coppock-curve/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Coppock reportedly chose 11-14 months after hearing that grief over a loss typically runs about that long; the indicator waits out the mourning period and signals when the market has &#x27;recovered.&#x27;</div>
 <div class="field"><span class="label">Mechanics:</span> Coppock = WMA(ROC(14) + ROC(11), 10). Classic usage is monthly charts of major indexes, where a cross from negative to positive is the buy signal; platforms also allow shorter timeframes and adjusted parameters (e.g., 20,10,10 on daily charts).</div>
 <div class="field"><span class="label">Failure modes:</span> On monthly data it signals only every few years and can lag bottoms by months; designed for major equity indexes, on individual stocks or short timeframes it is just another smoothed ROC.</div>
@@ -305,6 +311,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="fisher-transform"><h3>Fisher transform <a class="anchor" href="#fisher-transform">#</a></h3>
 <div class="field">John Ehlers&#x27; transform (Stocks &amp; Commodities, November 2002) that maps normalized prices through the Fisher function so the output has an approximately Gaussian distribution, producing sharper, better-defined turning points than the raw price series.</div>
+<div class="skill-links"><a href="../skills/tkl-fisher-transform/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Price extremes are rare and squashed on a normal scale; the Fisher transform stretches the tails so that turning points stand out as crisp spikes.</div>
 <div class="field"><span class="label">Mechanics:</span> Normalize price (typically the bar midpoint) to roughly -1..+1 against its n-period range with a stochastic-like step and light smoothing, then apply y = 0.5 x ln((1+x)/(1-x)); a signal line is the transform lagged one bar. Turns of the Fisher line mark candidate price reversals.</div>
 <div class="field"><span class="label">Failure modes:</span> Sharper turning points also mean more apparent &#x27;signals&#x27;, many of which precede no real reversal; the transform assumes a bounded, mean-reverting input, so strong trends pin it at extremes.</div>
@@ -317,6 +324,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="zigzag-indicator"><h3>Zigzag indicator <a class="anchor" href="#zigzag-indicator">#</a></h3>
 <div class="field">A price filter rather than a true indicator: it draws straight legs between swing points, ignoring all moves smaller than a set percentage (traditionally 5%), to reveal the significant highs and lows through the noise.</div>
+<div class="skill-links"><a href="../skills/tkl-zigzag-indicator/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It answers &#x27;what would this chart look like if every wiggle under x% were deleted?&#x27; - exposing the skeleton of swings for trend, pattern, and Elliott Wave analysis.</div>
 <div class="field"><span class="label">Mechanics:</span> Track price from the last confirmed pivot; extend the current leg while price moves favorably, and confirm a new pivot only after a reversal of at least the threshold percentage. On bar/candle charts the filter uses the high-low range, on line charts the closes.</div>
 <div class="field"><span class="label">Failure modes:</span> The last leg is provisional and repaints until the threshold is met - ZigZag is hindsight by design, and StockCharts states explicitly that it has no predictive power.</div>
@@ -329,6 +337,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="fractal-indicator"><h3>Fractal indicator <a class="anchor" href="#fractal-indicator">#</a></h3>
 <div class="field">Bill Williams&#x27; five-bar reversal marker: an up fractal is a series of at least five successive bars with the highest high in the middle and two lower highs on each side, and a down fractal is the mirror image with lows; one of the five indicators of his Trading Chaos system.</div>
+<div class="skill-links"><a href="../skills/tkl-fractal-indicator/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A fractal flags a local extreme where the market pushed to a level and was rejected on both sides - a candidate swing point.</div>
 <div class="field"><span class="label">Mechanics:</span> Mark an up arrow when the middle bar of five has the highest high with two lower highs on each side, and a down arrow symmetrically on lows. Because two bars must follow, the signal is confirmed only two bars late; Williams filtered fractals against the Alligator&#x27;s Teeth line.</div>
 <div class="field"><span class="label">Failure modes:</span> Five-bar fractals occur constantly and most are noise; the two-bar confirmation lag means entries come after part of the move, and counter-trend fractals fail repeatedly in trends.</div>
@@ -341,6 +350,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="alligator-indicator"><h3>Alligator indicator <a class="anchor" href="#alligator-indicator">#</a></h3>
 <div class="field">Bill Williams&#x27; trend-detection overlay: three smoothed moving averages of the median price - Jaw (13-period, shifted 8 forward), Teeth (8, shifted 5), and Lips (5, shifted 3) - whose entanglement signals a sleeping (range) market and whose fanning signals a feeding (trend) phase.</div>
+<div class="skill-links"><a href="../skills/tkl-alligator-indicator/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> In Williams&#x27; metaphor, when the three balance lines intertwine the alligator sleeps and you do not trade; when they open and order by speed, it hunts and you follow the trend.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute the SMMA of (H+L)/2 over 13, 8, and 5 periods, displacing each line 8, 5, and 3 bars forward. Trend state: lines fanned and ordered (Lips above Teeth above Jaw for an uptrend); intertwined lines mean a range; lines joining after a trend mean the alligator is &#x27;sated&#x27; - time to take profit.</div>
 <div class="field"><span class="label">Failure modes:</span> In choppy markets the lines braid continuously, generating repeated false wake-up signals - exactly the conditions Williams says to stand aside from, which the tool can only identify in hindsight.</div>
@@ -353,6 +363,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="awesome-oscillator"><h3>Awesome oscillator <a class="anchor" href="#awesome-oscillator">#</a></h3>
 <div class="field">Bill Williams&#x27; momentum histogram: the 5-period simple moving average of bar midpoints minus the 34-period SMA of bar midpoints - effectively a MACD of the median price computed with simple, not exponential, averages.</div>
+<div class="skill-links"><a href="../skills/tkl-awesome-oscillator/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It compares very recent momentum with background momentum using midpoints rather than closes, so the intraday range feeds the reading.</div>
 <div class="field"><span class="label">Mechanics:</span> AO = SMA((H+L)/2, 5) - SMA((H+L)/2, 34), plotted as a histogram colored green when the bar&#x27;s value exceeds the prior bar&#x27;s and red when lower. Williams&#x27; named signals: zero-line cross, saucer (three-bar continuation pattern), and twin peaks (a divergence-like setup).</div>
 <div class="field"><span class="label">Failure modes:</span> Zero-line crosses whipsaw badly in chop (TradingSim&#x27;s example: only 2 of 7 crosses captured sizable moves), and extreme AO spikes mark strong trends, so fading them is dangerous.</div>
@@ -365,6 +376,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="gator-oscillator"><h3>Gator oscillator <a class="anchor" href="#gator-oscillator">#</a></h3>
 <div class="field">Bill Williams&#x27; companion to the Alligator: a dual histogram showing the convergence and divergence of the Alligator&#x27;s balance lines - the upper histogram is |Jaw - Teeth| and the lower is -|Teeth - Lips| - used to time the &#x27;sleeping, awakening, eating, sated&#x27; phases.</div>
+<div class="skill-links"><a href="../skills/tkl-gator-oscillator/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Instead of eyeballing whether the Alligator&#x27;s mouth is opening or closing, the Gator plots the mouth&#x27;s spread directly: expanding bars mean feeding, contracting bars mean sleep.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute the Alligator Jaw, Teeth and Lips (SMMA of the median price, periods 13/8/5 shifted 8/5/3); the top bar is |Jaw - Teeth| above zero and the bottom bar is -|Teeth - Lips| below zero, colored green when larger than the prior bar and red when smaller.</div>
 <div class="field"><span class="label">Failure modes:</span> Entirely derived from lagging smoothed averages, so phases are identified late; MotiveWave notes it generates no trading signals of its own - it only visualizes Alligator context.</div>
@@ -377,6 +389,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="elder-ray-index"><h3>Elder Ray index <a class="anchor" href="#elder-ray-index">#</a></h3>
 <div class="field">Alexander Elder&#x27;s two-part oscillator: Bull Power = period high minus a 13-period EMA of closes, and Bear Power = period low minus the same EMA, measuring how far buyers and sellers can push price above and below the market&#x27;s consensus of value.</div>
+<div class="skill-links"><a href="../skills/tkl-elder-ray-index/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The EMA is the agreed value; the high shows the maximum buyers could reach and the low the maximum sellers could reach - their distances from the EMA are the two camps&#x27; power.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute EMA(13) of the close; Bull Power = High - EMA13 (typically positive in uptrends) and Bear Power = Low - EMA13 (typically negative). Elder&#x27;s buy setup: EMA rising with Bear Power negative but rising; sell/short setup: EMA falling with Bull Power positive but falling.</div>
 <div class="field"><span class="label">Failure modes:</span> Moving-average-based, so it lags and whipsaws around zero - both limitations Investopedia lists explicitly - and signals in fast reversals arrive after much of the move.</div>

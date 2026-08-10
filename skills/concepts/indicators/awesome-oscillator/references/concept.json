@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/awesome-oscillator",
+  "canonical_sha256": "dc00444633742af6221f6daf87faad5c19e13077ec5de1dc7dcf2dbb447de606",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/awesome-oscillator",
+    "name": "Awesome oscillator",
+    "aliases": [
+      "AO"
+    ],
+    "domain": "Indicators",
+    "definition": "Bill Williams' momentum histogram: the 5-period simple moving average of bar midpoints minus the 34-period SMA of bar midpoints - effectively a MACD of the median price computed with simple, not exponential, averages.",
+    "intuition": "It compares very recent momentum with background momentum using midpoints rather than closes, so the intraday range feeds the reading.",
+    "mechanics": "AO = SMA((H+L)/2, 5) - SMA((H+L)/2, 34), plotted as a histogram colored green when the bar's value exceeds the prior bar's and red when lower. Williams' named signals: zero-line cross, saucer (three-bar continuation pattern), and twin peaks (a divergence-like setup).",
+    "formula": "AO = SMA(MP, 5) - SMA(MP, 34), where MP = (High + Low)/2.",
+    "relationships": [
+      "Moving average convergence divergence",
+      "Alligator indicator",
+      "Gator oscillator",
+      "Fractal indicator"
+    ],
+    "failure_modes": "Zero-line crosses whipsaw badly in chop (TradingSim's example: only 2 of 7 crosses captured sizable moves), and extreme AO spikes mark strong trends, so fading them is dangerous.",
+    "misconceptions": "The histogram color shows change versus the prior bar, not sign - bars can be green below zero; and Williams' 'best momentum indicator' claim has no comparative evidence behind it.",
+    "example": "If the 5-bar midpoint SMA is 102 and the 34-bar is 100, AO = +2.0; a bar printing +1.8 next paints red even though still positive.",
+    "citations": [
+      {
+        "source": "Awesome Oscillator - TradingSim",
+        "url": "https://www.tradingsim.com/blog/awesome-oscillator",
+        "section": "So, what is the Awesome Oscillator Indicator?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

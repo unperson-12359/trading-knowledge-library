@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/detrended-price-oscillator",
+  "canonical_sha256": "9dd13527e09e6d9ad61e7b789f5490590bf5172d8629fedad7be32efc34cefb8",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/detrended-price-oscillator",
+    "name": "Detrended price oscillator",
+    "aliases": [
+      "DPO"
+    ],
+    "domain": "Indicators",
+    "definition": "An oscillator that strips trend from price by subtracting a displaced (effectively centered) moving average: the close (n/2 + 1) periods ago minus the n-period SMA, designed to isolate cycle highs and lows rather than momentum.",
+    "intuition": "Comparing a past price against a moving average centered on it cancels the trend component, leaving the shorter cycle around the trend visible.",
+    "mechanics": "DPO(n) = Close_{t-(n/2+1)} - SMA(n)_t; for n = 20 the SMA is offset 11 bars to the left, centering it on the look-back window. Because of the displacement, the DPO does not extend to the latest bar and is used to measure cycle length from peak to peak or trough to trough.",
+    "formula": "DPO(n) = Price_{t-(n/2 + 1)} - SMA(Price, n)_t.",
+    "relationships": [
+      "Simple moving average",
+      "Rate of change",
+      "Moving average envelope"
+    ],
+    "failure_modes": "It deliberately does not cover the most recent n/2+1 bars, so it cannot time current action, and it presumes a discoverable cycle exists, which many markets do not have.",
+    "misconceptions": "DPO is not a momentum oscillator, and shifting it right to line up with current price defeats its purpose - StockCharts notes right-shifted DPO matches current price action poorly.",
+    "example": "20-day DPO with the close 11 days ago at 103 and the 20-day SMA at 100: DPO = +3; troughs about 20 bars apart suggest a 20-day cycle.",
+    "citations": [
+      {
+        "source": "Detrended Price Oscillator (DPO) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/detrended-price-oscillator-dpo",
+        "section": "Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

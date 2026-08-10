@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/zigzag-indicator",
+  "canonical_sha256": "c98a3438c9842918c553f3f08119f25e5259b29bf8d4337d831f96d8c81f69e6",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/zigzag-indicator",
+    "name": "Zigzag indicator",
+    "aliases": [
+      "ZigZag",
+      "Zig Zag"
+    ],
+    "domain": "Indicators",
+    "definition": "A price filter rather than a true indicator: it draws straight legs between swing points, ignoring all moves smaller than a set percentage (traditionally 5%), to reveal the significant highs and lows through the noise.",
+    "intuition": "It answers 'what would this chart look like if every wiggle under x% were deleted?' - exposing the skeleton of swings for trend, pattern, and Elliott Wave analysis.",
+    "mechanics": "Track price from the last confirmed pivot; extend the current leg while price moves favorably, and confirm a new pivot only after a reversal of at least the threshold percentage. On bar/candle charts the filter uses the high-low range, on line charts the closes.",
+    "formula": "A pivot is confirmed when |P_t - P_pivot| / P_pivot >= threshold (e.g., 5%); legs connect successive confirmed pivots.",
+    "relationships": [
+      "Fractal indicator",
+      "Alligator indicator"
+    ],
+    "failure_modes": "The last leg is provisional and repaints until the threshold is met - ZigZag is hindsight by design, and StockCharts states explicitly that it has no predictive power.",
+    "misconceptions": "The clean historical legs are not tradeable signals; the current leg can disappear entirely if the reversal threshold is never reached.",
+    "example": "From a 100 low, price rises to 112 (+12%): the leg extends to 112; only a decline to 100.8 (-10% with a 10% setting) confirms a new down leg.",
+    "citations": [
+      {
+        "source": "ZigZag | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/zigzag",
+        "section": "ZigZag Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

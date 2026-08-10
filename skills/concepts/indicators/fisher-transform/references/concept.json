@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/fisher-transform",
+  "canonical_sha256": "817a026754c96adb05a92c9926849c1a783d11a6b8a0fdec5c1288bcc636adb4",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/fisher-transform",
+    "name": "Fisher transform",
+    "aliases": [
+      "Fisher Transform indicator"
+    ],
+    "domain": "Indicators",
+    "definition": "John Ehlers' transform (Stocks & Commodities, November 2002) that maps normalized prices through the Fisher function so the output has an approximately Gaussian distribution, producing sharper, better-defined turning points than the raw price series.",
+    "intuition": "Price extremes are rare and squashed on a normal scale; the Fisher transform stretches the tails so that turning points stand out as crisp spikes.",
+    "mechanics": "Normalize price (typically the bar midpoint) to roughly -1..+1 against its n-period range with a stochastic-like step and light smoothing, then apply y = 0.5 x ln((1+x)/(1-x)); a signal line is the transform lagged one bar. Turns of the Fisher line mark candidate price reversals.",
+    "formula": "Fisher = 0.5 x ln((1 + X) / (1 - X)), where X is price normalized to (-1, +1) over the look-back (inputs clamped just inside +/-1).",
+    "relationships": [
+      "Stochastic oscillator",
+      "Zero-lag exponential moving average",
+      "Relative vigor index"
+    ],
+    "failure_modes": "Sharper turning points also mean more apparent 'signals', many of which precede no real reversal; the transform assumes a bounded, mean-reverting input, so strong trends pin it at extremes.",
+    "misconceptions": "The Gaussian reshaping is a display transform, not evidence that prices are normally distributed or that a reversal is due; Ehlers presents it as a timing aid, not a predictor.",
+    "example": "If normalized X = 0.9, Fisher = 0.5 x ln(1.9/0.1) ~ 1.47 - a stretched extreme reading that flags a potential turn when it hooks down.",
+    "citations": [
+      {
+        "source": "Fisher Transform - TC2000 Help Site (Personal Criteria Formulas)",
+        "url": "https://help.tc2000.com/m/69445/l/760135-fisher-transform",
+        "section": "Fisher Transform definition, formula, and parameters",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/alligator-indicator",
+  "canonical_sha256": "4abf309175f2c1b40c88f3358a99e049f676b1ef0b337298c21d36e0ef817170",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/alligator-indicator",
+    "name": "Alligator indicator",
+    "aliases": [
+      "Williams Alligator",
+      "Alligator (Bill Williams)"
+    ],
+    "domain": "Indicators",
+    "definition": "Bill Williams' trend-detection overlay: three smoothed moving averages of the median price - Jaw (13-period, shifted 8 forward), Teeth (8, shifted 5), and Lips (5, shifted 3) - whose entanglement signals a sleeping (range) market and whose fanning signals a feeding (trend) phase.",
+    "intuition": "In Williams' metaphor, when the three balance lines intertwine the alligator sleeps and you do not trade; when they open and order by speed, it hunts and you follow the trend.",
+    "mechanics": "Compute the SMMA of (H+L)/2 over 13, 8, and 5 periods, displacing each line 8, 5, and 3 bars forward. Trend state: lines fanned and ordered (Lips above Teeth above Jaw for an uptrend); intertwined lines mean a range; lines joining after a trend mean the alligator is 'sated' - time to take profit.",
+    "formula": "Jaw = SMMA(MedianPrice, 13) shifted +8; Teeth = SMMA(MedianPrice, 8) shifted +5; Lips = SMMA(MedianPrice, 5) shifted +3; MedianPrice = (High + Low)/2.",
+    "relationships": [
+      "Smoothed moving average",
+      "Gator oscillator",
+      "Fractal indicator",
+      "Awesome oscillator"
+    ],
+    "failure_modes": "In choppy markets the lines braid continuously, generating repeated false wake-up signals - exactly the conditions Williams says to stand aside from, which the tool can only identify in hindsight.",
+    "misconceptions": "The forward shifts do not predict anything - they are display offsets of lagging averages - and the 13/8/5 'Fibonacci' settings are convention, not optimization.",
+    "example": "If the SMMA(13) of the median price is 100, it is drawn 8 bars ahead as the Jaw; when the Lips cross above the Teeth and then the Jaw and all three fan upward, the alligator is 'awake and eating'.",
+    "citations": [
+      {
+        "source": "Alligator - MetaTrader 5 Help",
+        "url": "https://www.metatrader5.com/en/terminal/help/indicators/bw_indicators/alligator",
+        "section": "Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

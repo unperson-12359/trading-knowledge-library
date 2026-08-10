@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/connors-rsi",
+  "canonical_sha256": "76e1c67eca860b54cfae148d586d3888e2e6484250055ddc25fca3ed7519294b",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/connors-rsi",
+    "name": "Connors RSI",
+    "aliases": [
+      "CRSI",
+      "ConnorsRSI"
+    ],
+    "domain": "Indicators",
+    "definition": "Larry Connors' composite short-term mean-reversion oscillator: the average of a 3-period RSI of closes, a 2-period RSI of the up/down streak length, and the 100-period percent rank of the one-day rate of change.",
+    "intuition": "It blends three flavors of stretched-ness - price momentum, streak duration, and the size of today's move versus recent history - into one 0-100 short-term extreme gauge.",
+    "mechanics": "CRSI(3,2,100) = [RSI(Close,3) + RSI(Streak,2) + PercentRank(ROC(1),100)] / 3, where Streak counts consecutive up closes (positive) or down closes (negative) and resets on direction change. Readings above 90 are treated as overbought and below 10 as oversold in Connors' mean-reversion systems.",
+    "formula": "CRSI = (RSI(3) + RSI(Streak, 2) + PercentRank(100) of 1-day ROC) / 3.",
+    "relationships": [
+      "Relative strength index",
+      "Stochastic RSI",
+      "Rate of change"
+    ],
+    "failure_modes": "Built and tuned for short-term mean reversion in equities, so in trending or low-liquidity markets its extreme readings fail like any oscillator's; three tunable components invite overfitting.",
+    "misconceptions": "CRSI overbought is a mean-reversion setup description, not a short signal in isolation - Connors' own published systems pair it with trend and price filters such as the 200-day moving average.",
+    "example": "If RSI(3) = 85, the streak RSI(2) = 95, and today's +2.1% move ranks in the 90th percentile of the last 100 daily moves: CRSI = (85+95+90)/3 = 90, the overbought threshold.",
+    "citations": [
+      {
+        "source": "Connors RSI (CRSI) - Indicator Formula - WealthCharts Knowledgebase",
+        "url": "https://www.wealthcharts.com/kb/category/charts/indicator-formulas/Connors-RSI-CRSI-Indicator-Formula",
+        "section": "Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

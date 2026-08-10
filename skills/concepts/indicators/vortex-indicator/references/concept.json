@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/vortex-indicator",
+  "canonical_sha256": "78a324e4d5d34434bf83343d815e46de030b6b15c520d28f01febad0fd627210",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/vortex-indicator",
+    "name": "Vortex indicator",
+    "aliases": [
+      "VI",
+      "VI+ / VI-"
+    ],
+    "domain": "Indicators",
+    "definition": "Etienne Botes and Douglas Siepman's trend indicator (2010, inspired by Wilder's DMI): +VI and -VI compare 14-period sums of inter-bar directional movement - current high versus prior low and current low versus prior high - to the 14-period sum of True Range.",
+    "intuition": "Where Wilder's DMI measures movement beyond the previous bar, the Vortex measures the connection between consecutive bars' extremes - the 'flow' between them.",
+    "mechanics": "+VM = |High_t - Low_{t-1}| and -VM = |Low_t - High_{t-1}|; sum both over 14 periods and divide by the 14-period sum of True Range: +VI14 = sum(+VM)/sum(TR), -VI14 = sum(-VM)/sum(TR). +VI crossing above -VI is bullish, below bearish.",
+    "formula": "+VI14 = sum(|H_t - L_{t-1}|, 14) / sum(TR, 14); -VI14 = sum(|L_t - H_{t-1}|, 14) / sum(TR, 14).",
+    "relationships": [
+      "Positive directional indicator",
+      "Negative directional indicator",
+      "Average true range",
+      "Average directional index"
+    ],
+    "failure_modes": "Like DMI it whipsaws in ranges, and the cross signals lag the turn; absolute VI levels have no standard overbought/oversold meaning.",
+    "misconceptions": "+VI above -VI states recent directional flow, not future odds; the indicator is sometimes marketed with Schauberger 'vortex' mystique that has no bearing on its arithmetic.",
+    "example": "If the 14-period sums are +VM = 30, -VM = 20 and TR = 40: +VI = 0.75 and -VI = 0.50 - a mild bullish flow.",
+    "citations": [
+      {
+        "source": "Vortex Indicator | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/vortex-indicator",
+        "section": "Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

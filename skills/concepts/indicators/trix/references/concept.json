@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/trix",
+  "canonical_sha256": "803e20abceee9e4f43cef18241862f4be6c7f106e83c2cd05761bf99d7939789",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/trix",
+    "name": "TRIX",
+    "aliases": [
+      "TRIX",
+      "Triple exponential average oscillator"
+    ],
+    "domain": "Indicators",
+    "definition": "Jack Hutson's momentum oscillator (Technical Analysis of Stocks & Commodities, early 1980s): the one-period percentage rate of change of a triple-smoothed exponential moving average (EMA of EMA of EMA), engineered to filter out price moves too small to matter.",
+    "intuition": "Three rounds of smoothing strip out noise; what remains turning up or down is, in theory, the significant trend cycle.",
+    "mechanics": "Compute EMA(n) of the close, then EMA(n) of that series, then EMA(n) again (default n = 15); TRIX = 100 x (tripleEMA_t - tripleEMA_{t-1}) / tripleEMA_{t-1}. Traded via signal-line (9-period EMA) crosses, zero-line crosses, and divergences.",
+    "formula": "EMA1 = EMA(C, n); EMA2 = EMA(EMA1, n); EMA3 = EMA(EMA2, n); TRIX = 100 x (EMA3_t - EMA3_{t-1}) / EMA3_{t-1}.",
+    "relationships": [
+      "Moving average convergence divergence",
+      "Exponential moving average",
+      "Triple exponential moving average",
+      "Rate of change"
+    ],
+    "failure_modes": "The triple smoothing lags substantially - StockCharts' Intel example shows three of six signal-line crosses whipsawing in one stretch; in flat markets TRIX hugs zero with ambiguous crosses.",
+    "misconceptions": "Filtering out 'insignificant' moves also filters the early part of significant ones; TRIX's smoothness is bought with delay, not accuracy.",
+    "example": "If the triple-smoothed EMA rises from 100.0 to 100.2, TRIX prints +0.2 (percent) for that bar.",
+    "citations": [
+      {
+        "source": "TRIX | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/trix",
+        "section": "Calculating TRIX",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

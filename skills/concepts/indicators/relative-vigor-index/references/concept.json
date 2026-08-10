@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/relative-vigor-index",
+  "canonical_sha256": "f22c0c3bfc89f8d019ccd56f3355805ea7f0fcbb6965fec901c2f232381cdc5b",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/relative-vigor-index",
+    "name": "Relative vigor index",
+    "aliases": [
+      "RVI"
+    ],
+    "domain": "Indicators",
+    "definition": "John Ehlers' Relative Vigor Index: an oscillator comparing a smoothed close-minus-open to a smoothed high-minus-low, on the premise that closes tend to exceed opens in uptrends and fall below them in downtrends, so the ratio moves in phase with the price cycle.",
+    "intuition": "A bar's 'vigor' is how much of its range the close captures from the open; persistently positive vigor means an uptrend.",
+    "mechanics": "Numerator = symmetric 4-bar weighting of (Close - Open): (a + 2b + 2c + d)/6; denominator = the same weighting of (High - Low); RVI = SMA(numerator, 10) / SMA(denominator, 10); Signal = (RVI + 2i + 2j + k)/6 over the last four RVI values. Signals: RVI/signal-line crosses and divergences with price.",
+    "formula": "RVI = SMA10[(C-O) weighted 1,2,2,1 / 6] / SMA10[(H-L) weighted 1,2,2,1 / 6]; Signal = (RVI + 2 x RVI_{-1} + 2 x RVI_{-2} + RVI_{-3}) / 6.",
+    "relationships": [
+      "Stochastic oscillator",
+      "Fisher transform",
+      "Moving average convergence divergence"
+    ],
+    "failure_modes": "The symmetric weighting uses surrounding bars, adding delay; in strong one-way trends RVI saturates and divergences mislead.",
+    "misconceptions": "'Vigor' is a metaphor for close-versus-open position, not a trend-strength measure like ADX; the close-above-open tendency is a heuristic, not a law.",
+    "example": "Four bars with (C-O) of +1.0, +0.5, +0.5, +1.0 give numerator (1+1+1+1)/6 ~ 0.67; with a range denominator of 2.0, RVI ~ 0.33.",
+    "citations": [
+      {
+        "source": "What Is The Relative Vigor Index - RVI? - Fidelity Investments",
+        "url": "https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/relative-vigor-index",
+        "section": "RVI Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
