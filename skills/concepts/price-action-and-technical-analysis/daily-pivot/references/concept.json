@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "price-action-and-technical-analysis/daily-pivot",
+  "canonical_sha256": "f0650678bc4857a6b5b905fef4ec1e7c3878d2f591ec37d2d023f0aef12c2a53",
+  "source_path": "concepts/price-action-and-technical-analysis.json",
+  "concept": {
+    "id": "price-action-and-technical-analysis/daily-pivot",
+    "name": "Daily pivot",
+    "aliases": [
+      "daily pivot point"
+    ],
+    "domain": "Price action and technical analysis",
+    "definition": "A pivot point computed from the previous trading day's high, low, and close, applied to the current day's trading — the original floor-trader usage. On StockCharts' convention, pivots for 1- to 15-minute intraday charts use the prior day's data and remain fixed all day.",
+    "intuition": "Yesterday's H/L/C distill into today's map of where buyers and sellers are expected to contest control.",
+    "mechanics": "Computed at the start of the day as P = (prior day H + L + C)/3 with the standard derived S1/S2/R1/R2 levels; the levels do not change intraday and are used as bias filter (price above or below P) and as support/resistance references.",
+    "formula": "P = (H_prev_day + L_prev_day + C_prev_day)/3; S1 = 2P - H; R1 = 2P - L; S2 = P - (H - L); R2 = P + (H - L).",
+    "relationships": [
+      "Pivot point",
+      "Weekly pivot",
+      "Monthly pivot",
+      "Support",
+      "Resistance"
+    ],
+    "failure_modes": "Gap openings can start the day far beyond the pivot, making the levels irrelevant; quiet range days slice back and forth across P, generating noise.",
+    "misconceptions": "That daily pivots are intraday reversal guarantees; they are reference levels whose reactions must be confirmed.",
+    "example": "An index future closes at 5000 with a 5030 high and 4970 low; today's daily pivot set is P = 5000, R1 = 5030, S1 = 4970, watched on the 5-minute chart all session.",
+    "citations": [
+      {
+        "source": "StockCharts ChartSchool — Pivot Points",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/pivot-points",
+        "section": "Timeframes for Pivot Points",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

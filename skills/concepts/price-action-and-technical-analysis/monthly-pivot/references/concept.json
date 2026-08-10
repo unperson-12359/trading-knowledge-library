@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "price-action-and-technical-analysis/monthly-pivot",
+  "canonical_sha256": "11a0f7b4ca68743de31dceee4f348751f903ce18e06b18e934e71fa38ea1136c",
+  "source_path": "concepts/price-action-and-technical-analysis.json",
+  "concept": {
+    "id": "price-action-and-technical-analysis/monthly-pivot",
+    "name": "Monthly pivot",
+    "aliases": [
+      "monthly pivot point"
+    ],
+    "domain": "Price action and technical analysis",
+    "definition": "A pivot point computed from the previous month's high, low, and close, applied to the current month. On StockCharts' convention, pivots displayed on daily charts use the prior month's data and remain fixed for the whole month (weekly and monthly charts use the prior year's data).",
+    "intuition": "Last month's range and close set this month's reference grid for where longer-term buyers and sellers may engage.",
+    "mechanics": "Computed on the first trading day of the month as P = (prior month H + L + C)/3 with derived S/R levels; fixed until the next month begins, and used on daily charts as slower bias and support/resistance references.",
+    "formula": "P = (H_prev_month + L_prev_month + C_prev_month)/3; S1 = 2P - H; R1 = 2P - L; S2 = P - (H - L); R2 = P + (H - L).",
+    "relationships": [
+      "Pivot point",
+      "Daily pivot",
+      "Weekly pivot",
+      "Support",
+      "Resistance"
+    ],
+    "failure_modes": "Monthly levels are coarse on volatile instruments, often sitting far from price and untouched for weeks; gaps between months can strand the grid entirely.",
+    "misconceptions": "That monthly pivots carry institutional weight by construction; they are arithmetic averages of last month's range, watched only by those who choose to watch them.",
+    "example": "A stock printed H 120, L 100, C 115 in May: June's monthly pivot is P = 111.67, plotted on the daily chart for all of June.",
+    "citations": [
+      {
+        "source": "StockCharts ChartSchool — Pivot Points",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/pivot-points",
+        "section": "Timeframes for Pivot Points",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

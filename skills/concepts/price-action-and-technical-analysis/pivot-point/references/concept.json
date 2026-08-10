@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "price-action-and-technical-analysis/pivot-point",
+  "canonical_sha256": "7ad95cbdada3b31a7ac1f9b725782ab0f21a2deafbea4b695b1b88e88aecb870",
+  "source_path": "concepts/price-action-and-technical-analysis.json",
+  "concept": {
+    "id": "price-action-and-technical-analysis/pivot-point",
+    "name": "Pivot point",
+    "aliases": [
+      "floor trader pivot",
+      "standard pivot point",
+      "PP"
+    ],
+    "domain": "Price action and technical analysis",
+    "definition": "A calculated price level derived from the prior period's high, low, and close, used to frame the current period's directional bias and to derive support/resistance levels. Originating with floor traders, pivot points are deterministic calculations; their use as turning-point levels is a convention, not a validated edge.",
+    "intuition": "Yesterday's average price becomes today's line in the sand: above it leans bullish, below it leans bearish.",
+    "mechanics": "The base pivot P = (High + Low + Close)/3 of the prior period; derived levels include S1 = 2P - High, S2 = P - (High - Low), R1 = 2P - Low, R2 = P + (High - Low). Levels are computed once per period and remain fixed; variants include Fibonacci and Demark pivots.",
+    "formula": "P = (H + L + C)/3; S1 = 2P - H; S2 = P - (H - L); R1 = 2P - L; R2 = P + (H - L), where H, L, C are the prior period's high, low, close.",
+    "relationships": [
+      "Daily pivot",
+      "Weekly pivot",
+      "Monthly pivot",
+      "Support",
+      "Resistance"
+    ],
+    "failure_modes": "In strongly trending periods price may never interact with the pivot, and in whippy markets it slices through the levels repeatedly; the levels have no inherent causal force.",
+    "misconceptions": "That pivot levels are precise reversal points; ChartSchool treats them as a framework to be confirmed with price action and other indicators.",
+    "example": "Yesterday's H/L/C are 105, 99, 102: P = 102, R1 = 105, S1 = 99. A move above 102 early today is read as positive, targeting R1 at 105.",
+    "citations": [
+      {
+        "source": "StockCharts ChartSchool — Pivot Points",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/pivot-points",
+        "section": "What Are Pivot Points? / Standard Pivot Points",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

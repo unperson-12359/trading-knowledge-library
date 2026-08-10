@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "price-action-and-technical-analysis/fair-value-gap",
+  "canonical_sha256": "2253c04c9f1da7d481f7de34011d6639a12d4755c15a88c67d678ce4f541451f",
+  "source_path": "concepts/price-action-and-technical-analysis.json",
+  "concept": {
+    "id": "price-action-and-technical-analysis/fair-value-gap",
+    "name": "Fair value gap",
+    "aliases": [
+      "FVG",
+      "imbalance",
+      "price inefficiency"
+    ],
+    "domain": "Price action and technical analysis",
+    "definition": "In SMC/ICT vocabulary, a three-candle pattern in which the middle candle's range does not overlap with the wicks of its neighbors — the low of the third candle sits above the high of the first (bullish FVG), or the high of the third sits below the low of the first (bearish FVG) — leaving a span price crossed in a single fast pass. It is read as an inefficiency that price may later revisit; that expectation is a hypothesis, not an established regularity.",
+    "intuition": "The middle candle moved so fast that a slice of prices was skipped; the gap marks the skipped slice.",
+    "mechanics": "Scan consecutive three-candle sequences: for a bullish FVG, check whether candle 3's low exceeds candle 1's high — the gap is the void between them. Traders mark the span (sometimes refined to its midpoint, the 'consequent encroachment') and watch for a retracement into it as entry context, with invalidation beyond the gap's far edge.",
+    "formula": "Bullish FVG exists when Low(candle3) > High(candle1); gap span = [High(candle1), Low(candle3)]. Bearish FVG exists when High(candle3) < Low(candle1); span = [High(candle3), Low(candle1)].",
+    "relationships": [
+      "Imbalance zone",
+      "Order block",
+      "Gap",
+      "Liquidity sweep",
+      "Change of character"
+    ],
+    "failure_modes": "FVGs are extremely common, especially on low timeframes, so most carry no information; many are never filled, and 'price returns to balance inefficiencies' is an untested slogan rather than a documented tendency.",
+    "misconceptions": "That an FVG must be filled; unlike session gaps (where 'gap fill' at least has a mechanical definition), there is no validated fill-rate for FVGs, and the concept repackages older notions of price vacuums.",
+    "example": "Candle 1 tops at 100.20, candle 2 surges to close at 102, and candle 3 bottoms at 101.50: the 100.20-101.50 span is a bullish fair value gap watched for support on a retrace.",
+    "citations": [
+      {
+        "source": "LuxAlgo Library — Bullish/bearish Order Block",
+        "url": "https://www.luxalgo.com/library/concept/bullish-bearish-order-block/",
+        "section": "Order block vs neighboring concepts (Fair Value Gap, Supply & Demand Zones)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "LuxAlgo Library — Smart Money Concepts",
+        "url": "https://www.luxalgo.com/library/concept/smart-money-concepts/",
+        "section": "What are Smart Money Concepts?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
