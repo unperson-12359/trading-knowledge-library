@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/breakeven-rate",
+  "canonical_sha256": "2a28b256ef715be2eb2926353e7c1b8e07feed9bf734c6f1faaea7a47e6418a4",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/breakeven-rate",
+    "name": "Breakeven rate",
+    "aliases": [
+      "breakeven win rate"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The win rate at which a strategy's expected profit per trade is exactly zero for a given payoff ratio (average winner to average loser), before costs. Above it the strategy has positive expectancy; below it, negative.",
+    "intuition": "It converts a reward-to-risk structure into a batting-average target: with 2R winners against 1R losers, you only need to win one trade in three.",
+    "mechanics": "Set expectancy (p * avgWin) - ((1 - p) * avgLoss) = 0 and solve for the win rate p. After commissions and slippage the effective breakeven rate is higher, because costs shrink each trade's net payoff.",
+    "formula": "p_BE = avgLoss / (avgWin + avgLoss) = 1 / (1 + b), where b = avgWin / avgLoss is the payoff ratio.",
+    "relationships": [
+      "Win rate",
+      "Trade expectancy",
+      "Payoff ratio",
+      "Risk-reward ratio"
+    ],
+    "failure_modes": "It treats win rate and payoff as fixed when both shift with market regime, and it ignores costs, which can turn a marginally 'profitable' system negative. It also assumes the payoff structure is actually achieved at exit.",
+    "misconceptions": "The breakeven rate is not 50% by default: it depends entirely on the payoff ratio, and widening the reward target lowers the required win rate rather than raising it.",
+    "example": "With average winners of $600 and average losers of $300 (b = 2), the breakeven win rate is 1/3, about 33.3%; winning 40% of trades then yields positive expectancy.",
+    "citations": [
+      {
+        "source": "Investopedia: Gap Risk",
+        "url": "https://www.investopedia.com/terms/g/gaprisk.asp",
+        "section": "Strategies for Managing Gap Risk (2.5:1 ratio implying ~29% breakeven win rate)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

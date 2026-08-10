@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/take-profit-level",
+  "canonical_sha256": "84a0c2bab2a6713d705fbfe3b952b5c7b09c9bab2114ae61ea325d5149b813e0",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/take-profit-level",
+    "name": "Take-profit level",
+    "aliases": [
+      "profit target",
+      "TP order",
+      "target price"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The predetermined price at which a position is closed to lock in a planned gain, implemented as a limit (take-profit) order resting at the target price. Together with the stop-loss it defines the trade's planned risk-reward ratio.",
+    "intuition": "It is the pre-commitment to get paid: exit automatically when the market hands you the planned profit instead of hoping for more.",
+    "mechanics": "A limit order is placed at the target (above entry for longs, below for shorts) and executes only at the target price or better. Targets are typically set from technical structure (resistance, measured moves) or as a multiple of initial risk (2R-3R).",
+    "formula": "Planned reward per unit = |target price - entry price|; planned reward-to-risk = |target - entry| / |entry - stop|.",
+    "relationships": [
+      "Stop-loss level",
+      "Risk-reward ratio",
+      "R-multiple",
+      "Trade expectancy"
+    ],
+    "failure_modes": "Targets execute at the limit price regardless of subsequent behavior, capping the upside of large trends (opportunity cost) — a chronic drag on trend-following expectancy. Price can also reverse a tick in front of the target, turning a planned win into a full stop-out.",
+    "misconceptions": "A take-profit order is not a guarantee of profit — the market may never reach it — and mechanically tight targets raise the win rate while quietly degrading total expectancy.",
+    "example": "Long at $20 with a stop at $15 and a take-profit limit at $30 creates a 1:2 risk/reward; if price tags $30 the limit order fills and the position closes for a 2R gain.",
+    "citations": [
+      {
+        "source": "Investopedia: Take-Profit Order",
+        "url": "https://www.investopedia.com/terms/t/take-profitorder.asp",
+        "section": "What Is a Take-Profit Order; Example",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

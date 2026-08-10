@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/maximum-position-limit",
+  "canonical_sha256": "e56845c0dc4a14b0d9f1e602c5795b8fcbe193c4d0b45ec182e991d2950ca5f7",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/maximum-position-limit",
+    "name": "Maximum position limit",
+    "aliases": [
+      "speculative position limit",
+      "position cap"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A cap on the size of the net long or net short position a single person or account may hold or control in a given instrument, set by regulators or exchanges (speculative position limits) and by firms internally, to curb concentration and market-cornering risk.",
+    "intuition": "No single player should be big enough to break the market or break themselves; the limit predetermines how much is too much.",
+    "mechanics": "U.S. federal speculative position limits (17 CFR Part 150) cap spot-month and non-spot-month positions in referenced commodity contracts on a futures-equivalent basis, with exemptions for bona fide hedging; positions under common ownership (10%+) or control are aggregated. Exchanges set their own limits or accountability levels, and crypto venues implement analogous tiered caps on position value per leverage tier.",
+    "formula": "Constraint: |net futures-equivalent position| <= limit for the contract and month; aggregation sums positions across all accounts with 10 percent or greater ownership or common trading control.",
+    "relationships": [
+      "Risk limit",
+      "Concentration risk",
+      "Leverage",
+      "Maintenance margin"
+    ],
+    "failure_modes": "Limits bind only within one venue or regime: exposure can be rebuilt in exempted instruments, offshore venues, or economically equivalent swaps before anti-evasion rules catch up. They also do nothing about many sub-limit positions correlating in a crisis.",
+    "misconceptions": "Position limits are not margin requirements — one caps quantity, the other prices collateral — and the visible cap is not the whole story, since bona fide hedgers and certain entities receive exemptions.",
+    "example": "Under 17 CFR 150.2, no person may hold or control spot-month positions in a core referenced futures contract above the Commission-set level, net long or net short, absent an exemption such as a bona fide hedge.",
+    "citations": [
+      {
+        "source": "eCFR: 17 CFR Part 150 — Limits on Positions",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-I/part-150",
+        "section": "150.1 (definition of speculative position limit); 150.2 (Federal speculative position limits)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

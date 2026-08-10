@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/average-winner",
+  "canonical_sha256": "90a4d7ef1e193d3554a3703a9378e7072a05bbaad84bc0c6880171c899eeb380",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/average-winner",
+    "name": "Average winner",
+    "aliases": [
+      "average win",
+      "avg win"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The mean profit of the winning trades in a sample: total gross profit divided by the number of winning trades. It is one of the two size components (with the average loser) that, combined with the win rate, determine expectancy.",
+    "intuition": "It measures how big the typical win is — the win leg of the win-size/loss-size asymmetry that makes or breaks a system.",
+    "mechanics": "Sum the PnL of all trades with positive results (net of costs) and divide by their count. It is reported in currency, percent, or R-multiples for comparability across systems and sizes.",
+    "formula": "Average winner = gross profit / number of winning trades.",
+    "relationships": [
+      "Average loser",
+      "Payoff ratio",
+      "Trade expectancy",
+      "Profit factor",
+      "R-multiple"
+    ],
+    "failure_modes": "Highly sensitive to outliers: one outsized winner can dominate the mean and mask a mediocre typical win, so medians or trimmed means are often more robust. Backtested average winners shrink when slippage and fees are added.",
+    "misconceptions": "A large average winner does not guarantee profitability: if winners are rare enough (low win rate), expectancy can still be negative.",
+    "example": "If 40 winning trades made $12,000 in total, the average winner is $300; against an average loser of $150 the payoff ratio is 2.",
+    "citations": [
+      {
+        "source": "TradeZella: Profit Factor in Trading",
+        "url": "https://www.tradezella.com/blog/profit-factor",
+        "section": "How to Calculate Profit Factor (gross profit from winning trades)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

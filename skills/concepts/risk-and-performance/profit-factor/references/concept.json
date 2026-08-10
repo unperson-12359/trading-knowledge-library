@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/profit-factor",
+  "canonical_sha256": "12b18396b65c7451e7d2cf639f474336f0cf58eb7be9c097e83d441ef3d2373d",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/profit-factor",
+    "name": "Profit factor",
+    "aliases": [
+      "PF"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The ratio of gross profit to gross loss over a sample of trades: total winnings divided by total losses. A value above 1.0 indicates the system earned more than it lost; below 1.0 it lost money.",
+    "intuition": "It compresses the whole trade distribution into one leverage-like number: for every dollar the system loses, how many dollars does it make?",
+    "mechanics": "Sum the PnL of all winners (gross profit) and the absolute PnL of all losers (gross loss), then divide. Because it uses totals rather than counts, it implicitly blends win rate and payoff ratio into a single figure.",
+    "formula": "Profit factor = gross profit / gross loss = (win rate * average winner) / (loss rate * average loser).",
+    "relationships": [
+      "Trade expectancy",
+      "Payoff ratio",
+      "Win rate",
+      "Average winner",
+      "Average loser"
+    ],
+    "failure_modes": "Extremely sensitive to outliers — one huge win can lift the ratio above 1 for a structurally losing system — and to sample size; values above ~3 over small samples usually indicate overfit backtests or data errors. It ignores trade frequency and the drawdown path.",
+    "misconceptions": "Higher is not always better in practice: maximizing profit factor by over-filtering trades can cut trade count so much that total profit falls, and a ratio of 1.0-1.2 is typically breakeven or worse once commissions and slippage are included.",
+    "example": "Winners total $8,500 and losers total $5,200, giving a profit factor of 1.63 — $1.63 made for every dollar lost.",
+    "citations": [
+      {
+        "source": "TradeZella: Profit Factor in Trading",
+        "url": "https://www.tradezella.com/blog/profit-factor",
+        "section": "What Is Profit Factor; How to Calculate Profit Factor",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

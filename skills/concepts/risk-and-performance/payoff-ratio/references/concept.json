@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/payoff-ratio",
+  "canonical_sha256": "bf04aa784be1df89f389581a332f3db1b897345ddc5f2c7e04ecddd9ef168ffd",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/payoff-ratio",
+    "name": "Payoff ratio",
+    "aliases": [
+      "win/loss ratio",
+      "avg win to avg loss ratio"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The ratio of the average winning trade to the average losing trade in a sample, measuring the realized asymmetry between wins and losses. Combined with the win rate it determines expectancy and the breakeven win rate.",
+    "intuition": "It is the reward per unit of pain a system actually delivers: two systems with equal win rates differ radically if one pays 3R winners and the other 0.5R.",
+    "mechanics": "Compute the average winner and average loser over the closed-trade sample and divide. It is the realized analogue of the planned risk-reward ratio, which is set before entry; the two diverge whenever exits occur away from the planned stop and target.",
+    "formula": "Payoff ratio = average winner / average loser; expectancy in units of average losers = p * payoff - (1 - p), with p the win rate.",
+    "relationships": [
+      "Average winner",
+      "Average loser",
+      "Risk-reward ratio",
+      "Trade expectancy",
+      "Breakeven rate"
+    ],
+    "failure_modes": "Outlier wins or losses distort both components, and ratio estimates are noisy on small samples. The realized payoff often differs markedly from the planned reward-to-risk because exits rarely occur exactly at stops and targets.",
+    "misconceptions": "Payoff ratio and risk-reward ratio are routinely conflated: the former is computed from realized average wins and losses, the latter from intended entry, stop, and target prices.",
+    "example": "With an average winner of $450 and an average loser of $150, the payoff ratio is 3; the strategy then breaks even at a 25% win rate.",
+    "citations": [
+      {
+        "source": "TradeZella: Profit Factor in Trading",
+        "url": "https://www.tradezella.com/blog/profit-factor",
+        "section": "What Is Profit Factor (win/loss size context)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

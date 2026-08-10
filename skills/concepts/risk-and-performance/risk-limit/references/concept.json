@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/risk-limit",
+  "canonical_sha256": "a9f24bfe74aee9c96bf7e7104a6a2f84280c1393ea4c0d27803e6f20b014c2ab",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/risk-limit",
+    "name": "Risk limit",
+    "aliases": [
+      "risk cap",
+      "exposure limit"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A pre-set quantitative bound on the risk a trader, desk, or account may carry — expressed as maximum position size, leverage, loss amount, VaR, or margin usage — enforced by the firm, broker, or exchange to keep exposures within tolerance.",
+    "intuition": "Risk limits are the guardrails: they decide in advance how much damage one trader or one book is permitted to do before the system cuts it off.",
+    "mechanics": "Limits are set on measurable quantities (position value, daily loss, margin tier, VaR) and monitored in real time; breaches trigger warnings, order blocking, position reduction, or forced de-risking. On derivatives venues, tiered risk limits raise margin requirements as position value grows — Bybit's risk-limit ladder, which steps up initial and maintenance margin by tier, is a worked example.",
+    "formula": "Compliance condition: exposure metric <= limit, e.g. position value <= maximum allowable position value for the account's leverage tier.",
+    "relationships": [
+      "Daily loss limit",
+      "Maximum position limit",
+      "Maintenance margin",
+      "Leverage",
+      "Value at risk",
+      "Stop-loss level"
+    ],
+    "failure_modes": "Limits set off stale volatility or correlation assumptions are too loose exactly in crises, and hard limits concentrate forced selling at shared thresholds across many participants, amplifying moves. Gaps can blow through loss-based limits before any control can act.",
+    "misconceptions": "A risk limit is not a risk measure: it caps a quantity but says nothing about the distribution of outcomes within the cap, and compliance with limits is not the same as being safe.",
+    "example": "On Bybit, an account at 90x leverage on BTCUSDT is capped at a 2.6M position value; orders that would take the position to 3M are blocked unless leverage is reduced to raise the tier's cap.",
+    "citations": [
+      {
+        "source": "Bybit Help Center: Risk Limit (Perpetual and Expiry Contracts)",
+        "url": "https://www.bybit.com/en/help-center/article/Risk-Limit-Perpetual-and-Expiry-Contracts",
+        "section": "Introduction to Risk Limit; How Automatic Adjustment of Risk Limit Works",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

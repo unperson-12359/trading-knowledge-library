@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/time-stop",
+  "canonical_sha256": "ce085248486df714660ccd11818b722f1f961a1f60ca49d80e383cc435fed247",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/time-stop",
+    "name": "Time stop",
+    "aliases": [
+      "time stop",
+      "time-based exit"
+    ],
+    "domain": "Risk and performance",
+    "definition": "An exit rule that closes a position after a predetermined amount of time has elapsed, regardless of price, on the rationale that a setup whose expected move has not occurred within its typical window no longer justifies the capital at risk.",
+    "intuition": "Good trades usually work promptly; if nothing has happened by the time the edge should have played out, free the capital for a better opportunity.",
+    "mechanics": "Define a maximum holding period per setup, ideally from backtested MFE-duration statistics (e.g. most winners peak within N bars), and exit at market when time expires if neither target nor stop has been hit. It is usually combined with price-based exits, whichever triggers first.",
+    "formula": "Exit at t_entry + T_max if no price-based exit has triggered, where T_max is the preset holding limit in minutes, bars, or sessions.",
+    "relationships": [
+      "Stop-loss level",
+      "Trailing stop",
+      "Trade expectancy",
+      "Take-profit level"
+    ],
+    "failure_modes": "A time stop can systematically cut slow-developing winners just before they move if the window was set from a non-representative sample, and it ignores regime changes that stretch or compress the useful holding period.",
+    "misconceptions": "A time stop is not a prediction that price will reverse: it is a capital-efficiency rule, and unlike a stop-loss it bounds no loss — loss size must still be limited by a price stop.",
+    "example": "If 90% of a scalp setup's winners reach their maximum favorable excursion within 5 minutes, the trader exits any such trade still open after 7-8 minutes, win or lose.",
+    "citations": [
+      {
+        "source": "TradesViz Glossary: Time-Stop",
+        "url": "https://www.tradesviz.com/glossary/time-stop/",
+        "section": "What is a Time-Stop; When to Use Time-Stops",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

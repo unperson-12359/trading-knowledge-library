@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/r-multiple",
+  "canonical_sha256": "9be031a8f735b7edfc8eae10dccd508ac1e2db1c7f2c0046dc075c988b6f7a9f",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/r-multiple",
+    "name": "R-multiple",
+    "aliases": [
+      "R multiple",
+      "R value"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The profit or loss of a trade expressed as a multiple of the initial risk taken on it, where initial risk (1R) is the dollar distance between entry price and the predetermined stop-loss for the position. Van Tharp's normalization device, it makes trades comparable across instruments, sizes, and time.",
+    "intuition": "Instead of asking 'did I make $500?', ask how many units of risked capital were captured: a $500 gain on $100 of risk (5R) and on $2,000 of risk (0.25R) are entirely different trades.",
+    "mechanics": "Define R as the entry-to-stop distance times position size — the planned dollar loss. Divide the realized trade PnL by R. The distribution of R-multiples over many trades yields the system's expectancy (mean R) and variability, which drive position-sizing decisions.",
+    "formula": "R-multiple = realized trade PnL / initial risk, where initial risk R = |entry price - stop price| * position size.",
+    "relationships": [
+      "Trade expectancy",
+      "Position sizing",
+      "Stop-loss level",
+      "Payoff ratio",
+      "Risk-reward ratio"
+    ],
+    "failure_modes": "It assumes the stop executes near the planned price; gaps, slippage, and fast markets make realized losses exceed 1R, corrupting the R-multiple distribution. It also presumes R was honestly fixed before entry — widening the stop after the fact falsifies the statistics.",
+    "misconceptions": "R is not a fixed percentage of account equity: it is the per-trade dollar risk defined by stop distance and size, which coincides with a percent of equity only under percent-risk sizing. Nor does a large-R winner prove a good entry — R measures outcome relative to initial risk, not signal quality.",
+    "example": "Entering at $50 with a stop at $48 risks $2 per share; exiting at $56 yields +$6, or +3R, while a slipped stop filled at $47 yields -1.5R.",
+    "citations": [
+      {
+        "source": "Trade Loss Tracker: extended summary of Van K. Tharp, The Definitive Guide to Position Sizing Strategies",
+        "url": "https://tradelosstracker.com/library/book/781-the-definitive-guide-to-position-sizing-strategies-tharp/extended",
+        "section": "Chapter 3: The R-Multiple Framework",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

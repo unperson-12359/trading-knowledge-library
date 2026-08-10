@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/weekly-loss-limit",
+  "canonical_sha256": "f90c446864a77ecd9908ab0e9fd69442c1dec02390f59766f4c3f1f12210111a",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/weekly-loss-limit",
+    "name": "Weekly loss limit",
+    "aliases": [
+      "weekly drawdown limit",
+      "max weekly loss"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A risk control that suspends or down-sizes trading for the remainder of the week once cumulative weekly losses reach a preset threshold, layering a slower-timescale brake on top of daily loss limits.",
+    "intuition": "Bad weeks cluster when a system is out of sync with the regime; the weekly cap forces a pause and review before a rough patch becomes a ruined month.",
+    "mechanics": "Aggregate realized (and, in strict implementations, unrealized) P/L from the week's reference equity; on breach, flatten and/or halt trading until the next week or cut size by a fixed factor such as 50%. Practitioner conventions commonly run about 3-6% of weekly starting equity.",
+    "formula": "Breach if equity_t < reference_equity_week - L_weekly, with L_weekly the weekly allowance (e.g. 5% of weekly starting equity).",
+    "relationships": [
+      "Daily loss limit",
+      "Risk limit",
+      "Maximum drawdown",
+      "Position sizing"
+    ],
+    "failure_modes": "Like any path-based cap it can be jumped by gaps and is arbitrary relative to the strategy's actual loss distribution; rigid weekly stops can also lock in losses at the worst point of a mean-reverting stretch.",
+    "misconceptions": "A weekly limit is not a substitute for per-trade risk control — a single oversized trade can consume it in minutes — and hitting it repeatedly signals a system problem, not merely bad luck.",
+    "example": "A trader with a 5% weekly limit on $100,000 who loses $5,000 by Thursday stops trading until Monday, when the limit resets against the new reference equity.",
+    "citations": [
+      {
+        "source": "Trade Loss Tracker: extended summary of Van K. Tharp, The Definitive Guide to Position Sizing Strategies",
+        "url": "https://tradelosstracker.com/library/book/781-the-definitive-guide-to-position-sizing-strategies-tharp/extended",
+        "section": "Framework 3: Intraday Risk Budget Allocation (weekly loss limit layer)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

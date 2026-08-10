@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/daily-loss-limit",
+  "canonical_sha256": "3fc1079523cbf0c537b575e033976524d1f0961e58d9bfc241735a4e6463fffc",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/daily-loss-limit",
+    "name": "Daily loss limit",
+    "aliases": [
+      "max daily loss",
+      "daily drawdown limit"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A risk control that stops or restricts trading for the rest of the day once cumulative losses — realized plus, in strict versions, floating P/L on open positions — reach a predetermined amount, typically a fixed sum or a percentage of equity.",
+    "intuition": "It is the circuit breaker for a bad day: cap the damage a single session can do and force the trader to step away before tilt and revenge trading compound the loss.",
+    "mechanics": "Track day P/L against the limit; on breach, flatten positions and/or block new orders until the next session. Prop-firm variants compute the limit from a daily reference balance — e.g. FTMO: previous midnight balance minus 5% of initial capital, checked continuously against equity including open positions, commissions, and swaps.",
+    "formula": "Breach if equity_t < reference_balance_day - L_daily, where L_daily is the daily loss allowance (e.g. 5% of initial capital) and equity includes floating P/L, commissions, and swaps.",
+    "relationships": [
+      "Risk limit",
+      "Weekly loss limit",
+      "Maximum drawdown",
+      "Position sizing",
+      "Stop-loss level"
+    ],
+    "failure_modes": "Gaps and illiquidity can push losses well beyond the limit before positions can be closed, and limit-aware traders may size up recklessly early in the day or hoard risk into the reset. A daily cap does not bound total drawdown, which accumulates across many within-limit days.",
+    "misconceptions": "The limit is usually measured on equity, not closed balance — open floating losses count in real time — and it resets against the latest reference balance, so the floor moves day to day rather than staying fixed.",
+    "example": "On a $200,000 evaluation account with a 5% maximum daily loss, equity may never fall below $190,000 on day one; if the midnight balance rises to $204,000, the next day's floor moves to $194,000.",
+    "citations": [
+      {
+        "source": "FTMO Academy: Maximum Daily Loss",
+        "url": "https://academy.ftmo.com/lesson/maximum-daily-loss/",
+        "section": "What is Maximum Daily Loss; How is the limit calculated; Example for a $200,000 account",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

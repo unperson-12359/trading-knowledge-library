@@ -268,6 +268,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="loss-rate"><h3>Loss rate <a class="anchor" href="#loss-rate">#</a></h3>
 <div class="field">The proportion of closed trades that produce a loss; the complement of the win rate when every trade is classified as a win or a loss.</div>
+<div class="skill-links"><a href="../skills/tkl-loss-rate/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The mirror of win rate: how frequently the system takes its planned (or unplanned) losses.</div>
 <div class="field"><span class="label">Mechanics:</span> Count losing trades (PnL below zero after costs) and divide by total closed trades. Together with the win rate it defines the probability mix that, weighted by payoff sizes, determines expectancy.</div>
 <div class="field"><span class="label">Failure modes:</span> On its own the rate is uninformative about profitability and unstable in small samples; profitable systems can deliberately accept high loss rates in exchange for outsized winners.</div>
@@ -280,6 +281,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="breakeven-rate"><h3>Breakeven rate <a class="anchor" href="#breakeven-rate">#</a></h3>
 <div class="field">The win rate at which a strategy&#x27;s expected profit per trade is exactly zero for a given payoff ratio (average winner to average loser), before costs. Above it the strategy has positive expectancy; below it, negative.</div>
+<div class="skill-links"><a href="../skills/tkl-breakeven-rate/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It converts a reward-to-risk structure into a batting-average target: with 2R winners against 1R losers, you only need to win one trade in three.</div>
 <div class="field"><span class="label">Mechanics:</span> Set expectancy (p * avgWin) - ((1 - p) * avgLoss) = 0 and solve for the win rate p. After commissions and slippage the effective breakeven rate is higher, because costs shrink each trade&#x27;s net payoff.</div>
 <div class="field"><span class="label">Failure modes:</span> It treats win rate and payoff as fixed when both shift with market regime, and it ignores costs, which can turn a marginally &#x27;profitable&#x27; system negative. It also assumes the payoff structure is actually achieved at exit.</div>
@@ -292,6 +294,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="average-winner"><h3>Average winner <a class="anchor" href="#average-winner">#</a></h3>
 <div class="field">The mean profit of the winning trades in a sample: total gross profit divided by the number of winning trades. It is one of the two size components (with the average loser) that, combined with the win rate, determine expectancy.</div>
+<div class="skill-links"><a href="../skills/tkl-average-winner/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It measures how big the typical win is — the win leg of the win-size/loss-size asymmetry that makes or breaks a system.</div>
 <div class="field"><span class="label">Mechanics:</span> Sum the PnL of all trades with positive results (net of costs) and divide by their count. It is reported in currency, percent, or R-multiples for comparability across systems and sizes.</div>
 <div class="field"><span class="label">Failure modes:</span> Highly sensitive to outliers: one outsized winner can dominate the mean and mask a mediocre typical win, so medians or trimmed means are often more robust. Backtested average winners shrink when slippage and fees are added.</div>
@@ -304,6 +307,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="average-loser"><h3>Average loser <a class="anchor" href="#average-loser">#</a></h3>
 <div class="field">The mean loss of the losing trades in a sample: total gross loss divided by the number of losing trades. It benchmarks how large the typical loss is and anchors the unit of risk (1R) used in R-multiple analysis.</div>
+<div class="skill-links"><a href="../skills/tkl-average-loser/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Knowing your average loser tells you the real cost of being wrong — and whether your stops are actually doing their job.</div>
 <div class="field"><span class="label">Mechanics:</span> Sum the absolute PnL of all negative trades and divide by their count; compare it against planned per-trade risk to detect slippage or stop violations (an average loser persistently larger than planned 1R signals execution problems).</div>
 <div class="field"><span class="label">Failure modes:</span> A few tail losses can dominate the average, and an average loser exceeding planned risk usually reflects gaps and slippage rather than edge decay. Sample sensitivity is high at low trade counts.</div>
@@ -316,6 +320,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="payoff-ratio"><h3>Payoff ratio <a class="anchor" href="#payoff-ratio">#</a></h3>
 <div class="field">The ratio of the average winning trade to the average losing trade in a sample, measuring the realized asymmetry between wins and losses. Combined with the win rate it determines expectancy and the breakeven win rate.</div>
+<div class="skill-links"><a href="../skills/tkl-payoff-ratio/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the reward per unit of pain a system actually delivers: two systems with equal win rates differ radically if one pays 3R winners and the other 0.5R.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute the average winner and average loser over the closed-trade sample and divide. It is the realized analogue of the planned risk-reward ratio, which is set before entry; the two diverge whenever exits occur away from the planned stop and target.</div>
 <div class="field"><span class="label">Failure modes:</span> Outlier wins or losses distort both components, and ratio estimates are noisy on small samples. The realized payoff often differs markedly from the planned reward-to-risk because exits rarely occur exactly at stops and targets.</div>
@@ -328,6 +333,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="profit-factor"><h3>Profit factor <a class="anchor" href="#profit-factor">#</a></h3>
 <div class="field">The ratio of gross profit to gross loss over a sample of trades: total winnings divided by total losses. A value above 1.0 indicates the system earned more than it lost; below 1.0 it lost money.</div>
+<div class="skill-links"><a href="../skills/tkl-profit-factor/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It compresses the whole trade distribution into one leverage-like number: for every dollar the system loses, how many dollars does it make?</div>
 <div class="field"><span class="label">Mechanics:</span> Sum the PnL of all winners (gross profit) and the absolute PnL of all losers (gross loss), then divide. Because it uses totals rather than counts, it implicitly blends win rate and payoff ratio into a single figure.</div>
 <div class="field"><span class="label">Failure modes:</span> Extremely sensitive to outliers — one huge win can lift the ratio above 1 for a structurally losing system — and to sample size; values above ~3 over small samples usually indicate overfit backtests or data errors. It ignores trade frequency and the drawdown path.</div>
@@ -354,6 +360,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="risk-reward-ratio"><h3>Risk-reward ratio <a class="anchor" href="#risk-reward-ratio">#</a></h3>
 <div class="field">The ratio of a trade&#x27;s planned potential loss (entry to stop-loss) to its planned potential gain (entry to take-profit target), frequently quoted in inverse form as reward-to-risk (e.g. 2:1). It is set before entry and defines the price structure of the trade.</div>
+<div class="skill-links"><a href="../skills/tkl-risk-reward-ratio/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It frames each trade as a bet: how much am I willing to lose in order to make how much? A 1:3 risk/reward means risking $1 to make $3.</div>
 <div class="field"><span class="label">Mechanics:</span> Compute the distance from entry to stop (risk) and from entry to target (reward); their ratio is the planned risk/reward. It interacts with the win rate through the breakeven rate: a higher reward-to-risk lowers the win rate needed for profitability.</div>
 <div class="field"><span class="label">Failure modes:</span> It is a planning construct: realized outcomes differ because of slippage, gaps, partial exits, and trailing stops, so the realized payoff ratio usually diverges from the planned ratio. Tightening the stop to &#x27;improve&#x27; the ratio raises the probability of being stopped out.</div>
@@ -366,6 +373,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="r-multiple"><h3>R-multiple <a class="anchor" href="#r-multiple">#</a></h3>
 <div class="field">The profit or loss of a trade expressed as a multiple of the initial risk taken on it, where initial risk (1R) is the dollar distance between entry price and the predetermined stop-loss for the position. Van Tharp&#x27;s normalization device, it makes trades comparable across instruments, sizes, and time.</div>
+<div class="skill-links"><a href="../skills/tkl-r-multiple/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Instead of asking &#x27;did I make $500?&#x27;, ask how many units of risked capital were captured: a $500 gain on $100 of risk (5R) and on $2,000 of risk (0.25R) are entirely different trades.</div>
 <div class="field"><span class="label">Mechanics:</span> Define R as the entry-to-stop distance times position size — the planned dollar loss. Divide the realized trade PnL by R. The distribution of R-multiples over many trades yields the system&#x27;s expectancy (mean R) and variability, which drive position-sizing decisions.</div>
 <div class="field"><span class="label">Failure modes:</span> It assumes the stop executes near the planned price; gaps, slippage, and fast markets make realized losses exceed 1R, corrupting the R-multiple distribution. It also presumes R was honestly fixed before entry — widening the stop after the fact falsifies the statistics.</div>

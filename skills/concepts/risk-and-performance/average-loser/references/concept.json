@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/average-loser",
+  "canonical_sha256": "c21dc397e00f06d7c6694b68c4212a387aadc20fd44394e4d83947f13442c281",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/average-loser",
+    "name": "Average loser",
+    "aliases": [
+      "average loss",
+      "avg loss"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The mean loss of the losing trades in a sample: total gross loss divided by the number of losing trades. It benchmarks how large the typical loss is and anchors the unit of risk (1R) used in R-multiple analysis.",
+    "intuition": "Knowing your average loser tells you the real cost of being wrong — and whether your stops are actually doing their job.",
+    "mechanics": "Sum the absolute PnL of all negative trades and divide by their count; compare it against planned per-trade risk to detect slippage or stop violations (an average loser persistently larger than planned 1R signals execution problems).",
+    "formula": "Average loser = gross loss / number of losing trades, with gross loss taken as a positive number.",
+    "relationships": [
+      "Average winner",
+      "Payoff ratio",
+      "Trade expectancy",
+      "R-multiple",
+      "Profit factor"
+    ],
+    "failure_modes": "A few tail losses can dominate the average, and an average loser exceeding planned risk usually reflects gaps and slippage rather than edge decay. Sample sensitivity is high at low trade counts.",
+    "misconceptions": "Keeping losers small is necessary but not sufficient: obsessively tight stops can raise the loss rate so much that expectancy turns negative.",
+    "example": "60 losing trades losing $9,000 in total give an average loser of $150; if planned risk was $120 per trade, slippage and poor exits are adding $30 per loss.",
+    "citations": [
+      {
+        "source": "TradeZella: Profit Factor in Trading",
+        "url": "https://www.tradezella.com/blog/profit-factor",
+        "section": "How to Calculate Profit Factor (gross loss from losing trades)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

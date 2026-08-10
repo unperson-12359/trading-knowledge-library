@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/risk-parity",
+  "canonical_sha256": "b0fae118115a1a016c2c51be12822e7140c74e8ed1d79a3b6720c51fc213238e",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/risk-parity",
+    "name": "Risk parity",
+    "aliases": [
+      "risk premia parity",
+      "equal risk contribution",
+      "ERC"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A portfolio construction approach that allocates so that each asset or asset class contributes equally to total portfolio volatility, rather than allocating equal capital. Its best-known form is the equally-weighted risk contributions portfolio; leveraged implementations (e.g. Bridgewater's 1996 All Weather fund) scale the balanced portfolio to a target return.",
+    "intuition": "A 60/40 stock-bond portfolio carries roughly 90% of its risk in stocks; risk parity rebalances so bonds, equities, and other assets each carry an equal share of the portfolio's ups and downs.",
+    "mechanics": "Given covariance matrix Sigma, portfolio volatility sigma(w) = sqrt(w' Sigma w) decomposes by Euler's theorem into per-asset risk contributions RC_i = w_i (Sigma w)_i / sigma(w); the ERC solution equalizes RC_i across all i, typically via convex optimization. Lower-risk assets receive larger capital weights, often topped up with leverage to reach return targets.",
+    "formula": "ERC condition: w_i * (Sigma w)_i = w_j * (Sigma w)_j for all i, j, i.e. RC_i = sigma(w) / N, with sigma(w) = sqrt(w' Sigma w) and Sigma the return covariance matrix.",
+    "relationships": [
+      "Volatility targeting",
+      "Position sizing",
+      "Volatility",
+      "Sharpe ratio",
+      "Effective leverage"
+    ],
+    "failure_modes": "It depends on estimated volatilities and correlations; correlation regime shifts — stocks and bonds falling together, as in Q1 2020 or the 2022 tightening cycle — hit leveraged, bond-heavy allocations hard. The approach embeds leverage and duration risk, and its diversification premise fails exactly when cross-asset correlations jump toward one.",
+    "misconceptions": "Risk parity is not equal weights and not necessarily low risk: equalizing risk contributions usually requires levering the low-volatility assets, so the portfolio can carry substantial embedded leverage and interest-rate sensitivity.",
+    "example": "If equity volatility is 16% and bond volatility 6%, an unlevered two-asset risk-parity portfolio holds roughly 27% equities and 73% bonds so each side contributes half of portfolio volatility, versus 60/40 by capital.",
+    "citations": [
+      {
+        "source": "Wikipedia: Risk parity",
+        "url": "https://en.wikipedia.org/wiki/Risk_parity",
+        "section": "Description; Equally-weighted risk contributions portfolios",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

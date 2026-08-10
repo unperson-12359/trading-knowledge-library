@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/loss-rate",
+  "canonical_sha256": "10b46b9a244310cb6cdbe90ac84aa2b20b903d42bcb5c8ff2144631571867c56",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/loss-rate",
+    "name": "Loss rate",
+    "aliases": [
+      "loss percentage"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The proportion of closed trades that produce a loss; the complement of the win rate when every trade is classified as a win or a loss.",
+    "intuition": "The mirror of win rate: how frequently the system takes its planned (or unplanned) losses.",
+    "mechanics": "Count losing trades (PnL below zero after costs) and divide by total closed trades. Together with the win rate it defines the probability mix that, weighted by payoff sizes, determines expectancy.",
+    "formula": "Loss rate = (number of losing trades) / (total closed trades); equals 1 - win rate when breakeven trades are excluded.",
+    "relationships": [
+      "Win rate",
+      "Breakeven rate",
+      "Trade expectancy",
+      "Profit factor"
+    ],
+    "failure_modes": "On its own the rate is uninformative about profitability and unstable in small samples; profitable systems can deliberately accept high loss rates in exchange for outsized winners.",
+    "misconceptions": "A high loss rate does not imply a bad system, nor a low loss rate a good one: only the combination with average win and average loss — the expectancy — determines viability.",
+    "example": "If a system loses on 60 of 100 trades the loss rate is 60%; if the 40 winners average 3R against 1R losers, expectancy is still +0.6R per trade.",
+    "citations": [
+      {
+        "source": "Investopedia: Gap Risk",
+        "url": "https://www.investopedia.com/terms/g/gaprisk.asp",
+        "section": "Strategies for Managing Gap Risk (win rate / loss rate breakeven algebra)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

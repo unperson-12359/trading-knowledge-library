@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/fixed-fractional-sizing",
+  "canonical_sha256": "7a896bc5c840f94f7e9880e80c34e9555d77c87827019e49c294fccffcb66f6f",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/fixed-fractional-sizing",
+    "name": "Fixed fractional sizing",
+    "aliases": [
+      "percent risk model",
+      "percent risk sizing",
+      "fixed fractional money management"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A position-sizing method that risks a fixed fraction (percentage) of current account equity on each trade — Tharp's percent risk model — so position size scales automatically with the equity curve.",
+    "intuition": "Bet a constant slice of the bankroll every time: you bet more as you win and less as you lose, which compounds gains and cushions losing streaks.",
+    "mechanics": "Choose a risk fraction f (commonly 0.5%-2%), compute dollar risk = f * current equity, and divide by per-unit risk (stop distance times point value) to get size, recalculated as equity changes. This anti-martingale structure grows size during winning periods and shrinks it during drawdowns.",
+    "formula": "Size = (f * E) / r, where f is the risk fraction of equity, E current account equity, and r risk per unit (|entry - stop| * value per point).",
+    "relationships": [
+      "Position sizing",
+      "Kelly criterion",
+      "Fractional Kelly",
+      "Fixed ratio sizing",
+      "Trade expectancy"
+    ],
+    "failure_modes": "Very small accounts cannot express small fractions after lot rounding, distorting risk, and a long losing streak still compounds into a large drawdown (20 consecutive losers at 2% risk is roughly a 33% drawdown). The model assumes stops execute near planned levels.",
+    "misconceptions": "Fixed fractional is not fixed ratio sizing: the former risks a constant share of current equity per trade, the latter adds contracts at fixed cumulative-profit increments. Nor is any single percent universally safe — it must be calibrated to the system's losing-streak profile.",
+    "example": "At $100,000 equity risking 1% with a $250 per-contract stop, size = $1,000 / $250 = 4 contracts; after equity falls to $90,000 the same rule sizes to 3 contracts.",
+    "citations": [
+      {
+        "source": "Trade Loss Tracker: extended summary of Van K. Tharp, The Definitive Guide to Position Sizing Strategies",
+        "url": "https://tradelosstracker.com/library/book/781-the-definitive-guide-to-position-sizing-strategies-tharp/extended",
+        "section": "Chapter 5: The Percent Risk Model",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

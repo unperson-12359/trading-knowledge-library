@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/risk-reward-ratio",
+  "canonical_sha256": "cd65ed8a84f553fd0ff73d7b2948a8b88c6645e20fe6b6d974eb8a18ad6bfd35",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/risk-reward-ratio",
+    "name": "Risk-reward ratio",
+    "aliases": [
+      "reward-to-risk ratio",
+      "R:R",
+      "risk/return ratio"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The ratio of a trade's planned potential loss (entry to stop-loss) to its planned potential gain (entry to take-profit target), frequently quoted in inverse form as reward-to-risk (e.g. 2:1). It is set before entry and defines the price structure of the trade.",
+    "intuition": "It frames each trade as a bet: how much am I willing to lose in order to make how much? A 1:3 risk/reward means risking $1 to make $3.",
+    "mechanics": "Compute the distance from entry to stop (risk) and from entry to target (reward); their ratio is the planned risk/reward. It interacts with the win rate through the breakeven rate: a higher reward-to-risk lowers the win rate needed for profitability.",
+    "formula": "Risk/reward ratio = (entry price - stop price) / (target price - entry price) for a long trade; reward-to-risk is its reciprocal.",
+    "relationships": [
+      "Payoff ratio",
+      "Breakeven rate",
+      "Stop-loss level",
+      "Take-profit level",
+      "Trade expectancy"
+    ],
+    "failure_modes": "It is a planning construct: realized outcomes differ because of slippage, gaps, partial exits, and trailing stops, so the realized payoff ratio usually diverges from the planned ratio. Tightening the stop to 'improve' the ratio raises the probability of being stopped out.",
+    "misconceptions": "A higher reward-to-risk target is not automatically better: pushing the target further away lowers the probability of ever reaching it, and the ratio has no value without its associated win rate.",
+    "example": "Buying at $20 with a stop at $15 and a target at $30 risks $5 per share to make $10 — a 1:2 risk/reward ratio.",
+    "citations": [
+      {
+        "source": "Investopedia: Risk/Reward Ratio",
+        "url": "https://www.investopedia.com/terms/r/riskrewardratio.asp",
+        "section": "Example of the Risk/Reward Ratio",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

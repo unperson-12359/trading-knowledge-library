@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/fixed-ratio-sizing",
+  "canonical_sha256": "3b6551bce5a7851080886a498434a1e7bbbe3bc04f72851a41e2e00ead07e7ee",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/fixed-ratio-sizing",
+    "name": "Fixed ratio sizing",
+    "aliases": [
+      "fixed ratio money management",
+      "Ryan Jones fixed ratio"
+    ],
+    "domain": "Risk and performance",
+    "definition": "Ryan Jones's position-sizing method in which contracts are added or removed at fixed profit increments per contract (the 'delta') rather than as a percentage of equity: the account must earn delta dollars per existing contract before one more contract is traded.",
+    "intuition": "Growth is paid for out of accumulated profit rather than account percentage: the equity must prove it can carry one more unit before that unit is added.",
+    "mechanics": "Set a delta; the equity required to trade N contracts is starting equity plus (N * (N - 1) / 2) * delta. Size steps up as profits pass each threshold and steps down in reverse as equity falls back — though the model is criticized for not cutting size automatically in drawdowns without modification.",
+    "formula": "Equity required for N contracts = E0 + (N * (N - 1) / 2) * delta, where E0 is starting equity and delta the profit per contract required to add the next contract.",
+    "relationships": [
+      "Fixed fractional sizing",
+      "Position sizing",
+      "Kelly criterion",
+      "Trade expectancy"
+    ],
+    "failure_modes": "Without modification it does not reduce size quickly in drawdowns, and the choice of delta relative to system expectancy is non-intuitive and easily miscalibrated. Compared with percent risk it can lag in early growth or out-scale dangerously in hot streaks, depending on delta.",
+    "misconceptions": "Fixed ratio is often confused with fixed fractional sizing; they scale on different state variables — cumulative profit steps versus current equity percentage — and behave very differently through winning and losing streaks.",
+    "example": "With starting equity $25,000 and delta $5,000, the account trades 1 contract until $30,000, 2 contracts until $40,000, 3 until $55,000, and so on.",
+    "citations": [
+      {
+        "source": "Trade Loss Tracker: extended summary of Van K. Tharp, The Definitive Guide to Position Sizing Strategies",
+        "url": "https://tradelosstracker.com/library/book/781-the-definitive-guide-to-position-sizing-strategies-tharp/extended",
+        "section": "Chapter 7: The Fixed Ratio Model",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

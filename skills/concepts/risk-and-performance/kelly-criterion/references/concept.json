@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/kelly-criterion",
+  "canonical_sha256": "b7fed17441bc3e125e837539cf684727f0b5db1afd7f040340b1699b20febe45",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/kelly-criterion",
+    "name": "Kelly criterion",
+    "aliases": [
+      "Kelly strategy",
+      "Kelly bet",
+      "growth-optimal fraction"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A bet-sizing rule that maximizes the long-run expected logarithm of wealth — equivalently the expected geometric growth rate — by choosing the fraction of capital to risk on each favorable bet. Introduced by John L. Kelly Jr. of Bell Labs in 1956 and applied to gambling and markets by Edward Thorp.",
+    "intuition": "It answers 'how much of the bankroll should I bet?' by balancing edge against odds: bet too little and growth is slow; bet more than Kelly and volatility drag lowers long-run growth while ruin risk climbs.",
+    "mechanics": "For binary bets, f* = p/l - q/g with win probability p, loss probability q = 1 - p, fractional gain g and fractional loss l. For continuous returns under a Gaussian approximation, f* = (mu - r) / sigma^2. Full Kelly is maximally aggressive; practitioners typically use half- or quarter-Kelly to cut drawdowns and buffer estimation error.",
+    "formula": "Binary: f* = p/l - q/g, with p win probability, q = 1 - p, g the fractional gain on a win, l the fractional loss on a loss. Continuous (Gaussian): f* = (mu - r) / sigma^2, with mu the expected return, r the risk-free rate, sigma^2 the return variance.",
+    "relationships": [
+      "Fractional Kelly",
+      "Position sizing",
+      "Fixed fractional sizing",
+      "Trade expectancy",
+      "Volatility targeting"
+    ],
+    "failure_modes": "Kelly assumes known, constant probabilities and payoffs; in markets these are estimates, and overestimating the edge pushes the computed fraction above optimal and sharply raises the risk of ruin. Full Kelly produces deep, prolonged drawdowns as a matter of course — it maximizes growth, not comfort — and ignores transaction costs and non-stationarity.",
+    "misconceptions": "Kelly does not eliminate risk or guarantee the best finite-horizon outcome: a full-Kelly bettor can expect to halve the bankroll at some point with substantial probability. Also, the market form f* = (mu - r)/sigma^2 uses the arithmetic drift mu, not the log return — confusing the two is a documented common error.",
+    "example": "A bet winning 60% of the time at even money has f* = 0.6 - 0.4 = 0.2: bet 20% of the bankroll each trial; in the classic biased-coin experiment this grows $25 at the geometric-optimal rate of about 2.03% per round.",
+    "citations": [
+      {
+        "source": "Wikipedia: Kelly criterion",
+        "url": "https://en.wikipedia.org/wiki/Kelly_criterion",
+        "section": "Formula; Betting example; Application to the stock market",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

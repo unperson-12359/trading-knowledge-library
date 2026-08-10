@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/trailing-stop",
+  "canonical_sha256": "10fe3dde1bafd5a7e8526c5e093662fafc1f9081679da217dec20508bafd387d",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/trailing-stop",
+    "name": "Trailing stop",
+    "aliases": [
+      "trailing stop-loss",
+      "trailing stop order"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A stop order whose trigger price follows the market at a fixed distance in points or percent, ratcheting in the direction of profit and never retreating, so it locks in progressively more of an unrealized gain while leaving room for the trade to run.",
+    "intuition": "It is a stop that only moves your way: each new favorable extreme drags the exit level behind it, converting paper profits into protected profits.",
+    "mechanics": "For a long position the trailing stop sits at the highest price since entry minus the trail amount and updates upward with each new high but never downward; a touch of the stop price converts it to a market order (or limit order for the trailing stop-limit variant). Trail distances are set in absolute terms, percent, or volatility units (ATR multiples).",
+    "formula": "Stop_t = max( Stop_{t-1}, P_max,t - d ) for a long, where P_max,t is the highest price since entry and d the trailing distance in points or percent.",
+    "relationships": [
+      "Stop-loss level",
+      "Volatility stop",
+      "Take-profit level",
+      "Drawdown"
+    ],
+    "failure_modes": "In sideways chop the trailing stop repeatedly exits at local reversals (death by a thousand cuts), and like any stop it fills through the trigger in gaps. Too tight a trail strangles trends; too loose surrenders most of the open profit.",
+    "misconceptions": "A trailing stop does not trail the current price downward — for longs it never moves down — and it is not guaranteed to execute at the trailed price, since it becomes a market order once triggered.",
+    "example": "Bought at $10 with a $1 trailing stop (initial trigger $9); if price rises to $15 the stop ratchets to $13.50, and a later fall to $13.50 exits with a $3.50 gain.",
+    "citations": [
+      {
+        "source": "Wikipedia: Order (exchange)",
+        "url": "https://en.wikipedia.org/wiki/Order_(exchange)",
+        "section": "Conditional orders: Trailing stop order",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

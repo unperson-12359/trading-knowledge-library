@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/fractional-kelly",
+  "canonical_sha256": "9bf21a49874047ec9b7a6dda1e7c3dbff0b6d9643ab5d3c893f26f33b0216125",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/fractional-kelly",
+    "name": "Fractional Kelly",
+    "aliases": [
+      "half Kelly",
+      "partial Kelly"
+    ],
+    "domain": "Risk and performance",
+    "definition": "Betting a fixed fraction (commonly one-half or one-quarter) of the full Kelly fraction rather than the full amount, trading some expected growth for a large reduction in volatility, drawdown depth, and sensitivity to estimation error.",
+    "intuition": "Because the growth-rate curve is nearly flat near its peak, half-Kelly sacrifices only about a quarter of the growth rate while roughly halving volatility — a bargain most practitioners gladly take.",
+    "mechanics": "Compute the full Kelly fraction f* and apply a multiplier c in (0,1): f = c * f*. Fractional Kelly corresponds to maximizing expected utility for power (CRRA) utility functions and is the standard practical answer to uncertain edge estimates.",
+    "formula": "f = c * f*, where f* is the full Kelly fraction and c the chosen fraction (e.g. 0.5 for half-Kelly).",
+    "relationships": [
+      "Kelly criterion",
+      "Position sizing",
+      "Fixed fractional sizing"
+    ],
+    "failure_modes": "It reduces but does not remove the core Kelly problem: wrong edge estimates still produce wrong sizes, and the 'safe' fraction is itself chosen judgmentally. Even half-Kelly can produce severe drawdowns when the true edge is smaller than believed.",
+    "misconceptions": "Fractional Kelly is not a different formula — it is a scaled Kelly bet — and half-Kelly is not half as risky in the tail sense: it mainly tempers the path, not the possibility of large drawdowns.",
+    "example": "If full Kelly on an estimated edge says risk 24% of equity, a half-Kelly practitioner risks 12%, retaining about three-quarters of the maximum growth rate for roughly half the volatility.",
+    "citations": [
+      {
+        "source": "Wikipedia: Kelly criterion",
+        "url": "https://en.wikipedia.org/wiki/Kelly_criterion",
+        "section": "Full Kelly, fractional Kelly, and more than Kelly",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
