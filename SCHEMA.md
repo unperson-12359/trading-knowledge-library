@@ -37,6 +37,16 @@ Valid tags come only from `regimes/taxonomy.json` and use the form
 liquidity, and positioning. These labels describe observed context; they do not
 claim predictive power or profitability.
 
+## Research playbooks
+
+Files in `playbooks/` conform to `schemas/playbook.schema.json`. They bind core
+concepts into testable 15-minute generic-perpetual research configurations with
+1-hour and 4-hour context, explicit data requirements, parameters, long/short
+conditions, invalidation, exits, regime context, costs, risk constraints,
+failure modes, and chronological validation plans. Their classification and
+warning are fixed: they are untested hypotheses, not recommendations or proof
+of profitability.
+
 ## Rules
 
 - Every entry must contain the full explanatory fields and at least one valid

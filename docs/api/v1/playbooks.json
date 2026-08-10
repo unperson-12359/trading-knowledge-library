@@ -1,0 +1,708 @@
+[
+  {
+    "id": "atr-volatility-breakout",
+    "title": "ATR Volatility-Breakout Research Template",
+    "version": 1,
+    "classification": "untested-research-hypothesis",
+    "market_type": "generic-crypto-perpetual-futures",
+    "signal_timeframe": "15m",
+    "context_timeframes": [
+      "1h",
+      "4h"
+    ],
+    "hypothesis": "A 15-minute range break following predeclared volatility compression may continue when range expansion, volume, and liquidity-adjusted execution confirm the move, net of costs.",
+    "concept_ids": [
+      "indicators/average-true-range",
+      "risk-and-performance/realized-volatility",
+      "trading-systems/breakout-trading",
+      "trading-systems/trend-following",
+      "orders-and-execution/stop-order",
+      "orders-and-execution/slippage",
+      "risk-and-performance/volatility-stop",
+      "research-and-backtesting/walk-forward-analysis"
+    ],
+    "required_data": [
+      {
+        "field": "venue OHLCV and true-range inputs",
+        "cadence": "15m",
+        "freshness": "through the last closed bar"
+      },
+      {
+        "field": "realized volatility and compression baseline",
+        "cadence": "15m, 1h, and 4h",
+        "freshness": "computed without future bars"
+      },
+      {
+        "field": "spread, depth, and trades around the break",
+        "cadence": "event or 1m",
+        "freshness": "current decision interval"
+      },
+      {
+        "field": "open interest and funding",
+        "cadence": "venue-native",
+        "freshness": "current interval"
+      }
+    ],
+    "parameters": {
+      "compression_quantile": {
+        "min": 0.1,
+        "max": 0.4,
+        "step": 0.05
+      },
+      "compression_lookback_bars": {
+        "candidates": [
+          96,
+          192,
+          384
+        ]
+      },
+      "breakout_lookback_bars": {
+        "candidates": [
+          8,
+          16,
+          32
+        ]
+      },
+      "confirmation_close_atr": {
+        "min": 0.0,
+        "max": 0.5,
+        "step": 0.1
+      },
+      "stop_distance_atr": {
+        "min": 1.0,
+        "max": 3.0,
+        "step": 0.5
+      }
+    },
+    "entry_conditions": {
+      "long": [
+        "The frozen compression measure is below its tested historical quantile before the break.",
+        "A closed 15m bar exceeds the predeclared upper range boundary by the tested confirmation distance.",
+        "Range and volume expand without a liquidity dislocation or stale print.",
+        "The context does not show an established higher-timeframe downtrend unless that variant is tested separately."
+      ],
+      "short": [
+        "The frozen compression measure is below its tested historical quantile before the break.",
+        "A closed 15m bar falls below the predeclared lower range boundary by the tested confirmation distance.",
+        "Range and volume expand without a liquidity dislocation or stale print.",
+        "The context does not show an established higher-timeframe uptrend unless that variant is tested separately."
+      ]
+    },
+    "invalidation": [
+      "Price closes back inside the broken range under the frozen false-break rule.",
+      "Expansion is caused by an unhealthy index/oracle or venue-specific data error.",
+      "Spread, impact, or slippage exceeds the caller's maximum execution constraint."
+    ],
+    "exit_logic": [
+      "Use a predeclared ATR trailing stop or opposite range boundary; compare variants without final-period selection.",
+      "Apply a time exit if volatility expansion fails to persist.",
+      "Simulate stop gaps, partial fills, fees, impact, and funding."
+    ],
+    "regime_profile": {
+      "favored": [
+        "trend.transition",
+        "volatility.compressed",
+        "volatility.expanded",
+        "liquidity.normal"
+      ],
+      "avoid": [
+        "trend.range",
+        "volatility.shock",
+        "liquidity.dislocated",
+        "positioning.deleveraging"
+      ]
+    },
+    "cost_model": {
+      "required": [
+        "maker-taker-fees",
+        "spread",
+        "slippage",
+        "market-impact",
+        "funding"
+      ],
+      "notes": "Breakout entries are latency- and gap-sensitive; use conservative next-event fills and prohibit fills at a crossed historical trigger with no available depth."
+    },
+    "risk_constraints": {
+      "risk_budget_input_required": true,
+      "rules": [
+        "Determine size from the caller's risk budget, ATR stop distance, leverage cap, and executable depth.",
+        "Do not increase size because recent volatility is compressed without enforcing a shock cap.",
+        "Reject signals with insufficient margin headroom for an adverse gap."
+      ]
+    },
+    "failure_modes": [
+      "Compression thresholds are sensitive to lookback, sampling, and structural volatility change.",
+      "False breaks are common in ranges and around engineered liquidity sweeps.",
+      "Volatility targeting can oversize exposure immediately before a shock.",
+      "Bar data can create impossible trigger, entry, and stop ordering."
+    ],
+    "validation_plan": [
+      "Freeze compression and boundary rules, then use chronological walk-forward evaluation.",
+      "Run event-aware execution simulation and same-bar ambiguity stress tests.",
+      "Report parameter surfaces, not only the best point, across venues, directions, and regime states.",
+      "Evaluate after-cost expectancy, drawdown, tail loss, trade count, and stability on untouched data."
+    ],
+    "warning": "Untested research hypothesis. Not financial advice, a recommendation, or evidence of profitability."
+  },
+  {
+    "id": "funding-open-interest-crowding-reversal",
+    "title": "Funding/Open-Interest Crowding-Reversal Research Template",
+    "version": 1,
+    "classification": "untested-research-hypothesis",
+    "market_type": "generic-crypto-perpetual-futures",
+    "signal_timeframe": "15m",
+    "context_timeframes": [
+      "1h",
+      "4h"
+    ],
+    "hypothesis": "An extreme venue-normalized funding state combined with elevated open interest and failed directional extension may precede a reversal against crowded perpetual positioning, net of costs.",
+    "concept_ids": [
+      "crypto-and-defi/funding-rate",
+      "crypto-and-defi/funding-interval",
+      "contract-mechanics/open-interest",
+      "crypto-and-defi/open-interest-leverage-ratio",
+      "crypto-and-defi/perpetual-basis",
+      "crypto-and-defi/liquidation-cascade",
+      "risk-and-performance/position-sizing",
+      "research-and-backtesting/funding-cost-model"
+    ],
+    "required_data": [
+      {
+        "field": "venue funding rate, formula inputs, and payment timestamps",
+        "cadence": "venue-native",
+        "freshness": "current and historical without revisions"
+      },
+      {
+        "field": "open interest by venue and aggregate coverage",
+        "cadence": "at least 15m",
+        "freshness": "aligned to each closed signal bar"
+      },
+      {
+        "field": "index, mark, and perpetual prices",
+        "cadence": "trade or 1m aggregated to 15m",
+        "freshness": "through the last closed bar"
+      },
+      {
+        "field": "liquidations, spread, and executable depth",
+        "cadence": "event-level or highest available",
+        "freshness": "current decision interval"
+      }
+    ],
+    "parameters": {
+      "funding_extreme_quantile": {
+        "min": 0.9,
+        "max": 0.99,
+        "step": 0.01
+      },
+      "open_interest_lookback_days": {
+        "candidates": [
+          30,
+          60,
+          90
+        ]
+      },
+      "failed_extension_bars": {
+        "candidates": [
+          2,
+          4,
+          8
+        ]
+      },
+      "price_displacement_atr": {
+        "min": 0.5,
+        "max": 2.0,
+        "step": 0.25
+      },
+      "maximum_holding_bars": {
+        "min": 4,
+        "max": 48
+      }
+    },
+    "entry_conditions": {
+      "long": [
+        "Funding and basis meet the predeclared short-crowded extreme after venue normalization.",
+        "Open interest or the leverage ratio is elevated relative to its frozen rolling baseline.",
+        "Price fails to extend lower and closes back above the predeclared 15m confirmation level.",
+        "The entry is rejected if active deleveraging or a liquidity dislocation is still accelerating."
+      ],
+      "short": [
+        "Funding and basis meet the predeclared long-crowded extreme after venue normalization.",
+        "Open interest or the leverage ratio is elevated relative to its frozen rolling baseline.",
+        "Price fails to extend higher and closes back below the predeclared 15m confirmation level.",
+        "The entry is rejected if active deleveraging or a liquidity dislocation is still accelerating."
+      ]
+    },
+    "invalidation": [
+      "Price resumes the crowded-direction move beyond the structural and volatility invalidation level.",
+      "Funding or open-interest data is stale, revised, or incomparable across the selected venues.",
+      "The market enters an unresolved liquidation cascade or oracle dislocation."
+    ],
+    "exit_logic": [
+      "Test exits at neutralized funding/basis, an opposing VWAP reference, or a frozen reward multiple.",
+      "Use a structural plus volatility stop and model gap-through fills.",
+      "Apply the maximum holding period and exact funding payments during the position."
+    ],
+    "regime_profile": {
+      "favored": [
+        "trend.transition",
+        "volatility.expanded",
+        "positioning.long-crowded",
+        "positioning.short-crowded"
+      ],
+      "avoid": [
+        "trend.uptrend",
+        "trend.downtrend",
+        "volatility.shock",
+        "liquidity.dislocated",
+        "positioning.deleveraging"
+      ]
+    },
+    "cost_model": {
+      "required": [
+        "maker-taker-fees",
+        "spread",
+        "slippage",
+        "market-impact",
+        "funding"
+      ],
+      "notes": "Apply each venue's historical funding formula and timestamp; aggregate signals only after documenting coverage and avoiding future revisions."
+    },
+    "risk_constraints": {
+      "risk_budget_input_required": true,
+      "rules": [
+        "Use caller-supplied risk budget, current stop distance, depth, and liquidation buffer to determine size.",
+        "Do not treat extreme funding as permission to add against continuing price movement.",
+        "Disallow entry when venue-specific margin or oracle behavior cannot be reproduced."
+      ]
+    },
+    "failure_modes": [
+      "Crowding can persist and become more extreme while price trends further.",
+      "Funding conventions differ across venues, so raw rates are not directly comparable.",
+      "Open-interest aggregates can mix contracts, double-count exposure, or revise history.",
+      "The apparent reversal is only a pause before forced deleveraging resumes."
+    ],
+    "validation_plan": [
+      "Normalize funding to a common horizon while retaining each venue's actual cash-flow schedule.",
+      "Use point-in-time open-interest data and document venue additions, outages, and contract migrations.",
+      "Walk forward with frozen crowding thresholds and an untouched final period.",
+      "Report by direction, venue, funding quantile, positioning state, and after-cost expectancy with uncertainty."
+    ],
+    "warning": "Untested research hypothesis. Not financial advice, a recommendation, or evidence of profitability."
+  },
+  {
+    "id": "liquidation-cascade-continuation",
+    "title": "Liquidation-Cascade Continuation Research Template",
+    "version": 1,
+    "classification": "untested-research-hypothesis",
+    "market_type": "generic-crypto-perpetual-futures",
+    "signal_timeframe": "15m",
+    "context_timeframes": [
+      "1h",
+      "4h"
+    ],
+    "hypothesis": "When forced liquidations, open-interest contraction, directional price movement, and depleted depth occur together, continuation may persist briefly before liquidity replenishes, net of unusually high costs.",
+    "concept_ids": [
+      "crypto-and-defi/liquidation-cascade",
+      "risk-and-performance/forced-liquidation",
+      "contract-mechanics/open-interest",
+      "microstructure/market-depth",
+      "microstructure/order-flow-imbalance",
+      "orders-and-execution/market-impact",
+      "orders-and-execution/slippage",
+      "risk-and-performance/tail-risk"
+    ],
+    "required_data": [
+      {
+        "field": "venue liquidation events with side and notional",
+        "cadence": "event-level",
+        "freshness": "within the tested latency budget"
+      },
+      {
+        "field": "open interest and mark/index prices",
+        "cadence": "1m or finer",
+        "freshness": "current decision interval"
+      },
+      {
+        "field": "multi-level order-book depth and trades",
+        "cadence": "event or snapshot stream",
+        "freshness": "within the tested latency budget"
+      },
+      {
+        "field": "oracle/index constituent health",
+        "cadence": "venue-native",
+        "freshness": "current decision interval"
+      }
+    ],
+    "parameters": {
+      "liquidation_notional_zscore": {
+        "min": 2.0,
+        "max": 5.0,
+        "step": 0.5
+      },
+      "open_interest_contraction_percent": {
+        "min": 1.0,
+        "max": 10.0,
+        "step": 1.0
+      },
+      "confirmation_window_minutes": {
+        "candidates": [
+          5,
+          15,
+          30
+        ]
+      },
+      "maximum_holding_bars": {
+        "min": 1,
+        "max": 8
+      },
+      "maximum_spread_bps": "caller-supplied venue and size constraint"
+    },
+    "entry_conditions": {
+      "long": [
+        "Short liquidations exceed the frozen threshold while price rises and open interest contracts.",
+        "Aggressive buy flow remains dominant after the first burst and executable depth is measurable.",
+        "Index/oracle inputs are healthy and the caller's maximum cost constraint is satisfied.",
+        "The signal is ignored if the event is already older than the tested latency budget."
+      ],
+      "short": [
+        "Long liquidations exceed the frozen threshold while price falls and open interest contracts.",
+        "Aggressive sell flow remains dominant after the first burst and executable depth is measurable.",
+        "Index/oracle inputs are healthy and the caller's maximum cost constraint is satisfied.",
+        "The signal is ignored if the event is already older than the tested latency budget."
+      ]
+    },
+    "invalidation": [
+      "Liquidation flow and directional imbalance stop while depth replenishes.",
+      "Price reclaims the predeclared event-origin level against the position.",
+      "Oracle, index, venue, or data-feed health becomes uncertain."
+    ],
+    "exit_logic": [
+      "Exit when liquidation intensity normalizes, imbalance reverses, or the short maximum holding window expires.",
+      "Use a hard structural stop with conservative gap and slippage assumptions.",
+      "Do not assume a take-profit fill inside an unavailable or crossed book."
+    ],
+    "regime_profile": {
+      "favored": [
+        "volatility.shock",
+        "liquidity.thin",
+        "positioning.deleveraging"
+      ],
+      "avoid": [
+        "volatility.compressed",
+        "liquidity.deep",
+        "positioning.balanced"
+      ]
+    },
+    "cost_model": {
+      "required": [
+        "maker-taker-fees",
+        "spread",
+        "slippage",
+        "market-impact",
+        "funding"
+      ],
+      "notes": "Use event-time depth and a latency-sensitive impact model; stress costs beyond historical observations because the setup operates in impaired markets."
+    },
+    "risk_constraints": {
+      "risk_budget_input_required": true,
+      "rules": [
+        "Size from a caller-supplied risk budget but apply an additional executable-depth cap.",
+        "Use lower leverage and a larger liquidation buffer than in normal liquidity.",
+        "Reject the trade if expected impact or data latency cannot be bounded."
+      ]
+    },
+    "failure_modes": [
+      "The continuation window may be shorter than observable data and order latency.",
+      "Extreme spread and impact can erase the gross move or make exit impossible.",
+      "Liquidation feeds can be incomplete, delayed, duplicated, or venue-specific.",
+      "A cascade can reverse violently once forced flow is exhausted."
+    ],
+    "validation_plan": [
+      "Use event-time simulation and reject bar-only tests that cannot establish order sequence.",
+      "Audit feed latency, missing events, duplicate events, and venue outages before measuring returns.",
+      "Stress spread, impact, latency, and partial-fill assumptions well beyond their median values.",
+      "Report tail loss, fill probability, time-to-fill, after-cost expectancy, and results by event severity."
+    ],
+    "warning": "Untested research hypothesis. Not financial advice, a recommendation, or evidence of profitability."
+  },
+  {
+    "id": "vwap-atr-mean-reversion",
+    "title": "VWAP/ATR Mean-Reversion Research Template",
+    "version": 1,
+    "classification": "untested-research-hypothesis",
+    "market_type": "generic-crypto-perpetual-futures",
+    "signal_timeframe": "15m",
+    "context_timeframes": [
+      "1h",
+      "4h"
+    ],
+    "hypothesis": "In a balanced, liquid range, an unusually large 15-minute displacement from session VWAP may revert after momentum stops extending, net of all trading costs.",
+    "concept_ids": [
+      "indicators/volume-weighted-average-price",
+      "indicators/average-true-range",
+      "indicators/stochastic-oscillator",
+      "trading-systems/mean-reversion",
+      "orders-and-execution/limit-order",
+      "risk-and-performance/position-sizing",
+      "risk-and-performance/stop-loss-level",
+      "research-and-backtesting/execution-simulator"
+    ],
+    "required_data": [
+      {
+        "field": "venue OHLCV and session VWAP",
+        "cadence": "15m plus trade-level aggregation",
+        "freshness": "through the last closed bar"
+      },
+      {
+        "field": "ATR and stochastic oscillator inputs",
+        "cadence": "15m",
+        "freshness": "recomputed on each closed bar"
+      },
+      {
+        "field": "best bid/ask and executable depth",
+        "cadence": "at decision and simulated fill",
+        "freshness": "no older than the execution-latency assumption"
+      },
+      {
+        "field": "funding rate and next payment timestamp",
+        "cadence": "venue schedule",
+        "freshness": "current interval"
+      }
+    ],
+    "parameters": {
+      "vwap_session": "venue UTC trading day; test alternative anchors separately",
+      "entry_displacement_atr": {
+        "min": 1.5,
+        "max": 3.0,
+        "step": 0.25
+      },
+      "atr_period_bars": {
+        "candidates": [
+          14,
+          20,
+          28
+        ]
+      },
+      "stochastic_period_bars": {
+        "candidates": [
+          14,
+          21
+        ]
+      },
+      "maximum_holding_bars": {
+        "min": 2,
+        "max": 16
+      }
+    },
+    "entry_conditions": {
+      "long": [
+        "The 1h and 4h context is classified as trend.range, not an established downtrend.",
+        "The last closed 15m price is at least the tested ATR displacement below session VWAP.",
+        "The stochastic reading stops making a new low while price remains displaced.",
+        "Liquidity is not thin or dislocated and estimated round-trip cost is below the configured cap."
+      ],
+      "short": [
+        "The 1h and 4h context is classified as trend.range, not an established uptrend.",
+        "The last closed 15m price is at least the tested ATR displacement above session VWAP.",
+        "The stochastic reading stops making a new high while price remains displaced.",
+        "Liquidity is not thin or dislocated and estimated round-trip cost is below the configured cap."
+      ]
+    },
+    "invalidation": [
+      "The higher-timeframe range breaks and holds beyond its defined boundary.",
+      "A volatility shock, liquidity dislocation, or liquidation cascade is detected.",
+      "Price extends another configured ATR distance without the required momentum stall."
+    ],
+    "exit_logic": [
+      "Test partial or full exit at session VWAP; do not assume a touch is fillable.",
+      "Exit at the predeclared volatility stop or when structural invalidation occurs.",
+      "Apply a time exit at the configured maximum holding bars.",
+      "Accrue funding if the position crosses a venue payment timestamp."
+    ],
+    "regime_profile": {
+      "favored": [
+        "trend.range",
+        "volatility.normal",
+        "liquidity.deep",
+        "positioning.balanced"
+      ],
+      "avoid": [
+        "trend.uptrend",
+        "trend.downtrend",
+        "volatility.shock",
+        "liquidity.dislocated",
+        "positioning.deleveraging"
+      ]
+    },
+    "cost_model": {
+      "required": [
+        "maker-taker-fees",
+        "spread",
+        "slippage",
+        "market-impact",
+        "funding"
+      ],
+      "notes": "Use venue- and order-type-specific costs at each historical timestamp; reject zero-slippage fills and include adverse selection for resting limits."
+    },
+    "risk_constraints": {
+      "risk_budget_input_required": true,
+      "rules": [
+        "Position size is derived from the caller's risk budget and simulated stop distance; the playbook supplies no default risk percentage.",
+        "Cap size by executable depth and maintenance-margin headroom.",
+        "Do not average down after invalidation or increase leverage to recover losses."
+      ]
+    },
+    "failure_modes": [
+      "A genuine breakout or cascade looks statistically stretched and continues instead of reverting.",
+      "VWAP differs across venues and the chosen session boundary can manufacture apparent displacement.",
+      "Limit-order backtests overstate fills by ignoring queue position and adverse selection.",
+      "Costs consume the small reversion distance."
+    ],
+    "validation_plan": [
+      "Freeze the parameter grid and test chronologically with non-overlapping walk-forward windows.",
+      "Report results separately by all four regime dimensions, venue, direction, and funding sign.",
+      "Use an execution simulator with spread, depth, partial fills, latency, fees, impact, and funding.",
+      "Retain a final untouched period and report uncertainty, trade count, drawdown, and after-cost expectancy."
+    ],
+    "warning": "Untested research hypothesis. Not financial advice, a recommendation, or evidence of profitability."
+  },
+  {
+    "id": "vwap-trend-pullback-continuation",
+    "title": "VWAP Trend-Pullback Continuation Research Template",
+    "version": 1,
+    "classification": "untested-research-hypothesis",
+    "market_type": "generic-crypto-perpetual-futures",
+    "signal_timeframe": "15m",
+    "context_timeframes": [
+      "1h",
+      "4h"
+    ],
+    "hypothesis": "During an established higher-timeframe trend, a controlled 15-minute pullback toward VWAP or anchored VWAP may resume in the trend direction after rejection, net of costs.",
+    "concept_ids": [
+      "indicators/volume-weighted-average-price",
+      "indicators/anchored-vwap",
+      "indicators/average-true-range",
+      "trading-systems/trend-following",
+      "orders-and-execution/limit-order",
+      "risk-and-performance/volatility-stop",
+      "risk-and-performance/position-sizing"
+    ],
+    "required_data": [
+      {
+        "field": "venue OHLCV, session VWAP, and event-anchored VWAP",
+        "cadence": "15m",
+        "freshness": "through the last closed bar"
+      },
+      {
+        "field": "higher-timeframe trend measurements",
+        "cadence": "1h and 4h",
+        "freshness": "through the last closed context bar"
+      },
+      {
+        "field": "ATR, spread, and executable depth",
+        "cadence": "15m plus decision-time book",
+        "freshness": "current decision interval"
+      },
+      {
+        "field": "funding and open interest",
+        "cadence": "venue-native",
+        "freshness": "current interval"
+      }
+    ],
+    "parameters": {
+      "trend_definition": "predeclared 1h/4h structure rule; compare alternatives without selecting on the final test",
+      "pullback_zone_atr": {
+        "min": 0.0,
+        "max": 0.75,
+        "step": 0.25
+      },
+      "rejection_confirmation_bars": {
+        "candidates": [
+          1,
+          2,
+          3
+        ]
+      },
+      "stop_distance_atr": {
+        "min": 1.0,
+        "max": 3.0,
+        "step": 0.5
+      },
+      "maximum_holding_bars": {
+        "min": 4,
+        "max": 32
+      }
+    },
+    "entry_conditions": {
+      "long": [
+        "Both context timeframes meet the frozen uptrend definition.",
+        "Price pulls back to the tested VWAP zone without breaking the structural invalidation level.",
+        "A closed 15m bar rejects the zone and resumes above it.",
+        "Liquidity and after-cost reward-to-risk meet caller-supplied constraints."
+      ],
+      "short": [
+        "Both context timeframes meet the frozen downtrend definition.",
+        "Price rallies to the tested VWAP zone without breaking the structural invalidation level.",
+        "A closed 15m bar rejects the zone and resumes below it.",
+        "Liquidity and after-cost reward-to-risk meet caller-supplied constraints."
+      ]
+    },
+    "invalidation": [
+      "The higher-timeframe trend definition no longer holds.",
+      "Price closes beyond the predeclared swing or anchored-VWAP invalidation level.",
+      "The market enters volatility.shock, liquidity.dislocated, or positioning.deleveraging."
+    ],
+    "exit_logic": [
+      "Use a predeclared volatility or structural stop and simulate gap-through execution.",
+      "Test a trailing exit based on favorable extreme minus/plus the configured ATR distance.",
+      "Apply a time exit if continuation does not develop within the configured holding window.",
+      "Include funding cash flows at exact payment timestamps."
+    ],
+    "regime_profile": {
+      "favored": [
+        "trend.uptrend",
+        "trend.downtrend",
+        "volatility.normal",
+        "liquidity.normal"
+      ],
+      "avoid": [
+        "trend.range",
+        "trend.transition",
+        "volatility.shock",
+        "liquidity.dislocated",
+        "positioning.deleveraging"
+      ]
+    },
+    "cost_model": {
+      "required": [
+        "maker-taker-fees",
+        "spread",
+        "slippage",
+        "market-impact",
+        "funding"
+      ],
+      "notes": "Model passive and aggressive entry variants separately and prevent favorable same-bar fills when bar ordering is unknown."
+    },
+    "risk_constraints": {
+      "risk_budget_input_required": true,
+      "rules": [
+        "Derive quantity from a caller-supplied risk budget and the wider of structural and volatility stop distance.",
+        "Cap by executable depth, leverage ceiling, and liquidation-distance buffer.",
+        "Reject entries whose estimated cost removes the configured minimum after-cost payoff."
+      ]
+    },
+    "failure_modes": [
+      "The trend classification lags a reversal and labels transition as continuation.",
+      "The VWAP anchor is selected with hindsight.",
+      "Funding or crowding makes continuation vulnerable to a squeeze.",
+      "Same-bar execution assumptions create impossible entries and stops."
+    ],
+    "validation_plan": [
+      "Define trend and anchors before evaluation and retain every rejected signal in the audit log.",
+      "Walk forward chronologically across multiple venues and both directions.",
+      "Run sensitivity analysis across adjacent parameters rather than report only the best combination.",
+      "Report after-cost expectancy, drawdown, tail loss, fill rate, and regime-conditioned stability on untouched data."
+    ],
+    "warning": "Untested research hypothesis. Not financial advice, a recommendation, or evidence of profitability."
+  }
+]

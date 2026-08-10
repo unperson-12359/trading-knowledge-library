@@ -42,6 +42,8 @@ pattern, indicator, or strategy is profitable.
 concepts/<domain>.json   one file per domain, array of entry objects
 collections/             focused operational concept collections
 regimes/taxonomy.json    controlled market-state vocabulary
+playbooks/                five untested research-hypothesis templates
+schemas/                  machine-readable structured-data schemas
 scripts/status.py       validate the complete catalog
 scripts/export_master.py generate exports/master_v2.txt
 scripts/build_site.py   generate the GitHub Pages site in docs/
@@ -53,6 +55,11 @@ sources/                 read-only import reference
 The generated regime API is available at `docs/api/v1/regimes.json` (and at
 the matching path on GitHub Pages). Regime tags are descriptive research
 context, not forecasts, signals, or evidence of expected return.
+
+Five generic perpetual-futures playbooks are generated into `docs/playbooks/`
+and `docs/api/v1/playbooks.json`. Every playbook is explicitly untested and
+requires caller-supplied risk constraints plus realistic execution, fee,
+impact, and funding models before evaluation.
 
 ## Workflow
 

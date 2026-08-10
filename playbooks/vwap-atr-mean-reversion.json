@@ -1,0 +1,87 @@
+{
+  "id": "vwap-atr-mean-reversion",
+  "title": "VWAP/ATR Mean-Reversion Research Template",
+  "version": 1,
+  "classification": "untested-research-hypothesis",
+  "market_type": "generic-crypto-perpetual-futures",
+  "signal_timeframe": "15m",
+  "context_timeframes": ["1h", "4h"],
+  "hypothesis": "In a balanced, liquid range, an unusually large 15-minute displacement from session VWAP may revert after momentum stops extending, net of all trading costs.",
+  "concept_ids": [
+    "indicators/volume-weighted-average-price",
+    "indicators/average-true-range",
+    "indicators/stochastic-oscillator",
+    "trading-systems/mean-reversion",
+    "orders-and-execution/limit-order",
+    "risk-and-performance/position-sizing",
+    "risk-and-performance/stop-loss-level",
+    "research-and-backtesting/execution-simulator"
+  ],
+  "required_data": [
+    {"field": "venue OHLCV and session VWAP", "cadence": "15m plus trade-level aggregation", "freshness": "through the last closed bar"},
+    {"field": "ATR and stochastic oscillator inputs", "cadence": "15m", "freshness": "recomputed on each closed bar"},
+    {"field": "best bid/ask and executable depth", "cadence": "at decision and simulated fill", "freshness": "no older than the execution-latency assumption"},
+    {"field": "funding rate and next payment timestamp", "cadence": "venue schedule", "freshness": "current interval"}
+  ],
+  "parameters": {
+    "vwap_session": "venue UTC trading day; test alternative anchors separately",
+    "entry_displacement_atr": {"min": 1.5, "max": 3.0, "step": 0.25},
+    "atr_period_bars": {"candidates": [14, 20, 28]},
+    "stochastic_period_bars": {"candidates": [14, 21]},
+    "maximum_holding_bars": {"min": 2, "max": 16}
+  },
+  "entry_conditions": {
+    "long": [
+      "The 1h and 4h context is classified as trend.range, not an established downtrend.",
+      "The last closed 15m price is at least the tested ATR displacement below session VWAP.",
+      "The stochastic reading stops making a new low while price remains displaced.",
+      "Liquidity is not thin or dislocated and estimated round-trip cost is below the configured cap."
+    ],
+    "short": [
+      "The 1h and 4h context is classified as trend.range, not an established uptrend.",
+      "The last closed 15m price is at least the tested ATR displacement above session VWAP.",
+      "The stochastic reading stops making a new high while price remains displaced.",
+      "Liquidity is not thin or dislocated and estimated round-trip cost is below the configured cap."
+    ]
+  },
+  "invalidation": [
+    "The higher-timeframe range breaks and holds beyond its defined boundary.",
+    "A volatility shock, liquidity dislocation, or liquidation cascade is detected.",
+    "Price extends another configured ATR distance without the required momentum stall."
+  ],
+  "exit_logic": [
+    "Test partial or full exit at session VWAP; do not assume a touch is fillable.",
+    "Exit at the predeclared volatility stop or when structural invalidation occurs.",
+    "Apply a time exit at the configured maximum holding bars.",
+    "Accrue funding if the position crosses a venue payment timestamp."
+  ],
+  "regime_profile": {
+    "favored": ["trend.range", "volatility.normal", "liquidity.deep", "positioning.balanced"],
+    "avoid": ["trend.uptrend", "trend.downtrend", "volatility.shock", "liquidity.dislocated", "positioning.deleveraging"]
+  },
+  "cost_model": {
+    "required": ["maker-taker-fees", "spread", "slippage", "market-impact", "funding"],
+    "notes": "Use venue- and order-type-specific costs at each historical timestamp; reject zero-slippage fills and include adverse selection for resting limits."
+  },
+  "risk_constraints": {
+    "risk_budget_input_required": true,
+    "rules": [
+      "Position size is derived from the caller's risk budget and simulated stop distance; the playbook supplies no default risk percentage.",
+      "Cap size by executable depth and maintenance-margin headroom.",
+      "Do not average down after invalidation or increase leverage to recover losses."
+    ]
+  },
+  "failure_modes": [
+    "A genuine breakout or cascade looks statistically stretched and continues instead of reverting.",
+    "VWAP differs across venues and the chosen session boundary can manufacture apparent displacement.",
+    "Limit-order backtests overstate fills by ignoring queue position and adverse selection.",
+    "Costs consume the small reversion distance."
+  ],
+  "validation_plan": [
+    "Freeze the parameter grid and test chronologically with non-overlapping walk-forward windows.",
+    "Report results separately by all four regime dimensions, venue, direction, and funding sign.",
+    "Use an execution simulator with spread, depth, partial fills, latency, fees, impact, and funding.",
+    "Retain a final untouched period and report uncertainty, trade count, drawdown, and after-cost expectancy."
+  ],
+  "warning": "Untested research hypothesis. Not financial advice, a recommendation, or evidence of profitability."
+}

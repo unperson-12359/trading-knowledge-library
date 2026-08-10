@@ -1,0 +1,86 @@
+{
+  "id": "funding-open-interest-crowding-reversal",
+  "title": "Funding/Open-Interest Crowding-Reversal Research Template",
+  "version": 1,
+  "classification": "untested-research-hypothesis",
+  "market_type": "generic-crypto-perpetual-futures",
+  "signal_timeframe": "15m",
+  "context_timeframes": ["1h", "4h"],
+  "hypothesis": "An extreme venue-normalized funding state combined with elevated open interest and failed directional extension may precede a reversal against crowded perpetual positioning, net of costs.",
+  "concept_ids": [
+    "crypto-and-defi/funding-rate",
+    "crypto-and-defi/funding-interval",
+    "contract-mechanics/open-interest",
+    "crypto-and-defi/open-interest-leverage-ratio",
+    "crypto-and-defi/perpetual-basis",
+    "crypto-and-defi/liquidation-cascade",
+    "risk-and-performance/position-sizing",
+    "research-and-backtesting/funding-cost-model"
+  ],
+  "required_data": [
+    {"field": "venue funding rate, formula inputs, and payment timestamps", "cadence": "venue-native", "freshness": "current and historical without revisions"},
+    {"field": "open interest by venue and aggregate coverage", "cadence": "at least 15m", "freshness": "aligned to each closed signal bar"},
+    {"field": "index, mark, and perpetual prices", "cadence": "trade or 1m aggregated to 15m", "freshness": "through the last closed bar"},
+    {"field": "liquidations, spread, and executable depth", "cadence": "event-level or highest available", "freshness": "current decision interval"}
+  ],
+  "parameters": {
+    "funding_extreme_quantile": {"min": 0.9, "max": 0.99, "step": 0.01},
+    "open_interest_lookback_days": {"candidates": [30, 60, 90]},
+    "failed_extension_bars": {"candidates": [2, 4, 8]},
+    "price_displacement_atr": {"min": 0.5, "max": 2.0, "step": 0.25},
+    "maximum_holding_bars": {"min": 4, "max": 48}
+  },
+  "entry_conditions": {
+    "long": [
+      "Funding and basis meet the predeclared short-crowded extreme after venue normalization.",
+      "Open interest or the leverage ratio is elevated relative to its frozen rolling baseline.",
+      "Price fails to extend lower and closes back above the predeclared 15m confirmation level.",
+      "The entry is rejected if active deleveraging or a liquidity dislocation is still accelerating."
+    ],
+    "short": [
+      "Funding and basis meet the predeclared long-crowded extreme after venue normalization.",
+      "Open interest or the leverage ratio is elevated relative to its frozen rolling baseline.",
+      "Price fails to extend higher and closes back below the predeclared 15m confirmation level.",
+      "The entry is rejected if active deleveraging or a liquidity dislocation is still accelerating."
+    ]
+  },
+  "invalidation": [
+    "Price resumes the crowded-direction move beyond the structural and volatility invalidation level.",
+    "Funding or open-interest data is stale, revised, or incomparable across the selected venues.",
+    "The market enters an unresolved liquidation cascade or oracle dislocation."
+  ],
+  "exit_logic": [
+    "Test exits at neutralized funding/basis, an opposing VWAP reference, or a frozen reward multiple.",
+    "Use a structural plus volatility stop and model gap-through fills.",
+    "Apply the maximum holding period and exact funding payments during the position."
+  ],
+  "regime_profile": {
+    "favored": ["trend.transition", "volatility.expanded", "positioning.long-crowded", "positioning.short-crowded"],
+    "avoid": ["trend.uptrend", "trend.downtrend", "volatility.shock", "liquidity.dislocated", "positioning.deleveraging"]
+  },
+  "cost_model": {
+    "required": ["maker-taker-fees", "spread", "slippage", "market-impact", "funding"],
+    "notes": "Apply each venue's historical funding formula and timestamp; aggregate signals only after documenting coverage and avoiding future revisions."
+  },
+  "risk_constraints": {
+    "risk_budget_input_required": true,
+    "rules": [
+      "Use caller-supplied risk budget, current stop distance, depth, and liquidation buffer to determine size.",
+      "Do not treat extreme funding as permission to add against continuing price movement.",
+      "Disallow entry when venue-specific margin or oracle behavior cannot be reproduced."
+    ]
+  },
+  "failure_modes": [
+    "Crowding can persist and become more extreme while price trends further.",
+    "Funding conventions differ across venues, so raw rates are not directly comparable.",
+    "Open-interest aggregates can mix contracts, double-count exposure, or revise history.",
+    "The apparent reversal is only a pause before forced deleveraging resumes."
+  ],
+  "validation_plan": [
+    "Normalize funding to a common horizon while retaining each venue's actual cash-flow schedule.",
+    "Use point-in-time open-interest data and document venue additions, outages, and contract migrations.",
+    "Walk forward with frozen crowding thresholds and an untouched final period.",
+    "Report by direction, venue, funding quantile, positioning state, and after-cost expectancy with uncertainty."
+  ],
+  "warning": "Untested research hypothesis. Not financial advice, a recommendation, or evidence of profitability."
+}

@@ -1,0 +1,86 @@
+{
+  "id": "liquidation-cascade-continuation",
+  "title": "Liquidation-Cascade Continuation Research Template",
+  "version": 1,
+  "classification": "untested-research-hypothesis",
+  "market_type": "generic-crypto-perpetual-futures",
+  "signal_timeframe": "15m",
+  "context_timeframes": ["1h", "4h"],
+  "hypothesis": "When forced liquidations, open-interest contraction, directional price movement, and depleted depth occur together, continuation may persist briefly before liquidity replenishes, net of unusually high costs.",
+  "concept_ids": [
+    "crypto-and-defi/liquidation-cascade",
+    "risk-and-performance/forced-liquidation",
+    "contract-mechanics/open-interest",
+    "microstructure/market-depth",
+    "microstructure/order-flow-imbalance",
+    "orders-and-execution/market-impact",
+    "orders-and-execution/slippage",
+    "risk-and-performance/tail-risk"
+  ],
+  "required_data": [
+    {"field": "venue liquidation events with side and notional", "cadence": "event-level", "freshness": "within the tested latency budget"},
+    {"field": "open interest and mark/index prices", "cadence": "1m or finer", "freshness": "current decision interval"},
+    {"field": "multi-level order-book depth and trades", "cadence": "event or snapshot stream", "freshness": "within the tested latency budget"},
+    {"field": "oracle/index constituent health", "cadence": "venue-native", "freshness": "current decision interval"}
+  ],
+  "parameters": {
+    "liquidation_notional_zscore": {"min": 2.0, "max": 5.0, "step": 0.5},
+    "open_interest_contraction_percent": {"min": 1.0, "max": 10.0, "step": 1.0},
+    "confirmation_window_minutes": {"candidates": [5, 15, 30]},
+    "maximum_holding_bars": {"min": 1, "max": 8},
+    "maximum_spread_bps": "caller-supplied venue and size constraint"
+  },
+  "entry_conditions": {
+    "long": [
+      "Short liquidations exceed the frozen threshold while price rises and open interest contracts.",
+      "Aggressive buy flow remains dominant after the first burst and executable depth is measurable.",
+      "Index/oracle inputs are healthy and the caller's maximum cost constraint is satisfied.",
+      "The signal is ignored if the event is already older than the tested latency budget."
+    ],
+    "short": [
+      "Long liquidations exceed the frozen threshold while price falls and open interest contracts.",
+      "Aggressive sell flow remains dominant after the first burst and executable depth is measurable.",
+      "Index/oracle inputs are healthy and the caller's maximum cost constraint is satisfied.",
+      "The signal is ignored if the event is already older than the tested latency budget."
+    ]
+  },
+  "invalidation": [
+    "Liquidation flow and directional imbalance stop while depth replenishes.",
+    "Price reclaims the predeclared event-origin level against the position.",
+    "Oracle, index, venue, or data-feed health becomes uncertain."
+  ],
+  "exit_logic": [
+    "Exit when liquidation intensity normalizes, imbalance reverses, or the short maximum holding window expires.",
+    "Use a hard structural stop with conservative gap and slippage assumptions.",
+    "Do not assume a take-profit fill inside an unavailable or crossed book."
+  ],
+  "regime_profile": {
+    "favored": ["volatility.shock", "liquidity.thin", "positioning.deleveraging"],
+    "avoid": ["volatility.compressed", "liquidity.deep", "positioning.balanced"]
+  },
+  "cost_model": {
+    "required": ["maker-taker-fees", "spread", "slippage", "market-impact", "funding"],
+    "notes": "Use event-time depth and a latency-sensitive impact model; stress costs beyond historical observations because the setup operates in impaired markets."
+  },
+  "risk_constraints": {
+    "risk_budget_input_required": true,
+    "rules": [
+      "Size from a caller-supplied risk budget but apply an additional executable-depth cap.",
+      "Use lower leverage and a larger liquidation buffer than in normal liquidity.",
+      "Reject the trade if expected impact or data latency cannot be bounded."
+    ]
+  },
+  "failure_modes": [
+    "The continuation window may be shorter than observable data and order latency.",
+    "Extreme spread and impact can erase the gross move or make exit impossible.",
+    "Liquidation feeds can be incomplete, delayed, duplicated, or venue-specific.",
+    "A cascade can reverse violently once forced flow is exhausted."
+  ],
+  "validation_plan": [
+    "Use event-time simulation and reject bar-only tests that cannot establish order sequence.",
+    "Audit feed latency, missing events, duplicate events, and venue outages before measuring returns.",
+    "Stress spread, impact, latency, and partial-fill assumptions well beyond their median values.",
+    "Report tail loss, fill probability, time-to-fill, after-cost expectancy, and results by event severity."
+  ],
+  "warning": "Untested research hypothesis. Not financial advice, a recommendation, or evidence of profitability."
+}

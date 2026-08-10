@@ -1,0 +1,86 @@
+{
+  "id": "vwap-trend-pullback-continuation",
+  "title": "VWAP Trend-Pullback Continuation Research Template",
+  "version": 1,
+  "classification": "untested-research-hypothesis",
+  "market_type": "generic-crypto-perpetual-futures",
+  "signal_timeframe": "15m",
+  "context_timeframes": ["1h", "4h"],
+  "hypothesis": "During an established higher-timeframe trend, a controlled 15-minute pullback toward VWAP or anchored VWAP may resume in the trend direction after rejection, net of costs.",
+  "concept_ids": [
+    "indicators/volume-weighted-average-price",
+    "indicators/anchored-vwap",
+    "indicators/average-true-range",
+    "trading-systems/trend-following",
+    "orders-and-execution/limit-order",
+    "risk-and-performance/volatility-stop",
+    "risk-and-performance/position-sizing"
+  ],
+  "required_data": [
+    {"field": "venue OHLCV, session VWAP, and event-anchored VWAP", "cadence": "15m", "freshness": "through the last closed bar"},
+    {"field": "higher-timeframe trend measurements", "cadence": "1h and 4h", "freshness": "through the last closed context bar"},
+    {"field": "ATR, spread, and executable depth", "cadence": "15m plus decision-time book", "freshness": "current decision interval"},
+    {"field": "funding and open interest", "cadence": "venue-native", "freshness": "current interval"}
+  ],
+  "parameters": {
+    "trend_definition": "predeclared 1h/4h structure rule; compare alternatives without selecting on the final test",
+    "pullback_zone_atr": {"min": 0.0, "max": 0.75, "step": 0.25},
+    "rejection_confirmation_bars": {"candidates": [1, 2, 3]},
+    "stop_distance_atr": {"min": 1.0, "max": 3.0, "step": 0.5},
+    "maximum_holding_bars": {"min": 4, "max": 32}
+  },
+  "entry_conditions": {
+    "long": [
+      "Both context timeframes meet the frozen uptrend definition.",
+      "Price pulls back to the tested VWAP zone without breaking the structural invalidation level.",
+      "A closed 15m bar rejects the zone and resumes above it.",
+      "Liquidity and after-cost reward-to-risk meet caller-supplied constraints."
+    ],
+    "short": [
+      "Both context timeframes meet the frozen downtrend definition.",
+      "Price rallies to the tested VWAP zone without breaking the structural invalidation level.",
+      "A closed 15m bar rejects the zone and resumes below it.",
+      "Liquidity and after-cost reward-to-risk meet caller-supplied constraints."
+    ]
+  },
+  "invalidation": [
+    "The higher-timeframe trend definition no longer holds.",
+    "Price closes beyond the predeclared swing or anchored-VWAP invalidation level.",
+    "The market enters volatility.shock, liquidity.dislocated, or positioning.deleveraging."
+  ],
+  "exit_logic": [
+    "Use a predeclared volatility or structural stop and simulate gap-through execution.",
+    "Test a trailing exit based on favorable extreme minus/plus the configured ATR distance.",
+    "Apply a time exit if continuation does not develop within the configured holding window.",
+    "Include funding cash flows at exact payment timestamps."
+  ],
+  "regime_profile": {
+    "favored": ["trend.uptrend", "trend.downtrend", "volatility.normal", "liquidity.normal"],
+    "avoid": ["trend.range", "trend.transition", "volatility.shock", "liquidity.dislocated", "positioning.deleveraging"]
+  },
+  "cost_model": {
+    "required": ["maker-taker-fees", "spread", "slippage", "market-impact", "funding"],
+    "notes": "Model passive and aggressive entry variants separately and prevent favorable same-bar fills when bar ordering is unknown."
+  },
+  "risk_constraints": {
+    "risk_budget_input_required": true,
+    "rules": [
+      "Derive quantity from a caller-supplied risk budget and the wider of structural and volatility stop distance.",
+      "Cap by executable depth, leverage ceiling, and liquidation-distance buffer.",
+      "Reject entries whose estimated cost removes the configured minimum after-cost payoff."
+    ]
+  },
+  "failure_modes": [
+    "The trend classification lags a reversal and labels transition as continuation.",
+    "The VWAP anchor is selected with hindsight.",
+    "Funding or crowding makes continuation vulnerable to a squeeze.",
+    "Same-bar execution assumptions create impossible entries and stops."
+  ],
+  "validation_plan": [
+    "Define trend and anchors before evaluation and retain every rejected signal in the audit log.",
+    "Walk forward chronologically across multiple venues and both directions.",
+    "Run sensitivity analysis across adjacent parameters rather than report only the best combination.",
+    "Report after-cost expectancy, drawdown, tail loss, fill rate, and regime-conditioned stability on untouched data."
+  ],
+  "warning": "Untested research hypothesis. Not financial advice, a recommendation, or evidence of profitability."
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unperson-12359.github.io/trading-knowledge-library/schemas/playbook.schema.json",
+  "title": "Generic perpetual-futures research playbook",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "title", "version", "classification", "market_type",
+    "signal_timeframe", "context_timeframes", "hypothesis", "concept_ids",
+    "required_data", "parameters", "entry_conditions", "invalidation",
+    "exit_logic", "regime_profile", "cost_model", "risk_constraints",
+    "failure_modes", "validation_plan", "warning"
+  ],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "title": {"type": "string", "minLength": 1},
+    "version": {"type": "integer", "minimum": 1},
+    "classification": {"const": "untested-research-hypothesis"},
+    "market_type": {"const": "generic-crypto-perpetual-futures"},
+    "signal_timeframe": {"const": "15m"},
+    "context_timeframes": {"type": "array", "items": {"enum": ["1h", "4h"]}, "minItems": 1, "uniqueItems": true},
+    "hypothesis": {"type": "string", "minLength": 1},
+    "concept_ids": {"type": "array", "items": {"type": "string"}, "minItems": 2, "uniqueItems": true},
+    "required_data": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["field", "cadence", "freshness"],
+        "properties": {
+          "field": {"type": "string", "minLength": 1},
+          "cadence": {"type": "string", "minLength": 1},
+          "freshness": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "parameters": {"type": "object", "minProperties": 1},
+    "entry_conditions": {
+      "type": "object", "additionalProperties": false,
+      "required": ["long", "short"],
+      "properties": {
+        "long": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "short": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+      }
+    },
+    "invalidation": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "exit_logic": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "regime_profile": {
+      "type": "object", "additionalProperties": false,
+      "required": ["favored", "avoid"],
+      "properties": {
+        "favored": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true},
+        "avoid": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true}
+      }
+    },
+    "cost_model": {
+      "type": "object", "additionalProperties": false,
+      "required": ["required", "notes"],
+      "properties": {
+        "required": {"type": "array", "items": {"enum": ["maker-taker-fees", "spread", "slippage", "market-impact", "funding"]}, "minItems": 1, "uniqueItems": true},
+        "notes": {"type": "string", "minLength": 1}
+      }
+    },
+    "risk_constraints": {
+      "type": "object", "additionalProperties": false,
+      "required": ["risk_budget_input_required", "rules"],
+      "properties": {
+        "risk_budget_input_required": {"const": true},
+        "rules": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+      }
+    },
+    "failure_modes": {"type": "array", "items": {"type": "string"}, "minItems": 2},
+    "validation_plan": {"type": "array", "items": {"type": "string"}, "minItems": 3},
+    "warning": {"const": "Untested research hypothesis. Not financial advice, a recommendation, or evidence of profitability."}
+  }
+}

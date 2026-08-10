@@ -3,10 +3,12 @@
 Stdlib only. Generates:
   docs/index.html              dashboard + domain table + search
   docs/about.html              AI disclosure and project methodology
+  docs/playbooks/              research playbook index + detail pages
   docs/all.html                A-Z index of every concept
   docs/<slug>/index.html       domain page 1 (25 entries/page)
   docs/<slug>/page-N.html      further domain pages
   docs/api/v1/regimes.json     regime taxonomy + core annotations
+  docs/api/v1/playbooks.json   all research playbook objects
   docs/search-index.json       client-side search data
   docs/sitemap.xml             every generated page
 
@@ -61,6 +63,11 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 .pager span.cur{background:#2d6a4f;color:#fff;border-color:#2d6a4f;font-weight:600}
 .pager span.gap{border:none}
 .showing{font-family:system-ui;font-size:.8rem;color:#666}
+.warning{background:#fff4d6;border-left:4px solid #d97706;padding:.75rem 1rem;font-family:system-ui;font-size:.88rem}
+.tag{display:inline-block;background:#edf2f7;border-radius:999px;padding:.12rem .5rem;margin:.1rem;font-family:system-ui;font-size:.75rem}
+.playbook-card{border:1px solid #ddd;border-radius:6px;padding:.8rem 1rem;margin:.8rem 0}
+.playbook-card h2{margin:.1rem 0 .35rem;font-size:1.15rem}
+.json{white-space:pre-wrap;background:#f4f4f4;padding:.7rem;border-radius:4px;font-family:Consolas,monospace;font-size:.8rem}
 .domainnav{display:flex;justify-content:space-between;margin-top:2rem;font-family:system-ui;font-size:.85rem}
 .toc{columns:2;font-family:system-ui;font-size:.82rem;background:#fafaf8;border:1px solid #e8e8e5;border-radius:6px;padding:.8rem 1rem}
 .toc a{color:#333}
@@ -148,7 +155,9 @@ def page(title, body, prefix, slug, domains, extra_head="", description=""):
            + (' class="active"' if slug == "all" else "")
            + f'>A–Z index</a></li><li><a href="{prefix}about.html"'
            + (' class="active"' if slug == "about" else "")
-           + f'>About &amp; Methodology</a></li>{"".join(links)}</ul></details></nav>')
+           + f'>About &amp; Methodology</a></li><li><a href="{prefix}playbooks/"'
+           + (' class="active"' if slug == "playbooks" else "")
+           + f'>Research playbooks</a></li>{"".join(links)}</ul></details></nav>')
     desc = f'<meta name="description" content="{esc(description)}">' if description else ""
     return (f"<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'>"
             f"<meta name='viewport' content='width=device-width,initial-scale=1'>"
@@ -183,19 +192,63 @@ def pager(slug, page_no, n_pages, prefix=""):
     return f'<div class="pager" role="navigation" aria-label="Pagination">{"".join(items)}</div>'
 
 
+def render_playbook(playbook, prefix, concept_urls, concept_names):
+    def items(values):
+        return "<ul>" + "".join(f"<li>{esc(value)}</li>" for value in values) + "</ul>"
+
+    concept_links = []
+    for concept_id in playbook["concept_ids"]:
+        concept_links.append(
+            f'<li><a href="{prefix}{concept_urls[concept_id]}">{esc(concept_names[concept_id])}</a></li>'
+        )
+    data_rows = "".join(
+        f'<tr><td>{esc(item["field"])}</td><td>{esc(item["cadence"])}</td>'
+        f'<td>{esc(item["freshness"])}</td></tr>' for item in playbook["required_data"]
+    )
+    favored = "".join(f'<span class="tag">{esc(tag)}</span>' for tag in playbook["regime_profile"]["favored"])
+    avoid = "".join(f'<span class="tag">{esc(tag)}</span>' for tag in playbook["regime_profile"]["avoid"])
+    return (
+        f'<p class="warning"><strong>{esc(playbook["classification"])}</strong><br>{esc(playbook["warning"])}</p>'
+        f'<p><strong>Market:</strong> {esc(playbook["market_type"])} &middot; '
+        f'<strong>Signal:</strong> {esc(playbook["signal_timeframe"])} &middot; '
+        f'<strong>Context:</strong> {esc(", ".join(playbook["context_timeframes"]))}</p>'
+        f'<h2>Hypothesis</h2><p>{esc(playbook["hypothesis"])}</p>'
+        f'<h2>Regime profile</h2><p><strong>Favored research context:</strong> {favored}</p>'
+        f'<p><strong>Avoid:</strong> {avoid}</p>'
+        f'<h2>Required data</h2><table><tr><th>Field</th><th>Cadence</th><th>Freshness</th></tr>{data_rows}</table>'
+        f'<h2>Parameters to test</h2><div class="json">{esc(json.dumps(playbook["parameters"], ensure_ascii=False, indent=2))}</div>'
+        f'<h2>Entry conditions</h2><h3>Long</h3>{items(playbook["entry_conditions"]["long"])}'
+        f'<h3>Short</h3>{items(playbook["entry_conditions"]["short"])}'
+        f'<h2>Invalidation</h2>{items(playbook["invalidation"])}'
+        f'<h2>Exit logic</h2>{items(playbook["exit_logic"])}'
+        f'<h2>Cost model</h2><p>{esc(playbook["cost_model"]["notes"])}</p>{items(playbook["cost_model"]["required"])}'
+        f'<h2>Risk constraints</h2>{items(playbook["risk_constraints"]["rules"])}'
+        f'<h2>Failure modes</h2>{items(playbook["failure_modes"])}'
+        f'<h2>Validation plan</h2>{items(playbook["validation_plan"])}'
+        f'<h2>Linked concepts</h2><ul>{"".join(concept_links)}</ul>'
+    )
+
+
 def main():
     if DOCS.exists():
         shutil.rmtree(DOCS)
     DOCS.mkdir()
+    shutil.copytree(ROOT / "schemas", DOCS / "schemas")
 
     domains = []
     for p in sorted(CONCEPTS.glob("*.json")):
         domains.append((p.stem, json.loads(p.read_text(encoding="utf-8"))))
 
     total = sum(len(d) for _, d in domains)
+    playbooks = [
+        json.loads(path.read_text(encoding="utf-8"))
+        for path in sorted((ROOT / "playbooks").glob("*.json"))
+    ]
     written = set()      # relative paths of generated pages, for the link checker
     search_index = []    # {n, d, u}
     az = {}              # letter -> [(name, url)]
+    concept_urls = {}
+    concept_names = {}
 
     # ---- domain pages (paginated) ----
     for di, (slug, data) in enumerate(domains):
@@ -216,6 +269,8 @@ def main():
                 url += f"#{anchor(e['name'])}"
                 search_index.append({"n": e["name"], "d": data[0]["domain"],
                                      "u": url})
+                concept_urls[e["id"]] = url
+                concept_names[e["id"]] = e["name"]
                 az.setdefault(e["name"][0].upper(), []).append((e["name"], url))
 
             lo, hi = (pno - 1) * PER_PAGE + 1, min(n, pno * PER_PAGE)
@@ -314,6 +369,42 @@ def main():
         encoding="utf-8")
     written.add("about.html")
 
+    # ---- research playbooks ----
+    playbook_dir = DOCS / "playbooks"
+    playbook_dir.mkdir()
+    cards = []
+    for playbook in playbooks:
+        cards.append(
+            f'<article class="playbook-card"><h2><a href="{esc(playbook["id"])}.html">'
+            f'{esc(playbook["title"])}</a></h2><p>{esc(playbook["hypothesis"])}</p>'
+            f'<p class="meta">15m signal &middot; 1h/4h context &middot; untested research hypothesis</p></article>'
+        )
+        detail_body = (
+            f'<div class="crumbs"><a href="../index.html">Home</a> / '
+            f'<a href="./">Research playbooks</a> / {esc(playbook["title"])}</div>'
+            f'<h1>{esc(playbook["title"])}</h1>'
+            + render_playbook(playbook, "../", concept_urls, concept_names)
+        )
+        detail_name = f'{playbook["id"]}.html'
+        (playbook_dir / detail_name).write_text(
+            page(playbook["title"], detail_body, "../", "playbooks", domains,
+                 description=playbook["hypothesis"]), encoding="utf-8"
+        )
+        written.add(f"playbooks/{detail_name}")
+    playbook_body = (
+        '<div class="crumbs"><a href="../index.html">Home</a> / Research playbooks</div>'
+        '<h1>Generic Perpetual-Futures Research Playbooks</h1>'
+        '<p class="warning">Every playbook is an untested research hypothesis. These are reproducible '
+        'study templates, not trade recommendations or evidence of profitability.</p>'
+        + "".join(cards)
+    )
+    (playbook_dir / "index.html").write_text(
+        page("Research playbooks", playbook_body, "../", "playbooks", domains,
+             description="Five untested generic perpetual-futures research templates."),
+        encoding="utf-8"
+    )
+    written.add("playbooks/index.html")
+
     # ---- search index + sitemap ----
     (DOCS / "search-index.json").write_text(
         json.dumps(search_index, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
@@ -330,6 +421,9 @@ def main():
     }
     (api_dir / "regimes.json").write_text(
         json.dumps(regime_api, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    (api_dir / "playbooks.json").write_text(
+        json.dumps(playbooks, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     urls = [f"{BASE}/{w.replace('index.html', '')}" for w in sorted(written)]
     (DOCS / "sitemap.xml").write_text(

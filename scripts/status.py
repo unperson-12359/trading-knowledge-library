@@ -28,6 +28,17 @@ EXPECTED_REGIME_DIMENSIONS = {
     "liquidity": {"deep", "normal", "thin", "dislocated"},
     "positioning": {"balanced", "long-crowded", "short-crowded", "deleveraging"},
 }
+PLAYBOOK_WARNING = (
+    "Untested research hypothesis. Not financial advice, a recommendation, "
+    "or evidence of profitability."
+)
+PLAYBOOK_REQUIRED = {
+    "id", "title", "version", "classification", "market_type",
+    "signal_timeframe", "context_timeframes", "hypothesis", "concept_ids",
+    "required_data", "parameters", "entry_conditions", "invalidation",
+    "exit_logic", "regime_profile", "cost_model", "risk_constraints",
+    "failure_modes", "validation_plan", "warning",
+}
 
 
 def _valid_date(value):
@@ -163,6 +174,7 @@ def main():
                 if found_dimensions != EXPECTED_REGIME_DIMENSIONS:
                     failures.append("regime taxonomy does not match the controlled dimensions and states")
 
+    core_ids = set()
     collection_path = ROOT / "collections" / "core-perps.json"
     if not collection_path.exists():
         failures.append("collections/core-perps.json is required")
@@ -178,6 +190,7 @@ def main():
             elif len(set(concept_ids)) != 50:
                 failures.append("core-perps collection contains duplicate concept IDs")
             else:
+                core_ids = set(concept_ids)
                 missing = sorted(set(concept_ids) - set(ids))
                 if missing:
                     failures.append("core-perps collection has unknown IDs: " + ", ".join(missing))
@@ -214,6 +227,80 @@ def main():
                                 )
                         if not isinstance(note, str) or not note.strip():
                             failures.append(f"core-perps annotation {concept_id} needs behavior_note")
+
+    playbook_paths = sorted((ROOT / "playbooks").glob("*.json"))
+    if len(playbook_paths) != 5:
+        failures.append(f"expected exactly 5 playbooks, found {len(playbook_paths)}")
+    playbook_ids = []
+    for playbook_path in playbook_paths:
+        try:
+            playbook = json.loads(playbook_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"{playbook_path.name}: invalid JSON: {exc}")
+            continue
+        if not isinstance(playbook, dict):
+            failures.append(f"{playbook_path.name}: playbook must be an object")
+            continue
+        missing_fields = sorted(PLAYBOOK_REQUIRED - set(playbook))
+        if missing_fields:
+            failures.append(f"{playbook_path.name}: missing fields: " + ", ".join(missing_fields))
+        playbook_id = playbook.get("id")
+        playbook_ids.append(playbook_id)
+        if playbook_id != playbook_path.stem:
+            failures.append(f"{playbook_path.name}: id must match filename")
+        if playbook.get("classification") != "untested-research-hypothesis":
+            failures.append(f"{playbook_path.name}: invalid classification")
+        if playbook.get("market_type") != "generic-crypto-perpetual-futures":
+            failures.append(f"{playbook_path.name}: invalid market_type")
+        if playbook.get("signal_timeframe") != "15m":
+            failures.append(f"{playbook_path.name}: signal_timeframe must be 15m")
+        if playbook.get("warning") != PLAYBOOK_WARNING:
+            failures.append(f"{playbook_path.name}: required warning is missing or changed")
+        linked_concepts = playbook.get("concept_ids")
+        if not isinstance(linked_concepts, list) or len(linked_concepts) < 2:
+            failures.append(f"{playbook_path.name}: concept_ids needs at least two items")
+        else:
+            unknown_concepts = sorted(set(linked_concepts) - core_ids)
+            if unknown_concepts:
+                failures.append(f"{playbook_path.name}: concepts outside core: " + ", ".join(unknown_concepts))
+        required_data = playbook.get("required_data")
+        if (not isinstance(required_data, list) or not required_data
+                or any(not isinstance(item, dict)
+                       or not all(isinstance(item.get(field), str) and item[field].strip()
+                                  for field in ("field", "cadence", "freshness"))
+                       for item in required_data)):
+            failures.append(f"{playbook_path.name}: invalid required_data")
+        entries_by_side = playbook.get("entry_conditions")
+        if (not isinstance(entries_by_side, dict)
+                or any(not isinstance(entries_by_side.get(side), list)
+                       or not entries_by_side[side] for side in ("long", "short"))):
+            failures.append(f"{playbook_path.name}: entry_conditions needs long and short rules")
+        profile = playbook.get("regime_profile")
+        if not isinstance(profile, dict):
+            failures.append(f"{playbook_path.name}: invalid regime_profile")
+        else:
+            profile_tags = []
+            for side in ("favored", "avoid"):
+                tags = profile.get(side)
+                if not isinstance(tags, list) or not tags:
+                    failures.append(f"{playbook_path.name}: regime_profile.{side} is required")
+                else:
+                    profile_tags.extend(tags)
+            unknown_tags = sorted(set(profile_tags) - valid_regime_tags)
+            if unknown_tags:
+                failures.append(f"{playbook_path.name}: unknown regime tags: " + ", ".join(unknown_tags))
+        constraints = playbook.get("risk_constraints")
+        if (not isinstance(constraints, dict)
+                or constraints.get("risk_budget_input_required") is not True
+                or not isinstance(constraints.get("rules"), list)
+                or not constraints["rules"]):
+            failures.append(f"{playbook_path.name}: invalid risk_constraints")
+        for field, minimum in (("failure_modes", 2), ("validation_plan", 3)):
+            value = playbook.get(field)
+            if not isinstance(value, list) or len(value) < minimum:
+                failures.append(f"{playbook_path.name}: {field} needs at least {minimum} items")
+    if len(set(playbook_ids)) != len(playbook_ids):
+        failures.append("playbook IDs must be unique")
 
     placeholders = sum(
         1 for entry in entries

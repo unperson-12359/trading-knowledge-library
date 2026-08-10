@@ -1,0 +1,86 @@
+{
+  "id": "atr-volatility-breakout",
+  "title": "ATR Volatility-Breakout Research Template",
+  "version": 1,
+  "classification": "untested-research-hypothesis",
+  "market_type": "generic-crypto-perpetual-futures",
+  "signal_timeframe": "15m",
+  "context_timeframes": ["1h", "4h"],
+  "hypothesis": "A 15-minute range break following predeclared volatility compression may continue when range expansion, volume, and liquidity-adjusted execution confirm the move, net of costs.",
+  "concept_ids": [
+    "indicators/average-true-range",
+    "risk-and-performance/realized-volatility",
+    "trading-systems/breakout-trading",
+    "trading-systems/trend-following",
+    "orders-and-execution/stop-order",
+    "orders-and-execution/slippage",
+    "risk-and-performance/volatility-stop",
+    "research-and-backtesting/walk-forward-analysis"
+  ],
+  "required_data": [
+    {"field": "venue OHLCV and true-range inputs", "cadence": "15m", "freshness": "through the last closed bar"},
+    {"field": "realized volatility and compression baseline", "cadence": "15m, 1h, and 4h", "freshness": "computed without future bars"},
+    {"field": "spread, depth, and trades around the break", "cadence": "event or 1m", "freshness": "current decision interval"},
+    {"field": "open interest and funding", "cadence": "venue-native", "freshness": "current interval"}
+  ],
+  "parameters": {
+    "compression_quantile": {"min": 0.1, "max": 0.4, "step": 0.05},
+    "compression_lookback_bars": {"candidates": [96, 192, 384]},
+    "breakout_lookback_bars": {"candidates": [8, 16, 32]},
+    "confirmation_close_atr": {"min": 0.0, "max": 0.5, "step": 0.1},
+    "stop_distance_atr": {"min": 1.0, "max": 3.0, "step": 0.5}
+  },
+  "entry_conditions": {
+    "long": [
+      "The frozen compression measure is below its tested historical quantile before the break.",
+      "A closed 15m bar exceeds the predeclared upper range boundary by the tested confirmation distance.",
+      "Range and volume expand without a liquidity dislocation or stale print.",
+      "The context does not show an established higher-timeframe downtrend unless that variant is tested separately."
+    ],
+    "short": [
+      "The frozen compression measure is below its tested historical quantile before the break.",
+      "A closed 15m bar falls below the predeclared lower range boundary by the tested confirmation distance.",
+      "Range and volume expand without a liquidity dislocation or stale print.",
+      "The context does not show an established higher-timeframe uptrend unless that variant is tested separately."
+    ]
+  },
+  "invalidation": [
+    "Price closes back inside the broken range under the frozen false-break rule.",
+    "Expansion is caused by an unhealthy index/oracle or venue-specific data error.",
+    "Spread, impact, or slippage exceeds the caller's maximum execution constraint."
+  ],
+  "exit_logic": [
+    "Use a predeclared ATR trailing stop or opposite range boundary; compare variants without final-period selection.",
+    "Apply a time exit if volatility expansion fails to persist.",
+    "Simulate stop gaps, partial fills, fees, impact, and funding."
+  ],
+  "regime_profile": {
+    "favored": ["trend.transition", "volatility.compressed", "volatility.expanded", "liquidity.normal"],
+    "avoid": ["trend.range", "volatility.shock", "liquidity.dislocated", "positioning.deleveraging"]
+  },
+  "cost_model": {
+    "required": ["maker-taker-fees", "spread", "slippage", "market-impact", "funding"],
+    "notes": "Breakout entries are latency- and gap-sensitive; use conservative next-event fills and prohibit fills at a crossed historical trigger with no available depth."
+  },
+  "risk_constraints": {
+    "risk_budget_input_required": true,
+    "rules": [
+      "Determine size from the caller's risk budget, ATR stop distance, leverage cap, and executable depth.",
+      "Do not increase size because recent volatility is compressed without enforcing a shock cap.",
+      "Reject signals with insufficient margin headroom for an adverse gap."
+    ]
+  },
+  "failure_modes": [
+    "Compression thresholds are sensitive to lookback, sampling, and structural volatility change.",
+    "False breaks are common in ranges and around engineered liquidity sweeps.",
+    "Volatility targeting can oversize exposure immediately before a shock.",
+    "Bar data can create impossible trigger, entry, and stop ordering."
+  ],
+  "validation_plan": [
+    "Freeze compression and boundary rules, then use chronological walk-forward evaluation.",
+    "Run event-aware execution simulation and same-bar ambiguity stress tests.",
+    "Report parameter surfaces, not only the best point, across venues, directions, and regime states.",
+    "Evaluate after-cost expectancy, drawdown, tail loss, trade count, and stability on untouched data."
+  ],
+  "warning": "Untested research hypothesis. Not financial advice, a recommendation, or evidence of profitability."
+}
