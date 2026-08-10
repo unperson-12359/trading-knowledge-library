@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/bracket-order",
+  "canonical_sha256": "f080fdba33fc1a529759712a97e3666f95a3d5a9dd35b6d51af9a7880c8109c1",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/bracket-order",
+    "name": "Bracket order",
+    "aliases": [
+      "bracket",
+      "OCO bracket with parent"
+    ],
+    "domain": "Orders and execution",
+    "definition": "A compound order that surrounds a primary (parent) order with two opposite-side exit orders: a profit-taking limit order on one side and a protective stop order on the other. Once the parent fills, the two exits work as an OCO pair - whichever executes first cancels the other.",
+    "intuition": "It packages a complete trade plan in one ticket: entry, target, and stop, so the position is never left unmanaged.",
+    "mechanics": "A buy parent is bracketed by a high-side sell limit and a low-side sell stop (mirror image for a sell parent). The exit orders are transmitted when the parent fills; execution of either exit cancels its sibling. The whole structure is maintained by the broker's order-management system.",
+    "formula": "",
+    "relationships": [
+      "One-cancels-the-other order",
+      "One-triggers-the-other order",
+      "Stop order",
+      "Limit order",
+      "Conditional order"
+    ],
+    "failure_modes": "The stop leg still becomes a market order when triggered, so gap moves can exit far below the intended stop price. Partial parent fills and cancel-replace races can also leave mismatched exit quantities.",
+    "misconceptions": "A bracket does not guarantee bounded loss - the stop leg guarantees an exit attempt, not an exit price. It is also not an exchange-native type on most venues; it is broker-side order logic.",
+    "example": "You buy 200 shares at $100 with a bracket: sell limit at $108 and sell stop at $96. The stock rallies to $108, the limit fills, and the $96 stop is canceled automatically.",
+    "citations": [
+      {
+        "source": "IBKR Guides: Order Types (Trader Workstation)",
+        "url": "https://www.ibkrguides.com/traderworkstation/order-types.htm",
+        "section": "Bracket orders",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

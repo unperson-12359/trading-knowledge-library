@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/pov-order",
+  "canonical_sha256": "35fb5a9c014c2647f14c30e390599978fb23cdab6428dc8c43006039c85e74bb",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/pov-order",
+    "name": "POV order",
+    "aliases": [
+      "POV",
+      "percentage-of-volume order",
+      "participation order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An algorithmic execution order that targets a fixed percentage of the market's traded volume: the algo speeds up when market volume rises and slows when it falls, so the order continuously participates at the specified rate until complete.",
+    "intuition": "POV is 'stay a constant fraction of the flow' - if you ask for 10% of volume, the algo keeps buying (or selling) so that you are roughly one tenth of everything that prints.",
+    "mechanics": "The algo watches real-time volume and submits child orders to keep cumulative participation near the target rate (typically user-set between 1% and 50%), within start/end times and optionally with a 'never take liquidity' constraint that restricts it to passive fills at the cost of completion risk.",
+    "formula": "Participation rate = cumulative own executed volume / cumulative market volume over the same window; the algo steers this toward the target percentage.",
+    "relationships": [
+      "VWAP order",
+      "TWAP order",
+      "Liquidity-seeking algorithm",
+      "Market impact"
+    ],
+    "failure_modes": "Completion time is unbounded: in a dead market the order may never finish, while a volume surge forces aggressive catch-up trading with elevated impact. A fixed participation rate also becomes predictable and can be gamed by other participants watching the flow.",
+    "misconceptions": "POV does not cap the order's share of daily volume in advance - it tracks volume as it happens, so total execution time and end-time price exposure are unknown when the order is placed. Nor does a low participation rate guarantee low impact.",
+    "example": "You work a 300,000-share sell at a 10% POV target; in an hour when 500,000 shares trade, the algo sells about 50,000, then throttles back when volume dries up.",
+    "citations": [
+      {
+        "source": "Interactive Brokers TWS API: IB Algorithms",
+        "url": "https://interactivebrokers.github.io/tws-api/ibalgos.html",
+        "section": "Percentage of Volume",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "IBKR Guides: Algorithmic Trading",
+        "url": "https://www.ibkrguides.com/ibkrdesktop/algorithmic-trading.htm",
+        "section": "Percentage of Volume Strategy",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/scale-order",
+  "canonical_sha256": "1c41dbcaa63b455f7a538a7cca4e7c069db20e136adcea0c0b287142fc0ff2c3",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/scale-order",
+    "name": "Scale order",
+    "aliases": [
+      "scale-in/scale-out order",
+      "scaled order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An order that breaks a large total quantity into a series of limit orders placed at progressively more favorable prices (e.g., each buy clip lower than the last), so the position accumulates or distributes gradually across a price range instead of at a single level.",
+    "intuition": "Scaling is dollar-cost-averaging inside the order book: you ladder your bids down (or offers up) and let the market come to you in pieces.",
+    "mechanics": "The platform generates child limit orders at user-defined price intervals and sizes (equal or graduated) and works them simultaneously or sequentially; fills at successive levels produce a volume-weighted average entry between the best and worst level. Scaling tools (e.g., IBKR ScaleTrader) automate clip size and spacing.",
+    "formula": "Average entry = sum(clip price x clip size) / total filled size.",
+    "relationships": [
+      "Ladder order",
+      "Iceberg order",
+      "TWAP order",
+      "Limit order"
+    ],
+    "failure_modes": "If the price never reaches the deeper levels, only part of the intended position is established (opportunity cost); if it falls through all of them, the trader is fully invested into a continuing decline - the structure concentrates fills exactly when the market is moving against the position.",
+    "misconceptions": "A scale order is not a single order at an average price - it is a bundle of independent limit orders, each of which can fill or not. It also does not reduce market impact the way slicing over time does, because all levels can be visible at once.",
+    "example": "You scale into 10,000 shares with bids of 2,000 shares each at $50.00, $49.50, $49.00, $48.50, $48.00; fills at the first three levels give a 6,000-share position at a $49.50 average.",
+    "citations": [
+      {
+        "source": "IBKR Guides: Order Types (Trader Workstation)",
+        "url": "https://www.ibkrguides.com/traderworkstation/order-types.htm",
+        "section": "Order types list (scaling/laddering order tools)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

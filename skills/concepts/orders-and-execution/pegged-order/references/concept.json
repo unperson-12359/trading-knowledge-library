@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/pegged-order",
+  "canonical_sha256": "1a2791f9c81a59abd469cd57905ff7a6175a3567ffbdf52fd4b3856a71ca1ac3",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/pegged-order",
+    "name": "Pegged order",
+    "aliases": [
+      "peg order",
+      "relative order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An order whose limit price is not static but automatically tracks ('pegs to') a reference price - typically the national best bid, the national best offer, or their midpoint - plus or minus an optional offset, re-pricing itself as the reference moves.",
+    "intuition": "A pegged order floats with the market: instead of canceling and re-entering a limit order every time the quote moves, the venue re-prices it for you.",
+    "mechanics": "The exchange computes the order's working price from the reference quote (same-side for primary peg, opposite-side for market peg, NBBO midpoint for midpoint peg) and updates it automatically as the quote changes; a cap limit price bounds how far it can follow. In exchange protocols this is OrdType = Pegged with an ExecInst selecting the peg type and a PegDifference offset (FIX tag 211).",
+    "formula": "Working price = reference price + offset (buy: min(result, cap); sell: max(result, cap)), where reference is NBB/NBO (primary peg), NBO/NBB (market peg), or NBBO midpoint (midpoint peg).",
+    "relationships": [
+      "Primary peg order",
+      "Market peg order",
+      "Midpoint peg order",
+      "Limit order",
+      "Hidden order"
+    ],
+    "failure_modes": "Pegged orders re-price into deteriorating quotes automatically, so they can 'chase' a market that is stepping away and fill at progressively worse relative prices. They are also vulnerable to quote flicker and to execution just before adverse moves (adverse selection on stale references).",
+    "misconceptions": "A peg is not a fixed limit - the executed price moves with the reference, so the fill price is not known in advance (only the cap is). Nor does pegging guarantee queue priority at each new price level.",
+    "example": "You place a midpoint-pegged buy with cap $50.00; as the NBBO moves from 49.90x49.94 to 49.96x50.00, your working price steps from $49.92 to $49.98 automatically.",
+    "citations": [
+      {
+        "source": "Cboe Titanium U.S. Equities BOE Specification",
+        "url": "https://www.cboe.com/document/tech-spec/document/technical-specifications/cboe-titanium-u.s.-equities-boe-specification",
+        "section": "OrdType = Pegged; ExecInst peg types (primary/market/midpoint); PegDifference",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "FIX 4.2 Execution Report (MsgType 8), FIX Dictionary (Onix Solutions)",
+        "url": "https://www.onixs.biz/fix-dictionary/4.2/msgType_8_8.html",
+        "section": "PegDifference <211> field",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

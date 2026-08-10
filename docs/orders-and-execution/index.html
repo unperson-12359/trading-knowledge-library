@@ -298,6 +298,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="maker-or-cancel-order"><h3>Maker-or-cancel order <a class="anchor" href="#maker-or-cancel-order">#</a></h3>
 <div class="field">A limit order instruction requiring the order to either post to the book as a liquidity-adding (&#x27;maker&#x27;) order or be canceled immediately; if it would execute on arrival and remove liquidity, it is killed rather than executed or repriced. It is the cancel-on-marketability variant of post-only behavior.</div>
+<div class="skill-links"><a href="../skills/tkl-maker-or-cancel-order/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Maker-or-cancel is a hard line: &#x27;if I can&#x27;t be the maker, don&#x27;t trade at all&#x27; - no sliding, no accidental taker fill.</div>
 <div class="field"><span class="label">Mechanics:</span> On arrival the venue tests marketability; a maker-or-cancel order that would cross or lock the opposite side is canceled back to the sender, while a non-marketable one rests at its limit price and earns maker fees/rebates if later executed against. Related Cboe instructions implement post-only/book-only handling with cancel behavior for would-be removers.</div>
 <div class="field"><span class="label">Failure modes:</span> The order can be canceled repeatedly in a rising (for buys) or falling (for sells) market, so the strategy never establishes the intended position. Traders also confuse it with reprice variants and are surprised when nothing rests on the book.</div>
@@ -309,6 +310,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="pegged-order"><h3>Pegged order <a class="anchor" href="#pegged-order">#</a></h3>
 <div class="field">An order whose limit price is not static but automatically tracks (&#x27;pegs to&#x27;) a reference price - typically the national best bid, the national best offer, or their midpoint - plus or minus an optional offset, re-pricing itself as the reference moves.</div>
+<div class="skill-links"><a href="../skills/tkl-pegged-order/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A pegged order floats with the market: instead of canceling and re-entering a limit order every time the quote moves, the venue re-prices it for you.</div>
 <div class="field"><span class="label">Mechanics:</span> The exchange computes the order&#x27;s working price from the reference quote (same-side for primary peg, opposite-side for market peg, NBBO midpoint for midpoint peg) and updates it automatically as the quote changes; a cap limit price bounds how far it can follow. In exchange protocols this is OrdType = Pegged with an ExecInst selecting the peg type and a PegDifference offset (FIX tag 211).</div>
 <div class="field"><span class="label">Failure modes:</span> Pegged orders re-price into deteriorating quotes automatically, so they can &#x27;chase&#x27; a market that is stepping away and fill at progressively worse relative prices. They are also vulnerable to quote flicker and to execution just before adverse moves (adverse selection on stale references).</div>
@@ -322,6 +324,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="midpoint-peg-order"><h3>Midpoint peg order <a class="anchor" href="#midpoint-peg-order">#</a></h3>
 <div class="field">A pegged order whose working price tracks the midpoint of the national best bid and offer, so executions occur halfway between the displayed bid and ask. It is typically non-displayed and is used to capture half the spread relative to crossing it.</div>
+<div class="skill-links"><a href="../skills/tkl-midpoint-peg-order/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is a standing offer to trade &#x27;at the halfway mark&#x27;: both sides split the spread instead of one side paying it.</div>
 <div class="field"><span class="label">Mechanics:</span> The venue continuously re-prices the order to the NBBO midpoint as quotes move; the order rests non-displayed and executes only when contra-side interest (often a market or marketable order) is willing to trade at the midpoint. Exchange protocols denote it as a midpoint peg instruction (e.g., Cboe ExecInst M).</div>
 <div class="field"><span class="label">Failure modes:</span> When the NBBO is locked or crossed the midpoint is unstable, and some venues suspend midpoint matching in those states. Midpoint orders are also adversely selected: they tend to fill just before the quote moves against the resting side.</div>
@@ -335,6 +338,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="primary-peg-order"><h3>Primary peg order <a class="anchor" href="#primary-peg-order">#</a></h3>
 <div class="field">A pegged order whose working price tracks the same side of the market: a buy primary peg follows the national best bid, a sell primary peg follows the national best offer, usually plus or minus an offset. It keeps the order at the top of its side&#x27;s queue without crossing the spread.</div>
+<div class="skill-links"><a href="../skills/tkl-primary-peg-order/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is &#x27;stay on the bid (or offer) automatically&#x27; - you remain competitively posted as a liquidity provider while the market moves.</div>
 <div class="field"><span class="label">Mechanics:</span> The venue re-prices the order as the same-side NBBO quote moves (Cboe ExecInst R: peg Buy to NBB, Sell to NBO), with an optional offset to be more or less aggressive, subject to a cap limit. The order adds liquidity and, being displayed or non-displayed per instructions, earns maker treatment on execution.</div>
 <div class="field"><span class="label">Failure modes:</span> Because it only ever posts passively, a primary peg can go unfilled for an entire move; and when it does fill, it is often because a more aggressive trader expects the quote to move through it (adverse selection).</div>
@@ -348,6 +352,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="market-peg-order"><h3>Market peg order <a class="anchor" href="#market-peg-order">#</a></h3>
 <div class="field">A pegged order whose working price tracks the opposite side of the market: a buy market peg follows the national best offer, a sell market peg follows the national best bid, typically with an offset to stay slightly less aggressive. It behaves like a continuously adjusted marketable limit order.</div>
+<div class="skill-links"><a href="../skills/tkl-market-peg-order/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is &#x27;keep me at the ask so I can buy (or at the bid so I can sell) as the market moves&#x27; - aggressive but price-bounded.</div>
 <div class="field"><span class="label">Mechanics:</span> The venue re-prices the order off the contra-side NBBO quote (Cboe ExecInst P: peg Buy to NBO, Sell to NBB) with an optional offset, executing immediately if marketable and re-pegging as the quote moves, bounded by a cap limit price.</div>
 <div class="field"><span class="label">Failure modes:</span> It removes liquidity and pays the spread repeatedly as the quote steps away, so total cost can approach that of chasing with market orders. A one-tick-wide or flickering quote can also produce a string of small fills at worsening prices.</div>
@@ -361,6 +366,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="discretionary-order"><h3>Discretionary order <a class="anchor" href="#discretionary-order">#</a></h3>
 <div class="field">A limit order displayed (or ranked) at one price but carrying a hidden &#x27;discretionary&#x27; range up to a more aggressive price at which it is willing to execute. The visible price quotes passively while the discretionary amount lets it step up (or down) to trade with incoming marketable interest.</div>
+<div class="skill-links"><a href="../skills/tkl-discretionary-order/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is a limit order with a secret reserve of price flexibility: &#x27;show 10.00, but I&#x27;m really willing to pay up to 10.02 if someone comes to me.&#x27;</div>
 <div class="field"><span class="label">Mechanics:</span> The order rests at its ranked price; when contra-side interest arrives within the discretionary range, the venue executes at prices up to the discretion limit (in FIX carried by DiscretionInst tag 388 and DiscretionOffset tag 389). Exchange variants (e.g., midpoint discretionary orders) rank at a passive price with discretion to the NBBO midpoint, sometimes with protections that disable discretion when the quote appears unstable.</div>
 <div class="field"><span class="label">Failure modes:</span> Exercising discretion means trading with aggressive, possibly informed flow, so discretionary executions suffer adverse selection - fills cluster just before adverse moves. The hidden range also makes realized execution prices harder to predict and benchmark.</div>
@@ -373,6 +379,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="reserve-order"><h3>Reserve order <a class="anchor" href="#reserve-order">#</a></h3>
 <div class="field">An order that displays only a fraction of its total size to the market, holding the remainder &#x27;in reserve&#x27; and automatically refreshing the displayed quantity from the reserve as executions occur. It is functionally the same construct as an iceberg order.</div>
+<div class="skill-links"><a href="../skills/tkl-reserve-order/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is an order with a hidden back-room supply: the market sees a small clip, but each time the clip is taken, another quietly replaces it.</div>
 <div class="field"><span class="label">Mechanics:</span> The trader specifies total quantity and a display (refresh) quantity; the venue exposes only the display amount in the book, and when it is filled, a new clip of the same size is drawn from the reserve, typically receiving new time priority. In exchange protocols the reserve is set by a MaxFloor/display-quantity field.</div>
 <div class="field"><span class="label">Failure modes:</span> Refreshed clips usually go to the back of the time-priority queue at the price level, so the reserve fills more slowly than an equivalent fully displayed order. Sophisticated participants also detect the refresh pattern and infer the hidden size, reviving the very information leakage the order was meant to avoid.</div>

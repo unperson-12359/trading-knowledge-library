@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/discretionary-order",
+  "canonical_sha256": "0b4f99a996f2258250e0e2bf6e60eb1c7143809c447c24fb3eeacdce145234a9",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/discretionary-order",
+    "name": "Discretionary order",
+    "aliases": [
+      "discretionary peg order",
+      "order with discretion"
+    ],
+    "domain": "Orders and execution",
+    "definition": "A limit order displayed (or ranked) at one price but carrying a hidden 'discretionary' range up to a more aggressive price at which it is willing to execute. The visible price quotes passively while the discretionary amount lets it step up (or down) to trade with incoming marketable interest.",
+    "intuition": "It is a limit order with a secret reserve of price flexibility: 'show 10.00, but I'm really willing to pay up to 10.02 if someone comes to me.'",
+    "mechanics": "The order rests at its ranked price; when contra-side interest arrives within the discretionary range, the venue executes at prices up to the discretion limit (in FIX carried by DiscretionInst tag 388 and DiscretionOffset tag 389). Exchange variants (e.g., midpoint discretionary orders) rank at a passive price with discretion to the NBBO midpoint, sometimes with protections that disable discretion when the quote appears unstable.",
+    "formula": "",
+    "relationships": [
+      "Pegged order",
+      "Hidden order",
+      "Reserve order",
+      "Limit order"
+    ],
+    "failure_modes": "Exercising discretion means trading with aggressive, possibly informed flow, so discretionary executions suffer adverse selection - fills cluster just before adverse moves. The hidden range also makes realized execution prices harder to predict and benchmark.",
+    "misconceptions": "Discretion is not a wider displayed quote - other participants see only the ranked price. And it is broker/venue machinery, not the human 'discretionary trading' style.",
+    "example": "You rest a buy at $25.00 with $0.03 of discretion; when a seller sweeps at $25.02, your order executes at prices between $25.00 and $25.03 even though you were only visibly bidding $25.00.",
+    "citations": [
+      {
+        "source": "FIX 4.2 Execution Report (MsgType 8), FIX Dictionary (Onix Solutions)",
+        "url": "https://www.onixs.biz/fix-dictionary/4.2/msgType_8_8.html",
+        "section": "DiscretionInst <388> / DiscretionOffset <389> fields",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Cboe Titanium U.S. Equities BOE Specification",
+        "url": "https://www.cboe.com/document/tech-spec/document/technical-specifications/cboe-titanium-u.s.-equities-boe-specification",
+        "section": "ExecInst - Midpoint Discretionary Order instructions",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

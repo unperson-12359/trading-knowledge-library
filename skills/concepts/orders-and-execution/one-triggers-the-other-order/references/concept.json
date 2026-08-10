@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/one-triggers-the-other-order",
+  "canonical_sha256": "be43f1a261050ff6fa178c0e906af653f1716b62423d461f86773bcd341aaf8a",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/one-triggers-the-other-order",
+    "name": "One-triggers-the-other order",
+    "aliases": [
+      "OTO order",
+      "order-triggers-order",
+      "order-sends-order (OSO)"
+    ],
+    "domain": "Orders and execution",
+    "definition": "A linked pair of orders in which the second (child) order is dormant and is only submitted to the market when the first (parent) order executes. It chains an entry and a contingent follow-on order, such as 'buy if filled, then place my exit'.",
+    "intuition": "It is sequencing built into the order ticket: the second trade arms itself the moment the first one goes through.",
+    "mechanics": "The parent order works normally; on execution the broker's system transmits the child order (market, limit, or stop) with its preset parameters. The child does not exist in the market before the parent fills, and canceling the parent normally cancels the whole chain.",
+    "formula": "",
+    "relationships": [
+      "One-cancels-the-other order",
+      "Bracket order",
+      "Conditional order"
+    ],
+    "failure_modes": "Between the parent's fill and the child's submission the position is unprotected; a gap in that window (e.g., over a halt or outage) can leave an unhedged position. If the parent partially fills, behavior for the child (fire vs. wait) is platform-specific and often misunderstood.",
+    "misconceptions": "OTO does not guarantee the child fills - once triggered it is an ordinary order subject to market conditions. It is also distinct from OCO, where one execution cancels rather than activates the sibling.",
+    "example": "You place an OTO: buy 500 shares at $20 (parent); when it fills, a sell stop at $19 (child) is submitted automatically to protect the new position.",
+    "citations": [
+      {
+        "source": "IBKR Guides: Order Types (Trader Workstation)",
+        "url": "https://www.ibkrguides.com/traderworkstation/order-types.htm",
+        "section": "Attached/conditional order families (bracket and transmitted-on-fill orders)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

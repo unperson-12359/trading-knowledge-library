@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/minimum-quantity-order",
+  "canonical_sha256": "dc0bbf924523df42f89bfa1693f01a861cdf37deebe2ac92c1c14ee048fb423e",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/minimum-quantity-order",
+    "name": "Minimum quantity order",
+    "aliases": [
+      "min-quantity order",
+      "MinQty order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An order carrying a minimum execution quantity condition: it may execute only if at least the specified minimum number of shares or contracts can fill at once (or per execution), with smaller available quantities skipped or the order canceled.",
+    "intuition": "It says 'don't bother me for scraps' - useful when tiny partial fills cost more in fees or operational overhead than they are worth.",
+    "mechanics": "The venue checks available contra-side size against the MinQty value (FIX tag 110); if the immediately executable quantity meets the minimum, the order trades (often as IOC/FAK), otherwise nothing executes. On CME Globex, MinQty is used with fill-and-kill orders as the minimum quantity for immediate execution.",
+    "formula": "",
+    "relationships": [
+      "All-or-none order",
+      "Fill-or-kill order",
+      "Immediate-or-cancel order",
+      "Partial fill"
+    ],
+    "failure_modes": "The order can miss fills even when aggregate book depth far exceeds its size, because no single price level (or immediate match) meets the minimum. Setting the minimum too high relative to typical displayed size makes execution rare.",
+    "misconceptions": "Minimum quantity is not all-or-none: once the minimum is met, additional partial fills beyond it are allowed. It is also an execution condition, not a display condition - it does not hide size.",
+    "example": "You send a FAK buy for 1,000 contracts with MinQty 400; only 250 are immediately available, so nothing executes and the order is killed rather than leaving a 250-contract stub.",
+    "citations": [
+      {
+        "source": "Cboe Titanium U.S. Equities BOE Specification",
+        "url": "https://www.cboe.com/document/tech-spec/document/technical-specifications/cboe-titanium-u.s.-equities-boe-specification",
+        "section": "MinQty optional field (minimum total fill quantity)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "IBKR Guides: Order Types (Trader Workstation)",
+        "url": "https://www.ibkrguides.com/traderworkstation/order-types.htm",
+        "section": "Minimum Quantity attribute",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

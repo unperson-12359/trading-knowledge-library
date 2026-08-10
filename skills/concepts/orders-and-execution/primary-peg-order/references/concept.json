@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/primary-peg-order",
+  "canonical_sha256": "0e38700bf6f59472a44e63932a4320c06f010b08c9254287d025478d2e4ead89",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/primary-peg-order",
+    "name": "Primary peg order",
+    "aliases": [
+      "primary peg",
+      "pegged-to-primary",
+      "relative order (passive)"
+    ],
+    "domain": "Orders and execution",
+    "definition": "A pegged order whose working price tracks the same side of the market: a buy primary peg follows the national best bid, a sell primary peg follows the national best offer, usually plus or minus an offset. It keeps the order at the top of its side's queue without crossing the spread.",
+    "intuition": "It is 'stay on the bid (or offer) automatically' - you remain competitively posted as a liquidity provider while the market moves.",
+    "mechanics": "The venue re-prices the order as the same-side NBBO quote moves (Cboe ExecInst R: peg Buy to NBB, Sell to NBO), with an optional offset to be more or less aggressive, subject to a cap limit. The order adds liquidity and, being displayed or non-displayed per instructions, earns maker treatment on execution.",
+    "formula": "Buy working price = national best bid + offset; sell working price = national best offer - offset (bounded by the cap limit price).",
+    "relationships": [
+      "Pegged order",
+      "Market peg order",
+      "Midpoint peg order",
+      "Limit order",
+      "Rebate"
+    ],
+    "failure_modes": "Because it only ever posts passively, a primary peg can go unfilled for an entire move; and when it does fill, it is often because a more aggressive trader expects the quote to move through it (adverse selection).",
+    "misconceptions": "Primary peg is not a market order with a floating cap - it never takes liquidity. It also does not follow the trader's own venue quote but the national same-side best quote.",
+    "example": "With NBBO at $30.00 x $30.02, your primary-pegged buy sits at $30.00; when the bid steps to $30.01, your order re-prices to $30.01 automatically.",
+    "citations": [
+      {
+        "source": "Cboe Titanium U.S. Equities BOE Specification",
+        "url": "https://www.cboe.com/document/tech-spec/document/technical-specifications/cboe-titanium-u.s.-equities-boe-specification",
+        "section": "ExecInst R = Primary Peg (peg Buy to NBB, Sell to NBO)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "IBKR Guides: Order Types (Trader Workstation)",
+        "url": "https://www.ibkrguides.com/traderworkstation/order-types.htm",
+        "section": "Relative/Pegged-to-Primary",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

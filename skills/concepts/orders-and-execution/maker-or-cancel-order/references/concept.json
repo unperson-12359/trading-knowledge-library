@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/maker-or-cancel-order",
+  "canonical_sha256": "e37c9a429d4c09f04a64c53bac0b2ca65bfb0717767d2658ba0ab63faf96c590",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/maker-or-cancel-order",
+    "name": "Maker-or-cancel order",
+    "aliases": [
+      "MOC (maker-or-cancel)",
+      "post-only (cancel variant)"
+    ],
+    "domain": "Orders and execution",
+    "definition": "A limit order instruction requiring the order to either post to the book as a liquidity-adding ('maker') order or be canceled immediately; if it would execute on arrival and remove liquidity, it is killed rather than executed or repriced. It is the cancel-on-marketability variant of post-only behavior.",
+    "intuition": "Maker-or-cancel is a hard line: 'if I can't be the maker, don't trade at all' - no sliding, no accidental taker fill.",
+    "mechanics": "On arrival the venue tests marketability; a maker-or-cancel order that would cross or lock the opposite side is canceled back to the sender, while a non-marketable one rests at its limit price and earns maker fees/rebates if later executed against. Related Cboe instructions implement post-only/book-only handling with cancel behavior for would-be removers.",
+    "formula": "",
+    "relationships": [
+      "Post-only order",
+      "Limit order",
+      "Rebate",
+      "Maker fee"
+    ],
+    "failure_modes": "The order can be canceled repeatedly in a rising (for buys) or falling (for sells) market, so the strategy never establishes the intended position. Traders also confuse it with reprice variants and are surprised when nothing rests on the book.",
+    "misconceptions": "It is not a guarantee of earning a rebate - resting maker orders may simply never be hit. And unlike some post-only implementations, maker-or-cancel never reprices; it cancels.",
+    "example": "The market is $10.00 x $10.01; you send a maker-or-cancel buy at $10.01 - it would take the offer, so the exchange cancels it; resent at $10.00 it posts and waits for a seller to hit it.",
+    "citations": [
+      {
+        "source": "Cboe Titanium U.S. Equities BOE Specification",
+        "url": "https://www.cboe.com/document/tech-spec/document/technical-specifications/cboe-titanium-u.s.-equities-boe-specification",
+        "section": "Order entry instructions (Post Only / routing and book handling)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

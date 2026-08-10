@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/twap-order",
+  "canonical_sha256": "6967802378e01e5172b27f5888afd2249c3560dcbc2d7991c21b581d8c0e0e13",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/twap-order",
+    "name": "TWAP order",
+    "aliases": [
+      "TWAP",
+      "time-weighted average price order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An algorithmic execution order that slices a large parent order into smaller pieces released at regular time intervals over a specified period, aiming for an average execution price close to the time-weighted average price of the market over that period.",
+    "intuition": "TWAP spreads the trade evenly across the clock - same size every few minutes - so no single moment's price dominates the result.",
+    "mechanics": "The algo divides the schedule into equal time buckets and submits a child order in each (market, or limit subject to user conditions such as marketability or midpoint matching), regardless of volume patterns. Because it ignores volume, TWAP trades through thin periods at the same rate as busy ones.",
+    "formula": "TWAP over n equal time slices = (1/n) x sum of the price P_i observed in slice i.",
+    "relationships": [
+      "VWAP order",
+      "POV order",
+      "Scale order",
+      "Implementation shortfall algorithm",
+      "Market impact"
+    ],
+    "failure_modes": "The rigid time schedule is predictable and volume-blind: it keeps trading in illiquid stretches (moving the price) and under-participates during heavy volume, so the realized average can deviate from both the market TWAP and VWAP. Incomplete fills at the end time leave residual size.",
+    "misconceptions": "TWAP does not guarantee an average price equal to the market's TWAP - child-order timing, price limits, and missed fills cause deviation. Nor is time-slicing inherently low-impact if the clips are large relative to liquidity in each interval.",
+    "example": "A 120,000-share buy is worked via TWAP over 2 hours: the algo submits roughly 1,000 shares every minute, so the final average price approximates the average of prices across the two hours rather than one moment's quote.",
+    "citations": [
+      {
+        "source": "Interactive Brokers TWS API: IB Algorithms",
+        "url": "https://interactivebrokers.github.io/tws-api/ibalgos.html",
+        "section": "TWAP",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia: Volume-weighted average price",
+        "url": "https://en.wikipedia.org/wiki/Volume-weighted_average_price",
+        "section": "TWAP (time-weighted average price) comparison",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

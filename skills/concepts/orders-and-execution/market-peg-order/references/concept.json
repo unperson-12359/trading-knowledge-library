@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/market-peg-order",
+  "canonical_sha256": "4031f7ff0d050c481a423453608e63cf0eb5e4029b996580e4b8f96e428fd3f9",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/market-peg-order",
+    "name": "Market peg order",
+    "aliases": [
+      "market peg",
+      "pegged to market",
+      "opposite-side peg"
+    ],
+    "domain": "Orders and execution",
+    "definition": "A pegged order whose working price tracks the opposite side of the market: a buy market peg follows the national best offer, a sell market peg follows the national best bid, typically with an offset to stay slightly less aggressive. It behaves like a continuously adjusted marketable limit order.",
+    "intuition": "It is 'keep me at the ask so I can buy (or at the bid so I can sell) as the market moves' - aggressive but price-bounded.",
+    "mechanics": "The venue re-prices the order off the contra-side NBBO quote (Cboe ExecInst P: peg Buy to NBO, Sell to NBB) with an optional offset, executing immediately if marketable and re-pegging as the quote moves, bounded by a cap limit price.",
+    "formula": "Buy working price = national best offer - offset; sell working price = national best bid + offset (bounded by the cap limit price).",
+    "relationships": [
+      "Pegged order",
+      "Primary peg order",
+      "Midpoint peg order",
+      "Market order"
+    ],
+    "failure_modes": "It removes liquidity and pays the spread repeatedly as the quote steps away, so total cost can approach that of chasing with market orders. A one-tick-wide or flickering quote can also produce a string of small fills at worsening prices.",
+    "misconceptions": "Market peg is the opposite reference of primary peg - traders routinely invert the two. It does not guarantee full execution: once the quote moves beyond the cap, the remainder stops following.",
+    "example": "NBBO is $15.00 x $15.02; your market-pegged buy (offset $0.00) works at $15.02 and takes the offer; when the offer moves to $15.03, the order follows, up to your cap.",
+    "citations": [
+      {
+        "source": "Cboe Titanium U.S. Equities BOE Specification",
+        "url": "https://www.cboe.com/document/tech-spec/document/technical-specifications/cboe-titanium-u.s.-equities-boe-specification",
+        "section": "ExecInst P = Market Peg (peg Buy to NBO, Sell to NBB)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "IBKR Guides: Order Types (Trader Workstation)",
+        "url": "https://www.ibkrguides.com/traderworkstation/order-types.htm",
+        "section": "Pegged to Market",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

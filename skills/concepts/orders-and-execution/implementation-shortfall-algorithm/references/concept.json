@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/implementation-shortfall-algorithm",
+  "canonical_sha256": "4614e133a8e5ef14fccfa4e04b04f6744a14d1b7595576b7859b164918a2e51b",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/implementation-shortfall-algorithm",
+    "name": "Implementation shortfall algorithm",
+    "aliases": [
+      "IS algorithm",
+      "arrival-price / IS algo"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An execution algorithm whose objective is to minimize implementation shortfall - the total cost of executing versus the price at the moment the trading decision was made. It trades off the market impact of trading quickly against the timing (price) risk of trading slowly, front-loading execution when risk dominates.",
+    "intuition": "The IS algo asks: 'every minute I wait, the price can run away; every clip I slam, I move the price' - and picks the schedule that balances those two costs against the decision price.",
+    "mechanics": "Given an urgency/risk-aversion parameter and a participation cap, the algo computes an execution schedule that front-loads size (more at the start, tapering later), typically using hidden order placement and opportunistic liquidity capture; higher urgency trades faster and accepts more impact. Benchmark is the arrival/decision price rather than VWAP.",
+    "formula": "IS = execution cost (avg fill price vs. decision price x filled qty) + delay cost (price move before submission) + opportunity cost (price move x unfilled qty); the algo minimizes the expected IS under an impact-vs-risk trade-off.",
+    "relationships": [
+      "Implementation shortfall",
+      "Arrival price algorithm",
+      "Market impact",
+      "Temporary market impact",
+      "Opportunity cost"
+    ],
+    "failure_modes": "Impact and risk models are estimates: in a volatility spike the schedule can be badly miscalibrated, either overpaying impact or under-trading into a runaway market. Model-driven urgency also makes behavior sensitive to parameter choices that are hard to verify ex ante.",
+    "misconceptions": "Minimizing shortfall does not mean beating VWAP or always trading immediately; for patient mandates the optimal IS schedule can be slow. And the decision-price benchmark penalizes delay, which VWAP-style benchmarks do not.",
+    "example": "A manager decides to buy 1 million shares with the stock at $50.00; the IS algo executes 40% in the first hour and tapers off, accepting some impact to avoid the risk that the price drifts to $50.50 before completion.",
+    "citations": [
+      {
+        "source": "Wikipedia: Implementation shortfall",
+        "url": "https://en.wikipedia.org/wiki/Implementation_shortfall",
+        "section": "Decision price; cost components",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Interactive Brokers TWS API: IB Algorithms",
+        "url": "https://interactivebrokers.github.io/tws-api/ibalgos.html",
+        "section": "Arrival Price (urgency/risk-aversion scheduling)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

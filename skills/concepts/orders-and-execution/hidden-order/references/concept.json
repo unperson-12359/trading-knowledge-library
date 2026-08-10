@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/hidden-order",
+  "canonical_sha256": "995253408dd6546fb3632d803946d9eb01468e510ea0ebb8a341b2b3a1fc5884",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/hidden-order",
+    "name": "Hidden order",
+    "aliases": [
+      "non-displayed order",
+      "invisible order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "A limit order whose full size is never displayed in the public order book; it rests at the venue invisibly and executes only when incoming marketable orders trade at its price. Hidden orders provide no pre-trade transparency but still must execute within Reg NMS price constraints.",
+    "intuition": "A hidden order is a limit order nobody can see - it waits in the dark and only reveals itself by trading.",
+    "mechanics": "The venue accepts the order with a non-displayed/invisible display indicator (e.g., Cboe DisplayIndicator = Invisible); it takes no part in the displayed quote and, at the same price, yields priority to displayed orders. Midpoint pegs and reserve icebergs are common hidden-order forms.",
+    "formula": "",
+    "relationships": [
+      "Iceberg order",
+      "Reserve order",
+      "Midpoint peg order",
+      "Limit order"
+    ],
+    "failure_modes": "Hidden orders lose queue priority to displayed interest at the same price and are invisible to liquidity-seeking flow, so fill rates are low precisely when displayed size is thin. They are also systematically adversely selected, filling most often when the market is about to move through their price.",
+    "misconceptions": "Hidden does not mean exempt from trade reporting - executions are printed to the tape like any other trade. Nor does hidden interest get equal standing at a price: displayed orders rank ahead of it.",
+    "example": "You place a hidden buy limit for 10,000 shares at $19.98; the public book shows nothing, but a market sell order sweeping to $19.98 executes against you.",
+    "citations": [
+      {
+        "source": "Cboe Titanium U.S. Equities BOE Specification",
+        "url": "https://www.cboe.com/document/tech-spec/document/technical-specifications/cboe-titanium-u.s.-equities-boe-specification",
+        "section": "DisplayIndicator = Invisible (non-displayed orders)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Regulation NMS, 17 CFR 242.600 (Cornell LII)",
+        "url": "https://www.law.cornell.edu/cfr/text/17/242.600",
+        "section": "(b)(73)-(74) Orders providing/removing liquidity",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

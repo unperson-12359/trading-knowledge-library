@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/one-cancels-the-other-order",
+  "canonical_sha256": "124f3ee9e55c34a7dc311d8bfdbfb179700fb5057cc16ee3c061252758a63c65",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/one-cancels-the-other-order",
+    "name": "One-cancels-the-other order",
+    "aliases": [
+      "OCO order",
+      "one-cancels-all (OCA)",
+      "order-cancels-order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "A linked group of two (or more) orders in which the execution of any one order automatically cancels the other(s). It is typically used to pair a profit-taking limit order with a protective stop order on the same position so that only one exit ever executes.",
+    "intuition": "It is an either/or bracket: 'sell at my target or at my stop - whichever happens first - and kill the other one.'",
+    "mechanics": "The broker links the orders under a group identifier (e.g., an OCA group name); when one member fills, the system cancels the rest of the group. Because the linkage is usually managed by the broker rather than the exchange, cancellation of the sibling is subject to processing latency.",
+    "formula": "",
+    "relationships": [
+      "Bracket order",
+      "One-triggers-the-other order",
+      "Conditional order",
+      "Stop order",
+      "Limit order"
+    ],
+    "failure_modes": "In fast markets both legs can execute before the cancel message propagates, leaving the trader with an unintended opposite position. If the broker's system fails, the surviving leg may remain live unexpectedly.",
+    "misconceptions": "OCO linkage is not atomic at most venues - 'cancels' is a system action after the fill, not a simultaneous guarantee. It is also not the same as one-triggers-the-other, where one order's fill activates the second rather than canceling it.",
+    "example": "Long 1,000 shares at $50, you place an OCO pair: a sell limit at $55 and a sell stop at $47. If the stop triggers, the $55 limit is canceled automatically; if $55 is hit first, the stop is canceled.",
+    "citations": [
+      {
+        "source": "IBKR Guides: Order Types (Trader Workstation)",
+        "url": "https://www.ibkrguides.com/traderworkstation/order-types.htm",
+        "section": "One-Cancels-All (OCA)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

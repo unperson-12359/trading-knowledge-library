@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/ladder-order",
+  "canonical_sha256": "1d0480a79c554e76f691557b046dec44249fd8e12d31b390f8209c67dba804ee",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/ladder-order",
+    "name": "Ladder order",
+    "aliases": [
+      "laddered order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An order strategy that places a series of limit orders at successively higher (for sells) or lower (for buys) price levels, forming a 'ladder' of resting interest across a price range. It is in practice a synonym or close variant of the scale order.",
+    "intuition": "Like rungs on a ladder, each order sits one step further from the current price, catching the market at progressively better levels.",
+    "mechanics": "Each rung is an independent limit order with its own size; as price moves through the range, rungs execute in sequence, producing a blended average price. On retail futures/crypto platforms the ladder is often created by one-click bulk placement along the price axis.",
+    "formula": "Blended price = sum(rung price x rung size) / total filled size.",
+    "relationships": [
+      "Scale order",
+      "Limit order",
+      "Iceberg order"
+    ],
+    "failure_modes": "Fully visible ladders reveal the trader's entire price map and can be traded against; and as with scaling, fills concentrate on the wrong side of trends, so the ladder completes exactly when the position is least wanted.",
+    "misconceptions": "A ladder is not an exchange order type - it is a placement pattern executed with ordinary limit orders, and it does not guarantee an average price because upper rungs may never fill.",
+    "example": "Exiting a long, you ladder sell limits at $101, $102, $103, and $104 for a quarter of the position each; a rally to $103 fills three rungs at a $102 average.",
+    "citations": [
+      {
+        "source": "IBKR Guides: Order Types (Trader Workstation)",
+        "url": "https://www.ibkrguides.com/traderworkstation/order-types.htm",
+        "section": "Order types list (scaling/laddering order tools)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/vwap-order",
+  "canonical_sha256": "349613172696c322ba7a536410fec4039dd31f9ae4dc7a366d61d85c72f43273",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/vwap-order",
+    "name": "VWAP order",
+    "aliases": [
+      "VWAP",
+      "volume-weighted average price order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An algorithmic execution order that slices a large parent order in proportion to expected or realized market volume over a period, aiming for an average execution price at or better than the volume-weighted average price (VWAP) of the market for that period. It is the standard passive benchmark for institutional execution.",
+    "intuition": "VWAP trading hides in the crowd: you trade most when the market trades most, so your footprint tracks everyone else's.",
+    "mechanics": "The algo forecasts the intraday volume profile (typically U-shaped) and schedules child orders so participation matches that profile, adjusting to realized volume as the day progresses. Brokers may also offer 'guaranteed VWAP' execution, where the broker bears the slippage risk for a higher commission.",
+    "formula": "VWAP = sum(price_i x volume_i) / sum(volume_i), over all trades i in the period.",
+    "relationships": [
+      "TWAP order",
+      "POV order",
+      "Implementation shortfall",
+      "Average execution price",
+      "Market impact"
+    ],
+    "failure_modes": "Volume-forecast errors skew the schedule (e.g., a surprise midday spike the algo did not anticipate), and because VWAP is a moving target computed from all trades including your own, heavy participation can push the benchmark itself. Chasing a full-day VWAP also means holding price risk until the end of the period.",
+    "misconceptions": "Beating VWAP is not proof of a good trade - it measures execution against the day's volume-weighted average, not against the decision price; a trader can beat VWAP while the stock ran away from the arrival price. VWAP orders also do not guarantee the benchmark price.",
+    "example": "A pension fund must buy 2% of a stock's expected daily volume; the VWAP algo buys in proportion to the volume curve through the session, and the desk is evaluated on the slippage between its average fill price and the day's VWAP.",
+    "citations": [
+      {
+        "source": "Wikipedia: Volume-weighted average price",
+        "url": "https://en.wikipedia.org/wiki/Volume-weighted_average_price",
+        "section": "Execution benchmark; algorithmic execution",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Interactive Brokers TWS API: IB Algorithms",
+        "url": "https://interactivebrokers.github.io/tws-api/ibalgos.html",
+        "section": "Percentage of Volume / VWAP family",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/midpoint-peg-order",
+  "canonical_sha256": "5b68ff034bd865dc4e6544b6b661e6bcb96279a31e911a6d8de007ad27ee4dc9",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/midpoint-peg-order",
+    "name": "Midpoint peg order",
+    "aliases": [
+      "midpoint peg",
+      "MPL order (NYSE)"
+    ],
+    "domain": "Orders and execution",
+    "definition": "A pegged order whose working price tracks the midpoint of the national best bid and offer, so executions occur halfway between the displayed bid and ask. It is typically non-displayed and is used to capture half the spread relative to crossing it.",
+    "intuition": "It is a standing offer to trade 'at the halfway mark': both sides split the spread instead of one side paying it.",
+    "mechanics": "The venue continuously re-prices the order to the NBBO midpoint as quotes move; the order rests non-displayed and executes only when contra-side interest (often a market or marketable order) is willing to trade at the midpoint. Exchange protocols denote it as a midpoint peg instruction (e.g., Cboe ExecInst M).",
+    "formula": "Working price = (national best bid + national best offer) / 2.",
+    "relationships": [
+      "Pegged order",
+      "Primary peg order",
+      "Market peg order",
+      "Hidden order",
+      "Price improvement"
+    ],
+    "failure_modes": "When the NBBO is locked or crossed the midpoint is unstable, and some venues suspend midpoint matching in those states. Midpoint orders are also adversely selected: they tend to fill just before the quote moves against the resting side.",
+    "misconceptions": "A midpoint peg does not guarantee a better net price than a market order once missed fills and adverse selection are counted; and the 'midpoint' is the NBBO midpoint, not the midpoint of any single venue's book.",
+    "example": "NBBO is $20.00 x $20.04; your midpoint-pegged sell rests at $20.02 (non-displayed) and executes when a buy order sweeps through, saving $0.02 versus hitting the bid.",
+    "citations": [
+      {
+        "source": "Cboe Titanium U.S. Equities BOE Specification",
+        "url": "https://www.cboe.com/document/tech-spec/document/technical-specifications/cboe-titanium-u.s.-equities-boe-specification",
+        "section": "ExecInst M = Midpoint (peg to NBBO Midpoint)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "IBKR Guides: Order Types (Trader Workstation)",
+        "url": "https://www.ibkrguides.com/traderworkstation/order-types.htm",
+        "section": "Pegged to Midpoint",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

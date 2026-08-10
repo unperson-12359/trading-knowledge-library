@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/conditional-order",
+  "canonical_sha256": "7fb702c89421debfeaba48a5a78c56fb75c7074eb9b6b20211f90ec88511cf4e",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/conditional-order",
+    "name": "Conditional order",
+    "aliases": [
+      "contingent order",
+      "trigger order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An order that is submitted to the market (or canceled) only when one or more user-defined conditions are met - typically a price, time, or event condition on the same or another instrument. Stop, trailing-stop, and if-touched orders are all specific conditional orders.",
+    "intuition": "It is an 'if this, then trade' instruction held by the broker: nothing exists in the market until the condition fires.",
+    "mechanics": "The broker or venue monitors the condition (e.g., last price of a defined contract reaching a level) and transmits the attached market or limit order when it evaluates true. Because the order is held off-book until then, trigger evaluation conventions (last trade vs. quote) and trigger latency are venue-specific.",
+    "formula": "",
+    "relationships": [
+      "Stop order",
+      "Market-if-touched order",
+      "One-triggers-the-other order",
+      "Bracket order",
+      "Trailing stop order"
+    ],
+    "failure_modes": "The held order is invisible to the market, so it has no queue priority when triggered and can miss fast moves entirely. Platform outages or a halt in the condition instrument can also prevent the trigger from ever being evaluated.",
+    "misconceptions": "A conditional order does not reserve execution at the condition price - after triggering it is just an ordinary market or limit order. Nor is it necessarily exchange-native; many conditional orders live only in the broker's system.",
+    "example": "You set a conditional order: if the S&P 500 futures fall below 5,000, submit a limit order to buy 100 shares of an index ETF at $450; the buy order only exists once the futures condition fires.",
+    "citations": [
+      {
+        "source": "IBKR Guides: Order Types (Trader Workstation)",
+        "url": "https://www.ibkrguides.com/traderworkstation/order-types.htm",
+        "section": "Conditional orders",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

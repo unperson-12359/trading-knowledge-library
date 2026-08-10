@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/iceberg-order",
+  "canonical_sha256": "afc1ee2c45c503ef7eb70b2c5d10f5568cf7dcbfeb1cdf667279612e4bd16806",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/iceberg-order",
+    "name": "Iceberg order",
+    "aliases": [
+      "iceberg",
+      "hidden-size order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "A large order of which only a small 'tip' is visible in the public order book at any time, with the bulk hidden below the surface and displayed in successive clips as each tip is executed. The purpose is to reduce market impact and information leakage when working a large position.",
+    "intuition": "Like the iceberg, most of the order is underwater - other traders see a small order, not the wall of supply or demand behind it.",
+    "mechanics": "The venue shows the specified peak/display size; once it executes, the next clip is automatically displayed, usually losing time priority on refresh. Some platforms randomize the display size (e.g., IBKR's Dark Ice randomizes +/-50%) to make the pattern harder to detect.",
+    "formula": "",
+    "relationships": [
+      "Reserve order",
+      "Hidden order",
+      "Market impact",
+      "TWAP order"
+    ],
+    "failure_modes": "Detection algorithms watch for repeated refills at one price and can trade ahead of the remaining iceberg, so impact reduction is imperfect. Refresh priority loss also stretches execution time, increasing exposure to adverse market moves (timing risk).",
+    "misconceptions": "Icebergs are not invisible - both the tip and the resulting trade prints are public, and the hidden portion has no standing to trade until displayed. An iceberg also does not reduce the price impact of aggressive orders; it only works for resting liquidity.",
+    "example": "A fund needs to buy 500,000 shares; it posts an iceberg showing 5,000 shares at the bid, and the venue keeps renewing the 5,000-share display until the whole 500,000 is accumulated.",
+    "citations": [
+      {
+        "source": "IBKR Guides: Order Types (Trader Workstation)",
+        "url": "https://www.ibkrguides.com/traderworkstation/order-types.htm",
+        "section": "Iceberg/Reserve",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Interactive Brokers TWS API: IB Algorithms",
+        "url": "https://interactivebrokers.github.io/tws-api/ibalgos.html",
+        "section": "Dark Ice algo (randomized display size)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/reserve-order",
+  "canonical_sha256": "c54598bf53b979e625d9774f87c9f89d0093c7f81e8c77f09ba87fbe0c200f60",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/reserve-order",
+    "name": "Reserve order",
+    "aliases": [
+      "reserve size order",
+      "iceberg (displayed-reserve equivalent)"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An order that displays only a fraction of its total size to the market, holding the remainder 'in reserve' and automatically refreshing the displayed quantity from the reserve as executions occur. It is functionally the same construct as an iceberg order.",
+    "intuition": "It is an order with a hidden back-room supply: the market sees a small clip, but each time the clip is taken, another quietly replaces it.",
+    "mechanics": "The trader specifies total quantity and a display (refresh) quantity; the venue exposes only the display amount in the book, and when it is filled, a new clip of the same size is drawn from the reserve, typically receiving new time priority. In exchange protocols the reserve is set by a MaxFloor/display-quantity field.",
+    "formula": "",
+    "relationships": [
+      "Iceberg order",
+      "Hidden order",
+      "Minimum quantity order",
+      "Limit order"
+    ],
+    "failure_modes": "Refreshed clips usually go to the back of the time-priority queue at the price level, so the reserve fills more slowly than an equivalent fully displayed order. Sophisticated participants also detect the refresh pattern and infer the hidden size, reviving the very information leakage the order was meant to avoid.",
+    "misconceptions": "A reserve order does not hide the order's existence - the displayed clip is visible and trades are printed. Nor is the reserve guaranteed to fill; it is still a limit order subject to market movement.",
+    "example": "You want to sell 100,000 shares but display only 1,000 at a time; each time the 1,000-share clip is taken, the venue refreshes another 1,000 from the 99,000-share reserve until the full amount is done.",
+    "citations": [
+      {
+        "source": "IBKR Guides: Order Types (Trader Workstation)",
+        "url": "https://www.ibkrguides.com/traderworkstation/order-types.htm",
+        "section": "Iceberg/Reserve",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Cboe Titanium U.S. Equities BOE Specification",
+        "url": "https://www.cboe.com/document/tech-spec/document/technical-specifications/cboe-titanium-u.s.-equities-boe-specification",
+        "section": "MaxFloor (display quantity / reserve reload) handling",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
