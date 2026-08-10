@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/ease-of-movement",
+  "canonical_sha256": "093d70fe3b24c42cb6ed4b4f6ba6a6e45c99402ebe685a49a715286775d94507",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/ease-of-movement",
+    "name": "Ease of movement",
+    "aliases": [
+      "EMV",
+      "Ease of Movement (EOM)"
+    ],
+    "domain": "Indicators",
+    "definition": "Richard Arms' oscillator relating midpoint change to volume and range: it measures how much price moved per unit of volume, rising when prices advance with ease (large range, light volume) and falling when they decline with ease.",
+    "intuition": "If a big price move needs little volume, movement is 'easy'; if heavy volume produces a tiny range, movement is labored - EMV quantifies the effort-versus-result idea behind Arms' Equivolume charts.",
+    "mechanics": "Distance moved = midpoint_t - midpoint_{t-1} with midpoint = (H+L)/2; Box ratio = (V / 100,000,000) / (H - L); 1-period EMV = distance / box ratio; the traded indicator is a 14-period SMA of 1-period EMV. Positive readings mean rising with ease, negative falling with ease.",
+    "formula": "EMV = ((H+L)/2 - (H_prev+L_prev)/2) / ((V/100,000,000)/(H-L)); EMV(14) = SMA(1-period EMV, 14); the volume scale divisor is platform-dependent.",
+    "relationships": [
+      "Force index",
+      "On-balance volume",
+      "Volume oscillator"
+    ],
+    "failure_modes": "The volume scale divisor is arbitrary and platform-dependent, so absolute values are not comparable across platforms; tiny-range or low-volume bars make the ratio explode into spikes.",
+    "misconceptions": "A high positive EMV is not automatically bullish strength - it can simply mean price drifted up on falling volume, which many traders read as weakness.",
+    "example": "If the midpoint rises 1.00 on volume of 20M and a range of 2.00, the box ratio is 0.2/2 = 0.1 and 1-period EMV = 10.0 - an 'easy' advance.",
+    "citations": [
+      {
+        "source": "Ease of Movement (EMV) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/ease-of-movement-emv",
+        "section": "Calculating the EMV",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

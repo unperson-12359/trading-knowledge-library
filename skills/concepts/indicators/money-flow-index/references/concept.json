@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/money-flow-index",
+  "canonical_sha256": "562b30269a6c67c30265ea638b056648640c44d6dc9371af94276571b0953e5a",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/money-flow-index",
+    "name": "Money flow index",
+    "aliases": [
+      "MFI",
+      "Volume-weighted RSI"
+    ],
+    "domain": "Indicators",
+    "definition": "Gene Quong and Avrum Soudack's volume-weighted momentum oscillator: an RSI-style 0-100 calculation applied to typical-price money flows, so both the direction and the volume of each bar feed the reading.",
+    "intuition": "It is RSI with volume mixed in - an overbought reading requires not just rising prices but rising prices backed by rising dollar volume.",
+    "mechanics": "Typical price = (H+L+C)/3; raw money flow = typical price x volume, classified positive or negative by the change in typical price; MFI = 100 - 100/(1 + positive sum / negative sum) over 14 periods. Conventional overbought above 80 (truly extreme above 90), oversold below 20 (below 10).",
+    "formula": "MFI = 100 - 100/(1 + MoneyRatio); MoneyRatio = sum(PositiveMF, 14) / sum(NegativeMF, 14); RawMF = TypicalPrice x Volume; TP = (H+L+C)/3.",
+    "relationships": [
+      "Relative strength index",
+      "On-balance volume",
+      "Accumulation distribution line",
+      "Chaikin money flow"
+    ],
+    "failure_modes": "In strong trends it pins above 80 or below 20 while price continues; volume spikes (expiry days, index rebalancing) distort it without any change in sentiment.",
+    "misconceptions": "MFI overbought is not a sell signal - the creators recommended the stricter 90/10 levels precisely because 80/20 fires too often in trends; and MFI is not interchangeable with RSI, since volume can make them diverge.",
+    "example": "If 14-day positive money flow is 120M and negative is 60M, the ratio is 2 and MFI = 100 - 100/3 ~ 66.7.",
+    "citations": [
+      {
+        "source": "Money Flow Index (MFI) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/money-flow-index-mfi",
+        "section": "Calculating the MFI",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

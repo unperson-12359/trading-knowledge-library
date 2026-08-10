@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/aroon-down",
+  "canonical_sha256": "0ebb51a5360e2841e8dfb76a0a3b892eab5e5423ecda3430294675ce61b26335",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/aroon-down",
+    "name": "Aroon down",
+    "aliases": [
+      "Aroon-Down",
+      "Aroon Down"
+    ],
+    "domain": "Indicators",
+    "definition": "The downside counterpart in Chande's Aroon system: a measure of how recently price made a new n-period low, on a 0-100 scale where 100 means the low was set in the current period.",
+    "intuition": "It tracks the freshness of new lows; a market printing new lows today has Aroon-Down at 100, and sustained 70-100 readings mark strong downtrends.",
+    "mechanics": "Aroon-Down = 100 x (n - periods since the n-period low) / n, default 25. Crosses of Aroon-Down above Aroon-Up, moves above 50, and surges to 100 are the three stages of an emerging downtrend signal.",
+    "formula": "Aroon-Down(n) = ((n - PeriodsSinceLowestLow(n)) / n) x 100.",
+    "relationships": [
+      "Aroon up",
+      "Aroon oscillator",
+      "Average directional index"
+    ],
+    "failure_modes": "Same time-not-magnitude limitation as Aroon-Up; both lines can sit low together in consolidations, giving no directional read at all.",
+    "misconceptions": "A high Aroon-Down is a description of recent lows, not an oversold buy signal.",
+    "example": "With n = 25 and the 25-day low set 10 days ago: Aroon-Down = (25-10)/25 x 100 = 60.",
+    "citations": [
+      {
+        "source": "Aroon | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/aroon",
+        "section": "How To Calculate the Aroon Indicators",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

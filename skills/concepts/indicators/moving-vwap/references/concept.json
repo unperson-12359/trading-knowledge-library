@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/moving-vwap",
+  "canonical_sha256": "dcc696850eb84bbefc55a65261c30d7fc920355d79d8ca9fc2a6e1fa8611c9e4",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/moving-vwap",
+    "name": "Moving VWAP",
+    "aliases": [
+      "MVWAP"
+    ],
+    "domain": "Indicators",
+    "definition": "A moving average of successive VWAP values over a user-chosen number of periods, producing a volume-weighted average that flows continuously from day to day instead of resetting each session.",
+    "intuition": "Classic VWAP dies at the close; MVWAP keeps a rolling volume-weighted memory, giving longer-horizon traders a VWAP-like reference across days.",
+    "mechanics": "Compute intraday VWAP as usual (cumulative typical price x volume over cumulative volume), then average the last n VWAP values; a 10-period MVWAP starts plotting after 10 VWAP points and slides forward, dropping the oldest.",
+    "formula": "MVWAP(n) = (1/n) x sum of the last n VWAP values, where each VWAP = sum(TypicalPrice x Volume) / sum(Volume) over its calculation window.",
+    "relationships": [
+      "Volume-weighted average price",
+      "Anchored VWAP",
+      "Volume-weighted moving average",
+      "Simple moving average"
+    ],
+    "failure_modes": "Doubly smoothed, it lags more than plain VWAP, and its value depends on how each platform chains daily VWAPs across sessions; there is no single canonical construction.",
+    "misconceptions": "MVWAP has no end-of-day 'final value' significance the way daily VWAP does - it is a rolling average of averages, not an execution benchmark.",
+    "example": "If the last five daily VWAP values are 100, 101, 101.5, 102, 102.5, the 5-period MVWAP = 101.4.",
+    "citations": [
+      {
+        "source": "Trading With VWAP and MVWAP - Investopedia",
+        "url": "https://www.investopedia.com/articles/trading/11/trading-with-vwap-mvwap.asp",
+        "section": "Calculating VWAP",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/chaikin-oscillator",
+  "canonical_sha256": "34e7faf563de1841439b98eea74550979e593b4aceb6fc43004d675f8092f12f",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/chaikin-oscillator",
+    "name": "Chaikin oscillator",
+    "aliases": [
+      "CO",
+      "Chaikin Osc"
+    ],
+    "domain": "Indicators",
+    "definition": "Marc Chaikin's momentum-of-money-flow oscillator: the MACD formula applied to the Accumulation/Distribution Line - the 3-day EMA of the ADL minus its 10-day EMA - designed to anticipate turns in accumulation and distribution.",
+    "intuition": "It is an indicator of an indicator: instead of watching the ADL's slow drift, you watch its momentum cross zero, flagging shifts in buying and selling pressure earlier.",
+    "mechanics": "Compute the ADL from Money Flow Multiplier times volume; the oscillator = EMA(ADL,3) - EMA(ADL,10). Positive means the ADL is rising (buying pressure), negative means it is falling; divergences with price warn of pressure shifts before zero-line confirmation.",
+    "formula": "Chaikin Oscillator = EMA(ADL, 3) - EMA(ADL, 10), with ADL the running sum of [((C-L) - (H-C)) / (H-L)] x V.",
+    "relationships": [
+      "Accumulation distribution line",
+      "Chaikin money flow",
+      "Moving average convergence divergence",
+      "On-balance volume"
+    ],
+    "failure_modes": "Three derivations removed from price, it frequently disconnects from it, and the default (3,10) settings cross zero often, producing whipsaws that need confirmation.",
+    "misconceptions": "A bullish divergence is not yet buying pressure - while the oscillator stays below zero, selling pressure still dominates; confirmation requires a cross into positive territory.",
+    "example": "If the 3-day EMA of the ADL is 12,000 and the 10-day EMA is 11,000, the oscillator reads +1,000 - the threshold StockCharts uses in its bullish scan.",
+    "citations": [
+      {
+        "source": "Chaikin Oscillator | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/chaikin-oscillator",
+        "section": "Calculating the Chaikin Oscillator",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

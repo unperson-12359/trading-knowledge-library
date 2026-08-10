@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/volume-oscillator",
+  "canonical_sha256": "3ecf621affb925dbfd770b76945483cd43156050eb5bb8e1247cb3508d84efe5",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/volume-oscillator",
+    "name": "Volume oscillator",
+    "aliases": [
+      "PVO",
+      "Percentage Volume Oscillator",
+      "Volume Oscillator (VO)"
+    ],
+    "domain": "Indicators",
+    "definition": "A MACD-style oscillator applied to volume: the difference between a fast and a slow exponential moving average of volume, usually expressed as a percentage of the slow average (the Percentage Volume Oscillator, defaults 12, 26, 9).",
+    "intuition": "It shows whether participation is expanding or drying up: positive and rising means short-term volume is running above its longer norm.",
+    "mechanics": "PVO = (EMA(V,12) - EMA(V,26)) / EMA(V,26) x 100, with a 9-period EMA signal line and a histogram, paralleling the MACD/PPO structure. Used mainly to confirm breakouts - price breaks on rising or positive PVO carry more weight.",
+    "formula": "PVO = ((EMA(V,12) - EMA(V,26)) / EMA(V,26)) x 100; Signal = EMA(PVO, 9); Histogram = PVO - Signal.",
+    "relationships": [
+      "Moving average convergence divergence",
+      "On-balance volume",
+      "Relative volume",
+      "Force index"
+    ],
+    "failure_modes": "Volume does not trend smoothly, so PVO is choppy and divergences are unreliable; because both EMAs lag, PVO can confirm a breakout only after the fact.",
+    "misconceptions": "A positive PVO does not say volume is 'high' in any absolute sense - only that the 12-period average exceeds the 26-period; and high volume is neither bullish nor bearish without price context.",
+    "example": "A 12-day volume EMA of 3.0M against a 26-day EMA of 2.5M gives PVO = +20, matching the surge level StockCharts shows confirming ADM's resistance and support breaks.",
+    "citations": [
+      {
+        "source": "Percentage Volume Oscillator (PVO) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/percentage-volume-oscillator-pvo",
+        "section": "Calculating the Percentage Volume Oscillator",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

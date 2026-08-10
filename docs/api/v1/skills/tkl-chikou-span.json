@@ -1,0 +1,81 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-chikou-span",
+  "concept_id": "indicators/chikou-span",
+  "display_name": "Chikou Span",
+  "domain": "Indicators",
+  "description": "Explain, compare, or apply Chikou Span using the library's structured Indicators reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Chikou Span",
+    "Lagging Span",
+    "Chikou",
+    "explain Chikou Span",
+    "apply Chikou Span to a trading question",
+    "common misconception about Chikou Span"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints",
+      "indicator parameters",
+      "trend and volatility regime"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 39,
+  "package_path": "skills/concepts/indicators/chikou-span",
+  "canonical": {
+    "source_path": "concepts/indicators.json",
+    "sha256": "4818853710975ba3b739b0bb49d5cee783dc5976a9e3cf2d142c3b282f4ab443"
+  },
+  "related_concept_ids": [
+    "indicators/ichimoku-kinko-hyo",
+    "indicators/tenkan-sen",
+    "indicators/kijun-sen"
+  ]
+}

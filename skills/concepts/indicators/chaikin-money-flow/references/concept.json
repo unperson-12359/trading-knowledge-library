@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/chaikin-money-flow",
+  "canonical_sha256": "6e8e74a432e7bcc739ecb4492c7aa856a3d4a0b55e9bf47c4aa5ac6a64cba7d2",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/chaikin-money-flow",
+    "name": "Chaikin money flow",
+    "aliases": [
+      "CMF"
+    ],
+    "domain": "Indicators",
+    "definition": "Marc Chaikin's oscillator version of the Accumulation/Distribution concept: the sum of Money Flow Volume over n periods (typically 20 or 21) divided by the sum of volume, oscillating between +1 and -1 around a zero line.",
+    "intuition": "It compresses the A/D logic into a fixed window: positive CMF means closes have clustered in the upper half of their ranges, volume-weighted, over the look-back.",
+    "mechanics": "Compute the Money Flow Multiplier and Money Flow Volume exactly as for the A/D line; CMF(n) = sum of MFV over n periods / sum of volume over n periods. Zero-line crosses (often buffered at +/-0.05) and divergences are the standard signals.",
+    "formula": "CMF(n) = sum(MFM_i x V_i, n) / sum(V_i, n), where MFM = ((C - L) - (H - C)) / (H - L).",
+    "relationships": [
+      "Accumulation distribution line",
+      "Chaikin oscillator",
+      "On-balance volume",
+      "Money flow index"
+    ],
+    "failure_modes": "Whipsaws around the zero line in choppy markets and inherits the A/D gap blind spot - a down-gap that closes near the high reads as positive money flow.",
+    "misconceptions": "Readings near +1 or -1 are essentially impossible (they would need 20 straight closes on the high or low); typical range is about +/-0.5, so small values are noise, not signal.",
+    "example": "Over 20 days, if Money Flow Volume sums to 2,000,000 on total volume of 10,000,000, CMF = +0.20, indicating net buying pressure.",
+    "citations": [
+      {
+        "source": "Chaikin Money Flow (CMF) | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/chaikin-money-flow-cmf",
+        "section": "Calculating Chaikin Money Flow",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

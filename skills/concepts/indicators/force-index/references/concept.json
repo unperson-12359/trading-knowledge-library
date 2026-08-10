@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/force-index",
+  "canonical_sha256": "f30df710dfd85af79d928f080003094088394871eace967f8e78fab38c14e6d5",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/force-index",
+    "name": "Force index",
+    "aliases": [
+      "FI",
+      "Elder's Force Index"
+    ],
+    "domain": "Indicators",
+    "definition": "Alexander Elder's oscillator (Trading for a Living) multiplying the close-to-close price change by volume, combining direction, extent, and participation into one measure of the force behind a move; the smoothed 13-period EMA form is the standard version.",
+    "intuition": "A one-point gain on huge volume shows more conviction than the same gain on a trickle - Force Index scores moves by both size and participation.",
+    "mechanics": "Force(1) = (Close_t - Close_{t-1}) x Volume_t; Force(13) = 13-period EMA of Force(1). Used for trend confirmation at the zero line, divergences, and - in Elder's pullback system - a 2-period Force Index against a 22-day EMA trend filter.",
+    "formula": "FI(1) = (Close_t - Close_{t-1}) x Volume_t; FI(13) = EMA(FI(1), 13).",
+    "relationships": [
+      "Ease of movement",
+      "On-balance volume",
+      "Elder Ray index",
+      "Exponential moving average"
+    ],
+    "failure_modes": "The raw 1-period version is extremely jagged and the smoothed version lags; because it is price change times volume in absolute terms, values are not comparable across securities.",
+    "misconceptions": "A positive Force Index does not mean buyers are 'in control' going forward - it records that the last bars rose on volume, which can reverse immediately.",
+    "example": "A close rising from 50.00 to 50.84 on 162,619 shares gives Force(1) = 0.84 x 162,619 ~ +136,600, the largest reading in StockCharts' Pfizer example.",
+    "citations": [
+      {
+        "source": "Force Index | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/force-index",
+        "section": "Calculating the Force Index",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/relative-volume",
+  "canonical_sha256": "f07c667ebee874377c59d6d6811852ac1084378a68527e3d9148b4349f91d4d9",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/relative-volume",
+    "name": "Relative volume",
+    "aliases": [
+      "RVOL",
+      "Relative Volume (RVOL)"
+    ],
+    "domain": "Indicators",
+    "definition": "The ratio of current trading volume to average volume over a look-back (typically 10-20 sessions), often time-of-day adjusted so that, say, 10:30 a.m. volume is compared with prior 10:30 a.m. volumes; a reading of 1.0 means perfectly normal participation.",
+    "intuition": "Raw volume is meaningless without context - five million shares is quiet for a mega-cap and extraordinary for a small-cap; RVOL normalizes it.",
+    "mechanics": "RVOL = current volume / average volume over n sessions; intraday versions divide cumulative volume so far by the average cumulative volume at the same time of day. Traders screen for RVOL of roughly 1.5-2.0 or higher to find 'in play' names.",
+    "formula": "RVOL = V_current / Average(V, n); time-adjusted form: RVOL(t) = CumV(today, up to t) / Average_n(CumV(up to same time t)).",
+    "relationships": [
+      "Volume oscillator",
+      "On-balance volume",
+      "Volume-weighted average price"
+    ],
+    "failure_modes": "High RVOL signals attention, not direction - it accompanies both breakouts and dumps; time-of-day effects (open and close volume surges) distort non-adjusted intraday readings.",
+    "misconceptions": "RVOL is not a buy signal - a spike can mark exhaustion at the end of a move as easily as participation at the start; it measures activity, nothing else.",
+    "example": "A stock averaging 300,000 shares a day that trades 1,000,000 has RVOL ~ 3.3; TradingSim notes SIGA traded 37M shares versus a ~130k average on its May 2022 news day.",
+    "citations": [
+      {
+        "source": "Relative Volume (RVOL) - TradingSim",
+        "url": "https://www.tradingsim.com/blog/relative-volume-rvol",
+        "section": "How is relative volume calculated?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/aroon-up",
+  "canonical_sha256": "5db3a7ef0a6e3ab1ff4e8bc4c4c48c563a0e89270812263e31909e04c8c85d57",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/aroon-up",
+    "name": "Aroon up",
+    "aliases": [
+      "Aroon-Up",
+      "Aroon Up"
+    ],
+    "domain": "Indicators",
+    "definition": "Tushar Chande's 1995 indicator measuring how recently price made a new n-period high, expressed as a 0-100 percentage: 100 when the high occurred in the current period, decaying toward 0 as it recedes into the past.",
+    "intuition": "Instead of asking how far price moved, Aroon-Up asks how long ago the latest high was - frequent new highs keep it pinned near 100.",
+    "mechanics": "Aroon-Up = 100 x (n - periods since the n-period high) / n, default n = 25. Readings above 50 mean a new high within the most recent half of the window; sustained 70-100 readings mark strong uptrends.",
+    "formula": "Aroon-Up(n) = ((n - PeriodsSinceHighestHigh(n)) / n) x 100.",
+    "relationships": [
+      "Aroon down",
+      "Aroon oscillator",
+      "Average directional index"
+    ],
+    "failure_modes": "It measures time, not magnitude - a market drifting sideways near its highs keeps Aroon-Up high without real momentum, and the reading decays mechanically as the window ages even when price is flat.",
+    "misconceptions": "Aroon-Up at 100 does not mean 'overbought, expect reversal' - it only means the latest n-period high happened today.",
+    "example": "With n = 25 and the 25-day high made 5 days ago: Aroon-Up = (25-5)/25 x 100 = 80.",
+    "citations": [
+      {
+        "source": "Aroon | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/aroon",
+        "section": "How To Calculate the Aroon Indicators",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

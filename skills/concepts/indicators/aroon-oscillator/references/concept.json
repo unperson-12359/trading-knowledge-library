@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/aroon-oscillator",
+  "canonical_sha256": "fa0328fc77f50e307744fa0237b7c3af6b72185ad7d04d740aada5c868c0f703",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/aroon-oscillator",
+    "name": "Aroon oscillator",
+    "aliases": [
+      "Aroon Osc"
+    ],
+    "domain": "Indicators",
+    "definition": "The difference between Aroon-Up and Aroon-Down, compressing Chande's pair into one line bounded between -100 and +100; positive when new highs are more recent than new lows, negative when new lows are more recent.",
+    "intuition": "It nets the two Aroon lines: +100 means today's bar made a new n-period high while the low is as old as possible; the zero line is the bull-bear divide.",
+    "mechanics": "Aroon Oscillator = Aroon-Up - Aroon-Down with the same n (default 25). Used for zero-line trend bias and, with +/-50 or +/-90 thresholds, for strong-trend filtering.",
+    "formula": "AroonOsc(n) = AroonUp(n) - AroonDown(n) = 100 x (PeriodsSinceLowestLow(n) - PeriodsSinceHighestHigh(n)) / n.",
+    "relationships": [
+      "Aroon up",
+      "Aroon down",
+      "Average directional index"
+    ],
+    "failure_modes": "It lags because it only reacts once highs and lows age out of the window; choppy markets flip it across zero repeatedly, and it was not designed for classic oscillator divergence signals.",
+    "misconceptions": "A positive reading does not measure trend strength in price terms - a +40 reading only ranks the recency of highs versus lows.",
+    "example": "Aroon-Up 80 and Aroon-Down 20 give an oscillator of +60, an upside bias; +100 requires Up = 100 and Down = 0 simultaneously.",
+    "citations": [
+      {
+        "source": "Aroon Oscillator | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/aroon-oscillator",
+        "section": "How To Calculate the Aroon Oscillator",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

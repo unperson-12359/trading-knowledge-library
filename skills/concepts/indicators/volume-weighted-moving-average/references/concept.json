@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/volume-weighted-moving-average",
+  "canonical_sha256": "ea8414495b50c1c2c6621d5a0a7d6de550ea005efaca3dbb640b98927b361344",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/volume-weighted-moving-average",
+    "name": "Volume-weighted moving average",
+    "aliases": [
+      "VWMA"
+    ],
+    "domain": "Indicators",
+    "definition": "A moving average in which each price is weighted by its bar's volume - bars traded on heavy volume pull the average toward them, so the line tracks where business was actually done rather than treating all bars equally.",
+    "intuition": "An SMA answers 'average price of the last n bars'; a VWMA answers 'average price weighted by how much traded in each of those bars.'",
+    "mechanics": "Multiply each close by its volume, sum over n periods, and divide by the sum of volume over n periods. Often compared against an equal-length SMA to judge whether volume-backed prices lead or lag the plain average.",
+    "formula": "VWMA(n) = sum(C_{t-i} x V_{t-i}, i=0..n-1) / sum(V_{t-i}, i=0..n-1).",
+    "relationships": [
+      "Volume-weighted average price",
+      "Simple moving average",
+      "Weighted moving average",
+      "Moving VWAP"
+    ],
+    "failure_modes": "A single extreme-volume bar dominates the window, so the average jumps when it enters and again when it leaves; meaningless on instruments without reliable volume such as spot forex.",
+    "misconceptions": "VWMA is not VWAP: VWAP is cumulative from a session anchor, VWMA is a rolling n-period window - they answer different questions.",
+    "example": "Tulip Indicators' worked example: closes 81.59-83.61 with volumes around 3.8-7.7M give a first 5-period VWMA of 82.33, versus an equal-weighted SMA of 82.63.",
+    "citations": [
+      {
+        "source": "Volume Weighted Moving Average - Tulip Indicators",
+        "url": "https://tulipindicators.org/vwma",
+        "section": "Description",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

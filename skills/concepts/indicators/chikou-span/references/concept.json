@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "indicators/chikou-span",
+  "canonical_sha256": "4818853710975ba3b739b0bb49d5cee783dc5976a9e3cf2d142c3b282f4ab443",
+  "source_path": "concepts/indicators.json",
+  "concept": {
+    "id": "indicators/chikou-span",
+    "name": "Chikou Span",
+    "aliases": [
+      "Lagging Span",
+      "Chikou"
+    ],
+    "domain": "Indicators",
+    "definition": "The Ichimoku confirmation line: today's close plotted 26 periods back on the chart, so it can be compared directly with where price and the cloud stood 26 bars ago.",
+    "intuition": "By shifting the close into the past, you see at a glance whether the current price is above or below the price and cloud of 26 periods ago - a built-in momentum comparison.",
+    "mechanics": "Plot Close_t at chart position t-26. Standard confirmation rules: bullish when the Chikou is above the price of 26 bars ago (and ideally above the past cloud), bearish when below.",
+    "formula": "Chikou Span_t = Close_t, displayed at bar t - 26 (default displacement 26).",
+    "relationships": [
+      "Ichimoku Kinko Hyo",
+      "Tenkan-sen",
+      "Kijun-sen"
+    ],
+    "failure_modes": "It is purely a displaced close and adds no information beyond a 26-period momentum comparison; the rightmost 26 bars of any chart show no Chikou at all.",
+    "misconceptions": "Despite being drawn through past prices it is not a forecast line - it simply re-displays the close offset backward.",
+    "example": "If today's close is 105 and the close 26 bars ago was 98, the Chikou point sits above that past price - a bullish confirmation.",
+    "citations": [
+      {
+        "source": "Ichimoku Cloud | ChartSchool | StockCharts.com",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/ichimoku-cloud",
+        "section": "Ichimoku Cloud Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

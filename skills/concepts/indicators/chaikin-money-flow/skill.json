@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-chaikin-money-flow",
+  "concept_id": "indicators/chaikin-money-flow",
+  "display_name": "Chaikin money flow",
+  "domain": "Indicators",
+  "description": "Explain, compare, or apply Chaikin money flow using the library's structured Indicators reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Chaikin money flow",
+    "CMF",
+    "explain Chaikin money flow",
+    "apply Chaikin money flow to a trading question",
+    "common misconception about Chaikin money flow"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints",
+      "indicator parameters",
+      "trend and volatility regime"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 39,
+  "package_path": "skills/concepts/indicators/chaikin-money-flow",
+  "canonical": {
+    "source_path": "concepts/indicators.json",
+    "sha256": "6e8e74a432e7bcc739ecb4492c7aa856a3d4a0b55e9bf47c4aa5ac6a64cba7d2"
+  },
+  "related_concept_ids": [
+    "indicators/accumulation-distribution-line",
+    "indicators/chaikin-oscillator",
+    "indicators/on-balance-volume",
+    "indicators/money-flow-index"
+  ]
+}
