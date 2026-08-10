@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "candlestick-patterns/piercing-line",
+  "canonical_sha256": "dd9fc59c9f9b64dd849322680c54825e61a76c5d996b10512d8175c52eddf288",
+  "source_path": "concepts/candlestick-patterns.json",
+  "concept": {
+    "id": "candlestick-patterns/piercing-line",
+    "name": "Piercing line",
+    "aliases": [
+      "Piercing pattern"
+    ],
+    "domain": "Candlestick patterns",
+    "definition": "A two-candlestick pattern in a downtrend: a long black candle is followed by a white candle that opens below the prior low (ideally with a gap) and closes more than halfway up into the prior black body. Technical analysts read it as a potential bottom reversal signal, a weaker cousin of the bullish engulfing pattern.",
+    "intuition": "Sellers gapped the market down at the open, but buyers drove price back up through more than half of the previous session's losses, piercing deep into their territory.",
+    "mechanics": "From OHLC data: candle 1 is a long black body; candle 2 opens at or below L1 and closes above the midpoint (O1 + C1) / 2 of the first body but below O1 (otherwise it would be a bullish engulfing). The deeper the close into the first body, the stronger the conventional reading.",
+    "formula": "Piercing line when C1 < O1, O2 <= L1, and (O1 + C1)/2 < C2 < O1.",
+    "relationships": [
+      "Dark cloud cover",
+      "Bullish engulfing",
+      "Bullish harami"
+    ],
+    "failure_modes": "A close that only just passes the midpoint is weak and often fails, especially in strong downtrends. On 24-hour markets like forex where gaps are rare, the opening-gap requirement is often relaxed, which dilutes the pattern.",
+    "misconceptions": "Closing above the prior candle's high or open turns it into an engulfing pattern, not a piercing line; the close must stop within the first body. It is also not a confirmed reversal without follow-through.",
+    "example": "A stock falls, printing a candle from 44.00 open to 42.00 close (low 41.80). The next day opens at 41.50 and closes at 43.50, above the 43.00 midpoint of the prior body: a piercing line that bulls read as a bottoming attempt.",
+    "citations": [
+      {
+        "source": "Wikipedia, \"Candlestick pattern\"",
+        "url": "https://en.wikipedia.org/wiki/Candlestick_pattern",
+        "section": "Complex patterns",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

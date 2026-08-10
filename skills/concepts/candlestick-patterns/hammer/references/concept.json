@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "concept_id": "candlestick-patterns/hammer",
+  "canonical_sha256": "5b954c12e762195cb1237a079213c870b1857c62bbda9e54f6b8a66f1fb521fc",
+  "source_path": "concepts/candlestick-patterns.json",
+  "concept": {
+    "id": "candlestick-patterns/hammer",
+    "name": "Hammer",
+    "aliases": [],
+    "domain": "Candlestick patterns",
+    "definition": "A single candlestick with a small real body near the top of the period's range, a long lower shadow (conventionally at least twice the body length), and little or no upper shadow, appearing after a downtrend. Technical analysts interpret it as a potential bullish reversal signal because sellers drove price down but buyers recovered nearly all of the loss; it is a hypothesis that requires confirmation.",
+    "intuition": "Sellers smashed price down during the period, but buyers hammered it back up to close near the open, showing the decline was rejected.",
+    "mechanics": "From OHLC data: the lower shadow (min(O, C) - L) is at least about twice the real body |C - O|, the upper shadow (H - max(O, C)) is very small, and the body sits near the high. The identical shape after an uptrend is called a hanging man; trend context, not shape, distinguishes them.",
+    "formula": "Hammer heuristic: (min(O, C) - L) >= 2 * |C - O| and (H - max(O, C)) <= |C - O|, after a downtrend.",
+    "relationships": [
+      "Hanging man",
+      "Inverted hammer",
+      "Shooting star",
+      "Pin bar",
+      "Dragonfly doji"
+    ],
+    "failure_modes": "In a strong downtrend a hammer is often just a pause before further declines, so unconfirmed long entries fail frequently. Its reliability also drops on low volume or away from support levels.",
+    "misconceptions": "The body color is not decisive (a green close is modestly stronger, but a red hammer is still a hammer), and the shape alone is not the pattern: without a preceding downtrend it is not a hammer.",
+    "example": "After a month-long slide, a stock opens at 30.00, falls to 27.50, then rallies to close at 29.90. The next day a strong white candle closes above 30.50, confirming the hammer and prompting reversal-focused traders to go long with a stop below 27.50.",
+    "citations": [
+      {
+        "source": "Investopedia, \"Hammer Candlestick\"",
+        "url": "https://www.investopedia.com/terms/h/hammer.asp",
+        "section": "Understanding Hammer Candlesticks",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia, \"Candlestick pattern\"",
+        "url": "https://en.wikipedia.org/wiki/Candlestick_pattern",
+        "section": "Simple patterns",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
