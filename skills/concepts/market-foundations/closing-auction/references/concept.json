@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-foundations/closing-auction",
+  "canonical_sha256": "051226a67cbcabda706895d83e231a6fdc649564b0bc2c8c840924a87df629ca",
+  "source_path": "concepts/market-foundations.json",
+  "concept": {
+    "id": "market-foundations/closing-auction",
+    "name": "Closing auction",
+    "aliases": [
+      "Closing cross",
+      "Closing call"
+    ],
+    "domain": "Market foundations",
+    "definition": "The call auction that establishes a security's official closing price at the end of regular trading, pooling market-on-close, limit-on-close, and continuous-book interest into a single-price cross.",
+    "intuition": "One final batch trade sets the closing print that indexes, funds, and performance reports all use as the day's price.",
+    "mechanics": "On Nasdaq, on-close orders are accepted until cutoffs (MOC by 3:55 p.m. ET, LOC by 3:58 p.m.), imbalance information is disseminated from 3:55 p.m., and at 4:00 p.m. the closing book and continuous book are crossed at the price that maximizes matched shares; the result sets the Nasdaq Official Closing Price and is distributed to the consolidated tape.",
+    "formula": "",
+    "relationships": [
+      "Call auction",
+      "Opening auction",
+      "Continuous auction",
+      "Consolidated tape",
+      "Price discovery"
+    ],
+    "failure_modes": "Because index funds and benchmarks key off the close, the closing auction attracts enormous, sometimes one-sided volume; large imbalances can move the closing print away from the preceding continuous-market price.",
+    "misconceptions": "The closing price is not 'the last trade of the day' by definition — it is the price of the closing cross, which may differ from the final continuous-market trade and can be amended by clearly erroneous trade rules.",
+    "example": "On index rebalance day, hundreds of millions of shares route to closing auctions; a stock with a large sell imbalance closes at a cross price below its 3:59 p.m. continuous-market quote.",
+    "citations": [
+      {
+        "source": "Nasdaq, The Nasdaq Opening and Closing Crosses FAQ",
+        "url": "https://www.nasdaq.com/docs/2020/04/03/openclose_faqs.pdf",
+        "section": "Sections 1, 5-8, 18 (Closing Cross mechanics and NOCP)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-foundations/opening-auction",
+  "canonical_sha256": "20bab5fde796d89c43c469829f3b47490cf36396453d2b12ad5517219dbfc4f3",
+  "source_path": "concepts/market-foundations.json",
+  "concept": {
+    "id": "market-foundations/opening-auction",
+    "name": "Opening auction",
+    "aliases": [
+      "Opening cross",
+      "Opening call"
+    ],
+    "domain": "Market foundations",
+    "definition": "The call auction that establishes a security's official opening price at the start of regular trading, concentrating overnight and on-open orders into a single-price cross before continuous trading begins.",
+    "intuition": "All the demand that built up since the last close is pooled and cleared at one price, which becomes the day's official open.",
+    "mechanics": "Venues accept market-on-open and limit-on-open orders until a cutoff (on Nasdaq, 9:28 a.m. ET), disseminate indicative clearing prices and imbalance information, then at 9:30 a.m. cross the opening book against the continuous book at the price that maximizes paired shares; the result sets the official opening price.",
+    "formula": "",
+    "relationships": [
+      "Call auction",
+      "Closing auction",
+      "Opening range",
+      "Continuous auction",
+      "Price discovery"
+    ],
+    "failure_modes": "Overnight news can make the opening cross highly volatile and one-sided; if few orders participate, the opening price can gap far from the prior close and immediately trigger volatility safeguards such as LULD.",
+    "misconceptions": "The opening price is not a continuation of the pre-market price and not a consensus fair value — it is the output of one matching process at one instant, and heavy imbalance can make it an outlier.",
+    "example": "After earnings released overnight, a stock's Opening Cross on Nasdaq clears at $102.40 versus a $95.00 prior close, and that cross price becomes the Nasdaq Official Opening Price.",
+    "citations": [
+      {
+        "source": "Nasdaq, The Nasdaq Opening and Closing Crosses FAQ",
+        "url": "https://www.nasdaq.com/docs/2020/04/03/openclose_faqs.pdf",
+        "section": "Sections 1-8, 18-19 (Opening Cross mechanics and NOOP)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

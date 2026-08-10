@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-foundations/opening-range",
+  "canonical_sha256": "ad7f1c00242b8ff6e1951933977998f59c13fd6ec4aab1ecbdec56fc4f5f9049",
+  "source_path": "concepts/market-foundations.json",
+  "concept": {
+    "id": "market-foundations/opening-range",
+    "name": "Opening range",
+    "aliases": [
+      "OR",
+      "Opening price range"
+    ],
+    "domain": "Market foundations",
+    "definition": "The price range established during the initial part of a trading session — commonly the first minutes or the first hour — used by traders as a reference for the session's early balance between buyers and sellers. The concept is institutionalized in exchange terminology (trades made 'on opening' occur within the opening price range) and in intraday frameworks such as opening range breakout analysis, which are analytical conventions rather than proven predictive laws.",
+    "intuition": "The high and low of the first stretch of trading sketch the day's initial battle lines; traders watch what happens when price later leaves that box.",
+    "mechanics": "Record the high and low over a chosen opening window (e.g., first 5, 15, or 30 minutes of the regular session); subsequent breaks above or below that range are used as reference or signal levels in intraday analysis, with the choice of window being a convention, not a rule.",
+    "formula": "OR_high = max(High_t) and OR_low = min(Low_t) for t in the chosen opening window (e.g., first 30 minutes of RTH); OR width = OR_high - OR_low.",
+    "relationships": [
+      "Opening auction",
+      "Initial balance",
+      "Regular trading hours",
+      "Pre-market session"
+    ],
+    "failure_modes": "The window choice is arbitrary and the levels are self-referential: in trendless or news-driven days the opening range is immediately swept or meaningless, and breakout signals degrade when many traders key off the same levels.",
+    "misconceptions": "There is no official or universal opening-range definition — 5, 15, 30, and 60 minutes are all in use — and a breakout of the opening range is a descriptive event, not a validated predictor of the day's direction.",
+    "example": "A trader marks the S&P 500 E-mini's high and low from 9:30-10:00 a.m. ET; a sustained move above that band later in the morning is treated as an upside range extension.",
+    "citations": [
+      {
+        "source": "CFTC Futures Glossary",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Buy (or Sell) On Opening (within the opening price range)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

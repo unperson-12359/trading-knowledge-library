@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-market-fragmentation",
+  "concept_id": "market-foundations/market-fragmentation",
+  "display_name": "Market fragmentation",
+  "domain": "Market foundations",
+  "description": "Explain, compare, or apply Market fragmentation using the library's structured Market foundations reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Market fragmentation",
+    "Order flow fragmentation",
+    "explain Market fragmentation",
+    "apply Market fragmentation to a trading question",
+    "common misconception about Market fragmentation"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 5,
+  "package_path": "skills/concepts/market-foundations/market-fragmentation",
+  "canonical": {
+    "source_path": "concepts/market-foundations.json",
+    "sha256": "63438757dbe6a58127eb89694630032179e7a3838588a1bc403e6dec04475eff"
+  },
+  "related_concept_ids": [
+    "market-foundations/national-market-system",
+    "market-foundations/consolidated-tape",
+    "market-foundations/price-discovery",
+    "market-foundations/over-the-counter-market",
+    "market-foundations/dealer-market"
+  ]
+}

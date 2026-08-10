@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-foundations/call-auction",
+  "canonical_sha256": "68ba4c3580256b46cd9eb2a09951e7ac32c7982b737005b58c9454471fcc9640",
+  "source_path": "concepts/market-foundations.json",
+  "concept": {
+    "id": "market-foundations/call-auction",
+    "name": "Call auction",
+    "aliases": [
+      "Single-price auction",
+      "Batch auction",
+      "Cross"
+    ],
+    "domain": "Market foundations",
+    "definition": "A trading mechanism in which orders are collected over a specified period and then executed simultaneously at a single price — the clearing price that maximizes the volume of matched orders. The CFTC defines a call auction as one in which traders place limit bids and offers over a specified time period and those orders are subsequently matched, in contrast to a continuously available order book.",
+    "intuition": "Everyone writes down what they would trade at each price; at the appointed moment, the venue picks the one price that clears the most volume and all matched orders trade at that price.",
+    "mechanics": "During the call window, venues typically disseminate an indicative clearing price and order imbalance; at the cross, buy orders at or above and sell orders at or below the clearing price execute at that single price, with priority rules resolving ties.",
+    "formula": "Clearing price p* = argmax over candidate prices p of min(cumulative buy volume at prices >= p, cumulative sell volume at prices <= p); ties broken by minimizing imbalance and then by proximity to a reference price.",
+    "relationships": [
+      "Opening auction",
+      "Closing auction",
+      "Continuous auction",
+      "Auction market",
+      "Price discovery"
+    ],
+    "failure_modes": "A single clearing price can be distorted by sparse participation, large strategic imbalance orders, or stale reference prices; because everyone trades at one price, a bad cross prints a visibly anomalous open or close.",
+    "misconceptions": "Call auctions do not reveal 'the true price' — they aggregate whatever orders show up in the window, and indicative prices can move sharply in the final seconds as orders are added or canceled.",
+    "example": "The Nasdaq Closing Cross collects on-close orders from 3:55 p.m., disseminates the Net Order Imbalance Indicator, and at 4:00 p.m. executes all matched orders at one official closing price.",
+    "citations": [
+      {
+        "source": "CFTC Futures Glossary",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Call Auction",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Nasdaq, The Nasdaq Opening and Closing Crosses FAQ",
+        "url": "https://www.nasdaq.com/docs/2020/04/03/openclose_faqs.pdf",
+        "section": "Sections 1, 7, 18 (cross price determination)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

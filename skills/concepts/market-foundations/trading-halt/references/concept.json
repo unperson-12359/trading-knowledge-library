@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-foundations/trading-halt",
+  "canonical_sha256": "b657a52f3cdc25f31d7ceb91328496a281113e76ce57337aeac8a8b35c733492",
+  "source_path": "concepts/market-foundations.json",
+  "concept": {
+    "id": "market-foundations/trading-halt",
+    "name": "Trading halt",
+    "aliases": [
+      "Trading pause",
+      "Trading suspension"
+    ],
+    "domain": "Market foundations",
+    "definition": "A temporary suspension of trading in a security imposed by an exchange or regulator, triggered by events such as pending material news, order imbalances, regulatory concerns, or volatility rules; trading resumes through a reopening process, often an auction.",
+    "intuition": "The referee stops the game so everyone can absorb new information or so order can be restored, then restarts it with an auction.",
+    "mechanics": "Listing exchanges declare halts under their rules (e.g., news-pending halts, LULD trading pauses of five minutes after a 15-second limit state); during a halt, quoting and trading stop across venues, and reopening typically uses a call auction with imbalance dissemination.",
+    "formula": "",
+    "relationships": [
+      "Circuit breaker",
+      "Limit up-limit down",
+      "Call auction",
+      "Opening auction"
+    ],
+    "failure_modes": "Halts transfer rather than remove pressure: order imbalances accumulate during the halt, reopening auctions can print extreme prices, and repeated halts can impair price discovery for the whole session.",
+    "misconceptions": "A halt is not a judgment that something is wrong with the company, nor does it freeze everyone's losses — prices can gap dramatically at the reopening auction.",
+    "example": "When the National Best Bid or Offer reaches an LULD price band and remains there for 15 seconds, the primary listing exchange declares a five-minute trading pause in that stock, after which it reopens via auction.",
+    "citations": [
+      {
+        "source": "NasdaqTrader, Trade Halts - Current",
+        "url": "https://www.nasdaqtrader.com/Trader.aspx?id=TradeHalts",
+        "section": "Trading halts list and pause threshold price description",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Limit Up-Limit Down Plan (NMS Plan)",
+        "url": "https://www.luldplan.com/",
+        "section": "Operation of Price Bands (Limit State and Trading Pause)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-foundations/initial-balance",
+  "canonical_sha256": "98a7a6ba3e671cb630b78b924a27c066ae18b6199c897f9f1408412a277af25a",
+  "source_path": "concepts/market-foundations.json",
+  "concept": {
+    "id": "market-foundations/initial-balance",
+    "name": "Initial balance",
+    "aliases": [
+      "IB"
+    ],
+    "domain": "Market foundations",
+    "definition": "In Market Profile analysis (developed by J. Peter Steidlmayer at the Chicago Board of Trade in the 1980s), the price range established during the first hour of the regular trading session — the first two 30-minute TPO periods — taken to represent the range set by short-term, day-timeframe traders before longer-term participants extend it. It is an analytical convention within the Market Profile framework, not a proven predictive law.",
+    "intuition": "The first hour's high and low mark the territory day traders carve out; whether later trading holds or breaks that range tells you whether bigger money is participating.",
+    "mechanics": "On a Market Profile (TPO) chart, the session is divided into 30-minute periods labeled with letters; the initial balance is the price range covered by periods A and B of the regular session. Moves beyond the IB high or low are called range extensions and are used to gauge initiative buying or selling.",
+    "formula": "IB_high = max price traded during the first two 30-minute periods (first hour) of RTH; IB_low = min price over the same window; range extension = any trade beyond IB_high or IB_low in later periods.",
+    "relationships": [
+      "Opening range",
+      "Regular trading hours",
+      "Trading session",
+      "Price discovery"
+    ],
+    "failure_modes": "The one-hour convention fits the pit-era U.S. day session for which it was designed; in near-24-hour electronic markets the 'first hour' is a design choice, and IB-based rules lose meaning on days dominated by a single scheduled news event.",
+    "misconceptions": "The initial balance is not an official exchange statistic and has no universal definition across platforms (some use the first hour, others the first two TPO periods of a user-defined session); IB extensions describe structure, they do not predict direction with verified accuracy.",
+    "example": "If CBOT-era bond futures trade between 98-04 and 98-20 in the first hour, that band is the initial balance; a move above 98-20 in period C is an upside range extension attributed to longer-term buyers.",
+    "citations": [
+      {
+        "source": "WindoTrader Market Profile Glossary, Part 1: Market Profile Terminology",
+        "url": "https://www.windotrader.com/market-profile/market-profile-glossary-index/",
+        "section": "Initial balance (IB): 'represents the first hour of trading... letters A and B together'",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

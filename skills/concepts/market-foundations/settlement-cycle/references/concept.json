@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-foundations/settlement-cycle",
+  "canonical_sha256": "a8c62678cc2570ca9e5cc4a46ce0c64bc26d4b5b9a5869375ff78ed40d1917f9",
+  "source_path": "concepts/market-foundations.json",
+  "concept": {
+    "id": "market-foundations/settlement-cycle",
+    "name": "Settlement cycle",
+    "aliases": [
+      "T+1",
+      "T+2",
+      "Settlement period"
+    ],
+    "domain": "Market foundations",
+    "definition": "The standard interval between the trade date and the settlement date for a class of transactions, conventionally written T+n (trade date plus n business days). The SEC shortened the standard settlement cycle for most U.S. broker-dealer securities transactions from T+2 to T+1, effective May 28, 2024.",
+    "intuition": "The plumbing delay between agreeing a trade and actually exchanging cash for securities — the shorter it is, the less can go wrong in between.",
+    "mechanics": "During the cycle, trades are matched, confirmed, affirmed, and cleared; obligations are netted and margined; on settlement day, securities and funds move, typically delivery-versus-payment. Shortening the cycle compresses the window in which counterparty, market, and liquidity risks can accumulate.",
+    "formula": "Settlement date = trade date T + n business days (n = 1 for most U.S. securities since May 28, 2024; n = 2 previously and still in some markets and instruments).",
+    "relationships": [
+      "Settlement",
+      "Delivery versus payment",
+      "Clearinghouse",
+      "Netting",
+      "Trading session"
+    ],
+    "failure_modes": "Shorter cycles squeeze operational timelines: affirmation, securities lending recalls, and cross-timezone FX funding (for foreign investors buying U.S. assets) must complete faster, raising fail risk for unprepared participants.",
+    "misconceptions": "T+1 does not mean you wait a day to use your shares or proceeds in all cases — brokers may credit accounts at execution — and the cycle is a market-standard maximum convention, with same-day and negotiated settlements also existing.",
+    "example": "A U.S. stock trade executed on Monday, June 3, 2024 settles on Tuesday, June 4 (T+1); the same trade in 2023 would have settled on Wednesday (T+2).",
+    "citations": [
+      {
+        "source": "SEC Press Release 2023-29, SEC Finalizes Rules to Reduce Risks in Clearance and Settlement",
+        "url": "https://www.sec.gov/newsroom/press-releases/2023-29",
+        "section": "Press release (T+2 to T+1; compliance date May 28, 2024)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

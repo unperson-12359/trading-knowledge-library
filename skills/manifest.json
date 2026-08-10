@@ -2,7 +2,7 @@
   "$schema": "../schemas/skill-manifest.schema.json",
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 80,
+  "completed_count": 100,
   "skills": [
     {
       "$schema": "../../../../schemas/concept-skill.schema.json",
@@ -6393,6 +6393,1625 @@
         "market-foundations/dealer-market",
         "market-foundations/auction-market",
         "market-foundations/exchange"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-continuous-auction",
+      "concept_id": "market-foundations/continuous-auction",
+      "display_name": "Continuous auction",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply Continuous auction using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Continuous auction",
+        "Continuous trading",
+        "Continuous market",
+        "explain Continuous auction",
+        "apply Continuous auction to a trading question",
+        "common misconception about Continuous auction"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/continuous-auction",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "c62012c1689ec49f405500399d4d845630392ac3da147df8f02c943f098cdd8e"
+      },
+      "related_concept_ids": [
+        "market-foundations/order-driven-market",
+        "market-foundations/call-auction",
+        "market-foundations/opening-auction",
+        "market-foundations/closing-auction",
+        "market-foundations/auction-market"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-call-auction",
+      "concept_id": "market-foundations/call-auction",
+      "display_name": "Call auction",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply Call auction using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Call auction",
+        "Single-price auction",
+        "Batch auction",
+        "Cross",
+        "explain Call auction",
+        "apply Call auction to a trading question",
+        "common misconception about Call auction"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/call-auction",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "68ba4c3580256b46cd9eb2a09951e7ac32c7982b737005b58c9454471fcc9640"
+      },
+      "related_concept_ids": [
+        "market-foundations/opening-auction",
+        "market-foundations/closing-auction",
+        "market-foundations/continuous-auction",
+        "market-foundations/auction-market",
+        "market-foundations/price-discovery"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-opening-auction",
+      "concept_id": "market-foundations/opening-auction",
+      "display_name": "Opening auction",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply Opening auction using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Opening auction",
+        "Opening cross",
+        "Opening call",
+        "explain Opening auction",
+        "apply Opening auction to a trading question",
+        "common misconception about Opening auction"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/opening-auction",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "20bab5fde796d89c43c469829f3b47490cf36396453d2b12ad5517219dbfc4f3"
+      },
+      "related_concept_ids": [
+        "market-foundations/call-auction",
+        "market-foundations/closing-auction",
+        "market-foundations/opening-range",
+        "market-foundations/continuous-auction",
+        "market-foundations/price-discovery"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-closing-auction",
+      "concept_id": "market-foundations/closing-auction",
+      "display_name": "Closing auction",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply Closing auction using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Closing auction",
+        "Closing cross",
+        "Closing call",
+        "explain Closing auction",
+        "apply Closing auction to a trading question",
+        "common misconception about Closing auction"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/closing-auction",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "051226a67cbcabda706895d83e231a6fdc649564b0bc2c8c840924a87df629ca"
+      },
+      "related_concept_ids": [
+        "market-foundations/call-auction",
+        "market-foundations/opening-auction",
+        "market-foundations/continuous-auction",
+        "market-foundations/consolidated-tape",
+        "market-foundations/price-discovery"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-trading-halt",
+      "concept_id": "market-foundations/trading-halt",
+      "display_name": "Trading halt",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply Trading halt using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Trading halt",
+        "Trading pause",
+        "Trading suspension",
+        "explain Trading halt",
+        "apply Trading halt to a trading question",
+        "common misconception about Trading halt"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/trading-halt",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "b657a52f3cdc25f31d7ceb91328496a281113e76ce57337aeac8a8b35c733492"
+      },
+      "related_concept_ids": [
+        "market-foundations/circuit-breaker",
+        "market-foundations/limit-up-limit-down",
+        "market-foundations/call-auction",
+        "market-foundations/opening-auction"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-circuit-breaker",
+      "concept_id": "market-foundations/circuit-breaker",
+      "display_name": "Circuit breaker",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply Circuit breaker using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Circuit breaker",
+        "Market-wide circuit breaker",
+        "Volatility trading curb",
+        "explain Circuit breaker",
+        "apply Circuit breaker to a trading question",
+        "common misconception about Circuit breaker"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/circuit-breaker",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "f958188dfb56d4a58ebca497f6f318f67345b81aa691bac379b4d08b9b378498"
+      },
+      "related_concept_ids": [
+        "market-foundations/trading-halt",
+        "market-foundations/limit-up-limit-down",
+        "market-foundations/call-auction",
+        "market-foundations/price-discovery"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-limit-up-limit-down",
+      "concept_id": "market-foundations/limit-up-limit-down",
+      "display_name": "Limit up-limit down",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply Limit up-limit down using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Limit up-limit down",
+        "LULD",
+        "Price bands",
+        "explain Limit up-limit down",
+        "apply Limit up-limit down to a trading question",
+        "common misconception about Limit up-limit down"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/limit-up-limit-down",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "fbc26b6d73d669dc1b79cc1906ebd728ead46cc09b728561beb6ef8d0ab7aa13"
+      },
+      "related_concept_ids": [
+        "market-foundations/circuit-breaker",
+        "market-foundations/trading-halt",
+        "market-foundations/consolidated-tape",
+        "market-foundations/national-market-system",
+        "market-foundations/regular-trading-hours"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-price-discovery",
+      "concept_id": "market-foundations/price-discovery",
+      "display_name": "Price discovery",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply Price discovery using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Price discovery",
+        "explain Price discovery",
+        "apply Price discovery to a trading question",
+        "common misconception about Price discovery"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/price-discovery",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "a9510dfbae7943d9ca0d5bdd039a99541e47cf3df4f7f0cb46d1e194fbbdc5b2"
+      },
+      "related_concept_ids": [
+        "market-foundations/auction-market",
+        "market-foundations/call-auction",
+        "market-foundations/continuous-auction",
+        "market-foundations/market-fragmentation",
+        "market-foundations/consolidated-tape",
+        "market-foundations/financial-market"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-market-fragmentation",
+      "concept_id": "market-foundations/market-fragmentation",
+      "display_name": "Market fragmentation",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply Market fragmentation using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Market fragmentation",
+        "Order flow fragmentation",
+        "explain Market fragmentation",
+        "apply Market fragmentation to a trading question",
+        "common misconception about Market fragmentation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/market-fragmentation",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "63438757dbe6a58127eb89694630032179e7a3838588a1bc403e6dec04475eff"
+      },
+      "related_concept_ids": [
+        "market-foundations/national-market-system",
+        "market-foundations/consolidated-tape",
+        "market-foundations/price-discovery",
+        "market-foundations/over-the-counter-market",
+        "market-foundations/dealer-market"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-consolidated-tape",
+      "concept_id": "market-foundations/consolidated-tape",
+      "display_name": "Consolidated tape",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply Consolidated tape using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Consolidated tape",
+        "Consolidated data feed",
+        "Tape",
+        "SIP feed",
+        "explain Consolidated tape",
+        "apply Consolidated tape to a trading question",
+        "common misconception about Consolidated tape"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/consolidated-tape",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "a2ba200f52c56e1e185e39e5e96b89f0d800b0f40942f5cb485acee80734cc31"
+      },
+      "related_concept_ids": [
+        "market-foundations/national-market-system",
+        "market-foundations/market-fragmentation",
+        "market-foundations/limit-up-limit-down",
+        "market-foundations/closing-auction",
+        "market-foundations/price-discovery"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-national-market-system",
+      "concept_id": "market-foundations/national-market-system",
+      "display_name": "National market system",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply National market system using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "National market system",
+        "NMS",
+        "Reg NMS framework",
+        "explain National market system",
+        "apply National market system to a trading question",
+        "common misconception about National market system"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/national-market-system",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "10db2850bd97d28404205babe78c9d40aa48c6a14dd27845a66408383ae0be6d"
+      },
+      "related_concept_ids": [
+        "market-foundations/consolidated-tape",
+        "market-foundations/market-fragmentation",
+        "market-foundations/limit-up-limit-down",
+        "market-foundations/exchange",
+        "market-foundations/price-discovery"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-trading-session",
+      "concept_id": "market-foundations/trading-session",
+      "display_name": "Trading session",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply Trading session using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Trading session",
+        "Session",
+        "explain Trading session",
+        "apply Trading session to a trading question",
+        "common misconception about Trading session"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/trading-session",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "d7b4b820bc4c677f66467a57c261ce6977c54b175b32e07185c712f438c896e5"
+      },
+      "related_concept_ids": [
+        "market-foundations/regular-trading-hours",
+        "market-foundations/pre-market-session",
+        "market-foundations/after-hours-session",
+        "market-foundations/overnight-session",
+        "market-foundations/opening-auction",
+        "market-foundations/closing-auction"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-regular-trading-hours",
+      "concept_id": "market-foundations/regular-trading-hours",
+      "display_name": "Regular trading hours",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply Regular trading hours using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Regular trading hours",
+        "RTH",
+        "Core trading session",
+        "Regular session",
+        "explain Regular trading hours",
+        "apply Regular trading hours to a trading question",
+        "common misconception about Regular trading hours"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/regular-trading-hours",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "98c57faa4cea17f89d038a670780d6b14eb31cbd56d51603b8f326e4108a92ea"
+      },
+      "related_concept_ids": [
+        "market-foundations/trading-session",
+        "market-foundations/pre-market-session",
+        "market-foundations/after-hours-session",
+        "market-foundations/opening-auction",
+        "market-foundations/closing-auction",
+        "market-foundations/limit-up-limit-down"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-pre-market-session",
+      "concept_id": "market-foundations/pre-market-session",
+      "display_name": "Pre-market session",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply Pre-market session using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Pre-market session",
+        "Pre-market trading",
+        "Early session",
+        "explain Pre-market session",
+        "apply Pre-market session to a trading question",
+        "common misconception about Pre-market session"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/pre-market-session",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "023014f65b6221d6c48ba9cd9ced85259092a44dc6a3e253641635490f962641"
+      },
+      "related_concept_ids": [
+        "market-foundations/regular-trading-hours",
+        "market-foundations/after-hours-session",
+        "market-foundations/trading-session",
+        "market-foundations/opening-auction",
+        "market-foundations/opening-range"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-after-hours-session",
+      "concept_id": "market-foundations/after-hours-session",
+      "display_name": "After-hours session",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply After-hours session using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "After-hours session",
+        "After-hours trading",
+        "Post-market session",
+        "Late session",
+        "explain After-hours session",
+        "apply After-hours session to a trading question",
+        "common misconception about After-hours session"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/after-hours-session",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "5939429e7378941cca82ea02926b79ae21e7fc8e56b8620689a12ba08b1151ec"
+      },
+      "related_concept_ids": [
+        "market-foundations/regular-trading-hours",
+        "market-foundations/pre-market-session",
+        "market-foundations/trading-session",
+        "market-foundations/closing-auction",
+        "market-foundations/overnight-session"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-overnight-session",
+      "concept_id": "market-foundations/overnight-session",
+      "display_name": "Overnight session",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply Overnight session using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Overnight session",
+        "Globex session",
+        "Night session",
+        "Evening session",
+        "explain Overnight session",
+        "apply Overnight session to a trading question",
+        "common misconception about Overnight session"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/overnight-session",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "4f773b3b1560e95f3c83823250e48bae84045f9ad057a45b40580eb3f438a34e"
+      },
+      "related_concept_ids": [
+        "market-foundations/trading-session",
+        "market-foundations/after-hours-session",
+        "market-foundations/pre-market-session",
+        "market-foundations/regular-trading-hours"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-opening-range",
+      "concept_id": "market-foundations/opening-range",
+      "display_name": "Opening range",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply Opening range using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Opening range",
+        "OR",
+        "Opening price range",
+        "explain Opening range",
+        "apply Opening range to a trading question",
+        "common misconception about Opening range"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/opening-range",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "ad7f1c00242b8ff6e1951933977998f59c13fd6ec4aab1ecbdec56fc4f5f9049"
+      },
+      "related_concept_ids": [
+        "market-foundations/opening-auction",
+        "market-foundations/initial-balance",
+        "market-foundations/regular-trading-hours",
+        "market-foundations/pre-market-session"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-initial-balance",
+      "concept_id": "market-foundations/initial-balance",
+      "display_name": "Initial balance",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply Initial balance using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Initial balance",
+        "IB",
+        "explain Initial balance",
+        "apply Initial balance to a trading question",
+        "common misconception about Initial balance"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/initial-balance",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "98a7a6ba3e671cb630b78b924a27c066ae18b6199c897f9f1408412a277af25a"
+      },
+      "related_concept_ids": [
+        "market-foundations/opening-range",
+        "market-foundations/regular-trading-hours",
+        "market-foundations/trading-session",
+        "market-foundations/price-discovery"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-settlement-cycle",
+      "concept_id": "market-foundations/settlement-cycle",
+      "display_name": "Settlement cycle",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply Settlement cycle using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Settlement cycle",
+        "T+1",
+        "T+2",
+        "Settlement period",
+        "explain Settlement cycle",
+        "apply Settlement cycle to a trading question",
+        "common misconception about Settlement cycle"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/settlement-cycle",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "a8c62678cc2570ca9e5cc4a46ce0c64bc26d4b5b9a5869375ff78ed40d1917f9"
+      },
+      "related_concept_ids": [
+        "market-foundations/settlement",
+        "market-foundations/delivery-versus-payment",
+        "market-foundations/clearinghouse",
+        "market-foundations/netting",
+        "market-foundations/trading-session"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-netting",
+      "concept_id": "market-foundations/netting",
+      "display_name": "Netting",
+      "domain": "Market foundations",
+      "description": "Explain, compare, or apply Netting using the library's structured Market foundations reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Netting",
+        "Multilateral netting",
+        "Bilateral netting",
+        "explain Netting",
+        "apply Netting to a trading question",
+        "common misconception about Netting"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 5,
+      "package_path": "skills/concepts/market-foundations/netting",
+      "canonical": {
+        "source_path": "concepts/market-foundations.json",
+        "sha256": "d46092ea2f7ea5eb8ac7464e92975e6e8b176f12ba8efa6afe37253d4ec51254"
+      },
+      "related_concept_ids": [
+        "market-foundations/clearinghouse",
+        "market-foundations/novation",
+        "market-foundations/settlement",
+        "market-foundations/settlement-cycle",
+        "market-foundations/delivery-versus-payment"
       ]
     }
   ]

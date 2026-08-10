@@ -1,0 +1,81 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-pre-market-session",
+  "concept_id": "market-foundations/pre-market-session",
+  "display_name": "Pre-market session",
+  "domain": "Market foundations",
+  "description": "Explain, compare, or apply Pre-market session using the library's structured Market foundations reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Pre-market session",
+    "Pre-market trading",
+    "Early session",
+    "explain Pre-market session",
+    "apply Pre-market session to a trading question",
+    "common misconception about Pre-market session"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 5,
+  "package_path": "skills/concepts/market-foundations/pre-market-session",
+  "canonical": {
+    "source_path": "concepts/market-foundations.json",
+    "sha256": "023014f65b6221d6c48ba9cd9ced85259092a44dc6a3e253641635490f962641"
+  },
+  "related_concept_ids": [
+    "market-foundations/regular-trading-hours",
+    "market-foundations/after-hours-session",
+    "market-foundations/trading-session",
+    "market-foundations/opening-auction",
+    "market-foundations/opening-range"
+  ]
+}

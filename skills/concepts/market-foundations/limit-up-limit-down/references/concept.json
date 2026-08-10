@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-foundations/limit-up-limit-down",
+  "canonical_sha256": "fbc26b6d73d669dc1b79cc1906ebd728ead46cc09b728561beb6ef8d0ab7aa13",
+  "source_path": "concepts/market-foundations.json",
+  "concept": {
+    "id": "market-foundations/limit-up-limit-down",
+    "name": "Limit up-limit down",
+    "aliases": [
+      "LULD",
+      "Price bands"
+    ],
+    "domain": "Market foundations",
+    "definition": "A U.S. National Market System plan, approved by the SEC in 2012 and made permanent in 2019, that prevents trades in NMS stocks from occurring outside specified price bands set at a percentage level above and below the average price of the security over the preceding five minutes.",
+    "intuition": "Each stock has a moving corridor around its recent average price; trades may not print outside the corridor, and if the quote sits at the corridor edge too long, the stock pauses.",
+    "mechanics": "The SIPs (CTA and Nasdaq UTP) compute a Reference Price as the arithmetic mean of eligible trades over the prior five minutes, then set Upper and Lower Price Bands by applying a percentage parameter (5% for most Tier 1 securities, 10% for Tier 2). If the National Best Bid or Offer reaches a band and stays there 15 seconds (a Limit State), the primary listing exchange declares a five-minute Trading Pause. Bands apply during regular trading hours, 9:30 a.m.-4:00 p.m. ET.",
+    "formula": "Price Band = Reference Price +/- (Reference Price x Percentage Parameter), where Reference Price = arithmetic mean of eligible reported transactions over the prior five minutes, and Percentage Parameter = 5% (Tier 1, price > $3.00) or 10% (Tier 2, price > $3.00), with special parameters for lower-priced securities; bands are doubled in the final 25 minutes of the session for Tier 1 and low-priced Tier 2 securities.",
+    "relationships": [
+      "Circuit breaker",
+      "Trading halt",
+      "Consolidated tape",
+      "National market system",
+      "Regular trading hours"
+    ],
+    "failure_modes": "LULD bands can lag fast-moving news because the reference price trails the market; pauses reopen into auction uncertainty, and repeated limit states can make a stock effectively untradeable during precisely the moves traders care most about.",
+    "misconceptions": "LULD does not cap how far a stock can move in a day — bands ratchet with the reference price — and it replaced, rather than supplements, the old single-stock circuit breaker pilot.",
+    "example": "A Tier 1 stock with a reference price of $25.00 has LULD bands at $23.75 and $26.25; if the national best offer drops to $23.75 and stays for 15 seconds, the listing exchange pauses trading for five minutes.",
+    "citations": [
+      {
+        "source": "Limit Up-Limit Down Plan (NMS Plan)",
+        "url": "https://www.luldplan.com/",
+        "section": "Plan overview; Calculation of Price Bands; Operation of Price Bands",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

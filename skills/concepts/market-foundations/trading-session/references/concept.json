@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-foundations/trading-session",
+  "canonical_sha256": "d7b4b820bc4c677f66467a57c261ce6977c54b175b32e07185c712f438c896e5",
+  "source_path": "concepts/market-foundations.json",
+  "concept": {
+    "id": "market-foundations/trading-session",
+    "name": "Trading session",
+    "aliases": [
+      "Session"
+    ],
+    "domain": "Market foundations",
+    "definition": "A defined period during which a venue accepts orders and executes trades, bounded by official open and close times and often segmented into pre-market, regular, and after-hours phases. Session boundaries determine which orders are active, which prices are official, and when settlement-relevant prints occur.",
+    "intuition": "Markets keep office hours; the session is the window in which your orders can actually trade and the prices 'count' as official.",
+    "mechanics": "Venues publish session calendars and hours; order handling, volatility protections, and data dissemination change by phase (e.g., LULD applies only 9:30 a.m.-4:00 p.m. ET), and futures venues like CME Globex run near-24-hour sessions that may be labeled by region (Asia, London, U.S.).",
+    "formula": "",
+    "relationships": [
+      "Regular trading hours",
+      "Pre-market session",
+      "After-hours session",
+      "Overnight session",
+      "Opening auction",
+      "Closing auction"
+    ],
+    "failure_modes": "Liquidity and protections differ sharply across phases — the same instrument can be deep and orderly in one session and thin, wide, and unprotected in another; treating session prices as interchangeable misleads analysis.",
+    "misconceptions": "A market being 'open' is venue-specific: U.S. equities, futures, and FX each keep different hours, and a futures 'trade date' can start the prior evening.",
+    "example": "CME Globex Treasury futures trade from a 6:30 p.m. ET evening open to a 5:30 p.m. close the next day, with activity described across Asia, London, and U.S. session windows.",
+    "citations": [
+      {
+        "source": "CME Group, Trading Hours (BrokerTec U.S. Actives on CME Globex)",
+        "url": "https://www.cmegroup.com/trading-hours.html",
+        "section": "Normal hours of operation; Asia/London/U.S. session hours",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Limit Up-Limit Down Plan (NMS Plan)",
+        "url": "https://www.luldplan.com/",
+        "section": "Plan scope (applies during regular trading hours 9:30 a.m.-4:00 p.m. ET)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

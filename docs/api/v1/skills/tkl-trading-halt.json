@@ -1,0 +1,80 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-trading-halt",
+  "concept_id": "market-foundations/trading-halt",
+  "display_name": "Trading halt",
+  "domain": "Market foundations",
+  "description": "Explain, compare, or apply Trading halt using the library's structured Market foundations reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Trading halt",
+    "Trading pause",
+    "Trading suspension",
+    "explain Trading halt",
+    "apply Trading halt to a trading question",
+    "common misconception about Trading halt"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 5,
+  "package_path": "skills/concepts/market-foundations/trading-halt",
+  "canonical": {
+    "source_path": "concepts/market-foundations.json",
+    "sha256": "b657a52f3cdc25f31d7ceb91328496a281113e76ce57337aeac8a8b35c733492"
+  },
+  "related_concept_ids": [
+    "market-foundations/circuit-breaker",
+    "market-foundations/limit-up-limit-down",
+    "market-foundations/call-auction",
+    "market-foundations/opening-auction"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-foundations/netting",
+  "canonical_sha256": "d46092ea2f7ea5eb8ac7464e92975e6e8b176f12ba8efa6afe37253d4ec51254",
+  "source_path": "concepts/market-foundations.json",
+  "concept": {
+    "id": "market-foundations/netting",
+    "name": "Netting",
+    "aliases": [
+      "Multilateral netting",
+      "Bilateral netting"
+    ],
+    "domain": "Market foundations",
+    "definition": "The offsetting of multiple obligations between parties so that only the net balance must be settled, replacing many gross transfers with a smaller number of net payments or deliveries. Netting may be bilateral (between two parties) or multilateral (across many participants, typically at a central counterparty).",
+    "intuition": "If I owe you $100 and you owe me $80, we settle $20 one way instead of moving $180 around — scaled up to thousands of trades, this shrinks what actually has to move.",
+    "mechanics": "A clearinghouse or settlement system aggregates each participant's buys, sells, payments, and receipts per instrument and currency, computes a single net position or obligation per participant, and settles only those net amounts, drastically reducing settlement volume and liquidity needs.",
+    "formula": "Net obligation of participant i = sum of amounts due to i minus sum of amounts due from i (per instrument/currency); only the residual is settled.",
+    "relationships": [
+      "Clearinghouse",
+      "Novation",
+      "Settlement",
+      "Settlement cycle",
+      "Delivery versus payment"
+    ],
+    "failure_modes": "Netting concentrates and redistributes risk into the netting system: its legal enforceability in insolvency is critical (close-out netting rights), and netting reduces gross exposures while leaving the net exposure to the CCP intact.",
+    "misconceptions": "Netting does not cancel economic exposure or P&L — positions and market risk remain; only the settlement flows are compressed.",
+    "example": "If a bank's futures desk buys 1,000 contracts and sells 950 of the same contract during the day, the clearinghouse settles margin and variation on the net 50-contract position rather than processing 1,950 gross deliveries.",
+    "citations": [
+      {
+        "source": "BIS CPMI, Glossary of payments and market infrastructure terminology",
+        "url": "https://www.bis.org/cpmi/publ/d00b.htm",
+        "section": "Netting; bilateral netting; multilateral netting",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "CFTC Futures Glossary",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Derivatives Clearing Organization (settlement or netting of obligations)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

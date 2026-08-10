@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-foundations/continuous-auction",
+  "canonical_sha256": "c62012c1689ec49f405500399d4d845630392ac3da147df8f02c943f098cdd8e",
+  "source_path": "concepts/market-foundations.json",
+  "concept": {
+    "id": "market-foundations/continuous-auction",
+    "name": "Continuous auction",
+    "aliases": [
+      "Continuous trading",
+      "Continuous market"
+    ],
+    "domain": "Market foundations",
+    "definition": "A trading mechanism in which orders are matched whenever they arrive during the trading session: an incoming order executes immediately against compatible resting orders in the order book, so trading proceeds continuously rather than at discrete crossing times.",
+    "intuition": "The market never waits — the moment your order can match something in the book, it trades.",
+    "mechanics": "The matching engine applies price-time (or venue-specific) priority continuously: marketable orders sweep resting liquidity, unexecuted limit orders join the book, and each execution updates the last traded price that others reference.",
+    "formula": "",
+    "relationships": [
+      "Order-driven market",
+      "Call auction",
+      "Opening auction",
+      "Closing auction",
+      "Auction market"
+    ],
+    "failure_modes": "Continuous matching can amplify speed advantages and fragility: in fast markets, resting liquidity is pulled faster than it can be replaced, producing cascade moves and flash events that a batch auction would have dampened.",
+    "misconceptions": "Continuous trading does not mean continuous liquidity — the book can be empty at any instant, and the 'current price' is just the last match, which may be stale or a small odd lot.",
+    "example": "From 9:30 a.m. to 4:00 p.m. ET, Nasdaq's continuous book matches incoming equity orders immediately against resting orders, between the Opening Cross and the Closing Cross.",
+    "citations": [
+      {
+        "source": "CFTC Futures Glossary",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Call Auction (contrast with order book format where bids and offers are continuously available)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Nasdaq, The Nasdaq Opening and Closing Crosses FAQ",
+        "url": "https://www.nasdaq.com/docs/2020/04/03/openclose_faqs.pdf",
+        "section": "Section 2 (the Nasdaq continuous book)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

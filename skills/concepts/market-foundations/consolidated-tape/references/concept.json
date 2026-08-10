@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "market-foundations/consolidated-tape",
+  "canonical_sha256": "a2ba200f52c56e1e185e39e5e96b89f0d800b0f40942f5cb485acee80734cc31",
+  "source_path": "concepts/market-foundations.json",
+  "concept": {
+    "id": "market-foundations/consolidated-tape",
+    "name": "Consolidated tape",
+    "aliases": [
+      "Consolidated data feed",
+      "Tape",
+      "SIP feed"
+    ],
+    "domain": "Market foundations",
+    "definition": "A high-speed electronic system that consolidates and reports the latest price and volume data on sales of exchange-listed stocks from all trading venues into a single stream. In the U.S. NMS, Securities Information Processors (CTA and Nasdaq UTP) operate the consolidated feeds under national market system plans.",
+    "intuition": "One combined ticker for the whole market: no matter which venue a trade happened on, it shows up on the tape.",
+    "mechanics": "Exchanges and FINRA facilities report trades and quotes to the SIPs, which validate, sequence, and broadcast the consolidated stream (last sale, national best bid and offer) to data vendors and the public; the tape is also the reference for regulatory constructs like LULD pause thresholds.",
+    "formula": "",
+    "relationships": [
+      "National market system",
+      "Market fragmentation",
+      "Limit up-limit down",
+      "Closing auction",
+      "Price discovery"
+    ],
+    "failure_modes": "The SIP feed is slower and less granular than direct proprietary exchange feeds, creating a two-tier data market; outages or delays in the tape can force trading halts because regulatory protections key off it.",
+    "misconceptions": "The tape does not show all liquidity — it reports executed trades and top-of-book quotes, not full depth or dark-pool interest — and seeing a print does not mean that price was available for your size.",
+    "example": "A trade executed on an off-exchange ATS in a NYSE-listed stock is reported to the consolidated tape within seconds, so the public last-sale price reflects trading on every venue.",
+    "citations": [
+      {
+        "source": "SEC Investor.gov Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Consolidated Tape",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Nasdaq, The Nasdaq Opening and Closing Crosses FAQ",
+        "url": "https://www.nasdaq.com/docs/2020/04/03/openclose_faqs.pdf",
+        "section": "Sections 2, 5 (opening and closing prices distributed to the consolidated tape)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
