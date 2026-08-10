@@ -4,8 +4,9 @@
   "title": "Published trading research result",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "run_id", "created_at", "classification", "status", "spec", "dataset", "headline_scenario", "scenarios", "data_quality", "warnings"],
+  "required": ["$schema", "schema_version", "run_id", "created_at", "classification", "status", "spec", "dataset", "headline_scenario", "scenarios", "data_quality", "warnings"],
   "properties": {
+    "$schema": {"type": "string"},
     "schema_version": {"const": 1}, "run_id": {"type": "string"}, "created_at": {"type": "string", "format": "date-time"},
     "classification": {"const": "preliminary-limited-window-research"},
     "status": {"enum": ["preliminary", "inconclusive", "data-quality-failed"]},

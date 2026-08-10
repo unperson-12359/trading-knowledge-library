@@ -288,6 +288,10 @@ def main():
         json.loads(path.read_text(encoding="utf-8"))
         for path in sorted((ROOT / "research" / "datasets").glob("*/dataset-manifest.json"))
     ]
+    research_results = [
+        json.loads(path.read_text(encoding="utf-8"))
+        for path in sorted((ROOT / "research" / "results").glob("*/result.json"))
+    ]
     taxonomy = json.loads((ROOT / "regimes" / "taxonomy.json").read_text(encoding="utf-8"))
     core_collection = json.loads(
         (ROOT / "collections" / "core-perps.json").read_text(encoding="utf-8")
@@ -544,6 +548,11 @@ def main():
     )
     if (ROOT / "research" / "datasets").exists():
         shutil.copytree(ROOT / "research" / "datasets", api_dir / "datasets")
+    (api_dir / "research-results.json").write_text(
+        json.dumps(research_results, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    if (ROOT / "research" / "results").exists():
+        shutil.copytree(ROOT / "research" / "results", api_dir / "results")
     core_ids = set(core_collection["concept_ids"])
     public_concepts = []
     resolved_relationship_count = 0
@@ -582,11 +591,12 @@ def main():
     manifest = {
         "schema_version": 1,
         "generated": date.today().isoformat(),
-        "counts": {"concepts": total, "core_concepts": len(core_ids), "playbooks": len(playbooks), "research_specs": len(research_specs), "datasets": len(dataset_manifests)},
+        "counts": {"concepts": total, "core_concepts": len(core_ids), "playbooks": len(playbooks), "research_specs": len(research_specs), "datasets": len(dataset_manifests), "research_results": len(research_results)},
         "endpoints": {
             "concepts": "concepts.json", "core_perps": "core-perps.json",
             "regimes": "regimes.json", "playbooks": "playbooks.json",
-            "research_specs": "research-specs.json", "datasets": "dataset-manifests.json"
+            "research_specs": "research-specs.json", "datasets": "dataset-manifests.json",
+            "research_results": "research-results.json"
         },
         "relationship_resolution": {
             "total_references": relationship_count,

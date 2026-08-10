@@ -402,6 +402,67 @@ def main():
         if aggregate_hash != manifest.get("dataset_sha256"):
             failures.append(f"{manifest_path}: aggregate dataset hash mismatch")
 
+    result_paths = sorted((ROOT / "research" / "results").glob("*/result.json"))
+    if len(result_paths) != 1:
+        failures.append(f"expected exactly 1 canonical research result, found {len(result_paths)}")
+    for result_path in result_paths:
+        try:
+            result = json.loads(result_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"{result_path}: invalid JSON: {exc}")
+            continue
+        if result.get("run_id") != result_path.parent.name:
+            failures.append(f"{result_path}: run_id must match directory")
+        if result.get("classification") != "preliminary-limited-window-research":
+            failures.append(f"{result_path}: invalid classification")
+        if result.get("status") not in {"preliminary", "inconclusive", "data-quality-failed"}:
+            failures.append(f"{result_path}: invalid result status")
+        if len(research_specs) == 1:
+            expected_spec_hash = hashlib.sha256(research_specs[0].read_bytes()).hexdigest()
+            if result.get("spec", {}).get("sha256") != expected_spec_hash:
+                failures.append(f"{result_path}: spec hash mismatch")
+        if len(dataset_manifests) == 1:
+            expected_dataset = json.loads(dataset_manifests[0].read_text(encoding="utf-8"))
+            if result.get("dataset", {}).get("sha256") != expected_dataset.get("dataset_sha256"):
+                failures.append(f"{result_path}: dataset hash mismatch")
+        scenarios = result.get("scenarios")
+        if not isinstance(scenarios, list) or [item.get("slippage_bps") for item in scenarios] != [0.0, 2.5, 5.0]:
+            failures.append(f"{result_path}: cost scenarios must be 0, 2.5, and 5 bps")
+            scenarios = []
+        headline = [item for item in scenarios if item.get("headline") is True]
+        if len(headline) != 1 or headline[0].get("slippage_bps") != result.get("headline_scenario"):
+            failures.append(f"{result_path}: exactly one headline scenario is required")
+            headline = []
+        trade_path = result_path.with_name("trades.json")
+        if not trade_path.exists():
+            failures.append(f"{result_path}: trades.json is missing")
+            continue
+        try:
+            trade_log = json.loads(trade_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"{trade_path}: invalid JSON: {exc}")
+            continue
+        if trade_log.get("run_id") != result.get("run_id"):
+            failures.append(f"{trade_path}: run_id mismatch")
+        trades = trade_log.get("trades")
+        if not isinstance(trades, list):
+            failures.append(f"{trade_path}: trades must be an array")
+            trades = []
+        if headline and headline[0].get("metrics", {}).get("trade_count") != len(trades):
+            failures.append(f"{trade_path}: trade count does not match headline metrics")
+        trade_ids = [trade.get("trade_id") for trade in trades]
+        if len(trade_ids) != len(set(trade_ids)):
+            failures.append(f"{trade_path}: trade IDs must be unique")
+        for trade in trades:
+            if not trade.get("signal_time", 0) < trade.get("entry_time", 0) <= trade.get("exit_time", 0):
+                failures.append(f"{trade_path}: invalid event order for {trade.get('trade_id')}")
+            expected_net = (
+                trade.get("gross_r", 0) - trade.get("fee_r", 0)
+                - trade.get("slippage_r", 0) + trade.get("funding_r", 0)
+            )
+            if abs(expected_net - trade.get("net_r", 0)) > 1e-9:
+                failures.append(f"{trade_path}: cost decomposition mismatch for {trade.get('trade_id')}")
+
     placeholders = sum(
         1 for entry in entries
         if str(entry.get("definition", "")).startswith(PLACEHOLDER)
