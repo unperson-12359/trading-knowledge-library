@@ -312,6 +312,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="low-volume-node"><h3>Low-volume node <a class="anchor" href="#low-volume-node">#</a></h3>
 <div class="field">A valley in the volume profile — a price zone where traded volume was significantly lower than in neighboring zones, typically because price moved through it quickly during a breakout or breakdown. LVNs mark prices the market did not accept, and price tends either to traverse them quickly again or to bounce off their edges.</div>
+<div class="skill-links"><a href="../skills/tkl-low-volume-node/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> An LVN is a stretch of road the market drove through without stopping — few transactions ever cleared there.</div>
 <div class="field"><span class="label">Mechanics:</span> Read from the volume-at-price histogram as local minima (thin sections) between high-volume nodes; they often separate distributions and coincide with single-print zones on TPO profiles.</div>
 <div class="field"><span class="label">Failure modes:</span> LVNs fill in as later sessions trade through them, after which the &#x27;rejection zone&#x27; logic no longer applies; like HVNs, their boundaries depend on row-size settings.</div>
@@ -324,6 +325,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="volume-value-area"><h3>Volume value area <a class="anchor" href="#volume-value-area">#</a></h3>
 <div class="field">The value area computed from a volume profile rather than from TPO counts: the contiguous price band around the volume point of control that contains a chosen percentage — conventionally 70% — of the period&#x27;s total traded volume, bounded by the volume-based VAH and VAL.</div>
+<div class="skill-links"><a href="../skills/tkl-volume-value-area/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the price range where 70% of the actual contracts changed hands, as opposed to the TPO value area&#x27;s 70% of time.</div>
 <div class="field"><span class="label">Mechanics:</span> Total volume in the profile is multiplied by the target percentage; starting at the VPOC, rows are added alternately from the side with the larger adjacent volume until the target is reached, and the extreme included rows become VAH and VAL.</div>
 <div class="field"><span class="label">Failure modes:</span> On multi-modal distributions the single contiguous band misrepresents where volume actually sits, and the 70% default is a convention; up/down volume splits on platforms use bar-direction approximations rather than true buy/sell classification.</div>
@@ -337,6 +339,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="composite-profile"><h3>Composite profile <a class="anchor" href="#composite-profile">#</a></h3>
 <div class="field">A Market Profile or volume profile built by merging multiple sessions into one distribution, so that the combined structure of a multi-day balance, bracket, or swing becomes visible. Its composite point of control and value area aggregate activity across all included sessions and are treated as higher-weight references than single-session levels.</div>
+<div class="skill-links"><a href="../skills/tkl-composite-profile/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> One day&#x27;s profile shows one battle; the composite shows the whole campaign — where the market has collectively done its business over weeks.</div>
 <div class="field"><span class="label">Mechanics:</span> TPO letters or volume from each included session are pooled into a single price distribution (platforms provide split/merge tools for this); the resulting composite POC, value area, and nodes are read as the governing structure of the larger auction.</div>
 <div class="field"><span class="label">Failure modes:</span> The choice of which sessions to merge is discretionary and changes every derived level; composites over long spans mix different volatility regimes and market participants, diluting the meaning of &#x27;value&#x27;.</div>
@@ -349,6 +352,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="session-profile"><h3>Session profile <a class="anchor" href="#session-profile">#</a></h3>
 <div class="field">A volume profile (or Market Profile) computed separately for each trading session, so that every day gets its own volume-at-price histogram with its own POC and value area. It is the standard per-day unit of profile analysis, with prior-session levels carried forward as references.</div>
+<div class="skill-links"><a href="../skills/tkl-session-profile/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Each session gets its own fingerprint of where business was done, and yesterday&#x27;s fingerprint becomes today&#x27;s map.</div>
 <div class="field"><span class="label">Mechanics:</span> For each session boundary (e.g., exchange day or user-defined session), lower-timeframe or tick volume is binned by price; platforms render one histogram per session and derive session POC, VAH, and VAL, optionally with developing values in real time.</div>
 <div class="field"><span class="label">Failure modes:</span> Session definition is critical — 24-hour futures markets make &#x27;the session&#x27; ambiguous (ETH vs RTH), and different boundaries produce different POCs and value areas for the same trading.</div>
@@ -361,6 +365,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="fixed-range-volume-profile"><h3>Fixed-range volume profile <a class="anchor" href="#fixed-range-volume-profile">#</a></h3>
 <div class="field">A volume profile computed over a user-selected, fixed span of the chart — the analyst manually anchors the start and end points, and the histogram shows how volume distributed across price levels within exactly that range. It isolates the volume structure of a chosen move, range, or event window.</div>
+<div class="skill-links"><a href="../skills/tkl-fixed-range-volume-profile/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Instead of accepting session boundaries, you draw a box around the exact move you care about and ask: where inside this move did volume actually concentrate?</div>
 <div class="field"><span class="label">Mechanics:</span> The user sets two anchor points; tick or lower-timeframe volume between them is binned by price into a horizontal histogram displaying the range&#x27;s POC, value area (VAH/VAL), and high/low-volume nodes; the profile stays fixed regardless of scrolling.</div>
 <div class="field"><span class="label">Failure modes:</span> Anchor placement is entirely discretionary, so levels can be unconsciously curve-fit to support a thesis; changing anchors even slightly can move the POC and value area.</div>
@@ -373,6 +378,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="visible-range-volume-profile"><h3>Visible-range volume profile <a class="anchor" href="#visible-range-volume-profile">#</a></h3>
 <div class="field">A volume profile computed over whatever bars are currently visible on the screen: the histogram and its POC, value area, and nodes automatically rebuild every time the user scrolls or zooms. It provides an always-current volume-at-price read of the displayed range without manual anchoring.</div>
+<div class="skill-links"><a href="../skills/tkl-visible-range-volume-profile/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The profile follows your eyes — zoom into a week and it profiles the week; zoom out to a year and it profiles the year.</div>
 <div class="field"><span class="label">Mechanics:</span> The platform continuously recomputes the volume-by-price histogram over the visible bar range using lower-timeframe data; POC, value area, and node levels update dynamically as the visible window changes.</div>
 <div class="field"><span class="label">Failure modes:</span> Because the range shifts with zoom and scroll, levels are unstable — a POC can jump when one more day enters the view — and users can mistake viewport artifacts for market structure.</div>
@@ -384,6 +390,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="auction-market-theory"><h3>Auction market theory <a class="anchor" href="#auction-market-theory">#</a></h3>
 <div class="field">A framework for understanding markets as continuous two-way auctions whose purpose is to facilitate trade: price advertises opportunities, and the market auctions up to attract sellers and down to attract buyers until trade occurs. Its central tenet is that price and value are distinct — value is where the market spends time and does volume, and markets alternate between balance (agreement) and imbalance (repricing). It is an interpretive philosophy, not a predictive model.</div>
+<div class="skill-links"><a href="../skills/tkl-auction-market-theory/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A market behaves like an auction house: it keeps moving the price until buyers and sellers both show up, then does most of its business there until something changes.</div>
 <div class="field"><span class="label">Mechanics:</span> Practitioners classify market states as balance or imbalance, locate value via time/volume distributions (Market Profile being the standard tool), and frame decisions around acceptance versus rejection of prices away from established value.</div>
 <div class="field"><span class="label">Failure modes:</span> AMT is a lens, not a falsifiable system: its categories (value, balance, acceptance) are defined loosely enough that almost any price action can be narrated post hoc, so it cannot by itself generate testable predictions.</div>

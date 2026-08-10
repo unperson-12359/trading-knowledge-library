@@ -1,0 +1,83 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-composite-profile",
+  "concept_id": "volume-and-order-flow/composite-profile",
+  "display_name": "Composite profile",
+  "domain": "Volume and order flow",
+  "description": "Explain, compare, or apply Composite profile using the library's structured Volume and order flow reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Composite profile",
+    "composite market profile",
+    "merged profile",
+    "explain Composite profile",
+    "apply Composite profile to a trading question",
+    "common misconception about Composite profile"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints",
+      "order type",
+      "spread and liquidity conditions"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 43,
+  "package_path": "skills/concepts/volume-and-order-flow/composite-profile",
+  "canonical": {
+    "source_path": "concepts/volume-and-order-flow.json",
+    "sha256": "699dfa0820083e9262f8a3d1d6a3d14e31c95e1052965f62abcef3546c81f7bd"
+  },
+  "related_concept_ids": [
+    "volume-and-order-flow/market-profile",
+    "volume-and-order-flow/volume-profile",
+    "volume-and-order-flow/balanced-profile",
+    "volume-and-order-flow/point-of-control",
+    "volume-and-order-flow/high-volume-node"
+  ]
+}

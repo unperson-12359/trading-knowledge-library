@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/volume-value-area",
+  "canonical_sha256": "147b73bf180933b0c76cc9e902ec96d40dc10f150344b119cd7336d0a48c591f",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/volume-value-area",
+    "name": "Volume value area",
+    "aliases": [
+      "volume-based value area",
+      "VA (volume)"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "The value area computed from a volume profile rather than from TPO counts: the contiguous price band around the volume point of control that contains a chosen percentage — conventionally 70% — of the period's total traded volume, bounded by the volume-based VAH and VAL.",
+    "intuition": "It is the price range where 70% of the actual contracts changed hands, as opposed to the TPO value area's 70% of time.",
+    "mechanics": "Total volume in the profile is multiplied by the target percentage; starting at the VPOC, rows are added alternately from the side with the larger adjacent volume until the target is reached, and the extreme included rows become VAH and VAL.",
+    "formula": "Target volume = 0.70 × total profile volume; expand from the VPOC row, always adding the larger of the next row above or below, until the enclosed volume reaches the target",
+    "relationships": [
+      "Value area",
+      "Volume profile",
+      "Volume point of control",
+      "Acceptance"
+    ],
+    "failure_modes": "On multi-modal distributions the single contiguous band misrepresents where volume actually sits, and the 70% default is a convention; up/down volume splits on platforms use bar-direction approximations rather than true buy/sell classification.",
+    "misconceptions": "The volume value area and the TPO value area are not interchangeable — on days with uneven volume across brackets they can differ materially, and mixing references from both muddies the analysis.",
+    "example": "A session profile totals 1.6M contracts; expanding from the VPOC until 1.12M (70%) are enclosed yields VAH 4,528 and VAL 4,509, inside which the next day's open is read as acceptance.",
+    "citations": [
+      {
+        "source": "TradingView — Volume profile indicators: basic concepts (value area definition and algorithm)",
+        "url": "https://www.tradingview.com/support/solutions/43000502040-volume-profile/",
+        "section": "Calculating value area",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "WindoTrader — Market Profile Glossary (value by volume vs value by time)",
+        "url": "https://www.windotrader.com/market-profile/market-profile-glossary-index/",
+        "section": "Part-01: Market Profile Terminology",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

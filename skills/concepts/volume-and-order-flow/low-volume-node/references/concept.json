@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/low-volume-node",
+  "canonical_sha256": "9c80a567f21d7a344d5558aa8b7c9bb6f20b1a83ea73a14dc5038ff6048115c0",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/low-volume-node",
+    "name": "Low-volume node",
+    "aliases": [
+      "LVN",
+      "volume gap",
+      "thin zone"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "A valley in the volume profile — a price zone where traded volume was significantly lower than in neighboring zones, typically because price moved through it quickly during a breakout or breakdown. LVNs mark prices the market did not accept, and price tends either to traverse them quickly again or to bounce off their edges.",
+    "intuition": "An LVN is a stretch of road the market drove through without stopping — few transactions ever cleared there.",
+    "mechanics": "Read from the volume-at-price histogram as local minima (thin sections) between high-volume nodes; they often separate distributions and coincide with single-print zones on TPO profiles.",
+    "formula": "",
+    "relationships": [
+      "Volume profile",
+      "High-volume node",
+      "Single print",
+      "Rejection",
+      "Double-distribution day"
+    ],
+    "failure_modes": "LVNs fill in as later sessions trade through them, after which the 'rejection zone' logic no longer applies; like HVNs, their boundaries depend on row-size settings.",
+    "misconceptions": "An LVN is not a gap that must be filled, nor a guaranteed fast-move zone on every revisit — once business is done there, the informational content decays.",
+    "example": "Between two profile bulges sits a thin zone at 4,510–4,514; when price re-enters it the next session, it traverses the band in two bars and consolidates at the far edge.",
+    "citations": [
+      {
+        "source": "TradingView — Volume profile indicators: basic concepts (volume nodes)",
+        "url": "https://www.tradingview.com/support/solutions/43000502040-volume-profile/",
+        "section": "Volume nodes",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "ATAS — Fixed Range Volume Profile (Low Volume Nodes / thin profiles)",
+        "url": "https://atas.net/blog/fixed-range-volume-profile-definition-and-trading-strategies/",
+        "section": "Interpreting the Volume Profile",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

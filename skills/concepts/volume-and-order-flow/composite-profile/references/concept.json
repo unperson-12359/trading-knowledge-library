@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/composite-profile",
+  "canonical_sha256": "699dfa0820083e9262f8a3d1d6a3d14e31c95e1052965f62abcef3546c81f7bd",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/composite-profile",
+    "name": "Composite profile",
+    "aliases": [
+      "composite market profile",
+      "merged profile"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "A Market Profile or volume profile built by merging multiple sessions into one distribution, so that the combined structure of a multi-day balance, bracket, or swing becomes visible. Its composite point of control and value area aggregate activity across all included sessions and are treated as higher-weight references than single-session levels.",
+    "intuition": "One day's profile shows one battle; the composite shows the whole campaign — where the market has collectively done its business over weeks.",
+    "mechanics": "TPO letters or volume from each included session are pooled into a single price distribution (platforms provide split/merge tools for this); the resulting composite POC, value area, and nodes are read as the governing structure of the larger auction.",
+    "formula": "",
+    "relationships": [
+      "Market profile",
+      "Volume profile",
+      "Balanced profile",
+      "Point of control",
+      "High-volume node"
+    ],
+    "failure_modes": "The choice of which sessions to merge is discretionary and changes every derived level; composites over long spans mix different volatility regimes and market participants, diluting the meaning of 'value'.",
+    "misconceptions": "A composite is not automatically more 'true' because it covers more data — including irrelevant history creates levels with no living participants behind them.",
+    "example": "Three weeks of overlapping ES sessions are merged into one composite whose POC sits at 4,470; when a breakout attempt stalls, traders watch whether price accepts back below that composite POC.",
+    "citations": [
+      {
+        "source": "FuturesIndicators — Trading With Market Profile: Practical Setups (composite POC, balance-area brackets)",
+        "url": "https://futuresindicators.com/learn/trading-with-market-profile",
+        "section": "Balance Area Breakout and Failed Auction",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "GoCharting — Market Profile Trading: The Complete Guide (split or merge logic for multi-day composites)",
+        "url": "https://www.gocharting.com/blog/market-profile-indicator/market-profile-complete-guide",
+        "section": "Trading Market Profile on GoCharting",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

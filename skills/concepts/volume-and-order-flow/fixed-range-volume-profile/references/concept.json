@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/fixed-range-volume-profile",
+  "canonical_sha256": "162c37d754e57080c501ad3eb3ad62e6b77dbcf062be1d089588bcdf2d1ad3b7",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/fixed-range-volume-profile",
+    "name": "Fixed-range volume profile",
+    "aliases": [
+      "FRVP",
+      "anchored volume profile"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "A volume profile computed over a user-selected, fixed span of the chart — the analyst manually anchors the start and end points, and the histogram shows how volume distributed across price levels within exactly that range. It isolates the volume structure of a chosen move, range, or event window.",
+    "intuition": "Instead of accepting session boundaries, you draw a box around the exact move you care about and ask: where inside this move did volume actually concentrate?",
+    "mechanics": "The user sets two anchor points; tick or lower-timeframe volume between them is binned by price into a horizontal histogram displaying the range's POC, value area (VAH/VAL), and high/low-volume nodes; the profile stays fixed regardless of scrolling.",
+    "formula": "",
+    "relationships": [
+      "Volume profile",
+      "Visible-range volume profile",
+      "Session profile",
+      "Volume point of control",
+      "High-volume node"
+    ],
+    "failure_modes": "Anchor placement is entirely discretionary, so levels can be unconsciously curve-fit to support a thesis; changing anchors even slightly can move the POC and value area.",
+    "misconceptions": "FRVP levels are not more objective than session levels because they are 'custom' — they inherit the analyst's framing choice, and platform documentation explicitly warns against expecting tick-precise bounces off such POCs.",
+    "example": "A trader anchors a profile from a swing low at 4,400 to the rally high at 4,520; the FRVP shows an HVN at 4,470–4,485, which is then watched as potential support on the pullback.",
+    "citations": [
+      {
+        "source": "ATAS — Fixed Range Volume Profile: Definition and Trading Strategies",
+        "url": "https://atas.net/blog/fixed-range-volume-profile-definition-and-trading-strategies/",
+        "section": "Fixed Range Volume Profile Explained",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "TradingView — Volume profile indicators: basic concepts (fixed range volume profile type)",
+        "url": "https://www.tradingview.com/support/solutions/43000502040-volume-profile/",
+        "section": "Volume profile types",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

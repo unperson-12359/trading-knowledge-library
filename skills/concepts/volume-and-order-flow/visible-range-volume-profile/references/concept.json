@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/visible-range-volume-profile",
+  "canonical_sha256": "d9e09508efd16be3896ee8ccc02832f8bf0294583b0be0967a75c60ccacc34ac",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/visible-range-volume-profile",
+    "name": "Visible-range volume profile",
+    "aliases": [
+      "VRVP",
+      "VPVR",
+      "visible range profile"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "A volume profile computed over whatever bars are currently visible on the screen: the histogram and its POC, value area, and nodes automatically rebuild every time the user scrolls or zooms. It provides an always-current volume-at-price read of the displayed range without manual anchoring.",
+    "intuition": "The profile follows your eyes — zoom into a week and it profiles the week; zoom out to a year and it profiles the year.",
+    "mechanics": "The platform continuously recomputes the volume-by-price histogram over the visible bar range using lower-timeframe data; POC, value area, and node levels update dynamically as the visible window changes.",
+    "formula": "",
+    "relationships": [
+      "Volume profile",
+      "Fixed-range volume profile",
+      "Session profile",
+      "Volume point of control",
+      "Low-volume node"
+    ],
+    "failure_modes": "Because the range shifts with zoom and scroll, levels are unstable — a POC can jump when one more day enters the view — and users can mistake viewport artifacts for market structure.",
+    "misconceptions": "VRVP levels are not objectively 'the' market levels; they describe exactly the window on screen, and comparing levels across different zoom states is incoherent.",
+    "example": "Zoomed to the last three months, the VRVP shows the POC at 4,450 and a thin LVN band at 4,520; the trader uses those levels for context, then zooms to the last week for finer intraday nodes.",
+    "citations": [
+      {
+        "source": "TradingView — Volume profile indicators: basic concepts (visible range volume profile type)",
+        "url": "https://www.tradingview.com/support/solutions/43000502040-volume-profile/",
+        "section": "Volume profile types",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

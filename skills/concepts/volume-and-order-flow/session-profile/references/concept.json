@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/session-profile",
+  "canonical_sha256": "491d57395461a9944ec48294d3767db8de5eb58d5ec2e98091b1c5f15403a099",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/session-profile",
+    "name": "Session profile",
+    "aliases": [
+      "session volume profile",
+      "SVP",
+      "daily profile"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "A volume profile (or Market Profile) computed separately for each trading session, so that every day gets its own volume-at-price histogram with its own POC and value area. It is the standard per-day unit of profile analysis, with prior-session levels carried forward as references.",
+    "intuition": "Each session gets its own fingerprint of where business was done, and yesterday's fingerprint becomes today's map.",
+    "mechanics": "For each session boundary (e.g., exchange day or user-defined session), lower-timeframe or tick volume is binned by price; platforms render one histogram per session and derive session POC, VAH, and VAL, optionally with developing values in real time.",
+    "formula": "",
+    "relationships": [
+      "Volume profile",
+      "Market profile",
+      "Composite profile",
+      "Volume point of control",
+      "Volume value area"
+    ],
+    "failure_modes": "Session definition is critical — 24-hour futures markets make 'the session' ambiguous (ETH vs RTH), and different boundaries produce different POCs and value areas for the same trading.",
+    "misconceptions": "Prior-session levels are references, not obligations; the common opener-relative-to-prior-value frameworks are checklists of tendencies, not predictive rules.",
+    "example": "Monday's session profile gives POC 4,512, VAH 4,524, VAL 4,500; Tuesday opens at 4,530 above the VAH, and the trader watches for acceptance above or rejection back into Monday's value.",
+    "citations": [
+      {
+        "source": "TradingView — Volume profile indicators: basic concepts (session volume profile type)",
+        "url": "https://www.tradingview.com/support/solutions/43000502040-volume-profile/",
+        "section": "Volume profile types",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "ATAS — Fixed Range Volume Profile (per-day Fixed Volume Profile tool)",
+        "url": "https://atas.net/blog/fixed-range-volume-profile-definition-and-trading-strategies/",
+        "section": "Fixed Range Volume Profile and Other Profile Drawing Tools",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
