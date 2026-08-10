@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/volume-footprint",
+  "canonical_sha256": "6b5ea6a93e32a80deb00f59fd5604b8358b3b3815ccf86513d49b6206d16c86c",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/volume-footprint",
+    "name": "Volume footprint",
+    "aliases": [
+      "volume cluster chart"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "A footprint display mode in which each price level inside a bar shows the total volume traded at that level, regardless of side. It reveals the intra-bar volume distribution — which prices attracted business and which were skipped — rather than the buy/sell split.",
+    "intuition": "It answers 'where inside this bar did the market actually do business?', exposing high-volume shelves and low-volume gaps within a single candle.",
+    "mechanics": "Tick volume is aggregated per price level per bar and shown as numbers, histograms, or color intensity; the per-bar profile can be read like a miniature volume profile with its own point of control.",
+    "formula": "",
+    "relationships": [
+      "Footprint chart",
+      "Volume profile",
+      "Bid-ask footprint",
+      "High-volume node"
+    ],
+    "failure_modes": "Without the bid/ask split it shows where volume occurred but not who initiated it, so it is weaker for reading aggression; accuracy still depends on complete tick data.",
+    "misconceptions": "High intra-bar volume at a level is not automatically support or resistance — it records where trades happened, and only subsequent price behavior shows whether that level matters.",
+    "example": "A 15-minute bar shows 60% of its volume concentrated in a three-tick band near its high; the trader marks that band as the bar's high-volume node for the next session.",
+    "citations": [
+      {
+        "source": "ATAS — Footprint Charts: What Drives Price Movement (Volume footprint modes)",
+        "url": "https://atas.net/footprint-charts/",
+        "section": "Types of Footprint",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Sierra Chart — Numbers Bars (Volume text type, Volume Profile background)",
+        "url": "https://sierrachart.com/index.php?page=doc/NumbersBars.php",
+        "section": "Numbers Bars Text Types / Background Types",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

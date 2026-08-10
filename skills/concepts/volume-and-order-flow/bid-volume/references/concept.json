@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/bid-volume",
+  "canonical_sha256": "cd88bb17bf2c6161d7f28203d75e5a6bfead8db2ff8ac7b85d0c99d0b8f298e5",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/bid-volume",
+    "name": "Bid volume",
+    "aliases": [
+      "bid trade volume",
+      "volume at bid"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "The total traded volume classified as having occurred at the bid price — trades initiated by aggressive sellers whose market or marketable sell orders matched resting buy limit orders. It is the sell-initiated component of bid/ask order-flow analysis.",
+    "intuition": "Bid volume measures how much selling was aggressive enough to cross the spread and hit the prices buyers had posted.",
+    "mechanics": "Each trade is classified as a bid trade when the exchange feed flags it as executed at the bid, or heuristically when its price is at or below the prevailing bid (or on a downtick when trade and quote data are unsynchronized); classified volumes are then summed per price level, bar, or session.",
+    "formula": "",
+    "relationships": [
+      "Ask volume",
+      "Volume delta",
+      "Footprint chart",
+      "Time and sales"
+    ],
+    "failure_modes": "Classification depends on data quality: feeds without exchange-provided trade-side flags must infer the side from ticks, which misclassifies trades when quote and trade streams are out of sync.",
+    "misconceptions": "Bid volume is not net selling that removes ownership — every bid-side trade still has a buyer; it records which side was the aggressor, not a change in net positions.",
+    "example": "In a one-minute bar, 800 contracts trade at the bid and 300 at the ask; bid volume of 800 shows sellers were the more aggressive side that minute.",
+    "citations": [
+      {
+        "source": "Sierra Chart — Numbers Bars (Bid Trade / Bid Volume definitions)",
+        "url": "https://sierrachart.com/index.php?page=doc/NumbersBars.php",
+        "section": "Definitions",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "ATAS — Delta and Cumulative Delta: What are they?",
+        "url": "https://atas.net/blog/what-is-delta/",
+        "section": "Delta calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

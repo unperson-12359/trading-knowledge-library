@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/delta-divergence",
+  "canonical_sha256": "316b2ce3981a4e71ed6e29f223f3158a8c47c9c76069574677209473e161f22e",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/delta-divergence",
+    "name": "Delta divergence",
+    "aliases": [
+      "CVD divergence",
+      "price-delta divergence"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "A mismatch between price direction and volume delta: for example, price printing a new high while bar delta or cumulative delta fails to make a corresponding new high, indicating that the aggressive order flow no longer supports the price move. Practitioners read it as a warning of weakening initiative or active absorption by the passive side.",
+    "intuition": "If price keeps climbing but buyers are swinging less hard each push, someone on the other side may be quietly absorbing their market orders.",
+    "mechanics": "Successive price extremes are compared with the corresponding delta or CVD extremes; divergence is flagged when the price extreme is not matched by a delta extreme, often explained by large resting limit orders absorbing market orders so that aggression produces little price progress.",
+    "formula": "",
+    "relationships": [
+      "Volume delta",
+      "Cumulative volume delta",
+      "Volume divergence",
+      "Absorption",
+      "Exhaustion"
+    ],
+    "failure_modes": "Delta can diverge for long stretches while the trend continues, and on low-quality data feeds misclassified trades fabricate divergence; the pattern is frequent and far from decisive on its own.",
+    "misconceptions": "Delta divergence is not proof of hidden institutional intent — it is equally consistent with ordinary passive liquidity, and it is an observation to be confirmed, not a stand-alone entry signal.",
+    "example": "ES pushes to a new session high while the bar's delta prints well below the prior high's delta; the footprint shows big ask volume absorbed at the offer, and price subsequently rotates down.",
+    "citations": [
+      {
+        "source": "ATAS — How to read the order flow",
+        "url": "https://atas.net/blog/how-to-read-the-order-flow/",
+        "section": "Footprint examples / Examples with delta and cumulative delta",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "ATAS — What you should know about Cumulative Delta Analysis",
+        "url": "https://atas.net/blog/cumulative-delta-analysis/",
+        "section": "How to use the Cumulative Delta?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

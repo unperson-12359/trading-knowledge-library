@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/cumulative-volume-delta",
+  "canonical_sha256": "75f9ff6f5832838d77623bca42cec069d7f406599732e112580d92900d435130",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/cumulative-volume-delta",
+    "name": "Cumulative volume delta",
+    "aliases": [
+      "CVD",
+      "cumulative delta"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "The running accumulation of per-bar or per-trade volume delta over a chosen period (typically a session or an entire contract), showing the evolving net balance of aggressive buying versus aggressive selling. It summarizes who has dominated market-order flow since the chosen starting point.",
+    "intuition": "If delta is the score of each play, cumulative delta is the scoreboard of the whole game — it shows whether buyers or sellers have been net aggressive all session long.",
+    "mechanics": "Starting from zero at the session (or contract) open, each bar's delta is added to the running total; the result is plotted as bars, candles, or a line, and divergences between CVD slope and price are used analytically.",
+    "formula": "CVD_t = CVD_{t−1} + Delta_t, with CVD_0 = 0 at the chosen anchor (session or contract start) and Delta_t = V_ask,t − V_bid,t",
+    "relationships": [
+      "Volume delta",
+      "Delta divergence",
+      "Ask volume",
+      "Bid volume",
+      "Footprint chart"
+    ],
+    "failure_modes": "Not all markets and feeds transmit reliable trade-side data, so CVD quality varies by venue; CVD also ignores resting liquidity, so strongly positive CVD can coincide with falling prices when passive sellers absorb the flow.",
+    "misconceptions": "CVD is not a mechanical signal generator — platform documentation itself stresses it gives no simple buy/sell signals and must be combined with price behavior and context.",
+    "example": "During a session, aggressive sells push CVD steadily lower while price refuses to break a prior low; a trader reads the divergence as absorption and watches for longs rather than shorts.",
+    "citations": [
+      {
+        "source": "ATAS — What you should know about Cumulative Delta Analysis",
+        "url": "https://atas.net/blog/cumulative-delta-analysis/",
+        "section": "What the Cumulative Delta is?",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "ATAS — Delta and Cumulative Delta: What are they?",
+        "url": "https://atas.net/blog/what-is-delta/",
+        "section": "Cumulative delta",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

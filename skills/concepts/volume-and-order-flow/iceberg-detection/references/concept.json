@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/iceberg-detection",
+  "canonical_sha256": "82a6930816757fa4117d1147abf1210192ada66fc3585b7a7132c6e974ccd326",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/iceberg-detection",
+    "name": "Iceberg detection",
+    "aliases": [
+      "iceberg order detection",
+      "hidden liquidity detection"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "The inference of iceberg orders — limit orders whose exchange-visible displayed size is only a small tip of a much larger hidden total — from market data. Because exchanges do not report the hidden size, detection algorithms watch for a displayed quote that keeps replenishing after executions, or trade volume at a price exceeding the displayed size.",
+    "intuition": "If the same 50-lot offer keeps reappearing after being hit and thousands of contracts trade through it, something much bigger is sitting below the waterline.",
+    "mechanics": "Track market-data dynamics rather than snapshots: with market-by-order data, new limit orders appearing instantly on the opposite side of executions at the same price reveal the reload; with lower-quality data, heuristics (trade size exceeding displayed size, repeated same-size refills) estimate it, always as an approximation.",
+    "formula": "",
+    "relationships": [
+      "Absorption",
+      "Time and sales",
+      "Large-lot trade",
+      "Footprint chart"
+    ],
+    "failure_modes": "Detection is provably limited: hidden size and placement/cancellation moments cannot be observed, and data-vendor aggregation or channel splitting destroys the event sequence the algorithms depend on; high-frequency traders can also mimic icebergs with ordinary limit orders.",
+    "misconceptions": "A detected iceberg is not a guaranteed support/resistance wall — the owner can cancel instantly, and some large traders deliberately display iceberg-like behavior to mislead.",
+    "example": "The offer at 4,505 displays 100 lots; 2,400 contracts trade there while the display keeps refreshing at 100 — an iceberg tracker marks probable hidden selling, and the level holds as resistance.",
+    "citations": [
+      {
+        "source": "Bookmap Knowledge Base — Iceberg Orders Tracker",
+        "url": "https://bookmap.com/knowledgebase/docs/KB-Bookmap-Wiki-Iceberg-Orders-Tracker",
+        "section": "Detection Methods and Algorithms",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

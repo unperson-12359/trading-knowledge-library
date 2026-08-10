@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/imbalance-footprint",
+  "canonical_sha256": "c426ff01cf97b62d62b7c9dab68ae28ab8982fb2717f486ee90f53c6c79b682d",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/imbalance-footprint",
+    "name": "Imbalance footprint",
+    "aliases": [
+      "bid/ask imbalance",
+      "order-flow imbalance"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "A footprint analysis mode that flags price levels where one side's traded volume overwhelms the other by a set ratio — commonly 3:1 or more — typically comparing the ask volume at one level diagonally against the bid volume at the level below (and vice versa). It is used to locate levels where aggressive flow was strongly one-sided.",
+    "intuition": "An imbalance marks a price where the fight was lopsided: one side hit or lifted with at least several times the force of the other.",
+    "mechanics": "For each level, ask volume is compared diagonally with the bid volume of the next lower level, and bid volume with the ask volume of the next higher level (because aggressive buys at price P compete with aggressive sells at P−1 tick); levels exceeding a configurable ratio are highlighted automatically.",
+    "formula": "Buy imbalance: V_ask(P) / V_bid(P − 1 tick) ≥ r (commonly r = 3); sell imbalance: V_bid(P) / V_ask(P + 1 tick) ≥ r",
+    "relationships": [
+      "Stacked imbalance",
+      "Bid-ask footprint",
+      "Footprint chart",
+      "Initiative buying",
+      "Initiative selling"
+    ],
+    "failure_modes": "The ratio threshold and diagonal convention are platform conventions, not market facts; in thick, slow markets imbalances are rare and in thin markets they are noise, so settings must be adapted per instrument.",
+    "misconceptions": "An imbalance is not an unfilled 'gap' that price must revisit — it is a record of one-sided executed aggression whose significance depends on whether price later accepts or rejects that zone.",
+    "example": "Ask volume of 900 at 4,512.25 versus bid volume of 250 at 4,512.00 gives a 3.6:1 diagonal ratio; the platform highlights a buy imbalance at that level.",
+    "citations": [
+      {
+        "source": "Sierra Chart — Numbers Bars (Display Ask Bid Imbalance; Diagonal Comparison of Bid Volume and Ask Volume)",
+        "url": "https://sierrachart.com/index.php?page=doc/NumbersBars.php",
+        "section": "Diagonal Comparison of Bid Volume and Ask Volume",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "FuturesIndicators — Trading With Market Profile: Practical Setups (imbalance defined as one side overwhelming the other by 3:1 or more)",
+        "url": "https://futuresindicators.com/learn/trading-with-market-profile",
+        "section": "Combining Market Profile With Footprint",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

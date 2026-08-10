@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/ask-volume",
+  "canonical_sha256": "521c3670f1ffe4912bcbbed7a9a5bb20cd0719c91d98845ba53d15711b6d56f9",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/ask-volume",
+    "name": "Ask volume",
+    "aliases": [
+      "ask trade volume",
+      "volume at ask",
+      "offer volume"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "The total traded volume classified as having occurred at the ask (offer) price — trades initiated by aggressive buyers whose market or marketable buy orders lifted resting sell limit orders. It is the buy-initiated component of bid/ask order-flow analysis.",
+    "intuition": "Ask volume shows how urgently buyers were willing to pay the seller's posted price rather than wait for a fill at the bid.",
+    "mechanics": "Each trade is classified as an ask trade when the exchange feed flags it as executed at the ask, or heuristically when its price is at or above the prevailing ask (or on an uptick when trade and quote data are unsynchronized); classified volumes are summed per price level, bar, or session.",
+    "formula": "",
+    "relationships": [
+      "Bid volume",
+      "Volume delta",
+      "Footprint chart",
+      "Cumulative volume delta"
+    ],
+    "failure_modes": "Classification depends on data quality: feeds without exchange-provided trade-side flags must infer the side from ticks, which misclassifies trades when quote and trade streams are out of sync.",
+    "misconceptions": "Ask volume does not mean there are 'more buyers than sellers' in net terms — every trade pairs one of each; it identifies the initiating, aggressive side of each transaction.",
+    "example": "A breakout bar prints 1,500 contracts at the ask versus 600 at the bid; the ask-volume dominance shows buyers lifting offers through the level.",
+    "citations": [
+      {
+        "source": "Sierra Chart — Numbers Bars (Ask Trade / Ask Volume definitions)",
+        "url": "https://sierrachart.com/index.php?page=doc/NumbersBars.php",
+        "section": "Definitions",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "ATAS — Delta and Cumulative Delta: What are they?",
+        "url": "https://atas.net/blog/what-is-delta/",
+        "section": "Delta calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

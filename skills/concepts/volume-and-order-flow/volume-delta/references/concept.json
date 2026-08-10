@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/volume-delta",
+  "canonical_sha256": "22617aff5148e7865732cf070188e3104da94b4755067ad8ecf2aa56fc750343",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/volume-delta",
+    "name": "Volume delta",
+    "aliases": [
+      "delta",
+      "bar delta",
+      "bid-ask delta"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "The net difference between volume traded at the ask (aggressive market buys) and volume traded at the bid (aggressive market sells) over a price level, bar, or period. It measures which side initiated more traded volume, on the premise that market orders are what move prices. It is a descriptive order-flow statistic, not a predictive signal by itself.",
+    "intuition": "Delta answers 'who was more impatient — buyers or sellers?' Positive delta means buyers lifted more offers than sellers hit bids.",
+    "mechanics": "Every trade is classified as an ask trade (buy-initiated) or bid trade (sell-initiated); delta is then computed per footprint cell, per bar, or per period as ask-traded volume minus bid-traded volume, and displayed numerically or as a signed histogram.",
+    "formula": "Delta = V_ask − V_bid, where V_ask is volume traded at the ask (buyer-initiated) and V_bid is volume traded at the bid (seller-initiated)",
+    "relationships": [
+      "Bid volume",
+      "Ask volume",
+      "Cumulative volume delta",
+      "Delta footprint",
+      "Delta divergence"
+    ],
+    "failure_modes": "Trade-side classification degrades on feeds without exchange aggressor flags, and delta says nothing about passive limit-order flow — a large passive seller can absorb heavy positive delta while price still falls.",
+    "misconceptions": "Positive delta is not synonymous with rising price: bearish candles with positive delta are common when passive sellers absorb aggressive buying, so delta must be read against price response.",
+    "example": "A WTI crude trade of 25 contracts executes at the ask (delta +25) followed by 10 contracts at the bid (delta −10); net delta for the sequence is +15.",
+    "citations": [
+      {
+        "source": "ATAS — Delta and Cumulative Delta: What are they?",
+        "url": "https://atas.net/blog/what-is-delta/",
+        "section": "Delta calculation",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Sierra Chart — Numbers Bars (Delta, AskVol/BidVol difference)",
+        "url": "https://sierrachart.com/index.php?page=doc/NumbersBars.php",
+        "section": "Definitions / Numbers Bars Text Types",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/exhaustion",
+  "canonical_sha256": "1ed8d3b62b5e600fc72e8ac5da06ffbb5a876ad3ac994a86c648771af7f09eb5",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/exhaustion",
+    "name": "Exhaustion",
+    "aliases": [
+      "order-flow exhaustion",
+      "buyer exhaustion",
+      "seller exhaustion"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "The fading of aggressive order flow near the end of a move: successive pushes in the trend direction are made on shrinking market-order volume, showing that the initiating side is running out of participants willing to chase the price. On a footprint it appears as very small traded volume at the bar extreme compared with earlier bars in the move.",
+    "intuition": "The auction runs out of bidders: price may still tick to a new extreme, but almost nobody is left willing to trade there.",
+    "mechanics": "Read by comparing traded volume (or delta) at successive price extremes within a move — e.g., a new high made on a fraction of the market-buy volume of prior highs — often combined with delta divergence and a stalling of price progress.",
+    "formula": "",
+    "relationships": [
+      "Absorption",
+      "Delta divergence",
+      "Climax volume",
+      "Dry-up volume",
+      "Volume divergence"
+    ],
+    "failure_modes": "Exhaustion readings are invisible without quality tick data and are confounded by time-of-day liquidity cycles; a paused initiative side can reload at any time, so exhaustion marks vulnerability, not a guaranteed turn.",
+    "misconceptions": "Exhaustion is not the same as a reversal signal — a move can end by drifting sideways for hours after exhaustion, and fading the first sign of weak volume at an extreme is a common way to get run over by trend days.",
+    "example": "ES makes a new session high, but only 48 market buy orders print at the top of the bar versus 600–900 at prior highs; the buyers are read as exhausted and price rotates back down.",
+    "citations": [
+      {
+        "source": "ATAS — How to read the order flow (buyers 'exhausted' — insignificant buy volume at the high)",
+        "url": "https://atas.net/blog/how-to-read-the-order-flow/",
+        "section": "Footprint examples",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

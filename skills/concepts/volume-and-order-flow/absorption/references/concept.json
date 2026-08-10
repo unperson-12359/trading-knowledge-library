@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/absorption",
+  "canonical_sha256": "234fbf14756cd175ad9a4bb3eec40bf22d9d155625ec7eaf88657c6e74b5d4b1",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/absorption",
+    "name": "Absorption",
+    "aliases": [
+      "liquidity absorption",
+      "order absorption"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "A market condition in which sustained aggressive market orders hit a price level but fail to move it, because resting limit orders repeatedly fill the incoming flow. Heavy traded volume with little or no price progress is the footprint signature of a large passive participant absorbing the aggressive side.",
+    "intuition": "It is like waves breaking against a seawall: the market orders keep arriving, but a wall of limit orders soaks them up and price refuses to budge.",
+    "mechanics": "Detected on footprint/tape as high bid- or ask-side volume at a level combined with stalled price (e.g., bearish candles with positive delta, or iceberg-style reloading of the displayed quote); iceberg orders are a formal special case in which a hidden-size limit order absorbs flow while displaying only a tip.",
+    "formula": "",
+    "relationships": [
+      "Iceberg detection",
+      "Delta divergence",
+      "Selling climax",
+      "Exhaustion",
+      "Volume delta"
+    ],
+    "failure_modes": "Absorption is identifiable only after the fact at the level, and the absorbing side can pull its liquidity at any moment; apparent absorption can also be ordinary two-sided interest with no single large participant behind it.",
+    "misconceptions": "Absorption does not guarantee reversal — if the absorbing limit orders are eventually consumed, price breaks violently through the level; absorption marks a battle, not its outcome.",
+    "example": "Sellers hit the bid at 4,500 with 12,000 contracts over ten minutes yet price never trades below 4,499.75; the stalling on heavy sell-side volume marks absorption by passive buyers.",
+    "citations": [
+      {
+        "source": "ATAS — How to read the order flow (absorption: limit orders absorb market orders, price doesn't move)",
+        "url": "https://atas.net/blog/how-to-read-the-order-flow/",
+        "section": "What price movements are seen better on the order flow than on the candle chart?",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Bookmap Knowledge Base — Iceberg Orders Tracker (Iceberg orders vs Absorption)",
+        "url": "https://bookmap.com/knowledgebase/docs/KB-Bookmap-Wiki-Iceberg-Orders-Tracker",
+        "section": "Iceberg orders vs Absorption",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

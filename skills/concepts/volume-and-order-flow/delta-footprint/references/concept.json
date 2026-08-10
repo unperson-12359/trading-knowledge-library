@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/delta-footprint",
+  "canonical_sha256": "1b448fc850cb36b74f101a9f9f5eb20ccbb5fdd4f1bb3befcc8f88cff8f7e3de",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/delta-footprint",
+    "name": "Delta footprint",
+    "aliases": [
+      "delta cluster chart"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "A footprint display mode in which each price level inside a bar shows the volume delta at that level — ask-traded volume minus bid-traded volume — rather than the raw bid and ask numbers. It highlights where net aggressive buying or selling was concentrated within the bar.",
+    "intuition": "Instead of showing both sides' scores, it shows only who won each price level and by how much.",
+    "mechanics": "Per-level delta is computed from classified tick data and displayed as signed numbers (green for positive, red for negative, by convention), with optional background intensity proportional to the magnitude; bar-level totals aggregate the per-level values.",
+    "formula": "Per-level delta = V_ask(level) − V_bid(level); bar delta = sum over levels",
+    "relationships": [
+      "Footprint chart",
+      "Volume delta",
+      "Cumulative volume delta",
+      "Bid-ask footprint"
+    ],
+    "failure_modes": "Collapses two-sided information into one signed number, so heavy two-sided trade and light one-sided trade can produce identical deltas; inherits all trade-classification data risks.",
+    "misconceptions": "A large positive delta cell is not a buy signal — if price cannot advance on that aggression it evidences absorption by passive sellers, which many traders read as bearish.",
+    "example": "Inside a down bar, one level near the low prints delta +900 while price stalls; the trader notes aggressive buying being absorbed at the low and watches for a reversal or continuation break.",
+    "citations": [
+      {
+        "source": "ATAS — Footprint Charts: What Drives Price Movement (Delta footprint modes)",
+        "url": "https://atas.net/footprint-charts/",
+        "section": "Types of Footprint",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Sierra Chart — Numbers Bars (Ask Vol Bid Vol Difference)",
+        "url": "https://sierrachart.com/index.php?page=doc/NumbersBars.php",
+        "section": "Numbers Bars Text Types",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

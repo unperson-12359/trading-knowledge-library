@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/large-lot-trade",
+  "canonical_sha256": "56eb46aab52b9a7a22b0be4ea364c19b01d2186f34707399356847dd4de8a5ed",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/large-lot-trade",
+    "name": "Large-lot trade",
+    "aliases": [
+      "big trade",
+      "large print",
+      "block-size print"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "A single executed trade (or an exchange-fragmented series of prints from one large order) whose size is far above the typical trade size for that instrument, taken in order-flow practice as a sign of institutional participation. Platforms surface them with filters that flag prints above absolute or adaptive size thresholds.",
+    "intuition": "Retail trades in ones and tens; when a 2,000-lot print hits the tape, someone with serious size is doing business.",
+    "mechanics": "Detected by scanning the time-and-sales stream for trades exceeding a fixed or adaptive threshold (platforms such as ATAS re-aggregate the fragmented prints exchange matching algorithms produce and mark the consolidated size on the chart).",
+    "formula": "",
+    "relationships": [
+      "Block trade",
+      "Time and sales",
+      "Tape reading",
+      "Iceberg detection",
+      "Absorption"
+    ],
+    "failure_modes": "Large prints include spread rolls, block reporting, and opening/closing auction volume, which carry different information than directional institutional aggression; size thresholds that work in one volatility regime mislead in another.",
+    "misconceptions": "A large print is not automatically 'smart money' to follow — the initiator may be liquidating, hedging, or rolling, and the print says nothing about their remaining intent.",
+    "example": "On a day when the median ES trade is 3 contracts, the tape prints a single 1,800-lot at the offer near a session high; the platform flags it and the trader watches whether price accepts above that level.",
+    "citations": [
+      {
+        "source": "ATAS — Trading Indicators (Big Trades: high-volume market trades, aggregated vs fragmented prints)",
+        "url": "https://atas.net/features/indicators/",
+        "section": "Never Miss a Big Trade",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

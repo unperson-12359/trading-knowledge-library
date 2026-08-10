@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/bid-ask-footprint",
+  "canonical_sha256": "09e32d0d9697d65a02c2a8c922fe3a866984e39b270b94422191cf8bf4a8342c",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/bid-ask-footprint",
+    "name": "Bid-ask footprint",
+    "aliases": [
+      "Bid x Ask footprint",
+      "bid/ask footprint"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "The most common footprint display mode: at every price level inside a bar, two numbers are shown side by side — the volume traded at the bid (seller-initiated) and the volume traded at the ask (buyer-initiated). It exposes where aggressive buying and selling actually occurred within each bar.",
+    "intuition": "It is the scoreboard of the intra-bar fight, level by level: how much sellers hit bids versus how much buyers lifted offers at each price.",
+    "mechanics": "Tick data are classified by execution side and aggregated per price level per bar; each cell displays 'bid volume × ask volume' (or vice versa), commonly color-coded by which side dominates, and diagonal bid/ask comparisons are used for imbalance analysis.",
+    "formula": "",
+    "relationships": [
+      "Footprint chart",
+      "Bid volume",
+      "Ask volume",
+      "Imbalance footprint",
+      "Volume delta"
+    ],
+    "failure_modes": "Same data-quality dependencies as all bid/ask statistics — misclassified ticks distort the per-level split; at very small tick sizes or fast markets the cells become dense and hard to read without aggregation.",
+    "misconceptions": "A dominant ask side at a level does not guarantee price will rise from there; it records aggression that has already happened and can mark absorption by passive sellers just as easily as initiative buying.",
+    "example": "At a resistance level, a footprint cell shows 320 × 1,450 (bid × ask); the trader sees buyers lifted 1,450 contracts at the offer, then watches whether price advances or stalls on that aggression.",
+    "citations": [
+      {
+        "source": "ATAS — Footprint Charts: What Drives Price Movement (Bid × Ask modes)",
+        "url": "https://atas.net/footprint-charts/",
+        "section": "Types of Footprint",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Sierra Chart — Numbers Bars (Bid Vol x Ask Vol text type)",
+        "url": "https://sierrachart.com/index.php?page=doc/NumbersBars.php",
+        "section": "Numbers Bars Text Types",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

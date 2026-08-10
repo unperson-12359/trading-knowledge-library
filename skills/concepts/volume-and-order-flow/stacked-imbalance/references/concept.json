@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/stacked-imbalance",
+  "canonical_sha256": "3a109d18a99cc5fe43092ec05861c21b984ae3d539e43810e8d692b24ab494db",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/stacked-imbalance",
+    "name": "Stacked imbalance",
+    "aliases": [
+      "stacked bid/ask imbalance"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "A cluster of bid/ask imbalances occurring at several adjacent price levels within the same bar — typically three or more consecutive levels exceeding the imbalance ratio on the same side. It indicates sustained one-sided aggression across a price zone rather than at a single level.",
+    "intuition": "One lopsided level can be chance; a whole staircase of lopsided levels shows a determined initiative push through a zone.",
+    "mechanics": "Platforms scan each bar's diagonal bid/ask comparisons and highlight groups where the imbalance condition holds over a configurable number of consecutive levels; stacked buy imbalances near lows are often read as initiative buying, stacked sell imbalances near highs as initiative selling.",
+    "formula": "",
+    "relationships": [
+      "Imbalance footprint",
+      "Bid-ask footprint",
+      "Initiative buying",
+      "Initiative selling",
+      "Footprint chart"
+    ],
+    "failure_modes": "Thresholds (ratio, number of levels) are arbitrary platform settings; stacked imbalances occur frequently in fast directional moves and many are immediately retraced, so they mark zones of interest rather than trade signals.",
+    "misconceptions": "Stacked imbalances are often treated as automatic support/resistance, but they only record where aggression was one-sided; if that aggression is absorbed and price closes through the zone, the levels fail like any other.",
+    "example": "During a drive off the low, a bar prints buy imbalances at four consecutive ticks; the platform marks a stacked buy imbalance, and the trader watches that zone as a potential pullback reference.",
+    "citations": [
+      {
+        "source": "ATAS — Trading Indicators (Stacked Imbalance indicator)",
+        "url": "https://atas.net/features/indicators/",
+        "section": "Assess the Market Imbalance",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Sierra Chart — Numbers Bars (Highlight Multiple Adjacent Bid or Ask Dominant Prices — Stacked Imbalance)",
+        "url": "https://sierrachart.com/index.php?page=doc/NumbersBars.php",
+        "section": "Input Settings for Numbers Bars",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

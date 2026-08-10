@@ -1,0 +1,82 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-iceberg-detection",
+  "concept_id": "volume-and-order-flow/iceberg-detection",
+  "display_name": "Iceberg detection",
+  "domain": "Volume and order flow",
+  "description": "Explain, compare, or apply Iceberg detection using the library's structured Volume and order flow reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Iceberg detection",
+    "iceberg order detection",
+    "hidden liquidity detection",
+    "explain Iceberg detection",
+    "apply Iceberg detection to a trading question",
+    "common misconception about Iceberg detection"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints",
+      "order type",
+      "spread and liquidity conditions"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 41,
+  "package_path": "skills/concepts/volume-and-order-flow/iceberg-detection",
+  "canonical": {
+    "source_path": "concepts/volume-and-order-flow.json",
+    "sha256": "82a6930816757fa4117d1147abf1210192ada66fc3585b7a7132c6e974ccd326"
+  },
+  "related_concept_ids": [
+    "volume-and-order-flow/absorption",
+    "volume-and-order-flow/time-and-sales",
+    "volume-and-order-flow/large-lot-trade",
+    "volume-and-order-flow/footprint-chart"
+  ]
+}

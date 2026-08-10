@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "volume-and-order-flow/footprint-chart",
+  "canonical_sha256": "b6dc3640fad36e3b05a66b4b938374f8fc0225b24a6075d4dbee61daaf12d1d9",
+  "source_path": "concepts/volume-and-order-flow.json",
+  "concept": {
+    "id": "volume-and-order-flow/footprint-chart",
+    "name": "Footprint chart",
+    "aliases": [
+      "footprint",
+      "cluster chart",
+      "Numbers Bars"
+    ],
+    "domain": "Volume and order flow",
+    "definition": "A chart type that decomposes each price bar into its constituent price levels and displays, for every level, the volume traded there — typically split between bid-side and ask-side trades, or shown as delta. It makes the intra-bar auction visible instead of showing only open, high, low, and close.",
+    "intuition": "A candlestick tells you where price went; a footprint shows you the fight that happened at each price along the way.",
+    "mechanics": "Built from tick-by-tick exchange data (price, volume, and execution side of each trade), aggregated by price level within each bar; display modes include Bid × Ask, Delta, Volume, Trades, and imbalance highlighting, often with color intensity proportional to activity.",
+    "formula": "",
+    "relationships": [
+      "Bid-ask footprint",
+      "Delta footprint",
+      "Volume footprint",
+      "Imbalance footprint",
+      "Volume delta"
+    ],
+    "failure_modes": "Requires high-quality tick data with reliable bid/ask classification; on aggregated or unsynchronized feeds the per-level numbers are inaccurate, and the density of information invites over-reading noise.",
+    "misconceptions": "Footprints are not a window into 'hidden' orders — they show executed trades only, not resting intent, and a footprint pattern is context for decisions rather than a stand-alone signal.",
+    "example": "On a 5-minute crude oil Bid × Ask footprint, each cell shows contracts sold at the bid on the left and bought at the ask on the right, letting the trader see exactly where sellers overwhelmed buyers inside the bar.",
+    "citations": [
+      {
+        "source": "ATAS — Footprint Charts: What Drives Price Movement",
+        "url": "https://atas.net/footprint-charts/",
+        "section": "What is a Footprint in Trading",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Sierra Chart — Numbers Bars ('Footprint' in other charting programs)",
+        "url": "https://sierrachart.com/index.php?page=doc/NumbersBars.php",
+        "section": "Introduction",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
