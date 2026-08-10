@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/hash-rate",
+  "canonical_sha256": "8dbdc37d46b79d84728879b40ed277a086113a6a988fa688a84343220a4968dc",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/hash-rate",
+    "name": "Hash rate",
+    "aliases": [
+      "hashrate",
+      "network hash rate"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Hash rate is the estimated total computational power that miners devote to a proof-of-work network, expressed in hashes per second; it is the primary gauge of PoW security expenditure.",
+    "intuition": "It is the horsepower of the mining fleet: the more hashes per second the network throws at the puzzle, the costlier it is for an attacker to rewrite history.",
+    "mechanics": "Hash rate is not directly observable on-chain — it is inferred from realized block intervals against current difficulty (Glassnode: average estimated hashes/second produced by miners). Difficulty retargets keep block time constant as hash rate fluctuates, so price-driven miner entry/exit shows up as hash-rate trends with a lag.",
+    "formula": "Hash rate ≈ difficulty × 2^32 / average block interval (Bitcoin); units: hashes/s (networks now in EH/s).",
+    "relationships": [
+      "Miner",
+      "Proof of work",
+      "Emission schedule",
+      "Blockchain"
+    ],
+    "failure_modes": "The metric is an estimate with error bars, especially over short windows (block-interval luck); falling hash rate after price crashes reflects miner capitulation but can be misread as failing security while absolute security remains high.",
+    "misconceptions": "Higher hash rate does not speed up transactions — difficulty retargets to keep block time constant; it raises attack cost, not throughput. Hash rate also does not measure decentralization: a few pools can control most of it.",
+    "example": "Bitcoin's mean hash rate reached roughly 1.1 × 10^21 hashes per second (~1,100 EH/s) in recent Glassnode readings; reversing even a few blocks against that wall of computation is economically out of reach for any realistic attacker.",
+    "citations": [
+      {
+        "source": "Glassnode Studio - BTC: Mean Hash Rate",
+        "url": "https://studio.glassnode.com/charts/mining.HashRateMean?a=BTC",
+        "section": "Metric definition",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Ethereum.org developer docs - Proof-of-work (PoW)",
+        "url": "https://ethereum.org/en/developers/docs/consensus-mechanisms/pow/",
+        "section": "What is Proof-of-work (PoW)?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

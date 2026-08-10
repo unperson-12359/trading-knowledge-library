@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/exchange-reserve",
+  "canonical_sha256": "74f653cd178ff2629b9967ca0c21eb4c03ab72f6723d4565809a55d0dad222a3",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/exchange-reserve",
+    "name": "Exchange reserve",
+    "aliases": [
+      "exchange balance",
+      "exchange supply"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Exchange reserve (exchange balance) is the total amount of a coin held in wallets attributed to centralized exchanges — the immediately sellable inventory sitting on trading venues.",
+    "intuition": "It is the stock of goods on shop shelves: a bulging shelf means plenty of potential supply for sale; emptying shelves mean holders have taken their coins home.",
+    "mechanics": "Analytics firms cluster and label exchange addresses and track their aggregate balance over time; reserves fall when outflows exceed inflows (accumulation/cold-storage trend) and rise when inflows dominate (distribution risk). Glassnode documented BTC exchange balances dropping ~7% from their February 2020 high as post-crash withdrawals outpaced deposits.",
+    "formula": "Exchange reserve_t = Σ balances of labeled exchange addresses; Δreserve ≈ inflow − outflow.",
+    "relationships": [
+      "Exchange inflow",
+      "Exchange outflow",
+      "Stablecoin supply",
+      "Market capitalization"
+    ],
+    "failure_modes": "Label coverage is incomplete and changes as exchanges rotate wallets, so levels and trends embed attribution error; reserves also embed coins that will never be sold (market-maker inventory), and reserve trends can invert during exchange insolvencies for non-bullish reasons.",
+    "misconceptions": "Falling reserves are not mechanically bullish — they can reflect loss of trust in a venue (FTX-style runs) or migration to other custodians. Reserves measure potential, not actual, sell pressure.",
+    "example": "If labeled exchange wallets hold 2.4M BTC out of ~19.9M supply, roughly 12% of all coins sit as venue inventory; a slide to 2.0M over a year of net outflows signals tightening liquid supply.",
+    "citations": [
+      {
+        "source": "Glassnode Insights - The Number of BTC On Exchanges Is Down Almost 7%",
+        "url": "https://insights.glassnode.com/btc-exchange-balances/",
+        "section": "Exchange inflow/outflow and balance",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

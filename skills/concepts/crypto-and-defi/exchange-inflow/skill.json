@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-exchange-inflow",
+  "concept_id": "crypto-and-defi/exchange-inflow",
+  "display_name": "Exchange inflow",
+  "domain": "Crypto and DeFi",
+  "description": "Explain, compare, or apply Exchange inflow using the library's structured Crypto and DeFi reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Exchange inflow",
+    "exchange deposits",
+    "explain Exchange inflow",
+    "apply Exchange inflow to a trading question",
+    "common misconception about Exchange inflow"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints",
+      "contract specification",
+      "funding and margin state"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 60,
+  "package_path": "skills/concepts/crypto-and-defi/exchange-inflow",
+  "canonical": {
+    "source_path": "concepts/crypto-and-defi.json",
+    "sha256": "a99166e4e447c69dba65401f9ace2b76b558305cacde981b1f9e0a93007f1b74"
+  },
+  "related_concept_ids": [
+    "crypto-and-defi/exchange-outflow",
+    "crypto-and-defi/exchange-reserve",
+    "crypto-and-defi/active-addresses",
+    "crypto-and-defi/transaction-count"
+  ]
+}

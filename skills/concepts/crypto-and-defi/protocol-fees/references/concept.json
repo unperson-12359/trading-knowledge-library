@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/protocol-fees",
+  "canonical_sha256": "8411abaaa0075137e1258cf131a0e6e9cc7e465a57e862af300a0f6e5b8df68b",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/protocol-fees",
+    "name": "Protocol fees",
+    "aliases": [
+      "fees",
+      "user fees"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Protocol fees are all charges and value a protocol collects from its operation — swap fees, borrow interest, liquidation penalties, management fees — excluding the gas costs users pay to the underlying network.",
+    "intuition": "Fees are the gross till of the protocol: everything users pay in, before it is split between liquidity suppliers, the treasury and token holders.",
+    "mechanics": "Per DefiLlama's dimensions, dailyFees aggregates all value flows into the protocol's ecosystem (user fees like swap fees and interest, plus yield and staking-derived cuts); it is then decomposed into supply-side revenue (to LPs/lenders), protocol revenue (to treasury) and holders revenue (to token holders). Fee levels and switches are typically set by governance.",
+    "formula": "",
+    "relationships": [
+      "Protocol revenue",
+      "Total value locked",
+      "Governance token",
+      "DeFi liquidity provider",
+      "Gas fee"
+    ],
+    "failure_modes": "Fee revenue can be inflated by circular or incentive-driven volume (wash trading, farm-driven churn) that vanishes when incentives stop; fee-switch promises may never activate, leaving token valuations resting on hypothetical future fees.",
+    "misconceptions": "Protocol fees are not gas fees — gas goes to the chain's validators, not the application. High gross fees do not imply tokenholder value unless a mechanism routes some share to the treasury or holders.",
+    "example": "A DEX processing $100M daily volume at a 0.3% swap fee generates $300k daily fees; with no fee switch, 100% is supply-side revenue to LPs and protocol revenue is $0 — flipping the switch might route ~$50k/day to the treasury.",
+    "citations": [
+      {
+        "source": "DefiLlama docs - Adapter dimensions (fees and revenue)",
+        "url": "https://docs.llama.fi/list-your-project/other-dashboards/dimensions",
+        "section": "Fees dimensions",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

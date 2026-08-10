@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/transaction-count",
+  "canonical_sha256": "b6714ffe5b62137324f2bf2bdb4967f90145c7d466bfcc648d4093d83c8ca054",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/transaction-count",
+    "name": "Transaction count",
+    "aliases": [
+      "tx count",
+      "number of transactions"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Transaction count is the total number of successful on-chain transactions over a period — the basic measure of how much settlement activity a blockchain processes.",
+    "intuition": "It is the number of checks the ledger cleared today, regardless of their size.",
+    "mechanics": "Glassnode defines the metric as the total number of successful transactions per interval (hour/day); it reflects demand for block space but not economic weight, since a $10 payment and a $100M transfer each count once. Fee levels, mempool congestion and batching practices all interact with raw counts.",
+    "formula": "",
+    "relationships": [
+      "Active addresses",
+      "Block space",
+      "Gas fee",
+      "Coin days destroyed"
+    ],
+    "failure_modes": "Counts are trivially inflated by spam, inscription-style data embedding or self-transfers, so raw transaction count is a weak measure of economic activity — CDD and transfer-value metrics exist partly to fix this; exchange batching suppresses counts even as volume grows.",
+    "misconceptions": "More transactions do not mean more adoption or more value moved — bot activity and dust spam inflate counts. Compare value-weighted or age-weighted metrics before drawing conclusions.",
+    "example": "Bitcoin processes on the order of 500,000-650,000 successful transactions per day; during inscription booms, counts spiked sharply while transfer value stayed flat — activity up, economic throughput unchanged.",
+    "citations": [
+      {
+        "source": "Glassnode Studio - BTC: Number of Transactions",
+        "url": "https://studio.glassnode.com/charts/transactions.Count?a=BTC",
+        "section": "Metric definition",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Glassnode Docs - CDD (Coin Days Destroyed) metric guide",
+        "url": "https://docs.glassnode.com/guides-and-tutorials/metric-guides/coin-days-destroyed/cdd-coin-days-destroyed",
+        "section": "How is it measured",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

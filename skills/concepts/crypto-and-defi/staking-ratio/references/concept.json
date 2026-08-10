@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/staking-ratio",
+  "canonical_sha256": "c5c17f972dc728d38014f05f28f73aee27e0ca97ec966903683fa669eee62f8c",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/staking-ratio",
+    "name": "Staking ratio",
+    "aliases": [
+      "staking rate",
+      "percent staked"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Staking ratio is the percentage of a proof-of-stake network's eligible token supply that is actively staked, indicating how much capital currently secures consensus and how much remains liquid.",
+    "intuition": "It is the share of the town's wealth posted as security bonds: higher means more skin in the game, but also less free capital circulating in the economy.",
+    "mechanics": "Computed as staked supply / total (or circulating) supply from on-chain staking data. Per-validator rewards decline as total stake grows (Ethereum's base reward scales with the inverse square root of total staked ETH), so the ratio self-regulates around an equilibrium where marginal yield matches holders' opportunity cost; liquid staking raises the practical ratio by removing the lockup deterrent.",
+    "formula": "Staking ratio = staked supply / total supply × 100%.",
+    "relationships": [
+      "Staking",
+      "Proof of stake",
+      "Validator",
+      "Liquid staking token",
+      "Emission schedule"
+    ],
+    "failure_modes": "A high ratio achieved mostly through a few custodial or liquid-staking providers concentrates validator control despite the healthy headline number; ratio changes lag price moves, and cross-chain comparisons ignore different unbonding periods and slashing regimes.",
+    "misconceptions": "A higher staking ratio is not unambiguously safer — what matters is the distribution of stake across independent operators, not the aggregate. The ratio also does not measure network usage or demand for the token.",
+    "example": "If ~35M of ~120M ETH is staked, the staking ratio is ~29%; each validator's yield falls as that number climbs, which is why yields compress after liquid-staking-driven staking booms.",
+    "citations": [
+      {
+        "source": "Ethereum.org - Ethereum staking",
+        "url": "https://ethereum.org/en/staking/",
+        "section": "What is staking?",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Lido docs - What is Lido / Liquid staking",
+        "url": "https://docs.lido.fi/",
+        "section": "Liquid staking",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -258,6 +258,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="airdrop"><h3>Airdrop <a class="anchor" href="#airdrop">#</a></h3>
 <div class="field">An airdrop is the free distribution of tokens to a set of wallet addresses, typically to reward past users, bootstrap a community, or decentralize governance ownership, with eligibility usually set by an on-chain snapshot.</div>
+<div class="skill-links"><a href="../skills/tkl-airdrop/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is a retroactive thank-you payment and marketing campaign in one: wake up, check your wallet, and there are tokens because you used the protocol before a cutoff date.</div>
 <div class="field"><span class="label">Mechanics:</span> The project snapshots eligible addresses and activity, then makes tokens claimable (users pay gas to claim) or sends them directly. Uniswap&#x27;s September 2020 UNI airdrop gave 400 UNI to each of 251,534 historical user addresses (10.06% of supply) plus pro-rata allocations to LPs. Airdrops are often paired with vesting for insiders while community allocations vest immediately.</div>
 <div class="field"><span class="label">Failure modes:</span> Sybil farmers create thousands of wallets to harvest eligibility, diluting genuine users; unexpected random airdrops are frequently dusting or scam tokens whose approval transactions drain wallets; large immediate floats can crash the token at listing.</div>
@@ -269,6 +270,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="governance-token"><h3>Governance token <a class="anchor" href="#governance-token">#</a></h3>
 <div class="field">A governance token is a token whose primary utility is voting power over a protocol&#x27;s decisions — parameter changes, treasury spending, upgrades — typically exercised through a DAO&#x27;s proposal-and-vote contracts.</div>
+<div class="skill-links"><a href="../skills/tkl-governance-token/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is a shareholder ballot in token form: holding it gives you a say in how the protocol runs, weighted by how much you hold.</div>
 <div class="field"><span class="label">Mechanics:</span> Holders (or their delegates) create and vote on proposals; if quorum and majority thresholds pass, execution happens automatically or via timelocked multisig (e.g. UNI: 1% of supply to propose, 4% quorum, 7-day voting, 2-day timelock). Many governance tokens also carry fee-switch or value-accrual potential, but voting power itself is the core function.</div>
 <div class="field"><span class="label">Failure modes:</span> Low participation lets small coalitions or whales capture governance; vote-buying, bribery markets and flash-loan governance attacks can pass malicious proposals; delegation concentrates effective power in a few hands.</div>
@@ -281,6 +283,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="protocol-revenue"><h3>Protocol revenue <a class="anchor" href="#protocol-revenue">#</a></h3>
 <div class="field">Protocol revenue is the portion of the fees a protocol collects that is kept by the protocol entity itself — flowing to its treasury or governance token holders — as distinct from fees passed through to liquidity providers or other suppliers.</div>
+<div class="skill-links"><a href="../skills/tkl-protocol-revenue/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> If fees are the till, protocol revenue is what the house actually keeps after paying the market makers who stocked the shelves.</div>
 <div class="field"><span class="label">Mechanics:</span> Using DefiLlama&#x27;s taxonomy: total fees = all value collected from users; revenue = fees kept by the protocol = protocol revenue (to treasury/team) + holders revenue (distributed to token holders via buybacks, burns or dividends); the remainder is supply-side revenue to LPs/lenders. Only the kept fraction represents income attributable to the protocol and its token.</div>
 <div class="field"><span class="label">Failure modes:</span> Revenue funded by unsustainable incentive cycles or one-off events (liquidation spikes) is not recurring income; comparing revenue across protocols without distinguishing holders vs treasury vs supply-side fractions invites apples-to-oranges valuation errors.</div>
@@ -293,6 +296,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="protocol-fees"><h3>Protocol fees <a class="anchor" href="#protocol-fees">#</a></h3>
 <div class="field">Protocol fees are all charges and value a protocol collects from its operation — swap fees, borrow interest, liquidation penalties, management fees — excluding the gas costs users pay to the underlying network.</div>
+<div class="skill-links"><a href="../skills/tkl-protocol-fees/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Fees are the gross till of the protocol: everything users pay in, before it is split between liquidity suppliers, the treasury and token holders.</div>
 <div class="field"><span class="label">Mechanics:</span> Per DefiLlama&#x27;s dimensions, dailyFees aggregates all value flows into the protocol&#x27;s ecosystem (user fees like swap fees and interest, plus yield and staking-derived cuts); it is then decomposed into supply-side revenue (to LPs/lenders), protocol revenue (to treasury) and holders revenue (to token holders). Fee levels and switches are typically set by governance.</div>
 <div class="field"><span class="label">Failure modes:</span> Fee revenue can be inflated by circular or incentive-driven volume (wash trading, farm-driven churn) that vanishes when incentives stop; fee-switch promises may never activate, leaving token valuations resting on hypothetical future fees.</div>
@@ -304,6 +308,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="total-value-locked"><h3>Total value locked <a class="anchor" href="#total-value-locked">#</a></h3>
 <div class="field">Total value locked (TVL) is the aggregate USD value of assets deposited by users into a protocol&#x27;s own smart contracts — the standard gauge of how much capital a DeFi protocol or chain secures.</div>
+<div class="skill-links"><a href="../skills/tkl-total-value-locked/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> TVL is the size of the vault: how much money users have parked in the protocol&#x27;s contracts at this moment.</div>
 <div class="field"><span class="label">Mechanics:</span> Aggregators like DefiLlama sum the value of tokens held in protocol contracts, with filters separating staking (native token), pool2 (LP tokens with the protocol&#x27;s own token), borrowed deposits and vesting; off-chain assets (e.g. Tether&#x27;s bank dollars) and native chain staking are excluded. TVL moves with both net deposits and token prices.</div>
 <div class="field"><span class="label">Failure modes:</span> TVL can be gamed: recycled/looped deposits, incentive-farmed liquidity with no real users, self-dealt wrapper assets and double-counting across nested protocols inflate it; DefiLlama actively delists such &#x27;unproductive&#x27; TVL. It also rises and falls with token prices independent of usage.</div>
@@ -315,6 +320,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="stablecoin-supply"><h3>Stablecoin supply <a class="anchor" href="#stablecoin-supply">#</a></h3>
 <div class="field">Stablecoin supply is the total outstanding issuance of stablecoins — cryptocurrencies designed to hold a stable value against a reference asset, usually the US dollar — and is tracked as a proxy for dry powder and fiat liquidity in the crypto economy.</div>
+<div class="skill-links"><a href="../skills/tkl-stablecoin-supply/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the pile of dollar chips sitting at the crypto casino&#x27;s tables: when it grows, new fiat-backed buying power is entering; when it shrinks, capital is cashing out.</div>
 <div class="field"><span class="label">Mechanics:</span> Stablecoins preserve their peg by design: asset-linked issuers (USDT, USDC) back tokens with reserves and mint/redeem against fiat, while crypto-collateralized designs (Dai) mint against overcollateralized vaults and algorithmic ones adjust supply programmatically. Aggregate supply across issuers and chains is observable on-chain and, per FSB/BIS definitions, reflects how much of the ecosystem&#x27;s settlement happens in dollar terms.</div>
 <div class="field"><span class="label">Failure modes:</span> Reserve opacity or a run on an issuer can break the peg (redemptions forcing fire sales of reserve assets); bridge fragmentation splits supply across chains where a wrapped version is only as good as its bridge; regulatory action against a major issuer is systemic for the whole market.</div>
@@ -326,6 +332,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="exchange-inflow"><h3>Exchange inflow <a class="anchor" href="#exchange-inflow">#</a></h3>
 <div class="field">Exchange inflow is the volume of coins transferred on-chain into wallets attributed to centralized exchanges over a period, watched as a leading indicator of intent to sell or trade.</div>
+<div class="skill-links"><a href="../skills/tkl-exchange-inflow/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Coins moving onto an exchange are like goods carried into a pawnshop — they are positioned to be sold, even if the sale hasn&#x27;t happened yet.</div>
 <div class="field"><span class="label">Mechanics:</span> On-chain analytics firms (Glassnode, CryptoQuant) label exchange-controlled addresses and sum transfers into them; inflow is reported in native units or USD per day. Spikes historically cluster around sharp price moves — the March 2020 crash saw deposit volumes surge as holders rushed to sell — while deposit counts and average deposit size distinguish retail from whale behavior.</div>
 <div class="field"><span class="label">Failure modes:</span> Attribution depends on heuristics and labeled wallets, so new exchange addresses or internal reshuffles can masquerade as inflows; inflow ≠ immediate selling, since market makers and custodians also receive deposits for operational reasons.</div>
@@ -337,6 +344,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="exchange-outflow"><h3>Exchange outflow <a class="anchor" href="#exchange-outflow">#</a></h3>
 <div class="field">Exchange outflow is the volume of coins withdrawn on-chain from exchange-attributed wallets over a period, commonly read as accumulation or movement to self-custody and reduced immediate sell pressure.</div>
+<div class="skill-links"><a href="../skills/tkl-exchange-outflow/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Coins leaving the exchange are goods carried home from the market — they are being put back into storage rather than offered for sale.</div>
 <div class="field"><span class="label">Mechanics:</span> Analytics providers sum transfers out of labeled exchange wallets; sustained net outflow shrinks exchange balances (reserves). After the March 2020 crash, outflow declined more slowly than inflow, so net flow stayed negative and the total BTC balance on exchanges dropped ~7% from its February high — a classic accumulation signature.</div>
 <div class="field"><span class="label">Failure modes:</span> Outflows to new exchange wallets or institutional custodians can be misread as self-custody accumulation; reserve decline can also reflect an exchange losing customers (a red flag, not bullishness) — context matters.</div>
@@ -349,6 +357,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="exchange-reserve"><h3>Exchange reserve <a class="anchor" href="#exchange-reserve">#</a></h3>
 <div class="field">Exchange reserve (exchange balance) is the total amount of a coin held in wallets attributed to centralized exchanges — the immediately sellable inventory sitting on trading venues.</div>
+<div class="skill-links"><a href="../skills/tkl-exchange-reserve/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the stock of goods on shop shelves: a bulging shelf means plenty of potential supply for sale; emptying shelves mean holders have taken their coins home.</div>
 <div class="field"><span class="label">Mechanics:</span> Analytics firms cluster and label exchange addresses and track their aggregate balance over time; reserves fall when outflows exceed inflows (accumulation/cold-storage trend) and rise when inflows dominate (distribution risk). Glassnode documented BTC exchange balances dropping ~7% from their February 2020 high as post-crash withdrawals outpaced deposits.</div>
 <div class="field"><span class="label">Failure modes:</span> Label coverage is incomplete and changes as exchanges rotate wallets, so levels and trends embed attribution error; reserves also embed coins that will never be sold (market-maker inventory), and reserve trends can invert during exchange insolvencies for non-bullish reasons.</div>
@@ -361,6 +370,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="realized-capitalization"><h3>Realized capitalization <a class="anchor" href="#realized-capitalization">#</a></h3>
 <div class="field">Realized capitalization (realized cap) values each coin at the price when it last moved on-chain, rather than at the current price — approximating the aggregate cost basis of the network and the value &#x27;stored&#x27; in the asset.</div>
+<div class="skill-links"><a href="../skills/tkl-realized-capitalization/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Instead of pricing every coin at today&#x27;s quote, realized cap asks: what did the market actually pay for all these coins when they last changed hands?</div>
 <div class="field"><span class="label">Mechanics:</span> For UTXO chains, realized cap = Σ (UTXO value × price at the time that UTXO was created); Coin Metrics extends the same idea to account-based chains using each account&#x27;s last-movement date. Coins last moved cheap are re-priced upward when spent (raising realized cap), and vice versa; lost or ancient coins carry near-zero weight, unlike in market cap.</div>
 <div class="field"><span class="label">Failure modes:</span> Exchange internal shuffles and self-transfers re-price coins at current levels without economic change of hands, injecting noise; on account-based chains the &#x27;last moved&#x27; convention is cruder than UTXO-level data.</div>
@@ -374,6 +384,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="market-value-to-realized-value-ratio"><h3>Market-value-to-realized-value ratio <a class="anchor" href="#market-value-to-realized-value-ratio">#</a></h3>
 <div class="field">MVRV (market-value-to-realized-value) is the ratio of an asset&#x27;s market capitalization to its realized capitalization, comparing the market&#x27;s current valuation to the aggregate on-chain cost basis.</div>
+<div class="skill-links"><a href="../skills/tkl-market-value-to-realized-value-ratio/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> MVRV asks whether holders are, on average, sitting on big paper gains (ratio high, temptation to sell) or paper losses (ratio low, capitulation territory).</div>
 <div class="field"><span class="label">Mechanics:</span> MVRV = market cap / realized cap. Values &gt;1 mean the average holder is in profit; extremes (&gt;~3.5 historically for BTC) marked late-stage bull markets, while MVRV &lt;1 — price below aggregate cost basis — historically coincided with bear-market bottoms and accumulation zones. It functions as a mean-reversion gauge with realized cap as the mean.</div>
 <div class="field"><span class="label">Failure modes:</span> As market structure matures (ETFs, derivatives, longer holder memory), historical thresholds like 3.5 drift and should not be applied mechanically; exchange-internal coin movements distort realized cap and hence the ratio.</div>

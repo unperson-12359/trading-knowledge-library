@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/coin-days-destroyed",
+  "canonical_sha256": "759e885f7dfd0833fb6e9cdb706a212b86e4405176fee875d5e4d8c45e57d00f",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/coin-days-destroyed",
+    "name": "Coin days destroyed",
+    "aliases": [
+      "CDD",
+      "coindays destroyed"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Coin Days Destroyed (CDD) is an on-chain activity metric that weights coin movements by dormancy: each unspent coin accumulates one 'coin day' per day, and spending it destroys those accumulated days, so movements of old coins count far more than churn of young ones.",
+    "intuition": "Moving 10 BTC held for a decade rings a louder bell than moving 10 BTC bought yesterday — CDD measures the age-weighted significance of what moved.",
+    "mechanics": "CDD for a spent output = value × lifespan in days; the daily metric sums this over all spent outputs. A 2 BTC UTXO dormant 100 days destroys 200 coin days. Spikes flag long-term holders spending into strength or stress; supply-adjusted CDD normalizes for the steady growth of potential coin days as supply ages and inflates.",
+    "formula": "CDD = Σ (value_i × lifespan_i [days]) over outputs spent in the period.",
+    "relationships": [
+      "HODL waves",
+      "Spent output profit ratio",
+      "Transaction count",
+      "Exchange inflow"
+    ],
+    "failure_modes": "Exchange and custodian wallet maintenance periodically destroys huge coin days without any sale, producing false alarms; absolute CDD levels trend upward over the protocol's life, so raw values are not comparable across eras without supply adjustment.",
+    "misconceptions": "High CDD does not prove old holders are selling — it proves old coins moved, which may be custody reshuffling; context (exchange inflows, SOPR) is needed. Also, repeatedly moving the same coins can destroy at most one coin day per coin per day.",
+    "example": "Baseline BTC traffic runs under ~5M coin days destroyed daily; readings above 20M days are rare and historically appear during high-volatility episodes when large volumes of old coins move, such as cycle tops or capitulation events.",
+    "citations": [
+      {
+        "source": "Glassnode Docs - CDD (Coin Days Destroyed) metric guide",
+        "url": "https://docs.glassnode.com/guides-and-tutorials/metric-guides/coin-days-destroyed/cdd-coin-days-destroyed",
+        "section": "How is it measured",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

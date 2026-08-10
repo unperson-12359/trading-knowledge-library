@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/market-value-to-realized-value-ratio",
+  "canonical_sha256": "1d3f4428e1c6044fa89ccdfd9bf2eda587734bee4d9b47d6a5ce87bb4a7a2a31",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/market-value-to-realized-value-ratio",
+    "name": "Market-value-to-realized-value ratio",
+    "aliases": [
+      "MVRV",
+      "MVRV ratio"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "MVRV (market-value-to-realized-value) is the ratio of an asset's market capitalization to its realized capitalization, comparing the market's current valuation to the aggregate on-chain cost basis.",
+    "intuition": "MVRV asks whether holders are, on average, sitting on big paper gains (ratio high, temptation to sell) or paper losses (ratio low, capitulation territory).",
+    "mechanics": "MVRV = market cap / realized cap. Values >1 mean the average holder is in profit; extremes (>~3.5 historically for BTC) marked late-stage bull markets, while MVRV <1 — price below aggregate cost basis — historically coincided with bear-market bottoms and accumulation zones. It functions as a mean-reversion gauge with realized cap as the mean.",
+    "formula": "MVRV = Market Cap / Realized Cap.",
+    "relationships": [
+      "Realized capitalization",
+      "Market capitalization",
+      "Net unrealized profit and loss",
+      "Spent output profit ratio"
+    ],
+    "failure_modes": "As market structure matures (ETFs, derivatives, longer holder memory), historical thresholds like 3.5 drift and should not be applied mechanically; exchange-internal coin movements distort realized cap and hence the ratio.",
+    "misconceptions": "MVRV is not a timing tool for entries and exits — it identifies valuation regimes, and markets can stay 'overvalued' or 'undervalued' for months. It is an analytical framework from on-chain data, not a proven predictive law.",
+    "example": "With BTC market cap at $1.2T and realized cap at $500B, MVRV = 2.4 — deep aggregate profit historically associated with elevated distribution risk, though below the >3.5 extremes of prior cycle tops.",
+    "citations": [
+      {
+        "source": "Glassnode Docs - MVRV Ratio metric guide",
+        "url": "https://docs.glassnode.com/further-information/metric-guides/mvrv/mvrv-ratio",
+        "section": "How is it measured",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Coin Metrics Product Docs - Market capitalization metrics",
+        "url": "https://gitbook-docs.coinmetrics.io/network-data/network-data-overview/market/market-capitalization",
+        "section": "Market Cap / Realized Cap / MVRV definitions",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

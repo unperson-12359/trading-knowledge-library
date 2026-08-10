@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/spent-output-profit-ratio",
+  "canonical_sha256": "f0d2ecef0a3a79a4f8e184ca08456e58f56ee5a1968bdd28c0ad4a7b642f3922",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/spent-output-profit-ratio",
+    "name": "Spent output profit ratio",
+    "aliases": [
+      "SOPR",
+      "aSOPR (adjusted variant)"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "SOPR (Spent Output Profit Ratio) is the ratio of the fiat value of spent coins at the time they are spent to their value when they were created, measuring whether coins moving on-chain are, on average, being sold at a profit or a loss.",
+    "intuition": "SOPR is the market's daily P&L receipt: above 1, spenders are cashing out winners; below 1, they are realizing losses.",
+    "mechanics": "Computed over coins moved in a period: SOPR = Σ(value × price_spent) / Σ(value × price_created) across spent outputs. SOPR >1 signals realized profit-taking (typical in bull rallies), ≈1 is breakeven (often a support/resistance pivot in trends), and <1 marks loss realization or capitulation; aSOPR filters outputs with lifespan under one hour.",
+    "formula": "SOPR = Σ(value_i × price_spent_i) / Σ(value_i × price_created_i), over outputs spent in the period.",
+    "relationships": [
+      "Realized capitalization",
+      "Market-value-to-realized-value ratio",
+      "Net unrealized profit and loss",
+      "Coin days destroyed"
+    ],
+    "failure_modes": "Exchange wallet reshuffles and self-spends register as 'spent' at current price, injecting noise; SOPR describes realized behavior only and ignores the large dormant supply, so it can diverge from aggregate profitability (NUPL/MVRV).",
+    "misconceptions": "SOPR >1 is not automatically bearish — sustained profit-taking above 1 with quick resets to 1 is the signature of a healthy bull trend; only failure of the 1 level to hold flips the regime. It is a behavioral gauge, not a price predictor.",
+    "example": "If coins moved today were created at an average $40,000 and are spent at $50,000, daily SOPR = 1.25 — profits being realized; in a correction, SOPR dipping below 1 and then reclaiming it marks seller exhaustion.",
+    "citations": [
+      {
+        "source": "Glassnode Docs - SOPR (Spent Output Profit Ratio) metric guide",
+        "url": "https://docs.glassnode.com/guides-and-tutorials/metric-guides/sopr/sopr-spent-output-profit-ratio",
+        "section": "How is it measured",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/realized-capitalization",
+  "canonical_sha256": "3e66d8595542132fbe2e099dd92f9205a81c6669e99a39cffbb8763c94d2e0bb",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/realized-capitalization",
+    "name": "Realized capitalization",
+    "aliases": [
+      "realized cap",
+      "realized value"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Realized capitalization (realized cap) values each coin at the price when it last moved on-chain, rather than at the current price — approximating the aggregate cost basis of the network and the value 'stored' in the asset.",
+    "intuition": "Instead of pricing every coin at today's quote, realized cap asks: what did the market actually pay for all these coins when they last changed hands?",
+    "mechanics": "For UTXO chains, realized cap = Σ (UTXO value × price at the time that UTXO was created); Coin Metrics extends the same idea to account-based chains using each account's last-movement date. Coins last moved cheap are re-priced upward when spent (raising realized cap), and vice versa; lost or ancient coins carry near-zero weight, unlike in market cap.",
+    "formula": "Realized Cap = Σ value_i × price_last_moved_i (over all UTXOs/accounts).",
+    "relationships": [
+      "Market capitalization",
+      "Market-value-to-realized-value ratio",
+      "Net unrealized profit and loss",
+      "Spent output profit ratio"
+    ],
+    "failure_modes": "Exchange internal shuffles and self-transfers re-price coins at current levels without economic change of hands, injecting noise; on account-based chains the 'last moved' convention is cruder than UTXO-level data.",
+    "misconceptions": "Realized cap is not 'real money invested' — it ignores off-chain purchases and approximates cost basis from on-chain movement only. A coin unmoved since 2009 counts at ~$0, which is a feature (discounts lost coins), not a data bug.",
+    "example": "Coin Metrics' worked example: accounts holding 100 coins last moved in 2010 ($0), 1,000 coins moved in 2016 ($10) and 500 coins moved in 2019 ($100) give a realized cap of $0 + $10,000 + $50,000 = $60,000 regardless of today's price.",
+    "citations": [
+      {
+        "source": "Glassnode Docs - Realized Capitalization metric guide",
+        "url": "https://docs.glassnode.com/further-information/metric-guides/realized-capitalization",
+        "section": "Indicator overview",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Coin Metrics Product Docs - Market capitalization metrics",
+        "url": "https://gitbook-docs.coinmetrics.io/network-data/network-data-overview/market/market-capitalization",
+        "section": "Market Cap / Realized Cap / MVRV definitions",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

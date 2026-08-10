@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/predicted-funding-rate",
+  "canonical_sha256": "fe2fac2fb8ce5be911990c2749b6e7cc0f0c7f7da7af2de7937aae7d79104978",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/predicted-funding-rate",
+    "name": "Predicted funding rate",
+    "aliases": [
+      "estimated funding rate"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "The predicted (estimated) funding rate is the exchange's real-time forecast of the funding rate that will apply at the next funding timestamp, computed from the premium index samples collected so far in the current interval.",
+    "intuition": "It is the meter running on the next funding bill: it shows what longs or shorts would pay if the interval ended right now.",
+    "mechanics": "Binance continuously samples the premium index (impact bid/ask vs price index, roughly every minute) over the current 8-hour window; the displayed predicted rate is the estimate from samples to date — note the convention that the rate shown at e.g. 09:00 UTC uses the premium dataset from 01:00 to 09:00, not just the final hour. The realized rate is fixed only at the funding timestamp.",
+    "formula": "Predicted funding ≈ time-weighted average of premium index samples in the current interval + interest component (venue-specific).",
+    "relationships": [
+      "Funding rate",
+      "Funding interval",
+      "Perpetual basis"
+    ],
+    "failure_modes": "The prediction moves with order-book depth: thin or spoofed books late in the interval can swing the final rate away from hours of stable estimates, so positioning on the predicted rate carries estimate risk.",
+    "misconceptions": "The predicted rate is not locked in — only the rate at the funding timestamp applies, and late premium swings can change it materially. A persistent large prediction is a signal about crowded positioning, not a guaranteed payment.",
+    "example": "If the premium index has averaged +0.02% through six hours of the interval, the predicted funding shows ~+0.02%+interest; a sharp sell-off in the last hour can drag the realized rate to +0.005% instead.",
+    "citations": [
+      {
+        "source": "Binance Support - Introduction to Binance Futures Funding Rates",
+        "url": "https://www.binance.com/en/support/faq/introduction-to-binance-futures-funding-rates-360033525031",
+        "section": "How are funding rates calculated",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

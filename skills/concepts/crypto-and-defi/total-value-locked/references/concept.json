@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/total-value-locked",
+  "canonical_sha256": "cb0a990ec7f8836a2a10aeeb364cf430194a01eacb3b6fe98d0dfaadc4e1326e",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/total-value-locked",
+    "name": "Total value locked",
+    "aliases": [
+      "TVL"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Total value locked (TVL) is the aggregate USD value of assets deposited by users into a protocol's own smart contracts — the standard gauge of how much capital a DeFi protocol or chain secures.",
+    "intuition": "TVL is the size of the vault: how much money users have parked in the protocol's contracts at this moment.",
+    "mechanics": "Aggregators like DefiLlama sum the value of tokens held in protocol contracts, with filters separating staking (native token), pool2 (LP tokens with the protocol's own token), borrowed deposits and vesting; off-chain assets (e.g. Tether's bank dollars) and native chain staking are excluded. TVL moves with both net deposits and token prices.",
+    "formula": "",
+    "relationships": [
+      "Protocol fees",
+      "Protocol revenue",
+      "Liquidity pool",
+      "Lending protocol",
+      "Yield farming"
+    ],
+    "failure_modes": "TVL can be gamed: recycled/looped deposits, incentive-farmed liquidity with no real users, self-dealt wrapper assets and double-counting across nested protocols inflate it; DefiLlama actively delists such 'unproductive' TVL. It also rises and falls with token prices independent of usage.",
+    "misconceptions": "TVL is not revenue, profit or even stickiness — mercenary capital can halve it overnight when incentives end. It measures deposited capital, not economic activity; a high-TVL protocol can earn near-zero fees.",
+    "example": "A lending protocol holding $2B of supplied assets has $2B TVL; if $600M is one whale's deposit earning points with no borrows against it, aggregators may strip it as unproductive, reporting $1.4B of economically real TVL.",
+    "citations": [
+      {
+        "source": "DefiLlama docs - What to include as TVL",
+        "url": "https://docs.llama.fi/list-your-project/what-to-include-as-tvl",
+        "section": "TVL definition and filters",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
