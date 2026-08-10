@@ -125,6 +125,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="rebalancing"><h3>Rebalancing <a class="anchor" href="#rebalancing">#</a></h3>
 <div class="field">The process of bringing a portfolio back to its original or target asset allocation mix, which becomes necessary because some investments grow faster than others and push the portfolio out of alignment with its intended risk level.</div>
+<div class="skill-links"><a href="../skills/tkl-rebalancing/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> If your winners grow faster than your losers, your portfolio quietly becomes riskier (or safer) than you planned; rebalancing trims the winners and tops up the laggards to restore the plan.</div>
 <div class="field"><span class="label">Mechanics:</span> Rebalancing can be calendar-based (e.g., every 6 or 12 months) or threshold-based (when an asset class weight moves beyond a preset band), and is executed by selling overweighted categories to buy underweighted ones, by directing new contributions to underweighted categories, or both.</div>
 <div class="field"><span class="label">Failure modes:</span> Each rebalance can trigger transaction costs and taxable gains, and in strong trending markets disciplined rebalancing systematically sells the asset that keeps rising, lagging a drifted buy-and-hold portfolio.</div>
@@ -137,6 +138,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="diversification"><h3>Diversification <a class="anchor" href="#diversification">#</a></h3>
 <div class="field">A risk-management strategy of spreading money across different investments - both between and within asset categories - so that losses in one holding may be offset by gains or stability in others, reducing portfolio-level volatility.</div>
+<div class="skill-links"><a href="../skills/tkl-diversification/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Don&#x27;t put all your eggs in one basket: if one investment loses money, the hope is that the others make up for it.</div>
 <div class="field"><span class="label">Mechanics:</span> Because portfolio variance contains covariance terms, combining assets whose returns are imperfectly correlated yields a portfolio volatility below the weighted average of individual volatilities; this removes much asset-specific (idiosyncratic) risk but cannot remove market-wide (systematic) risk.</div>
 <div class="field"><span class="label">Failure modes:</span> Diversification works least when it is most needed: correlations across markets rise in bear markets and crises, so apparently diversified portfolios can fall together. It reduces risk but does not eliminate the risk of loss.</div>
@@ -148,6 +150,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="correlation-matrix"><h3>Correlation matrix <a class="anchor" href="#correlation-matrix">#</a></h3>
 <div class="field">The symmetric matrix of pairwise correlation coefficients between the returns of a set of assets, with ones on the diagonal, summarizing the linear co-movement structure used in portfolio risk analysis and optimization.</div>
+<div class="skill-links"><a href="../skills/tkl-correlation-matrix/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the table that tells you, for every pair of assets, how much they tend to move together - the raw material for judging how diversified a portfolio really is.</div>
 <div class="field"><span class="label">Mechanics:</span> Each off-diagonal element is rho_ij = cov(r_i, r_j) / (sigma_i * sigma_j), estimated from historical returns or from a factor model; multiplying by volatilities recovers the covariance matrix used in portfolio variance and optimization.</div>
 <div class="field"><span class="label">Failure modes:</span> With N assets, (N^2 - N)/2 distinct correlations must be estimated, so sample matrices are noisy and near-singular when assets outnumber observations; correlations are also unstable, rising in bear markets and breaking portfolio constructions calibrated on calm periods.</div>
@@ -160,6 +163,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="covariance-matrix"><h3>Covariance matrix <a class="anchor" href="#covariance-matrix">#</a></h3>
 <div class="field">The symmetric matrix whose diagonal elements are the return variances of a set of assets and whose off-diagonal elements are their pairwise return covariances, the central input to mean-variance portfolio analysis.</div>
+<div class="skill-links"><a href="../skills/tkl-covariance-matrix/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It packs everything about how assets&#x27; returns vary and move together into one object, so a portfolio&#x27;s risk can be computed in a single matrix multiplication.</div>
 <div class="field"><span class="label">Mechanics:</span> Element C_ij = E[(r_i - E[r_i])(r_j - E[r_j])]. Portfolio variance is v_p = x&#x27;Cx for weight vector x. Because estimating all entries from history is noisy, practitioners often impose structure via a factor model: C = B*C_F*B&#x27; + diag(rv), where B holds factor exposures, C_F the factor covariances, and rv the residual variances.</div>
 <div class="field"><span class="label">Failure modes:</span> Estimation error explodes with the number of assets (a 1,000-asset universe needs about 500,500 distinct covariances), and optimizers amplify estimation noise into extreme, unstable weights; non-stationarity makes past covariances a poor guide in regime shifts.</div>
@@ -172,6 +176,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="portfolio-variance"><h3>Portfolio variance <a class="anchor" href="#portfolio-variance">#</a></h3>
 <div class="field">The variance of a portfolio&#x27;s return, which depends on the portfolio weights, the variances of the component assets, and all pairwise covariances between them; its square root (volatility) is the standard risk measure in mean-variance analysis.</div>
+<div class="skill-links"><a href="../skills/tkl-portfolio-variance/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Portfolio risk is not the average of individual risks: assets that zig while others zag cancel each other out, so covariances do most of the work in determining total variance.</div>
 <div class="field"><span class="label">Mechanics:</span> For weight vector x and covariance matrix C, v_p = x&#x27;Cx. Expanding for two assets: v_p = w_1^2*sigma_1^2 + w_2^2*sigma_2^2 + 2*w_1*w_2*rho_12*sigma_1*sigma_2. With a factor model the same quantity can be computed as v_p = b_p*C_F*b_p&#x27; + (x.^2)&#x27;*rv using portfolio factor exposures b_p, avoiding the full asset covariance matrix.</div>
 <div class="field"><span class="label">Failure modes:</span> Variance is only as good as its inputs: estimated variances and covariances drift over time, and variance as a symmetric measure treats upside and downside moves identically, which may not match investor loss aversion.</div>
@@ -183,6 +188,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="marginal-risk-contribution"><h3>Marginal risk contribution <a class="anchor" href="#marginal-risk-contribution">#</a></h3>
 <div class="field">The sensitivity of total portfolio risk (typically volatility) to a small change in the weight of one asset, holding other weights fixed: the partial derivative of portfolio volatility with respect to that asset&#x27;s weight.</div>
+<div class="skill-links"><a href="../skills/tkl-marginal-risk-contribution/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It answers: if I add one more dollar of this asset, by how much does total portfolio risk go up?</div>
 <div class="field"><span class="label">Mechanics:</span> For volatility sigma_p = sqrt(w&#x27;Cw), the marginal risk contribution of asset i is MRC_i = d(sigma_p)/d(w_i) = (Cw)_i / sigma_p, i.e., the asset&#x27;s covariance with the portfolio divided by portfolio volatility. It is the building block of risk contribution decompositions and risk budgeting.</div>
 <div class="field"><span class="label">Failure modes:</span> MRC is defined relative to a volatility risk measure and a specific covariance estimate; it changes with the risk measure (e.g., VaR or expected shortfall) and inherits all estimation error and non-stationarity of the covariance matrix.</div>
@@ -195,6 +201,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="component-risk-contribution"><h3>Component risk contribution <a class="anchor" href="#component-risk-contribution">#</a></h3>
 <div class="field">An asset&#x27;s total contribution to portfolio risk, computed as its weight times its marginal risk contribution; component risk contributions sum exactly to total portfolio volatility by Euler&#x27;s homogeneous-function theorem.</div>
+<div class="skill-links"><a href="../skills/tkl-component-risk-contribution/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It splits total portfolio risk into slices, one per asset, so you can see which positions actually eat your risk budget - often very different from which positions eat your capital.</div>
 <div class="field"><span class="label">Mechanics:</span> CRC_i = w_i * MRC_i = w_i * (Cw)_i / sigma_p, and sum_i CRC_i = sigma_p. Expressed as percentages, CRC_i/sigma_p gives each asset&#x27;s share of total risk, the quantity equalized in risk-parity (equal risk contribution) portfolios.</div>
 <div class="field"><span class="label">Failure modes:</span> Risk contributions depend on the chosen covariance estimate and risk measure, so they can be badly wrong in crises when correlations shift; negative contributions from hedging positions can also confuse naive budget checks.</div>
@@ -207,6 +214,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="minimum-variance-portfolio"><h3>Minimum-variance portfolio <a class="anchor" href="#minimum-variance-portfolio">#</a></h3>
 <div class="field">The portfolio of risky assets with the lowest attainable variance, located at the leftmost point of the mean-variance efficient frontier; it is the optimal portfolio for an investor with zero tolerance for risk.</div>
+<div class="skill-links"><a href="../skills/tkl-minimum-variance-portfolio/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the mix that wobbles the least, whatever its expected return - found purely from the covariance matrix, with no return forecasts needed.</div>
 <div class="field"><span class="label">Mechanics:</span> Solving min_w w&#x27;Cw subject to sum_i w_i = 1 gives w_MVP = C^{-1}1 / (1&#x27;C^{-1}1), where 1 is a vector of ones. In Sharpe&#x27;s equilibrium framework it is the portfolio z_p, the optimal portfolio for an investor with zero risk tolerance.</div>
 <div class="field"><span class="label">Failure modes:</span> Because it is driven entirely by the estimated covariance matrix, MVP weights are extremely sensitive to estimation error and can be concentrated and unstable; low in-sample variance does not guarantee low out-of-sample variance.</div>
@@ -219,6 +227,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="efficient-frontier"><h3>Efficient frontier <a class="anchor" href="#efficient-frontier">#</a></h3>
 <div class="field">The set of portfolios that offer the maximum expected return for each level of return variance (equivalently, the minimum variance for each target expected return), the central construct of Markowitz&#x27;s mean-variance portfolio selection theory.</div>
+<div class="skill-links"><a href="../skills/tkl-efficient-frontier/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the best menu available: every portfolio below the frontier is dominated, because a frontier portfolio gives either more return for the same risk or less risk for the same return.</div>
 <div class="field"><span class="label">Mechanics:</span> For each target expected return e*, solve min_w w&#x27;Cw subject to w&#x27;e = e* and sum_i w_i = 1; tracing e* yields the frontier, a hyperbola in (volatility, expected return) space. All mean-variance-optimal portfolios lie on it, and with a risk-free asset the relevant frontier becomes the tangent line through the tangency portfolio.</div>
 <div class="field"><span class="label">Failure modes:</span> The frontier is only as good as its inputs: portfolios that appear efficient on unadjusted historical estimates &#x27;will almost certainly plot below the true efficient frontier&#x27; because optimizers exploit estimation noise (Sharpe); the true frontier is unobservable.</div>
@@ -232,6 +241,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="capital-market-line"><h3>Capital market line <a class="anchor" href="#capital-market-line">#</a></h3>
 <div class="field">In CAPM equilibrium with a risk-free asset, the line connecting the risk-free rate to the tangency (market) portfolio in (volatility, expected return) space; every efficient portfolio is a combination of the risk-free asset and the market portfolio.</div>
+<div class="skill-links"><a href="../skills/tkl-capital-market-line/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Once you can borrow and lend at the risk-free rate, the best risky portfolio is the same for everyone - you just dial risk up or down by levering or diluting that one portfolio.</div>
 <div class="field"><span class="label">Mechanics:</span> By two-fund separation, optimal holdings are linear in risk tolerance: each investor holds the risk-free asset plus the tangency portfolio. The CML has intercept r_f and slope equal to the market&#x27;s Sharpe ratio, so E(R_p) = r_f + [(E(R_m) - r_f)/sigma_m] * sigma_p for efficient portfolios.</div>
 <div class="field"><span class="label">Failure modes:</span> The CML describes only efficient portfolios; individual securities and inefficient portfolios plot below it. It rests on CAPM assumptions (mean-variance preferences, common expectations, frictionless borrowing at r_f) that hold only approximately in practice.</div>
@@ -244,6 +254,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="tangency-portfolio"><h3>Tangency portfolio <a class="anchor" href="#tangency-portfolio">#</a></h3>
 <div class="field">The portfolio of risky assets with the highest Sharpe ratio (expected excess return per unit of risk), located where the capital allocation line from the risk-free rate is tangent to the risky-asset efficient frontier; in CAPM equilibrium it is the market portfolio.</div>
+<div class="skill-links"><a href="../skills/tkl-tangency-portfolio/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the one risky portfolio everyone should hold - investors differ only in how much they lever or dilute it with the risk-free asset.</div>
 <div class="field"><span class="label">Mechanics:</span> Weights solve max_w (w&#x27;e - r_f) / sqrt(w&#x27;Cw) subject to 1&#x27;w = 1, giving w proportional to C^{-1}(e - r_f*1). A basic CAPM premise is that all agents invest in this highest-Sharpe-ratio portfolio and leverage or de-leverage it to suit their risk preferences.</div>
 <div class="field"><span class="label">Failure modes:</span> Maximizing the Sharpe ratio over estimated inputs makes the tangency portfolio the portfolio most sensitive to estimation error: small changes in expected return or covariance estimates can swing weights wildly, and realized out-of-sample Sharpe ratios routinely disappoint.</div>
@@ -257,6 +268,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="beta"><h3>Beta <a class="anchor" href="#beta">#</a></h3>
 <div class="field">A measure of the sensitivity of an asset&#x27;s or portfolio&#x27;s returns to the returns of the market portfolio, equal to the covariance of the asset&#x27;s return with the market return divided by the variance of the market return; it is the slope of the regression of the asset&#x27;s excess return on the market&#x27;s excess return.</div>
+<div class="skill-links"><a href="../skills/tkl-beta/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Beta tells you how much an asset typically amplifies market moves: beta 2 means twice the market&#x27;s swings, beta 0.5 means half.</div>
 <div class="field"><span class="label">Mechanics:</span> Estimated as the slope of the best-fit line when the asset&#x27;s (excess) returns are regressed on market (excess) returns; under CAPM, expected return is linear in beta: E(r_i) = r_f + beta_i*(E(r_m) - r_f). Portfolio beta is the weighted average of component betas.</div>
 <div class="field"><span class="label">Failure modes:</span> Betas are estimated from historical data and are unstable across periods and regimes; beta says nothing about idiosyncratic risk, and the empirical security market line is flatter than CAPM predicts, so low-beta stocks have historically earned more than the model implies.</div>
@@ -270,6 +282,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="alpha"><h3>Alpha <a class="anchor" href="#alpha">#</a></h3>
 <div class="field">The portion of an asset&#x27;s or portfolio&#x27;s expected or realized return that is not explained by its exposures to the factors in a given model; in a factor regression it is the intercept term, conventionally interpreted as return in excess of what factor risk alone would deliver.</div>
+<div class="skill-links"><a href="../skills/tkl-alpha/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> After accounting for the market and other systematic bets the manager was riding, alpha is what&#x27;s left - the part that might reflect skill, luck, or an omitted factor.</div>
 <div class="field"><span class="label">Mechanics:</span> In the factor model r_i = a_i + b_i1*f_1 + ... + b_im*f_m + e_i, the term a_i is the asset&#x27;s expected residual return, its alpha; it is estimated as the intercept of a time-series regression of excess returns on factor returns (e.g., versus the CAPM market factor for Jensen&#x27;s alpha).</div>
 <div class="field"><span class="label">Failure modes:</span> Alpha is defined relative to a chosen factor model: a positive alpha may simply reflect exposure to an omitted factor, and estimates are noisy, so statistically significant alpha over short windows is weak evidence of skill.</div>
@@ -282,6 +295,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="systematic-risk"><h3>Systematic risk <a class="anchor" href="#systematic-risk">#</a></h3>
 <div class="field">The component of an asset&#x27;s return risk that is related to the return of the market or to pervasive common factors; it affects broad classes of assets simultaneously and cannot be diversified away by holding a large portfolio of different assets.</div>
+<div class="skill-links"><a href="../skills/tkl-systematic-risk/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the tide that lifts or sinks all boats: recessions, rate shocks, and market crashes hit nearly every stock at once, no matter how many you hold.</div>
 <div class="field"><span class="label">Mechanics:</span> In factor-model terms, systematic risk is the variance contributed by factor exposures, b_i*C_F*b_i&#x27;, leaving residual variance as the diversifiable part. In CAPM, beta measures an asset&#x27;s quantity of systematic risk, and only systematic risk is compensated with expected return in equilibrium.</div>
 <div class="field"><span class="label">Failure modes:</span> What counts as systematic depends on the factor model: omit a real common factor and its variance gets mislabeled as idiosyncratic. In crises, rising correlations effectively convert more asset risk into common (systematic-like) risk.</div>
@@ -295,6 +309,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="idiosyncratic-risk"><h3>Idiosyncratic risk <a class="anchor" href="#idiosyncratic-risk">#</a></h3>
 <div class="field">The component of an asset&#x27;s return risk that is specific to that asset - the residual return after removing the influence of common factors - which is uncorrelated with the residuals of other assets and can therefore be diversified away in a large portfolio.</div>
+<div class="skill-links"><a href="../skills/tkl-idiosyncratic-risk/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the risk of company-specific news - a scandal, a drug trial, an earnings miss - that averages out when you hold hundreds of names.</div>
 <div class="field"><span class="label">Mechanics:</span> In the linear factor model, the residual return e_i carries the idiosyncratic risk; the model&#x27;s key assumption is corr(e_i, e_j) = 0 for i != j, so residual variances shrink toward zero in a well-diversified portfolio, leaving factor-driven variance dominant.</div>
 <div class="field"><span class="label">Failure modes:</span> If the factor model omits a genuine common factor, residual returns remain correlated across assets and &#x27;idiosyncratic&#x27; risk fails to diversify away as predicted; concentrated portfolios remain fully exposed to it.</div>
@@ -307,6 +322,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="factor-exposure"><h3>Factor exposure <a class="anchor" href="#factor-exposure">#</a></h3>
 <div class="field">The sensitivity of an asset&#x27;s or portfolio&#x27;s return to a given factor - the change in return per unit change in the factor - represented by the coefficient b_ij multiplying that factor in a linear factor model.</div>
+<div class="skill-links"><a href="../skills/tkl-factor-exposure/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is a dial reading showing how strongly an asset or portfolio is tuned to a driver like the market, size, or value: exposure 1.2 to the market factor means roughly 1.2x the factor&#x27;s moves.</div>
 <div class="field"><span class="label">Mechanics:</span> Asset exposures b_ij are estimated by regression or specified from characteristics; a portfolio&#x27;s exposure to factor j is the weighted average of its assets&#x27; exposures, b_pj = sum_i w_i * b_ij, i.e., b_p = x&#x27;B in matrix form. Exposures map factor returns into asset returns and factor covariances into the asset covariance matrix.</div>
 <div class="field"><span class="label">Failure modes:</span> Exposures are estimated, not observed: they drift over time as companies and funds change, differ across data windows and estimators, and characteristic-based proxies (e.g., book-to-market for value) only approximate true loadings.</div>
@@ -320,6 +336,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="market-factor"><h3>Market factor <a class="anchor" href="#market-factor">#</a></h3>
 <div class="field">The excess return of the broad value-weighted stock market portfolio over the risk-free rate, the first factor in the CAPM and in all Fama-French models, proxied in the Kenneth French data library by the value-weight return of all eligible CRSP U.S. stocks minus the one-month Treasury bill rate.</div>
+<div class="skill-links"><a href="../skills/tkl-market-factor/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is simply &#x27;the stock market&#x27;s return above T-bills&#x27; - the baseline common driver that every equity shares and against which other factors are measured.</div>
 <div class="field"><span class="label">Mechanics:</span> Constructed as Rm - Rf, where Rm is the value-weight return of all CRSP firms incorporated in the U.S. and listed on NYSE/AMEX/NASDAQ with valid share code, price, and return data, and Rf is the one-month T-bill rate; an asset&#x27;s loading on it is its beta.</div>
 <div class="field"><span class="label">Failure modes:</span> The theoretical CAPM market portfolio includes all wealth (real estate, human capital), so any tradable index is only a proxy; results can be sensitive to the proxy&#x27;s universe and weighting.</div>
@@ -332,6 +349,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="size-factor"><h3>Size factor <a class="anchor" href="#size-factor">#</a></h3>
 <div class="field">A Fama-French stock factor measuring the return difference between small-capitalization and large-capitalization stocks: SMB (Small Minus Big) is the average return on the small-stock portfolios minus the average return on the big-stock portfolios formed on market equity.</div>
+<div class="skill-links"><a href="../skills/tkl-size-factor/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It isolates the historical tendency of small companies&#x27; stocks to behave differently - and on average to earn more - than big companies&#x27; stocks.</div>
 <div class="field"><span class="label">Mechanics:</span> Stocks are sorted on market equity using NYSE breakpoints; SMB is the average return of the three small portfolios minus the average return of the three big portfolios from the 2x3 size-by-book-to-market sorts (in the five-factor model, averaged across the book-to-market, profitability, and investment sorts).</div>
 <div class="field"><span class="label">Failure modes:</span> The small-cap premium is episodic and much weaker after its publication in the early 1980s; SMB returns are also sensitive to breakpoint choices, microstructure noise in small caps, and whether January effects are included.</div>
@@ -344,6 +362,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="value-factor"><h3>Value factor <a class="anchor" href="#value-factor">#</a></h3>
 <div class="field">A Fama-French stock factor measuring the return difference between high book-to-market (value) and low book-to-market (growth) stocks: HML (High Minus Low) is the average return on the value portfolios minus the average return on the growth portfolios.</div>
+<div class="skill-links"><a href="../skills/tkl-value-factor/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It captures the long-documented pattern that stocks cheap relative to their book value have on average outperformed expensive &#x27;glamour&#x27; stocks.</div>
 <div class="field"><span class="label">Mechanics:</span> Within small and big size groups, stocks are sorted on book-to-market equity; HML = (1/2)(Small Value + Big Value) - (1/2)(Small Growth + Big Growth), using value-weight portfolios. A positive HML month means value stocks beat growth stocks.</div>
 <div class="field"><span class="label">Failure modes:</span> Value strategies suffer long drawdowns (e.g., the growth-dominated 2010s), and in the five-factor model HML becomes largely redundant once profitability and investment factors are included; whether the premium is risk compensation or mispricing remains unsettled.</div>
@@ -356,6 +375,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="momentum-factor"><h3>Momentum factor <a class="anchor" href="#momentum-factor">#</a></h3>
 <div class="field">A stock factor that is long stocks with high recent returns and short stocks with low recent returns, formalizing the cross-sectional momentum pattern documented by Jegadeesh and Titman (1993) and incorporated into the Carhart four-factor model; in the French library, Mom is built from portfolios sorted on prior 2-12 month returns.</div>
+<div class="skill-links"><a href="../skills/tkl-momentum-factor/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Stocks that went up over roughly the past year (skipping the most recent month) have tended to keep outperforming recent losers for a while - the factor trades that continuation.</div>
 <div class="field"><span class="label">Mechanics:</span> Ken French&#x27;s Mom uses six value-weight portfolios formed monthly on size and prior (2-12) returns: Mom = (1/2)(Small High + Big High) - (1/2)(Small Low + Big Low), with NYSE median size breakpoint and 30th/70th prior-return percentiles; the most recent month is skipped to avoid short-term reversal.</div>
 <div class="field"><span class="label">Failure modes:</span> Momentum is prone to infrequent but severe crashes when trends reverse sharply, typically in rebounds from bear markets (e.g., 2009), when the short side of crowded losers rallies violently; the standard Fama-French models exclude momentum precisely because it behaves differently.</div>

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/size-factor",
+  "canonical_sha256": "55dbdd908091fe0c1247eeff9c86d9636e0f9ca6c3a94509c4650df66acc6c9e",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/size-factor",
+    "name": "Size factor",
+    "aliases": [
+      "SMB",
+      "Small Minus Big",
+      "size premium"
+    ],
+    "domain": "Portfolio management",
+    "definition": "A Fama-French stock factor measuring the return difference between small-capitalization and large-capitalization stocks: SMB (Small Minus Big) is the average return on the small-stock portfolios minus the average return on the big-stock portfolios formed on market equity.",
+    "intuition": "It isolates the historical tendency of small companies' stocks to behave differently - and on average to earn more - than big companies' stocks.",
+    "mechanics": "Stocks are sorted on market equity using NYSE breakpoints; SMB is the average return of the three small portfolios minus the average return of the three big portfolios from the 2x3 size-by-book-to-market sorts (in the five-factor model, averaged across the book-to-market, profitability, and investment sorts).",
+    "formula": "SMB = (1/3)(Small Value + Small Neutral + Small Growth) - (1/3)(Big Value + Big Neutral + Big Growth).",
+    "relationships": [
+      "Fama-French three-factor model",
+      "Value factor",
+      "Market factor",
+      "Factor model",
+      "Factor exposure"
+    ],
+    "failure_modes": "The small-cap premium is episodic and much weaker after its publication in the early 1980s; SMB returns are also sensitive to breakpoint choices, microstructure noise in small caps, and whether January effects are included.",
+    "misconceptions": "SMB is not a bet that small stocks always beat big stocks - it is a long-short factor return that is negative in many periods, and loading on it measures exposure to whatever common shocks drive the small-big return gap.",
+    "example": "In a month when the three small-cap portfolios average 2.1% and the three big-cap portfolios average 0.6%, the SMB realization is +1.5%.",
+    "citations": [
+      {
+        "source": "Kenneth R. French Data Library, Description of Fama/French Factors",
+        "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_factors.html",
+        "section": "Construction (SMB definition)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

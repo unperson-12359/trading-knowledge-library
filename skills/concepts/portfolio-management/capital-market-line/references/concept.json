@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/capital-market-line",
+  "canonical_sha256": "e4b8fc20df860ecd05096b6741b1a14d0db6e261370f4cf90eb8368a9f4f73f8",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/capital-market-line",
+    "name": "Capital market line",
+    "aliases": [
+      "CML"
+    ],
+    "domain": "Portfolio management",
+    "definition": "In CAPM equilibrium with a risk-free asset, the line connecting the risk-free rate to the tangency (market) portfolio in (volatility, expected return) space; every efficient portfolio is a combination of the risk-free asset and the market portfolio.",
+    "intuition": "Once you can borrow and lend at the risk-free rate, the best risky portfolio is the same for everyone - you just dial risk up or down by levering or diluting that one portfolio.",
+    "mechanics": "By two-fund separation, optimal holdings are linear in risk tolerance: each investor holds the risk-free asset plus the tangency portfolio. The CML has intercept r_f and slope equal to the market's Sharpe ratio, so E(R_p) = r_f + [(E(R_m) - r_f)/sigma_m] * sigma_p for efficient portfolios.",
+    "formula": "E(R_p) = r_f + [(E(R_m) - r_f) / sigma_m] * sigma_p, for portfolios p on the CML, where m is the market (tangency) portfolio.",
+    "relationships": [
+      "Tangency portfolio",
+      "Efficient frontier",
+      "Beta",
+      "Systematic risk",
+      "Factor model"
+    ],
+    "failure_modes": "The CML describes only efficient portfolios; individual securities and inefficient portfolios plot below it. It rests on CAPM assumptions (mean-variance preferences, common expectations, frictionless borrowing at r_f) that hold only approximately in practice.",
+    "misconceptions": "The CML is frequently confused with the security market line: the CML plots expected return against total volatility for efficient portfolios only, while the SML plots expected return against beta for all assets.",
+    "example": "With r_f = 2%, E(R_m) = 8%, sigma_m = 15%, an efficient portfolio with sigma_p = 7.5% (half market risk) earns 2% + 0.5*(8% - 2%) = 5% on the CML.",
+    "citations": [
+      {
+        "source": "William F. Sharpe, Macro-Investment Analysis, Equilibrium chapter",
+        "url": "https://web.stanford.edu/~wfsharpe/mia/eq/mia_eq1.htm",
+        "section": "Two-fund separation; The Market Portfolio and the Security Market Line",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

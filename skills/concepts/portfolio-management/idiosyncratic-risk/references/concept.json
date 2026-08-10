@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/idiosyncratic-risk",
+  "canonical_sha256": "884e4d6c55176753b3ba039452808b967e76d75c28426ab1ba67e28750e9d9d3",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/idiosyncratic-risk",
+    "name": "Idiosyncratic risk",
+    "aliases": [
+      "specific risk",
+      "unsystematic risk",
+      "residual risk",
+      "security-specific risk"
+    ],
+    "domain": "Portfolio management",
+    "definition": "The component of an asset's return risk that is specific to that asset - the residual return after removing the influence of common factors - which is uncorrelated with the residuals of other assets and can therefore be diversified away in a large portfolio.",
+    "intuition": "It is the risk of company-specific news - a scandal, a drug trial, an earnings miss - that averages out when you hold hundreds of names.",
+    "mechanics": "In the linear factor model, the residual return e_i carries the idiosyncratic risk; the model's key assumption is corr(e_i, e_j) = 0 for i != j, so residual variances shrink toward zero in a well-diversified portfolio, leaving factor-driven variance dominant.",
+    "formula": "Idiosyncratic variance of asset i = var(e_i) = rv_i; portfolio idiosyncratic variance = sum_i w_i^2 * rv_i, which tends to zero as weights become small and numerous.",
+    "relationships": [
+      "Systematic risk",
+      "Factor model",
+      "Diversification",
+      "Alpha",
+      "Factor exposure"
+    ],
+    "failure_modes": "If the factor model omits a genuine common factor, residual returns remain correlated across assets and 'idiosyncratic' risk fails to diversify away as predicted; concentrated portfolios remain fully exposed to it.",
+    "misconceptions": "Idiosyncratic risk is not 'unimportant' risk: for a concentrated holder it dominates total risk, and under CAPM it earns no expected-return premium precisely because it is diversifiable.",
+    "example": "A pharmaceutical firm's stock plunges 40% on a failed drug trial while the market is flat; holders of a 500-stock index fund barely notice because the event is idiosyncratic.",
+    "citations": [
+      {
+        "source": "William F. Sharpe, Macro-Investment Analysis, Factor Models chapter: A Generic Linear Factor Model",
+        "url": "https://web.stanford.edu/~wfsharpe/mia/fac/mia_fac2.htm",
+        "section": "The Key Assumption (residual risk as idiosyncratic)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

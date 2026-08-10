@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/component-risk-contribution",
+  "canonical_sha256": "e48268c9bdec5764dc905561158b96848cf6014f60a873a2244e8b3642611215",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/component-risk-contribution",
+    "name": "Component risk contribution",
+    "aliases": [
+      "CRC",
+      "risk contribution",
+      "total risk contribution"
+    ],
+    "domain": "Portfolio management",
+    "definition": "An asset's total contribution to portfolio risk, computed as its weight times its marginal risk contribution; component risk contributions sum exactly to total portfolio volatility by Euler's homogeneous-function theorem.",
+    "intuition": "It splits total portfolio risk into slices, one per asset, so you can see which positions actually eat your risk budget - often very different from which positions eat your capital.",
+    "mechanics": "CRC_i = w_i * MRC_i = w_i * (Cw)_i / sigma_p, and sum_i CRC_i = sigma_p. Expressed as percentages, CRC_i/sigma_p gives each asset's share of total risk, the quantity equalized in risk-parity (equal risk contribution) portfolios.",
+    "formula": "CRC_i = w_i * (Cw)_i / sigma_p, with sum_i CRC_i = sigma_p.",
+    "relationships": [
+      "Marginal risk contribution",
+      "Risk budgeting",
+      "Portfolio variance",
+      "Diversification"
+    ],
+    "failure_modes": "Risk contributions depend on the chosen covariance estimate and risk measure, so they can be badly wrong in crises when correlations shift; negative contributions from hedging positions can also confuse naive budget checks.",
+    "misconceptions": "Dollar weights are not risk weights: a 60/40 stock/bond portfolio typically derives around 90% of its volatility from the equity sleeve, not 60%.",
+    "example": "In a 60/40 portfolio with 10% volatility, if the equity CRC is 9% and the bond CRC is 1%, equities consume 90% of the risk budget despite holding 60% of the capital.",
+    "citations": [
+      {
+        "source": "Thierry Roncalli, Introduction to Risk Parity and Budgeting",
+        "url": "https://arxiv.org/abs/1403.1889",
+        "section": "Risk budgeting and risk contributions (arXiv:1403.1889)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

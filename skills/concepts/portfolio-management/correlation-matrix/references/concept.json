@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/correlation-matrix",
+  "canonical_sha256": "d63115cfa9cc7f503f1aeb3943ae8fc409821d188d96b73ff593bff475ed3957",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/correlation-matrix",
+    "name": "Correlation matrix",
+    "aliases": [],
+    "domain": "Portfolio management",
+    "definition": "The symmetric matrix of pairwise correlation coefficients between the returns of a set of assets, with ones on the diagonal, summarizing the linear co-movement structure used in portfolio risk analysis and optimization.",
+    "intuition": "It is the table that tells you, for every pair of assets, how much they tend to move together - the raw material for judging how diversified a portfolio really is.",
+    "mechanics": "Each off-diagonal element is rho_ij = cov(r_i, r_j) / (sigma_i * sigma_j), estimated from historical returns or from a factor model; multiplying by volatilities recovers the covariance matrix used in portfolio variance and optimization.",
+    "formula": "rho_ij = cov(r_i, r_j) / (sigma_i * sigma_j), where sigma_i and sigma_j are the return standard deviations of assets i and j.",
+    "relationships": [
+      "Covariance matrix",
+      "Portfolio variance",
+      "Factor model",
+      "Correlation breakdown",
+      "Diversification"
+    ],
+    "failure_modes": "With N assets, (N^2 - N)/2 distinct correlations must be estimated, so sample matrices are noisy and near-singular when assets outnumber observations; correlations are also unstable, rising in bear markets and breaking portfolio constructions calibrated on calm periods.",
+    "misconceptions": "A historical correlation matrix is not a stable property of the market: it is a sample estimate whose entries can shift substantially across regimes and estimation windows.",
+    "example": "Sharpe's three-asset example uses the correlation matrix cash/bonds 0.40, cash/stocks 0.15, bonds/stocks 0.35 to derive covariances and optimal portfolio weights.",
+    "citations": [
+      {
+        "source": "William F. Sharpe, Macro-Investment Analysis, Factor Models chapter: The Need for Factor Models",
+        "url": "https://web.stanford.edu/~wfsharpe/mia/fac/mia_fac1.htm",
+        "section": "The Number of Estimates Needed for Mean/Variance Analyses",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "William F. Sharpe, Macro-Investment Analysis, Equilibrium chapter",
+        "url": "https://web.stanford.edu/~wfsharpe/mia/eq/mia_eq1.htm",
+        "section": "Three-asset example (correlations, standard deviations, covariances)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

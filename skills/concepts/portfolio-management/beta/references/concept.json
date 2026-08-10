@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/beta",
+  "canonical_sha256": "eadd21a7cefa48e8bfc50d47b687bec1b8b38cc60541cbdd7287c6ef6680531c",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/beta",
+    "name": "Beta",
+    "aliases": [
+      "market beta"
+    ],
+    "domain": "Portfolio management",
+    "definition": "A measure of the sensitivity of an asset's or portfolio's returns to the returns of the market portfolio, equal to the covariance of the asset's return with the market return divided by the variance of the market return; it is the slope of the regression of the asset's excess return on the market's excess return.",
+    "intuition": "Beta tells you how much an asset typically amplifies market moves: beta 2 means twice the market's swings, beta 0.5 means half.",
+    "mechanics": "Estimated as the slope of the best-fit line when the asset's (excess) returns are regressed on market (excess) returns; under CAPM, expected return is linear in beta: E(r_i) = r_f + beta_i*(E(r_m) - r_f). Portfolio beta is the weighted average of component betas.",
+    "formula": "beta_i = cov(r_i, r_m) / var(r_m); CAPM: E(r_i) = r_f + beta_i * (E(r_m) - r_f).",
+    "relationships": [
+      "Alpha",
+      "Systematic risk",
+      "Idiosyncratic risk",
+      "Market factor",
+      "Capital market line",
+      "Low-volatility factor"
+    ],
+    "failure_modes": "Betas are estimated from historical data and are unstable across periods and regimes; beta says nothing about idiosyncratic risk, and the empirical security market line is flatter than CAPM predicts, so low-beta stocks have historically earned more than the model implies.",
+    "misconceptions": "Beta is not a complete measure of risk: a low-beta stock can be very volatile in absolute terms if its moves are uncorrelated with the market, and beta 1 does not mean 'same volatility as the market' unless correlation is also 1.",
+    "example": "A portfolio with beta 2.0 is twice as sensitive to index moves as one with beta 1.0, so hedging it with index futures requires twice as many contracts per dollar of exposure.",
+    "citations": [
+      {
+        "source": "William F. Sharpe, Macro-Investment Analysis, Equilibrium chapter",
+        "url": "https://web.stanford.edu/~wfsharpe/mia/eq/mia_eq1.htm",
+        "section": "Expected Return and Beta Values (beta = C_ix / V_x)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "John C. Hull, Options, Futures, and Other Derivatives (8th ed.), Chapter 3 lecture slides: Hedging Strategies Using Futures",
+        "url": "https://npapanikolaou.files.wordpress.com/2014/02/fin-derivatives-lecture-5.pdf",
+        "section": "Hedging an Equity Portfolio & CAPM (beta as regression slope)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

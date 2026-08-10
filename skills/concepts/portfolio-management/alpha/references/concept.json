@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/alpha",
+  "canonical_sha256": "9736e4f87be6a7454208aea7eb36e5ca8b55213b1e64854bbe442c30662c5186",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/alpha",
+    "name": "Alpha",
+    "aliases": [
+      "Jensen's alpha",
+      "abnormal return"
+    ],
+    "domain": "Portfolio management",
+    "definition": "The portion of an asset's or portfolio's expected or realized return that is not explained by its exposures to the factors in a given model; in a factor regression it is the intercept term, conventionally interpreted as return in excess of what factor risk alone would deliver.",
+    "intuition": "After accounting for the market and other systematic bets the manager was riding, alpha is what's left - the part that might reflect skill, luck, or an omitted factor.",
+    "mechanics": "In the factor model r_i = a_i + b_i1*f_1 + ... + b_im*f_m + e_i, the term a_i is the asset's expected residual return, its alpha; it is estimated as the intercept of a time-series regression of excess returns on factor returns (e.g., versus the CAPM market factor for Jensen's alpha).",
+    "formula": "alpha_i = intercept in r_i - r_f = alpha_i + sum_j b_ij * f_j + e_i; equivalently alpha_i = E(r_i) - sum_j b_ij * E(f_j) when residuals have zero mean.",
+    "relationships": [
+      "Beta",
+      "Factor model",
+      "Factor exposure",
+      "Idiosyncratic risk",
+      "Market factor"
+    ],
+    "failure_modes": "Alpha is defined relative to a chosen factor model: a positive alpha may simply reflect exposure to an omitted factor, and estimates are noisy, so statistically significant alpha over short windows is weak evidence of skill.",
+    "misconceptions": "Positive historical alpha does not prove managerial skill - it can arise from luck across thousands of funds, from hidden factor or illiquidity exposures, or from benchmark misspecification.",
+    "example": "A fund returns 9% while its CAPM beta of 0.8 with a 10% market return and 2% risk-free rate predicts 2% + 0.8*8% = 8.4%; its estimated Jensen's alpha is 0.6%.",
+    "citations": [
+      {
+        "source": "William F. Sharpe, Macro-Investment Analysis, Factor Models chapter: A Generic Linear Factor Model",
+        "url": "https://web.stanford.edu/~wfsharpe/mia/fac/mia_fac2.htm",
+        "section": "Expected Residual Returns (the alpha term)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/covariance-matrix",
+  "canonical_sha256": "567cbe09fc85d4d2f6183c5feabd27bbba12defff9b6bd811065eefb549329c9",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/covariance-matrix",
+    "name": "Covariance matrix",
+    "aliases": [
+      "variance-covariance matrix"
+    ],
+    "domain": "Portfolio management",
+    "definition": "The symmetric matrix whose diagonal elements are the return variances of a set of assets and whose off-diagonal elements are their pairwise return covariances, the central input to mean-variance portfolio analysis.",
+    "intuition": "It packs everything about how assets' returns vary and move together into one object, so a portfolio's risk can be computed in a single matrix multiplication.",
+    "mechanics": "Element C_ij = E[(r_i - E[r_i])(r_j - E[r_j])]. Portfolio variance is v_p = x'Cx for weight vector x. Because estimating all entries from history is noisy, practitioners often impose structure via a factor model: C = B*C_F*B' + diag(rv), where B holds factor exposures, C_F the factor covariances, and rv the residual variances.",
+    "formula": "C_ij = E[(r_i - E[r_i]) * (r_j - E[r_j])]; factor-model estimator: C = B*C_F*B' + diag(rv).",
+    "relationships": [
+      "Correlation matrix",
+      "Portfolio variance",
+      "Factor model",
+      "Factor exposure",
+      "Minimum-variance portfolio"
+    ],
+    "failure_modes": "Estimation error explodes with the number of assets (a 1,000-asset universe needs about 500,500 distinct covariances), and optimizers amplify estimation noise into extreme, unstable weights; non-stationarity makes past covariances a poor guide in regime shifts.",
+    "misconceptions": "The sample covariance matrix from historical returns is not the 'true' matrix; it contains estimation noise, and factor-structure estimators exist precisely because raw sample matrices are unreliable for optimization.",
+    "example": "In Sharpe's example the covariance matrix of cash, bonds, and stocks has entries such as cov(bonds, stocks) = 39.886 and var(stocks) = 237.160, from which any portfolio's variance follows as x'Cx.",
+    "citations": [
+      {
+        "source": "William F. Sharpe, Macro-Investment Analysis, Factor Models chapter: Factor-based Asset Covariances and Variances",
+        "url": "https://web.stanford.edu/~wfsharpe/mia/fac/mia_fac3.htm",
+        "section": "Factor-based Asset Covariances and Variances",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

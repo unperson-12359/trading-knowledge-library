@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/momentum-factor",
+  "canonical_sha256": "134fdfa7f40c88ae6329af9729ad04abedd7033fad150035bdec118bdb5c1c04",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/momentum-factor",
+    "name": "Momentum factor",
+    "aliases": [
+      "Mom",
+      "UMD",
+      "WML",
+      "winners minus losers"
+    ],
+    "domain": "Portfolio management",
+    "definition": "A stock factor that is long stocks with high recent returns and short stocks with low recent returns, formalizing the cross-sectional momentum pattern documented by Jegadeesh and Titman (1993) and incorporated into the Carhart four-factor model; in the French library, Mom is built from portfolios sorted on prior 2-12 month returns.",
+    "intuition": "Stocks that went up over roughly the past year (skipping the most recent month) have tended to keep outperforming recent losers for a while - the factor trades that continuation.",
+    "mechanics": "Ken French's Mom uses six value-weight portfolios formed monthly on size and prior (2-12) returns: Mom = (1/2)(Small High + Big High) - (1/2)(Small Low + Big Low), with NYSE median size breakpoint and 30th/70th prior-return percentiles; the most recent month is skipped to avoid short-term reversal.",
+    "formula": "Mom = (1/2)(Small High + Big High) - (1/2)(Small Low + Big Low), where High/Low refer to prior (t-12 to t-2) cumulative returns.",
+    "relationships": [
+      "Carhart four-factor model",
+      "Fama-French three-factor model",
+      "Factor model",
+      "Size factor",
+      "Value factor"
+    ],
+    "failure_modes": "Momentum is prone to infrequent but severe crashes when trends reverse sharply, typically in rebounds from bear markets (e.g., 2009), when the short side of crowded losers rallies violently; the standard Fama-French models exclude momentum precisely because it behaves differently.",
+    "misconceptions": "Momentum is not simply 'buy what went up last week': the academic factor uses 12-month formation returns skipping the most recent month, and it is a relative cross-sectional bet, not a market-direction bet.",
+    "example": "Ranking stocks each month on months t-12 to t-2 returns and going long the top third while shorting the bottom third yields the Mom factor; if winners return 1.5% and losers -0.5% in the next month, Mom realizes +2.0%.",
+    "citations": [
+      {
+        "source": "Kenneth R. French Data Library, Detail for Monthly Momentum Factor (Mom)",
+        "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/det_mom_factor.html",
+        "section": "Construction",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

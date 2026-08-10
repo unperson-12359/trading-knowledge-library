@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/minimum-variance-portfolio",
+  "canonical_sha256": "c97061b530f3ba6c55862a24ce4b3e2440ffb191606268be6cccbda27207059e",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/minimum-variance-portfolio",
+    "name": "Minimum-variance portfolio",
+    "aliases": [
+      "MVP",
+      "global minimum-variance portfolio",
+      "GMV"
+    ],
+    "domain": "Portfolio management",
+    "definition": "The portfolio of risky assets with the lowest attainable variance, located at the leftmost point of the mean-variance efficient frontier; it is the optimal portfolio for an investor with zero tolerance for risk.",
+    "intuition": "It is the mix that wobbles the least, whatever its expected return - found purely from the covariance matrix, with no return forecasts needed.",
+    "mechanics": "Solving min_w w'Cw subject to sum_i w_i = 1 gives w_MVP = C^{-1}1 / (1'C^{-1}1), where 1 is a vector of ones. In Sharpe's equilibrium framework it is the portfolio z_p, the optimal portfolio for an investor with zero risk tolerance.",
+    "formula": "w_MVP = C^{-1}*1 / (1'*C^{-1}*1), where C is the asset covariance matrix and 1 a vector of ones.",
+    "relationships": [
+      "Efficient frontier",
+      "Portfolio variance",
+      "Covariance matrix",
+      "Tangency portfolio"
+    ],
+    "failure_modes": "Because it is driven entirely by the estimated covariance matrix, MVP weights are extremely sensitive to estimation error and can be concentrated and unstable; low in-sample variance does not guarantee low out-of-sample variance.",
+    "misconceptions": "Minimum variance does not mean minimum possible loss or maximum risk-adjusted return: the MVP still carries market-level drawdowns and generally has a lower Sharpe ratio than the tangency portfolio.",
+    "example": "In Sharpe's three-asset example, the zero-risk-tolerance optimal portfolio z_p holds about 104% cash, -4% bonds, and 0% stocks - the variance-minimizing combination of the three assets.",
+    "citations": [
+      {
+        "source": "William F. Sharpe, Macro-Investment Analysis, Equilibrium chapter",
+        "url": "https://web.stanford.edu/~wfsharpe/mia/eq/mia_eq1.htm",
+        "section": "Finding an optimal portfolio with no bounds (z_p as the minimum-variance portfolio)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

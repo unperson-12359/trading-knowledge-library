@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/market-factor",
+  "canonical_sha256": "ad4235f34ab354988bd407c5ddd35269104d295d1893388f4c84203a62e70468",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/market-factor",
+    "name": "Market factor",
+    "aliases": [
+      "Rm-Rf",
+      "excess market return",
+      "MKT"
+    ],
+    "domain": "Portfolio management",
+    "definition": "The excess return of the broad value-weighted stock market portfolio over the risk-free rate, the first factor in the CAPM and in all Fama-French models, proxied in the Kenneth French data library by the value-weight return of all eligible CRSP U.S. stocks minus the one-month Treasury bill rate.",
+    "intuition": "It is simply 'the stock market's return above T-bills' - the baseline common driver that every equity shares and against which other factors are measured.",
+    "mechanics": "Constructed as Rm - Rf, where Rm is the value-weight return of all CRSP firms incorporated in the U.S. and listed on NYSE/AMEX/NASDAQ with valid share code, price, and return data, and Rf is the one-month T-bill rate; an asset's loading on it is its beta.",
+    "formula": "MKT_t = Rm_t - Rf_t, with Rm the value-weight market return and Rf the one-month Treasury bill rate.",
+    "relationships": [
+      "Beta",
+      "Systematic risk",
+      "Fama-French three-factor model",
+      "Capital market line",
+      "Factor model"
+    ],
+    "failure_modes": "The theoretical CAPM market portfolio includes all wealth (real estate, human capital), so any tradable index is only a proxy; results can be sensitive to the proxy's universe and weighting.",
+    "misconceptions": "The market factor is not the raw index return - it is the excess return over the risk-free rate, and it is value-weighted, not equal-weighted, in standard academic construction.",
+    "example": "If the CRSP value-weight market returns 1.2% in a month and the one-month T-bill yields 0.3%, the market factor realization MKT is 0.9% for that month.",
+    "citations": [
+      {
+        "source": "Kenneth R. French Data Library, Description of Fama/French Factors",
+        "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_factors.html",
+        "section": "Construction (Rm-Rf definition)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

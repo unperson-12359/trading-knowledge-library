@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/tangency-portfolio",
+  "canonical_sha256": "8f324051a2eab4c4dfe7fe33b20dc81643cad0c49b65fdecb37cde6bdaec484e",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/tangency-portfolio",
+    "name": "Tangency portfolio",
+    "aliases": [
+      "maximum Sharpe ratio portfolio",
+      "optimal risky portfolio"
+    ],
+    "domain": "Portfolio management",
+    "definition": "The portfolio of risky assets with the highest Sharpe ratio (expected excess return per unit of risk), located where the capital allocation line from the risk-free rate is tangent to the risky-asset efficient frontier; in CAPM equilibrium it is the market portfolio.",
+    "intuition": "It is the one risky portfolio everyone should hold - investors differ only in how much they lever or dilute it with the risk-free asset.",
+    "mechanics": "Weights solve max_w (w'e - r_f) / sqrt(w'Cw) subject to 1'w = 1, giving w proportional to C^{-1}(e - r_f*1). A basic CAPM premise is that all agents invest in this highest-Sharpe-ratio portfolio and leverage or de-leverage it to suit their risk preferences.",
+    "formula": "w* = C^{-1}(e - r_f*1) / (1'*C^{-1}(e - r_f*1)), where e is the vector of expected returns, r_f the risk-free rate, and C the covariance matrix.",
+    "relationships": [
+      "Capital market line",
+      "Efficient frontier",
+      "Minimum-variance portfolio",
+      "Beta",
+      "Alpha"
+    ],
+    "failure_modes": "Maximizing the Sharpe ratio over estimated inputs makes the tangency portfolio the portfolio most sensitive to estimation error: small changes in expected return or covariance estimates can swing weights wildly, and realized out-of-sample Sharpe ratios routinely disappoint.",
+    "misconceptions": "The tangency portfolio is not the highest-return or lowest-risk portfolio, and its theoretical equivalence with the market portfolio holds only under CAPM equilibrium assumptions, not as an empirical identity.",
+    "example": "With a risk-free rate of 2%, if the risky frontier's best risk-return trade-off is a stock/bond mix with expected return 8% and volatility 12%, the tangency portfolio has Sharpe ratio (8-2)/12 = 0.5, and all efficient investors hold that mix in some proportion.",
+    "citations": [
+      {
+        "source": "AQR Capital Management, Frazzini and Pedersen, Betting Against Beta (Journal of Financial Economics)",
+        "url": "https://www.aqr.com/Insights/Research/Journal-Article/Betting-Against-Beta",
+        "section": "Abstract (CAPM premise: agents invest in the highest-Sharpe-ratio portfolio and leverage or de-leverage it)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "William F. Sharpe, Macro-Investment Analysis, Equilibrium chapter",
+        "url": "https://web.stanford.edu/~wfsharpe/mia/eq/mia_eq1.htm",
+        "section": "Two-fund separation; The Market Portfolio and the Security Market Line",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

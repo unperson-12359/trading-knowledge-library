@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/factor-exposure",
+  "canonical_sha256": "b074f1819a4d98e2b71cf268d592152999c034fb87425cc249ca851de3464924",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/factor-exposure",
+    "name": "Factor exposure",
+    "aliases": [
+      "factor loading",
+      "factor sensitivity",
+      "factor beta"
+    ],
+    "domain": "Portfolio management",
+    "definition": "The sensitivity of an asset's or portfolio's return to a given factor - the change in return per unit change in the factor - represented by the coefficient b_ij multiplying that factor in a linear factor model.",
+    "intuition": "It is a dial reading showing how strongly an asset or portfolio is tuned to a driver like the market, size, or value: exposure 1.2 to the market factor means roughly 1.2x the factor's moves.",
+    "mechanics": "Asset exposures b_ij are estimated by regression or specified from characteristics; a portfolio's exposure to factor j is the weighted average of its assets' exposures, b_pj = sum_i w_i * b_ij, i.e., b_p = x'B in matrix form. Exposures map factor returns into asset returns and factor covariances into the asset covariance matrix.",
+    "formula": "r_i = sum_j b_ij * f_j + e_i, where b_ij is the exposure of asset i to factor j; portfolio exposure b_p = x'B.",
+    "relationships": [
+      "Factor model",
+      "Beta",
+      "Systematic risk",
+      "Covariance matrix",
+      "Market factor"
+    ],
+    "failure_modes": "Exposures are estimated, not observed: they drift over time as companies and funds change, differ across data windows and estimators, and characteristic-based proxies (e.g., book-to-market for value) only approximate true loadings.",
+    "misconceptions": "A fund labeled 'value' does not necessarily have high value-factor exposure - exposure must be measured from return behavior or holdings, not inferred from the label.",
+    "example": "A portfolio of 70% in a stock with market exposure 1.2 and 30% in a bond fund with market exposure 0.1 has portfolio market exposure 0.7*1.2 + 0.3*0.1 = 0.87.",
+    "citations": [
+      {
+        "source": "William F. Sharpe, Macro-Investment Analysis, Factor Models chapter: A Generic Linear Factor Model",
+        "url": "https://web.stanford.edu/~wfsharpe/mia/fac/mia_fac2.htm",
+        "section": "Terminology (factor exposures/sensitivities/loadings)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "William F. Sharpe, Macro-Investment Analysis, Factor Models chapter: Factor-based Portfolio Expected Returns and Risks",
+        "url": "https://web.stanford.edu/~wfsharpe/mia/fac/mia_fac3.htm",
+        "section": "Factor-based Portfolio Expected Returns and Risks (b_p = x'B)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

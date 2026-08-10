@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/portfolio-variance",
+  "canonical_sha256": "dfbfa2f59d093332a443c28a7d5f118542279c8f0882f267794764b2e8d5ea8a",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/portfolio-variance",
+    "name": "Portfolio variance",
+    "aliases": [],
+    "domain": "Portfolio management",
+    "definition": "The variance of a portfolio's return, which depends on the portfolio weights, the variances of the component assets, and all pairwise covariances between them; its square root (volatility) is the standard risk measure in mean-variance analysis.",
+    "intuition": "Portfolio risk is not the average of individual risks: assets that zig while others zag cancel each other out, so covariances do most of the work in determining total variance.",
+    "mechanics": "For weight vector x and covariance matrix C, v_p = x'Cx. Expanding for two assets: v_p = w_1^2*sigma_1^2 + w_2^2*sigma_2^2 + 2*w_1*w_2*rho_12*sigma_1*sigma_2. With a factor model the same quantity can be computed as v_p = b_p*C_F*b_p' + (x.^2)'*rv using portfolio factor exposures b_p, avoiding the full asset covariance matrix.",
+    "formula": "v_p = x'Cx = sum_i sum_j x_i * x_j * cov(r_i, r_j); two-asset case: v_p = w_1^2*sigma_1^2 + w_2^2*sigma_2^2 + 2*w_1*w_2*rho_12*sigma_1*sigma_2.",
+    "relationships": [
+      "Covariance matrix",
+      "Correlation matrix",
+      "Diversification",
+      "Minimum-variance portfolio",
+      "Marginal risk contribution"
+    ],
+    "failure_modes": "Variance is only as good as its inputs: estimated variances and covariances drift over time, and variance as a symmetric measure treats upside and downside moves identically, which may not match investor loss aversion.",
+    "misconceptions": "Portfolio variance is not the weighted average of asset variances; ignoring the covariance terms dramatically overstates the risk of diversified portfolios.",
+    "example": "Two equally weighted assets with volatilities 15% and 10% and correlation 0.3 have variance 0.5^2*0.0225 + 0.5^2*0.01 + 2*0.5*0.5*0.3*0.15*0.10 = 0.010375, a volatility of about 10.2%, below the 12.5% naive average.",
+    "citations": [
+      {
+        "source": "William F. Sharpe, Macro-Investment Analysis, Factor Models chapter: Factor-based Portfolio Expected Returns and Risks",
+        "url": "https://web.stanford.edu/~wfsharpe/mia/fac/mia_fac3.htm",
+        "section": "Factor-based Portfolio Expected Returns and Risks (v_p = x'Cx)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/systematic-risk",
+  "canonical_sha256": "d1b93754a5f1140ebba3113676fec53c78e21b1dbb50941e84f2dc64100e8fc3",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/systematic-risk",
+    "name": "Systematic risk",
+    "aliases": [
+      "market risk",
+      "non-diversifiable risk",
+      "factor risk"
+    ],
+    "domain": "Portfolio management",
+    "definition": "The component of an asset's return risk that is related to the return of the market or to pervasive common factors; it affects broad classes of assets simultaneously and cannot be diversified away by holding a large portfolio of different assets.",
+    "intuition": "It is the tide that lifts or sinks all boats: recessions, rate shocks, and market crashes hit nearly every stock at once, no matter how many you hold.",
+    "mechanics": "In factor-model terms, systematic risk is the variance contributed by factor exposures, b_i*C_F*b_i', leaving residual variance as the diversifiable part. In CAPM, beta measures an asset's quantity of systematic risk, and only systematic risk is compensated with expected return in equilibrium.",
+    "formula": "Systematic variance of asset i = b_i * C_F * b_i', where b_i is the asset's vector of factor exposures and C_F the factor covariance matrix; for the single-index model this reduces to beta_i^2 * sigma_m^2.",
+    "relationships": [
+      "Idiosyncratic risk",
+      "Beta",
+      "Diversification",
+      "Market factor",
+      "Factor model",
+      "Correlation breakdown"
+    ],
+    "failure_modes": "What counts as systematic depends on the factor model: omit a real common factor and its variance gets mislabeled as idiosyncratic. In crises, rising correlations effectively convert more asset risk into common (systematic-like) risk.",
+    "misconceptions": "Adding more securities cannot reduce systematic risk below the market level; conversely, 'safe' defensive assets still carry systematic risk - they just carry less of it (low beta).",
+    "example": "In 2008, nearly all equity sectors fell together regardless of stock selection, an expression of systematic risk; a diversified equity portfolio's losses tracked the market factor rather than any single company.",
+    "citations": [
+      {
+        "source": "John C. Hull, Options, Futures, and Other Derivatives (8th ed.), Chapter 3 lecture slides: Hedging Strategies Using Futures",
+        "url": "https://npapanikolaou.files.wordpress.com/2014/02/fin-derivatives-lecture-5.pdf",
+        "section": "Hedging an Equity Portfolio & CAPM (systematic vs nonsystematic risk)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "William F. Sharpe, Macro-Investment Analysis, Factor Models chapter: A Generic Linear Factor Model",
+        "url": "https://web.stanford.edu/~wfsharpe/mia/fac/mia_fac2.htm",
+        "section": "The Key Assumption",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

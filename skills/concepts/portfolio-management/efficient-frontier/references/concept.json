@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/efficient-frontier",
+  "canonical_sha256": "00f0ffb3ffad8c91c7c7657a431938c3e5774c203dd7f9897b783415e53e2377",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/efficient-frontier",
+    "name": "Efficient frontier",
+    "aliases": [
+      "mean-variance efficient frontier"
+    ],
+    "domain": "Portfolio management",
+    "definition": "The set of portfolios that offer the maximum expected return for each level of return variance (equivalently, the minimum variance for each target expected return), the central construct of Markowitz's mean-variance portfolio selection theory.",
+    "intuition": "It is the best menu available: every portfolio below the frontier is dominated, because a frontier portfolio gives either more return for the same risk or less risk for the same return.",
+    "mechanics": "For each target expected return e*, solve min_w w'Cw subject to w'e = e* and sum_i w_i = 1; tracing e* yields the frontier, a hyperbola in (volatility, expected return) space. All mean-variance-optimal portfolios lie on it, and with a risk-free asset the relevant frontier becomes the tangent line through the tangency portfolio.",
+    "formula": "min_w w'Cw subject to w'e = e* and 1'w = 1, traced over all feasible target returns e*.",
+    "relationships": [
+      "Minimum-variance portfolio",
+      "Tangency portfolio",
+      "Capital market line",
+      "Portfolio variance",
+      "Diversification"
+    ],
+    "failure_modes": "The frontier is only as good as its inputs: portfolios that appear efficient on unadjusted historical estimates 'will almost certainly plot below the true efficient frontier' because optimizers exploit estimation noise (Sharpe); the true frontier is unobservable.",
+    "misconceptions": "The efficient frontier is not a fixed, knowable curve in the market - it moves with expected return, volatility, and correlation estimates, so two analysts with different inputs get different frontiers.",
+    "example": "Given cash, bond, and stock expected returns, volatilities, and correlations, the frontier runs from the minimum-variance portfolio upward toward higher stock weights, with each point the lowest-variance mix for its target return.",
+    "citations": [
+      {
+        "source": "Nobel Prize Outreach, Harry M. Markowitz - Facts",
+        "url": "https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/",
+        "section": "Work (theory of portfolio selection, Portfolio Selection 1952)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "William F. Sharpe, Macro-Investment Analysis, Equilibrium chapter",
+        "url": "https://web.stanford.edu/~wfsharpe/mia/eq/mia_eq1.htm",
+        "section": "Two-fund separation (optimal portfolios on the efficient frontier)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
