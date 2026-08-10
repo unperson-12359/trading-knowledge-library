@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/optimistic-rollup",
+  "canonical_sha256": "8447ef730241bd49aae2dff40fea12b081cc3539689af36ef03500211d2a34f9",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/optimistic-rollup",
+    "name": "Optimistic rollup",
+    "aliases": [
+      "OR",
+      "optimistic roll-up"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "An optimistic rollup is a layer-2 rollup that assumes offchain transaction batches are valid by default and relies on a fraud-proof scheme: anyone can challenge a posted state transition during a challenge period, and proven fraud reverts the batch and slashes the operator's bond.",
+    "intuition": "It is an honor system with a bounty: transactions are accepted unless someone can prove cheating within a week, and the cheater's deposit pays for the mistake.",
+    "mechanics": "A sequencer batches transactions, posts them to Ethereum (calldata/blobs) with a new state root, and a challenge window (typically ~7 days) opens. Challengers re-execute the disputed step via an interactive bisection protocol settled by an L1 verifier contract; a successful fraud proof rolls back the invalid state and slashes the operator. Withdrawals to L1 must wait out the challenge period.",
+    "formula": "",
+    "relationships": [
+      "Rollup",
+      "Zero-knowledge rollup",
+      "Layer 2",
+      "Transaction finality",
+      "Bridge"
+    ],
+    "failure_modes": "Security rests on at least one honest watcher submitting fraud proofs — if all watchers fail or are censored, a malicious operator can steal funds; the 7-day withdrawal delay harms UX and pushes users toward trusted fast-exit bridges; centralized sequencers can censor.",
+    "misconceptions": "Optimistic rollups are not 'less secure versions of Ethereum' in the fraud-proof model — one honest node suffices to defend correct state — but most deployments still have training wheels (upgradeable contracts, permissioned provers). 'Optimistic' refers to the validity assumption, not speed.",
+    "example": "A user withdrawing 5 ETH from Arbitrum to Ethereum initiates the exit on L2, waits the ~7-day challenge period, then finalizes on L1; alternatively a liquidity provider fronts the 5 ETH immediately on L1 for a fee.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Optimistic rollups",
+        "url": "https://ethereum.org/en/developers/docs/scaling/optimistic-rollups/",
+        "section": "What is an optimistic rollup?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

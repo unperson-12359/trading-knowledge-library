@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/centralized-exchange",
+  "canonical_sha256": "f554c414b35c7f5101a0479e26f405cc1e45ae3fbab326f38429fca03c1fcb76",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/centralized-exchange",
+    "name": "Centralized exchange",
+    "aliases": [
+      "CEX",
+      "custodial exchange"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A centralized exchange (CEX) is a trading platform operated by a company that takes custody of user deposits, runs an off-chain central limit order book to match buyers and sellers, and settles trades on its internal ledger.",
+    "intuition": "A CEX is a bank crossed with a stock exchange: fast and familiar, but you are trusting the operator with your money the whole time.",
+    "mechanics": "Users deposit crypto or fiat into exchange-controlled wallets; the exchange matches orders in its own matching engine and updates internal balances, only touching the blockchain on deposits and withdrawals. Most run central limit order books with permissioned access (KYC), and many offer margin, futures and staking services on the same custodial rails.",
+    "formula": "",
+    "relationships": [
+      "Decentralized exchange",
+      "Funding rate",
+      "Cross margin",
+      "Isolated margin",
+      "Long-short ratio"
+    ],
+    "failure_modes": "Custodial risk dominates: hacks, insolvency or fraud (e.g. FTX) can wipe out deposited balances that are only IOUs on the exchange's ledger; withdrawal freezes, opaque rehypothecation and single-venue price manipulation are structural hazards.",
+    "misconceptions": "Trades on a CEX are not blockchain transactions — they are database entries, which is why they are instant and cheap but also why proof-of-reserves matters. 'Your' balance on a CEX is a claim on the exchange, not on-chain ownership.",
+    "example": "Depositing 2 BTC to Binance and selling it updates only Binance's internal ledger; the on-chain BTC stays in Binance's omnibus wallet until you withdraw, so if the exchange freezes withdrawals your claim is stuck with it.",
+    "citations": [
+      {
+        "source": "Ethereum.org - Decentralized finance (DeFi)",
+        "url": "https://ethereum.org/en/defi/",
+        "section": "What can you do with DeFi?",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Uniswap docs - How Uniswap works",
+        "url": "https://docs.uniswap.org/contracts/v2/concepts/protocol-overview/how-uniswap-works",
+        "section": "Swaps / constant product formula",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

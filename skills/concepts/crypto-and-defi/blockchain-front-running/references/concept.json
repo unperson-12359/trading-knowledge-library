@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/blockchain-front-running",
+  "canonical_sha256": "3879e8dac1a932b3d2bb2a0bda716c7cd31f4a1610445633c679b45b257e3f87",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/blockchain-front-running",
+    "name": "Blockchain front-running",
+    "aliases": [
+      "frontrunning",
+      "transaction front-running"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Blockchain front-running is the practice of observing a profitable pending transaction (in the public mempool or via privileged ordering access) and inserting one's own transaction ahead of it to capture the opportunity first.",
+    "intuition": "It is the on-chain version of a broker trading ahead of a client's order — except the order flow is broadcast publicly to everyone, so bots do it at machine speed.",
+    "mechanics": "Because pending transactions are visible before inclusion, bots monitor the mempool, simulate transactions, and copy or preempt profitable ones, winning priority through higher gas bids (priority gas auctions) or by paying block builders via private relays (e.g. Flashbots). Generalized front-runners even clone arbitrary profitable transactions with their own address substituted.",
+    "formula": "",
+    "relationships": [
+      "Maximal extractable value",
+      "Sandwich attack",
+      "Mempool",
+      "Back-running",
+      "Gas fee"
+    ],
+    "failure_modes": "Front-running gas auctions historically congested the whole network and raised fees for everyone; extreme incentives to capture large MEV can tempt block producers to reorder or reorg blocks, destabilizing consensus.",
+    "misconceptions": "Front-running is not unique to insiders — on public chains anyone can do it, which is why it is an arms race won by latency and gas-bidding infrastructure. Using a private relay hides your trade from the public mempool but not from the relay/builder.",
+    "example": "A bot sees a pending transaction buying a mispriced NFT for 1 ETH worth 5 ETH, resubmits the identical purchase with its own address and a higher gas tip, and wins the listing before the original buyer's transaction executes.",
+    "citations": [
+      {
+        "source": "Daian et al., Flash Boys 2.0: Frontrunning, Transaction Reordering, and Consensus Instability in Decentralized Exchanges",
+        "url": "https://arxiv.org/abs/1904.05234",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Ethereum.org developer docs - Maximal extractable value (MEV)",
+        "url": "https://ethereum.org/en/developers/docs/mev/",
+        "section": "MEV examples",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

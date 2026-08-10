@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/concentrated-liquidity",
+  "canonical_sha256": "d65c5bef99ca6308fef86d2528bfa8e2dec636c5b4aa123736b2e3d4b174d70e",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/concentrated-liquidity",
+    "name": "Concentrated liquidity",
+    "aliases": [
+      "CL",
+      "ranged liquidity"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Concentrated liquidity is the Uniswap v3/v4 mechanism that lets liquidity providers allocate capital to a custom price range instead of uniformly across all prices, so the same capital provides deeper liquidity (and earns more fees) where trading actually occurs.",
+    "intuition": "Rather than spreading butter thinly from price 0 to infinity, LPs spread it thickly on the slice of the curve where the market actually trades.",
+    "mechanics": "Price space is partitioned into discrete ticks (~0.01% apart); an LP position is defined by a lower and upper tick and only earns fees while the current price is inside its range. Within a range the pool behaves like a bounded constant-product curve; when price exits the range, the position holds 100% of the cheaper token and earns nothing until price re-enters.",
+    "formula": "",
+    "relationships": [
+      "Constant-product market maker",
+      "Automated market maker",
+      "Liquidity pool",
+      "Impermanent loss",
+      "DeFi liquidity provider"
+    ],
+    "failure_modes": "Out-of-range positions earn zero fees and hold entirely the depreciated asset, amplifying impermanent loss versus full-range liquidity; concentrated positions demand active management, and naive 'set and forget' ranges systematically underperform.",
+    "misconceptions": "Higher capital efficiency is not free yield — it is higher leverage on the same LP risk, so impermanent loss per unit of capital is larger, not smaller. Concentrated liquidity does not eliminate the constant-product math; it bounds where it applies.",
+    "example": "On Uniswap v2's DAI/USDC pool, only ~0.5% of capital served trades between $0.99 and $1.01; a v3 LP allocating $10,000 entirely to the 0.99–1.01 range earns the same fees on that volume as roughly $2M of v2-style liquidity.",
+    "citations": [
+      {
+        "source": "Uniswap docs - Concentrated liquidity",
+        "url": "https://docs.uniswap.org/concepts/protocol/concentrated-liquidity",
+        "section": "How concentrated liquidity works",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

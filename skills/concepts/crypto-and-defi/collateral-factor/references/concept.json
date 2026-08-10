@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/collateral-factor",
+  "canonical_sha256": "30e0cb0583e652ef5e49a552e8a9cbcab5e737698b1b7854186dc0343f8dbc7b",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/collateral-factor",
+    "name": "Collateral factor",
+    "aliases": [
+      "collateral ratio (protocol parameter)",
+      "c-factor"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "The collateral factor is the per-asset parameter that determines how much borrowing power a unit of deposited collateral confers, expressed as a percentage of the collateral's value; in Aave V3 this concept is split into LTV (borrowing power for new loans) and liquidation threshold (the undercollateralization trigger).",
+    "intuition": "It is the haircut the protocol applies to your collateral: $100 of a blue-chip asset might count as $80 of borrowing power, while a volatile token counts as far less.",
+    "mechanics": "Each listed asset has a governance-set collateral factor/LTV reflecting its volatility and liquidity risk. A user's total borrowing capacity is the sum over collateral assets of value × factor; borrowing beyond it is impossible, and positions drifting past the (higher) liquidation threshold become liquidatable. Riskier or less liquid assets get lower factors.",
+    "formula": "Borrowing capacity = Σ (collateral_i × price_i × factor_i); e.g. $10,000 ETH at 80% → $8,000 max borrow.",
+    "relationships": [
+      "Loan-to-value ratio",
+      "Liquidation threshold",
+      "Health factor",
+      "Lending protocol",
+      "Overcollateralized loan"
+    ],
+    "failure_modes": "Factors set too high for illiquid collateral let bad debt accumulate because liquidators cannot exit seized collateral profitably; factors changed by governance can shift risk parameters on live positions.",
+    "misconceptions": "The collateral factor is not the interest rate — it caps loan size, not cost. Depositing more collateral value does not always raise borrowing power proportionally if the asset has a low or zero factor.",
+    "example": "Aave V3's stablecoin E-Mode category uses 97% LTV and 98% liquidation threshold, while a volatile long-tail asset in isolation mode might carry 50% LTV with a hard debt ceiling.",
+    "citations": [
+      {
+        "source": "Frangella & Herskind, Aave V3 Technical Paper (2022)",
+        "url": "https://resources.cryptocompare.com/asset-management/9/1682584843504.pdf",
+        "section": "Section 3-4: risk parameters (LTV, liquidation threshold, liquidation bonus)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-zero-knowledge-rollup",
+  "concept_id": "crypto-and-defi/zero-knowledge-rollup",
+  "display_name": "Zero-knowledge rollup",
+  "domain": "Crypto and DeFi",
+  "description": "Explain, compare, or apply Zero-knowledge rollup using the library's structured Crypto and DeFi reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Zero-knowledge rollup",
+    "ZK-rollup",
+    "zkRollup",
+    "validity rollup",
+    "explain Zero-knowledge rollup",
+    "apply Zero-knowledge rollup to a trading question",
+    "common misconception about Zero-knowledge rollup"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints",
+      "contract specification",
+      "funding and margin state"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 58,
+  "package_path": "skills/concepts/crypto-and-defi/zero-knowledge-rollup",
+  "canonical": {
+    "source_path": "concepts/crypto-and-defi.json",
+    "sha256": "15a7e7800ed17ff5de6d735e12bc92db308a5ae01963a68e95dad16dadb526b9"
+  },
+  "related_concept_ids": [
+    "crypto-and-defi/rollup",
+    "crypto-and-defi/optimistic-rollup",
+    "crypto-and-defi/layer-2",
+    "crypto-and-defi/transaction-finality"
+  ]
+}

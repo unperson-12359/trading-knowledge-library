@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/liquidity-pool",
+  "canonical_sha256": "cd52f32e64963e1542b4c5e1a24e9d087764106bece6a81c8891f1804ef15bc2",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/liquidity-pool",
+    "name": "Liquidity pool",
+    "aliases": [
+      "LP pool",
+      "pool"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A liquidity pool is a smart contract holding reserves of two (or more) tokens that an AMM uses as the counterparty for swaps; traders trade against the pooled reserves and liquidity providers fund them in exchange for a share of fees.",
+    "intuition": "It is a communal vault of token pairs: everyone chips in inventory, the vault quotes prices from its contents, and depositors split the toll every trader pays.",
+    "mechanics": "Providers deposit proportional amounts of both tokens and receive pool shares (LP tokens in v2, NFT positions in v3) representing their pro-rata claim on reserves plus accrued fees. Swaps move the reserve ratio, repricing the pair via the pool's invariant (e.g. x·y=k), and a per-swap fee (e.g. 0.3%) accrues to the pool.",
+    "formula": "",
+    "relationships": [
+      "Automated market maker",
+      "DeFi liquidity provider",
+      "Constant-product market maker",
+      "Decentralized exchange",
+      "Impermanent loss"
+    ],
+    "failure_modes": "Pools for scam or exploited tokens can be drained or become worthless, and permissionless listing means anyone can create deceptive pools; thin pools give extreme slippage and are easy to manipulate for oracle attacks.",
+    "misconceptions": "Pool depth (TVL) is not a guarantee of fair pricing — prices still track external markets only via arbitrage. Depositing into a pool is not like depositing into a savings account; the asset mix you withdraw is usually different from what you put in.",
+    "example": "A Uniswap ETH/USDC pool holding 10,000 ETH and 40M USDC lets a trader swap 100,000 USDC for ~24.9 ETH instantly; the 0.3% fee (~300 USDC) stays in the pool, enriching all LP shares.",
+    "citations": [
+      {
+        "source": "Uniswap docs - How Uniswap works",
+        "url": "https://docs.uniswap.org/contracts/v2/concepts/protocol-overview/how-uniswap-works",
+        "section": "Swaps / constant product formula",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

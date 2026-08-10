@@ -1,0 +1,83 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-defi-liquidity-provider",
+  "concept_id": "crypto-and-defi/defi-liquidity-provider",
+  "display_name": "DeFi liquidity provider",
+  "domain": "Crypto and DeFi",
+  "description": "Explain, compare, or apply DeFi liquidity provider using the library's structured Crypto and DeFi reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "DeFi liquidity provider",
+    "LP",
+    "liquidity provider",
+    "explain DeFi liquidity provider",
+    "apply DeFi liquidity provider to a trading question",
+    "common misconception about DeFi liquidity provider"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints",
+      "contract specification",
+      "funding and margin state"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 58,
+  "package_path": "skills/concepts/crypto-and-defi/defi-liquidity-provider",
+  "canonical": {
+    "source_path": "concepts/crypto-and-defi.json",
+    "sha256": "b79a85a14fa749e208a65b10e8f30d2781e7dfc3433180ab18be38d6057071d4"
+  },
+  "related_concept_ids": [
+    "crypto-and-defi/liquidity-pool",
+    "crypto-and-defi/impermanent-loss",
+    "crypto-and-defi/concentrated-liquidity",
+    "crypto-and-defi/yield-farming",
+    "crypto-and-defi/liquidity-mining"
+  ]
+}

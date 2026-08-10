@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/impermanent-loss",
+  "canonical_sha256": "8c5002855683f3b1cef83f99c87334c721a147cbf38a169484ec61c7b08652ee",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/impermanent-loss",
+    "name": "Impermanent loss",
+    "aliases": [
+      "IL",
+      "divergence loss"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Impermanent loss is the difference in value between depositing tokens into an AMM liquidity pool and simply holding those same tokens: as relative prices change, arbitrage rebalances the pool so the LP ends up with less of the appreciating asset and more of the depreciating one.",
+    "intuition": "The pool automatically sells your winners and buys your losers; if prices snap back the 'loss' vanishes — but if you withdraw while prices have diverged, it becomes real.",
+    "mechanics": "Under x·y=k, when the external price of one token rises, arbitrageurs buy it from the pool until the internal price matches, changing the reserve ratio. For a relative price change of factor r, IL = 2√r/(1+r) − 1 vs holding (e.g. r=2 → −5.7%, r=5 → −25.5%), independent of direction. Fees and incentives may or may not offset it.",
+    "formula": "IL(r) = 2√r / (1 + r) − 1, where r is the ratio of the new relative price to the price at deposit.",
+    "relationships": [
+      "Liquidity pool",
+      "DeFi liquidity provider",
+      "Automated market maker",
+      "Concentrated liquidity",
+      "Yield farming"
+    ],
+    "failure_modes": "IL grows non-linearly with divergence, so volatile or trending pairs can leave LPs deep underwater versus holding even after fees; concentrated liquidity amplifies IL per unit of capital when price leaves the range.",
+    "misconceptions": "'Impermanent' does not mean harmless — the loss is permanent the moment you withdraw at a diverged price, and the original price often never returns. Fee income is not guaranteed to cover IL; for many pairs and periods it does not.",
+    "example": "Deposit 1 ETH + 1,000 USDC when ETH = $1,000 (pool: 10 ETH + 10,000 USDC, you own 10%). ETH doubles to $2,000; arbitrage leaves the pool at 7.071 ETH + 14,142 USDC. Your 10% withdrawal is worth $2,828 vs $3,000 for holding — a 5.7% impermanent loss.",
+    "citations": [
+      {
+        "source": "Chainlink - Understanding Impermanent Loss in DeFi Liquidity Pools",
+        "url": "https://chain.link/article/impermanent-loss-defi",
+        "section": "What Is Impermanent Loss?",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Uniswap docs - Concentrated liquidity",
+        "url": "https://docs.uniswap.org/concepts/protocol/concentrated-liquidity",
+        "section": "How concentrated liquidity works",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/maximal-extractable-value",
+  "canonical_sha256": "9bbc1e09b5210735a2c95bad43b8649966c1982542b12061cbeab5a9e5db653b",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/maximal-extractable-value",
+    "name": "Maximal extractable value",
+    "aliases": [
+      "MEV",
+      "miner extractable value"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Maximal extractable value (MEV) is the maximum value that can be extracted from block production — beyond the standard block reward and gas fees — by including, excluding, or reordering transactions within a block.",
+    "intuition": "Whoever decides the order of transactions in a block holds a printing press: they can see the future of the block and sell positions in it.",
+    "mechanics": "Validators (formerly miners, hence the older term 'miner extractable value') control inclusion and ordering; in practice independent 'searchers' find opportunities — DEX arbitrage, liquidations, sandwich attacks — and capture them via gas bidding or sealed bundles (Flashbots/MEV-Boost), sharing most proceeds with validators through builder auctions (proposer-builder separation).",
+    "formula": "",
+    "relationships": [
+      "Sandwich attack",
+      "Blockchain front-running",
+      "Back-running",
+      "Mempool",
+      "Flash loan"
+    ],
+    "failure_modes": "Unchecked MEV degrades user execution (sandwiches), congests the network via gas auctions, and — when MEV in a block exceeds the block reward — creates incentives for time-bandit reorgs that threaten consensus stability; private order flow and builder concentration centralize the network.",
+    "misconceptions": "MEV is not inherently theft or purely bad — arbitrage and liquidations keep prices consistent and lending protocols solvent. Nor is it eliminable by protocol upgrades alone; it is an intrinsic property of ordering power, only redistributable or mitigated.",
+    "example": "A searcher spots ETH/DAI priced differently on Uniswap vs Sushiswap and turns 1,000 ETH into 1,045 ETH in one atomic transaction, paying most of the 45 ETH profit to the validator as a bribe for guaranteed inclusion.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Maximal extractable value (MEV)",
+        "url": "https://ethereum.org/en/developers/docs/mev/",
+        "section": "MEV examples",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Daian et al., Flash Boys 2.0: Frontrunning, Transaction Reordering, and Consensus Instability in Decentralized Exchanges",
+        "url": "https://arxiv.org/abs/1904.05234",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

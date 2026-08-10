@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/decentralized-exchange",
+  "canonical_sha256": "a5f2aad30f748fd22857d2e7ac4cd0df9210711613bec3d811f4e1b30341489b",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/decentralized-exchange",
+    "name": "Decentralized exchange",
+    "aliases": [
+      "DEX"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A decentralized exchange (DEX) is a trading venue implemented as smart contracts — usually an automated market maker — that lets users swap tokens directly from their own wallets without depositing funds with an intermediary.",
+    "intuition": "A DEX is a currency-exchange kiosk run by code: open 24/7 to anyone, and your money never leaves your pocket until the exact moment of the swap.",
+    "mechanics": "Traders interact directly with on-chain liquidity pools (e.g. Uniswap) whose smart contracts price and settle swaps atomically in a single transaction; liquidity is supplied by other users earning fees. DEXs are permissionless — anyone can trade, provide liquidity, or list a market — and non-custodial, unlike order-book venues that hold user deposits.",
+    "formula": "",
+    "relationships": [
+      "Automated market maker",
+      "Liquidity pool",
+      "Centralized exchange",
+      "Smart contract",
+      "Slippage tolerance"
+    ],
+    "failure_modes": "Public mempool exposure invites sandwich attacks and worse execution than quoted; shallow pools give huge price impact; unaudited or malicious token contracts and rug-pull pools are common because listing is permissionless.",
+    "misconceptions": "DEX prices are not set by an order book of other people's bids/asks (in AMM designs) but by pool ratios, and they track external markets only through arbitrageurs. 'Decentralized' does not mean risk-free — smart contract exploits and MEV are native hazards.",
+    "example": "Swapping 1 ETH for USDC on Uniswap executes entirely within one Ethereum transaction against the ETH/USDC pool: you sign the swap, the pool contract computes the output via x·y=k, and the USDC lands directly in your wallet.",
+    "citations": [
+      {
+        "source": "Uniswap docs - How Uniswap works",
+        "url": "https://docs.uniswap.org/contracts/v2/concepts/protocol-overview/how-uniswap-works",
+        "section": "Swaps / constant product formula",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Ethereum.org - Decentralized finance (DeFi)",
+        "url": "https://ethereum.org/en/defi/",
+        "section": "What can you do with DeFi?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

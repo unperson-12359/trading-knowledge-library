@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/flash-loan",
+  "canonical_sha256": "d0df15ea119b01c7540da280cf3032eeba76bb9e6284c47d46caff15195b6822",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/flash-loan",
+    "name": "Flash loan",
+    "aliases": [
+      "one block borrow"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A flash loan is an uncollateralized loan that must be borrowed and repaid (plus fee) within a single blockchain transaction; if repayment does not complete, the entire transaction reverts as if the loan never happened.",
+    "intuition": "It is a loan that exists only for the duration of one atomic operation — millions of dollars, no collateral, but you must hand it back before the transaction closes or everything unwinds.",
+    "mechanics": "The borrower contract calls the pool (e.g. Aave's flashLoanSimple), receives the funds, executes arbitrary logic (arbitrage, liquidation, collateral swap), and the pool pulls back principal plus fee (~0.05% on Aave) at the end of the same transaction; failure to approve repayment reverts all state changes. Atomicity makes the loan risk-free for the lender.",
+    "formula": "",
+    "relationships": [
+      "Lending protocol",
+      "Maximal extractable value",
+      "Back-running",
+      "Smart contract",
+      "Decentralized exchange"
+    ],
+    "failure_modes": "Flash loans supercharge exploits: attackers borrow huge capital to manipulate thin DEX prices or oracle feeds, drain vulnerable protocols, and repay in the same transaction — the loan is a tool, and most famous 'flash loan attacks' exploited other contracts' logic, not the lender.",
+    "misconceptions": "Flash loans do not give free money — the borrowed capital must be repaid in the same transaction, so profit must come from a real opportunity executed atomically. The lender is not the party at risk in flash-loan attacks.",
+    "example": "Borrow 10,000 ETH via Aave flash loan, buy an asset priced at $1.00 on exchange A, sell it at $1.10 on exchange B, repay 10,005 ETH (0.05% fee) — all in one transaction; if any leg fails, the whole transaction reverts and the loan never existed.",
+    "citations": [
+      {
+        "source": "Aave docs - Flash Loans",
+        "url": "https://aave.com/docs/concepts/flash-loans",
+        "section": "Overview",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Ethereum.org - Decentralized finance (DeFi)",
+        "url": "https://ethereum.org/en/defi/",
+        "section": "What can you do with DeFi?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

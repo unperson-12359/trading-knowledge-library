@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/constant-product-market-maker",
+  "canonical_sha256": "755f579f98422c6664391419c78fd77f1351776b8cf4451677ebc0e1cfff1a61",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/constant-product-market-maker",
+    "name": "Constant-product market maker",
+    "aliases": [
+      "CPMM",
+      "x*y=k",
+      "constant product formula"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A constant-product market maker (CPMM) is the canonical AMM pricing rule in which the product of a pool's two token reserves must remain constant across trades (x·y=k), so the marginal price is the ratio of reserves and each trade moves the price along a hyperbola.",
+    "intuition": "The pool is a balanced scale: remove some of one token and the other must grow so their product never shrinks — which is why big orders get progressively worse prices.",
+    "mechanics": "A swap of Δx of token X for token Y must satisfy (x+Δx)(y−Δy)=k (before fees), giving output Δy = y·Δx/(x+Δx). The instantaneous price is y/x, so price impact grows quadratically with trade size relative to depth; a fee (e.g. 0.3% in Uniswap v2) is taken from the input and accrues to LPs, making k grow slightly per trade.",
+    "formula": "x · y = k, where x, y are token reserves and k is the invariant; output for input Δx: Δy = y·Δx / (x + Δx) (ignoring fees).",
+    "relationships": [
+      "Automated market maker",
+      "Liquidity pool",
+      "Price impact in AMMs",
+      "Concentrated liquidity",
+      "Impermanent loss"
+    ],
+    "failure_modes": "The full-range design spreads liquidity from 0 to ∞, so most capital sits unused and large trades suffer severe price impact in thin pools; when one token trends, arbitrage continuously extracts value from LPs (impermanent loss).",
+    "misconceptions": "The invariant does not keep k exactly constant — fees make k grow, and k changes whenever liquidity is added or removed. x·y=k also does not prevent LPs from losing money to price divergence.",
+    "example": "A pool holds 10 ETH and 40,000 USDC (k=400,000, price 4,000 USDC/ETH). Buying 1 ETH requires paying 40,000×1/9 ≈ 4,444 USDC — about 11% above the quoted price, illustrating price impact at 10% of pool depth.",
+    "citations": [
+      {
+        "source": "Uniswap docs - How Uniswap works",
+        "url": "https://docs.uniswap.org/contracts/v2/concepts/protocol-overview/how-uniswap-works",
+        "section": "Swaps / constant product formula",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

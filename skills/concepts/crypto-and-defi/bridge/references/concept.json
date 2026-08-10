@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/bridge",
+  "canonical_sha256": "23cb518e1bc833b438e6eb8be62e8482e6a725f6b5c6c57c8c30d2f3a9b3ce46",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/bridge",
+    "name": "Bridge",
+    "aliases": [
+      "blockchain bridge",
+      "cross-chain bridge"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A blockchain bridge is a mechanism that transfers assets, messages or arbitrary data between otherwise isolated blockchain networks, typically by locking or burning assets on the source chain and minting a representation on the destination chain.",
+    "intuition": "Bridges are ferries between islands that cannot naturally talk to each other — but the ferry company is often the weakest security link in the whole trip.",
+    "mechanics": "Common designs are lock-and-mint (escrow asset on chain A, mint wrapped asset on chain B), burn-and-mint, and liquidity-network atomic swaps. Trustless bridges rely on the connected chains' own validation (light clients, fraud/validity proofs); trusted bridges introduce external validator sets, multisigs or oracles that users must trust not to collude.",
+    "formula": "",
+    "relationships": [
+      "Layer 2",
+      "Rollup",
+      "Wrapped token",
+      "Oracle"
+    ],
+    "failure_modes": "Bridges account for the largest DeFi hacks: smart contract flaws (e.g. the Wormhole exploit), validator collusion in trusted designs, and depegged wrapped assets can all make bridged tokens unbacked; systemic risk compounds because wrapped assets are used as collateral elsewhere.",
+    "misconceptions": "A wrapped token on another chain is not the same asset — it is an IOU backed by the bridge's custody. 'Trustless' bridges still carry smart contract risk, and native (canonical) L2 bridges are far safer than third-party multisig bridges.",
+    "example": "To move ETH to Arbitrum via its native bridge, you deposit ETH into the L1 bridge contract and an equivalent amount is credited on L2; using a third-party multisig bridge instead means trusting that a small validator set will not collude to steal the escrow.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Blockchain bridges",
+        "url": "https://ethereum.org/en/developers/docs/bridges/",
+        "section": "How do bridges work?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

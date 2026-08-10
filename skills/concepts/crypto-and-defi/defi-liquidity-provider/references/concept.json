@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/defi-liquidity-provider",
+  "canonical_sha256": "b79a85a14fa749e208a65b10e8f30d2781e7dfc3433180ab18be38d6057071d4",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/defi-liquidity-provider",
+    "name": "DeFi liquidity provider",
+    "aliases": [
+      "LP",
+      "liquidity provider"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A DeFi liquidity provider (LP) is a user who deposits tokens into an AMM liquidity pool (or lending pool) and in return holds a pro-rata claim on the pool's reserves and the fees those reserves generate.",
+    "intuition": "LPs are the inventory suppliers of on-chain markets: they rent out their tokens to the pool and get paid a cut of every trade — while silently selling winners and buying losers as prices move.",
+    "mechanics": "In Uniswap v2, depositing equal values of two tokens mints ERC-20 LP tokens tracking the provider's pool share, redeemable for reserves plus fees; in v3, LPs choose price ranges and receive NFT positions. LP returns equal trading fees plus incentive rewards minus impermanent loss from price divergence.",
+    "formula": "",
+    "relationships": [
+      "Liquidity pool",
+      "Impermanent loss",
+      "Concentrated liquidity",
+      "Yield farming",
+      "Liquidity mining"
+    ],
+    "failure_modes": "Impermanent loss in trending markets can exceed fee income, leaving LPs worse off than holding; LP positions also inherit smart contract risk, and v3 ranges can drift out-of-range and earn nothing.",
+    "misconceptions": "LP'ing is not risk-free yield — it is a short-volatility position whose PnL = fees + rewards − impermanent loss. High APRs quoted from incentive tokens usually decay as more liquidity joins and token emissions fall.",
+    "example": "An LP supplying $5,000 of ETH and $5,000 of USDC to a 0.3%-fee pool with $1M daily volume and $10M TVL earns roughly 0.3%×$1M×(10k/10M) ≈ $3/day before considering impermanent loss.",
+    "citations": [
+      {
+        "source": "Uniswap docs - How Uniswap works",
+        "url": "https://docs.uniswap.org/contracts/v2/concepts/protocol-overview/how-uniswap-works",
+        "section": "Swaps / constant product formula",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Chainlink - Understanding Impermanent Loss in DeFi Liquidity Pools",
+        "url": "https://chain.link/article/impermanent-loss-defi",
+        "section": "What Is Impermanent Loss?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

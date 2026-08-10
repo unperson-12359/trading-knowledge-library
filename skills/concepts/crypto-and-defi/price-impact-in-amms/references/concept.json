@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/price-impact-in-amms",
+  "canonical_sha256": "a31be3adfb3d7958236cf05a668291c3ad7e3cbeef3e536ebc9336f163a6ea3d",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/price-impact-in-amms",
+    "name": "Price impact in AMMs",
+    "aliases": [
+      "market impact (AMM)"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Price impact is the change in a pool's token price caused by a trader's own swap: under the constant-product rule, larger trades relative to pool depth execute at progressively worse prices, and the impact is deterministic given pool reserves.",
+    "intuition": "It is how much your own order moves the market against you — the bigger the bite you take from the pool, the worse the price of the last bite.",
+    "mechanics": "In a CPMM, output is Δy = y·Δx/(x+Δx), so average execution price worsens as Δx grows relative to reserve x; price impact ≈ Δx/(x+Δx) for small trades, growing quadratically. Unlike slippage (which includes other trades landing first), price impact is caused solely by your own trade and is shown by DEX interfaces before signing.",
+    "formula": "For x·y=k, output Δy = y·Δx / (x + Δx); impact ≈ 1 − (execution price / spot price) = Δx / (x + Δx).",
+    "relationships": [
+      "Constant-product market maker",
+      "Slippage tolerance",
+      "Liquidity pool",
+      "Concentrated liquidity"
+    ],
+    "failure_modes": "In thin pools even modest trades move prices several percent, and a single large swap can be exploited as a temporary oracle price for attacks on dependent protocols; splitting orders reduces but cannot eliminate impact.",
+    "misconceptions": "Price impact is not a fee — it is an execution cost paid through a worse exchange rate, and it is not the same as slippage, which also includes price movement from other actors before your trade confirms.",
+    "example": "A pool holds 10 ETH and 40,000 USDC (spot 4,000). A 10,000 USDC buy (25% of USDC depth) returns 2 ETH at an average 5,000 USDC/ETH — a 25% price impact, versus ~0% impact for a tiny trade.",
+    "citations": [
+      {
+        "source": "Uniswap Support - Price Impact vs. Price Slippage",
+        "url": "https://support.uniswap.org/hc/en-us/articles/8643794102669-Price-Impact-vs-Price-Slippage",
+        "section": "Definitions",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Uniswap docs - How Uniswap works",
+        "url": "https://docs.uniswap.org/contracts/v2/concepts/protocol-overview/how-uniswap-works",
+        "section": "Swaps / constant product formula",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

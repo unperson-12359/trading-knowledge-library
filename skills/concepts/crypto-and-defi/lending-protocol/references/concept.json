@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/lending-protocol",
+  "canonical_sha256": "a5cab684ff599dac78863a995e737071f68a5e2ac737dfe8e04537445b4df431",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/lending-protocol",
+    "name": "Lending protocol",
+    "aliases": [
+      "money market protocol",
+      "DeFi lending"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A lending protocol is a set of smart contracts (e.g. Aave, Compound) that pools supplied assets and lets borrowers draw loans against deposited collateral, with interest rates, collateral requirements and liquidations enforced automatically by code.",
+    "intuition": "It is a pawnshop run by a robot: depositors earn interest, borrowers post more collateral than they take, and the robot seizes and sells the collateral the moment the loan turns unsafe.",
+    "mechanics": "Suppliers deposit assets into pools and receive interest-bearing receipts (e.g. aTokens); borrowers post collateral and borrow up to an asset-specific LTV, paying a utilization-driven interest rate that accrues algorithmically. Oracles price collateral continuously, and when a position's health factor falls below 1, any third party can liquidate it for a bonus.",
+    "formula": "",
+    "relationships": [
+      "Health factor",
+      "Loan-to-value ratio",
+      "Liquidation threshold",
+      "Overcollateralized loan",
+      "Oracle",
+      "Flash loan"
+    ],
+    "failure_modes": "Oracle failure or manipulation can trigger wrongful liquidations or let attackers borrow against worthless collateral; fast crashes can outrun liquidators and leave the protocol with bad debt; smart contract exploits and governance parameter mistakes are systemic risks.",
+    "misconceptions": "DeFi lending is not peer-to-peer matching — lenders face the pool, and borrowers face the protocol, with rates set by utilization curves. Deposit insurance does not exist; 'safe' yields embed smart contract, oracle and liquidation risk.",
+    "example": "A user supplies $10,000 of ETH to Aave (80% liquidation threshold) and borrows $6,000 of a stablecoin; interest accrues to suppliers from the borrower's rate, and if ETH falls enough that the health factor crosses 1, liquidators repay part of the debt and seize discounted ETH.",
+    "citations": [
+      {
+        "source": "Aave docs - Liquidations",
+        "url": "https://aave.com/docs/concepts/liquidations",
+        "section": "Health factor and liquidation mechanics",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Ethereum.org - Decentralized finance (DeFi)",
+        "url": "https://ethereum.org/en/defi/",
+        "section": "What can you do with DeFi?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

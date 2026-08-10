@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/sandwich-attack",
+  "canonical_sha256": "091912d5bd29a242d6c720b37e3544cdd6f99ade4c78e7d401e235405cff77b3",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/sandwich-attack",
+    "name": "Sandwich attack",
+    "aliases": [
+      "sandwiching",
+      "sandwich MEV"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A sandwich attack is an MEV strategy in which an attacker sees a victim's pending DEX trade in the mempool, inserts a buy immediately before it (front-run) and a sell immediately after it (back-run), profiting from the price movement the victim's own trade creates.",
+    "intuition": "A predator spots your big market order in the waiting room, jumps the queue to buy ahead of you, lets your purchase push the price up, then dumps on you — you become their exit liquidity.",
+    "mechanics": "The searcher computes the victim trade's price impact, front-runs with a buy that raises the price, lets the victim's trade execute at a worse rate (bounded only by their slippage tolerance), then back-runs with a sell at the elevated price. The profit comes directly from the victim's worse execution, net of gas and bribes to builders for ordering.",
+    "formula": "",
+    "relationships": [
+      "Maximal extractable value",
+      "Blockchain front-running",
+      "Back-running",
+      "Slippage tolerance",
+      "Mempool"
+    ],
+    "failure_modes": "Sandwiches are not atomic, so the attacker bears inventory risk if the back-run fails or another bot interferes (e.g. 'salmonella' counter-attacks); tight victim slippage settings can make the attack unprofitable.",
+    "misconceptions": "Sandwiching is not hacking the victim's wallet — it exploits the public ordering of otherwise valid transactions. High slippage tolerance is the attacker's margin; private transaction relays mitigate but centralize order flow.",
+    "example": "A user buys 10,000 UNI with DAI on Uniswap with 5% slippage; a bot front-runs a UNI buy, the user's trade executes near the worst allowed price, and the bot's immediate sell extracts the difference — the user receives materially fewer UNI than quoted.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Maximal extractable value (MEV)",
+        "url": "https://ethereum.org/en/developers/docs/mev/",
+        "section": "MEV examples",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

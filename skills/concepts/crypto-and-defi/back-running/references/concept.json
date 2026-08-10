@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/back-running",
+  "canonical_sha256": "9240e950d9164b1783addfefeee21161bada8405af07a180e6afdeafeb1d7ada",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/back-running",
+    "name": "Back-running",
+    "aliases": [
+      "backrunning"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Back-running is an MEV strategy in which a bot places its transaction immediately after a target transaction in the same block, profiting from the state change the target creates — most commonly arbitraging a price dislocation right after a large trade or an oracle update.",
+    "intuition": "Instead of jumping the queue, the bot waits for your transaction to move the market, then cleans up the mispricing you left behind in the very same block.",
+    "mechanics": "Searchers simulate the post-state of pending transactions (e.g. a large DEX swap that unbalances a pool, or a liquidation event) and submit a transaction that must execute directly after — buying the now-cheap asset on one venue and selling on another atomically. Placement is bought via gas bidding or bundle submission to block builders; the second leg of a sandwich attack is a back-run.",
+    "formula": "",
+    "relationships": [
+      "Maximal extractable value",
+      "Blockchain front-running",
+      "Sandwich attack",
+      "Automated market maker",
+      "Mempool"
+    ],
+    "failure_modes": "Competition is so intense that most profit is bid away to validators as gas/bribes (searchers may pay >90% of MEV revenue in fees); failed back-runs still cost gas, and racing bots can make the trade revert.",
+    "misconceptions": "Back-running is not parasitic in all cases — DEX arbitrage back-runs are what keep AMM prices aligned with external markets, a service the ecosystem depends on; the harmful variant is when it extracts value from users (e.g. sandwiches).",
+    "example": "A 1,000 ETH sell on Uniswap pushes ETH's pool price 2% below Binance; a back-running bot buys ETH in the same block right after the sell and offloads it on a centralized exchange, pocketing the spread minus fees.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Maximal extractable value (MEV)",
+        "url": "https://ethereum.org/en/developers/docs/mev/",
+        "section": "MEV examples",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Daian et al., Flash Boys 2.0: Frontrunning, Transaction Reordering, and Consensus Instability in Decentralized Exchanges",
+        "url": "https://arxiv.org/abs/1904.05234",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

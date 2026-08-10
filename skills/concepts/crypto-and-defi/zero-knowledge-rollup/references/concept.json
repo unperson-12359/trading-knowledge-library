@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/zero-knowledge-rollup",
+  "canonical_sha256": "15a7e7800ed17ff5de6d735e12bc92db308a5ae01963a68e95dad16dadb526b9",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/zero-knowledge-rollup",
+    "name": "Zero-knowledge rollup",
+    "aliases": [
+      "ZK-rollup",
+      "zkRollup",
+      "validity rollup"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A zero-knowledge rollup (ZK-rollup) is a layer-2 rollup that executes transactions offchain and submits a succinct cryptographic validity proof (ZK-SNARK or ZK-STARK) to the layer-1 contract, which verifies the proof and finalizes the new state without re-executing the transactions.",
+    "intuition": "Instead of 'trust me, challenge me if I cheat' (optimistic), a ZK-rollup posts mathematical proof that every transaction in the batch was executed correctly — verified on L1 in one step.",
+    "mechanics": "The operator batches transactions, computes new state roots and generates a validity proof attesting that the state transition followed the rules; the L1 verifier contract checks the proof and updates the canonical state root. Because validity is proven up front, withdrawals finalize as soon as the proof is verified, with no challenge period; transaction data is still posted as calldata for reconstructibility.",
+    "formula": "",
+    "relationships": [
+      "Rollup",
+      "Optimistic rollup",
+      "Layer 2",
+      "Transaction finality"
+    ],
+    "failure_modes": "Proof generation is computationally expensive and often centralized, and proving systems with trusted setups (many SNARKs) break if the setup's 'toxic waste' leaks; bugs in the circuit or verifier contract can silently accept invalid state transitions.",
+    "misconceptions": "ZK-rollups do not inherently provide privacy — 'zero-knowledge' here proves correctness of computation, and most ZK-rollups publish full transaction data. They are not automatically EVM-compatible; general-purpose zkEVMs are much harder than simple payment circuits.",
+    "example": "On zkSync Era, a batch of transfers is finalized on Ethereum minutes after the operator submits its validity proof, whereas the same withdrawal on an optimistic rollup would sit in a 7-day challenge window.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Zero-knowledge rollups",
+        "url": "https://ethereum.org/en/developers/docs/scaling/zk-rollups/",
+        "section": "What are zero-knowledge rollups?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

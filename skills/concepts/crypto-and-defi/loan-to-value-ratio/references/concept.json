@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/loan-to-value-ratio",
+  "canonical_sha256": "4efa98ccb930dcb260e6f20bd641b9942c770936cc19dccfa02c2084590d40aa",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/loan-to-value-ratio",
+    "name": "Loan-to-value ratio",
+    "aliases": [
+      "LTV"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Loan-to-value (LTV) is the ratio of the borrowed amount to the value of the collateral securing it; in DeFi lending, each asset's maximum LTV caps how much can be newly borrowed against it.",
+    "intuition": "LTV is the leverage dial on a collateralized loan: 75% LTV means every $100 of collateral backs at most $75 of new borrowing.",
+    "mechanics": "In Aave, a user's maximum borrowing power is Σ(collateral value × asset LTV); opening a borrow that would exceed it reverts. LTV is set per asset by governance below the liquidation threshold, leaving a buffer so borrowers are not instantly liquidatable at max borrow; E-Mode categories raise LTV for correlated pairs (e.g. stablecoins at 97%).",
+    "formula": "LTV = borrow value / collateral value; max borrow = Σ (collateral_i × price_i × LTV_i).",
+    "relationships": [
+      "Collateral factor",
+      "Liquidation threshold",
+      "Health factor",
+      "Lending protocol",
+      "Cross margin"
+    ],
+    "failure_modes": "Borrowing at maximum LTV leaves almost no buffer: a small adverse price move or accrued interest pushes the position to liquidation; LTV does not protect against oracle mispricing of the collateral itself.",
+    "misconceptions": "A higher max LTV is not 'better collateral' in economic terms — it is a risk parameter choice trading capital efficiency against liquidation safety. LTV caps new borrows; the liquidation threshold, a separate higher number, triggers liquidations.",
+    "example": "With $10,000 of ETH collateral at 75% LTV you can borrow up to $7,500; if ETH's liquidation threshold is 80%, your loan becomes liquidatable only once debt exceeds $8,000 (through price drops or interest).",
+    "citations": [
+      {
+        "source": "Frangella & Herskind, Aave V3 Technical Paper (2022)",
+        "url": "https://resources.cryptocompare.com/asset-management/9/1682584843504.pdf",
+        "section": "Section 3-4: risk parameters (LTV, liquidation threshold, liquidation bonus)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Aave docs - Liquidations",
+        "url": "https://aave.com/docs/concepts/liquidations",
+        "section": "Health factor and liquidation mechanics",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

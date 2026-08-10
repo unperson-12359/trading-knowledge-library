@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/automated-market-maker",
+  "canonical_sha256": "606579699ea3ed83c9a7a44a17780bd675312fdbf10a4bc6a205b147824edc71",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/automated-market-maker",
+    "name": "Automated market maker",
+    "aliases": [
+      "AMM",
+      "constant function market maker",
+      "CFMM"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "An automated market maker (AMM) is a decentralized exchange design that replaces the order book with smart-contract liquidity pools: traders swap against pooled reserves and prices are set algorithmically by a pricing function of those reserves.",
+    "intuition": "Instead of matching your buy order with someone's sell order, the AMM is a robot counterparty that always quotes a price from the contents of its vault.",
+    "mechanics": "Liquidity providers deposit token pairs into a pool contract; each swap trades against the reserves and moves the price according to the pool's invariant (e.g. the constant-product rule x·y=k in Uniswap v2). Arbitrageurs align pool prices with external markets, and LPs earn a fee on each swap proportional to their share of the pool.",
+    "formula": "",
+    "relationships": [
+      "Constant-product market maker",
+      "Liquidity pool",
+      "DeFi liquidity provider",
+      "Decentralized exchange",
+      "Impermanent loss"
+    ],
+    "failure_modes": "AMM prices only track external markets through arbitrage, so thin or manipulated pools can trade far from fair value; LPs bear impermanent loss and toxic-flow losses that can exceed fee income.",
+    "misconceptions": "AMMs do not 'discover' prices independently — they follow prices set elsewhere via arbitrage. Providing liquidity is not passive yield; it is an active short-volatility position.",
+    "example": "In a Uniswap ETH/USDC pool, a trader buying ETH with USDC adds USDC to the pool and removes ETH, automatically raising the pool's ETH price; an arbitrageur then sells ETH back into the pool until its price matches centralized exchanges.",
+    "citations": [
+      {
+        "source": "Uniswap docs - How Uniswap works",
+        "url": "https://docs.uniswap.org/contracts/v2/concepts/protocol-overview/how-uniswap-works",
+        "section": "Swaps / constant product formula",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
