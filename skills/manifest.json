@@ -2,7 +2,7 @@
   "$schema": "../schemas/skill-manifest.schema.json",
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 240,
+  "completed_count": 260,
   "skills": [
     {
       "$schema": "../../../../schemas/concept-skill.schema.json",
@@ -19365,6 +19365,1672 @@
         "orders-and-execution/market-impact",
         "orders-and-execution/temporary-market-impact",
         "orders-and-execution/opportunity-cost"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-arrival-price-algorithm",
+      "concept_id": "orders-and-execution/arrival-price-algorithm",
+      "display_name": "Arrival price algorithm",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Arrival price algorithm using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Arrival price algorithm",
+        "arrival price algo",
+        "strike price algo",
+        "explain Arrival price algorithm",
+        "apply Arrival price algorithm to a trading question",
+        "common misconception about Arrival price algorithm"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/arrival-price-algorithm",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "d291a332cac840b7eb13b3e93ccde7b70cc66751bed7b66bfd76ddc5852844de"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/implementation-shortfall-algorithm",
+        "orders-and-execution/implementation-shortfall",
+        "orders-and-execution/delay-cost",
+        "orders-and-execution/market-impact",
+        "orders-and-execution/iceberg-order"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-liquidity-seeking-algorithm",
+      "concept_id": "orders-and-execution/liquidity-seeking-algorithm",
+      "display_name": "Liquidity-seeking algorithm",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Liquidity-seeking algorithm using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Liquidity-seeking algorithm",
+        "liquidity-seeking algo",
+        "liquidity aggregation algo",
+        "seeker",
+        "explain Liquidity-seeking algorithm",
+        "apply Liquidity-seeking algorithm to a trading question",
+        "common misconception about Liquidity-seeking algorithm"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/liquidity-seeking-algorithm",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "91ff6e3be533a246c1a7d233660f21f0f41f8f8f4a2747c4cec6a3fa2ff022eb"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/smart-order-routing",
+        "orders-and-execution/iceberg-order",
+        "orders-and-execution/sweep-order",
+        "orders-and-execution/hidden-order",
+        "orders-and-execution/pov-order"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-sweep-order",
+      "concept_id": "orders-and-execution/sweep-order",
+      "display_name": "Sweep order",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Sweep order using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Sweep order",
+        "sweep",
+        "book sweep",
+        "sweep-to-fill",
+        "explain Sweep order",
+        "apply Sweep order to a trading question",
+        "common misconception about Sweep order"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/sweep-order",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "2c8c0f137e5861aae8e3678975535f4eff4064d65478b10a1fe0b7ee21a36796"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/intermarket-sweep-order",
+        "orders-and-execution/immediate-or-cancel-order",
+        "orders-and-execution/smart-order-routing",
+        "orders-and-execution/market-impact",
+        "orders-and-execution/market-order"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-intermarket-sweep-order",
+      "concept_id": "orders-and-execution/intermarket-sweep-order",
+      "display_name": "Intermarket sweep order",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Intermarket sweep order using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Intermarket sweep order",
+        "ISO",
+        "explain Intermarket sweep order",
+        "apply Intermarket sweep order to a trading question",
+        "common misconception about Intermarket sweep order"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/intermarket-sweep-order",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "3b32c4a943b20c6e8e2178271faf4521169b037f61ad460d88f6beb51145b6ca"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/sweep-order",
+        "orders-and-execution/smart-order-routing",
+        "orders-and-execution/immediate-or-cancel-order",
+        "orders-and-execution/order-routing",
+        "orders-and-execution/slippage"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-partial-fill",
+      "concept_id": "orders-and-execution/partial-fill",
+      "display_name": "Partial fill",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Partial fill using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Partial fill",
+        "partial execution",
+        "explain Partial fill",
+        "apply Partial fill to a trading question",
+        "common misconception about Partial fill"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/partial-fill",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "cf80408b94a2963394cee8ed8500e8d9a544f6b3b2818681e320629ee3a944ee"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/full-fill",
+        "orders-and-execution/immediate-or-cancel-order",
+        "orders-and-execution/fill-or-kill-order",
+        "orders-and-execution/execution-report",
+        "orders-and-execution/average-execution-price"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-full-fill",
+      "concept_id": "orders-and-execution/full-fill",
+      "display_name": "Full fill",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Full fill using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Full fill",
+        "complete fill",
+        "filled order",
+        "explain Full fill",
+        "apply Full fill to a trading question",
+        "common misconception about Full fill"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/full-fill",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "bc749105ea6104e578a6c112c977616c0b6016b965508dd2934629f69e141826"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/partial-fill",
+        "orders-and-execution/execution-report",
+        "orders-and-execution/average-execution-price",
+        "orders-and-execution/order-cancellation"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-order-cancellation",
+      "concept_id": "orders-and-execution/order-cancellation",
+      "display_name": "Order cancellation",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Order cancellation using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Order cancellation",
+        "cancel",
+        "order cancel request",
+        "explain Order cancellation",
+        "apply Order cancellation to a trading question",
+        "common misconception about Order cancellation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/order-cancellation",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "6927c34e513cb326249260e8109ef75fab732fd37193fbc5a2bfafab31267629"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/order-modification",
+        "orders-and-execution/order-acknowledgment",
+        "orders-and-execution/execution-report",
+        "orders-and-execution/full-fill",
+        "orders-and-execution/day-order"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-order-modification",
+      "concept_id": "orders-and-execution/order-modification",
+      "display_name": "Order modification",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Order modification using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Order modification",
+        "order amend",
+        "cancel/replace",
+        "order replace",
+        "explain Order modification",
+        "apply Order modification to a trading question",
+        "common misconception about Order modification"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/order-modification",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "242a29070bf2cc0a8a8b9f661efd1950476e50704da5d6119f1e335cac37709e"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/order-cancellation",
+        "orders-and-execution/order-acknowledgment",
+        "orders-and-execution/order-rejection",
+        "orders-and-execution/execution-report",
+        "orders-and-execution/limit-order"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-order-rejection",
+      "concept_id": "orders-and-execution/order-rejection",
+      "display_name": "Order rejection",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Order rejection using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Order rejection",
+        "reject",
+        "rejected order",
+        "explain Order rejection",
+        "apply Order rejection to a trading question",
+        "common misconception about Order rejection"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/order-rejection",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "2a5cedd44da81cf52fcee57d5a9fabe544b35fd52bca717408cc276b7ac6eb1c"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/order-acknowledgment",
+        "orders-and-execution/order-cancellation",
+        "orders-and-execution/execution-report",
+        "orders-and-execution/order-modification"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-order-acknowledgment",
+      "concept_id": "orders-and-execution/order-acknowledgment",
+      "display_name": "Order acknowledgment",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Order acknowledgment using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Order acknowledgment",
+        "order ack",
+        "order confirmation",
+        "explain Order acknowledgment",
+        "apply Order acknowledgment to a trading question",
+        "common misconception about Order acknowledgment"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/order-acknowledgment",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "8848fa7d5fc10d2670c00c1e860a4d61b2ea502f858e39ab5df3ea272570ed34"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/order-rejection",
+        "orders-and-execution/execution-report",
+        "orders-and-execution/order-modification",
+        "orders-and-execution/order-cancellation"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-execution-report",
+      "concept_id": "orders-and-execution/execution-report",
+      "display_name": "Execution report",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Execution report using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Execution report",
+        "fill report",
+        "drop copy",
+        "FIX Execution Report",
+        "explain Execution report",
+        "apply Execution report to a trading question",
+        "common misconception about Execution report"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/execution-report",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "4a589791043f0e80ed34853627e20a95534fd5d7dbc40ab1f5b278899a4b0ef5"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/order-acknowledgment",
+        "orders-and-execution/partial-fill",
+        "orders-and-execution/full-fill",
+        "orders-and-execution/order-rejection",
+        "orders-and-execution/order-cancellation",
+        "orders-and-execution/average-execution-price"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-average-execution-price",
+      "concept_id": "orders-and-execution/average-execution-price",
+      "display_name": "Average execution price",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Average execution price using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Average execution price",
+        "average fill price",
+        "AvgPx",
+        "explain Average execution price",
+        "apply Average execution price to a trading question",
+        "common misconception about Average execution price"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/average-execution-price",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "ec0c1f5314448696289574764eee23dfedd989c9ef89de69b7865c99b22348f1"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/partial-fill",
+        "orders-and-execution/full-fill",
+        "orders-and-execution/execution-report",
+        "orders-and-execution/slippage",
+        "orders-and-execution/vwap-order",
+        "orders-and-execution/implementation-shortfall"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-positive-slippage",
+      "concept_id": "orders-and-execution/positive-slippage",
+      "display_name": "Positive slippage",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Positive slippage using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Positive slippage",
+        "price improvement (fill better than benchmark)",
+        "favorable slippage",
+        "explain Positive slippage",
+        "apply Positive slippage to a trading question",
+        "common misconception about Positive slippage"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/positive-slippage",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "05e4aa7470fe8b6a9bd04fcc96f8905dd4ccd8cb5e534e650be2ed34f89ecefb"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/slippage",
+        "orders-and-execution/negative-slippage",
+        "orders-and-execution/price-improvement",
+        "orders-and-execution/average-execution-price",
+        "orders-and-execution/midpoint-peg-order"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-negative-slippage",
+      "concept_id": "orders-and-execution/negative-slippage",
+      "display_name": "Negative slippage",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Negative slippage using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Negative slippage",
+        "adverse slippage",
+        "execution shortfall vs. benchmark",
+        "explain Negative slippage",
+        "apply Negative slippage to a trading question",
+        "common misconception about Negative slippage"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/negative-slippage",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "91940219610e31b47336c2c580f11515ae15c1ad109475d6f5ac6156ce539a72"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/slippage",
+        "orders-and-execution/positive-slippage",
+        "orders-and-execution/market-impact",
+        "orders-and-execution/delay-cost",
+        "orders-and-execution/average-execution-price"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-temporary-market-impact",
+      "concept_id": "orders-and-execution/temporary-market-impact",
+      "display_name": "Temporary market impact",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Temporary market impact using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Temporary market impact",
+        "temporary impact",
+        "transient impact",
+        "explain Temporary market impact",
+        "apply Temporary market impact to a trading question",
+        "common misconception about Temporary market impact"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/temporary-market-impact",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "160c854831d2214a52d8c4d433706ed26929a8dbb9a65c49876a6a073b22eab8"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/market-impact",
+        "orders-and-execution/permanent-market-impact",
+        "orders-and-execution/slippage",
+        "orders-and-execution/implementation-shortfall",
+        "orders-and-execution/sweep-order"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-permanent-market-impact",
+      "concept_id": "orders-and-execution/permanent-market-impact",
+      "display_name": "Permanent market impact",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Permanent market impact using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Permanent market impact",
+        "permanent impact",
+        "informational impact",
+        "explain Permanent market impact",
+        "apply Permanent market impact to a trading question",
+        "common misconception about Permanent market impact"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/permanent-market-impact",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "ab2c090eafbe8e4ecfbe33ee02532426224199c6f53f3db06c685863c16c5c2b"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/market-impact",
+        "orders-and-execution/temporary-market-impact",
+        "orders-and-execution/implementation-shortfall",
+        "orders-and-execution/iceberg-order"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-implementation-shortfall",
+      "concept_id": "orders-and-execution/implementation-shortfall",
+      "display_name": "Implementation shortfall",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Implementation shortfall using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Implementation shortfall",
+        "IS",
+        "paper vs. reality cost",
+        "explain Implementation shortfall",
+        "apply Implementation shortfall to a trading question",
+        "common misconception about Implementation shortfall"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/implementation-shortfall",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "622c080f47298e02c7cbdecdf341eb5538d3cb34f22645e2683cdd08f5f273dd"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/implementation-shortfall-algorithm",
+        "orders-and-execution/arrival-price-algorithm",
+        "orders-and-execution/delay-cost",
+        "orders-and-execution/opportunity-cost",
+        "orders-and-execution/explicit-transaction-cost",
+        "orders-and-execution/implicit-transaction-cost",
+        "orders-and-execution/market-impact",
+        "orders-and-execution/slippage"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-explicit-transaction-cost",
+      "concept_id": "orders-and-execution/explicit-transaction-cost",
+      "display_name": "Explicit transaction cost",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Explicit transaction cost using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Explicit transaction cost",
+        "explicit cost",
+        "direct trading cost",
+        "explain Explicit transaction cost",
+        "apply Explicit transaction cost to a trading question",
+        "common misconception about Explicit transaction cost"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/explicit-transaction-cost",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "8e457a1005816ba9d2891866c7f162577deb830dcad15054e9621a55ba8f87ad"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/implicit-transaction-cost",
+        "orders-and-execution/commission",
+        "orders-and-execution/exchange-fee",
+        "orders-and-execution/clearing-fee",
+        "orders-and-execution/maker-fee",
+        "orders-and-execution/taker-fee",
+        "orders-and-execution/implementation-shortfall"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-implicit-transaction-cost",
+      "concept_id": "orders-and-execution/implicit-transaction-cost",
+      "display_name": "Implicit transaction cost",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Implicit transaction cost using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Implicit transaction cost",
+        "implicit cost",
+        "indirect trading cost",
+        "explain Implicit transaction cost",
+        "apply Implicit transaction cost to a trading question",
+        "common misconception about Implicit transaction cost"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/implicit-transaction-cost",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "a1abf630882ceb3eadf4b5f4674d93758049ab0f18bd5f78eb2e6bb61ab2cd3d"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/explicit-transaction-cost",
+        "orders-and-execution/implementation-shortfall",
+        "orders-and-execution/market-impact",
+        "orders-and-execution/delay-cost",
+        "orders-and-execution/opportunity-cost",
+        "orders-and-execution/slippage"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-opportunity-cost",
+      "concept_id": "orders-and-execution/opportunity-cost",
+      "display_name": "Opportunity cost",
+      "domain": "Orders and execution",
+      "description": "Explain, compare, or apply Opportunity cost using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Opportunity cost",
+        "missed trade cost",
+        "non-execution cost",
+        "explain Opportunity cost",
+        "apply Opportunity cost to a trading question",
+        "common misconception about Opportunity cost"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints",
+          "order type",
+          "spread and liquidity conditions"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 13,
+      "package_path": "skills/concepts/orders-and-execution/opportunity-cost",
+      "canonical": {
+        "source_path": "concepts/orders-and-execution.json",
+        "sha256": "9a00d6e66db2f35ab4137bf2066e2bd27dc19d84a00ca7c812ddc0efbb5cbec9"
+      },
+      "related_concept_ids": [
+        "orders-and-execution/implementation-shortfall",
+        "orders-and-execution/delay-cost",
+        "orders-and-execution/implicit-transaction-cost",
+        "orders-and-execution/limit-order",
+        "orders-and-execution/implementation-shortfall-algorithm"
       ]
     }
   ]

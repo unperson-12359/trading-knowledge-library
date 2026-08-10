@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/full-fill",
+  "canonical_sha256": "bc749105ea6104e578a6c112c977616c0b6016b965508dd2934629f69e141826",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/full-fill",
+    "name": "Full fill",
+    "aliases": [
+      "complete fill",
+      "filled order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An execution (or series of executions) that completes the entire quantity of an order, leaving nothing open. Once fully filled, the order is terminal - it can no longer be canceled or modified.",
+    "intuition": "The order got every share it asked for; nothing remains in the market.",
+    "mechanics": "The venue reports a final execution bringing cumulative quantity to the full order quantity; in FIX this is OrdStatus = Filled ('order completely filled, no remaining quantity') with LeavesQty = 0. A full fill may result from one execution or the accumulation of many partial fills.",
+    "formula": "Full fill condition: CumQty = OrderQty and LeavesQty = 0.",
+    "relationships": [
+      "Partial fill",
+      "Execution report",
+      "Average execution price",
+      "Order cancellation"
+    ],
+    "failure_modes": "A full fill at a stale price can itself be the failure - e.g., a resting order that completes only because the market blew through its level (adverse selection in disguise). Confirmed full fills also cannot be unwound except by error-correction procedures.",
+    "misconceptions": "Full fill says nothing about price quality - an order can be completely filled at several progressively worse prices. And 'filled' does not mean settled; clearing and settlement follow execution.",
+    "example": "Your 5,000-share buy at $30 executes in three partials of 2,000, 2,000, and 1,000; the last report shows CumQty 5,000, LeavesQty 0, OrdStatus Filled.",
+    "citations": [
+      {
+        "source": "FIX 4.2 Execution Report (MsgType 8), FIX Dictionary (Onix Solutions)",
+        "url": "https://www.onixs.biz/fix-dictionary/4.2/msgType_8_8.html",
+        "section": "OrdStatus = Filled; CumQty/LeavesQty semantics",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

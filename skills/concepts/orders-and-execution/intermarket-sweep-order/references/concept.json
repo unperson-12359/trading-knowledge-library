@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/intermarket-sweep-order",
+  "canonical_sha256": "3b32c4a943b20c6e8e2178271faf4521169b037f61ad460d88f6beb51145b6ca",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/intermarket-sweep-order",
+    "name": "Intermarket sweep order",
+    "aliases": [
+      "ISO"
+    ],
+    "domain": "Orders and execution",
+    "definition": "A limit order for an NMS stock that is marked 'intermarket sweep order' and routed to a trading center while, simultaneously, additional orders are routed to execute against the full displayed size of every protected quotation priced better than the ISO's limit. Marking an order ISO exempts the receiving venue from Reg NMS trade-through protection for that execution.",
+    "intuition": "ISO is the regulatory way to say 'I have already cleared every better-priced quote elsewhere - so you may execute mine even if another venue shows a better price.'",
+    "mechanics": "The sender (usually a smart order router) fires IOC limit orders at all protected quotes superior to the ISO price at the same instant the ISO is routed; venues may then execute the ISO without checking those away quotes. Regulation NMS defines the term and Rule 611 provides the trade-through exception conditioned on this simultaneous sweeping.",
+    "formula": "",
+    "relationships": [
+      "Sweep order",
+      "Smart order routing",
+      "Immediate-or-cancel order",
+      "Order routing",
+      "Slippage"
+    ],
+    "failure_modes": "The sweep is only as good as its market data: if a protected quote updates between snapshot and routing, the 'simultaneous' clear is incomplete and executions can occur at prices that would otherwise be trade-throughs. ISO usage also shifts responsibility for best price to the sender.",
+    "misconceptions": "An ISO is not a license to trade through quotes at will - the sender must genuinely route against the full displayed size of better-priced protected quotes. It is also a routing designation on a limit order, not a speed guarantee.",
+    "example": "Exchange A shows a protected offer of 500 at $10.00; your router sends a 500-share ISO buy there and simultaneously a 1,000-share ISO buy at $10.01 to Exchange B, allowing B to execute immediately despite A's lower quote.",
+    "citations": [
+      {
+        "source": "Regulation NMS, 17 CFR 242.600 (Cornell LII)",
+        "url": "https://www.law.cornell.edu/cfr/text/17/242.600",
+        "section": "(b)(47) Intermarket sweep order",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

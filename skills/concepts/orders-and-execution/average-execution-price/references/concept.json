@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/average-execution-price",
+  "canonical_sha256": "ec0c1f5314448696289574764eee23dfedd989c9ef89de69b7865c99b22348f1",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/average-execution-price",
+    "name": "Average execution price",
+    "aliases": [
+      "average fill price",
+      "AvgPx"
+    ],
+    "domain": "Orders and execution",
+    "definition": "The quantity-weighted average price at which an order's fills executed: total value traded divided by total quantity filled for that order. It is the price actually achieved across what may be many partial executions at different levels.",
+    "intuition": "If your 1,000 shares came in five pieces at five prices, the average execution price is the single number that correctly prices the whole position.",
+    "mechanics": "The venue accumulates price-times-quantity across all fills of the order chain and reports it as a running field (FIX AvgPx, tag 6) that updates with each partial fill; for multi-day good-till orders it spans all days' executions. Slippage and transaction-cost metrics are computed against this average.",
+    "formula": "AvgPx = sum(fill price_i x fill qty_i) / sum(fill qty_i) = CumValue / CumQty.",
+    "relationships": [
+      "Partial fill",
+      "Full fill",
+      "Execution report",
+      "Slippage",
+      "VWAP order",
+      "Implementation shortfall"
+    ],
+    "failure_modes": "Averaging hides the distribution: two orders with the same AvgPx can have very different market-impact profiles. Booking systems that mix up per-day and cumulative averages on multi-day orders produce wrong cost basis.",
+    "misconceptions": "Average execution price is not the market VWAP - it is weighted by your own fills only, over your order's lifetime. Nor is it necessarily the price of any single actual print.",
+    "example": "You buy 400 shares at $25.00 and 600 at $25.10; the average execution price is (400x25.00 + 600x25.10)/1,000 = $25.06.",
+    "citations": [
+      {
+        "source": "FIX 4.2 Execution Report (MsgType 8), FIX Dictionary (Onix Solutions)",
+        "url": "https://www.onixs.biz/fix-dictionary/4.2/msgType_8_8.html",
+        "section": "AvgPx <6>, CumQty <14> fields",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/positive-slippage",
+  "canonical_sha256": "05e4aa7470fe8b6a9bd04fcc96f8905dd4ccd8cb5e534e650be2ed34f89ecefb",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/positive-slippage",
+    "name": "Positive slippage",
+    "aliases": [
+      "price improvement (fill better than benchmark)",
+      "favorable slippage"
+    ],
+    "domain": "Orders and execution",
+    "definition": "Slippage in the trader's favor: the actual execution price is better than the expected or benchmark price - a buy filled lower, or a sell filled higher, than the reference. Measured against the NBBO it is what regulators call execution with price improvement.",
+    "intuition": "You expected to pay $10.00 and got filled at $9.99 - the market slipped in your direction.",
+    "mechanics": "Positive slippage arises when liquidity is available inside the quoted spread (midpoint or hidden interest), when prices move favorably between order decision and execution, or when wholesalers improve on the public quote for retail flow. Reg NMS execution-quality statistics record executions 'with price improvement' relative to the NBBO.",
+    "formula": "For a buy: positive slippage = benchmark price - execution price ( > 0 means better). For a sell: execution price - benchmark price.",
+    "relationships": [
+      "Slippage",
+      "Negative slippage",
+      "Price improvement",
+      "Average execution price",
+      "Midpoint peg order"
+    ],
+    "failure_modes": "Averaged positive slippage can mask toxic fills: brokers report improvement relative to NBBO even when the price moved adversely after order receipt. It is also systematically rarer for large informed orders than for small retail ones.",
+    "misconceptions": "Positive slippage is not 'free money' from the broker - it usually reflects midpoint/hidden liquidity or timing luck, and quoted improvement statistics depend on the benchmark chosen. Slippage is not always negative by definition; the sign is empirical.",
+    "example": "Your market buy arrives with the NBO at $20.00 but a hidden midpoint order fills you at $19.98 - two cents per share of positive slippage (price improvement).",
+    "citations": [
+      {
+        "source": "Regulation NMS, 17 CFR 242.600 (Cornell LII)",
+        "url": "https://www.law.cornell.edu/cfr/text/17/242.600",
+        "section": "(b)(45) Executed with price improvement",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia: Implementation shortfall",
+        "url": "https://en.wikipedia.org/wiki/Implementation_shortfall",
+        "section": "Slippage (execution vs. decision price)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

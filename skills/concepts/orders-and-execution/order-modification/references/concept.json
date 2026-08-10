@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/order-modification",
+  "canonical_sha256": "242a29070bf2cc0a8a8b9f661efd1950476e50704da5d6119f1e335cac37709e",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/order-modification",
+    "name": "Order modification",
+    "aliases": [
+      "order amend",
+      "cancel/replace",
+      "order replace"
+    ],
+    "domain": "Orders and execution",
+    "definition": "A change to the terms of a live order - price, quantity, or other parameters - effected as a cancel/replace request that the venue treats as an amendment to the existing order. Most venues re-queue the order (loss of time priority) when price changes or quantity increases, but preserve priority for quantity decreases.",
+    "intuition": "Modifying is editing a live order in place - but the market treats a better price or bigger size as if you just arrived at the back of the line.",
+    "mechanics": "The client sends a cancel/replace (Cboe Modify Order) referencing the order's current ClOrdID; the venue confirms via Pending Replace then Replaced states. Cboe's rules are typical: price, side, quantity, stop price, display quantity, and order type may be adjusted, and time priority is lost unless the change only reduces quantity or adjusts non-price fields.",
+    "formula": "",
+    "relationships": [
+      "Order cancellation",
+      "Order acknowledgment",
+      "Order rejection",
+      "Execution report",
+      "Limit order"
+    ],
+    "failure_modes": "Modify requests that cross in flight with executions can yield unexpected positions - exchanges therefore apply quantity deltas to the remaining size rather than blindly replacing it. Losing queue priority on reprice can also mean the order never fills where the original would have.",
+    "misconceptions": "A modification is not guaranteed to keep the order's place in the queue - raising quantity or changing price typically moves it to the back. Nor is a modify request effective on submission; only the venue's Replace confirmation makes it so.",
+    "example": "You improve a resting bid from $24.50 to $24.60; the venue cancels the $24.50 order and replaces it at $24.60 with new time priority behind everyone already bidding $24.60.",
+    "citations": [
+      {
+        "source": "Cboe Titanium U.S. Equities BOE Specification",
+        "url": "https://www.cboe.com/document/tech-spec/document/technical-specifications/cboe-titanium-u.s.-equities-boe-specification",
+        "section": "Modify Order message (priority rules, quantity delta handling)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "FIX 4.2 Execution Report (MsgType 8), FIX Dictionary (Onix Solutions)",
+        "url": "https://www.onixs.biz/fix-dictionary/4.2/msgType_8_8.html",
+        "section": "Pending Replace / Replaced states (cancel-replace)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

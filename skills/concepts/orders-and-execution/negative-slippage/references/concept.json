@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/negative-slippage",
+  "canonical_sha256": "91940219610e31b47336c2c580f11515ae15c1ad109475d6f5ac6156ce539a72",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/negative-slippage",
+    "name": "Negative slippage",
+    "aliases": [
+      "adverse slippage",
+      "execution shortfall vs. benchmark"
+    ],
+    "domain": "Orders and execution",
+    "definition": "Slippage against the trader: the actual execution price is worse than the expected or benchmark price - a buy filled higher, or a sell filled lower, than the reference. It is the everyday cost of immediacy, thin liquidity, and adverse price movement during execution.",
+    "intuition": "You expected $10.00 and paid $10.03 - the three cents is negative slippage, the gap between the price you saw and the price you got.",
+    "mechanics": "Negative slippage arises from spread crossing, walking the book beyond top level (market impact), quote movement between decision and fill (delay), and gaps through stop prices. The SEC's order-types guidance warns that in fast markets a market order's execution price often deviates from the last-traded price or real-time quote.",
+    "formula": "For a buy: negative slippage = execution price - benchmark price ( > 0 means worse). For a sell: benchmark price - execution price.",
+    "relationships": [
+      "Slippage",
+      "Positive slippage",
+      "Market impact",
+      "Stop order",
+      "Delay cost",
+      "Average execution price"
+    ],
+    "failure_modes": "It compounds with size and urgency: sweeping multiple levels or trading in halted-reopening and gapping markets produces the worst deviations, and stop orders convert slippage into realized losses by design (trigger then market fill).",
+    "misconceptions": "Negative slippage is not necessarily broker malpractice - most of it is mechanical (spread, depth, volatility). Backtests that assume fills at the signal price systematically ignore it and overstate returns.",
+    "example": "You send a market order to buy 10,000 shares quoted at $30.00; the book is thin and the order sweeps to $30.08, giving an average fill of $30.04 - four cents of negative slippage.",
+    "citations": [
+      {
+        "source": "SEC Investor Bulletin: Understanding Order Types",
+        "url": "https://www.sec.gov/resources-for-investors/investor-alerts-bulletins/ib_ordertypes",
+        "section": "Market Order - execution price not guaranteed in fast-moving markets",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia: Implementation shortfall",
+        "url": "https://en.wikipedia.org/wiki/Implementation_shortfall",
+        "section": "Slippage (execution vs. decision price)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

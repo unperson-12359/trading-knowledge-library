@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/execution-report",
+  "canonical_sha256": "4a589791043f0e80ed34853627e20a95534fd5d7dbc40ab1f5b278899a4b0ef5",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/execution-report",
+    "name": "Execution report",
+    "aliases": [
+      "fill report",
+      "drop copy",
+      "FIX Execution Report"
+    ],
+    "domain": "Orders and execution",
+    "definition": "The standard electronic message by which a broker or exchange communicates everything that happens to an order: acknowledgment of receipt, status changes, partial and full fills, cancellations, replacements, and rejections. In the FIX protocol it is the Execution Report message (MsgType = 8).",
+    "intuition": "It is the order's paper trail in real time - every event in an order's life shows up as an execution report.",
+    "mechanics": "Each report carries three state fields - OrdStatus (current state of the order), ExecType (what this message is reporting), and the transaction type - plus cumulative quantity, remaining quantity (LeavesQty), and average price (AvgPx) for the whole order chain. Reports are sent per fill and per state change and do not replace the end-of-day confirm.",
+    "formula": "",
+    "relationships": [
+      "Order acknowledgment",
+      "Partial fill",
+      "Full fill",
+      "Order rejection",
+      "Order cancellation",
+      "Average execution price"
+    ],
+    "failure_modes": "Dropped or reordered reports (sequence gaps, disconnects) leave the buy side with a wrong picture of position and open quantity, which is why session replay and end-of-day reconciliation exist. Execution reports are also point-in-time: relying on them without the final confirm invites booking errors.",
+    "misconceptions": "An execution report is not only a fill notice - it is also how acks, cancels, and rejects are delivered. And per FIX convention it does not replace the end-of-day trade confirmation.",
+    "example": "Your 1,000-share order generates three execution reports: New (ack), Partially Filled 400, and Filled with AvgPx 25.02 - together they fully reconstruct the order's life.",
+    "citations": [
+      {
+        "source": "FIX 4.2 Execution Report (MsgType 8), FIX Dictionary (Onix Solutions)",
+        "url": "https://www.onixs.biz/fix-dictionary/4.2/msgType_8_8.html",
+        "section": "Message description; OrdStatus/ExecType/ExecTransType",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

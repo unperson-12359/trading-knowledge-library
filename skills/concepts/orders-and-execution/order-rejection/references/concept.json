@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/order-rejection",
+  "canonical_sha256": "2a5cedd44da81cf52fcee57d5a9fabe544b35fd52bca717408cc276b7ac6eb1c",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/order-rejection",
+    "name": "Order rejection",
+    "aliases": [
+      "reject",
+      "rejected order"
+    ],
+    "domain": "Orders and execution",
+    "definition": "The refusal of an order by the broker, exchange, or counterparty before or after acceptance, so that the order never becomes (or ceases to be) executable. Rejections carry a reason - invalid parameters, risk limits, insufficient margin, closed market, or duplicate identifiers.",
+    "intuition": "A rejection is the market saying 'no' at the door: nothing was executed and nothing rests - you must fix the problem and resubmit.",
+    "mechanics": "The venue returns a reject message with a reason code (in FIX, an Execution Report with ExecType/OrdStatus = Rejected plus an OrdRejReason field; Cboe rejects for duplicates, orders outside trading hours, or stale NBBO conditions). An order can even be rejected after an earlier acknowledgment - status can pass from New to Rejected.",
+    "formula": "",
+    "relationships": [
+      "Order acknowledgment",
+      "Order cancellation",
+      "Execution report",
+      "Order modification"
+    ],
+    "failure_modes": "Silent or mis-parsed rejects leave strategies believing they have live orders when they do not - a classic cause of unhedged exposure in automated systems. Rejection cascades during volatility (risk limits tripping) can also block risk-reducing orders.",
+    "misconceptions": "A rejection is not a partial fill or a failed execution - no quantity traded. And an acknowledgment does not immunize an order from later rejection (e.g., on regulatory or risk grounds).",
+    "example": "You resend an order reusing a live ClOrdID; the exchange rejects it as a duplicate, and your system must generate a fresh identifier before the order can enter the book.",
+    "citations": [
+      {
+        "source": "FIX 4.2 Execution Report (MsgType 8), FIX Dictionary (Onix Solutions)",
+        "url": "https://www.onixs.biz/fix-dictionary/4.2/msgType_8_8.html",
+        "section": "OrdStatus = Rejected; OrdRejReason <103>",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Cboe Titanium U.S. Equities BOE Specification",
+        "url": "https://www.cboe.com/document/tech-spec/document/technical-specifications/cboe-titanium-u.s.-equities-boe-specification",
+        "section": "Order rejection conditions (duplicate ClOrdID, hours, stale NBBO)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

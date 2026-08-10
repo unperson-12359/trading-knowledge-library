@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/temporary-market-impact",
+  "canonical_sha256": "160c854831d2214a52d8c4d433706ed26929a8dbb9a65c49876a6a073b22eab8",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/temporary-market-impact",
+    "name": "Temporary market impact",
+    "aliases": [
+      "temporary impact",
+      "transient impact"
+    ],
+    "domain": "Orders and execution",
+    "definition": "The component of market impact that reflects the immediate liquidity cost of demanding execution: the price concession needed to find counterparties right now, which dissipates as the order book replenishes after the trade. It scales with execution rate and consumed depth rather than with information.",
+    "intuition": "Push the book and it springs back: the extra cents you pay to get filled instantly mostly fade once you stop trading.",
+    "mechanics": "Each aggressive child order walks available levels; once the order stops, new limit orders refill the book and prices revert toward the pre-trade level over minutes to hours. Optimal-execution models (Almgren-Chriss family) treat temporary impact as an instantaneous cost function of trading speed.",
+    "formula": "Common model: temporary impact cost per unit time = eta x (trading rate), i.e., proportional to participation rate; total temporary cost grows with the square of speed for linear price response.",
+    "relationships": [
+      "Market impact",
+      "Permanent market impact",
+      "Slippage",
+      "Implementation shortfall",
+      "Sweep order"
+    ],
+    "failure_modes": "The reversion assumption fails in one-way markets - what looked temporary becomes permanent when everyone trades the same direction. Estimates calibrated in calm periods also badly understate temporary impact during liquidity withdrawals.",
+    "misconceptions": "Temporary does not mean costless: even if the price reverts afterward, your fills happened at the impacted prices. Nor is the split between temporary and permanent impact observable directly - it is a modeling decomposition.",
+    "example": "A rapid 500,000-share buy pushes the price from $40.00 to $40.15; an hour after the order completes, the quote has settled back to $40.06 - roughly nine cents of the move was temporary impact.",
+    "citations": [
+      {
+        "source": "Wikipedia: Market impact",
+        "url": "https://en.wikipedia.org/wiki/Market_impact",
+        "section": "Market impact cost and its measurement",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

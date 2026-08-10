@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/implicit-transaction-cost",
+  "canonical_sha256": "a1abf630882ceb3eadf4b5f4674d93758049ab0f18bd5f78eb2e6bb61ab2cd3d",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/implicit-transaction-cost",
+    "name": "Implicit transaction cost",
+    "aliases": [
+      "implicit cost",
+      "indirect trading cost"
+    ],
+    "domain": "Orders and execution",
+    "definition": "The costs of trading that are not invoiced but must be inferred from prices: the bid-ask spread paid, market impact, delay (price drift while working the order), and opportunity cost of unexecuted size. They emerge from the interaction of the order with the market and usually dominate explicit costs for institutional-size trades.",
+    "intuition": "Implicit costs never appear on a statement - you discover them by comparing what you paid with what the price would have been had you not traded.",
+    "mechanics": "They are measured against benchmarks: spread cost vs. midpoint, impact vs. pre-trade price, delay vs. decision price, opportunity cost on unfilled quantity. Implementation-shortfall decomposition is the standard framework: implicit components are exactly the delay, execution (impact), and opportunity terms.",
+    "formula": "Implicit cost = spread cost + market impact + delay cost + opportunity cost (the non-fee terms of implementation shortfall).",
+    "relationships": [
+      "Explicit transaction cost",
+      "Implementation shortfall",
+      "Market impact",
+      "Delay cost",
+      "Opportunity cost",
+      "Slippage"
+    ],
+    "failure_modes": "Because they are model- and benchmark-dependent, implicit costs can be understated by convenient benchmark choice (e.g., measuring vs. close instead of decision price). They are also regime-unstable: liquidity that was cheap to access yesterday can vanish in stress.",
+    "misconceptions": "Zero-commission trading is not zero-cost trading - implicit costs remain and are invisible on the confirm. Nor are implicit costs 'just the spread': for size, impact and opportunity cost typically exceed the spread many times over.",
+    "example": "A fund buys 3% of a stock's daily volume with no commission; the average fill is 12 cents above the arrival midpoint - an implicit cost exceeding any explicit fee it would have paid.",
+    "citations": [
+      {
+        "source": "Wikipedia: Implementation shortfall",
+        "url": "https://en.wikipedia.org/wiki/Implementation_shortfall",
+        "section": "Cost components (delay, execution, opportunity)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia: Market impact",
+        "url": "https://en.wikipedia.org/wiki/Market_impact",
+        "section": "Market impact cost as a transaction cost",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

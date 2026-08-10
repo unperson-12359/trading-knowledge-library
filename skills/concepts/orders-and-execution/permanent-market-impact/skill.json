@@ -1,0 +1,82 @@
+{
+  "$schema": "../../../../schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-permanent-market-impact",
+  "concept_id": "orders-and-execution/permanent-market-impact",
+  "display_name": "Permanent market impact",
+  "domain": "Orders and execution",
+  "description": "Explain, compare, or apply Permanent market impact using the library's structured Orders and execution reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Permanent market impact",
+    "permanent impact",
+    "informational impact",
+    "explain Permanent market impact",
+    "apply Permanent market impact to a trading question",
+    "common misconception about Permanent market impact"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints",
+      "order type",
+      "spread and liquidity conditions"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 13,
+  "package_path": "skills/concepts/orders-and-execution/permanent-market-impact",
+  "canonical": {
+    "source_path": "concepts/orders-and-execution.json",
+    "sha256": "ab2c090eafbe8e4ecfbe33ee02532426224199c6f53f3db06c685863c16c5c2b"
+  },
+  "related_concept_ids": [
+    "orders-and-execution/market-impact",
+    "orders-and-execution/temporary-market-impact",
+    "orders-and-execution/implementation-shortfall",
+    "orders-and-execution/iceberg-order"
+  ]
+}

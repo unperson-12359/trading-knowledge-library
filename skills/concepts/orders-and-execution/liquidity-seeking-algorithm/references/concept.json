@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/liquidity-seeking-algorithm",
+  "canonical_sha256": "91ff6e3be533a246c1a7d233660f21f0f41f8f8f4a2747c4cec6a3fa2ff022eb",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/liquidity-seeking-algorithm",
+    "name": "Liquidity-seeking algorithm",
+    "aliases": [
+      "liquidity-seeking algo",
+      "liquidity aggregation algo",
+      "seeker"
+    ],
+    "domain": "Orders and execution",
+    "definition": "A class of execution algorithm that hunts for available liquidity - displayed, reserve, and dark - across multiple venues, pouncing when contra-side interest appears rather than following a fixed time or volume schedule. It prioritizes finding size with minimal footprint over matching a benchmark.",
+    "intuition": "It behaves like a forager: it sniffs across lit books and dark pools, and strikes when it finds someone willing to trade in size.",
+    "mechanics": "The algo pings or sweeps venues with immediate-or-cancel child orders, rests hidden interest in dark pools, and uses randomized sizing/timing (e.g., accumulate/distribute or dark-ice style randomization) to avoid detection; smart order routing infrastructure directs the child orders to whichever venue currently offers liquidity.",
+    "formula": "",
+    "relationships": [
+      "Smart order routing",
+      "Iceberg order",
+      "Sweep order",
+      "Hidden order",
+      "POV order"
+    ],
+    "failure_modes": "Pinging for liquidity leaks information to venues that see the probes, inviting predatory quoting; and because it trades opportunistically, execution quantity over any window is unpredictable - the order may barely trade in quiet markets.",
+    "misconceptions": "Liquidity-seeking is not a guarantee of size discovery - dark liquidity is finite and shared by competing seekers. It is also a broker/platform product family rather than a single standardized algorithm, so behavior varies widely.",
+    "example": "Tasked with selling 2 million shares without showing size, the algo rests hidden clips in two dark pools, sweeps the lit offer only when it thickens, and accumulates the position over the day with no single large print.",
+    "citations": [
+      {
+        "source": "IBKR Guides: Algorithmic Trading",
+        "url": "https://www.ibkrguides.com/ibkrdesktop/algorithmic-trading.htm",
+        "section": "Accumulate Distribute / Dark Ice (liquidity-seeking behavior)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia: Smart order routing",
+        "url": "https://en.wikipedia.org/wiki/Smart_order_router",
+        "section": "SOR sweeping and dark-venue child routing",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

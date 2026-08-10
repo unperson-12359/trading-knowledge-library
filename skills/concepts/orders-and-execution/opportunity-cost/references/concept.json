@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/opportunity-cost",
+  "canonical_sha256": "9a00d6e66db2f35ab4137bf2066e2bd27dc19d84a00ca7c812ddc0efbb5cbec9",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/opportunity-cost",
+    "name": "Opportunity cost",
+    "aliases": [
+      "missed trade cost",
+      "non-execution cost"
+    ],
+    "domain": "Orders and execution",
+    "definition": "In transaction cost analysis, the cost of the portion of the intended order that was never executed: the adverse price movement on the unfilled quantity between the decision price and the end of the trading horizon. It charges patience - the money not made (or extra paid) because the order did not complete.",
+    "intuition": "If you meant to buy 100,000 shares at $50, only got 60,000, and the price ran to $51, the 40,000 you missed cost you a dollar each in foregone upside.",
+    "mechanics": "Computed as the unfilled quantity times the difference between the benchmark price at the end of the horizon (or cancellation) and the decision price. Passive strategies (tight limits, low participation) systematically trade lower market impact for higher opportunity cost.",
+    "formula": "Opportunity cost = (Q_intended - Q_filled) x (P_horizon - P_decision), for a buy (sign reversed for a sell).",
+    "relationships": [
+      "Implementation shortfall",
+      "Delay cost",
+      "Implicit transaction cost",
+      "Limit order",
+      "Implementation shortfall algorithm"
+    ],
+    "failure_modes": "It is counterfactual: the 'cost' assumes the unfilled shares would have been worth buying at the horizon price, which is unknowable if the thesis changed mid-way. It also penalizes disciplined limit pricing in fast markets even when the non-fill was the right call.",
+    "misconceptions": "Opportunity cost is not a fee and appears on no statement - but ignoring it makes passive execution look artificially cheap. Conversely, it is not always avoidable by trading faster; faster trading converts it into market impact.",
+    "example": "You work a 50,000-share buy passively at $25.00; 30,000 fill, the stock rallies to $25.50, and you cancel - the 20,000 unfilled shares carry $10,000 of measured opportunity cost.",
+    "citations": [
+      {
+        "source": "Wikipedia: Implementation shortfall",
+        "url": "https://en.wikipedia.org/wiki/Implementation_shortfall",
+        "section": "Cost components - opportunity cost",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

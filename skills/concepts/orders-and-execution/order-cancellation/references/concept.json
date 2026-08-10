@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/order-cancellation",
+  "canonical_sha256": "6927c34e513cb326249260e8109ef75fab732fd37193fbc5a2bfafab31267629",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/order-cancellation",
+    "name": "Order cancellation",
+    "aliases": [
+      "cancel",
+      "order cancel request"
+    ],
+    "domain": "Orders and execution",
+    "definition": "The withdrawal of an order's unexecuted balance from the market before it fills, on the trader's instruction or automatically (expiry, disconnect, venue purge). Cancellation applies only to the remaining open quantity - executions already reported stand.",
+    "intuition": "Canceling pulls your resting order off the table; you can only take back what has not yet traded.",
+    "mechanics": "The client sends a cancel request identifying the order (FIX Order Cancel Request; exchanges expose equivalent messages, e.g., Cboe Cancel Order keyed by ClOrdID); the venue acknowledges with a pending state and confirms with a Canceled status showing final CumQty/LeavesQty. A 'pending cancel' acknowledgment explicitly does not mean the order is canceled yet - fills can still arrive in the gap.",
+    "formula": "",
+    "relationships": [
+      "Order modification",
+      "Order acknowledgment",
+      "Execution report",
+      "Full fill",
+      "Day order"
+    ],
+    "failure_modes": "The cancel/fill race: a cancel request that arrives microseconds after an execution is too late, and the trader owns the fill. Mass-cancel storms during volatility can also overwhelm gateways, delaying cancels precisely when they are most wanted.",
+    "misconceptions": "Requesting a cancel is not the same as being canceled - only the venue's confirmation (Canceled status) ends the order. Nor does canceling erase fills: executed quantity remains executed.",
+    "example": "You cancel a resting bid for 800 of an original 1,000 shares (200 already filled); the confirmation reports OrdStatus Canceled with CumQty 200 and LeavesQty 0.",
+    "citations": [
+      {
+        "source": "FIX 4.2 Execution Report (MsgType 8), FIX Dictionary (Onix Solutions)",
+        "url": "https://www.onixs.biz/fix-dictionary/4.2/msgType_8_8.html",
+        "section": "Pending Cancel / Canceled states",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Cboe Titanium U.S. Equities BOE Specification",
+        "url": "https://www.cboe.com/document/tech-spec/document/technical-specifications/cboe-titanium-u.s.-equities-boe-specification",
+        "section": "Cancel Order message",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

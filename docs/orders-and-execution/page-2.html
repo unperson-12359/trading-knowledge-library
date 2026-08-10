@@ -244,6 +244,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="arrival-price-algorithm"><h3>Arrival price algorithm <a class="anchor" href="#arrival-price-algorithm">#</a></h3>
 <div class="field">An execution algorithm that aims to achieve, over the life of the order, an average price at or better than the bid/ask midpoint prevailing when the order was submitted (the arrival price). It is the broker-side implementation of the implementation-shortfall objective.</div>
+<div class="skill-links"><a href="../skills/tkl-arrival-price-algorithm/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It measures success against &#x27;the price when I walked in the door&#x27; and trades faster the more you fear the price drifting away from it.</div>
 <div class="field"><span class="label">Mechanics:</span> The user sets an urgency/risk-aversion level and a maximum percent of average daily volume; higher urgency accelerates the schedule (accepting more market impact), lower urgency stretches it to reduce impact at greater timing risk. Orders are worked largely hidden to limit information leakage, with user-defined start/end times.</div>
 <div class="field"><span class="label">Failure modes:</span> The arrival price is a transient snapshot: in volatile markets it may be unrepresentative within seconds, so performance against it is noisy. High urgency settings recreate the impact of a market order; low settings can leave the order incomplete in a trending market.</div>
@@ -257,6 +258,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="liquidity-seeking-algorithm"><h3>Liquidity-seeking algorithm <a class="anchor" href="#liquidity-seeking-algorithm">#</a></h3>
 <div class="field">A class of execution algorithm that hunts for available liquidity - displayed, reserve, and dark - across multiple venues, pouncing when contra-side interest appears rather than following a fixed time or volume schedule. It prioritizes finding size with minimal footprint over matching a benchmark.</div>
+<div class="skill-links"><a href="../skills/tkl-liquidity-seeking-algorithm/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It behaves like a forager: it sniffs across lit books and dark pools, and strikes when it finds someone willing to trade in size.</div>
 <div class="field"><span class="label">Mechanics:</span> The algo pings or sweeps venues with immediate-or-cancel child orders, rests hidden interest in dark pools, and uses randomized sizing/timing (e.g., accumulate/distribute or dark-ice style randomization) to avoid detection; smart order routing infrastructure directs the child orders to whichever venue currently offers liquidity.</div>
 <div class="field"><span class="label">Failure modes:</span> Pinging for liquidity leaks information to venues that see the probes, inviting predatory quoting; and because it trades opportunistically, execution quantity over any window is unpredictable - the order may barely trade in quiet markets.</div>
@@ -269,6 +271,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="sweep-order"><h3>Sweep order <a class="anchor" href="#sweep-order">#</a></h3>
 <div class="field">An aggressively priced order that executes immediately through multiple price levels of one or more order books, &#x27;sweeping&#x27; all available liquidity up to its limit price. It maximizes speed and executed quantity at the cost of paying successively worse prices down the book.</div>
+<div class="skill-links"><a href="../skills/tkl-sweep-order/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A sweep says &#x27;take everything offered up to my price, right now&#x27; - depth consumed in one action instead of one level at a time.</div>
 <div class="field"><span class="label">Mechanics:</span> The order (typically a marketable limit or IOC) walks the book: it fills at the best price, then the next, until filled or the limit is reached; multi-venue versions route simultaneous child orders to several exchanges. Smart order routers implement sweeps with IOC child orders, re-routing when a target quote vanishes before arrival.</div>
 <div class="field"><span class="label">Failure modes:</span> Sweeping deep into a thin book produces large, immediate market impact and a poor average price; stale-quote races mean some child orders arrive after the liquidity is gone (partial fills). Visible sweeps also signal urgency to the whole market.</div>
@@ -282,6 +285,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="intermarket-sweep-order"><h3>Intermarket sweep order <a class="anchor" href="#intermarket-sweep-order">#</a></h3>
 <div class="field">A limit order for an NMS stock that is marked &#x27;intermarket sweep order&#x27; and routed to a trading center while, simultaneously, additional orders are routed to execute against the full displayed size of every protected quotation priced better than the ISO&#x27;s limit. Marking an order ISO exempts the receiving venue from Reg NMS trade-through protection for that execution.</div>
+<div class="skill-links"><a href="../skills/tkl-intermarket-sweep-order/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> ISO is the regulatory way to say &#x27;I have already cleared every better-priced quote elsewhere - so you may execute mine even if another venue shows a better price.&#x27;</div>
 <div class="field"><span class="label">Mechanics:</span> The sender (usually a smart order router) fires IOC limit orders at all protected quotes superior to the ISO price at the same instant the ISO is routed; venues may then execute the ISO without checking those away quotes. Regulation NMS defines the term and Rule 611 provides the trade-through exception conditioned on this simultaneous sweeping.</div>
 <div class="field"><span class="label">Failure modes:</span> The sweep is only as good as its market data: if a protected quote updates between snapshot and routing, the &#x27;simultaneous&#x27; clear is incomplete and executions can occur at prices that would otherwise be trade-throughs. ISO usage also shifts responsibility for best price to the sender.</div>
@@ -293,6 +297,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="partial-fill"><h3>Partial fill <a class="anchor" href="#partial-fill">#</a></h3>
 <div class="field">An execution of only part of an order&#x27;s quantity, leaving the remainder open (or canceled, depending on the order&#x27;s time-in-force). Partial fills occur whenever available contra-side liquidity at acceptable prices is smaller than the order.</div>
+<div class="skill-links"><a href="../skills/tkl-partial-fill/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> You asked for 1,000, the market gave you 300 - the rest is still working unless the order says otherwise.</div>
 <div class="field"><span class="label">Mechanics:</span> Venues report the executed portion with cumulative and remaining quantities; in FIX the order state becomes Partially Filled with CumQty &lt; OrderQty and LeavesQty &gt; 0, and the invariant OrderQty = CumQty + LeavesQty holds while the order is active. IOC orders cancel the remainder immediately; FOK orders never partially fill by construction.</div>
 <div class="field"><span class="label">Failure modes:</span> Partial fills leave sub-scale positions that distort strategy economics (fixed fees spread over fewer shares) and can strand a hedged pair half-executed. In fast markets, repeated small partials also accumulate impact without achieving the intended size.</div>
@@ -305,6 +310,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="full-fill"><h3>Full fill <a class="anchor" href="#full-fill">#</a></h3>
 <div class="field">An execution (or series of executions) that completes the entire quantity of an order, leaving nothing open. Once fully filled, the order is terminal - it can no longer be canceled or modified.</div>
+<div class="skill-links"><a href="../skills/tkl-full-fill/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The order got every share it asked for; nothing remains in the market.</div>
 <div class="field"><span class="label">Mechanics:</span> The venue reports a final execution bringing cumulative quantity to the full order quantity; in FIX this is OrdStatus = Filled (&#x27;order completely filled, no remaining quantity&#x27;) with LeavesQty = 0. A full fill may result from one execution or the accumulation of many partial fills.</div>
 <div class="field"><span class="label">Failure modes:</span> A full fill at a stale price can itself be the failure - e.g., a resting order that completes only because the market blew through its level (adverse selection in disguise). Confirmed full fills also cannot be unwound except by error-correction procedures.</div>
@@ -317,6 +323,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="order-cancellation"><h3>Order cancellation <a class="anchor" href="#order-cancellation">#</a></h3>
 <div class="field">The withdrawal of an order&#x27;s unexecuted balance from the market before it fills, on the trader&#x27;s instruction or automatically (expiry, disconnect, venue purge). Cancellation applies only to the remaining open quantity - executions already reported stand.</div>
+<div class="skill-links"><a href="../skills/tkl-order-cancellation/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Canceling pulls your resting order off the table; you can only take back what has not yet traded.</div>
 <div class="field"><span class="label">Mechanics:</span> The client sends a cancel request identifying the order (FIX Order Cancel Request; exchanges expose equivalent messages, e.g., Cboe Cancel Order keyed by ClOrdID); the venue acknowledges with a pending state and confirms with a Canceled status showing final CumQty/LeavesQty. A &#x27;pending cancel&#x27; acknowledgment explicitly does not mean the order is canceled yet - fills can still arrive in the gap.</div>
 <div class="field"><span class="label">Failure modes:</span> The cancel/fill race: a cancel request that arrives microseconds after an execution is too late, and the trader owns the fill. Mass-cancel storms during volatility can also overwhelm gateways, delaying cancels precisely when they are most wanted.</div>
@@ -329,6 +336,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="order-modification"><h3>Order modification <a class="anchor" href="#order-modification">#</a></h3>
 <div class="field">A change to the terms of a live order - price, quantity, or other parameters - effected as a cancel/replace request that the venue treats as an amendment to the existing order. Most venues re-queue the order (loss of time priority) when price changes or quantity increases, but preserve priority for quantity decreases.</div>
+<div class="skill-links"><a href="../skills/tkl-order-modification/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Modifying is editing a live order in place - but the market treats a better price or bigger size as if you just arrived at the back of the line.</div>
 <div class="field"><span class="label">Mechanics:</span> The client sends a cancel/replace (Cboe Modify Order) referencing the order&#x27;s current ClOrdID; the venue confirms via Pending Replace then Replaced states. Cboe&#x27;s rules are typical: price, side, quantity, stop price, display quantity, and order type may be adjusted, and time priority is lost unless the change only reduces quantity or adjusts non-price fields.</div>
 <div class="field"><span class="label">Failure modes:</span> Modify requests that cross in flight with executions can yield unexpected positions - exchanges therefore apply quantity deltas to the remaining size rather than blindly replacing it. Losing queue priority on reprice can also mean the order never fills where the original would have.</div>
@@ -341,6 +349,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="order-rejection"><h3>Order rejection <a class="anchor" href="#order-rejection">#</a></h3>
 <div class="field">The refusal of an order by the broker, exchange, or counterparty before or after acceptance, so that the order never becomes (or ceases to be) executable. Rejections carry a reason - invalid parameters, risk limits, insufficient margin, closed market, or duplicate identifiers.</div>
+<div class="skill-links"><a href="../skills/tkl-order-rejection/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A rejection is the market saying &#x27;no&#x27; at the door: nothing was executed and nothing rests - you must fix the problem and resubmit.</div>
 <div class="field"><span class="label">Mechanics:</span> The venue returns a reject message with a reason code (in FIX, an Execution Report with ExecType/OrdStatus = Rejected plus an OrdRejReason field; Cboe rejects for duplicates, orders outside trading hours, or stale NBBO conditions). An order can even be rejected after an earlier acknowledgment - status can pass from New to Rejected.</div>
 <div class="field"><span class="label">Failure modes:</span> Silent or mis-parsed rejects leave strategies believing they have live orders when they do not - a classic cause of unhedged exposure in automated systems. Rejection cascades during volatility (risk limits tripping) can also block risk-reducing orders.</div>
@@ -353,6 +362,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="order-acknowledgment"><h3>Order acknowledgment <a class="anchor" href="#order-acknowledgment">#</a></h3>
 <div class="field">The venue or broker&#x27;s confirmation that an order has been received and accepted into the trading system, establishing the order as live with its identifiers and initial state. An acknowledgment is a statement about receipt and acceptance, not about execution.</div>
+<div class="skill-links"><a href="../skills/tkl-order-acknowledgment/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The ack is the market&#x27;s receipt: &#x27;we have your order and it is now working&#x27; - nothing has traded yet.</div>
 <div class="field"><span class="label">Mechanics:</span> On acceptance the exchange returns an acknowledgment message carrying the assigned order IDs and the order&#x27;s state (in FIX, an Execution Report with OrdStatus = New; on Cboe BOE, an Order Acknowledgment message). Subsequent cancels, modifies, and fills all reference the acknowledged identifier chain.</div>
 <div class="field"><span class="label">Failure modes:</span> Treating a missing ack as a missing order - when the ack was merely delayed - leads to duplicate submissions and double positions. Conversely, assuming an ack implies a fill is an accounting error.</div>
@@ -365,6 +375,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="execution-report"><h3>Execution report <a class="anchor" href="#execution-report">#</a></h3>
 <div class="field">The standard electronic message by which a broker or exchange communicates everything that happens to an order: acknowledgment of receipt, status changes, partial and full fills, cancellations, replacements, and rejections. In the FIX protocol it is the Execution Report message (MsgType = 8).</div>
+<div class="skill-links"><a href="../skills/tkl-execution-report/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the order&#x27;s paper trail in real time - every event in an order&#x27;s life shows up as an execution report.</div>
 <div class="field"><span class="label">Mechanics:</span> Each report carries three state fields - OrdStatus (current state of the order), ExecType (what this message is reporting), and the transaction type - plus cumulative quantity, remaining quantity (LeavesQty), and average price (AvgPx) for the whole order chain. Reports are sent per fill and per state change and do not replace the end-of-day confirm.</div>
 <div class="field"><span class="label">Failure modes:</span> Dropped or reordered reports (sequence gaps, disconnects) leave the buy side with a wrong picture of position and open quantity, which is why session replay and end-of-day reconciliation exist. Execution reports are also point-in-time: relying on them without the final confirm invites booking errors.</div>
@@ -376,6 +387,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="average-execution-price"><h3>Average execution price <a class="anchor" href="#average-execution-price">#</a></h3>
 <div class="field">The quantity-weighted average price at which an order&#x27;s fills executed: total value traded divided by total quantity filled for that order. It is the price actually achieved across what may be many partial executions at different levels.</div>
+<div class="skill-links"><a href="../skills/tkl-average-execution-price/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> If your 1,000 shares came in five pieces at five prices, the average execution price is the single number that correctly prices the whole position.</div>
 <div class="field"><span class="label">Mechanics:</span> The venue accumulates price-times-quantity across all fills of the order chain and reports it as a running field (FIX AvgPx, tag 6) that updates with each partial fill; for multi-day good-till orders it spans all days&#x27; executions. Slippage and transaction-cost metrics are computed against this average.</div>
 <div class="field"><span class="label">Failure modes:</span> Averaging hides the distribution: two orders with the same AvgPx can have very different market-impact profiles. Booking systems that mix up per-day and cumulative averages on multi-day orders produce wrong cost basis.</div>

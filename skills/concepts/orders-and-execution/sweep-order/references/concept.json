@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/sweep-order",
+  "canonical_sha256": "2c8c0f137e5861aae8e3678975535f4eff4064d65478b10a1fe0b7ee21a36796",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/sweep-order",
+    "name": "Sweep order",
+    "aliases": [
+      "sweep",
+      "book sweep",
+      "sweep-to-fill"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An aggressively priced order that executes immediately through multiple price levels of one or more order books, 'sweeping' all available liquidity up to its limit price. It maximizes speed and executed quantity at the cost of paying successively worse prices down the book.",
+    "intuition": "A sweep says 'take everything offered up to my price, right now' - depth consumed in one action instead of one level at a time.",
+    "mechanics": "The order (typically a marketable limit or IOC) walks the book: it fills at the best price, then the next, until filled or the limit is reached; multi-venue versions route simultaneous child orders to several exchanges. Smart order routers implement sweeps with IOC child orders, re-routing when a target quote vanishes before arrival.",
+    "formula": "Average sweep price = sum(fill price_i x size_i) / total size, across all price levels consumed.",
+    "relationships": [
+      "Intermarket sweep order",
+      "Immediate-or-cancel order",
+      "Smart order routing",
+      "Market impact",
+      "Market order"
+    ],
+    "failure_modes": "Sweeping deep into a thin book produces large, immediate market impact and a poor average price; stale-quote races mean some child orders arrive after the liquidity is gone (partial fills). Visible sweeps also signal urgency to the whole market.",
+    "misconceptions": "A sweep is not limited to the national best bid and offer - that is the whole point, and why it differs from a plain market order capped at top of book on protected venues. Nor is a sweep a distinct regulated order type everywhere; it is an execution pattern built from marketable limit/IOC orders.",
+    "example": "With offers of 2,000 at $10.00, 3,000 at $10.02, and 5,000 at $10.05, a sweep buy for 7,000 at $10.05 fills all three levels for a $10.026 average.",
+    "citations": [
+      {
+        "source": "Wikipedia: Smart order routing",
+        "url": "https://en.wikipedia.org/wiki/Smart_order_router",
+        "section": "Example SOR strategy - IOC sweeps across venues",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Regulation NMS, 17 CFR 242.600 (Cornell LII)",
+        "url": "https://www.law.cornell.edu/cfr/text/17/242.600",
+        "section": "(b)(47) Intermarket sweep order (multi-venue sweeping)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

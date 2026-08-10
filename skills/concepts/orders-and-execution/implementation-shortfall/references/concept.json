@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/implementation-shortfall",
+  "canonical_sha256": "622c080f47298e02c7cbdecdf341eb5538d3cb34f22645e2683cdd08f5f273dd",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/implementation-shortfall",
+    "name": "Implementation shortfall",
+    "aliases": [
+      "IS",
+      "paper vs. reality cost"
+    ],
+    "domain": "Orders and execution",
+    "definition": "The total cost of implementing an investment decision: the difference between the value of a hypothetical 'paper' portfolio traded instantly at the decision price and the value of the real portfolio after actual execution, including all fees. Introduced by Perold (1988), it is the standard total-cost benchmark in transaction cost analysis.",
+    "intuition": "It answers: 'I decided to buy when the price was $50 - after all delays, partial fills, price moves, and fees, what did that decision actually cost me relative to $50?'",
+    "mechanics": "IS decomposes into delay cost (price move between decision and order submission), execution cost (impact and spread paid on the filled portion), opportunity cost (price move on the unfilled portion), and explicit costs (commissions, fees, taxes). Broker desks typically measure it against the arrival price because they do not observe the client's decision time.",
+    "formula": "IS = (sum of fill price_i x qty_i - decision price x total intended qty) + explicit costs, for a buy; equivalently delay cost + execution cost + opportunity cost + fees.",
+    "relationships": [
+      "Implementation shortfall algorithm",
+      "Arrival price algorithm",
+      "Delay cost",
+      "Opportunity cost",
+      "Explicit transaction cost",
+      "Implicit transaction cost",
+      "Market impact",
+      "Slippage"
+    ],
+    "failure_modes": "Everything hinges on identifying the true decision price and time, which are often unrecorded or ambiguous (close vs. arrival conventions differ). Unfilled-order opportunity cost is also counterfactual and easy to mis-measure in trending markets.",
+    "misconceptions": "IS is not the same as slippage against arrival price - slippage is only the execution component; IS also charges delay and opportunity cost. Nor is a small IS always good: it can reflect a tiny completed fraction of a large intent.",
+    "example": "A manager decides to buy 100,000 shares at a $50.00 decision price; 70,000 are filled at $50.20 and the stock closes at $50.60. IS = 70,000x$0.20 (execution) + 30,000x$0.60 (opportunity) + commissions.",
+    "citations": [
+      {
+        "source": "Wikipedia: Implementation shortfall",
+        "url": "https://en.wikipedia.org/wiki/Implementation_shortfall",
+        "section": "Definition; cost components (delay, execution, opportunity)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

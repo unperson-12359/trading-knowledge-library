@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/permanent-market-impact",
+  "canonical_sha256": "ab2c090eafbe8e4ecfbe33ee02532426224199c6f53f3db06c685863c16c5c2b",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/permanent-market-impact",
+    "name": "Permanent market impact",
+    "aliases": [
+      "permanent impact",
+      "informational impact"
+    ],
+    "domain": "Orders and execution",
+    "definition": "The component of market impact that persists after trading ends, attributed to the information other participants infer from the order flow: the market re-prices the asset because trading itself signals that someone wants to buy or sell in size. It reflects adverse-selection and information content rather than transient liquidity demand.",
+    "intuition": "The market learns from your footprint: once participants believe a big informed buyer is active, the price stays higher even after you finish.",
+    "mechanics": "Each trade updates other participants' beliefs about fundamental value or about the existence of a large latent order; quotes re-level and do not revert. In Kyle-style models this is the linear, information-driven response of price to signed order flow (Kyle's lambda).",
+    "formula": "Kyle's lambda: price change = lambda x signed order flow, estimated as the regression coefficient of price changes on trade size over a window.",
+    "relationships": [
+      "Market impact",
+      "Temporary market impact",
+      "Implementation shortfall",
+      "Iceberg order",
+      "Market impact"
+    ],
+    "failure_modes": "Permanent impact is invisible in real time - you only infer it from non-reversion, so execution algorithms can systematically underestimate it for informative flow. It also punishes predictable scheduling: the more detectable the pattern, the larger the inferred information content.",
+    "misconceptions": "Large trades do not have permanent impact only when the trader is informed - the market cannot distinguish intent, so even uninformed size moves expectations. And impact being 'permanent' does not mean the price never moves again for other reasons.",
+    "example": "After a fund accumulates 5% of a small-cap over two weeks, the price settles 8% higher and stays there: the market has priced in the persistent demand it detected.",
+    "citations": [
+      {
+        "source": "Wikipedia: Market impact",
+        "url": "https://en.wikipedia.org/wiki/Market_impact",
+        "section": "Measuring market impact - Kyle's lambda",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

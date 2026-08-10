@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/order-acknowledgment",
+  "canonical_sha256": "8848fa7d5fc10d2670c00c1e860a4d61b2ea502f858e39ab5df3ea272570ed34",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/order-acknowledgment",
+    "name": "Order acknowledgment",
+    "aliases": [
+      "order ack",
+      "order confirmation"
+    ],
+    "domain": "Orders and execution",
+    "definition": "The venue or broker's confirmation that an order has been received and accepted into the trading system, establishing the order as live with its identifiers and initial state. An acknowledgment is a statement about receipt and acceptance, not about execution.",
+    "intuition": "The ack is the market's receipt: 'we have your order and it is now working' - nothing has traded yet.",
+    "mechanics": "On acceptance the exchange returns an acknowledgment message carrying the assigned order IDs and the order's state (in FIX, an Execution Report with OrdStatus = New; on Cboe BOE, an Order Acknowledgment message). Subsequent cancels, modifies, and fills all reference the acknowledged identifier chain.",
+    "formula": "",
+    "relationships": [
+      "Order rejection",
+      "Execution report",
+      "Order modification",
+      "Order cancellation"
+    ],
+    "failure_modes": "Treating a missing ack as a missing order - when the ack was merely delayed - leads to duplicate submissions and double positions. Conversely, assuming an ack implies a fill is an accounting error.",
+    "misconceptions": "An acknowledgment does not mean the order executed, nor even that it is displayed (hidden and held conditional orders are acked too). It also does not guarantee the order can't subsequently be rejected.",
+    "example": "You submit a limit buy; 200 microseconds later the exchange returns an Order Acknowledgment with OrderID and status New - the order is now in the book, unfilled.",
+    "citations": [
+      {
+        "source": "FIX 4.2 Execution Report (MsgType 8), FIX Dictionary (Onix Solutions)",
+        "url": "https://www.onixs.biz/fix-dictionary/4.2/msgType_8_8.html",
+        "section": "Confirm receipt of an order; OrdStatus = New",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Cboe Titanium U.S. Equities BOE Specification",
+        "url": "https://www.cboe.com/document/tech-spec/document/technical-specifications/cboe-titanium-u.s.-equities-boe-specification",
+        "section": "Order Acknowledgment message (0x25)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

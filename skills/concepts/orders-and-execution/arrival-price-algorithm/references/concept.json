@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/arrival-price-algorithm",
+  "canonical_sha256": "d291a332cac840b7eb13b3e93ccde7b70cc66751bed7b66bfd76ddc5852844de",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/arrival-price-algorithm",
+    "name": "Arrival price algorithm",
+    "aliases": [
+      "arrival price algo",
+      "strike price algo"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An execution algorithm that aims to achieve, over the life of the order, an average price at or better than the bid/ask midpoint prevailing when the order was submitted (the arrival price). It is the broker-side implementation of the implementation-shortfall objective.",
+    "intuition": "It measures success against 'the price when I walked in the door' and trades faster the more you fear the price drifting away from it.",
+    "mechanics": "The user sets an urgency/risk-aversion level and a maximum percent of average daily volume; higher urgency accelerates the schedule (accepting more market impact), lower urgency stretches it to reduce impact at greater timing risk. Orders are worked largely hidden to limit information leakage, with user-defined start/end times.",
+    "formula": "Benchmark: arrival price = midpoint of best bid and offer at order submission time; slippage = signed difference between average execution price and arrival price.",
+    "relationships": [
+      "Implementation shortfall algorithm",
+      "Implementation shortfall",
+      "Delay cost",
+      "Market impact",
+      "Iceberg order"
+    ],
+    "failure_modes": "The arrival price is a transient snapshot: in volatile markets it may be unrepresentative within seconds, so performance against it is noisy. High urgency settings recreate the impact of a market order; low settings can leave the order incomplete in a trending market.",
+    "misconceptions": "Arrival price is not the last trade before submission in all conventions - many desks use the quote midpoint. And an arrival-price algo does not promise to beat the arrival price, only to optimize the impact/risk trade-off against it.",
+    "example": "An order to sell 800,000 shares arrives with the quote at $75.00 x $75.04 (arrival price $75.02); set to 'aggressive', the algo completes within two hours at an average of $74.97 - five cents of measured shortfall.",
+    "citations": [
+      {
+        "source": "Interactive Brokers TWS API: IB Algorithms",
+        "url": "https://interactivebrokers.github.io/tws-api/ibalgos.html",
+        "section": "Arrival Price",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia: Implementation shortfall",
+        "url": "https://en.wikipedia.org/wiki/Implementation_shortfall",
+        "section": "Decision price - arrival price convention",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

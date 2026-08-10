@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/explicit-transaction-cost",
+  "canonical_sha256": "8e457a1005816ba9d2891866c7f162577deb830dcad15054e9621a55ba8f87ad",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/explicit-transaction-cost",
+    "name": "Explicit transaction cost",
+    "aliases": [
+      "explicit cost",
+      "direct trading cost"
+    ],
+    "domain": "Orders and execution",
+    "definition": "The directly invoiced, observable costs of trading: commissions, exchange and clearing fees, and taxes or duties. They are known (or contractually set) before the trade and appear as line items rather than being inferred from prices.",
+    "intuition": "Explicit costs are the receipt you can read: commission per share, exchange fee, clearing fee, stamp tax - no estimation required.",
+    "mechanics": "Brokers charge commissions per share/contract or per notional; exchanges charge per-share execution fees (or pay rebates) per their public fee schedules; clearing agencies charge per-contract clearing fees. Rule 10b-10 confirmations must disclose the remuneration the broker received, making these costs visible to the customer.",
+    "formula": "Explicit cost = commission + exchange/venue fees + clearing fees + regulatory fees and taxes, summed over the trade.",
+    "relationships": [
+      "Implicit transaction cost",
+      "Commission",
+      "Exchange fee",
+      "Clearing fee",
+      "Maker fee",
+      "Taker fee",
+      "Implementation shortfall"
+    ],
+    "failure_modes": "Explicit costs are small per trade but compound brutally with turnover, silently consuming strategy edge in high-frequency or high-turnover approaches. Fee schedules with tiers and caps also make the marginal cost volume-dependent and easy to mis-estimate.",
+    "misconceptions": "Zero-commission does not mean zero explicit cost - exchange, clearing, and regulatory fees still apply, and remuneration can be embedded elsewhere (payment for order flow). Explicit costs are also the smaller half of trading cost for large orders; implicit costs usually dominate.",
+    "example": "Buying 1,000 shares: $1.00 commission + $0.30 exchange/regulatory fees + clearing charges - all printed on the confirm, before any slippage is counted.",
+    "citations": [
+      {
+        "source": "SEC Rule 10b-10, 17 CFR 240.10b-10 (Cornell LII)",
+        "url": "https://www.law.cornell.edu/cfr/text/17/240.10b-10",
+        "section": "(a)(2) disclosure of remuneration (commissions/fees)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Nasdaq Price List - Trading (nasdaqtrader.com)",
+        "url": "https://www.nasdaqtrader.com/Trader.aspx?id=PriceListTrading2",
+        "section": "Per-share execution fees and rebates",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
