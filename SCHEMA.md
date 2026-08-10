@@ -70,6 +70,26 @@ quality, and warnings. Its sibling `trades.json` contains the headline-cost
 scenario's event-level trades and cost decomposition. Generated HTML reports
 are projections of these JSON records, never the canonical evidence.
 
+## Concept skill packages
+
+`schemas/concept-skill.schema.json` defines each package's machine-readable
+`skill.json`: identity, trigger phrases, supported intents, context needs,
+workflow, constraints, output contract, batch, canonical source/hash, and
+resolved related concept IDs. `references/concept.json` is a self-contained
+projection of canonical knowledge, not a second editable source of truth.
+
+The package `SKILL.md` contains only focused usage instructions and its YAML
+frontmatter contains only `name` and `description`. `agents/openai.yaml` keeps
+individual catalog packages out of implicit discovery. The repository exposes
+one implicit router at `.agents/skills/tkl-concept-router/`; this progressive
+disclosure design prevents 1,500 descriptions from consuming the host's skill
+metadata budget.
+
+`skills/progress.json`, `skills/manifest.json`, and every file in
+`skills/batches/` are machine-readable rollout records. Generation order is
+the 50 core perpetual-futures concepts by `master_index`, followed by all
+remaining concepts by `master_index`, in exact batches of 20.
+
 ## Rules
 
 - Every entry must contain the full explanatory fields and at least one valid

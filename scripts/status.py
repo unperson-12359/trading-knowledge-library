@@ -12,6 +12,8 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 
+from build_skills import validate_catalog
+
 ROOT = Path(__file__).resolve().parent.parent
 PLACEHOLDER = "A trading concept within"
 REQUIRED_TEXT = (
@@ -468,6 +470,16 @@ def main():
         if str(entry.get("definition", "")).startswith(PLACEHOLDER)
     )
     citations = sum(len(entry.get("citations", [])) for entry in entries)
+    skill_errors = validate_catalog(ROOT)
+    failures.extend(f"skill catalog: {error}" for error in skill_errors)
+    skill_progress = json.loads(
+        (ROOT / "skills" / "progress.json").read_text(encoding="utf-8")
+    )
+    print(
+        f"CONCEPT SKILLS {skill_progress['completed_count']}/"
+        f"{skill_progress['target_count']} in "
+        f"{skill_progress['completed_batches']}/{skill_progress['total_batches']} batches"
+    )
     print(
         f"\nTOTAL entries={len(entries)} citations={citations} "
         f"placeholders={placeholders} errors={len(failures)}"

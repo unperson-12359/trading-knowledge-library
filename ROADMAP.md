@@ -23,6 +23,19 @@ knowledge rollout.
 Every completed checkpoint is validated, committed to `main`, pushed, and
 verified on GitHub Pages before the next checkpoint begins.
 
+## Phase 3: GitHub-first concept skills
+
+| Checkpoint | State |
+|---|---|
+| Research and document the router-plus-catalog architecture | Complete |
+| Add router, schemas, generator, validation, API, and review catalog | Complete |
+| Generate all concept packages in core-first batches of 20 | 0 / 1,500 |
+
+The authoritative live checkpoint is `skills/progress.json`. Every completed
+batch contains exactly 20 packages, a batch manifest, and retrieval evaluation
+fixtures; it is committed, pushed, and production-verified before the next
+batch is generated.
+
 ## Core source-audit batches
 
 | Batch | Focus | State |

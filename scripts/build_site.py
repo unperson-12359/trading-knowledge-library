@@ -77,6 +77,8 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 .query-controls input,.query-controls select{width:100%;padding:.5rem;border:1px solid #bbb;border-radius:5px;background:#fff}
 .query-controls label{font-size:.78rem;color:#555}.query-controls .check{display:flex;align-items:end;padding-bottom:.5rem}
 .query-result{border-bottom:1px solid #ddd;padding:.8rem 0}.query-result h2{font-size:1.05rem;margin:0 0 .2rem}
+.skill-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;margin:1rem 0}
+.skill-card{border:1px solid #ddd;border-radius:6px;padding:.8rem;background:#fafaf8}.skill-card h2{font-size:1.02rem;margin:0 0 .25rem}.skill-card p{margin:.3rem 0}.skill-links{font-family:system-ui;font-size:.78rem}
 .domainnav{display:flex;justify-content:space-between;margin-top:2rem;font-family:system-ui;font-size:.85rem}
 .toc{columns:2;font-family:system-ui;font-size:.82rem;background:#fafaf8;border:1px solid #e8e8e5;border-radius:6px;padding:.8rem 1rem}
 .toc a{color:#333}
@@ -92,6 +94,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
  .toc{columns:1}
  .query-controls{grid-template-columns:1fr 1fr}
  .metric-grid{grid-template-columns:1fr 1fr}
+ .skill-grid{grid-template-columns:1fr}
 }
 """
 
@@ -131,6 +134,21 @@ QUERY_JS = """
   }
   applyUrl();Promise.all([fetch('api/v1/concepts.json').then(function(r){return r.json()}),fetch('api/v1/playbooks.json').then(function(r){return r.json()})]).then(function(data){state.concepts=data[0];state.playbooks=data[1];run()});
   form.addEventListener('input',run);form.addEventListener('change',run);form.addEventListener('submit',function(e){e.preventDefault();run()});
+})();
+"""
+
+SKILLS_JS = """
+(function(){
+  var form=document.getElementById('skill-controls'),out=document.getElementById('skill-results'),count=document.getElementById('skill-count');
+  if(!form||!out)return;var catalog=[];
+  function h(s){return String(s==null?'':s).replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]});}
+  function render(){var q=form.elements.q.value.trim().toLowerCase(),domain=form.elements.domain.value,batch=form.elements.batch.value,core=form.elements.core.checked;
+    var rows=catalog.filter(function(x){var text=[x.display_name,x.concept_id,x.description,(x.trigger_phrases||[]).join(' ')].join(' ').toLowerCase();return (!q||text.indexOf(q)!==-1)&&(!domain||x.domain===domain)&&(!batch||String(x.batch_number)===batch)&&(!core||x.core);});
+    count.textContent=rows.length+' of '+catalog.length+' generated skills';
+    out.innerHTML=rows.slice(0,200).map(function(x){return '<article class="skill-card"><h2>'+h(x.display_name)+'</h2><div class="meta">'+h(x.skill_name)+' &middot; batch '+h(x.batch_number)+(x.core?' &middot; core':'')+'</div><p>'+h(x.description)+'</p><div class="skill-links"><a href="'+h(x.concept_url)+'">Concept</a> &middot; <a href="'+h(x.profile_url)+'">JSON profile</a> &middot; <a href="'+h(x.raw_skill_url)+'">SKILL.md on GitHub</a> &middot; <a href="'+h(x.raw_reference_url)+'">Reference JSON</a></div></article>';}).join('')||(catalog.length?'<p>No matching generated skills.</p>':'<p>No concept packages have been generated yet. Batch 1 is next.</p>');
+  }
+  fetch('../api/v1/skills.json').then(function(r){return r.json()}).then(function(data){catalog=data.skills||[];var wanted=new URLSearchParams(location.search).get('skill');if(wanted)form.elements.q.value=wanted;render();});
+  form.addEventListener('input',render);form.addEventListener('change',render);
 })();
 """
 
@@ -201,7 +219,9 @@ def page(title, body, prefix, slug, domains, extra_head="", description=""):
            + (' class="active"' if slug == "playbooks" else "")
            + f'>Research playbooks</a></li><li><a href="{prefix}research/"'
            + (' class="active"' if slug == "research" else "")
-           + f'>Research results</a></li>{"".join(links)}</ul></details></nav>')
+           + f'>Research results</a></li><li><a href="{prefix}skills/"'
+           + (' class="active"' if slug == "skills" else "")
+           + f'>Concept skills</a></li>{"".join(links)}</ul></details></nav>')
     desc = f'<meta name="description" content="{esc(description)}">' if description else ""
     return (f"<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'>"
             f"<meta name='viewport' content='width=device-width,initial-scale=1'>"
@@ -416,6 +436,15 @@ def main():
     core_collection = json.loads(
         (ROOT / "collections" / "core-perps.json").read_text(encoding="utf-8")
     )
+    skill_manifest = json.loads(
+        (ROOT / "skills" / "manifest.json").read_text(encoding="utf-8")
+    )
+    skill_progress = json.loads(
+        (ROOT / "skills" / "progress.json").read_text(encoding="utf-8")
+    )
+    skill_architecture = json.loads(
+        (ROOT / "skills" / "architecture.json").read_text(encoding="utf-8")
+    )
     written = set()      # relative paths of generated pages, for the link checker
     search_index = []    # {n, d, u}
     az = {}              # letter -> [(name, url)]
@@ -533,6 +562,7 @@ def main():
         "<p><a href='query.html'><strong>Open the structured query</strong></a> &middot; "
         "<a href='playbooks/'>Browse research playbooks</a> &middot; "
         "<a href='research/'>View executable research</a> &middot; "
+        "<a href='skills/'>Browse concept skills</a> &middot; "
         "<a href='api/v1/manifest.json'>API manifest</a></p>"
         "<h2>Domains</h2>"
         "<table><tr><th>Domain</th><th>Concepts</th></tr>"
@@ -561,6 +591,10 @@ def main():
         "<p>Executable studies keep frozen research specifications, immutable hashed datasets, "
         "deterministic trade logs, and reported metrics as separate JSON records. Human-readable "
         "research pages are generated from those same records and do not replace them.</p>"
+        "<p>The concept-skill layer uses one discoverable repository router plus individually "
+        "installable catalog packages. Each package contains a concise SKILL.md, a machine-readable "
+        "skill profile, and a self-contained JSON reference tied to canonical concept data by hash. "
+        "The JSON concept catalog remains the factual source of truth.</p>"
         "<h2>Source policy</h2>"
         "<p>Direct regulatory, exchange, protocol, technical, and canonical research sources "
         "are preferred. Secondary sources are used when direct material is unavailable. A "
@@ -611,6 +645,50 @@ def main():
     ).replace("</body>", f"<script>{QUERY_JS}</script></body>")
     (DOCS / "query.html").write_text(query_html, encoding="utf-8")
     written.add("query.html")
+
+    # ---- GitHub-first concept skill catalog ----
+    skill_dir = DOCS / "skills"
+    skill_dir.mkdir()
+    skill_domains = sorted({profile["domain"] for profile in skill_manifest["skills"]})
+    skill_domain_options = "".join(
+        f'<option value="{esc(value)}">{esc(value)}</option>' for value in skill_domains
+    )
+    skill_batch_options = "".join(
+        f'<option value="{number}">Batch {number:03d}</option>'
+        for number in range(1, skill_progress["completed_batches"] + 1)
+    )
+    rationale = "".join(
+        f"<li>{esc(item)}</li>" for item in skill_architecture["rationale"]
+    )
+    skill_body = (
+        '<div class="crumbs"><a href="../index.html">Home</a> / Concept skills</div>'
+        '<h1>Trading Concept Skills</h1>'
+        f'<p><strong>{skill_progress["completed_count"]} of '
+        f'{skill_progress["target_count"]}</strong> packages generated in '
+        f'{skill_progress["completed_batches"]} of {skill_progress["total_batches"]} batches.</p>'
+        '<p class="warning">Built with AI systems. These packages provide educational research '
+        'and decision support, not autonomous execution, financial advice, or evidence of profitability.</p>'
+        '<h2>Architecture</h2><p>One repository router handles discovery; focused, self-contained '
+        'concept packages remain organized in the GitHub catalog so a host does not need to load '
+        '1,500 skill descriptions into every context.</p><ul>' + rationale + '</ul>'
+        '<p><a href="../api/v1/skills.json">Catalog JSON</a> &middot; '
+        '<a href="../api/v1/skill-progress.json">Progress JSON</a> &middot; '
+        '<a href="../api/v1/skill-architecture.json">Architecture JSON</a> &middot; '
+        '<a href="https://github.com/unperson-12359/trading-knowledge-library/tree/main/skills">GitHub source</a></p>'
+        '<h2>Search generated packages</h2>'
+        '<form id="skill-controls" class="query-controls">'
+        '<label>Search<input name="q" type="search" placeholder="funding rate, slippage, margin..."></label>'
+        f'<label>Domain<select name="domain"><option value="">All domains</option>{skill_domain_options}</select></label>'
+        f'<label>Batch<select name="batch"><option value="">All batches</option>{skill_batch_options}</select></label>'
+        '<label class="check"><input name="core" type="checkbox" style="width:auto;margin-right:.4rem">Core only</label>'
+        '</form><p id="skill-count" class="meta">Loading catalog...</p><div id="skill-results" class="skill-grid"></div>'
+    )
+    skill_html = page(
+        "Trading concept skills", skill_body, "../", "skills", domains,
+        description="Searchable catalog of GitHub-first, AI-readable trading concept skills.",
+    ).replace("</body>", f"<script>{SKILLS_JS}</script></body>")
+    (skill_dir / "index.html").write_text(skill_html, encoding="utf-8")
+    written.add("skills/index.html")
 
     # ---- research playbooks ----
     playbook_dir = DOCS / "playbooks"
@@ -755,15 +833,52 @@ def main():
     (api_dir / "core-perps.json").write_text(
         json.dumps(core_api, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
+    public_skills = []
+    skill_api_dir = api_dir / "skills"
+    skill_api_dir.mkdir()
+    raw_base = "https://raw.githubusercontent.com/unperson-12359/trading-knowledge-library/main/"
+    for profile in skill_manifest["skills"]:
+        public_profile = dict(profile)
+        public_profile["$schema"] = f"{BASE}/schemas/concept-skill.schema.json"
+        public_profile.update({
+            "concept_url": "../" + concept_urls[profile["concept_id"]],
+            "profile_url": f'../api/v1/skills/{profile["skill_name"]}.json',
+            "raw_skill_url": raw_base + profile["package_path"] + "/SKILL.md",
+            "raw_profile_url": raw_base + profile["package_path"] + "/skill.json",
+            "raw_reference_url": raw_base + profile["package_path"] + "/references/concept.json",
+        })
+        public_skills.append(public_profile)
+        api_profile = dict(profile)
+        api_profile["$schema"] = f"{BASE}/schemas/concept-skill.schema.json"
+        (skill_api_dir / f'{profile["skill_name"]}.json').write_text(
+            json.dumps(api_profile, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
+    public_skill_catalog = {
+        "schema_version": 1,
+        "target_count": skill_manifest["target_count"],
+        "completed_count": len(public_skills),
+        "skills": public_skills,
+    }
+    (api_dir / "skills.json").write_text(
+        json.dumps(public_skill_catalog, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    (api_dir / "skill-progress.json").write_text(
+        json.dumps(skill_progress, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    (api_dir / "skill-architecture.json").write_text(
+        json.dumps(skill_architecture, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
     manifest = {
         "schema_version": 1,
         "generated": date.today().isoformat(),
-        "counts": {"concepts": total, "core_concepts": len(core_ids), "playbooks": len(playbooks), "research_specs": len(research_specs), "datasets": len(dataset_manifests), "research_results": len(research_results)},
+        "counts": {"concepts": total, "core_concepts": len(core_ids), "concept_skills": len(public_skills), "playbooks": len(playbooks), "research_specs": len(research_specs), "datasets": len(dataset_manifests), "research_results": len(research_results)},
         "endpoints": {
             "concepts": "concepts.json", "core_perps": "core-perps.json",
             "regimes": "regimes.json", "playbooks": "playbooks.json",
             "research_specs": "research-specs.json", "datasets": "dataset-manifests.json",
-            "research_results": "research-results.json"
+            "research_results": "research-results.json", "skills": "skills.json",
+            "skill_progress": "skill-progress.json", "skill_architecture": "skill-architecture.json"
         },
         "relationship_resolution": {
             "total_references": relationship_count,

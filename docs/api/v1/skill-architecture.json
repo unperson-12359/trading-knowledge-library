@@ -1,0 +1,58 @@
+{
+  "$schema": "../schemas/skill-architecture.schema.json",
+  "schema_version": 1,
+  "id": "github-first-concept-skill-library-v1",
+  "title": "GitHub-first trading concept skill library",
+  "decision": "Expose one repository router skill and keep each concept as an individually installable, self-contained catalog skill outside automatic discovery.",
+  "rationale": [
+    "Skills package reusable workflows; the existing concept JSON remains the factual source of truth.",
+    "A 1,500-skill discovery list can exceed the host metadata budget and cause descriptions or skills to be omitted.",
+    "A router preserves reliable discovery while individual catalog packages remain portable and directly readable from GitHub.",
+    "Generated concept references carry canonical hashes so duplicated package data cannot silently drift."
+  ],
+  "organization": {
+    "discoverable_router": ".agents/skills/tkl-concept-router",
+    "concept_packages": "skills/concepts/<domain>/<concept-slug>",
+    "batch_manifests": "skills/batches",
+    "canonical_knowledge": "concepts/*.json",
+    "human_review": "docs/skills/index.html",
+    "public_api": "docs/api/v1/skills.json"
+  },
+  "behavior": {
+    "classification": "research-and-decision-support",
+    "supported_intents": [
+      "explain",
+      "compare",
+      "apply",
+      "diagnose-misconception"
+    ],
+    "prohibited": [
+      "autonomous order placement",
+      "invented live market data",
+      "claims of certainty or guaranteed profitability",
+      "presentation of educational analysis as personalized financial advice"
+    ]
+  },
+  "batching": {
+    "batch_size": 20,
+    "target_count": 1500,
+    "total_batches": 75,
+    "order": "core-perps concepts by master_index, then all remaining concepts by master_index",
+    "deployment": "validate, commit, push, and verify GitHub Pages after every batch"
+  },
+  "sources": [
+    {
+      "source": "OpenAI — Build skills",
+      "url": "https://learn.chatgpt.com/docs/build-skills",
+      "section": "Progressive disclosure, skill anatomy, discovery locations, and best practices",
+      "accessed": "2026-08-10"
+    },
+    {
+      "source": "OpenAI — Model Context Protocol",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "section": "MCP connects models to external tools and context",
+      "accessed": "2026-08-10"
+    }
+  ],
+  "warning": "Built with AI systems. Concept skills provide educational research and decision support, not financial advice, execution, or evidence of profitability."
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unperson-12359.github.io/trading-knowledge-library/schemas/skill-manifest.schema.json",
+  "title": "Concept skill catalog manifest",
+  "type": "object",
+  "required": ["$schema", "schema_version", "target_count", "completed_count", "skills"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": 1},
+    "target_count": {"const": 1500},
+    "completed_count": {"type": "integer", "minimum": 0, "maximum": 1500},
+    "skills": {"type": "array", "items": {"$ref": "concept-skill.schema.json"}}
+  },
+  "additionalProperties": false
+}
