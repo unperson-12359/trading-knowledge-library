@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/gamma-hedge",
+  "canonical_sha256": "6c353502c2a8f6962c4a9372aa495b1d7bc5ed883b58c1a7dc038f85caabc02e",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/gamma-hedge",
+    "name": "Gamma hedge",
+    "aliases": [
+      "gamma hedging",
+      "gamma-neutral hedging"
+    ],
+    "domain": "Portfolio management",
+    "definition": "An options-hedging technique that neutralizes a position's gamma - the rate at which delta changes per $1 move in the underlying - so that the delta hedge remains effective for larger price moves without constant rebalancing.",
+    "intuition": "Gamma is how fast your delta hedge goes stale; hedging gamma keeps the hedge from drifting out of alignment every time the underlying moves.",
+    "mechanics": "Long options (calls or puts) have positive gamma, short options negative gamma, and the underlying itself has zero gamma, so gamma can only be hedged by adding other options: the trader first sets total gamma to zero with a traded option, then restores delta neutrality with the underlying. Gamma is highest for at-the-money options near expiration.",
+    "formula": "Position gamma = sum over positions of (quantity * multiplier * gamma_i); choose an options position Q such that position gamma + Q * multiplier * gamma_hedge_instrument = 0, then re-neutralize delta.",
+    "relationships": [
+      "Delta hedge",
+      "Vega hedge",
+      "Hedge ratio"
+    ],
+    "failure_modes": "Gamma hedges are themselves unstable near expiration, when ATM gamma spikes, and require trading additional options with their own costs and vega exposure; a gamma-neutral book still carries higher-order and volatility risk.",
+    "misconceptions": "You cannot gamma-hedge with the underlying stock - stock positions have no gamma because their delta is fixed at 1 or -1; only options change a position's gamma.",
+    "example": "A market maker short a 0.50-delta call with gamma 0.06 buys enough of another listed option with gamma 0.03 to bring book gamma to zero, then adjusts shares to restore delta neutrality.",
+    "citations": [
+      {
+        "source": "The Options Industry Council (OIC), Options Education: Gamma",
+        "url": "https://www.optionseducation.org/advancedconcepts/gamma",
+        "section": "Gamma definition; stock positions have no gamma",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

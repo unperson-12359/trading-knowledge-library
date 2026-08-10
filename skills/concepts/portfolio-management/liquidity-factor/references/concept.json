@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/liquidity-factor",
+  "canonical_sha256": "a0821c40c9c0504a051b36c0a2a80a841778acdbdd8ac89ec8232a84c2ce1618",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/liquidity-factor",
+    "name": "Liquidity factor",
+    "aliases": [
+      "liquidity risk factor",
+      "Pastor-Stambaugh liquidity factor",
+      "traded liquidity factor"
+    ],
+    "domain": "Portfolio management",
+    "definition": "A factor capturing exposure to market-wide liquidity fluctuations: Pastor and Stambaugh (2003) show that stocks whose returns are more sensitive to innovations in aggregate liquidity earn higher expected returns, so liquidity risk is a priced state variable beyond market, size, value, and momentum exposures.",
+    "intuition": "Stocks that fall hardest when market liquidity dries up are unpleasant to hold, so investors demand a premium for owning them - that premium is the liquidity factor's return.",
+    "mechanics": "Pastor and Stambaugh measure each stock's liquidity monthly by the tendency of signed volume (order flow) to be followed by return reversals, average across stocks for an aggregate series, extract innovations, and then estimate each stock's 'liquidity beta' - its return sensitivity to those innovations. Their long-short liquidity-risk spread earned about 7.5% annually (1966-1999), adjusted for market, size, value, and momentum exposures.",
+    "formula": "Liquidity measure gamma_i,t from the regression r^e_{i,d+1,t} = theta + phi*r_{i,d,t} + gamma_i,t * sign(r^e_{i,d,t}) * v_{i,d,t} + eps; a stock's liquidity beta is the sensitivity of its return to innovations L_t in the aggregate series.",
+    "relationships": [
+      "Factor model",
+      "Alpha",
+      "Systematic risk",
+      "Correlation breakdown",
+      "Carry factor"
+    ],
+    "failure_modes": "Liquidity is a broad, elusive concept and every proxy captures only one dimension; results depend on the specific measure, the factor is hard to trade directly, and liquidity betas are imprecisely estimated at the individual-stock level.",
+    "misconceptions": "The priced liquidity factor is about systematic liquidity risk (sensitivity of returns to aggregate liquidity swings), not about how liquid an individual stock is; the level of illiquidity and the covariance with liquidity shocks are distinct constructs.",
+    "example": "Long-Term Capital Management's portfolio was by design positively exposed to market-wide liquidity; when liquidity collapsed in 1998, its liquidity-sensitive positions dropped sharply, forcing liquidation - exactly the risk the liquidity factor prices.",
+    "citations": [
+      {
+        "source": "Pastor and Stambaugh, Liquidity Risk and Expected Stock Returns, Journal of Political Economy 111(3), 642-685",
+        "url": "https://www.cis.upenn.edu/~mkearns/finread/pastor.pdf",
+        "section": "Abstract and Sections I-II",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

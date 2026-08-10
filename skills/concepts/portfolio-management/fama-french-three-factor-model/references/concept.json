@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/fama-french-three-factor-model",
+  "canonical_sha256": "52d795c14d03c7cc79c5ccc4496c7a144a0c16860d91284ebad252509d43566f",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/fama-french-three-factor-model",
+    "name": "Fama-French three-factor model",
+    "aliases": [
+      "FF3",
+      "Fama-French model"
+    ],
+    "domain": "Portfolio management",
+    "definition": "An empirical asset-pricing model from Fama and French (1993, 'Common Risk Factors in the Returns on Stocks and Bonds') that explains stock returns with three factors: the market excess return (Rm-Rf), the size factor SMB, and the value factor HML.",
+    "intuition": "How a stock moves is largely explained by three dials: how the whole market did, how small caps did relative to big caps, and how cheap (high book-to-market) stocks did relative to expensive ones.",
+    "mechanics": "R_i - R_f = alpha_i + b_i*(R_m - R_f) + s_i*SMB + h_i*HML + e_i, estimated by time-series regression; factor series are constructed from value-weight portfolios sorted on size and book-to-market using NYSE breakpoints, as distributed in the Kenneth French data library.",
+    "formula": "R_i - R_f = alpha_i + b_i*(R_m - R_f) + s_i*SMB + h_i*HML + e_i.",
+    "relationships": [
+      "Market factor",
+      "Size factor",
+      "Value factor",
+      "Fama-French five-factor model",
+      "Carhart four-factor model",
+      "Factor model",
+      "Alpha"
+    ],
+    "failure_modes": "The model cannot capture the momentum pattern and leaves other documented anomalies unexplained, which motivated the Carhart and five-factor extensions; its factors are empirical constructs whose risk-versus-behavioral interpretation remains debated.",
+    "misconceptions": "A near-zero three-factor alpha is not proof a manager added no value in all senses - it only says returns are explained by market, size, and value exposures; conversely, positive alpha may reflect omitted factors rather than skill.",
+    "example": "Regressing a small-cap value fund's monthly excess returns on MKT, SMB, and HML typically yields large positive s and h loadings, quantifying how much of its performance is just small-value exposure.",
+    "citations": [
+      {
+        "source": "Kenneth R. French Data Library, Description of Fama/French Factors",
+        "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_factors.html",
+        "section": "Construction; reference to Fama and French (1993), Journal of Financial Economics",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

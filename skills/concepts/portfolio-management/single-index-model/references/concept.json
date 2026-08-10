@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/single-index-model",
+  "canonical_sha256": "2e09338e8fd289177e60c3ebc68b4444c323f7025d24af7f3a9e9eb10079d60a",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/single-index-model",
+    "name": "Single-index model",
+    "aliases": [
+      "market model",
+      "single-factor model",
+      "Sharpe's diagonal model"
+    ],
+    "domain": "Portfolio management",
+    "definition": "The simplest factor model, in which each asset's return is related to a single common factor - typically the return on a market index - plus an asset-specific residual; introduced by Sharpe (1963) as a simplified model for portfolio analysis that drastically cuts the number of estimates needed for covariance-based optimization.",
+    "intuition": "Assume everything moves together only because everything moves with the market; then you only need each stock's beta to rebuild the whole covariance matrix.",
+    "mechanics": "r_i = alpha_i + beta_i*r_m + e_i, with residuals uncorrelated across assets. This implies cov(r_i, r_j) = beta_i*beta_j*sigma_m^2 for i != j, so the covariance matrix is rebuilt from N betas, N residual variances, and one market variance instead of N(N-1)/2 sample covariances.",
+    "formula": "r_i = alpha_i + beta_i * r_m + e_i; cov(r_i, r_j) = beta_i * beta_j * sigma_m^2 for i != j; var(r_i) = beta_i^2 * sigma_m^2 + var(e_i).",
+    "relationships": [
+      "Factor model",
+      "Beta",
+      "Market factor",
+      "Systematic risk",
+      "Idiosyncratic risk",
+      "Covariance matrix"
+    ],
+    "failure_modes": "One factor cannot capture industry, style, or macro co-movements, so residuals of similar stocks remain correlated and the model understates diversification benefits within sectors; it inherits all instability of beta estimation.",
+    "misconceptions": "The single-index model is a statistical simplification, not the CAPM: the CAPM adds equilibrium asset-pricing implications (expected returns linear in beta), while the index model merely describes return covariation.",
+    "example": "With beta_i = 1.2, beta_j = 0.8, and market variance 0.04, the single-index model assigns cov(r_i, r_j) = 1.2*0.8*0.04 = 0.0384 without ever computing their historical sample covariance.",
+    "citations": [
+      {
+        "source": "William F. Sharpe, Macro-Investment Analysis, Factor Models chapter: A Generic Linear Factor Model",
+        "url": "https://web.stanford.edu/~wfsharpe/mia/fac/mia_fac2.htm",
+        "section": "A Generic Linear Factor Model (m-factor model; single-factor case)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "John C. Hull, Options, Futures, and Other Derivatives (8th ed.), Chapter 3 lecture slides: Hedging Strategies Using Futures",
+        "url": "https://npapanikolaou.files.wordpress.com/2014/02/fin-derivatives-lecture-5.pdf",
+        "section": "Hedging an Equity Portfolio & CAPM",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

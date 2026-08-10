@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/minimum-variance-hedge-ratio",
+  "canonical_sha256": "3d57ee2f4d0d54d517d5bbe8fbbe44089364fd049de97c7b245cafe7098db0c7",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/minimum-variance-hedge-ratio",
+    "name": "Minimum-variance hedge ratio",
+    "aliases": [
+      "optimal hedge ratio",
+      "MVHR",
+      "h*"
+    ],
+    "domain": "Portfolio management",
+    "definition": "The hedge ratio that minimizes the variance of the value of the hedged position, equal to the correlation between spot-price changes and futures-price changes times the ratio of their standard deviations; equivalently, the slope of the best-fit regression of spot-price changes on futures-price changes.",
+    "intuition": "It is the hedge size that makes your combined position wobble the least, given how tightly the hedge instrument actually tracks your exposure.",
+    "mechanics": "h* = rho * sigma_S / sigma_F, where rho is the correlation between Delta-S (spot change) and Delta-F (futures change) over the hedge horizon and sigma_S, sigma_F their standard deviations; parameters are usually estimated from historical data over non-overlapping intervals matching the hedge horizon. Hedge effectiveness is the R-squared of that regression - the proportion of variance eliminated.",
+    "formula": "h* = rho * (sigma_S / sigma_F); optimal contracts N* = h* * Q_A / Q_F; effectiveness = R^2 of the regression of Delta-S on Delta-F.",
+    "relationships": [
+      "Hedge ratio",
+      "Cross hedge",
+      "Beta",
+      "Covariance matrix",
+      "Duration hedge"
+    ],
+    "failure_modes": "The ratio is estimated from historical spot-futures relationships and degrades when that relationship shifts (regime change, contract roll, structural breaks); it minimizes variance, not downside risk, and ignores transactions costs and margining (though tailing the hedge adjusts for daily settlement).",
+    "misconceptions": "The optimal hedge ratio is generally not 1.0 even for liquid hedges, and minimizing variance is not the same as maximizing expected utility - a hedger may rationally choose a different ratio once costs and residual basis risk are considered.",
+    "example": "An airline hedging jet fuel with heating-oil futures estimates rho = 0.9, sigma_S = 0.03, sigma_F = 0.04, giving h* = 0.675; for 2 million gallons and 42,000-gallon contracts it uses N* = 0.675 * 2,000,000/42,000, about 32 contracts.",
+    "citations": [
+      {
+        "source": "John C. Hull, Options, Futures, and Other Derivatives (8th ed.), Chapter 3 lecture slides: Hedging Strategies Using Futures",
+        "url": "https://npapanikolaou.files.wordpress.com/2014/02/fin-derivatives-lecture-5.pdf",
+        "section": "The Minimum Variance Hedge Ratio; Hedge Effectiveness",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

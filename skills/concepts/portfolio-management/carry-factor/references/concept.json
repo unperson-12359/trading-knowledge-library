@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/carry-factor",
+  "canonical_sha256": "d1c97c00ee38c4ec398abfbabbec9b1624e2829c75e3db1272804aca8fd9abc6",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/carry-factor",
+    "name": "Carry factor",
+    "aliases": [
+      "carry",
+      "carry trade"
+    ],
+    "domain": "Portfolio management",
+    "definition": "A cross-asset factor based on an asset's carry, defined by Koijen, Moskowitz, Pedersen, and Vrugt as its expected return assuming that market conditions, including its price, stay the same; carry strategies go long high-carry and short low-carry securities across global equities, bonds, currencies, commodities, and other markets.",
+    "intuition": "Carry is what you earn if nothing changes: the coupon, the yield differential, the futures roll-down - the 'getting paid to wait' component of return.",
+    "mechanics": "Carry can be measured in advance without an asset-pricing model (e.g., interest-rate differentials for currencies, yield minus financing cost for bonds, roll yield for commodities); an asset's total expected return decomposes into carry plus expected price appreciation. The factor is implemented as long-short portfolios ranking assets on carry within each asset class.",
+    "formula": "E(r_i) = carry_i + E(price appreciation_i); in FX, carry_i approximately equals the foreign minus domestic short-term interest rate differential.",
+    "relationships": [
+      "Factor model",
+      "Momentum factor",
+      "Value factor",
+      "Term factor",
+      "Risk budgeting"
+    ],
+    "failure_modes": "Carry trades earn steady small gains punctuated by crash risk: despite low unconditional correlations across asset classes, carry strategies in all asset classes tend to do poorly at the same times, and those episodes coincide with global recessions and liquidity spirals.",
+    "misconceptions": "Carry is not a free yield: the positive average return compensates for exposure to rare, severe drawdowns (the classic 'picking up pennies in front of a steamroller' profile), and naive FX carry violates uncovered interest parity empirically rather than confirming it.",
+    "example": "An FX carry trade borrows in a low-rate currency (e.g., Japanese yen) to invest in a high-rate currency (e.g., Australian dollar); if exchange rates don't move, the trade earns the rate differential, but it loses heavily in sharp risk-off reversals.",
+    "citations": [
+      {
+        "source": "AQR Capital Management, Koijen, Moskowitz, Pedersen, and Vrugt, Carry (Journal of Financial Economics)",
+        "url": "https://www.aqr.com/Insights/Research/Journal-Article/Carry",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

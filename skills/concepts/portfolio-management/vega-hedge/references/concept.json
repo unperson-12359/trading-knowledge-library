@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/vega-hedge",
+  "canonical_sha256": "5f6ebae1819f1aa491cc01fb7a6d14d9b89112b37f952b22eca91d18cdc56d08",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/vega-hedge",
+    "name": "Vega hedge",
+    "aliases": [
+      "vega hedging",
+      "volatility hedging"
+    ],
+    "domain": "Portfolio management",
+    "definition": "An options-hedging technique that neutralizes a position's vega - the change in option premium for a one-percentage-point change in implied volatility - so the book is insulated from shifts in the market's volatility expectations.",
+    "intuition": "Options get more expensive when expected volatility rises, even if prices don't move; a vega hedge makes your position indifferent to that repricing.",
+    "mechanics": "Vega measures premium change per 1% (100-basis-point) change in implied volatility; it is larger for longer-dated options. Because the underlying has zero vega, vega must be hedged with offsetting option positions, after which delta (and possibly gamma) is re-neutralized; vega hedges across maturities leave term-structure-of-volatility risk.",
+    "formula": "Position vega = sum over positions of (quantity * multiplier * vega_i); offset with an options position whose aggregate vega equals -position vega.",
+    "relationships": [
+      "Delta hedge",
+      "Gamma hedge",
+      "Hedge ratio"
+    ],
+    "failure_modes": "Implied volatility is not directly tradable, so vega hedges rely on other options whose own prices embed supply-demand distortions; vega also changes with price, time, and vol level, so the hedge decays, and short-dated and long-dated implied vols do not move in lockstep.",
+    "misconceptions": "A vega-neutral book is not immune to volatility: it is hedged against a uniform 1% implied-vol shift, not against realized volatility gaps or non-parallel shifts across the volatility surface.",
+    "example": "A trader long a 12-month call with vega 0.15 (gaining about $0.30 if implied vol rises 2%) shorts enough nearer-dated options totaling -0.15 vega per share equivalent, flattening the book's response to a volatility spike.",
+    "citations": [
+      {
+        "source": "The Options Industry Council (OIC), Options Education: Vega",
+        "url": "https://www.optionseducation.org/advancedconcepts/vega",
+        "section": "Vega definition and implied volatility",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

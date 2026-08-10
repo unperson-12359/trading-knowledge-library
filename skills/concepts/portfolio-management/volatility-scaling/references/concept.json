@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/volatility-scaling",
+  "canonical_sha256": "e9f41e6f29decc742ea32314d32837f26eecd392aac9fb8a9d4be6317736e3b9",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/volatility-scaling",
+    "name": "Volatility scaling",
+    "aliases": [
+      "volatility targeting",
+      "vol targeting",
+      "volatility management"
+    ],
+    "domain": "Portfolio management",
+    "definition": "A position-sizing technique that adjusts exposure inversely to recent volatility - leveraging up when volatility is low and scaling down when it is high - so the portfolio targets a roughly constant level of volatility rather than a constant notional exposure.",
+    "intuition": "Because vol clusters (calm follows calm, storm follows storm), you can keep risk steadier by trading smaller when markets are stormy and larger when they are calm.",
+    "mechanics": "The scaled return is r_scaled_t = (sigma_target / sigma_hat_{t-1}) * r_t (times a constant near 1 to match the ex-post target), where sigma_hat is estimated from daily returns with exponentially decaying weights using data known in advance. Harvey, Hoyle, Korgaonkar, Rattray, Sargaison, and Van Hemert (2018) find scaling raises Sharpe ratios mainly for risk assets (equities, credit) via the leverage effect, and reduces the likelihood of extreme returns across all asset classes.",
+    "formula": "r_scaled_t = (sigma_target / sigma_hat_{t-1}) * r_t, where sigma_hat_{t-1} is the conditional volatility estimate known before period t and sigma_target the target annualized volatility (e.g., 10%).",
+    "relationships": [
+      "Risk budgeting",
+      "Low-volatility factor",
+      "Tactical asset allocation",
+      "Correlation breakdown"
+    ],
+    "failure_modes": "Scaling cuts both tails - it shrinks right-tail gains as well as left-tail losses; for bonds, currencies, and commodities the Sharpe-ratio benefit is negligible, turnover adds transaction costs, and a sudden vol spike can force selling into the drawdown.",
+    "misconceptions": "Volatility scaling is not return prediction: volatility is persistent while mean returns show no clear pattern across vol quintiles, so the technique manages risk exposure, not alpha.",
+    "example": "With a 10% volatility target, if estimated S&P 500 volatility jumps from 15% to 30%, the strategy halves its equity exposure (15/30 = 0.5 scaling factor), as volatility-target funds did in episodes like the 2020 crash.",
+    "citations": [
+      {
+        "source": "Harvey, Hoyle, Korgaonkar, Rattray, Sargaison, and Van Hemert, The Impact of Volatility Targeting, Journal of Portfolio Management 45(1), 14-33",
+        "url": "https://people.duke.edu/~charvey/Research/Published_Papers/P135_The_impact_of.pdf",
+        "section": "Volatility Scaling section",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

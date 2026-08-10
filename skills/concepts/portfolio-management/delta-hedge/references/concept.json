@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/delta-hedge",
+  "canonical_sha256": "27c7ce0e8cbaef463dc00028041f22b4a29615a5c99a2e623a1ac74e22c4ae0a",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/delta-hedge",
+    "name": "Delta hedge",
+    "aliases": [
+      "delta hedging",
+      "delta-neutral hedging"
+    ],
+    "domain": "Portfolio management",
+    "definition": "An options-hedging technique that offsets a position's delta - the theoretical sensitivity of the option's premium to a $1 move in the underlying - by taking an opposing position in the underlying, so the total position is approximately insensitive to small price moves.",
+    "intuition": "If your option gains $0.50 when the stock rises $1, shorting half a share per option makes the combined position roughly flat for small moves.",
+    "mechanics": "Delta is the first derivative of option value with respect to the underlying price (0 to 1 for long calls, 0 to -1 for long puts). A delta hedge sets total position delta to zero, e.g., shorting delta*N*100 shares against N long calls. Because delta changes as the underlying moves (gamma), the hedge must be rebalanced dynamically; Greeks are theoretical guideposts from a pricing model, not guarantees.",
+    "formula": "Position delta = sum over positions of (quantity * contract multiplier * delta_i); hedge shares = -position delta (per share delta of 1).",
+    "relationships": [
+      "Gamma hedge",
+      "Vega hedge",
+      "Hedge ratio",
+      "Minimum-variance hedge ratio"
+    ],
+    "failure_modes": "Delta hedging is exact only locally and continuously: discrete rebalancing, gaps, and transaction costs leave residual P&L, and a delta-neutral book remains exposed to gamma (large moves), vega (volatility changes), and theta (time decay).",
+    "misconceptions": "Delta-neutral does not mean risk-neutral: it neutralizes only the first-order price exposure at one point in time, and delta is also not literally the probability of finishing in the money, despite the common trader shorthand.",
+    "example": "An investor long 10 calls with delta 0.50 shorts 500 shares (10 * 100 * 0.50); a $1 stock rise adds about $500 to the calls and loses about $500 on the shares, keeping the position near flat until delta changes.",
+    "citations": [
+      {
+        "source": "The Options Industry Council (OIC), Options Education: Delta",
+        "url": "https://www.optionseducation.org/advancedconcepts/delta",
+        "section": "Delta definition and examples",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "The Options Industry Council (OIC), Options Education: Understanding Options Greeks",
+        "url": "https://www.optionseducation.org/advancedconcepts/understanding-options-greeks",
+        "section": "Greeks overview",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

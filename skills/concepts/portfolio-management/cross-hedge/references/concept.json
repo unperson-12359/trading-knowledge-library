@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/cross-hedge",
+  "canonical_sha256": "94a58b50c215f62e0f68129cfa48fa623454196fa73c8c173dbde3271866d611",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/cross-hedge",
+    "name": "Cross hedge",
+    "aliases": [
+      "cross hedging"
+    ],
+    "domain": "Portfolio management",
+    "definition": "A hedge in which the asset giving rise to the hedger's exposure differs from the asset underlying the futures (or other derivative) contract used for hedging, employed when no suitable contract exists on the exposure itself.",
+    "intuition": "If you can't buy insurance on the exact thing you own, you insure something that tends to move with it - imperfectly.",
+    "mechanics": "The hedger selects a correlated contract (e.g., heating-oil futures for a jet-fuel exposure) and typically uses the minimum-variance hedge ratio rather than 1.0, because spot and futures changes no longer match one-for-one; the residual mismatch is basis risk, which cross hedging usually increases.",
+    "formula": "",
+    "relationships": [
+      "Hedge ratio",
+      "Minimum-variance hedge ratio",
+      "Delta hedge"
+    ],
+    "failure_modes": "The hedge inherits basis risk between two different assets: their price relationship can weaken exactly in stressed markets, so the hedge may fail when most needed, and liquidity in the proxy contract adds rollover and margin costs.",
+    "misconceptions": "A cross hedge is not a failed hedge by definition - with a well-chosen proxy and minimum-variance ratio it removes most variance - but it never removes all of it, and calling it 'fully hedged' overstates the protection.",
+    "example": "An airline concerned about jet fuel prices uses heating-oil futures to hedge because jet-fuel futures are not actively traded; the price link between the two fuels makes the hedge useful but imperfect.",
+    "citations": [
+      {
+        "source": "John C. Hull, Options, Futures, and Other Derivatives (8th ed.), Chapter 3 lecture slides: Hedging Strategies Using Futures",
+        "url": "https://npapanikolaou.files.wordpress.com/2014/02/fin-derivatives-lecture-5.pdf",
+        "section": "Cross Hedging",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

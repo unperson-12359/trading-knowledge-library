@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/carhart-four-factor-model",
+  "canonical_sha256": "493ee3ae3fa42abf5c8d5f6fb5fd167c1c105e48b639544263cbbabedae981e4",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/carhart-four-factor-model",
+    "name": "Carhart four-factor model",
+    "aliases": [
+      "Carhart model",
+      "four-factor model"
+    ],
+    "domain": "Portfolio management",
+    "definition": "An extension of the Fama-French three-factor model introduced by Mark Carhart (1997, 'On Persistence in Mutual Fund Performance') that adds a momentum factor - long stocks with high prior 2-12 month returns and short those with low prior returns - to the market, size, and value factors.",
+    "intuition": "To judge a fund fairly you must also control for whether it was simply riding recent winners, because momentum explains much of what looked like persistent skill.",
+    "mechanics": "R_i - R_f = alpha_i + b_i*(R_m - R_f) + s_i*SMB + h_i*HML + m_i*Mom + e_i. Carhart used the Jegadeesh-Titman momentum factor (top minus bottom decile of prior 12-2 month returns); the standard data-library Mom variant averages the high-minus-low prior-return spread across small and big value-weight portfolios.",
+    "formula": "R_i - R_f = alpha_i + b_i*(R_m - R_f) + s_i*SMB + h_i*HML + m_i*Mom + e_i, with Mom = (1/2)(Small High + Big High) - (1/2)(Small Low + Big Low) on prior (2-12) returns.",
+    "relationships": [
+      "Momentum factor",
+      "Fama-French three-factor model",
+      "Fama-French five-factor model",
+      "Alpha",
+      "Factor model"
+    ],
+    "failure_modes": "The momentum leg exposes the model to momentum crashes in sharp market reversals, and alpha rankings of funds can flip depending on whether momentum is included; like all such models it is an empirical benchmark, not a theory of required returns.",
+    "misconceptions": "Carhart's key finding was that much apparent mutual-fund performance persistence disappears after controlling for momentum and expenses - the four-factor alpha, not raw return rank, is the meaningful persistence measure.",
+    "example": "Evaluating a growth-fund manager, a three-factor regression shows 2% alpha; adding the momentum factor reveals a large positive Mom loading and shrinks alpha toward zero, showing the 'skill' was largely momentum exposure.",
+    "citations": [
+      {
+        "source": "Kenneth R. French Data Library, Detail for Monthly Momentum Factor (Mom)",
+        "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/det_mom_factor.html",
+        "section": "Construction",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Kenneth R. French Data Library, Description of Fama/French Factors",
+        "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_factors.html",
+        "section": "Construction",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

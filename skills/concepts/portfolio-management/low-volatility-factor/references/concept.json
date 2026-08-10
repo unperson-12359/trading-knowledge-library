@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/low-volatility-factor",
+  "canonical_sha256": "429abf15055fd93cb8a8b7f6b1a7c3f2b82e295174a151770868deefcf345f1e",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/low-volatility-factor",
+    "name": "Low-volatility factor",
+    "aliases": [
+      "low-beta anomaly",
+      "betting against beta",
+      "BAB",
+      "low-risk anomaly"
+    ],
+    "domain": "Portfolio management",
+    "definition": "A factor built on the empirical finding that low-beta and low-volatility stocks have historically earned higher risk-adjusted returns than the CAPM predicts - the security market line is empirically too flat - formalized by Frazzini and Pedersen as the Betting Against Beta (BAB) factor, which goes long leveraged low-beta assets and short de-leveraged high-beta assets.",
+    "intuition": "Risky stocks don't pay as much per unit of risk as theory says they should, so tilting toward calm stocks has historically improved Sharpe ratios.",
+    "mechanics": "Stocks are ranked by estimated beta (or volatility); the long side holds low-beta names (scaled up toward comparable risk) and the short side holds high-beta names (scaled down). Frazzini and Pedersen attribute the effect to leverage constraints: investors unable or unwilling to lever instead overweight high-beta securities, depressing their risk-adjusted returns.",
+    "formula": "BAB return = (1/beta_L)(r_L - r_f) - (1/beta_H)(r_H - r_f), where r_L, r_H are returns of low- and high-beta portfolios and beta_L, beta_H their betas.",
+    "relationships": [
+      "Beta",
+      "Quality factor",
+      "Capital market line",
+      "Factor model",
+      "Volatility scaling"
+    ],
+    "failure_modes": "The factor underperforms sharply when high-beta stocks rally (strong bull rebounds), is exposed to crowding and valuation risk in the low-vol sleeve, and can load heavily on interest-rate-sensitive sectors such as utilities, adding hidden rate risk.",
+    "misconceptions": "Low volatility is not low absolute risk in all senses: low-beta portfolios still fall in market crashes (they just fall less), and the anomaly concerns risk-adjusted, not raw, returns.",
+    "example": "Sorting U.S. stocks by beta and holding the lowest-beta decile against the highest, with each side scaled to beta 1, reproduces the BAB factor; Frazzini and Pedersen document the flat security market line in 18 of 19 international equity markets.",
+    "citations": [
+      {
+        "source": "AQR Capital Management, Frazzini and Pedersen, Betting Against Beta (Journal of Financial Economics)",
+        "url": "https://www.aqr.com/Insights/Research/Journal-Article/Betting-Against-Beta",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/fama-french-five-factor-model",
+  "canonical_sha256": "ef3561912b1c08ee41a3f44ea5219f97a80553b99007b7d088c0d5bbd1521667",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/fama-french-five-factor-model",
+    "name": "Fama-French five-factor model",
+    "aliases": [
+      "FF5"
+    ],
+    "domain": "Portfolio management",
+    "definition": "An extension of the Fama-French three-factor model (Fama and French 2015, 'A Five-Factor Asset Pricing Model') that adds a profitability factor, RMW (robust minus weak operating profitability), and an investment factor, CMA (conservative minus aggressive asset growth), to the market, size, and value factors.",
+    "intuition": "Beyond market, size, and value, two more dials matter: profitable firms tend to beat unprofitable ones, and firms that invest conservatively tend to beat firms that expand aggressively.",
+    "mechanics": "R_i - R_f = alpha_i + b_i*(R_m - R_f) + s_i*SMB + h_i*HML + r_i*RMW + c_i*CMA + e_i. The factors are built from 2x3 value-weight sorts on size paired with book-to-market, operating profitability, and investment; SMB is averaged across the three pairings.",
+    "formula": "R_i - R_f = alpha_i + b_i*(R_m - R_f) + s_i*SMB + h_i*HML + r_i*RMW + c_i*CMA + e_i.",
+    "relationships": [
+      "Fama-French three-factor model",
+      "Quality factor",
+      "Value factor",
+      "Size factor",
+      "Carhart four-factor model",
+      "Factor model"
+    ],
+    "failure_modes": "Even five factors leave momentum and several anomalies unexplained, and Fama and French note the model's main problem is the low average returns of small stocks that invest a lot despite low profitability; HML becomes redundant for describing average returns once RMW and CMA are included.",
+    "misconceptions": "More factors do not mean a complete model of returns - the five-factor model is still an empirical approximation whose factor premia vary across periods and markets.",
+    "example": "A highly profitable, low-asset-growth fund shows positive RMW and CMA loadings in a five-factor regression, which can absorb what looked like alpha under the three-factor model.",
+    "citations": [
+      {
+        "source": "Kenneth R. French Data Library, Description of Fama/French 5 Factors (2x3)",
+        "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_5_factors_2x3.html",
+        "section": "Construction; reference to Fama and French (2014/2015), A Five-Factor Asset Pricing Model",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

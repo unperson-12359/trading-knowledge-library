@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/factor-model",
+  "canonical_sha256": "038e805c798b3801168c4e76d7d88959c43337addf067b11bfeaaadfebec91d4",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/factor-model",
+    "name": "Factor model",
+    "aliases": [
+      "linear factor model",
+      "multi-factor model"
+    ],
+    "domain": "Portfolio management",
+    "definition": "A model that relates an asset's return linearly to a limited number of common factors plus an asset-specific residual, used to decompose returns, estimate expected returns, and build covariance matrices with far fewer parameters than direct estimation.",
+    "intuition": "Instead of tracking how every pair of thousands of assets moves together, you describe each asset by how it responds to a handful of shared drivers - the rest is treated as idiosyncratic noise.",
+    "mechanics": "r_i = b_i1*f_1 + ... + b_im*f_m + e_i. The model's power comes from two assumptions: residuals are uncorrelated with the factors, and residuals of different assets are uncorrelated with each other, so all cross-asset correlation flows through factor exposures. This yields C = B*C_F*B' + diag(rv), reducing, e.g., a 1,000-asset problem from ~500,500 covariances to a few thousand estimates.",
+    "formula": "r_i = sum_{j=1..m} b_ij * f_j + e_i, with corr(e_i, f_j) = 0 for all j and corr(e_i, e_j) = 0 for i != j; covariance structure C = B*C_F*B' + diag(rv).",
+    "relationships": [
+      "Factor exposure",
+      "Single-index model",
+      "Fama-French three-factor model",
+      "Covariance matrix",
+      "Systematic risk",
+      "Idiosyncratic risk"
+    ],
+    "failure_modes": "A factor model only constrains reality if its assumptions hold: omit an important common factor and residuals correlate across assets, breaking the covariance estimate; exposures also drift over time, so fitted models can go stale.",
+    "misconceptions": "Any linear decomposition can be made to fit trivially - Sharpe stresses the model has economic content only through the assumptions on residuals; a good R-squared does not validate the factor structure.",
+    "example": "A three-factor model with market, size, and value factors explains a stock's 16% annual return as 14.5% from its factor exposures times factor realizations plus 1.5% residual return.",
+    "citations": [
+      {
+        "source": "William F. Sharpe, Macro-Investment Analysis, Factor Models chapter: A Generic Linear Factor Model",
+        "url": "https://web.stanford.edu/~wfsharpe/mia/fac/mia_fac2.htm",
+        "section": "A Generic Linear Factor Model; The Key Assumption",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "William F. Sharpe, Macro-Investment Analysis, Factor Models chapter: The Need for Factor Models",
+        "url": "https://web.stanford.edu/~wfsharpe/mia/fac/mia_fac1.htm",
+        "section": "The Number of Estimates Needed for Mean/Variance Analyses",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/credit-factor",
+  "canonical_sha256": "2ed42c8982ef0016cbbd6c01c9598752b7167645cec864f67d053f6c9329200e",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/credit-factor",
+    "name": "Credit factor",
+    "aliases": [
+      "DEF",
+      "default factor",
+      "default premium factor",
+      "credit premium"
+    ],
+    "domain": "Portfolio management",
+    "definition": "One of the two bond-market factors in Fama and French (1993), capturing default risk: DEF is the difference between the return on long-term corporate bonds and the return on long-term government bonds, proxying the compensation for bearing corporate default risk.",
+    "intuition": "Corporate bonds pay more than Treasuries because they can default; DEF measures, each period, how much that credit exposure actually earned or lost.",
+    "mechanics": "Constructed as the return spread of long-term corporate bonds over long-term government bonds; in factor regressions for corporate bond portfolios, DEF typically carries the majority of explanatory power because long-only credit portfolios share common market exposure to the default premium.",
+    "formula": "DEF_t = R_LTC,t - R_LTG,t, where R_LTC is the return on long-term corporate bonds and R_LTG the return on long-term government bonds.",
+    "relationships": [
+      "Term factor",
+      "Fama-French three-factor model",
+      "Factor model",
+      "Carry factor"
+    ],
+    "failure_modes": "DEF bundles duration-matched credit spread changes with actual default losses and flight-to-quality episodes; it spikes negatively in crises (credit widening) and cannot distinguish compensation for expected defaults from compensation for default-risk volatility.",
+    "misconceptions": "DEF is not the credit spread itself: it is the realized excess return of corporate over government bonds, which is negative whenever spreads widen enough to offset the yield advantage.",
+    "example": "If long-term corporate bonds return -0.5% in a month while long-term Treasuries return +1.0% amid a flight to quality, DEF realizes -1.5%, hitting credit-heavy portfolios.",
+    "citations": [
+      {
+        "source": "Bektic, Wenzler, Wegener, Schiereck, and Spielmann, Extending Fama-French Factors to Corporate Bond Markets (working paper, describing the Fama-French 1993 TERM and DEF factors)",
+        "url": "http://wp.lancs.ac.uk/fofi2018/files/2018/03/FoFI-2017-0041-Demir-Bektic.pdf",
+        "section": "Section 4.1 (DEF as corporate bond market excess returns / default premium)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

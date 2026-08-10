@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/term-factor",
+  "canonical_sha256": "91f46930fc1b443f86705920cbca4a1c3a756602d3217ab0c6c7d92150b5cab7",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/term-factor",
+    "name": "Term factor",
+    "aliases": [
+      "TERM",
+      "term premium factor",
+      "maturity factor"
+    ],
+    "domain": "Portfolio management",
+    "definition": "One of the two bond-market factors in Fama and French (1993), capturing maturity risk: TERM is the difference between the return on long-term government bonds and the return on short-term risk-free instruments (the one-month Treasury bill rate), proxying the term premium for bearing interest-rate risk.",
+    "intuition": "Long bonds swing more when rates move, and investors historically demanded extra return for that - TERM measures that extra return month by month.",
+    "mechanics": "Constructed as the total return of a long-term government bond index minus a short-term risk-free rate (e.g., 1-month T-bill); bond and stock returns load on TERM to the extent they are exposed to shifts in the term structure of interest rates.",
+    "formula": "TERM_t = R_LTG,t - R_f,t, where R_LTG is the return on long-term government bonds and R_f the one-month T-bill rate.",
+    "relationships": [
+      "Credit factor",
+      "Fama-French three-factor model",
+      "Duration hedge",
+      "Factor model",
+      "Carry factor"
+    ],
+    "failure_modes": "TERM captures exposure only to roughly parallel rate moves; non-parallel yield-curve shifts (steepeners, flatteners) leave residual risk, and the term premium itself varies over time and has been compressed or negative in some eras.",
+    "misconceptions": "TERM is not the level or slope of the yield curve: it is a realized return spread between long government bonds and bills, which differs from the ex-ante term premium embedded in forward rates.",
+    "example": "If the long-term Treasury index returns 1.5% in a month when T-bills return 0.4%, TERM realizes +1.1%; a bond fund with high duration will show high sensitivity to this factor.",
+    "citations": [
+      {
+        "source": "Bektic, Wenzler, Wegener, Schiereck, and Spielmann, Extending Fama-French Factors to Corporate Bond Markets (working paper, describing the Fama-French 1993 TERM and DEF factors)",
+        "url": "http://wp.lancs.ac.uk/fofi2018/files/2018/03/FoFI-2017-0041-Demir-Bektic.pdf",
+        "section": "Section 4.1 (TERM construction)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

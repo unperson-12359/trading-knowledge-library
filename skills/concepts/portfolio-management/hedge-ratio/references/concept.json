@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/hedge-ratio",
+  "canonical_sha256": "67bea2fd3343a3a9f46ce62a071580f8d499e0fcd9c284c8f22e17a54fe2235c",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/hedge-ratio",
+    "name": "Hedge ratio",
+    "aliases": [],
+    "domain": "Portfolio management",
+    "definition": "The ratio of the size of the position taken in a hedging instrument (e.g., futures contracts) to the size of the exposure being hedged; it determines how much of the price risk is offset by the hedge.",
+    "intuition": "It is the proportionality dial on a hedge: ratio 1.0 means you hedge dollar-for-dollar; 0.6 means you take a hedge position only 60% as large as your exposure.",
+    "mechanics": "When the asset underlying the futures contract is the same as the asset being hedged, a hedge ratio of 1.0 is commonly used; when cross hedging, the hedger chooses the ratio that minimizes the variance of the hedged position. The number of contracts is N = h * Q_A / Q_F, where Q_A is the exposure size and Q_F the contract size.",
+    "formula": "h = (size of hedge position) / (size of exposure); number of contracts N = h * Q_A / Q_F.",
+    "relationships": [
+      "Minimum-variance hedge ratio",
+      "Cross hedge",
+      "Beta",
+      "Delta hedge",
+      "Duration hedge"
+    ],
+    "failure_modes": "A naive 1.0 hedge ratio ignores differences in volatility and correlation between the exposure and the hedging instrument, so it can over- or under-hedge; it also assumes the spot-futures relationship stays stable over the hedge life.",
+    "misconceptions": "A hedge ratio of 1.0 is not automatically 'full protection': it is optimal only when spot and futures price changes move one-for-one, which cross hedges and basis risk routinely violate.",
+    "example": "A producer expecting to sell 2 million gallons of fuel hedges with 42,000-gallon futures contracts; at a hedge ratio of 1.0 this requires about 48 contracts, but at the optimal ratio of 0.8 it requires 38.",
+    "citations": [
+      {
+        "source": "John C. Hull, Options, Futures, and Other Derivatives (8th ed.), Chapter 3 lecture slides: Hedging Strategies Using Futures",
+        "url": "https://npapanikolaou.files.wordpress.com/2014/02/fin-derivatives-lecture-5.pdf",
+        "section": "Cross Hedging - Hedge Ratio; Optimal Number of Contracts",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

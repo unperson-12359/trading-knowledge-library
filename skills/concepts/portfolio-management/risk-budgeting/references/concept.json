@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "portfolio-management/risk-budgeting",
+  "canonical_sha256": "e6313ede92ad2b9b807386f98b2195388372d03a7e588bdd43f49dddfa12fe6d",
+  "source_path": "concepts/portfolio-management.json",
+  "concept": {
+    "id": "portfolio-management/risk-budgeting",
+    "name": "Risk budgeting",
+    "aliases": [
+      "risk parity",
+      "equal risk contribution",
+      "ERC"
+    ],
+    "domain": "Portfolio management",
+    "definition": "A portfolio construction approach that allocates risk rather than capital: each asset, asset class, or strategy is assigned a budget for its contribution to total portfolio risk, and weights are solved so realized risk contributions match those budgets; the special case of equal budgets for all assets is the risk-parity (equal risk contribution) portfolio.",
+    "intuition": "Instead of deciding '60% of my money in stocks', you decide 'stocks may consume at most 60% of my total risk' - because equal dollars in stocks and bonds produce wildly unequal risk.",
+    "mechanics": "With risk contribution CRC_i = w_i*(Cw)_i/sigma_p, budgets b_i (summing to 1) are imposed by solving w_i*(Cw)_i = b_i * w'Cw for all i; for equal budgets the ERC solution equalizes all component risk contributions. Risk budgeting became a popular alternative to Markowitz optimization after the 2008 crisis because it needs only covariance estimates, not return forecasts.",
+    "formula": "Find w such that w_i*(Cw)_i / sigma_p = b_i for all i, with sum_i b_i = 1; ERC is the case b_i = 1/N for all i.",
+    "relationships": [
+      "Component risk contribution",
+      "Marginal risk contribution",
+      "Portfolio variance",
+      "Diversification",
+      "Minimum-variance portfolio"
+    ],
+    "failure_modes": "Risk budgets calibrated on historical covariances break in crises when correlations jump; equal-risk portfolios typically need leverage to match the expected return of capital-weighted portfolios, adding financing and margin risk.",
+    "misconceptions": "Risk parity is not 'equal weights': equal capital weights concentrate risk in the most volatile assets, whereas equal risk contributions deliberately hold less of high-volatility assets.",
+    "example": "In a stock/bond risk-parity portfolio, because stocks are several times as volatile as bonds, the bond weight must be much larger than the stock weight so that each sleeve contributes 50% of portfolio volatility.",
+    "citations": [
+      {
+        "source": "Thierry Roncalli, Introduction to Risk Parity and Budgeting",
+        "url": "https://arxiv.org/abs/1403.1889",
+        "section": "Abstract and risk-budgeting chapters (arXiv:1403.1889)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
