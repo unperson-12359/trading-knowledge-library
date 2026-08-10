@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/payment-for-order-flow",
+  "canonical_sha256": "be35d844657bcd84f91c25bf1344ceee577357cc6d8d18e9a68d17d36b6afb18",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/payment-for-order-flow",
+    "name": "Payment for order flow",
+    "aliases": [
+      "PFOF"
+    ],
+    "domain": "Orders and execution",
+    "definition": "Compensation a broker-dealer receives from a market maker, exchange, or other firm in return for routing customer orders to it for execution. Formally, SEC Rule 10b-10(d)(8) defines it as any monetary payment, service, property, or other benefit resulting in remuneration to the routing broker or dealer in return for order routing.",
+    "intuition": "The wholesaler pays your broker for the right to fill your trades - that payment, not a commission, is how many 'free' brokers get paid.",
+    "mechanics": "Retail brokers route order flow to wholesalers (e.g., Citadel Securities, Virtu) under PFOF arrangements; the wholesaler profits from the spread and internalizes the flow, sharing part of the economics with the broker and often passing fractional price improvement to the customer. Brokers must disclose PFOF on trade confirmations (10b-10) and in quarterly Rule 606 routing reports.",
+    "formula": "",
+    "relationships": [
+      "Internalization",
+      "Order routing",
+      "Best execution",
+      "Price improvement",
+      "Commission"
+    ],
+    "failure_modes": "The conflict of interest is structural: brokers are paid per order routed, creating incentive to route to the highest payer rather than the best executor and to encourage order flow itself. Execution-quality differences of fractions of a cent, scaled across millions of orders, can exceed the commissions saved.",
+    "misconceptions": "PFOF does not mean customers trade at worse-than-displayed prices - orders must still execute at or inside the NBBO, and studies find small net improvement on many retail fills; the debate is about conflicts and aggregate execution quality. It is also banned in several jurisdictions (UK, EU, Canada, Australia), not a universal practice.",
+    "example": "A zero-commission broker routes your 100-share order to a wholesaler that pays it $0.002 per share; you are filled $0.01 inside the offer, the wholesaler keeps the rest of the spread economics.",
+    "citations": [
+      {
+        "source": "SEC Rule 10b-10, 17 CFR 240.10b-10 (Cornell LII)",
+        "url": "https://www.law.cornell.edu/cfr/text/17/240.10b-10",
+        "section": "(d)(8) Definition of payment for order flow",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia: Payment for order flow",
+        "url": "https://en.wikipedia.org/wiki/Payment_for_order_flow",
+        "section": "Mechanics, disclosure, and regulatory status",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

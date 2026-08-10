@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/best-bid",
+  "canonical_sha256": "192d09bf7e62053ff3ce962dbd213e1a716969db5bf7aed9ed443aa74c3f54c6",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/best-bid",
+    "name": "Best bid",
+    "aliases": [
+      "highest bid",
+      "inside bid"
+    ],
+    "domain": "Microstructure",
+    "definition": "The highest-priced bid currently quoted for a security; at the level of a single venue it is that market's best bid, and aggregated across protected venues it forms the national best bid. Regulation NMS Rule 600(b)(15) defines best bid and best offer as the highest priced bid and the lowest priced offer.",
+    "intuition": "It is the most any displayed buyer is currently willing to pay - the price a seller can execute against immediately, up to the quoted size.",
+    "mechanics": "Sits at the top of the bid side of the order book with an associated displayed size; it changes whenever a better bid is posted, the existing best bid is cancelled, or it is executed. Under Rule 600(b)(60), ties between identical bids from different market centers are ranked by size, then by time.",
+    "formula": "",
+    "relationships": [
+      "Best ask",
+      "National best bid and offer",
+      "Bid",
+      "Top of book",
+      "Order book"
+    ],
+    "failure_modes": "The displayed best bid may be backed by very small size or may flicker in and out within milliseconds, and hidden or iceberg interest means the best truly executable bid can differ from the displayed one.",
+    "misconceptions": "The best bid is a firm price only for its quoted size; a seller of larger size will walk down the book and receive progressively worse prices.",
+    "example": "Bids rest at $100.00 for 300 shares and $99.99 for 2,000 shares; the best bid is $100.00, available for only 300 shares.",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraph (b)(15) Best bid and best offer",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

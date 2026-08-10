@@ -121,6 +121,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="quoted-spread"><h3>Quoted spread <a class="anchor" href="#quoted-spread">#</a></h3>
 <div class="field">The difference between the best (lowest) quoted offer and the best (highest) quoted bid for a security at a point in time, i.e. the round-trip cost of immediacy at displayed prices. SEC Rule 600(b)(12) of Regulation NMS defines the average quoted spread as the share-weighted average of the national best offer minus the national best bid at the time of order receipt.</div>
+<div class="skill-links"><a href="../skills/tkl-quoted-spread/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It measures how far apart the best standing buy and sell prices are; the narrower the gap, the cheaper it is to trade immediately in small size.</div>
 <div class="field"><span class="label">Mechanics:</span> Computed from the inside market (best bid and offer, or the NBBO nationally) each time quotes update; expressed in absolute currency terms or relative to the quote midpoint. It reflects posted liquidity only and changes continuously with order submissions, cancellations, and executions.</div>
 <div class="field"><span class="label">Failure modes:</span> It says nothing about available depth or hidden liquidity, so it can look deceptively tight when displayed size is tiny or when the minimum tick constrains prices. It also overstates the cost actually paid when executions receive price improvement inside the quotes.</div>
@@ -133,6 +134,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="effective-spread"><h3>Effective spread <a class="anchor" href="#effective-spread">#</a></h3>
 <div class="field">A measure of the execution cost actually paid, defined relative to the midpoint of the national best bid and offer at the time of order receipt: for buy orders, twice the difference between the execution price and the midpoint; for sell orders, twice the difference between the midpoint and the execution price (SEC Rule 600(b)(8)).</div>
+<div class="skill-links"><a href="../skills/tkl-effective-spread/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It captures what a liquidity demander really paid against the pre-trade benchmark price, so price improvement inside the quotes shows up as a smaller spread.</div>
 <div class="field"><span class="label">Mechanics:</span> Computed per execution using the NBBO midpoint at order receipt, then share-weighted across executions (average effective spread); dividing by the midpoint gives the percentage effective spread. It is a standard output of SEC Rule 605 execution-quality reports.</div>
 <div class="field"><span class="label">Failure modes:</span> The midpoint benchmark can be stale or misleading in fast markets and wide-spread stocks, and the measure depends on the order-receipt time convention. It also ignores the market impact of large orders that walk the book and the opportunity cost of unfilled orders.</div>
@@ -145,6 +147,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="realized-spread"><h3>Realized spread <a class="anchor" href="#realized-spread">#</a></h3>
 <div class="field">The execution cost measure recomputed with the NBBO midpoint at a specified interval after execution rather than at order receipt: for buys, twice the execution price minus the later midpoint; for sells, twice the later midpoint minus the execution price (SEC Rule 600(b)(13)). It estimates what a liquidity provider retains after prices adjust to the trade.</div>
+<div class="skill-links"><a href="../skills/tkl-realized-spread/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It separates the liquidity provider&#x27;s compensation from its losses to better-informed traders: if the price moves against the provider after the trade, the realized spread shrinks below the effective spread.</div>
 <div class="field"><span class="label">Mechanics:</span> Computed like the effective spread but with the midpoint at a fixed post-trade horizon (e.g. minutes later); the gap between effective and realized spread approximates the price impact or information content of the trade.</div>
 <div class="field"><span class="label">Failure modes:</span> Results are highly sensitive to the choice of horizon D, and unrelated news arriving during the interval contaminates the measurement. A negative realized spread can reflect general market movement rather than counterparty informativeness.</div>
@@ -157,6 +160,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="midpoint"><h3>Midpoint <a class="anchor" href="#midpoint">#</a></h3>
 <div class="field">The arithmetic mean of the best bid and best offer, conventionally computed from the NBBO; Regulation NMS uses the NBBO midpoint as the reference price for effective and realized spread calculations. It is the standard benchmark for the unobserved transaction-cost-free value of a security between trades.</div>
+<div class="skill-links"><a href="../skills/tkl-midpoint/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the neutral point splitting the spread - neither side&#x27;s concession - so it serves as the default fair-value reference for measuring execution quality.</div>
 <div class="field"><span class="label">Mechanics:</span> Recomputed on every change to the best bid or offer; used as the peg for midpoint orders, as the benchmark in spread and price-improvement statistics, and as the reference in trade-classification rules such as the quote rule.</div>
 <div class="field"><span class="label">Failure modes:</span> When the spread is wide, one side is thin, or prices are tick-constrained, the midpoint is a poor value estimate; it also ignores the size imbalance between bid and ask, which the microprice corrects.</div>
@@ -169,6 +173,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="last-traded-price"><h3>Last traded price <a class="anchor" href="#last-traded-price">#</a></h3>
 <div class="field">The price of the most recently reported transaction in a security. Regulation NMS defines last sale data as price and volume data associated with a transaction, and consolidated last sale information as the price, volume, and market identification of the most recent transaction report disseminated under a national market system plan.</div>
+<div class="skill-links"><a href="../skills/tkl-last-traded-price/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It records where the asset last changed hands - a fact about the past, not a commitment about the price at which the next trade will occur.</div>
 <div class="field"><span class="label">Mechanics:</span> Every executed trade is reported to the consolidated tape under transaction reporting plans, and quote displays update the &#x27;last&#x27; field accordingly. In illiquid securities the last trade can be minutes or hours old, and in fast markets it lags the current quotes.</div>
 <div class="field"><span class="label">Failure modes:</span> Using it as a value estimate fails in illiquid or fast-moving markets, where it can be far from the currently executable bid and ask; opening, closing, and block prints can also differ systematically from continuous-market prices.</div>
@@ -180,6 +185,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="best-bid"><h3>Best bid <a class="anchor" href="#best-bid">#</a></h3>
 <div class="field">The highest-priced bid currently quoted for a security; at the level of a single venue it is that market&#x27;s best bid, and aggregated across protected venues it forms the national best bid. Regulation NMS Rule 600(b)(15) defines best bid and best offer as the highest priced bid and the lowest priced offer.</div>
+<div class="skill-links"><a href="../skills/tkl-best-bid/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the most any displayed buyer is currently willing to pay - the price a seller can execute against immediately, up to the quoted size.</div>
 <div class="field"><span class="label">Mechanics:</span> Sits at the top of the bid side of the order book with an associated displayed size; it changes whenever a better bid is posted, the existing best bid is cancelled, or it is executed. Under Rule 600(b)(60), ties between identical bids from different market centers are ranked by size, then by time.</div>
 <div class="field"><span class="label">Failure modes:</span> The displayed best bid may be backed by very small size or may flicker in and out within milliseconds, and hidden or iceberg interest means the best truly executable bid can differ from the displayed one.</div>
@@ -191,6 +197,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="best-ask"><h3>Best ask <a class="anchor" href="#best-ask">#</a></h3>
 <div class="field">The lowest-priced offer currently quoted for a security; at the level of a single venue it is that market&#x27;s best offer, and aggregated across protected venues it forms the national best offer. Regulation NMS Rule 600(b)(15) defines best bid and best offer as the highest priced bid and the lowest priced offer.</div>
+<div class="skill-links"><a href="../skills/tkl-best-ask/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the least any displayed seller is currently willing to accept - the price a buyer can execute against immediately, up to the quoted size.</div>
 <div class="field"><span class="label">Mechanics:</span> Sits at the top of the offer side of the order book with an associated displayed size; it moves as better offers arrive, are cancelled, or are lifted. Under Rule 600(b)(60), identical offers from different market centers are ranked by size, then by time.</div>
 <div class="field"><span class="label">Failure modes:</span> Displayed size at the best offer can be minimal or fleeting, and reserve or hidden selling interest means the effective best offer can differ from what the tape shows.</div>

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/rebate",
+  "canonical_sha256": "c3ae110f7d4c4696b9622a97803f9fd094523b56fffd3606de9a4f2c26079023",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/rebate",
+    "name": "Rebate",
+    "aliases": [
+      "liquidity rebate",
+      "maker rebate"
+    ],
+    "domain": "Orders and execution",
+    "definition": "A payment from an exchange to the party whose resting order added liquidity and was executed against - the 'maker' side of maker-taker pricing. Rebates reward displayed liquidity provision and are funded by the fees charged to liquidity removers.",
+    "intuition": "The exchange pays you to post: your standing bid or offer is inventory the venue wants, and the rebate is the bounty for supplying it.",
+    "mechanics": "Venues publish tiered rebate schedules keyed to the member's monthly volume share; e.g., Nasdaq's add-displayed-liquidity rebates range from about $0.0018 to over $0.003 per share depending on consolidated-volume tier, with separate schedules for midpoint, non-displayed, and retail liquidity. Rebates accrue per execution and are settled monthly.",
+    "formula": "Monthly rebate = sum over executions of (rebate rate for the applicable tier x shares executed).",
+    "relationships": [
+      "Maker fee",
+      "Taker fee",
+      "Post-only order",
+      "Exchange fee",
+      "Payment for order flow"
+    ],
+    "failure_modes": "Rebate harvesting distorts quoting: strategies post not to trade well but to collect payments, adding flickering liquidity that vanishes under stress. The conflict is acute when brokers keep rebates instead of passing them to clients whose orders earned them.",
+    "misconceptions": "A rebate is not a discount on a fee already paid - it is a cash credit for adding liquidity, and it can make the net cost of a passive fill negative. Rebate rates are also not universal: they depend on venue, tape, tier, and order attributes.",
+    "example": "A market-making firm adds 1.6% of consolidated volume in a month and earns Nasdaq's top-tier $0.00305 per share on every displayed share that is hit - millions of dollars of rebate income.",
+    "citations": [
+      {
+        "source": "Nasdaq Price List - Trading (nasdaqtrader.com)",
+        "url": "https://www.nasdaqtrader.com/Trader.aspx?id=PriceListTrading2",
+        "section": "Rebate to Add Displayed Liquidity / Non-Displayed Liquidity tiers",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

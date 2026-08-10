@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/price-improvement",
+  "canonical_sha256": "a5051276952f67eb82eb9caf72a43ba691f8e9d91e4a4d24493cef39d131f9e8",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/price-improvement",
+    "name": "Price improvement",
+    "aliases": [
+      "execution with price improvement"
+    ],
+    "domain": "Orders and execution",
+    "definition": "Execution of an order at a better price than the best displayed quote at the time: for a buy, below the national best offer; for a sell, above the national best bid. It is a formal execution-quality metric in Reg NMS reporting and a headline benefit claimed for retail order routing to wholesalers.",
+    "intuition": "The screen said the offer was $20.00 but you got filled at $19.995 - that half cent per share is price improvement.",
+    "mechanics": "Improvement comes from liquidity priced inside the spread: midpoint matches, hidden orders, exchange retail price improvement programs with sub-penny increments, and wholesalers internalizing retail flow at fractional-penny better prices. Reg NMS Rule 600 defines 'executed with price improvement' relative to the NBBO for Rule 605 reporting.",
+    "formula": "For a buy: improvement per share = national best offer - execution price; for a sell: execution price - national best bid.",
+    "relationships": [
+      "Positive slippage",
+      "Internalization",
+      "Payment for order flow",
+      "Midpoint peg order",
+      "Best execution"
+    ],
+    "failure_modes": "Reported improvement is benchmark-sensitive: fractions of a cent vs. NBBO can coincide with worse outcomes vs. the midpoint or post-receipt prices, and aggregate statistics can flatter wholesalers. Size is limited - improvement typically applies to small retail orders, not institutional blocks.",
+    "misconceptions": "Price improvement is not a guarantee attached to any order type - it is an opportunistic outcome. And 'improved vs. NBBO' does not necessarily mean best available outcome across all venues.",
+    "example": "A 200-share market buy with the NBBO at $10.00 x $10.02 executes at $10.01 through a wholesaler: one cent per share of price improvement, disclosed in the venue's Rule 605 statistics.",
+    "citations": [
+      {
+        "source": "Regulation NMS, 17 CFR 242.600 (Cornell LII)",
+        "url": "https://www.law.cornell.edu/cfr/text/17/242.600",
+        "section": "(b)(45) Executed with price improvement",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia: Payment for order flow",
+        "url": "https://en.wikipedia.org/wiki/Payment_for_order_flow",
+        "section": "Lower commissions and fees, price improvement",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

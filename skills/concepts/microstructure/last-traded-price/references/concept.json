@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/last-traded-price",
+  "canonical_sha256": "dcfba97a6c1adcc88a1b255852a39d70c7e5d3880e5c08f31c8f95f96c7e7688",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/last-traded-price",
+    "name": "Last traded price",
+    "aliases": [
+      "last sale",
+      "last price"
+    ],
+    "domain": "Microstructure",
+    "definition": "The price of the most recently reported transaction in a security. Regulation NMS defines last sale data as price and volume data associated with a transaction, and consolidated last sale information as the price, volume, and market identification of the most recent transaction report disseminated under a national market system plan.",
+    "intuition": "It records where the asset last changed hands - a fact about the past, not a commitment about the price at which the next trade will occur.",
+    "mechanics": "Every executed trade is reported to the consolidated tape under transaction reporting plans, and quote displays update the 'last' field accordingly. In illiquid securities the last trade can be minutes or hours old, and in fast markets it lags the current quotes.",
+    "formula": "",
+    "relationships": [
+      "Bid",
+      "Ask",
+      "Midpoint",
+      "Transaction report",
+      "Consolidated market data"
+    ],
+    "failure_modes": "Using it as a value estimate fails in illiquid or fast-moving markets, where it can be far from the currently executable bid and ask; opening, closing, and block prints can also differ systematically from continuous-market prices.",
+    "misconceptions": "The last traded price is not the price at which a new order will execute; market orders transact at the current bid or ask, not at the last print.",
+    "example": "A stock last printed at $50.10, but news has moved the quotes to $50.00 x $50.20; a market buy executes near $50.20, not $50.10.",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraphs (b)(23) Consolidated last sale information and (b)(50) Last sale data",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

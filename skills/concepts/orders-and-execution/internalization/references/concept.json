@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/internalization",
+  "canonical_sha256": "dedf367960213174efb4f9c1e6715ebdda6e2cee05a04bb85e2b59a0661d266c",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/internalization",
+    "name": "Internalization",
+    "aliases": [
+      "internalised execution",
+      "in-house execution"
+    ],
+    "domain": "Orders and execution",
+    "definition": "The practice of a broker-dealer executing a customer's order against its own inventory as principal (or crossing it in-house against other customer orders) instead of routing it to an exchange or external market maker. The executing firm internalizes the trade and captures the spread itself.",
+    "intuition": "Instead of sending your order out to find a counterparty, your broker's own firm is the counterparty.",
+    "mechanics": "Wholesale market makers receive retail order flow (often via payment for order flow arrangements) and fill it from inventory, typically at the NBBO or with fractional price improvement. Reg NMS counts such firms as 'trading centers', and their executions feed Rule 605 quality statistics like exchange executions.",
+    "formula": "",
+    "relationships": [
+      "Payment for order flow",
+      "Order routing",
+      "Best execution",
+      "Price improvement",
+      "Maker fee"
+    ],
+    "failure_modes": "Internalized flow never reaches the public book, so displayed liquidity understates true trading interest and price formation loses informed-by-retail interaction. The dealer also faces adverse selection on the flow it chooses not to internalize, and conflicts arise when internalization prices merely match rather than improve the NBBO.",
+    "misconceptions": "Internalization is not illegal frontrunning - it is a regulated execution model subject to best execution and trade-through constraints. Nor does it necessarily harm customers: internalizers commonly offer fractional price improvement over the public quote.",
+    "example": "Your 300-share market order never touches an exchange: the wholesaler your broker routes to sells you the shares from its own account at $0.001 better than the public offer.",
+    "citations": [
+      {
+        "source": "Wikipedia: Payment for order flow",
+        "url": "https://en.wikipedia.org/wiki/Payment_for_order_flow",
+        "section": "Within organizations - wholesaler internalization",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Regulation NMS, 17 CFR 242.600 (Cornell LII)",
+        "url": "https://www.law.cornell.edu/cfr/text/17/242.600",
+        "section": "(b)(106) Trading center - brokers executing orders internally",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

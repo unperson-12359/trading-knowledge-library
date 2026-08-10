@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/smart-order-routing",
+  "canonical_sha256": "fffadb6dd5161df1082e458626953c590339a3c0e93aee17ba542340c176267c",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/smart-order-routing",
+    "name": "Smart order routing",
+    "aliases": [
+      "SOR",
+      "smart order router"
+    ],
+    "domain": "Orders and execution",
+    "definition": "An automated system that splits and routes orders across multiple trading venues - lit exchanges, ECNs, and dark pools - based on real-time quotes, depth, fees, and venue behavior, in order to capture the best available prices and liquidity in fragmented markets.",
+    "intuition": "Where a human picks one venue, the SOR reads every book at once and sends each child order wherever the deal is currently best.",
+    "mechanics": "The SOR maintains a consolidated view of venue order books, then creates child orders - typically aggressive IOCs to sweep displayed liquidity or passive posts where rebates are attractive - and re-routes dynamically when quotes change or child orders are rejected. It proliferated after Regulation NMS (US) and MiFID (EU) fragmented liquidity across venues.",
+    "formula": "",
+    "relationships": [
+      "Order routing",
+      "Intermarket sweep order",
+      "Sweep order",
+      "Best execution",
+      "Liquidity-seeking algorithm",
+      "Immediate-or-cancel order"
+    ],
+    "failure_modes": "The consolidated book is built from feeds with latency, so the SOR can route to quotes that no longer exist, generating rejects and partial fills; each extra hop also adds latency. Complexity itself is a risk - misconfigured venue preferences or fee tables produce systematically bad routing.",
+    "misconceptions": "'Smart' refers to venue selection, not price prediction - an SOR does not know where the market is going. And routing to the best displayed price is not always cheapest once fees, rebates, and information leakage are priced in.",
+    "example": "Your 5,000-share buy is split by the SOR: 1,500 to Exchange A at $20.00, 1,000 to an ECN at $20.00, and the balance posted passively on the venue offering the highest rebate.",
+    "citations": [
+      {
+        "source": "Wikipedia: Smart order routing",
+        "url": "https://en.wikipedia.org/wiki/Smart_order_router",
+        "section": "Definition, history, and example SOR strategy",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

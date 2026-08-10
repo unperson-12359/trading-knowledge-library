@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/order-routing",
+  "canonical_sha256": "e7c4883f04be3b0f19e86204b3e5e369976a41e3ef09fb61421601e6e68a4e3b",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/order-routing",
+    "name": "Order routing",
+    "aliases": [
+      "routing"
+    ],
+    "domain": "Orders and execution",
+    "definition": "The broker-dealer's decision of where to send a customer order for execution: to a national exchange, an alternative trading system, a market maker/wholesaler, an ECN, or its own inventory. Routing determines the price, speed, and likelihood of execution the customer receives.",
+    "intuition": "The same order can live very different lives depending on which door the broker sends it through - routing is that choice of door.",
+    "mechanics": "Brokers route manually (directed orders) or via automated routers; the choice weighs quoted price and depth, fees/rebates, speed, and any compensation such as payment for order flow. SEC Rules 605 and 606 of Regulation NMS force transparency: market centers publish execution-quality statistics and brokers publish quarterly order-routing reports.",
+    "formula": "",
+    "relationships": [
+      "Smart order routing",
+      "Best execution",
+      "Payment for order flow",
+      "Internalization",
+      "Intermarket sweep order"
+    ],
+    "failure_modes": "Routing optimized for the broker's economics (PFOF, exchange rebates) rather than the customer's execution quality is the structural conflict; disclosure mitigates but does not eliminate it. Static routing tables also degrade when venue liquidity shifts intraday.",
+    "misconceptions": "Retail customers can often direct their own orders to specific venues, but few do - and 'commission-free' does not mean routing is free of economic incentives. Routing to the exchange showing the best quote is not automatically best execution either.",
+    "example": "Your broker's router sends your 500-share market buy to a wholesaler that pays for order flow and fills it a tenth of a cent inside the offer, instead of to the exchange posting the NBBO.",
+    "citations": [
+      {
+        "source": "Wikipedia: Payment for order flow",
+        "url": "https://en.wikipedia.org/wiki/Payment_for_order_flow",
+        "section": "Disclosure requirements (Rule 606) and routing practices",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Wikipedia: Smart order routing",
+        "url": "https://en.wikipedia.org/wiki/Smart_order_router",
+        "section": "Routing decision stages",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

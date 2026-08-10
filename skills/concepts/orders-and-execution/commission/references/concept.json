@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/commission",
+  "canonical_sha256": "fdec217b72dc6caf131c7c7453253242119031382519e09309c452ed471e03f9",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/commission",
+    "name": "Commission",
+    "aliases": [
+      "brokerage commission"
+    ],
+    "domain": "Orders and execution",
+    "definition": "The fee a broker charges a customer for executing a trade, historically per trade or per share/contract. Commissions are the visible, contractual component of trading cost and are disclosed on confirmations; many retail equity brokers have moved to zero commission, monetizing order flow instead.",
+    "intuition": "The commission is the broker's sticker price for doing the trade - the one cost line everyone sees before the market takes its invisible share.",
+    "mechanics": "Charged as a flat ticket charge, per share/contract, or as a percentage of principal; Rule 10b-10 requires written disclosure at or before completion of the transaction of the remuneration the broker received from the customer. Zero-commission models substitute payment for order flow and other revenue, shifting rather than eliminating cost.",
+    "formula": "Total commission = per-unit rate x quantity (or flat ticket charge), per the brokerage agreement.",
+    "relationships": [
+      "Explicit transaction cost",
+      "Exchange fee",
+      "Clearing fee",
+      "Payment for order flow",
+      "Best execution"
+    ],
+    "failure_modes": "Per-trade commissions penalize small and frequent orders disproportionately, distorting strategy design; conversely, zero-commission pricing obscures the real cost structure and encourages overtrading. Per-share schedules with minimums can also exceed the expected value of tiny trades.",
+    "misconceptions": "Zero commission is not zero cost - spread, impact, exchange/clearing fees, and order-flow economics remain. Nor is the commission the biggest cost for size: implicit costs dominate institutional trading.",
+    "example": "A broker charging $0.005 per share bills $5.00 on a 1,000-share order; the confirm discloses this remuneration alongside any fees, separate from whatever the venue charged.",
+    "citations": [
+      {
+        "source": "SEC Rule 10b-10, 17 CFR 240.10b-10 (Cornell LII)",
+        "url": "https://www.law.cornell.edu/cfr/text/17/240.10b-10",
+        "section": "(a)(2)(i)(B) disclosure of remuneration received from the customer",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Investor.gov (SEC): Understanding Fees",
+        "url": "https://www.investor.gov/introduction-investing/getting-started/understanding-fees",
+        "section": "How investment professionals get paid - by commission",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

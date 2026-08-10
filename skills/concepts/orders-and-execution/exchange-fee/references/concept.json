@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/exchange-fee",
+  "canonical_sha256": "df3f21952e162e275fad1a51def6b67b6e712ea2d9d114cef87860dd6396fb29",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/exchange-fee",
+    "name": "Exchange fee",
+    "aliases": [
+      "venue fee",
+      "execution fee"
+    ],
+    "domain": "Orders and execution",
+    "definition": "The charges levied by a trading venue on executions and related order activity: per-share or per-contract fees for removing (and on some venues adding) liquidity, routing fees for orders sent to other venues, and auction participation fees. They are published in each exchange's fee schedule and passed through to end clients by brokers.",
+    "intuition": "Every fill on an exchange carries a meter - fractions of a cent per share in equities, visible only on the venue's price list and your broker's fine print.",
+    "mechanics": "Equity exchanges charge per share executed with maker/taker differentiation and volume tiers (e.g., Nasdaq's $0.0030/share removal fee, routing fees of $0.0030-$0.0035 to away venues, and per-share opening/closing cross fees); futures exchanges charge per contract. Reg NMS caps access fees on protected quotations.",
+    "formula": "Venue charge per trade = applicable per-share or per-contract rate x quantity, per the venue's fee schedule and the member's tier.",
+    "relationships": [
+      "Maker fee",
+      "Taker fee",
+      "Rebate",
+      "Clearing fee",
+      "Commission",
+      "Explicit transaction cost"
+    ],
+    "failure_modes": "Tiered, monthly-settled schedules make the true marginal fee hard to know at trade time, and routing choices made to minimize venue fees can conflict with execution quality. For active traders, cumulative exchange fees can exceed commissions.",
+    "misconceptions": "Exchange fees are not the same as commissions - they are charged by the venue to the member firm, which may or may not pass them through transparently. 'Fee-free' marketing almost never means venue fees disappear.",
+    "example": "A 20,000-share removal on Nasdaq costs $60 in exchange fees at $0.0030/share; routed to NYSE instead, the same shares would carry a $0.0030 routing fee plus any away-venue charges.",
+    "citations": [
+      {
+        "source": "Nasdaq Price List - Trading (nasdaqtrader.com)",
+        "url": "https://www.nasdaqtrader.com/Trader.aspx?id=PriceListTrading2",
+        "section": "Execution fees, route rates, and cross fees",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

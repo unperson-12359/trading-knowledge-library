@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/realized-spread",
+  "canonical_sha256": "3dd3489d7d0c3808150347dcfb8dd5c80894950c552e2790399e45e389696289",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/realized-spread",
+    "name": "Realized spread",
+    "aliases": [
+      "post-trade spread"
+    ],
+    "domain": "Microstructure",
+    "definition": "The execution cost measure recomputed with the NBBO midpoint at a specified interval after execution rather than at order receipt: for buys, twice the execution price minus the later midpoint; for sells, twice the later midpoint minus the execution price (SEC Rule 600(b)(13)). It estimates what a liquidity provider retains after prices adjust to the trade.",
+    "intuition": "It separates the liquidity provider's compensation from its losses to better-informed traders: if the price moves against the provider after the trade, the realized spread shrinks below the effective spread.",
+    "mechanics": "Computed like the effective spread but with the midpoint at a fixed post-trade horizon (e.g. minutes later); the gap between effective and realized spread approximates the price impact or information content of the trade.",
+    "formula": "RS_buy = 2(P_exec - M_{t+D}); RS_sell = 2(M_{t+D} - P_exec), where M_{t+D} is the NBBO midpoint at a specified interval D after execution.",
+    "relationships": [
+      "Effective spread",
+      "Quoted spread",
+      "Adverse selection",
+      "Price impact",
+      "Midpoint"
+    ],
+    "failure_modes": "Results are highly sensitive to the choice of horizon D, and unrelated news arriving during the interval contaminates the measurement. A negative realized spread can reflect general market movement rather than counterparty informativeness.",
+    "misconceptions": "The realized spread is not the market maker's profit; it ignores hedging costs, inventory risk, fees, rebates, and operating costs.",
+    "example": "A buy executes at $100.02 with a $100.01 midpoint at receipt (effective spread $0.02); five minutes later the midpoint is $100.015, so the realized spread is $0.01 - half the effective spread was given back to adverse price movement.",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraph (b)(13) Average realized spread",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/clearing-fee",
+  "canonical_sha256": "25e2217ac3832ffa489b096b1eee88d1ec8c1584cdb17a994146b0d66e2370da",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/clearing-fee",
+    "name": "Clearing fee",
+    "aliases": [
+      "clearing charge",
+      "CCP fee"
+    ],
+    "domain": "Orders and execution",
+    "definition": "The fee charged by a clearing organization (central counterparty) for clearing and settling a trade - standing between buyer and seller, managing margin and default risk, and effecting final settlement. It is charged per contract or per trade to clearing members and passed through to customers.",
+    "intuition": "After the trade, someone has to guarantee both sides perform; the clearing fee pays the clearinghouse for being that guarantor.",
+    "mechanics": "Clearing agencies publish fee schedules filed with regulators; e.g., OCC charges a per-contract clearing fee ($0.025 as of January 2025, previously with a flat $55 cap for very large transactions), set under its capital management policy to cover operating expenses and risk buffers. Futures clearing works similarly at CME and other DCOs on a per-contract basis.",
+    "formula": "Clearing fee = per-contract rate x number of contracts (e.g., $0.025/contract at OCC).",
+    "relationships": [
+      "Exchange fee",
+      "Commission",
+      "Explicit transaction cost",
+      "Taker fee"
+    ],
+    "failure_modes": "Clearing fees are small but unavoidable on every cleared trade and scale linearly with contract volume, mattering most to high-turnover derivatives strategies. They also change by regulatory filing on notice, so cost models must track fee schedules.",
+    "misconceptions": "Clearing fees are not exchange fees or broker commissions - they compensate the CCP's guarantee and settlement function, a different entity with its own schedule. They apply even on 'commission-free' trades in cleared products.",
+    "example": "A 100-lot listed options trade incurs a $2.50 OCC clearing fee at $0.025 per contract, on top of any exchange execution fee and broker commission.",
+    "citations": [
+      {
+        "source": "Federal Register: OCC Notice of Filing - Schedule of Fees update (SR-OCC-2024-017)",
+        "url": "https://www.federalregister.gov/documents/2024/12/27/2024-31089/self-regulatory-organizations-the-options-clearing-corporation-notice-of-filing-and-immediate",
+        "section": "Per Contract Clearing Fee ($0.02 to $0.025) and fee structure",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

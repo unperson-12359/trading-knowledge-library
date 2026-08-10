@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/maker-fee",
+  "canonical_sha256": "1399e9a233785e6433f45d6ada10b2ea9c9563819876b87a99e3f74020a71678",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/maker-fee",
+    "name": "Maker fee",
+    "aliases": [
+      "liquidity-adding fee",
+      "maker charge"
+    ],
+    "domain": "Orders and execution",
+    "definition": "The charge (or, on maker-taker venues, typically a rebate) applied to an execution that adds liquidity - i.e., a resting order that is traded against. In classic U.S. equity maker-taker pricing the 'maker' is paid a rebate rather than charged; on taker-maker venues and most crypto exchanges the maker pays a (usually smaller) fee.",
+    "intuition": "The maker posts and waits; the venue prices that patience differently from aggression - sometimes rewarding it, sometimes charging less for it.",
+    "mechanics": "Exchanges publish per-share/per-contract schedules distinguishing adding from removing liquidity; e.g., Nasdaq pays tiered per-share rebates for displayed liquidity added (around $0.0018-$0.00305 depending on volume tier) while charging for removal. Whether an execution is maker or taker is determined by which side rested in the book first.",
+    "formula": "",
+    "relationships": [
+      "Taker fee",
+      "Rebate",
+      "Post-only order",
+      "Maker-or-cancel order",
+      "Exchange fee",
+      "Explicit transaction cost"
+    ],
+    "failure_modes": "Maker economics distort order placement: traders post sub-optimally priced orders to harvest rebates, and queue formaker status can mean missed fills that cost more than the rebate earned. Fee tiers also make marginal costs volume-dependent and opaque to end clients.",
+    "misconceptions": "'Maker fee' on U.S. equity exchanges is usually negative - a rebate - while on crypto venues makers genuinely pay a fee; the same word covers both signs. Being a maker is about resting first, not about using a limit order (a marketable limit order is a taker).",
+    "example": "Your resting limit sell is hit by an incoming market order; as the liquidity adder you receive Nasdaq's $0.0020-per-share add rebate instead of paying the $0.0030 removal fee.",
+    "citations": [
+      {
+        "source": "Nasdaq Price List - Trading (nasdaqtrader.com)",
+        "url": "https://www.nasdaqtrader.com/Trader.aspx?id=PriceListTrading2",
+        "section": "Rebate to Add Displayed Liquidity (tier schedule)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

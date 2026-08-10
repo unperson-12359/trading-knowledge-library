@@ -183,6 +183,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="delay-cost"><h3>Delay cost <a class="anchor" href="#delay-cost">#</a></h3>
 <div class="field">The component of implementation shortfall arising from the lag between the investment decision and the order&#x27;s actual submission to the market: the price movement in that window, charged on the executed quantity. It measures the cost of hesitation, compliance checks, and order-handling latency before trading begins.</div>
+<div class="skill-links"><a href="../skills/tkl-delay-cost/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The manager decided at $50; by the time the trader&#x27;s order hit the market the price was $50.10 - those ten cents are delay cost, before any impact of the trade itself.</div>
 <div class="field"><span class="label">Mechanics:</span> Computed as the executed quantity times the difference between the arrival price (when the order reaches the market) and the decision price. It exists because the portfolio manager&#x27;s decision and the broker&#x27;s execution are separated in time and often measured from different reference prices (close vs. arrival).</div>
 <div class="field"><span class="label">Failure modes:</span> Delay cost is only measurable if decision time and price are actually recorded - many firms approximate the decision price with the prior close, contaminating the measure with overnight moves. Overnight decision-to-open delays routinely dominate total shortfall in moving markets.</div>
@@ -195,6 +196,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="price-improvement"><h3>Price improvement <a class="anchor" href="#price-improvement">#</a></h3>
 <div class="field">Execution of an order at a better price than the best displayed quote at the time: for a buy, below the national best offer; for a sell, above the national best bid. It is a formal execution-quality metric in Reg NMS reporting and a headline benefit claimed for retail order routing to wholesalers.</div>
+<div class="skill-links"><a href="../skills/tkl-price-improvement/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The screen said the offer was $20.00 but you got filled at $19.995 - that half cent per share is price improvement.</div>
 <div class="field"><span class="label">Mechanics:</span> Improvement comes from liquidity priced inside the spread: midpoint matches, hidden orders, exchange retail price improvement programs with sub-penny increments, and wholesalers internalizing retail flow at fractional-penny better prices. Reg NMS Rule 600 defines &#x27;executed with price improvement&#x27; relative to the NBBO for Rule 605 reporting.</div>
 <div class="field"><span class="label">Failure modes:</span> Reported improvement is benchmark-sensitive: fractions of a cent vs. NBBO can coincide with worse outcomes vs. the midpoint or post-receipt prices, and aggregate statistics can flatter wholesalers. Size is limited - improvement typically applies to small retail orders, not institutional blocks.</div>
@@ -208,6 +210,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="best-execution"><h3>Best execution <a class="anchor" href="#best-execution">#</a></h3>
 <div class="field">The regulatory and fiduciary duty of a broker-dealer to seek the most favorable terms reasonably available for a customer&#x27;s order under the circumstances - weighing price, speed, likelihood of execution and settlement, size, and nature of the order - rather than simply the nominal best price. In the U.S. it is embedded in FINRA Rule 5310 and antifraud principles; in the EU in MiFID II Article 27.</div>
+<div class="skill-links"><a href="../skills/tkl-best-execution/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Your broker must work your order as a loyal agent would: not necessarily the single best tick, but the best overall outcome reasonably achievable for that order.</div>
 <div class="field"><span class="label">Mechanics:</span> Firms must establish policies and conduct &#x27;regular and rigorous&#x27; reviews of execution quality across venues, considering price improvement opportunities, speed, and fill likelihood; routing decisions driven by payment for order flow must still satisfy the duty. Execution quality is evidenced through Rule 605 statistics and firm-level venue analysis.</div>
 <div class="field"><span class="label">Failure modes:</span> The duty is process-based, not outcome-based, so it can be technically satisfied while routing to mediocre venues; conflicts from payment for order flow and affiliated venues are the persistent weak point. Defining &#x27;best&#x27; across speed/price/certainty trade-offs is genuinely judgment-laden.</div>
@@ -219,6 +222,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="order-routing"><h3>Order routing <a class="anchor" href="#order-routing">#</a></h3>
 <div class="field">The broker-dealer&#x27;s decision of where to send a customer order for execution: to a national exchange, an alternative trading system, a market maker/wholesaler, an ECN, or its own inventory. Routing determines the price, speed, and likelihood of execution the customer receives.</div>
+<div class="skill-links"><a href="../skills/tkl-order-routing/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The same order can live very different lives depending on which door the broker sends it through - routing is that choice of door.</div>
 <div class="field"><span class="label">Mechanics:</span> Brokers route manually (directed orders) or via automated routers; the choice weighs quoted price and depth, fees/rebates, speed, and any compensation such as payment for order flow. SEC Rules 605 and 606 of Regulation NMS force transparency: market centers publish execution-quality statistics and brokers publish quarterly order-routing reports.</div>
 <div class="field"><span class="label">Failure modes:</span> Routing optimized for the broker&#x27;s economics (PFOF, exchange rebates) rather than the customer&#x27;s execution quality is the structural conflict; disclosure mitigates but does not eliminate it. Static routing tables also degrade when venue liquidity shifts intraday.</div>
@@ -231,6 +235,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="smart-order-routing"><h3>Smart order routing <a class="anchor" href="#smart-order-routing">#</a></h3>
 <div class="field">An automated system that splits and routes orders across multiple trading venues - lit exchanges, ECNs, and dark pools - based on real-time quotes, depth, fees, and venue behavior, in order to capture the best available prices and liquidity in fragmented markets.</div>
+<div class="skill-links"><a href="../skills/tkl-smart-order-routing/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Where a human picks one venue, the SOR reads every book at once and sends each child order wherever the deal is currently best.</div>
 <div class="field"><span class="label">Mechanics:</span> The SOR maintains a consolidated view of venue order books, then creates child orders - typically aggressive IOCs to sweep displayed liquidity or passive posts where rebates are attractive - and re-routes dynamically when quotes change or child orders are rejected. It proliferated after Regulation NMS (US) and MiFID (EU) fragmented liquidity across venues.</div>
 <div class="field"><span class="label">Failure modes:</span> The consolidated book is built from feeds with latency, so the SOR can route to quotes that no longer exist, generating rejects and partial fills; each extra hop also adds latency. Complexity itself is a risk - misconfigured venue preferences or fee tables produce systematically bad routing.</div>
@@ -242,6 +247,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="internalization"><h3>Internalization <a class="anchor" href="#internalization">#</a></h3>
 <div class="field">The practice of a broker-dealer executing a customer&#x27;s order against its own inventory as principal (or crossing it in-house against other customer orders) instead of routing it to an exchange or external market maker. The executing firm internalizes the trade and captures the spread itself.</div>
+<div class="skill-links"><a href="../skills/tkl-internalization/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Instead of sending your order out to find a counterparty, your broker&#x27;s own firm is the counterparty.</div>
 <div class="field"><span class="label">Mechanics:</span> Wholesale market makers receive retail order flow (often via payment for order flow arrangements) and fill it from inventory, typically at the NBBO or with fractional price improvement. Reg NMS counts such firms as &#x27;trading centers&#x27;, and their executions feed Rule 605 quality statistics like exchange executions.</div>
 <div class="field"><span class="label">Failure modes:</span> Internalized flow never reaches the public book, so displayed liquidity understates true trading interest and price formation loses informed-by-retail interaction. The dealer also faces adverse selection on the flow it chooses not to internalize, and conflicts arise when internalization prices merely match rather than improve the NBBO.</div>
@@ -254,6 +260,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="payment-for-order-flow"><h3>Payment for order flow <a class="anchor" href="#payment-for-order-flow">#</a></h3>
 <div class="field">Compensation a broker-dealer receives from a market maker, exchange, or other firm in return for routing customer orders to it for execution. Formally, SEC Rule 10b-10(d)(8) defines it as any monetary payment, service, property, or other benefit resulting in remuneration to the routing broker or dealer in return for order routing.</div>
+<div class="skill-links"><a href="../skills/tkl-payment-for-order-flow/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The wholesaler pays your broker for the right to fill your trades - that payment, not a commission, is how many &#x27;free&#x27; brokers get paid.</div>
 <div class="field"><span class="label">Mechanics:</span> Retail brokers route order flow to wholesalers (e.g., Citadel Securities, Virtu) under PFOF arrangements; the wholesaler profits from the spread and internalizes the flow, sharing part of the economics with the broker and often passing fractional price improvement to the customer. Brokers must disclose PFOF on trade confirmations (10b-10) and in quarterly Rule 606 routing reports.</div>
 <div class="field"><span class="label">Failure modes:</span> The conflict of interest is structural: brokers are paid per order routed, creating incentive to route to the highest payer rather than the best executor and to encourage order flow itself. Execution-quality differences of fractions of a cent, scaled across millions of orders, can exceed the commissions saved.</div>
@@ -266,6 +273,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="maker-fee"><h3>Maker fee <a class="anchor" href="#maker-fee">#</a></h3>
 <div class="field">The charge (or, on maker-taker venues, typically a rebate) applied to an execution that adds liquidity - i.e., a resting order that is traded against. In classic U.S. equity maker-taker pricing the &#x27;maker&#x27; is paid a rebate rather than charged; on taker-maker venues and most crypto exchanges the maker pays a (usually smaller) fee.</div>
+<div class="skill-links"><a href="../skills/tkl-maker-fee/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The maker posts and waits; the venue prices that patience differently from aggression - sometimes rewarding it, sometimes charging less for it.</div>
 <div class="field"><span class="label">Mechanics:</span> Exchanges publish per-share/per-contract schedules distinguishing adding from removing liquidity; e.g., Nasdaq pays tiered per-share rebates for displayed liquidity added (around $0.0018-$0.00305 depending on volume tier) while charging for removal. Whether an execution is maker or taker is determined by which side rested in the book first.</div>
 <div class="field"><span class="label">Failure modes:</span> Maker economics distort order placement: traders post sub-optimally priced orders to harvest rebates, and queue formaker status can mean missed fills that cost more than the rebate earned. Fee tiers also make marginal costs volume-dependent and opaque to end clients.</div>
@@ -277,6 +285,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="taker-fee"><h3>Taker fee <a class="anchor" href="#taker-fee">#</a></h3>
 <div class="field">The fee charged on an execution that removes liquidity - an order that executes immediately against resting interest. Under maker-taker pricing the taker pays the venue&#x27;s highest per-share fee, funding the rebates paid to makers.</div>
+<div class="skill-links"><a href="../skills/tkl-taker-fee/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Crossing the spread for immediacy has a price: the taker fee is the toll for not waiting.</div>
 <div class="field"><span class="label">Mechanics:</span> Any order that executes on arrival - market orders, marketable limits, IOC sweeps - is the liquidity remover and is charged the removal rate (e.g., Nasdaq&#x27;s $0.0030 per share for shares at or above $1). Taker status, not order type, determines the charge: a limit order that is marketable on arrival takes.</div>
 <div class="field"><span class="label">Failure modes:</span> Aggressive strategies systematically pay the taker rate on every fill, and at scale the fee rivals or exceeds the spread itself - high-frequency takers can see fees consume their entire margin. Volume-tiered pricing also means the realized rate depends on month-end totals, complicating per-trade accounting.</div>
@@ -289,6 +298,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="rebate"><h3>Rebate <a class="anchor" href="#rebate">#</a></h3>
 <div class="field">A payment from an exchange to the party whose resting order added liquidity and was executed against - the &#x27;maker&#x27; side of maker-taker pricing. Rebates reward displayed liquidity provision and are funded by the fees charged to liquidity removers.</div>
+<div class="skill-links"><a href="../skills/tkl-rebate/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The exchange pays you to post: your standing bid or offer is inventory the venue wants, and the rebate is the bounty for supplying it.</div>
 <div class="field"><span class="label">Mechanics:</span> Venues publish tiered rebate schedules keyed to the member&#x27;s monthly volume share; e.g., Nasdaq&#x27;s add-displayed-liquidity rebates range from about $0.0018 to over $0.003 per share depending on consolidated-volume tier, with separate schedules for midpoint, non-displayed, and retail liquidity. Rebates accrue per execution and are settled monthly.</div>
 <div class="field"><span class="label">Failure modes:</span> Rebate harvesting distorts quoting: strategies post not to trade well but to collect payments, adding flickering liquidity that vanishes under stress. The conflict is acute when brokers keep rebates instead of passing them to clients whose orders earned them.</div>
@@ -301,6 +311,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="exchange-fee"><h3>Exchange fee <a class="anchor" href="#exchange-fee">#</a></h3>
 <div class="field">The charges levied by a trading venue on executions and related order activity: per-share or per-contract fees for removing (and on some venues adding) liquidity, routing fees for orders sent to other venues, and auction participation fees. They are published in each exchange&#x27;s fee schedule and passed through to end clients by brokers.</div>
+<div class="skill-links"><a href="../skills/tkl-exchange-fee/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Every fill on an exchange carries a meter - fractions of a cent per share in equities, visible only on the venue&#x27;s price list and your broker&#x27;s fine print.</div>
 <div class="field"><span class="label">Mechanics:</span> Equity exchanges charge per share executed with maker/taker differentiation and volume tiers (e.g., Nasdaq&#x27;s $0.0030/share removal fee, routing fees of $0.0030-$0.0035 to away venues, and per-share opening/closing cross fees); futures exchanges charge per contract. Reg NMS caps access fees on protected quotations.</div>
 <div class="field"><span class="label">Failure modes:</span> Tiered, monthly-settled schedules make the true marginal fee hard to know at trade time, and routing choices made to minimize venue fees can conflict with execution quality. For active traders, cumulative exchange fees can exceed commissions.</div>
@@ -313,6 +324,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="clearing-fee"><h3>Clearing fee <a class="anchor" href="#clearing-fee">#</a></h3>
 <div class="field">The fee charged by a clearing organization (central counterparty) for clearing and settling a trade - standing between buyer and seller, managing margin and default risk, and effecting final settlement. It is charged per contract or per trade to clearing members and passed through to customers.</div>
+<div class="skill-links"><a href="../skills/tkl-clearing-fee/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> After the trade, someone has to guarantee both sides perform; the clearing fee pays the clearinghouse for being that guarantor.</div>
 <div class="field"><span class="label">Mechanics:</span> Clearing agencies publish fee schedules filed with regulators; e.g., OCC charges a per-contract clearing fee ($0.025 as of January 2025, previously with a flat $55 cap for very large transactions), set under its capital management policy to cover operating expenses and risk buffers. Futures clearing works similarly at CME and other DCOs on a per-contract basis.</div>
 <div class="field"><span class="label">Failure modes:</span> Clearing fees are small but unavoidable on every cleared trade and scale linearly with contract volume, mattering most to high-turnover derivatives strategies. They also change by regulatory filing on notice, so cost models must track fee schedules.</div>
@@ -325,6 +337,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="commission"><h3>Commission <a class="anchor" href="#commission">#</a></h3>
 <div class="field">The fee a broker charges a customer for executing a trade, historically per trade or per share/contract. Commissions are the visible, contractual component of trading cost and are disclosed on confirmations; many retail equity brokers have moved to zero commission, monetizing order flow instead.</div>
+<div class="skill-links"><a href="../skills/tkl-commission/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The commission is the broker&#x27;s sticker price for doing the trade - the one cost line everyone sees before the market takes its invisible share.</div>
 <div class="field"><span class="label">Mechanics:</span> Charged as a flat ticket charge, per share/contract, or as a percentage of principal; Rule 10b-10 requires written disclosure at or before completion of the transaction of the remuneration the broker received from the customer. Zero-commission models substitute payment for order flow and other revenue, shifting rather than eliminating cost.</div>
 <div class="field"><span class="label">Failure modes:</span> Per-trade commissions penalize small and frequent orders disproportionately, distorting strategy design; conversely, zero-commission pricing obscures the real cost structure and encourages overtrading. Per-share schedules with minimums can also exceed the expected value of tiny trades.</div>

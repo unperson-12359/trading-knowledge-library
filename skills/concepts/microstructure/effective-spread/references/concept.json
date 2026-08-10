@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/effective-spread",
+  "canonical_sha256": "588ae6cc1bd11156895dbf40cbb5fb9e77374b865c4b8c381ddbfa98e03fe775",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/effective-spread",
+    "name": "Effective spread",
+    "aliases": [
+      "effective transaction cost"
+    ],
+    "domain": "Microstructure",
+    "definition": "A measure of the execution cost actually paid, defined relative to the midpoint of the national best bid and offer at the time of order receipt: for buy orders, twice the difference between the execution price and the midpoint; for sell orders, twice the difference between the midpoint and the execution price (SEC Rule 600(b)(8)).",
+    "intuition": "It captures what a liquidity demander really paid against the pre-trade benchmark price, so price improvement inside the quotes shows up as a smaller spread.",
+    "mechanics": "Computed per execution using the NBBO midpoint at order receipt, then share-weighted across executions (average effective spread); dividing by the midpoint gives the percentage effective spread. It is a standard output of SEC Rule 605 execution-quality reports.",
+    "formula": "ES_buy = 2(P_exec - M); ES_sell = 2(M - P_exec), where M is the NBBO midpoint at the time of order receipt.",
+    "relationships": [
+      "Quoted spread",
+      "Realized spread",
+      "Midpoint",
+      "National best bid and offer",
+      "Price improvement"
+    ],
+    "failure_modes": "The midpoint benchmark can be stale or misleading in fast markets and wide-spread stocks, and the measure depends on the order-receipt time convention. It also ignores the market impact of large orders that walk the book and the opportunity cost of unfilled orders.",
+    "misconceptions": "A low effective spread does not mean trading was free; it excludes commissions, fees, delay costs, and impact beyond the first execution.",
+    "example": "NBBO midpoint is $100.01 at order receipt; a buy executes at $100.02, giving an effective spread of $0.02, equal to the quoted spread; execution at $100.01 gives $0.00.",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraph (b)(8) Average effective spread",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

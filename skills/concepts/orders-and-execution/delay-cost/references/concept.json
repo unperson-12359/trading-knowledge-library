@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/delay-cost",
+  "canonical_sha256": "96db207e88910d461ddbaf8b42fef7e276ba1822624f6c4ac3e68f32b10f8846",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/delay-cost",
+    "name": "Delay cost",
+    "aliases": [
+      "delay cost (arrival shortfall)",
+      "hesitation cost"
+    ],
+    "domain": "Orders and execution",
+    "definition": "The component of implementation shortfall arising from the lag between the investment decision and the order's actual submission to the market: the price movement in that window, charged on the executed quantity. It measures the cost of hesitation, compliance checks, and order-handling latency before trading begins.",
+    "intuition": "The manager decided at $50; by the time the trader's order hit the market the price was $50.10 - those ten cents are delay cost, before any impact of the trade itself.",
+    "mechanics": "Computed as the executed quantity times the difference between the arrival price (when the order reaches the market) and the decision price. It exists because the portfolio manager's decision and the broker's execution are separated in time and often measured from different reference prices (close vs. arrival).",
+    "formula": "Delay cost = Q_executed x (P_arrival - P_decision), for a buy (sign reversed for a sell).",
+    "relationships": [
+      "Implementation shortfall",
+      "Arrival price algorithm",
+      "Opportunity cost",
+      "Implicit transaction cost",
+      "Slippage"
+    ],
+    "failure_modes": "Delay cost is only measurable if decision time and price are actually recorded - many firms approximate the decision price with the prior close, contaminating the measure with overnight moves. Overnight decision-to-open delays routinely dominate total shortfall in moving markets.",
+    "misconceptions": "Delay cost is not the broker's fault by default - it accrues before the broker can act, often inside the manager's own workflow. It is also distinct from execution slippage, which is measured from arrival onward.",
+    "example": "A PM decides to sell at a $40.00 close; the desk releases the order next morning with the stock already at $39.60 - the 40-cent drop on the executed shares is delay cost.",
+    "citations": [
+      {
+        "source": "Wikipedia: Implementation shortfall",
+        "url": "https://en.wikipedia.org/wiki/Implementation_shortfall",
+        "section": "Cost components - delay cost; decision price conventions",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

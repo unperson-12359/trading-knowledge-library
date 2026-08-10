@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "orders-and-execution/taker-fee",
+  "canonical_sha256": "7e7834f099b49109d84d339983a9b46396f0a7866e18f64bf5602f43acb3a601",
+  "source_path": "concepts/orders-and-execution.json",
+  "concept": {
+    "id": "orders-and-execution/taker-fee",
+    "name": "Taker fee",
+    "aliases": [
+      "liquidity-removal fee",
+      "taker charge"
+    ],
+    "domain": "Orders and execution",
+    "definition": "The fee charged on an execution that removes liquidity - an order that executes immediately against resting interest. Under maker-taker pricing the taker pays the venue's highest per-share fee, funding the rebates paid to makers.",
+    "intuition": "Crossing the spread for immediacy has a price: the taker fee is the toll for not waiting.",
+    "mechanics": "Any order that executes on arrival - market orders, marketable limits, IOC sweeps - is the liquidity remover and is charged the removal rate (e.g., Nasdaq's $0.0030 per share for shares at or above $1). Taker status, not order type, determines the charge: a limit order that is marketable on arrival takes.",
+    "formula": "Taker fee = removal rate x shares executed (e.g., $0.0030/share on Nasdaq's standard tier).",
+    "relationships": [
+      "Maker fee",
+      "Rebate",
+      "Exchange fee",
+      "Sweep order",
+      "Immediate-or-cancel order",
+      "Explicit transaction cost"
+    ],
+    "failure_modes": "Aggressive strategies systematically pay the taker rate on every fill, and at scale the fee rivals or exceeds the spread itself - high-frequency takers can see fees consume their entire margin. Volume-tiered pricing also means the realized rate depends on month-end totals, complicating per-trade accounting.",
+    "misconceptions": "A limit order is not exempt from taker fees - marketability at arrival, not order type, decides maker/taker. Nor are taker fees profit for the broker: they are exchange charges, often passed through.",
+    "example": "You send a marketable IOC buy for 10,000 shares; as the remover you pay roughly $30 in taker fees at $0.0030 per share, while the resting sellers collect maker rebates.",
+    "citations": [
+      {
+        "source": "Nasdaq Price List - Trading (nasdaqtrader.com)",
+        "url": "https://www.nasdaqtrader.com/Trader.aspx?id=PriceListTrading2",
+        "section": "Fees to Remove Liquidity ($0.0030/share)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

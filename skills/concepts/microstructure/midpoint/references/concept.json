@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/midpoint",
+  "canonical_sha256": "c029051db40f8550784d7eac38b8b469cb78614bd7d6a0250c84940285b72d65",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/midpoint",
+    "name": "Midpoint",
+    "aliases": [
+      "mid-quote",
+      "mid price"
+    ],
+    "domain": "Microstructure",
+    "definition": "The arithmetic mean of the best bid and best offer, conventionally computed from the NBBO; Regulation NMS uses the NBBO midpoint as the reference price for effective and realized spread calculations. It is the standard benchmark for the unobserved transaction-cost-free value of a security between trades.",
+    "intuition": "It is the neutral point splitting the spread - neither side's concession - so it serves as the default fair-value reference for measuring execution quality.",
+    "mechanics": "Recomputed on every change to the best bid or offer; used as the peg for midpoint orders, as the benchmark in spread and price-improvement statistics, and as the reference in trade-classification rules such as the quote rule.",
+    "formula": "M = (B + A) / 2, where B is the best (national best) bid and A the best (national best) offer.",
+    "relationships": [
+      "Quoted spread",
+      "Effective spread",
+      "National best bid and offer",
+      "Microprice",
+      "Quote rule"
+    ],
+    "failure_modes": "When the spread is wide, one side is thin, or prices are tick-constrained, the midpoint is a poor value estimate; it also ignores the size imbalance between bid and ask, which the microprice corrects.",
+    "misconceptions": "The midpoint is a benchmark, not a tradable price and not necessarily the market's true valuation; executions at the midpoint are a convention, not a law.",
+    "example": "With the NBBO at $100.00 x $100.04, the midpoint is $100.02; a buy executed at $100.03 shows $0.02 of effective spread (2 x (100.03 - 100.02)).",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraphs (b)(8)-(b)(13), spread definitions referencing the NBBO midpoint",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

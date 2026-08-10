@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/quoted-spread",
+  "canonical_sha256": "4b6ca01a841a561536548b0d0ed814059738f32a7192cee0477c1f4c1348f814",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/quoted-spread",
+    "name": "Quoted spread",
+    "aliases": [
+      "inside spread",
+      "quoted bid-ask spread"
+    ],
+    "domain": "Microstructure",
+    "definition": "The difference between the best (lowest) quoted offer and the best (highest) quoted bid for a security at a point in time, i.e. the round-trip cost of immediacy at displayed prices. SEC Rule 600(b)(12) of Regulation NMS defines the average quoted spread as the share-weighted average of the national best offer minus the national best bid at the time of order receipt.",
+    "intuition": "It measures how far apart the best standing buy and sell prices are; the narrower the gap, the cheaper it is to trade immediately in small size.",
+    "mechanics": "Computed from the inside market (best bid and offer, or the NBBO nationally) each time quotes update; expressed in absolute currency terms or relative to the quote midpoint. It reflects posted liquidity only and changes continuously with order submissions, cancellations, and executions.",
+    "formula": "QS = A - B, where A is the best ask and B the best bid; relative quoted spread = (A - B) / M with midpoint M = (A + B) / 2.",
+    "relationships": [
+      "Bid-ask spread",
+      "Midpoint",
+      "Best bid",
+      "Best ask",
+      "Effective spread",
+      "Tightness"
+    ],
+    "failure_modes": "It says nothing about available depth or hidden liquidity, so it can look deceptively tight when displayed size is tiny or when the minimum tick constrains prices. It also overstates the cost actually paid when executions receive price improvement inside the quotes.",
+    "misconceptions": "The quoted spread is not the transaction cost actually incurred; realized costs are captured by the effective spread and can be lower after price improvement or higher after market impact on large orders.",
+    "example": "With a national best bid of $100.00 and national best offer of $100.02, the quoted spread is $0.02, or about 2 basis points of the $100.01 midpoint.",
+    "citations": [
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraph (b)(12) Average quoted spread",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
