@@ -1,7 +1,7 @@
 """Parse sources/master_v1.txt into concepts/<domain>.json files.
 
 Stdlib only. Asserts exactly 1,500 unique entries and normalizes the stray
-micro-domains from the first 34 reviewed entries into the canonical domains.
+micro-domains from the original import into the canonical domains.
 """
 import json
 import re
@@ -45,7 +45,7 @@ def parse_master(path: Path):
             current = {"index": int(m.group(1)), "name": m.group(2).strip()}
         elif current is not None:
             for field, key in (("Domain", "domain"), ("Definition", "definition"),
-                               ("Source authority", "source_hint"), ("Status", "status")):
+                               ("Source authority", "source_hint")):
                 if line.startswith(f"{field}: "):
                     current[key] = line[len(field) + 2:].strip()
     if current:
@@ -62,11 +62,9 @@ def main():
 
     domains = {}
     for e in raw_entries:
-        for key in ("domain", "definition", "source_hint", "status"):
+        for key in ("domain", "definition", "source_hint"):
             assert key in e, f"entry {e['name']} missing {key}"
         domain = DOMAIN_MAP.get(e["domain"], e["domain"])
-        status = e["status"].lower()
-        assert status in ("reviewed", "provisional"), f"bad status {status}"
         entry = {
             "id": f"{slugify(domain)}/{slugify(e['name'])}",
             "name": e["name"],
@@ -82,11 +80,6 @@ def main():
             "example": "",
             "citations": [],
             "source_hint": e["source_hint"],
-            "status": status,
-            "reviewed_by": "master_v1 import" if status == "reviewed" else "",
-            "review_date": "2026-08-06" if status == "reviewed" else "",
-            "review_note": ("Reviewed in master_v1 against source family; exact citation pending."
-                            if status == "reviewed" else ""),
             "master_index": e["index"],
         }
         domains.setdefault(domain, []).append(entry)
@@ -99,11 +92,8 @@ def main():
         out.write_text(json.dumps(entries, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     total = sum(len(v) for v in domains.values())
-    reviewed = sum(1 for v in domains.values() for e in v if e["status"] == "reviewed")
     print(f"domains: {len(domains)}")
     print(f"entries: {total}")
-    print(f"reviewed: {reviewed}")
-    print(f"provisional: {total - reviewed}")
     for domain in sorted(domains):
         print(f"  {domain}: {len(domains[domain])}")
     assert total == 1500

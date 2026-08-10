@@ -2,13 +2,20 @@
   {
     "id": "portfolio-management/portfolio",
     "name": "Portfolio",
-    "aliases": ["investment portfolio"],
+    "aliases": [
+      "investment portfolio"
+    ],
     "domain": "Portfolio management",
     "definition": "The combined holdings of stocks, bonds, commodities, real estate, and other investments owned by an individual or institutional investor, analyzed and managed as a single unit.",
     "intuition": "Your portfolio is the whole basket of things you own, not any single holding; its behavior is what you actually experience as an investor.",
     "mechanics": "A portfolio is characterized by a weight vector w (each w_i is the fraction of value in asset i, weights summing to 1). Its return is the weighted sum of asset returns, while its risk depends on the full covariance structure of the components, not just their individual volatilities.",
     "formula": "R_p = sum_i w_i * R_i, with sum_i w_i = 1, where w_i is the value weight of asset i and R_i its return.",
-    "relationships": ["Asset allocation", "Diversification", "Portfolio variance", "Rebalancing"],
+    "relationships": [
+      "Asset allocation",
+      "Diversification",
+      "Portfolio variance",
+      "Rebalancing"
+    ],
     "failure_modes": "Treating a collection of separate accounts or funds as independent obscures aggregate exposures: overlapping holdings and shared factor bets can make a 'many-fund' portfolio far more concentrated than it looks.",
     "misconceptions": "Owning many different funds does not automatically make a portfolio diversified; what matters is how the underlying returns co-move, not the count of positions.",
     "example": "An investor holding 60% in a total stock market index fund, 30% in a bond index fund, and 10% in a money market fund has one portfolio whose return each month is 0.6*R_stocks + 0.3*R_bonds + 0.1*R_cash.",
@@ -21,22 +28,26 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 536
   },
   {
     "id": "portfolio-management/asset-allocation",
     "name": "Asset allocation",
-    "aliases": ["asset mix"],
+    "aliases": [
+      "asset mix"
+    ],
     "domain": "Portfolio management",
     "definition": "The practice of dividing an investment portfolio among different asset categories, such as stocks, bonds, and cash, with the mix chosen according to the investor's time horizon and risk tolerance.",
     "intuition": "Before picking individual securities, you decide how much of your money goes into broad buckets like stocks versus bonds, because those buckets drive most of the portfolio's risk and return.",
     "mechanics": "The investor sets target weights for each asset class; because the returns of different asset categories historically have not moved up and down at the same time, the chosen mix largely determines the portfolio's volatility and its ability to meet a financial goal. Weights drift with market moves and are restored through rebalancing.",
     "formula": "",
-    "relationships": ["Strategic asset allocation", "Tactical asset allocation", "Diversification", "Rebalancing", "Portfolio"],
+    "relationships": [
+      "Strategic asset allocation",
+      "Tactical asset allocation",
+      "Diversification",
+      "Rebalancing",
+      "Portfolio"
+    ],
     "failure_modes": "A fixed allocation becomes inappropriate when the investor's horizon or risk tolerance changes, and its risk properties degrade when correlations between asset classes shift, especially in crises.",
     "misconceptions": "There is no single 'correct' allocation model for a given goal; the SEC stresses the right mix is a personal choice driven by time horizon and risk tolerance, not a universal formula.",
     "example": "A 30-year-old saving for retirement might choose 90% stocks and 10% bonds, while the same person at 63, close to needing the money, might shift to 50% stocks, 40% bonds, and 10% cash.",
@@ -49,22 +60,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 537
   },
   {
     "id": "portfolio-management/strategic-asset-allocation",
     "name": "Strategic asset allocation",
-    "aliases": ["SAA", "policy portfolio", "policy mix"],
+    "aliases": [
+      "SAA",
+      "policy portfolio",
+      "policy mix"
+    ],
     "domain": "Portfolio management",
     "definition": "The long-term target allocation across asset classes that an investor commits to based on goals, time horizon, and risk tolerance, typically reviewed over years or decades and maintained through periodic rebalancing.",
     "intuition": "It is the 'default setting' of the portfolio - the mix you plan to hold through market cycles rather than the mix you happen to hold today.",
     "mechanics": "Target weights are derived from long-term capital market expectations and the investor's circumstances; actual weights are periodically rebalanced back to the policy targets, and the policy itself is revisited only when goals, horizon, or risk tolerance change materially.",
     "formula": "",
-    "relationships": ["Asset allocation", "Tactical asset allocation", "Rebalancing", "Diversification"],
+    "relationships": [
+      "Asset allocation",
+      "Tactical asset allocation",
+      "Rebalancing",
+      "Diversification"
+    ],
     "failure_modes": "A strategic mix built on stale long-run return, volatility, or correlation assumptions can silently deliver a very different risk profile than intended, and rigid adherence can be costly if the investor's circumstances change mid-horizon.",
     "misconceptions": "Strategic allocation is not 'buy and forget': it requires rebalancing to stay at target weights and periodic re-derivation when the investor's situation changes.",
     "example": "A pension plan sets a policy mix of 60% equities and 40% fixed income, rebalancing annually; this 60/40 target itself - not any short-term deviation from it - is the strategic asset allocation.",
@@ -83,22 +99,24 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 538
   },
   {
     "id": "portfolio-management/tactical-asset-allocation",
     "name": "Tactical asset allocation",
-    "aliases": ["TAA"],
+    "aliases": [
+      "TAA"
+    ],
     "domain": "Portfolio management",
     "definition": "An active portfolio management strategy in which an investor deliberately makes short-term, typically modest adjustments to the long-term strategic asset allocation in response to changing market conditions, valuations, or economic trends.",
     "intuition": "You keep your long-term plan but lean a few percent toward or away from an asset class when conditions look unusually favorable or risky, then drift back to the strategic targets.",
     "mechanics": "Practitioners monitor indicators such as market trends, valuations, volatility, and interest rates; when predefined criteria are met, they shift a small portion of the portfolio (often 5-10% of assets) for a horizon of months rather than years, and unwind the tilt as conditions normalize.",
     "formula": "",
-    "relationships": ["Strategic asset allocation", "Asset allocation", "Rebalancing"],
+    "relationships": [
+      "Strategic asset allocation",
+      "Asset allocation",
+      "Rebalancing"
+    ],
     "failure_modes": "Tactical shifts require being right frequently enough to overcome transaction costs and taxes; mistimed tilts, especially those driven by emotion rather than rules, can leave the portfolio worse off than simple buy-and-hold rebalancing.",
     "misconceptions": "Tactical allocation is not the same as all-or-nothing market timing: it uses predefined signals to make incremental adjustments rather than attempting to call exact market tops and bottoms.",
     "example": "An investor whose strategic mix is 60% stocks might cut equities to 52% during a period of sharply elevated volatility, then move back toward 60% as conditions normalize.",
@@ -111,22 +129,25 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 539
   },
   {
     "id": "portfolio-management/rebalancing",
     "name": "Rebalancing",
-    "aliases": ["portfolio rebalancing"],
+    "aliases": [
+      "portfolio rebalancing"
+    ],
     "domain": "Portfolio management",
     "definition": "The process of bringing a portfolio back to its original or target asset allocation mix, which becomes necessary because some investments grow faster than others and push the portfolio out of alignment with its intended risk level.",
     "intuition": "If your winners grow faster than your losers, your portfolio quietly becomes riskier (or safer) than you planned; rebalancing trims the winners and tops up the laggards to restore the plan.",
     "mechanics": "Rebalancing can be calendar-based (e.g., every 6 or 12 months) or threshold-based (when an asset class weight moves beyond a preset band), and is executed by selling overweighted categories to buy underweighted ones, by directing new contributions to underweighted categories, or both.",
     "formula": "",
-    "relationships": ["Asset allocation", "Strategic asset allocation", "Diversification", "Portfolio"],
+    "relationships": [
+      "Asset allocation",
+      "Strategic asset allocation",
+      "Diversification",
+      "Portfolio"
+    ],
     "failure_modes": "Each rebalance can trigger transaction costs and taxable gains, and in strong trending markets disciplined rebalancing systematically sells the asset that keeps rising, lagging a drifted buy-and-hold portfolio.",
     "misconceptions": "Rebalancing is a risk-control discipline, not a return-boosting trick: its 'buy low, sell high' effect does not guarantee higher returns, only that the portfolio's risk stays near its target.",
     "example": "An investor targets 60% stocks; after a rally stocks reach 80% of the portfolio, so she sells stocks or directs new savings into bonds until the 60/40 mix is restored.",
@@ -145,10 +166,6 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 540
   },
   {
@@ -160,7 +177,14 @@
     "intuition": "Don't put all your eggs in one basket: if one investment loses money, the hope is that the others make up for it.",
     "mechanics": "Because portfolio variance contains covariance terms, combining assets whose returns are imperfectly correlated yields a portfolio volatility below the weighted average of individual volatilities; this removes much asset-specific (idiosyncratic) risk but cannot remove market-wide (systematic) risk.",
     "formula": "",
-    "relationships": ["Portfolio", "Asset allocation", "Correlation matrix", "Systematic risk", "Idiosyncratic risk", "Correlation breakdown"],
+    "relationships": [
+      "Portfolio",
+      "Asset allocation",
+      "Correlation matrix",
+      "Systematic risk",
+      "Idiosyncratic risk",
+      "Correlation breakdown"
+    ],
     "failure_modes": "Diversification works least when it is most needed: correlations across markets rise in bear markets and crises, so apparently diversified portfolios can fall together. It reduces risk but does not eliminate the risk of loss.",
     "misconceptions": "Holding several investments is not the same as being diversified - a handful of stocks in one sector, or several funds holding the same stocks, leaves concentrated exposure intact.",
     "example": "A total stock market index fund holding thousands of companies diversifies away most single-company risk, while adding a bond fund diversifies across asset categories.",
@@ -179,10 +203,6 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 541
   },
   {
@@ -194,7 +214,13 @@
     "intuition": "It is the table that tells you, for every pair of assets, how much they tend to move together - the raw material for judging how diversified a portfolio really is.",
     "mechanics": "Each off-diagonal element is rho_ij = cov(r_i, r_j) / (sigma_i * sigma_j), estimated from historical returns or from a factor model; multiplying by volatilities recovers the covariance matrix used in portfolio variance and optimization.",
     "formula": "rho_ij = cov(r_i, r_j) / (sigma_i * sigma_j), where sigma_i and sigma_j are the return standard deviations of assets i and j.",
-    "relationships": ["Covariance matrix", "Portfolio variance", "Factor model", "Correlation breakdown", "Diversification"],
+    "relationships": [
+      "Covariance matrix",
+      "Portfolio variance",
+      "Factor model",
+      "Correlation breakdown",
+      "Diversification"
+    ],
     "failure_modes": "With N assets, (N^2 - N)/2 distinct correlations must be estimated, so sample matrices are noisy and near-singular when assets outnumber observations; correlations are also unstable, rising in bear markets and breaking portfolio constructions calibrated on calm periods.",
     "misconceptions": "A historical correlation matrix is not a stable property of the market: it is a sample estimate whose entries can shift substantially across regimes and estimation windows.",
     "example": "Sharpe's three-asset example uses the correlation matrix cash/bonds 0.40, cash/stocks 0.15, bonds/stocks 0.35 to derive covariances and optimal portfolio weights.",
@@ -213,22 +239,26 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 542
   },
   {
     "id": "portfolio-management/covariance-matrix",
     "name": "Covariance matrix",
-    "aliases": ["variance-covariance matrix"],
+    "aliases": [
+      "variance-covariance matrix"
+    ],
     "domain": "Portfolio management",
     "definition": "The symmetric matrix whose diagonal elements are the return variances of a set of assets and whose off-diagonal elements are their pairwise return covariances, the central input to mean-variance portfolio analysis.",
     "intuition": "It packs everything about how assets' returns vary and move together into one object, so a portfolio's risk can be computed in a single matrix multiplication.",
     "mechanics": "Element C_ij = E[(r_i - E[r_i])(r_j - E[r_j])]. Portfolio variance is v_p = x'Cx for weight vector x. Because estimating all entries from history is noisy, practitioners often impose structure via a factor model: C = B*C_F*B' + diag(rv), where B holds factor exposures, C_F the factor covariances, and rv the residual variances.",
     "formula": "C_ij = E[(r_i - E[r_i]) * (r_j - E[r_j])]; factor-model estimator: C = B*C_F*B' + diag(rv).",
-    "relationships": ["Correlation matrix", "Portfolio variance", "Factor model", "Factor exposure", "Minimum-variance portfolio"],
+    "relationships": [
+      "Correlation matrix",
+      "Portfolio variance",
+      "Factor model",
+      "Factor exposure",
+      "Minimum-variance portfolio"
+    ],
     "failure_modes": "Estimation error explodes with the number of assets (a 1,000-asset universe needs about 500,500 distinct covariances), and optimizers amplify estimation noise into extreme, unstable weights; non-stationarity makes past covariances a poor guide in regime shifts.",
     "misconceptions": "The sample covariance matrix from historical returns is not the 'true' matrix; it contains estimation noise, and factor-structure estimators exist precisely because raw sample matrices are unreliable for optimization.",
     "example": "In Sharpe's example the covariance matrix of cash, bonds, and stocks has entries such as cov(bonds, stocks) = 39.886 and var(stocks) = 237.160, from which any portfolio's variance follows as x'Cx.",
@@ -241,10 +271,6 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 543
   },
   {
@@ -256,7 +282,13 @@
     "intuition": "Portfolio risk is not the average of individual risks: assets that zig while others zag cancel each other out, so covariances do most of the work in determining total variance.",
     "mechanics": "For weight vector x and covariance matrix C, v_p = x'Cx. Expanding for two assets: v_p = w_1^2*sigma_1^2 + w_2^2*sigma_2^2 + 2*w_1*w_2*rho_12*sigma_1*sigma_2. With a factor model the same quantity can be computed as v_p = b_p*C_F*b_p' + (x.^2)'*rv using portfolio factor exposures b_p, avoiding the full asset covariance matrix.",
     "formula": "v_p = x'Cx = sum_i sum_j x_i * x_j * cov(r_i, r_j); two-asset case: v_p = w_1^2*sigma_1^2 + w_2^2*sigma_2^2 + 2*w_1*w_2*rho_12*sigma_1*sigma_2.",
-    "relationships": ["Covariance matrix", "Correlation matrix", "Diversification", "Minimum-variance portfolio", "Marginal risk contribution"],
+    "relationships": [
+      "Covariance matrix",
+      "Correlation matrix",
+      "Diversification",
+      "Minimum-variance portfolio",
+      "Marginal risk contribution"
+    ],
     "failure_modes": "Variance is only as good as its inputs: estimated variances and covariances drift over time, and variance as a symmetric measure treats upside and downside moves identically, which may not match investor loss aversion.",
     "misconceptions": "Portfolio variance is not the weighted average of asset variances; ignoring the covariance terms dramatically overstates the risk of diversified portfolios.",
     "example": "Two equally weighted assets with volatilities 15% and 10% and correlation 0.3 have variance 0.5^2*0.0225 + 0.5^2*0.01 + 2*0.5*0.5*0.3*0.15*0.10 = 0.010375, a volatility of about 10.2%, below the 12.5% naive average.",
@@ -269,22 +301,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 544
   },
   {
     "id": "portfolio-management/marginal-risk-contribution",
     "name": "Marginal risk contribution",
-    "aliases": ["MRC", "marginal contribution to risk", "MCTR"],
+    "aliases": [
+      "MRC",
+      "marginal contribution to risk",
+      "MCTR"
+    ],
     "domain": "Portfolio management",
     "definition": "The sensitivity of total portfolio risk (typically volatility) to a small change in the weight of one asset, holding other weights fixed: the partial derivative of portfolio volatility with respect to that asset's weight.",
     "intuition": "It answers: if I add one more dollar of this asset, by how much does total portfolio risk go up?",
     "mechanics": "For volatility sigma_p = sqrt(w'Cw), the marginal risk contribution of asset i is MRC_i = d(sigma_p)/d(w_i) = (Cw)_i / sigma_p, i.e., the asset's covariance with the portfolio divided by portfolio volatility. It is the building block of risk contribution decompositions and risk budgeting.",
     "formula": "MRC_i = d(sigma_p)/d(w_i) = (Cw)_i / sigma_p, where C is the asset covariance matrix, w the weight vector, and (Cw)_i the covariance of asset i with the portfolio.",
-    "relationships": ["Component risk contribution", "Risk budgeting", "Portfolio variance", "Covariance matrix"],
+    "relationships": [
+      "Component risk contribution",
+      "Risk budgeting",
+      "Portfolio variance",
+      "Covariance matrix"
+    ],
     "failure_modes": "MRC is defined relative to a volatility risk measure and a specific covariance estimate; it changes with the risk measure (e.g., VaR or expected shortfall) and inherits all estimation error and non-stationarity of the covariance matrix.",
     "misconceptions": "A marginal risk contribution is not a property of the asset alone - it depends on the current portfolio composition, so the same asset has different MRCs in different portfolios.",
     "example": "If a small-cap fund has covariance 0.03 with the current portfolio and portfolio volatility is 12%, its marginal risk contribution is 0.03/0.12 = 0.25: adding a small weight raises portfolio volatility by roughly 0.25 per unit weight added.",
@@ -297,22 +334,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 545
   },
   {
     "id": "portfolio-management/component-risk-contribution",
     "name": "Component risk contribution",
-    "aliases": ["CRC", "risk contribution", "total risk contribution"],
+    "aliases": [
+      "CRC",
+      "risk contribution",
+      "total risk contribution"
+    ],
     "domain": "Portfolio management",
     "definition": "An asset's total contribution to portfolio risk, computed as its weight times its marginal risk contribution; component risk contributions sum exactly to total portfolio volatility by Euler's homogeneous-function theorem.",
     "intuition": "It splits total portfolio risk into slices, one per asset, so you can see which positions actually eat your risk budget - often very different from which positions eat your capital.",
     "mechanics": "CRC_i = w_i * MRC_i = w_i * (Cw)_i / sigma_p, and sum_i CRC_i = sigma_p. Expressed as percentages, CRC_i/sigma_p gives each asset's share of total risk, the quantity equalized in risk-parity (equal risk contribution) portfolios.",
     "formula": "CRC_i = w_i * (Cw)_i / sigma_p, with sum_i CRC_i = sigma_p.",
-    "relationships": ["Marginal risk contribution", "Risk budgeting", "Portfolio variance", "Diversification"],
+    "relationships": [
+      "Marginal risk contribution",
+      "Risk budgeting",
+      "Portfolio variance",
+      "Diversification"
+    ],
     "failure_modes": "Risk contributions depend on the chosen covariance estimate and risk measure, so they can be badly wrong in crises when correlations shift; negative contributions from hedging positions can also confuse naive budget checks.",
     "misconceptions": "Dollar weights are not risk weights: a 60/40 stock/bond portfolio typically derives around 90% of its volatility from the equity sleeve, not 60%.",
     "example": "In a 60/40 portfolio with 10% volatility, if the equity CRC is 9% and the bond CRC is 1%, equities consume 90% of the risk budget despite holding 60% of the capital.",
@@ -325,22 +367,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 546
   },
   {
     "id": "portfolio-management/minimum-variance-portfolio",
     "name": "Minimum-variance portfolio",
-    "aliases": ["MVP", "global minimum-variance portfolio", "GMV"],
+    "aliases": [
+      "MVP",
+      "global minimum-variance portfolio",
+      "GMV"
+    ],
     "domain": "Portfolio management",
     "definition": "The portfolio of risky assets with the lowest attainable variance, located at the leftmost point of the mean-variance efficient frontier; it is the optimal portfolio for an investor with zero tolerance for risk.",
     "intuition": "It is the mix that wobbles the least, whatever its expected return - found purely from the covariance matrix, with no return forecasts needed.",
     "mechanics": "Solving min_w w'Cw subject to sum_i w_i = 1 gives w_MVP = C^{-1}1 / (1'C^{-1}1), where 1 is a vector of ones. In Sharpe's equilibrium framework it is the portfolio z_p, the optimal portfolio for an investor with zero risk tolerance.",
     "formula": "w_MVP = C^{-1}*1 / (1'*C^{-1}*1), where C is the asset covariance matrix and 1 a vector of ones.",
-    "relationships": ["Efficient frontier", "Portfolio variance", "Covariance matrix", "Tangency portfolio"],
+    "relationships": [
+      "Efficient frontier",
+      "Portfolio variance",
+      "Covariance matrix",
+      "Tangency portfolio"
+    ],
     "failure_modes": "Because it is driven entirely by the estimated covariance matrix, MVP weights are extremely sensitive to estimation error and can be concentrated and unstable; low in-sample variance does not guarantee low out-of-sample variance.",
     "misconceptions": "Minimum variance does not mean minimum possible loss or maximum risk-adjusted return: the MVP still carries market-level drawdowns and generally has a lower Sharpe ratio than the tangency portfolio.",
     "example": "In Sharpe's three-asset example, the zero-risk-tolerance optimal portfolio z_p holds about 104% cash, -4% bonds, and 0% stocks - the variance-minimizing combination of the three assets.",
@@ -353,22 +400,26 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 547
   },
   {
     "id": "portfolio-management/efficient-frontier",
     "name": "Efficient frontier",
-    "aliases": ["mean-variance efficient frontier"],
+    "aliases": [
+      "mean-variance efficient frontier"
+    ],
     "domain": "Portfolio management",
     "definition": "The set of portfolios that offer the maximum expected return for each level of return variance (equivalently, the minimum variance for each target expected return), the central construct of Markowitz's mean-variance portfolio selection theory.",
     "intuition": "It is the best menu available: every portfolio below the frontier is dominated, because a frontier portfolio gives either more return for the same risk or less risk for the same return.",
     "mechanics": "For each target expected return e*, solve min_w w'Cw subject to w'e = e* and sum_i w_i = 1; tracing e* yields the frontier, a hyperbola in (volatility, expected return) space. All mean-variance-optimal portfolios lie on it, and with a risk-free asset the relevant frontier becomes the tangent line through the tangency portfolio.",
     "formula": "min_w w'Cw subject to w'e = e* and 1'w = 1, traced over all feasible target returns e*.",
-    "relationships": ["Minimum-variance portfolio", "Tangency portfolio", "Capital market line", "Portfolio variance", "Diversification"],
+    "relationships": [
+      "Minimum-variance portfolio",
+      "Tangency portfolio",
+      "Capital market line",
+      "Portfolio variance",
+      "Diversification"
+    ],
     "failure_modes": "The frontier is only as good as its inputs: portfolios that appear efficient on unadjusted historical estimates 'will almost certainly plot below the true efficient frontier' because optimizers exploit estimation noise (Sharpe); the true frontier is unobservable.",
     "misconceptions": "The efficient frontier is not a fixed, knowable curve in the market - it moves with expected return, volatility, and correlation estimates, so two analysts with different inputs get different frontiers.",
     "example": "Given cash, bond, and stock expected returns, volatilities, and correlations, the frontier runs from the minimum-variance portfolio upward toward higher stock weights, with each point the lowest-variance mix for its target return.",
@@ -387,22 +438,26 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 548
   },
   {
     "id": "portfolio-management/capital-market-line",
     "name": "Capital market line",
-    "aliases": ["CML"],
+    "aliases": [
+      "CML"
+    ],
     "domain": "Portfolio management",
     "definition": "In CAPM equilibrium with a risk-free asset, the line connecting the risk-free rate to the tangency (market) portfolio in (volatility, expected return) space; every efficient portfolio is a combination of the risk-free asset and the market portfolio.",
     "intuition": "Once you can borrow and lend at the risk-free rate, the best risky portfolio is the same for everyone - you just dial risk up or down by levering or diluting that one portfolio.",
     "mechanics": "By two-fund separation, optimal holdings are linear in risk tolerance: each investor holds the risk-free asset plus the tangency portfolio. The CML has intercept r_f and slope equal to the market's Sharpe ratio, so E(R_p) = r_f + [(E(R_m) - r_f)/sigma_m] * sigma_p for efficient portfolios.",
     "formula": "E(R_p) = r_f + [(E(R_m) - r_f) / sigma_m] * sigma_p, for portfolios p on the CML, where m is the market (tangency) portfolio.",
-    "relationships": ["Tangency portfolio", "Efficient frontier", "Beta", "Systematic risk", "Factor model"],
+    "relationships": [
+      "Tangency portfolio",
+      "Efficient frontier",
+      "Beta",
+      "Systematic risk",
+      "Factor model"
+    ],
     "failure_modes": "The CML describes only efficient portfolios; individual securities and inefficient portfolios plot below it. It rests on CAPM assumptions (mean-variance preferences, common expectations, frictionless borrowing at r_f) that hold only approximately in practice.",
     "misconceptions": "The CML is frequently confused with the security market line: the CML plots expected return against total volatility for efficient portfolios only, while the SML plots expected return against beta for all assets.",
     "example": "With r_f = 2%, E(R_m) = 8%, sigma_m = 15%, an efficient portfolio with sigma_p = 7.5% (half market risk) earns 2% + 0.5*(8% - 2%) = 5% on the CML.",
@@ -415,22 +470,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 549
   },
   {
     "id": "portfolio-management/tangency-portfolio",
     "name": "Tangency portfolio",
-    "aliases": ["maximum Sharpe ratio portfolio", "optimal risky portfolio"],
+    "aliases": [
+      "maximum Sharpe ratio portfolio",
+      "optimal risky portfolio"
+    ],
     "domain": "Portfolio management",
     "definition": "The portfolio of risky assets with the highest Sharpe ratio (expected excess return per unit of risk), located where the capital allocation line from the risk-free rate is tangent to the risky-asset efficient frontier; in CAPM equilibrium it is the market portfolio.",
     "intuition": "It is the one risky portfolio everyone should hold - investors differ only in how much they lever or dilute it with the risk-free asset.",
     "mechanics": "Weights solve max_w (w'e - r_f) / sqrt(w'Cw) subject to 1'w = 1, giving w proportional to C^{-1}(e - r_f*1). A basic CAPM premise is that all agents invest in this highest-Sharpe-ratio portfolio and leverage or de-leverage it to suit their risk preferences.",
     "formula": "w* = C^{-1}(e - r_f*1) / (1'*C^{-1}(e - r_f*1)), where e is the vector of expected returns, r_f the risk-free rate, and C the covariance matrix.",
-    "relationships": ["Capital market line", "Efficient frontier", "Minimum-variance portfolio", "Beta", "Alpha"],
+    "relationships": [
+      "Capital market line",
+      "Efficient frontier",
+      "Minimum-variance portfolio",
+      "Beta",
+      "Alpha"
+    ],
     "failure_modes": "Maximizing the Sharpe ratio over estimated inputs makes the tangency portfolio the portfolio most sensitive to estimation error: small changes in expected return or covariance estimates can swing weights wildly, and realized out-of-sample Sharpe ratios routinely disappoint.",
     "misconceptions": "The tangency portfolio is not the highest-return or lowest-risk portfolio, and its theoretical equivalence with the market portfolio holds only under CAPM equilibrium assumptions, not as an empirical identity.",
     "example": "With a risk-free rate of 2%, if the risky frontier's best risk-return trade-off is a stock/bond mix with expected return 8% and volatility 12%, the tangency portfolio has Sharpe ratio (8-2)/12 = 0.5, and all efficient investors hold that mix in some proportion.",
@@ -449,22 +509,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 550
   },
   {
     "id": "portfolio-management/beta",
     "name": "Beta",
-    "aliases": ["market beta"],
+    "aliases": [
+      "market beta"
+    ],
     "domain": "Portfolio management",
     "definition": "A measure of the sensitivity of an asset's or portfolio's returns to the returns of the market portfolio, equal to the covariance of the asset's return with the market return divided by the variance of the market return; it is the slope of the regression of the asset's excess return on the market's excess return.",
     "intuition": "Beta tells you how much an asset typically amplifies market moves: beta 2 means twice the market's swings, beta 0.5 means half.",
     "mechanics": "Estimated as the slope of the best-fit line when the asset's (excess) returns are regressed on market (excess) returns; under CAPM, expected return is linear in beta: E(r_i) = r_f + beta_i*(E(r_m) - r_f). Portfolio beta is the weighted average of component betas.",
     "formula": "beta_i = cov(r_i, r_m) / var(r_m); CAPM: E(r_i) = r_f + beta_i * (E(r_m) - r_f).",
-    "relationships": ["Alpha", "Systematic risk", "Idiosyncratic risk", "Market factor", "Capital market line", "Low-volatility factor"],
+    "relationships": [
+      "Alpha",
+      "Systematic risk",
+      "Idiosyncratic risk",
+      "Market factor",
+      "Capital market line",
+      "Low-volatility factor"
+    ],
     "failure_modes": "Betas are estimated from historical data and are unstable across periods and regimes; beta says nothing about idiosyncratic risk, and the empirical security market line is flatter than CAPM predicts, so low-beta stocks have historically earned more than the model implies.",
     "misconceptions": "Beta is not a complete measure of risk: a low-beta stock can be very volatile in absolute terms if its moves are uncorrelated with the market, and beta 1 does not mean 'same volatility as the market' unless correlation is also 1.",
     "example": "A portfolio with beta 2.0 is twice as sensitive to index moves as one with beta 1.0, so hedging it with index futures requires twice as many contracts per dollar of exposure.",
@@ -483,22 +548,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 551
   },
   {
     "id": "portfolio-management/alpha",
     "name": "Alpha",
-    "aliases": ["Jensen's alpha", "abnormal return"],
+    "aliases": [
+      "Jensen's alpha",
+      "abnormal return"
+    ],
     "domain": "Portfolio management",
     "definition": "The portion of an asset's or portfolio's expected or realized return that is not explained by its exposures to the factors in a given model; in a factor regression it is the intercept term, conventionally interpreted as return in excess of what factor risk alone would deliver.",
     "intuition": "After accounting for the market and other systematic bets the manager was riding, alpha is what's left - the part that might reflect skill, luck, or an omitted factor.",
     "mechanics": "In the factor model r_i = a_i + b_i1*f_1 + ... + b_im*f_m + e_i, the term a_i is the asset's expected residual return, its alpha; it is estimated as the intercept of a time-series regression of excess returns on factor returns (e.g., versus the CAPM market factor for Jensen's alpha).",
     "formula": "alpha_i = intercept in r_i - r_f = alpha_i + sum_j b_ij * f_j + e_i; equivalently alpha_i = E(r_i) - sum_j b_ij * E(f_j) when residuals have zero mean.",
-    "relationships": ["Beta", "Factor model", "Factor exposure", "Idiosyncratic risk", "Market factor"],
+    "relationships": [
+      "Beta",
+      "Factor model",
+      "Factor exposure",
+      "Idiosyncratic risk",
+      "Market factor"
+    ],
     "failure_modes": "Alpha is defined relative to a chosen factor model: a positive alpha may simply reflect exposure to an omitted factor, and estimates are noisy, so statistically significant alpha over short windows is weak evidence of skill.",
     "misconceptions": "Positive historical alpha does not prove managerial skill - it can arise from luck across thousands of funds, from hidden factor or illiquidity exposures, or from benchmark misspecification.",
     "example": "A fund returns 9% while its CAPM beta of 0.8 with a 10% market return and 2% risk-free rate predicts 2% + 0.8*8% = 8.4%; its estimated Jensen's alpha is 0.6%.",
@@ -511,22 +581,29 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 552
   },
   {
     "id": "portfolio-management/systematic-risk",
     "name": "Systematic risk",
-    "aliases": ["market risk", "non-diversifiable risk", "factor risk"],
+    "aliases": [
+      "market risk",
+      "non-diversifiable risk",
+      "factor risk"
+    ],
     "domain": "Portfolio management",
     "definition": "The component of an asset's return risk that is related to the return of the market or to pervasive common factors; it affects broad classes of assets simultaneously and cannot be diversified away by holding a large portfolio of different assets.",
     "intuition": "It is the tide that lifts or sinks all boats: recessions, rate shocks, and market crashes hit nearly every stock at once, no matter how many you hold.",
     "mechanics": "In factor-model terms, systematic risk is the variance contributed by factor exposures, b_i*C_F*b_i', leaving residual variance as the diversifiable part. In CAPM, beta measures an asset's quantity of systematic risk, and only systematic risk is compensated with expected return in equilibrium.",
     "formula": "Systematic variance of asset i = b_i * C_F * b_i', where b_i is the asset's vector of factor exposures and C_F the factor covariance matrix; for the single-index model this reduces to beta_i^2 * sigma_m^2.",
-    "relationships": ["Idiosyncratic risk", "Beta", "Diversification", "Market factor", "Factor model", "Correlation breakdown"],
+    "relationships": [
+      "Idiosyncratic risk",
+      "Beta",
+      "Diversification",
+      "Market factor",
+      "Factor model",
+      "Correlation breakdown"
+    ],
     "failure_modes": "What counts as systematic depends on the factor model: omit a real common factor and its variance gets mislabeled as idiosyncratic. In crises, rising correlations effectively convert more asset risk into common (systematic-like) risk.",
     "misconceptions": "Adding more securities cannot reduce systematic risk below the market level; conversely, 'safe' defensive assets still carry systematic risk - they just carry less of it (low beta).",
     "example": "In 2008, nearly all equity sectors fell together regardless of stock selection, an expression of systematic risk; a diversified equity portfolio's losses tracked the market factor rather than any single company.",
@@ -545,22 +622,29 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 553
   },
   {
     "id": "portfolio-management/idiosyncratic-risk",
     "name": "Idiosyncratic risk",
-    "aliases": ["specific risk", "unsystematic risk", "residual risk", "security-specific risk"],
+    "aliases": [
+      "specific risk",
+      "unsystematic risk",
+      "residual risk",
+      "security-specific risk"
+    ],
     "domain": "Portfolio management",
     "definition": "The component of an asset's return risk that is specific to that asset - the residual return after removing the influence of common factors - which is uncorrelated with the residuals of other assets and can therefore be diversified away in a large portfolio.",
     "intuition": "It is the risk of company-specific news - a scandal, a drug trial, an earnings miss - that averages out when you hold hundreds of names.",
     "mechanics": "In the linear factor model, the residual return e_i carries the idiosyncratic risk; the model's key assumption is corr(e_i, e_j) = 0 for i != j, so residual variances shrink toward zero in a well-diversified portfolio, leaving factor-driven variance dominant.",
     "formula": "Idiosyncratic variance of asset i = var(e_i) = rv_i; portfolio idiosyncratic variance = sum_i w_i^2 * rv_i, which tends to zero as weights become small and numerous.",
-    "relationships": ["Systematic risk", "Factor model", "Diversification", "Alpha", "Factor exposure"],
+    "relationships": [
+      "Systematic risk",
+      "Factor model",
+      "Diversification",
+      "Alpha",
+      "Factor exposure"
+    ],
     "failure_modes": "If the factor model omits a genuine common factor, residual returns remain correlated across assets and 'idiosyncratic' risk fails to diversify away as predicted; concentrated portfolios remain fully exposed to it.",
     "misconceptions": "Idiosyncratic risk is not 'unimportant' risk: for a concentrated holder it dominates total risk, and under CAPM it earns no expected-return premium precisely because it is diversifiable.",
     "example": "A pharmaceutical firm's stock plunges 40% on a failed drug trial while the market is flat; holders of a 500-stock index fund barely notice because the event is idiosyncratic.",
@@ -573,22 +657,28 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 554
   },
   {
     "id": "portfolio-management/factor-exposure",
     "name": "Factor exposure",
-    "aliases": ["factor loading", "factor sensitivity", "factor beta"],
+    "aliases": [
+      "factor loading",
+      "factor sensitivity",
+      "factor beta"
+    ],
     "domain": "Portfolio management",
     "definition": "The sensitivity of an asset's or portfolio's return to a given factor - the change in return per unit change in the factor - represented by the coefficient b_ij multiplying that factor in a linear factor model.",
     "intuition": "It is a dial reading showing how strongly an asset or portfolio is tuned to a driver like the market, size, or value: exposure 1.2 to the market factor means roughly 1.2x the factor's moves.",
     "mechanics": "Asset exposures b_ij are estimated by regression or specified from characteristics; a portfolio's exposure to factor j is the weighted average of its assets' exposures, b_pj = sum_i w_i * b_ij, i.e., b_p = x'B in matrix form. Exposures map factor returns into asset returns and factor covariances into the asset covariance matrix.",
     "formula": "r_i = sum_j b_ij * f_j + e_i, where b_ij is the exposure of asset i to factor j; portfolio exposure b_p = x'B.",
-    "relationships": ["Factor model", "Beta", "Systematic risk", "Covariance matrix", "Market factor"],
+    "relationships": [
+      "Factor model",
+      "Beta",
+      "Systematic risk",
+      "Covariance matrix",
+      "Market factor"
+    ],
     "failure_modes": "Exposures are estimated, not observed: they drift over time as companies and funds change, differ across data windows and estimators, and characteristic-based proxies (e.g., book-to-market for value) only approximate true loadings.",
     "misconceptions": "A fund labeled 'value' does not necessarily have high value-factor exposure - exposure must be measured from return behavior or holdings, not inferred from the label.",
     "example": "A portfolio of 70% in a stock with market exposure 1.2 and 30% in a bond fund with market exposure 0.1 has portfolio market exposure 0.7*1.2 + 0.3*0.1 = 0.87.",
@@ -607,22 +697,28 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 555
   },
   {
     "id": "portfolio-management/market-factor",
     "name": "Market factor",
-    "aliases": ["Rm-Rf", "excess market return", "MKT"],
+    "aliases": [
+      "Rm-Rf",
+      "excess market return",
+      "MKT"
+    ],
     "domain": "Portfolio management",
     "definition": "The excess return of the broad value-weighted stock market portfolio over the risk-free rate, the first factor in the CAPM and in all Fama-French models, proxied in the Kenneth French data library by the value-weight return of all eligible CRSP U.S. stocks minus the one-month Treasury bill rate.",
     "intuition": "It is simply 'the stock market's return above T-bills' - the baseline common driver that every equity shares and against which other factors are measured.",
     "mechanics": "Constructed as Rm - Rf, where Rm is the value-weight return of all CRSP firms incorporated in the U.S. and listed on NYSE/AMEX/NASDAQ with valid share code, price, and return data, and Rf is the one-month T-bill rate; an asset's loading on it is its beta.",
     "formula": "MKT_t = Rm_t - Rf_t, with Rm the value-weight market return and Rf the one-month Treasury bill rate.",
-    "relationships": ["Beta", "Systematic risk", "Fama-French three-factor model", "Capital market line", "Factor model"],
+    "relationships": [
+      "Beta",
+      "Systematic risk",
+      "Fama-French three-factor model",
+      "Capital market line",
+      "Factor model"
+    ],
     "failure_modes": "The theoretical CAPM market portfolio includes all wealth (real estate, human capital), so any tradable index is only a proxy; results can be sensitive to the proxy's universe and weighting.",
     "misconceptions": "The market factor is not the raw index return - it is the excess return over the risk-free rate, and it is value-weighted, not equal-weighted, in standard academic construction.",
     "example": "If the CRSP value-weight market returns 1.2% in a month and the one-month T-bill yields 0.3%, the market factor realization MKT is 0.9% for that month.",
@@ -635,22 +731,28 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 556
   },
   {
     "id": "portfolio-management/size-factor",
     "name": "Size factor",
-    "aliases": ["SMB", "Small Minus Big", "size premium"],
+    "aliases": [
+      "SMB",
+      "Small Minus Big",
+      "size premium"
+    ],
     "domain": "Portfolio management",
     "definition": "A Fama-French stock factor measuring the return difference between small-capitalization and large-capitalization stocks: SMB (Small Minus Big) is the average return on the small-stock portfolios minus the average return on the big-stock portfolios formed on market equity.",
     "intuition": "It isolates the historical tendency of small companies' stocks to behave differently - and on average to earn more - than big companies' stocks.",
     "mechanics": "Stocks are sorted on market equity using NYSE breakpoints; SMB is the average return of the three small portfolios minus the average return of the three big portfolios from the 2x3 size-by-book-to-market sorts (in the five-factor model, averaged across the book-to-market, profitability, and investment sorts).",
     "formula": "SMB = (1/3)(Small Value + Small Neutral + Small Growth) - (1/3)(Big Value + Big Neutral + Big Growth).",
-    "relationships": ["Fama-French three-factor model", "Value factor", "Market factor", "Factor model", "Factor exposure"],
+    "relationships": [
+      "Fama-French three-factor model",
+      "Value factor",
+      "Market factor",
+      "Factor model",
+      "Factor exposure"
+    ],
     "failure_modes": "The small-cap premium is episodic and much weaker after its publication in the early 1980s; SMB returns are also sensitive to breakpoint choices, microstructure noise in small caps, and whether January effects are included.",
     "misconceptions": "SMB is not a bet that small stocks always beat big stocks - it is a long-short factor return that is negative in many periods, and loading on it measures exposure to whatever common shocks drive the small-big return gap.",
     "example": "In a month when the three small-cap portfolios average 2.1% and the three big-cap portfolios average 0.6%, the SMB realization is +1.5%.",
@@ -663,22 +765,28 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 557
   },
   {
     "id": "portfolio-management/value-factor",
     "name": "Value factor",
-    "aliases": ["HML", "High Minus Low", "value premium"],
+    "aliases": [
+      "HML",
+      "High Minus Low",
+      "value premium"
+    ],
     "domain": "Portfolio management",
     "definition": "A Fama-French stock factor measuring the return difference between high book-to-market (value) and low book-to-market (growth) stocks: HML (High Minus Low) is the average return on the value portfolios minus the average return on the growth portfolios.",
     "intuition": "It captures the long-documented pattern that stocks cheap relative to their book value have on average outperformed expensive 'glamour' stocks.",
     "mechanics": "Within small and big size groups, stocks are sorted on book-to-market equity; HML = (1/2)(Small Value + Big Value) - (1/2)(Small Growth + Big Growth), using value-weight portfolios. A positive HML month means value stocks beat growth stocks.",
     "formula": "HML = (1/2)(Small Value + Big Value) - (1/2)(Small Growth + Big Growth).",
-    "relationships": ["Fama-French three-factor model", "Fama-French five-factor model", "Size factor", "Quality factor", "Factor model"],
+    "relationships": [
+      "Fama-French three-factor model",
+      "Fama-French five-factor model",
+      "Size factor",
+      "Quality factor",
+      "Factor model"
+    ],
     "failure_modes": "Value strategies suffer long drawdowns (e.g., the growth-dominated 2010s), and in the five-factor model HML becomes largely redundant once profitability and investment factors are included; whether the premium is risk compensation or mispricing remains unsettled.",
     "misconceptions": "The value factor is not the same as buying low P/E 'bargains' by any metric: HML is defined specifically on book-to-market equity within the Fama-French construction, and different value definitions can behave differently.",
     "example": "If in a month the two value portfolios average 1.8% while the two growth portfolios average -0.2%, HML is +2.0%, and a fund with HML loading 0.5 gains about 1.0% from the factor.",
@@ -691,22 +799,29 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 558
   },
   {
     "id": "portfolio-management/momentum-factor",
     "name": "Momentum factor",
-    "aliases": ["Mom", "UMD", "WML", "winners minus losers"],
+    "aliases": [
+      "Mom",
+      "UMD",
+      "WML",
+      "winners minus losers"
+    ],
     "domain": "Portfolio management",
     "definition": "A stock factor that is long stocks with high recent returns and short stocks with low recent returns, formalizing the cross-sectional momentum pattern documented by Jegadeesh and Titman (1993) and incorporated into the Carhart four-factor model; in the French library, Mom is built from portfolios sorted on prior 2-12 month returns.",
     "intuition": "Stocks that went up over roughly the past year (skipping the most recent month) have tended to keep outperforming recent losers for a while - the factor trades that continuation.",
     "mechanics": "Ken French's Mom uses six value-weight portfolios formed monthly on size and prior (2-12) returns: Mom = (1/2)(Small High + Big High) - (1/2)(Small Low + Big Low), with NYSE median size breakpoint and 30th/70th prior-return percentiles; the most recent month is skipped to avoid short-term reversal.",
     "formula": "Mom = (1/2)(Small High + Big High) - (1/2)(Small Low + Big Low), where High/Low refer to prior (t-12 to t-2) cumulative returns.",
-    "relationships": ["Carhart four-factor model", "Fama-French three-factor model", "Factor model", "Size factor", "Value factor"],
+    "relationships": [
+      "Carhart four-factor model",
+      "Fama-French three-factor model",
+      "Factor model",
+      "Size factor",
+      "Value factor"
+    ],
     "failure_modes": "Momentum is prone to infrequent but severe crashes when trends reverse sharply, typically in rebounds from bear markets (e.g., 2009), when the short side of crowded losers rallies violently; the standard Fama-French models exclude momentum precisely because it behaves differently.",
     "misconceptions": "Momentum is not simply 'buy what went up last week': the academic factor uses 12-month formation returns skipping the most recent month, and it is a relative cross-sectional bet, not a market-direction bet.",
     "example": "Ranking stocks each month on months t-12 to t-2 returns and going long the top third while shorting the bottom third yields the Mom factor; if winners return 1.5% and losers -0.5% in the next month, Mom realizes +2.0%.",
@@ -719,22 +834,28 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 559
   },
   {
     "id": "portfolio-management/quality-factor",
     "name": "Quality factor",
-    "aliases": ["QMJ", "Quality Minus Junk", "profitability factor"],
+    "aliases": [
+      "QMJ",
+      "Quality Minus Junk",
+      "profitability factor"
+    ],
     "domain": "Portfolio management",
     "definition": "A stock factor that is long high-quality stocks - companies that are profitable, growing, safe, and well managed - and short low-quality 'junk' stocks; Asness, Frazzini, and Pedersen formalize it as the Quality Minus Junk (QMJ) factor, with the Fama-French profitability factor RMW being a closely related construction.",
     "intuition": "All else equal, the market underprices boring excellence: profitable, stable firms have historically delivered high risk-adjusted returns relative to their struggling counterparts.",
     "mechanics": "Quality scores combine measures of profitability (e.g., return on equity, accruals quality), growth, safety (low beta, low volatility, low leverage), and payout; the QMJ factor goes long the top-quality group and shorts the bottom. Fama and French's RMW uses operating profitability sorts (robust minus weak) as a single-characteristic version.",
     "formula": "RMW = (1/2)(Small Robust + Big Robust) - (1/2)(Small Weak + Big Weak), where Robust/Weak are operating-profitability sorts; QMJ is a composite long-short quality score portfolio.",
-    "relationships": ["Fama-French five-factor model", "Low-volatility factor", "Value factor", "Factor model", "Momentum factor"],
+    "relationships": [
+      "Fama-French five-factor model",
+      "Low-volatility factor",
+      "Value factor",
+      "Factor model",
+      "Momentum factor"
+    ],
     "failure_modes": "The quality premium is regime-dependent and its economic source is unresolved - Asness, Frazzini, and Pedersen note they cannot tie quality returns to risk, leaving anomaly, data-mining, or unidentified-risk explanations open; quality also crashes when junk rallies sharply.",
     "misconceptions": "Quality is not just 'good companies at any price': the factor is a relative long-short bet, and the price of quality (how much extra investors pay for it) varies over time, affecting forward returns.",
     "example": "A QMJ portfolio long stocks with high ROE, low leverage, and stable earnings and short stocks with the opposite traits earns the quality spread; Fama-French's RMW approximates one dimension of this with profitability sorts.",
@@ -753,22 +874,29 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 560
   },
   {
     "id": "portfolio-management/low-volatility-factor",
     "name": "Low-volatility factor",
-    "aliases": ["low-beta anomaly", "betting against beta", "BAB", "low-risk anomaly"],
+    "aliases": [
+      "low-beta anomaly",
+      "betting against beta",
+      "BAB",
+      "low-risk anomaly"
+    ],
     "domain": "Portfolio management",
     "definition": "A factor built on the empirical finding that low-beta and low-volatility stocks have historically earned higher risk-adjusted returns than the CAPM predicts - the security market line is empirically too flat - formalized by Frazzini and Pedersen as the Betting Against Beta (BAB) factor, which goes long leveraged low-beta assets and short de-leveraged high-beta assets.",
     "intuition": "Risky stocks don't pay as much per unit of risk as theory says they should, so tilting toward calm stocks has historically improved Sharpe ratios.",
     "mechanics": "Stocks are ranked by estimated beta (or volatility); the long side holds low-beta names (scaled up toward comparable risk) and the short side holds high-beta names (scaled down). Frazzini and Pedersen attribute the effect to leverage constraints: investors unable or unwilling to lever instead overweight high-beta securities, depressing their risk-adjusted returns.",
     "formula": "BAB return = (1/beta_L)(r_L - r_f) - (1/beta_H)(r_H - r_f), where r_L, r_H are returns of low- and high-beta portfolios and beta_L, beta_H their betas.",
-    "relationships": ["Beta", "Quality factor", "Capital market line", "Factor model", "Volatility scaling"],
+    "relationships": [
+      "Beta",
+      "Quality factor",
+      "Capital market line",
+      "Factor model",
+      "Volatility scaling"
+    ],
     "failure_modes": "The factor underperforms sharply when high-beta stocks rally (strong bull rebounds), is exposed to crowding and valuation risk in the low-vol sleeve, and can load heavily on interest-rate-sensitive sectors such as utilities, adding hidden rate risk.",
     "misconceptions": "Low volatility is not low absolute risk in all senses: low-beta portfolios still fall in market crashes (they just fall less), and the anomaly concerns risk-adjusted, not raw, returns.",
     "example": "Sorting U.S. stocks by beta and holding the lowest-beta decile against the highest, with each side scaled to beta 1, reproduces the BAB factor; Frazzini and Pedersen document the flat security market line in 18 of 19 international equity markets.",
@@ -781,22 +909,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 561
   },
   {
     "id": "portfolio-management/carry-factor",
     "name": "Carry factor",
-    "aliases": ["carry", "carry trade"],
+    "aliases": [
+      "carry",
+      "carry trade"
+    ],
     "domain": "Portfolio management",
     "definition": "A cross-asset factor based on an asset's carry, defined by Koijen, Moskowitz, Pedersen, and Vrugt as its expected return assuming that market conditions, including its price, stay the same; carry strategies go long high-carry and short low-carry securities across global equities, bonds, currencies, commodities, and other markets.",
     "intuition": "Carry is what you earn if nothing changes: the coupon, the yield differential, the futures roll-down - the 'getting paid to wait' component of return.",
     "mechanics": "Carry can be measured in advance without an asset-pricing model (e.g., interest-rate differentials for currencies, yield minus financing cost for bonds, roll yield for commodities); an asset's total expected return decomposes into carry plus expected price appreciation. The factor is implemented as long-short portfolios ranking assets on carry within each asset class.",
     "formula": "E(r_i) = carry_i + E(price appreciation_i); in FX, carry_i approximately equals the foreign minus domestic short-term interest rate differential.",
-    "relationships": ["Factor model", "Momentum factor", "Value factor", "Term factor", "Risk budgeting"],
+    "relationships": [
+      "Factor model",
+      "Momentum factor",
+      "Value factor",
+      "Term factor",
+      "Risk budgeting"
+    ],
     "failure_modes": "Carry trades earn steady small gains punctuated by crash risk: despite low unconditional correlations across asset classes, carry strategies in all asset classes tend to do poorly at the same times, and those episodes coincide with global recessions and liquidity spirals.",
     "misconceptions": "Carry is not a free yield: the positive average return compensates for exposure to rare, severe drawdowns (the classic 'picking up pennies in front of a steamroller' profile), and naive FX carry violates uncovered interest parity empirically rather than confirming it.",
     "example": "An FX carry trade borrows in a low-rate currency (e.g., Japanese yen) to invest in a high-rate currency (e.g., Australian dollar); if exchange rates don't move, the trade earns the rate differential, but it loses heavily in sharp risk-off reversals.",
@@ -809,22 +942,28 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 562
   },
   {
     "id": "portfolio-management/term-factor",
     "name": "Term factor",
-    "aliases": ["TERM", "term premium factor", "maturity factor"],
+    "aliases": [
+      "TERM",
+      "term premium factor",
+      "maturity factor"
+    ],
     "domain": "Portfolio management",
     "definition": "One of the two bond-market factors in Fama and French (1993), capturing maturity risk: TERM is the difference between the return on long-term government bonds and the return on short-term risk-free instruments (the one-month Treasury bill rate), proxying the term premium for bearing interest-rate risk.",
     "intuition": "Long bonds swing more when rates move, and investors historically demanded extra return for that - TERM measures that extra return month by month.",
     "mechanics": "Constructed as the total return of a long-term government bond index minus a short-term risk-free rate (e.g., 1-month T-bill); bond and stock returns load on TERM to the extent they are exposed to shifts in the term structure of interest rates.",
     "formula": "TERM_t = R_LTG,t - R_f,t, where R_LTG is the return on long-term government bonds and R_f the one-month T-bill rate.",
-    "relationships": ["Credit factor", "Fama-French three-factor model", "Duration hedge", "Factor model", "Carry factor"],
+    "relationships": [
+      "Credit factor",
+      "Fama-French three-factor model",
+      "Duration hedge",
+      "Factor model",
+      "Carry factor"
+    ],
     "failure_modes": "TERM captures exposure only to roughly parallel rate moves; non-parallel yield-curve shifts (steepeners, flatteners) leave residual risk, and the term premium itself varies over time and has been compressed or negative in some eras.",
     "misconceptions": "TERM is not the level or slope of the yield curve: it is a realized return spread between long government bonds and bills, which differs from the ex-ante term premium embedded in forward rates.",
     "example": "If the long-term Treasury index returns 1.5% in a month when T-bills return 0.4%, TERM realizes +1.1%; a bond fund with high duration will show high sensitivity to this factor.",
@@ -837,22 +976,28 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 563
   },
   {
     "id": "portfolio-management/credit-factor",
     "name": "Credit factor",
-    "aliases": ["DEF", "default factor", "default premium factor", "credit premium"],
+    "aliases": [
+      "DEF",
+      "default factor",
+      "default premium factor",
+      "credit premium"
+    ],
     "domain": "Portfolio management",
     "definition": "One of the two bond-market factors in Fama and French (1993), capturing default risk: DEF is the difference between the return on long-term corporate bonds and the return on long-term government bonds, proxying the compensation for bearing corporate default risk.",
     "intuition": "Corporate bonds pay more than Treasuries because they can default; DEF measures, each period, how much that credit exposure actually earned or lost.",
     "mechanics": "Constructed as the return spread of long-term corporate bonds over long-term government bonds; in factor regressions for corporate bond portfolios, DEF typically carries the majority of explanatory power because long-only credit portfolios share common market exposure to the default premium.",
     "formula": "DEF_t = R_LTC,t - R_LTG,t, where R_LTC is the return on long-term corporate bonds and R_LTG the return on long-term government bonds.",
-    "relationships": ["Term factor", "Fama-French three-factor model", "Factor model", "Carry factor"],
+    "relationships": [
+      "Term factor",
+      "Fama-French three-factor model",
+      "Factor model",
+      "Carry factor"
+    ],
     "failure_modes": "DEF bundles duration-matched credit spread changes with actual default losses and flight-to-quality episodes; it spikes negatively in crises (credit widening) and cannot distinguish compensation for expected defaults from compensation for default-risk volatility.",
     "misconceptions": "DEF is not the credit spread itself: it is the realized excess return of corporate over government bonds, which is negative whenever spreads widen enough to offset the yield advantage.",
     "example": "If long-term corporate bonds return -0.5% in a month while long-term Treasuries return +1.0% amid a flight to quality, DEF realizes -1.5%, hitting credit-heavy portfolios.",
@@ -865,22 +1010,28 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 564
   },
   {
     "id": "portfolio-management/liquidity-factor",
     "name": "Liquidity factor",
-    "aliases": ["liquidity risk factor", "Pastor-Stambaugh liquidity factor", "traded liquidity factor"],
+    "aliases": [
+      "liquidity risk factor",
+      "Pastor-Stambaugh liquidity factor",
+      "traded liquidity factor"
+    ],
     "domain": "Portfolio management",
     "definition": "A factor capturing exposure to market-wide liquidity fluctuations: Pastor and Stambaugh (2003) show that stocks whose returns are more sensitive to innovations in aggregate liquidity earn higher expected returns, so liquidity risk is a priced state variable beyond market, size, value, and momentum exposures.",
     "intuition": "Stocks that fall hardest when market liquidity dries up are unpleasant to hold, so investors demand a premium for owning them - that premium is the liquidity factor's return.",
     "mechanics": "Pastor and Stambaugh measure each stock's liquidity monthly by the tendency of signed volume (order flow) to be followed by return reversals, average across stocks for an aggregate series, extract innovations, and then estimate each stock's 'liquidity beta' - its return sensitivity to those innovations. Their long-short liquidity-risk spread earned about 7.5% annually (1966-1999), adjusted for market, size, value, and momentum exposures.",
     "formula": "Liquidity measure gamma_i,t from the regression r^e_{i,d+1,t} = theta + phi*r_{i,d,t} + gamma_i,t * sign(r^e_{i,d,t}) * v_{i,d,t} + eps; a stock's liquidity beta is the sensitivity of its return to innovations L_t in the aggregate series.",
-    "relationships": ["Factor model", "Alpha", "Systematic risk", "Correlation breakdown", "Carry factor"],
+    "relationships": [
+      "Factor model",
+      "Alpha",
+      "Systematic risk",
+      "Correlation breakdown",
+      "Carry factor"
+    ],
     "failure_modes": "Liquidity is a broad, elusive concept and every proxy captures only one dimension; results depend on the specific measure, the factor is hard to trade directly, and liquidity betas are imprecisely estimated at the individual-stock level.",
     "misconceptions": "The priced liquidity factor is about systematic liquidity risk (sensitivity of returns to aggregate liquidity swings), not about how liquid an individual stock is; the level of illiquidity and the covariance with liquidity shocks are distinct constructs.",
     "example": "Long-Term Capital Management's portfolio was by design positively exposed to market-wide liquidity; when liquidity collapsed in 1998, its liquidity-sensitive positions dropped sharply, forcing liquidation - exactly the risk the liquidity factor prices.",
@@ -893,22 +1044,28 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 565
   },
   {
     "id": "portfolio-management/factor-model",
     "name": "Factor model",
-    "aliases": ["linear factor model", "multi-factor model"],
+    "aliases": [
+      "linear factor model",
+      "multi-factor model"
+    ],
     "domain": "Portfolio management",
     "definition": "A model that relates an asset's return linearly to a limited number of common factors plus an asset-specific residual, used to decompose returns, estimate expected returns, and build covariance matrices with far fewer parameters than direct estimation.",
     "intuition": "Instead of tracking how every pair of thousands of assets moves together, you describe each asset by how it responds to a handful of shared drivers - the rest is treated as idiosyncratic noise.",
     "mechanics": "r_i = b_i1*f_1 + ... + b_im*f_m + e_i. The model's power comes from two assumptions: residuals are uncorrelated with the factors, and residuals of different assets are uncorrelated with each other, so all cross-asset correlation flows through factor exposures. This yields C = B*C_F*B' + diag(rv), reducing, e.g., a 1,000-asset problem from ~500,500 covariances to a few thousand estimates.",
     "formula": "r_i = sum_{j=1..m} b_ij * f_j + e_i, with corr(e_i, f_j) = 0 for all j and corr(e_i, e_j) = 0 for i != j; covariance structure C = B*C_F*B' + diag(rv).",
-    "relationships": ["Factor exposure", "Single-index model", "Fama-French three-factor model", "Covariance matrix", "Systematic risk", "Idiosyncratic risk"],
+    "relationships": [
+      "Factor exposure",
+      "Single-index model",
+      "Fama-French three-factor model",
+      "Covariance matrix",
+      "Systematic risk",
+      "Idiosyncratic risk"
+    ],
     "failure_modes": "A factor model only constrains reality if its assumptions hold: omit an important common factor and residuals correlate across assets, breaking the covariance estimate; exposures also drift over time, so fitted models can go stale.",
     "misconceptions": "Any linear decomposition can be made to fit trivially - Sharpe stresses the model has economic content only through the assumptions on residuals; a good R-squared does not validate the factor structure.",
     "example": "A three-factor model with market, size, and value factors explains a stock's 16% annual return as 14.5% from its factor exposures times factor realizations plus 1.5% residual return.",
@@ -927,22 +1084,29 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 566
   },
   {
     "id": "portfolio-management/single-index-model",
     "name": "Single-index model",
-    "aliases": ["market model", "single-factor model", "Sharpe's diagonal model"],
+    "aliases": [
+      "market model",
+      "single-factor model",
+      "Sharpe's diagonal model"
+    ],
     "domain": "Portfolio management",
     "definition": "The simplest factor model, in which each asset's return is related to a single common factor - typically the return on a market index - plus an asset-specific residual; introduced by Sharpe (1963) as a simplified model for portfolio analysis that drastically cuts the number of estimates needed for covariance-based optimization.",
     "intuition": "Assume everything moves together only because everything moves with the market; then you only need each stock's beta to rebuild the whole covariance matrix.",
     "mechanics": "r_i = alpha_i + beta_i*r_m + e_i, with residuals uncorrelated across assets. This implies cov(r_i, r_j) = beta_i*beta_j*sigma_m^2 for i != j, so the covariance matrix is rebuilt from N betas, N residual variances, and one market variance instead of N(N-1)/2 sample covariances.",
     "formula": "r_i = alpha_i + beta_i * r_m + e_i; cov(r_i, r_j) = beta_i * beta_j * sigma_m^2 for i != j; var(r_i) = beta_i^2 * sigma_m^2 + var(e_i).",
-    "relationships": ["Factor model", "Beta", "Market factor", "Systematic risk", "Idiosyncratic risk", "Covariance matrix"],
+    "relationships": [
+      "Factor model",
+      "Beta",
+      "Market factor",
+      "Systematic risk",
+      "Idiosyncratic risk",
+      "Covariance matrix"
+    ],
     "failure_modes": "One factor cannot capture industry, style, or macro co-movements, so residuals of similar stocks remain correlated and the model understates diversification benefits within sectors; it inherits all instability of beta estimation.",
     "misconceptions": "The single-index model is a statistical simplification, not the CAPM: the CAPM adds equilibrium asset-pricing implications (expected returns linear in beta), while the index model merely describes return covariation.",
     "example": "With beta_i = 1.2, beta_j = 0.8, and market variance 0.04, the single-index model assigns cov(r_i, r_j) = 1.2*0.8*0.04 = 0.0384 without ever computing their historical sample covariance.",
@@ -961,22 +1125,29 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "Cited sources present the generic linear factor model and the CAPM/beta regression; the single-index model is their one-factor special case (Sharpe 1963 itself is paywalled).",
     "master_index": 567
   },
   {
     "id": "portfolio-management/fama-french-three-factor-model",
     "name": "Fama-French three-factor model",
-    "aliases": ["FF3", "Fama-French model"],
+    "aliases": [
+      "FF3",
+      "Fama-French model"
+    ],
     "domain": "Portfolio management",
     "definition": "An empirical asset-pricing model from Fama and French (1993, 'Common Risk Factors in the Returns on Stocks and Bonds') that explains stock returns with three factors: the market excess return (Rm-Rf), the size factor SMB, and the value factor HML.",
     "intuition": "How a stock moves is largely explained by three dials: how the whole market did, how small caps did relative to big caps, and how cheap (high book-to-market) stocks did relative to expensive ones.",
     "mechanics": "R_i - R_f = alpha_i + b_i*(R_m - R_f) + s_i*SMB + h_i*HML + e_i, estimated by time-series regression; factor series are constructed from value-weight portfolios sorted on size and book-to-market using NYSE breakpoints, as distributed in the Kenneth French data library.",
     "formula": "R_i - R_f = alpha_i + b_i*(R_m - R_f) + s_i*SMB + h_i*HML + e_i.",
-    "relationships": ["Market factor", "Size factor", "Value factor", "Fama-French five-factor model", "Carhart four-factor model", "Factor model", "Alpha"],
+    "relationships": [
+      "Market factor",
+      "Size factor",
+      "Value factor",
+      "Fama-French five-factor model",
+      "Carhart four-factor model",
+      "Factor model",
+      "Alpha"
+    ],
     "failure_modes": "The model cannot capture the momentum pattern and leaves other documented anomalies unexplained, which motivated the Carhart and five-factor extensions; its factors are empirical constructs whose risk-versus-behavioral interpretation remains debated.",
     "misconceptions": "A near-zero three-factor alpha is not proof a manager added no value in all senses - it only says returns are explained by market, size, and value exposures; conversely, positive alpha may reflect omitted factors rather than skill.",
     "example": "Regressing a small-cap value fund's monthly excess returns on MKT, SMB, and HML typically yields large positive s and h loadings, quantifying how much of its performance is just small-value exposure.",
@@ -989,22 +1160,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 568
   },
   {
     "id": "portfolio-management/fama-french-five-factor-model",
     "name": "Fama-French five-factor model",
-    "aliases": ["FF5"],
+    "aliases": [
+      "FF5"
+    ],
     "domain": "Portfolio management",
     "definition": "An extension of the Fama-French three-factor model (Fama and French 2015, 'A Five-Factor Asset Pricing Model') that adds a profitability factor, RMW (robust minus weak operating profitability), and an investment factor, CMA (conservative minus aggressive asset growth), to the market, size, and value factors.",
     "intuition": "Beyond market, size, and value, two more dials matter: profitable firms tend to beat unprofitable ones, and firms that invest conservatively tend to beat firms that expand aggressively.",
     "mechanics": "R_i - R_f = alpha_i + b_i*(R_m - R_f) + s_i*SMB + h_i*HML + r_i*RMW + c_i*CMA + e_i. The factors are built from 2x3 value-weight sorts on size paired with book-to-market, operating profitability, and investment; SMB is averaged across the three pairings.",
     "formula": "R_i - R_f = alpha_i + b_i*(R_m - R_f) + s_i*SMB + h_i*HML + r_i*RMW + c_i*CMA + e_i.",
-    "relationships": ["Fama-French three-factor model", "Quality factor", "Value factor", "Size factor", "Carhart four-factor model", "Factor model"],
+    "relationships": [
+      "Fama-French three-factor model",
+      "Quality factor",
+      "Value factor",
+      "Size factor",
+      "Carhart four-factor model",
+      "Factor model"
+    ],
     "failure_modes": "Even five factors leave momentum and several anomalies unexplained, and Fama and French note the model's main problem is the low average returns of small stocks that invest a lot despite low profitability; HML becomes redundant for describing average returns once RMW and CMA are included.",
     "misconceptions": "More factors do not mean a complete model of returns - the five-factor model is still an empirical approximation whose factor premia vary across periods and markets.",
     "example": "A highly profitable, low-asset-growth fund shows positive RMW and CMA loadings in a five-factor regression, which can absorb what looked like alpha under the three-factor model.",
@@ -1017,22 +1193,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 569
   },
   {
     "id": "portfolio-management/carhart-four-factor-model",
     "name": "Carhart four-factor model",
-    "aliases": ["Carhart model", "four-factor model"],
+    "aliases": [
+      "Carhart model",
+      "four-factor model"
+    ],
     "domain": "Portfolio management",
     "definition": "An extension of the Fama-French three-factor model introduced by Mark Carhart (1997, 'On Persistence in Mutual Fund Performance') that adds a momentum factor - long stocks with high prior 2-12 month returns and short those with low prior returns - to the market, size, and value factors.",
     "intuition": "To judge a fund fairly you must also control for whether it was simply riding recent winners, because momentum explains much of what looked like persistent skill.",
     "mechanics": "R_i - R_f = alpha_i + b_i*(R_m - R_f) + s_i*SMB + h_i*HML + m_i*Mom + e_i. Carhart used the Jegadeesh-Titman momentum factor (top minus bottom decile of prior 12-2 month returns); the standard data-library Mom variant averages the high-minus-low prior-return spread across small and big value-weight portfolios.",
     "formula": "R_i - R_f = alpha_i + b_i*(R_m - R_f) + s_i*SMB + h_i*HML + m_i*Mom + e_i, with Mom = (1/2)(Small High + Big High) - (1/2)(Small Low + Big Low) on prior (2-12) returns.",
-    "relationships": ["Momentum factor", "Fama-French three-factor model", "Fama-French five-factor model", "Alpha", "Factor model"],
+    "relationships": [
+      "Momentum factor",
+      "Fama-French three-factor model",
+      "Fama-French five-factor model",
+      "Alpha",
+      "Factor model"
+    ],
     "failure_modes": "The momentum leg exposes the model to momentum crashes in sharp market reversals, and alpha rankings of funds can flip depending on whether momentum is included; like all such models it is an empirical benchmark, not a theory of required returns.",
     "misconceptions": "Carhart's key finding was that much apparent mutual-fund performance persistence disappears after controlling for momentum and expenses - the four-factor alpha, not raw return rank, is the meaningful persistence measure.",
     "example": "Evaluating a growth-fund manager, a three-factor regression shows 2% alpha; adding the momentum factor reveals a large positive Mom loading and shrinks alpha toward zero, showing the 'skill' was largely momentum exposure.",
@@ -1051,22 +1232,28 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 570
   },
   {
     "id": "portfolio-management/risk-budgeting",
     "name": "Risk budgeting",
-    "aliases": ["risk parity", "equal risk contribution", "ERC"],
+    "aliases": [
+      "risk parity",
+      "equal risk contribution",
+      "ERC"
+    ],
     "domain": "Portfolio management",
     "definition": "A portfolio construction approach that allocates risk rather than capital: each asset, asset class, or strategy is assigned a budget for its contribution to total portfolio risk, and weights are solved so realized risk contributions match those budgets; the special case of equal budgets for all assets is the risk-parity (equal risk contribution) portfolio.",
     "intuition": "Instead of deciding '60% of my money in stocks', you decide 'stocks may consume at most 60% of my total risk' - because equal dollars in stocks and bonds produce wildly unequal risk.",
     "mechanics": "With risk contribution CRC_i = w_i*(Cw)_i/sigma_p, budgets b_i (summing to 1) are imposed by solving w_i*(Cw)_i = b_i * w'Cw for all i; for equal budgets the ERC solution equalizes all component risk contributions. Risk budgeting became a popular alternative to Markowitz optimization after the 2008 crisis because it needs only covariance estimates, not return forecasts.",
     "formula": "Find w such that w_i*(Cw)_i / sigma_p = b_i for all i, with sum_i b_i = 1; ERC is the case b_i = 1/N for all i.",
-    "relationships": ["Component risk contribution", "Marginal risk contribution", "Portfolio variance", "Diversification", "Minimum-variance portfolio"],
+    "relationships": [
+      "Component risk contribution",
+      "Marginal risk contribution",
+      "Portfolio variance",
+      "Diversification",
+      "Minimum-variance portfolio"
+    ],
     "failure_modes": "Risk budgets calibrated on historical covariances break in crises when correlations jump; equal-risk portfolios typically need leverage to match the expected return of capital-weighted portfolios, adding financing and margin risk.",
     "misconceptions": "Risk parity is not 'equal weights': equal capital weights concentrate risk in the most volatile assets, whereas equal risk contributions deliberately hold less of high-volatility assets.",
     "example": "In a stock/bond risk-parity portfolio, because stocks are several times as volatile as bonds, the bond weight must be much larger than the stock weight so that each sleeve contributes 50% of portfolio volatility.",
@@ -1079,22 +1266,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 571
   },
   {
     "id": "portfolio-management/volatility-scaling",
     "name": "Volatility scaling",
-    "aliases": ["volatility targeting", "vol targeting", "volatility management"],
+    "aliases": [
+      "volatility targeting",
+      "vol targeting",
+      "volatility management"
+    ],
     "domain": "Portfolio management",
     "definition": "A position-sizing technique that adjusts exposure inversely to recent volatility - leveraging up when volatility is low and scaling down when it is high - so the portfolio targets a roughly constant level of volatility rather than a constant notional exposure.",
     "intuition": "Because vol clusters (calm follows calm, storm follows storm), you can keep risk steadier by trading smaller when markets are stormy and larger when they are calm.",
     "mechanics": "The scaled return is r_scaled_t = (sigma_target / sigma_hat_{t-1}) * r_t (times a constant near 1 to match the ex-post target), where sigma_hat is estimated from daily returns with exponentially decaying weights using data known in advance. Harvey, Hoyle, Korgaonkar, Rattray, Sargaison, and Van Hemert (2018) find scaling raises Sharpe ratios mainly for risk assets (equities, credit) via the leverage effect, and reduces the likelihood of extreme returns across all asset classes.",
     "formula": "r_scaled_t = (sigma_target / sigma_hat_{t-1}) * r_t, where sigma_hat_{t-1} is the conditional volatility estimate known before period t and sigma_target the target annualized volatility (e.g., 10%).",
-    "relationships": ["Risk budgeting", "Low-volatility factor", "Tactical asset allocation", "Correlation breakdown"],
+    "relationships": [
+      "Risk budgeting",
+      "Low-volatility factor",
+      "Tactical asset allocation",
+      "Correlation breakdown"
+    ],
     "failure_modes": "Scaling cuts both tails - it shrinks right-tail gains as well as left-tail losses; for bonds, currencies, and commodities the Sharpe-ratio benefit is negligible, turnover adds transaction costs, and a sudden vol spike can force selling into the drawdown.",
     "misconceptions": "Volatility scaling is not return prediction: volatility is persistent while mean returns show no clear pattern across vol quintiles, so the technique manages risk exposure, not alpha.",
     "example": "With a 10% volatility target, if estimated S&P 500 volatility jumps from 15% to 30%, the strategy halves its equity exposure (15/30 = 0.5 scaling factor), as volatility-target funds did in episodes like the 2020 crash.",
@@ -1107,22 +1299,28 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 572
   },
   {
     "id": "portfolio-management/correlation-breakdown",
     "name": "Correlation breakdown",
-    "aliases": ["correlations go to one", "correlation asymmetry", "crisis correlation"],
+    "aliases": [
+      "correlations go to one",
+      "correlation asymmetry",
+      "crisis correlation"
+    ],
     "domain": "Portfolio management",
     "definition": "The empirically documented tendency for correlations between markets and assets to rise sharply in bear markets and crises - but not in bull markets - so that diversification benefits shrink precisely when they are most needed; Longin and Solnik (2001) established the asymmetry formally using extreme value theory.",
     "intuition": "In a panic, everything sells off together: the low correlations that justified your diversification in calm times evaporate in the crash.",
     "mechanics": "Longin and Solnik model the tails of the multivariate return distribution with extreme value theory and test exceedance correlations; they find conditional correlation between international equity markets increases strongly in bear markets but not in bull markets, rejecting multivariate normality in the negative tail only. They also warn that naive tests conditioning on absolute return size spuriously link correlation to volatility.",
     "formula": "",
-    "relationships": ["Correlation matrix", "Diversification", "Systematic risk", "Covariance matrix", "Volatility scaling"],
+    "relationships": [
+      "Correlation matrix",
+      "Diversification",
+      "Systematic risk",
+      "Covariance matrix",
+      "Volatility scaling"
+    ],
     "failure_modes": "As a finding it indicts static models: any risk estimate assuming constant correlation (including constant-correlation GARCH) understates joint crash risk. Conversely, simplistic studies that condition on large absolute returns confuse conditioning effects with true correlation shifts.",
     "misconceptions": "It is not literally true that 'all correlations go to one': the documented effect is an asymmetric increase in bear markets related to market trend rather than to volatility per se, and positive extreme returns show no corresponding increase.",
     "example": "In the 2008 crisis, developed-market equity indexes that normally correlated around 0.5 fell together far more tightly; Longin-Solnik's earlier US-UK analysis already showed exceedance correlation of 0.578 on the downside versus 0.226 on the upside.",
@@ -1135,10 +1333,6 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 573
   },
   {
@@ -1150,7 +1344,13 @@
     "intuition": "It is the proportionality dial on a hedge: ratio 1.0 means you hedge dollar-for-dollar; 0.6 means you take a hedge position only 60% as large as your exposure.",
     "mechanics": "When the asset underlying the futures contract is the same as the asset being hedged, a hedge ratio of 1.0 is commonly used; when cross hedging, the hedger chooses the ratio that minimizes the variance of the hedged position. The number of contracts is N = h * Q_A / Q_F, where Q_A is the exposure size and Q_F the contract size.",
     "formula": "h = (size of hedge position) / (size of exposure); number of contracts N = h * Q_A / Q_F.",
-    "relationships": ["Minimum-variance hedge ratio", "Cross hedge", "Beta", "Delta hedge", "Duration hedge"],
+    "relationships": [
+      "Minimum-variance hedge ratio",
+      "Cross hedge",
+      "Beta",
+      "Delta hedge",
+      "Duration hedge"
+    ],
     "failure_modes": "A naive 1.0 hedge ratio ignores differences in volatility and correlation between the exposure and the hedging instrument, so it can over- or under-hedge; it also assumes the spot-futures relationship stays stable over the hedge life.",
     "misconceptions": "A hedge ratio of 1.0 is not automatically 'full protection': it is optimal only when spot and futures price changes move one-for-one, which cross hedges and basis risk routinely violate.",
     "example": "A producer expecting to sell 2 million gallons of fuel hedges with 42,000-gallon futures contracts; at a hedge ratio of 1.0 this requires about 48 contracts, but at the optimal ratio of 0.8 it requires 38.",
@@ -1163,22 +1363,28 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 574
   },
   {
     "id": "portfolio-management/minimum-variance-hedge-ratio",
     "name": "Minimum-variance hedge ratio",
-    "aliases": ["optimal hedge ratio", "MVHR", "h*"],
+    "aliases": [
+      "optimal hedge ratio",
+      "MVHR",
+      "h*"
+    ],
     "domain": "Portfolio management",
     "definition": "The hedge ratio that minimizes the variance of the value of the hedged position, equal to the correlation between spot-price changes and futures-price changes times the ratio of their standard deviations; equivalently, the slope of the best-fit regression of spot-price changes on futures-price changes.",
     "intuition": "It is the hedge size that makes your combined position wobble the least, given how tightly the hedge instrument actually tracks your exposure.",
     "mechanics": "h* = rho * sigma_S / sigma_F, where rho is the correlation between Delta-S (spot change) and Delta-F (futures change) over the hedge horizon and sigma_S, sigma_F their standard deviations; parameters are usually estimated from historical data over non-overlapping intervals matching the hedge horizon. Hedge effectiveness is the R-squared of that regression - the proportion of variance eliminated.",
     "formula": "h* = rho * (sigma_S / sigma_F); optimal contracts N* = h* * Q_A / Q_F; effectiveness = R^2 of the regression of Delta-S on Delta-F.",
-    "relationships": ["Hedge ratio", "Cross hedge", "Beta", "Covariance matrix", "Duration hedge"],
+    "relationships": [
+      "Hedge ratio",
+      "Cross hedge",
+      "Beta",
+      "Covariance matrix",
+      "Duration hedge"
+    ],
     "failure_modes": "The ratio is estimated from historical spot-futures relationships and degrades when that relationship shifts (regime change, contract roll, structural breaks); it minimizes variance, not downside risk, and ignores transactions costs and margining (though tailing the hedge adjusts for daily settlement).",
     "misconceptions": "The optimal hedge ratio is generally not 1.0 even for liquid hedges, and minimizing variance is not the same as maximizing expected utility - a hedger may rationally choose a different ratio once costs and residual basis risk are considered.",
     "example": "An airline hedging jet fuel with heating-oil futures estimates rho = 0.9, sigma_S = 0.03, sigma_F = 0.04, giving h* = 0.675; for 2 million gallons and 42,000-gallon contracts it uses N* = 0.675 * 2,000,000/42,000, about 32 contracts.",
@@ -1191,22 +1397,24 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 575
   },
   {
     "id": "portfolio-management/cross-hedge",
     "name": "Cross hedge",
-    "aliases": ["cross hedging"],
+    "aliases": [
+      "cross hedging"
+    ],
     "domain": "Portfolio management",
     "definition": "A hedge in which the asset giving rise to the hedger's exposure differs from the asset underlying the futures (or other derivative) contract used for hedging, employed when no suitable contract exists on the exposure itself.",
     "intuition": "If you can't buy insurance on the exact thing you own, you insure something that tends to move with it - imperfectly.",
     "mechanics": "The hedger selects a correlated contract (e.g., heating-oil futures for a jet-fuel exposure) and typically uses the minimum-variance hedge ratio rather than 1.0, because spot and futures changes no longer match one-for-one; the residual mismatch is basis risk, which cross hedging usually increases.",
     "formula": "",
-    "relationships": ["Hedge ratio", "Minimum-variance hedge ratio", "Delta hedge"],
+    "relationships": [
+      "Hedge ratio",
+      "Minimum-variance hedge ratio",
+      "Delta hedge"
+    ],
     "failure_modes": "The hedge inherits basis risk between two different assets: their price relationship can weaken exactly in stressed markets, so the hedge may fail when most needed, and liquidity in the proxy contract adds rollover and margin costs.",
     "misconceptions": "A cross hedge is not a failed hedge by definition - with a well-chosen proxy and minimum-variance ratio it removes most variance - but it never removes all of it, and calling it 'fully hedged' overstates the protection.",
     "example": "An airline concerned about jet fuel prices uses heating-oil futures to hedge because jet-fuel futures are not actively traded; the price link between the two fuels makes the hedge useful but imperfect.",
@@ -1219,22 +1427,26 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 576
   },
   {
     "id": "portfolio-management/delta-hedge",
     "name": "Delta hedge",
-    "aliases": ["delta hedging", "delta-neutral hedging"],
+    "aliases": [
+      "delta hedging",
+      "delta-neutral hedging"
+    ],
     "domain": "Portfolio management",
     "definition": "An options-hedging technique that offsets a position's delta - the theoretical sensitivity of the option's premium to a $1 move in the underlying - by taking an opposing position in the underlying, so the total position is approximately insensitive to small price moves.",
     "intuition": "If your option gains $0.50 when the stock rises $1, shorting half a share per option makes the combined position roughly flat for small moves.",
     "mechanics": "Delta is the first derivative of option value with respect to the underlying price (0 to 1 for long calls, 0 to -1 for long puts). A delta hedge sets total position delta to zero, e.g., shorting delta*N*100 shares against N long calls. Because delta changes as the underlying moves (gamma), the hedge must be rebalanced dynamically; Greeks are theoretical guideposts from a pricing model, not guarantees.",
     "formula": "Position delta = sum over positions of (quantity * contract multiplier * delta_i); hedge shares = -position delta (per share delta of 1).",
-    "relationships": ["Gamma hedge", "Vega hedge", "Hedge ratio", "Minimum-variance hedge ratio"],
+    "relationships": [
+      "Gamma hedge",
+      "Vega hedge",
+      "Hedge ratio",
+      "Minimum-variance hedge ratio"
+    ],
     "failure_modes": "Delta hedging is exact only locally and continuously: discrete rebalancing, gaps, and transaction costs leave residual P&L, and a delta-neutral book remains exposed to gamma (large moves), vega (volatility changes), and theta (time decay).",
     "misconceptions": "Delta-neutral does not mean risk-neutral: it neutralizes only the first-order price exposure at one point in time, and delta is also not literally the probability of finishing in the money, despite the common trader shorthand.",
     "example": "An investor long 10 calls with delta 0.50 shorts 500 shares (10 * 100 * 0.50); a $1 stock rise adds about $500 to the calls and loses about $500 on the shares, keeping the position near flat until delta changes.",
@@ -1253,22 +1465,25 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 577
   },
   {
     "id": "portfolio-management/gamma-hedge",
     "name": "Gamma hedge",
-    "aliases": ["gamma hedging", "gamma-neutral hedging"],
+    "aliases": [
+      "gamma hedging",
+      "gamma-neutral hedging"
+    ],
     "domain": "Portfolio management",
     "definition": "An options-hedging technique that neutralizes a position's gamma - the rate at which delta changes per $1 move in the underlying - so that the delta hedge remains effective for larger price moves without constant rebalancing.",
     "intuition": "Gamma is how fast your delta hedge goes stale; hedging gamma keeps the hedge from drifting out of alignment every time the underlying moves.",
     "mechanics": "Long options (calls or puts) have positive gamma, short options negative gamma, and the underlying itself has zero gamma, so gamma can only be hedged by adding other options: the trader first sets total gamma to zero with a traded option, then restores delta neutrality with the underlying. Gamma is highest for at-the-money options near expiration.",
     "formula": "Position gamma = sum over positions of (quantity * multiplier * gamma_i); choose an options position Q such that position gamma + Q * multiplier * gamma_hedge_instrument = 0, then re-neutralize delta.",
-    "relationships": ["Delta hedge", "Vega hedge", "Hedge ratio"],
+    "relationships": [
+      "Delta hedge",
+      "Vega hedge",
+      "Hedge ratio"
+    ],
     "failure_modes": "Gamma hedges are themselves unstable near expiration, when ATM gamma spikes, and require trading additional options with their own costs and vega exposure; a gamma-neutral book still carries higher-order and volatility risk.",
     "misconceptions": "You cannot gamma-hedge with the underlying stock - stock positions have no gamma because their delta is fixed at 1 or -1; only options change a position's gamma.",
     "example": "A market maker short a 0.50-delta call with gamma 0.06 buys enough of another listed option with gamma 0.03 to bring book gamma to zero, then adjusts shares to restore delta neutrality.",
@@ -1281,22 +1496,25 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 578
   },
   {
     "id": "portfolio-management/vega-hedge",
     "name": "Vega hedge",
-    "aliases": ["vega hedging", "volatility hedging"],
+    "aliases": [
+      "vega hedging",
+      "volatility hedging"
+    ],
     "domain": "Portfolio management",
     "definition": "An options-hedging technique that neutralizes a position's vega - the change in option premium for a one-percentage-point change in implied volatility - so the book is insulated from shifts in the market's volatility expectations.",
     "intuition": "Options get more expensive when expected volatility rises, even if prices don't move; a vega hedge makes your position indifferent to that repricing.",
     "mechanics": "Vega measures premium change per 1% (100-basis-point) change in implied volatility; it is larger for longer-dated options. Because the underlying has zero vega, vega must be hedged with offsetting option positions, after which delta (and possibly gamma) is re-neutralized; vega hedges across maturities leave term-structure-of-volatility risk.",
     "formula": "Position vega = sum over positions of (quantity * multiplier * vega_i); offset with an options position whose aggregate vega equals -position vega.",
-    "relationships": ["Delta hedge", "Gamma hedge", "Hedge ratio"],
+    "relationships": [
+      "Delta hedge",
+      "Gamma hedge",
+      "Hedge ratio"
+    ],
     "failure_modes": "Implied volatility is not directly tradable, so vega hedges rely on other options whose own prices embed supply-demand distortions; vega also changes with price, time, and vol level, so the hedge decays, and short-dated and long-dated implied vols do not move in lockstep.",
     "misconceptions": "A vega-neutral book is not immune to volatility: it is hedged against a uniform 1% implied-vol shift, not against realized volatility gaps or non-parallel shifts across the volatility surface.",
     "example": "A trader long a 12-month call with vega 0.15 (gaining about $0.30 if implied vol rises 2%) shorts enough nearer-dated options totaling -0.15 vega per share equivalent, flattening the book's response to a volatility spike.",
@@ -1309,22 +1527,26 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 579
   },
   {
     "id": "portfolio-management/duration-hedge",
     "name": "Duration hedge",
-    "aliases": ["duration-based hedging", "duration-based hedge ratio"],
+    "aliases": [
+      "duration-based hedging",
+      "duration-based hedge ratio"
+    ],
     "domain": "Portfolio management",
     "definition": "A fixed-income hedging technique that sizes an interest-rate futures (or bond) position so that the dollar sensitivity of the hedge to a small parallel yield change offsets the dollar duration of the portfolio being hedged.",
     "intuition": "If your bond portfolio loses $X when yields rise 1 basis point, you short enough futures to gain $X on that same move - matching sensitivities rather than face values.",
     "mechanics": "Price changes are approximated by Delta-P = -P * D_P * Delta-y for the portfolio and Delta-F = -F * D_F * Delta-y for the futures contract; setting the two to cancel gives the duration-based hedge ratio N = -(P * D_P) / (F * D_F). The key assumption is that all rates move by the same amount (parallel yield-curve shifts only).",
     "formula": "N = -(P * D_P) / (F * D_F), where P and D_P are the portfolio's value and duration and F and D_F the futures contract's price and underlying duration; hedge effectiveness degrades under non-parallel shifts.",
-    "relationships": ["Hedge ratio", "Minimum-variance hedge ratio", "Term factor", "Cross hedge"],
+    "relationships": [
+      "Hedge ratio",
+      "Minimum-variance hedge ratio",
+      "Term factor",
+      "Cross hedge"
+    ],
     "failure_modes": "Duration is a first-order, parallel-shift approximation: non-parallel curve moves (steepening/flattening), convexity, and cheapest-to-deliver switching in bond futures all create residual risk, and short rates are generally more volatile than long rates in practice.",
     "misconceptions": "Matching durations is not matching maturities or notionals: two portfolios with the same face value can have very different interest-rate sensitivity, which is why the hedge ratio uses dollar duration (value times duration) rather than par amounts.",
     "example": "A $10 million bond portfolio with duration 8.8 years is hedged with Treasury futures priced at $91,000 with underlying duration 9.2: N = -(10,000,000*8.8)/(91,000*9.2), about -105 contracts short.",
@@ -1337,10 +1559,6 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 580
   }
 ]

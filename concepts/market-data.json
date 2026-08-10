@@ -2,762 +2,1102 @@
   {
     "id": "market-data/trading-volume",
     "name": "Trading volume",
-    "aliases": ["volume", "share volume", "turnover volume"],
+    "aliases": [
+      "volume",
+      "share volume",
+      "turnover volume"
+    ],
     "domain": "Market data",
     "definition": "Trading volume is the total number of units of a security (shares, contracts, or coins) that changed hands in executed trades during a given period. It is the standard measure of market activity and is reported per instrument, per venue, or consolidated across venues.",
     "intuition": "Volume counts how much of an asset actually traded. It tells you how active and liquid the market was, not which direction prices moved.",
     "mechanics": "Each executed trade contributes its quantity to the period total; volume is typically aggregated per bar (e.g., daily) and reported alongside OHLC prices. Average volume over a longer window is total volume divided by the number of periods.",
     "formula": "V = Σ_i q_i, where q_i is the quantity of trade i executed during the period. Average volume = Σ V_t / N over N periods.",
-    "relationships": ["Quote volume", "Dollar volume", "Turnover", "OHLCV bar", "Tick data"],
+    "relationships": [
+      "Quote volume",
+      "Dollar volume",
+      "Turnover",
+      "OHLCV bar",
+      "Tick data"
+    ],
     "failure_modes": "Volume can be inflated by wash trading (especially on unregulated crypto venues) and understated when off-exchange or dark-pool prints are excluded from a feed. Raw volume says nothing about direction, so a high-volume day can coincide with either a rally or a crash.",
     "misconceptions": "High volume does not mean the price rose or will rise — it only means many units changed hands. Comparing share volume across stocks of different prices is meaningless without converting to dollar volume.",
     "example": "If 2.1 million shares of AAPL trade on a given day, that day's volume is 2.1 million shares; if the 30-day average is 55 million shares, the day was unusually quiet.",
     "citations": [
-      {"source": "Wikipedia: Volume (finance)", "url": "https://en.wikipedia.org/wiki/Volume_(finance)", "section": "Lead section", "accessed": "2026-08-06"}
+      {
+        "source": "Wikipedia: Volume (finance)",
+        "url": "https://en.wikipedia.org/wiki/Volume_(finance)",
+        "section": "Lead section",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 317
   },
   {
     "id": "market-data/quote-volume",
     "name": "Quote volume",
-    "aliases": ["quote asset volume", "quote currency volume"],
+    "aliases": [
+      "quote asset volume",
+      "quote currency volume"
+    ],
     "domain": "Market data",
     "definition": "Quote volume is trading volume denominated in the quote currency of a trading pair, i.e., the sum over trades of price times quantity. It is the standard volume field in crypto exchange data (e.g., Binance klines report base-asset volume and quote-asset volume side by side).",
     "intuition": "Instead of counting how many units traded, quote volume tells you how much money (in the pair's pricing currency) changed hands.",
     "mechanics": "For each trade, multiply the execution price by the executed quantity and sum over the period; the result is expressed in the quote asset (e.g., USDT for BTC/USDT). Exchanges report it as a per-bar field alongside base volume and trade count.",
     "formula": "QV = Σ_i p_i · q_i, where p_i is the trade price in quote currency and q_i is the quantity in base units.",
-    "relationships": ["Trading volume", "Dollar volume", "OHLCV bar"],
+    "relationships": [
+      "Trading volume",
+      "Dollar volume",
+      "OHLCV bar"
+    ],
     "failure_modes": "Comparing quote volumes across pairs denominated in different quote currencies (e.g., USDT vs EUR) is invalid without FX conversion. Quote volume inherits any wash-trading inflation present in the underlying trade data.",
     "misconceptions": "Quote volume is not the number of price quotes (bid/ask updates) issued during a period — that is quote message traffic, a different concept.",
     "example": "A BTC/USDT hourly bar with 100 BTC traded at an average price of 60,000 USDT has base volume 100 BTC and quote volume of roughly 6,000,000 USDT.",
     "citations": [
-      {"source": "Binance Spot API documentation (rest-api.md)", "url": "https://raw.githubusercontent.com/binance/binance-spot-api-docs/master/rest-api.md", "section": "Kline/Candlestick data — response fields (Quote asset volume)", "accessed": "2026-08-06"}
+      {
+        "source": "Binance Spot API documentation (rest-api.md)",
+        "url": "https://raw.githubusercontent.com/binance/binance-spot-api-docs/master/rest-api.md",
+        "section": "Kline/Candlestick data — response fields (Quote asset volume)",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "Term is defined operationally by exchange data feeds; in equities the equivalent concept is usually called dollar volume.",
     "master_index": 318
   },
   {
     "id": "market-data/dollar-volume",
     "name": "Dollar volume",
-    "aliases": ["dollar-volume liquidity", "value traded", "turnover value"],
+    "aliases": [
+      "dollar-volume liquidity",
+      "value traded",
+      "turnover value"
+    ],
     "domain": "Market data",
     "definition": "Dollar volume is the total monetary value of shares traded during a period, computed as price multiplied by share volume. It measures how much capital actually changed hands and is the standard way to compare trading activity across instruments of different prices.",
     "intuition": "A $5 stock trading 10 million shares moves less money ($50M) than a $200 stock trading 500,000 shares ($100M) — dollar volume captures that difference; share counts do not.",
     "mechanics": "Sum price times quantity over all trades in the period (often approximated as average price times total share volume for daily data). Institutions use minimum average daily dollar volume thresholds to ensure orders can be filled without moving the market.",
     "formula": "DV = Σ_i p_i · q_i, where p_i is the trade price and q_i the shares in trade i; approximated as DV ≈ P_avg · V for daily bars.",
-    "relationships": ["Trading volume", "Quote volume", "Turnover", "Dollar bar"],
+    "relationships": [
+      "Trading volume",
+      "Quote volume",
+      "Turnover",
+      "Dollar bar"
+    ],
     "failure_modes": "A single large block print can inflate one period's dollar volume without sustained interest, and dark-pool or off-exchange prints may be missing from some intraday feeds. Equal dollar volume does not imply equal execution cost — spread width and book depth still differ.",
     "misconceptions": "High share volume in a penny stock does not imply meaningful liquidity; dollar volume can be tiny. Dollar volume is a necessary but not sufficient liquidity test.",
     "example": "A stock closing at $20 that traded 1.5 million shares has a daily dollar volume of roughly $30 million; a fund requiring $25M minimum average daily dollar volume would consider it borderline tradable.",
     "citations": [
-      {"source": "Trade Ideas Learning Center: Dollar Volume Explained", "url": "https://www.trade-ideas.com/learning-center/technical-indicators/dollar-volume-explained/", "section": "Opening definition", "accessed": "2026-08-06"}
+      {
+        "source": "Trade Ideas Learning Center: Dollar Volume Explained",
+        "url": "https://www.trade-ideas.com/learning-center/technical-indicators/dollar-volume-explained/",
+        "section": "Opening definition",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 319
   },
   {
     "id": "market-data/turnover",
     "name": "Turnover",
-    "aliases": ["share turnover", "share turnover ratio", "velocity"],
+    "aliases": [
+      "share turnover",
+      "share turnover ratio",
+      "velocity"
+    ],
     "domain": "Market data",
     "definition": "Share turnover is a liquidity measure computed by dividing the total number of shares traded over a period by the number of shares outstanding during that period. It expresses how many times the share base effectively changed hands, indicating the relative ease of buying or selling the stock.",
     "intuition": "Turnover normalizes volume by company size: trading 1 million shares is frenetic for a firm with 5 million shares outstanding but trivial for one with 5 billion.",
     "mechanics": "Compute trading volume over the period and divide by shares outstanding (some practitioners use free float or average shares outstanding instead). Higher ratios indicate more liquid, actively traded stocks; lower ratios suggest thinner trading.",
     "formula": "Turnover = (total shares traded over period) / (shares outstanding during period), often expressed as a percentage.",
-    "relationships": ["Trading volume", "Dollar volume", "Free float"],
+    "relationships": [
+      "Trading volume",
+      "Dollar volume",
+      "Free float"
+    ],
     "failure_modes": "The ratio says nothing about price performance or business quality, and results depend on whether total shares outstanding or free float is used in the denominator. Turnover spikes around corporate events reflect one-off repositioning, not durable liquidity.",
     "misconceptions": "A high turnover ratio does not mean the stock is a good investment — it only means its shares trade actively. It is also not the same as mutual fund portfolio turnover, which measures how often a fund replaces its holdings.",
     "example": "A company with 100 million shares outstanding that trades 5 million shares in a day has a daily share turnover of 5%.",
     "citations": [
-      {"source": "The Economic Times: Definition of Share Turnover", "url": "https://economictimes.indiatimes.com/definition/share-turnover", "section": "Definition and formula", "accessed": "2026-08-06"}
+      {
+        "source": "The Economic Times: Definition of Share Turnover",
+        "url": "https://economictimes.indiatimes.com/definition/share-turnover",
+        "section": "Definition and formula",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 320
   },
   {
     "id": "market-data/open-price",
     "name": "Open price",
-    "aliases": ["opening price", "open"],
+    "aliases": [
+      "opening price",
+      "open"
+    ],
     "domain": "Market data",
     "definition": "The open price is the price of the first trade of an instrument within a given period — for a daily bar, the first transaction of the trading session, on many exchanges determined by an opening auction. It anchors one end of the bar's price path.",
     "intuition": "The open is where trading started for the period. It summarizes where overnight or pre-period information got priced in at the first print.",
     "mechanics": "Recorded as the first executed price in the aggregation interval; on exchanges with opening auctions (e.g., NYSE, Nasdaq), the daily open is the auction clearing price rather than an arbitrary first tick. Together with high, low, and close it defines the OHLC bar.",
     "formula": "",
-    "relationships": ["OHLC bar", "Close price", "High price", "Low price", "Opening auction"],
+    "relationships": [
+      "OHLC bar",
+      "Close price",
+      "High price",
+      "Low price",
+      "Opening auction"
+    ],
     "failure_modes": "The first print can be unrepresentative because opening auctions concentrate overnight order flow and are prone to gaps and elevated volatility. Comparing today's open to yesterday's close conflates auction dynamics with continuous trading.",
     "misconceptions": "The open is not necessarily close to the previous close — overnight gaps are common — and it is not a consensus 'fair value', just the first executed price.",
     "example": "If a stock's first trade of the session executes at $102.40 after a positive earnings surprise, the daily open is $102.40 regardless of where it traded for the rest of the day.",
     "citations": [
-      {"source": "Wikipedia: Open-high-low-close chart", "url": "https://en.wikipedia.org/wiki/Open-high-low-close_chart", "section": "Lead section (definition of opening price tick)", "accessed": "2026-08-06"}
+      {
+        "source": "Wikipedia: Open-high-low-close chart",
+        "url": "https://en.wikipedia.org/wiki/Open-high-low-close_chart",
+        "section": "Lead section (definition of opening price tick)",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 321
   },
   {
     "id": "market-data/high-price",
     "name": "High price",
-    "aliases": ["high", "session high", "period high"],
+    "aliases": [
+      "high",
+      "session high",
+      "period high"
+    ],
     "domain": "Market data",
     "definition": "The high price is the highest price at which any trade executed during a given period. It marks the upper extreme of the period's traded range and forms the top of an OHLC bar or candlestick wick.",
     "intuition": "The high is the most anyone paid during the period — the peak of the price excursion.",
     "mechanics": "Computed as the maximum of all executed trade prices within the aggregation interval; in charting it is rendered as the top of the vertical line (OHLC bar) or the upper shadow (candlestick).",
     "formula": "H = max(p_i) over all trades i in the period.",
-    "relationships": ["Low price", "OHLC bar", "True range", "Rolling maximum"],
+    "relationships": [
+      "Low price",
+      "OHLC bar",
+      "True range",
+      "Rolling maximum"
+    ],
     "failure_modes": "A single outlier or erroneous print (bad tick) can set a spurious high that distorts range-based indicators and stop levels; data vendors apply filters, but conventions differ. The high says nothing about how long price stayed near it.",
     "misconceptions": "The high is not a resistance level by construction — it is just the maximum print; treating it as meaningful support/resistance requires additional analysis.",
     "example": "If a stock trades between $50.10 and $51.80 during the day, the daily high is $51.80 even if only one lot traded there.",
     "citations": [
-      {"source": "Wikipedia: Open-high-low-close chart", "url": "https://en.wikipedia.org/wiki/Open-high-low-close_chart", "section": "Lead section (price range definition)", "accessed": "2026-08-06"}
+      {
+        "source": "Wikipedia: Open-high-low-close chart",
+        "url": "https://en.wikipedia.org/wiki/Open-high-low-close_chart",
+        "section": "Lead section (price range definition)",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 322
   },
   {
     "id": "market-data/low-price",
     "name": "Low price",
-    "aliases": ["low", "session low", "period low"],
+    "aliases": [
+      "low",
+      "session low",
+      "period low"
+    ],
     "domain": "Market data",
     "definition": "The low price is the lowest price at which any trade executed during a given period. It marks the lower extreme of the period's traded range and forms the bottom of an OHLC bar or candlestick wick.",
     "intuition": "The low is the least anyone received (or paid) for the asset during the period — the trough of the price excursion.",
     "mechanics": "Computed as the minimum of all executed trade prices within the aggregation interval; rendered as the bottom of the vertical line (OHLC bar) or lower shadow (candlestick).",
     "formula": "L = min(p_i) over all trades i in the period.",
-    "relationships": ["High price", "OHLC bar", "True range", "Rolling minimum"],
+    "relationships": [
+      "High price",
+      "OHLC bar",
+      "True range",
+      "Rolling minimum"
+    ],
     "failure_modes": "Erroneous prints or illiquid spikes can create false lows, which matters for stop-loss placement and range computations. The low carries no information about the volume traded at that extreme.",
     "misconceptions": "The low is not automatically a support level — it is merely the minimum executed price of the period.",
     "example": "If a stock's trades during the day range from $48.25 to $50.00, the daily low is $48.25 even if price immediately bounced from that print.",
     "citations": [
-      {"source": "Wikipedia: Open-high-low-close chart", "url": "https://en.wikipedia.org/wiki/Open-high-low-close_chart", "section": "Lead section (price range definition)", "accessed": "2026-08-06"}
+      {
+        "source": "Wikipedia: Open-high-low-close chart",
+        "url": "https://en.wikipedia.org/wiki/Open-high-low-close_chart",
+        "section": "Lead section (price range definition)",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 323
   },
   {
     "id": "market-data/close-price",
     "name": "Close price",
-    "aliases": ["closing price", "close", "last price"],
+    "aliases": [
+      "closing price",
+      "close",
+      "last price"
+    ],
     "domain": "Market data",
     "definition": "The close price is generally the last price at which a stock trades during a regular trading session (e.g., 9:30 a.m. to 4:00 p.m. Eastern for U.S. markets), often set by a closing auction. It is the most widely used single price for performance measurement, marking-to-market, and indicator input.",
     "intuition": "The close is the market's final word for the period — the price at which the last trade printed before the session ended.",
     "mechanics": "Recorded as the last executed price in the aggregation interval; for daily U.S. equity data the close is typically the closing-auction price on the primary listing exchange, while consolidated feeds may use the last trade across venues. It anchors return calculations (r_t = C_t/C_{t-1} − 1).",
     "formula": "",
-    "relationships": ["OHLC bar", "Open price", "Adjusted close", "Closing auction"],
+    "relationships": [
+      "OHLC bar",
+      "Open price",
+      "Adjusted close",
+      "Closing auction"
+    ],
     "failure_modes": "Closing prices are vulnerable to 'marking the close' manipulation because so much referencing (NAVs, benchmarks, margin) keys off them. Different venues and vendors can report different 'closes' (auction vs last consolidated print vs extended-hours print).",
     "misconceptions": "The close is not necessarily the price you could have traded at in size — closing auctions have their own liquidity profile. Nor is the 4:00 p.m. print comparable to after-hours prices, which trade in thinner conditions.",
     "example": "If the NYSE closing auction for a stock clears at $87.55 at 4:00 p.m., that is the official daily close used for the day's return calculation.",
     "citations": [
-      {"source": "SEC Investor.gov Glossary", "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary", "section": "Closing Price", "accessed": "2026-08-06"}
+      {
+        "source": "SEC Investor.gov Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Closing Price",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 324
   },
   {
     "id": "market-data/adjusted-close",
     "name": "Adjusted close",
-    "aliases": ["adjusted closing price", "adjusted price"],
+    "aliases": [
+      "adjusted closing price",
+      "adjusted price"
+    ],
     "domain": "Market data",
     "definition": "The adjusted close is the closing price amended to reflect the effects of corporate actions — stock splits and dividend distributions — so that the historical price series is internally comparable. Data vendors compute it by applying split and dividend adjustment factors to the as-traded close.",
     "intuition": "A 2-for-1 split halves the share price overnight without making holders poorer; the adjusted close rewrites history so the chart and return calculations show continuity instead of a fake 50% crash.",
     "mechanics": "For each corporate action, an adjustment factor is applied to all prices before the ex-date: prices are divided by the split ratio for splits and multiplied by (1 − dividend/pre-ex price) for dividends. Vendors such as Alpha Vantage publish raw OHLC alongside adjusted close and the underlying split/dividend events.",
     "formula": "AdjClose_t = Close_t × F_t, where F_t is the cumulative product of split and dividend adjustment factors for all corporate actions after date t.",
-    "relationships": ["Close price", "Stock split", "Dividend", "Total return"],
+    "relationships": [
+      "Close price",
+      "Stock split",
+      "Dividend",
+      "Total return"
+    ],
     "failure_modes": "Adjusted closes are revised whenever new corporate actions occur, so historical adjusted values are not stable across data snapshots. Dividend adjustment implicitly assumes reinvestment, and different vendors apply different conventions, so cross-vendor adjusted series can disagree.",
     "misconceptions": "The adjusted close was never a tradable price — placing a backtest order at an adjusted price distorts share counts and cash flows unless the adjustment is handled consistently.",
     "example": "If a stock trading at $100 pays a $2 dividend, pre-ex adjusted closes are multiplied by 0.98; a $100 pre-ex close becomes $98.00 in the adjusted series.",
     "citations": [
-      {"source": "Alpha Vantage API Documentation", "url": "https://www.alphavantage.co/documentation/", "section": "TIME_SERIES_DAILY_ADJUSTED (adjusted close values and historical split/dividend events)", "accessed": "2026-08-06"}
+      {
+        "source": "Alpha Vantage API Documentation",
+        "url": "https://www.alphavantage.co/documentation/",
+        "section": "TIME_SERIES_DAILY_ADJUSTED (adjusted close values and historical split/dividend events)",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 325
   },
   {
     "id": "market-data/ohlc-bar",
     "name": "OHLC bar",
-    "aliases": ["price bar", "bar", "OHLC"],
+    "aliases": [
+      "price bar",
+      "bar",
+      "OHLC"
+    ],
     "domain": "Market data",
     "definition": "An OHLC bar is a summary record of a period's trading containing the open (first trade), high (maximum trade), low (minimum trade), and close (last trade) prices. It is the canonical aggregated unit of price history and the basis of bar and candlestick charts.",
     "intuition": "An OHLC bar compresses everything that happened in a period into four numbers: where trading started, the extremes it reached, and where it ended.",
     "mechanics": "Trades within the aggregation interval (a minute, hour, day, etc.) are reduced to O = first price, H = max price, L = min price, C = last price. On a chart the vertical line spans high to low, with left/right ticks marking open and close; a candlestick shows the identical data with a body between open and close.",
     "formula": "O = p_first; H = max(p_i); L = min(p_i); C = p_last, over trades i in the interval.",
-    "relationships": ["OHLCV bar", "Open price", "High price", "Low price", "Close price", "Candlestick chart", "Time bar"],
+    "relationships": [
+      "OHLCV bar",
+      "Open price",
+      "High price",
+      "Low price",
+      "Close price",
+      "Candlestick chart",
+      "Time bar"
+    ],
     "failure_modes": "Aggregation destroys intra-bar path information: a bar with the same OHLC can hide very different sequences (e.g., high-then-low vs low-then-high), which matters for stop-fill assumptions in backtests. Vendor conventions on bar timestamps (open time vs close time) and session boundaries differ.",
     "misconceptions": "An OHLC bar is not four independent market quotes — it is a derived summary of trade prints, and for illiquid instruments some of O/H/L/C may coincide at a single trade.",
     "example": "A daily bar of O=100, H=103, L=99, C=102 says the session opened at 100, ranged from 99 to 103, and settled at 102 — nothing more about the order of events.",
     "citations": [
-      {"source": "Wikipedia: Open-high-low-close chart", "url": "https://en.wikipedia.org/wiki/Open-high-low-close_chart", "section": "Lead section", "accessed": "2026-08-06"}
+      {
+        "source": "Wikipedia: Open-high-low-close chart",
+        "url": "https://en.wikipedia.org/wiki/Open-high-low-close_chart",
+        "section": "Lead section",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 326
   },
   {
     "id": "market-data/ohlcv-bar",
     "name": "OHLCV bar",
-    "aliases": ["OHLCV", "candle", "bar with volume"],
+    "aliases": [
+      "OHLCV",
+      "candle",
+      "bar with volume"
+    ],
     "domain": "Market data",
     "definition": "An OHLCV bar is an OHLC bar augmented with the total trading volume over the same interval. It is the standard record layout for aggregated market data; in finance literature the OHLCV data is sometimes called 'candles'.",
     "intuition": "OHLCV adds 'how much traded' to the four price extremes, so each record captures both the price path summary and the activity level behind it.",
     "mechanics": "For each aggregation interval, compute open/high/low/close from the trade sequence and sum traded quantities into V; many feeds add quote-asset volume and trade count alongside. Daily, weekly, monthly, and intraday equity series from vendors such as Alpha Vantage are delivered in this layout.",
     "formula": "O = p_first; H = max(p_i); L = min(p_i); C = p_last; V = Σ q_i, over trades i in the interval.",
-    "relationships": ["OHLC bar", "Trading volume", "Quote volume", "Time bar", "Candlestick chart"],
+    "relationships": [
+      "OHLC bar",
+      "Trading volume",
+      "Quote volume",
+      "Time bar",
+      "Candlestick chart"
+    ],
     "failure_modes": "Volume conventions differ across vendors (consolidated vs single-venue, inclusion of auction volume and off-exchange prints), so the V field is not always comparable across sources. The bar still hides intra-period sequencing.",
     "misconceptions": "OHLCV bars are not raw market data — they are an aggregation; assuming they preserve tick-level information leads to unrealistic backtest fills.",
     "example": "A 5-minute AAPL bar of O=189.10, H=189.45, L=189.00, C=189.30, V=412,000 summarizes all trades in that five-minute window.",
     "citations": [
-      {"source": "Alpha Vantage API Documentation", "url": "https://www.alphavantage.co/documentation/", "section": "Time Series Stock Data APIs (OHLCV time series; 'candles')", "accessed": "2026-08-06"}
+      {
+        "source": "Alpha Vantage API Documentation",
+        "url": "https://www.alphavantage.co/documentation/",
+        "section": "Time Series Stock Data APIs (OHLCV time series; 'candles')",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 327
   },
   {
     "id": "market-data/tick-data",
     "name": "Tick data",
-    "aliases": ["tick-by-tick data", "trade and quote data", "TAQ data"],
+    "aliases": [
+      "tick-by-tick data",
+      "trade and quote data",
+      "TAQ data"
+    ],
     "domain": "Market data",
     "definition": "Tick data is the unaggregated, event-level record of market activity: every executed trade (price, size, time, venue) and, in full feeds, every quote update (bid, ask, sizes), timestamped in sequence. It is the finest granularity of market data, from which bars of any type are derived.",
     "intuition": "Tick data is the market's raw ledger — each individual trade and quote as it happened, rather than a summary.",
     "mechanics": "Trading venues disseminate trade reports (last sale, size) and quote updates (bid, ask, bid size, ask size) over separate feeds; in the U.S., consolidated tape systems report the latest price and volume of each sale in exchange-listed stocks. Consumers reconstruct sequences via feed handlers and timestamp normalization.",
     "formula": "",
-    "relationships": ["OHLCV bar", "Tick bar", "Consolidated tape", "Market data", "Trading volume"],
+    "relationships": [
+      "OHLCV bar",
+      "Tick bar",
+      "Consolidated tape",
+      "Market data",
+      "Trading volume"
+    ],
     "failure_modes": "Raw tick data contains bad prints, out-of-sequence messages, and exchange-specific timestamp quirks that must be cleaned before analysis. Volume is enormous (millions of events per day for active instruments), creating storage and processing burdens.",
     "misconceptions": "A 'tick' in tick data is any recorded event, not the minimum price increment (tick size) — the two uses of the word are unrelated. Also, the consolidated tape is not identical to any single exchange's feed.",
     "example": "A single second of AAPL tick data might contain 40 trade prints across NYSE, Nasdaq, and other venues plus hundreds of bid/ask updates — all collapsed into one OHLCV bar if aggregated per second.",
     "citations": [
-      {"source": "Wikipedia: Market data", "url": "https://en.wikipedia.org/wiki/Market_data", "section": "Data structure (trade data and quote data feeds)", "accessed": "2026-08-06"},
-      {"source": "SEC Investor.gov Glossary", "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary", "section": "Consolidated Tape", "accessed": "2026-08-06"}
+      {
+        "source": "Wikipedia: Market data",
+        "url": "https://en.wikipedia.org/wiki/Market_data",
+        "section": "Data structure (trade data and quote data feeds)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "SEC Investor.gov Glossary",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary",
+        "section": "Consolidated Tape",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 328
   },
   {
     "id": "market-data/time-bar",
     "name": "Time bar",
-    "aliases": ["time-based bar", "fixed-interval bar", "calendar bar"],
+    "aliases": [
+      "time-based bar",
+      "fixed-interval bar",
+      "calendar bar"
+    ],
     "domain": "Market data",
     "definition": "A time bar is an OHLC(V) bar built by aggregating all trades within a fixed clock interval (1 minute, 1 hour, 1 day, etc.). It is the default sampling scheme in market data, in which bars are produced at uniform points in time regardless of how much trading occurred.",
     "intuition": "Time bars chop the trading day into equal clock slices and summarize each slice — whether it contained three trades or three thousand.",
     "mechanics": "Define a fixed interval Δt; group all ticks with timestamps in [t, t+Δt) and reduce to OHLCV. López de Prado notes that time bars oversample information-poor (quiet) periods and undersample information-rich (busy) periods, and exhibit serial correlation, heteroskedasticity, and non-normality of returns — motivating activity-based alternatives like tick, volume, and dollar bars.",
     "formula": "",
-    "relationships": ["OHLCV bar", "Tick bar", "Volume bar", "Dollar bar", "Tick data"],
+    "relationships": [
+      "OHLCV bar",
+      "Tick bar",
+      "Volume bar",
+      "Dollar bar",
+      "Tick data"
+    ],
     "failure_modes": "Statistical properties of time-bar returns (normality, homoskedasticity) are poor, which degrades many ML and econometric methods applied directly to them. Bars also align to arbitrary clock boundaries, splitting coherent bursts of activity.",
     "misconceptions": "Uniform clock sampling does not produce uniform information sampling — a 1-minute bar at the open and one at lunch carry very different amounts of market information.",
     "example": "A 1-minute time-bar series of EUR/USD produces 1,440 bars per day even though overnight bars may contain a handful of trades while London-open bars contain thousands.",
     "citations": [
-      {"source": "López de Prado, Advances in Financial Machine Learning (Wiley, 2018)", "url": "https://www.wiley.com/en-us/Advances+in+Financial+Machine+Learning-p-9781119482086", "section": "Chapter 2: Financial Data Structures (time bars)", "accessed": "2026-08-06"}
+      {
+        "source": "López de Prado, Advances in Financial Machine Learning (Wiley, 2018)",
+        "url": "https://www.wiley.com/en-us/Advances+in+Financial+Machine+Learning-p-9781119482086",
+        "section": "Chapter 2: Financial Data Structures (time bars)",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 329
   },
   {
     "id": "market-data/tick-bar",
     "name": "Tick bar",
-    "aliases": ["trade bar", "tick-based bar"],
+    "aliases": [
+      "trade bar",
+      "tick-based bar"
+    ],
     "domain": "Market data",
     "definition": "A tick bar is an OHLCV bar built by aggregating a fixed number of consecutive trades (e.g., every 1,000 transactions), rather than a fixed clock interval. Sampling in transaction time aligns bar formation with market activity instead of the clock.",
     "intuition": "A new bar appears after every N trades — busy markets produce bars rapidly, quiet markets slowly, so each bar contains a comparable amount of trading activity.",
     "mechanics": "Count executed trades from the tick stream; every time the count reaches N, reduce those N trades to OHLCV and start a new bar. Returns sampled this way are statistically better behaved (closer to i.i.d. and normal) than time-bar returns, per López de Prado.",
     "formula": "",
-    "relationships": ["Time bar", "Volume bar", "Dollar bar", "Tick data"],
+    "relationships": [
+      "Time bar",
+      "Volume bar",
+      "Dollar bar",
+      "Tick data"
+    ],
     "failure_modes": "Tick bars are sensitive to trade-count fragmentation: the same order flow split into more prints (by algo slicing or venue rules) produces more bars without more information, so bar frequency is not comparable across regimes or venues.",
     "misconceptions": "A tick bar is not one bar per tick — it aggregates N trades, and 'tick' here means transaction, not minimum price increment.",
     "example": "With 1,000-trade tick bars on ES futures, a bar may complete in seconds around the U.S. open but take minutes overnight.",
     "citations": [
-      {"source": "López de Prado, Advances in Financial Machine Learning (Wiley, 2018)", "url": "https://www.wiley.com/en-us/Advances+in+Financial+Machine+Learning-p-9781119482086", "section": "Chapter 2: Financial Data Structures (tick bars)", "accessed": "2026-08-06"}
+      {
+        "source": "López de Prado, Advances in Financial Machine Learning (Wiley, 2018)",
+        "url": "https://www.wiley.com/en-us/Advances+in+Financial+Machine+Learning-p-9781119482086",
+        "section": "Chapter 2: Financial Data Structures (tick bars)",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 330
   },
   {
     "id": "market-data/volume-bar",
     "name": "Volume bar",
-    "aliases": ["volume-based bar", "shares bar"],
+    "aliases": [
+      "volume-based bar",
+      "shares bar"
+    ],
     "domain": "Market data",
     "definition": "A volume bar is an OHLCV bar built by aggregating trades until a fixed cumulative quantity (e.g., 10,000 shares or 100 BTC) has traded. Bars are thus sampled in units of traded volume rather than time or trade count.",
     "intuition": "Each bar represents the same amount of actual participation — the market 'votes' with quantity, and a new bar is cast once the vote count reaches the threshold.",
     "mechanics": "Accumulate traded quantities from the tick stream; when cumulative volume reaches the threshold V*, reduce the accumulated trades to OHLCV and reset. Volume bars sample more frequently when large traders are active and partially mitigate the trade-fragmentation distortion of tick bars, since splitting an order into more prints does not change total volume.",
     "formula": "",
-    "relationships": ["Tick bar", "Dollar bar", "Time bar", "Trading volume", "OHLCV bar"],
+    "relationships": [
+      "Tick bar",
+      "Dollar bar",
+      "Time bar",
+      "Trading volume",
+      "OHLCV bar"
+    ],
     "failure_modes": "A single block trade larger than the threshold straddles multiple bars or forces an oversized bar, depending on implementation, so bar-level volume is not exactly constant in practice. The threshold is arbitrary and not comparable across instruments of different liquidity.",
     "misconceptions": "Volume bars do not have identical volumes in strict tick-level implementations unless trades are allowed to be split; many charting platforms approximate them from already-aggregated data, distorting the construction.",
     "example": "With 50,000-share volume bars, if the tape prints 30k, 15k, and then 10k shares, the bar closes partway through the third print after exactly 50k shares have traded.",
     "citations": [
-      {"source": "López de Prado, Advances in Financial Machine Learning (Wiley, 2018)", "url": "https://www.wiley.com/en-us/Advances+in+Financial+Machine+Learning-p-9781119482086", "section": "Chapter 2: Financial Data Structures (volume bars)", "accessed": "2026-08-06"}
+      {
+        "source": "López de Prado, Advances in Financial Machine Learning (Wiley, 2018)",
+        "url": "https://www.wiley.com/en-us/Advances+in+Financial+Machine+Learning-p-9781119482086",
+        "section": "Chapter 2: Financial Data Structures (volume bars)",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 331
   },
   {
     "id": "market-data/dollar-bar",
     "name": "Dollar bar",
-    "aliases": ["dollar-based bar", "value bar"],
+    "aliases": [
+      "dollar-based bar",
+      "value bar"
+    ],
     "domain": "Market data",
     "definition": "A dollar bar is an OHLCV bar built by aggregating trades until a fixed cumulative dollar value (price × quantity, e.g., $1,000,000) has traded. Sampling in money terms keeps bar information content comparable even as an instrument's price level changes over time.",
     "intuition": "Each bar represents the same amount of cash changing hands, which keeps the sampling meaningful across years during which the share price may have multiplied.",
     "mechanics": "Accumulate p_i·q_i over consecutive trades; when the running sum reaches the dollar threshold, emit an OHLCV bar and reset. López de Prado advocates dollar bars over share-volume bars because a fixed share count corresponds to very different economic significance as prices move, and suggests periodically adjusting the threshold for changes in free float or outstanding shares.",
     "formula": "",
-    "relationships": ["Volume bar", "Tick bar", "Time bar", "Dollar volume", "OHLCV bar"],
+    "relationships": [
+      "Volume bar",
+      "Tick bar",
+      "Time bar",
+      "Dollar volume",
+      "OHLCV bar"
+    ],
     "failure_modes": "The threshold must be maintained: corporate actions, price trends, and changing float can make a once-reasonable dollar threshold inappropriate, and implementations that cannot split block trades produce inexact bar values. Thresholds are not portable across instruments.",
     "misconceptions": "Dollar bars are not just volume bars at a different scale — because they normalize by value, they remain economically comparable across price levels where share-volume bars do not.",
     "example": "With $5M dollar bars on a large-cap stock, about 20 bars form on a $100M day, versus only 4 on a quiet $20M day.",
     "citations": [
-      {"source": "López de Prado, Advances in Financial Machine Learning (Wiley, 2018)", "url": "https://www.wiley.com/en-us/Advances+in+Financial+Machine+Learning-p-9781119482086", "section": "Chapter 2: Financial Data Structures (dollar bars)", "accessed": "2026-08-06"}
+      {
+        "source": "López de Prado, Advances in Financial Machine Learning (Wiley, 2018)",
+        "url": "https://www.wiley.com/en-us/Advances+in+Financial+Machine+Learning-p-9781119482086",
+        "section": "Chapter 2: Financial Data Structures (dollar bars)",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 332
   },
   {
     "id": "market-data/range-bar",
     "name": "Range bar",
-    "aliases": ["range chart", "range bars"],
+    "aliases": [
+      "range chart",
+      "range bars"
+    ],
     "domain": "Market data",
     "definition": "A range bar is a price-based chart element in which a new bar is created only after the price has moved by a user-specified fixed range, regardless of how much time passes. Every completed bar therefore has the same high-low span, and time is eliminated as a construction variable.",
     "intuition": "Range bars print one bar per fixed price excursion — the chart advances only when price actually travels, so flat markets produce almost no bars.",
     "mechanics": "Choose a range in ticks (1 range unit equals one minimum price change). Track the running high-low of the forming bar; when the span reaches the configured range, close the bar at that boundary and open a new one. Because bars complete at irregular times, the time axis is non-uniform.",
     "formula": "",
-    "relationships": ["Renko bar", "Point-and-figure chart", "Time bar", "True range"],
+    "relationships": [
+      "Renko bar",
+      "Point-and-figure chart",
+      "Time bar",
+      "True range"
+    ],
     "failure_modes": "Fast markets and gaps can blow through a bar's boundary, so the recorded bar may not reflect tradeable prices within it. As an analytical framework, range bars filter noise but discard time and usually volume information, and results are sensitive to the chosen range.",
     "misconceptions": "Equal-sized bars do not imply equal information per bar, and a range bar's tidy structure is a construction artifact, not evidence of orderly market behavior.",
     "example": "With a 10-tick range setting on crude oil futures, each bar closes once price has traveled $0.10 from its open extreme, whether that takes two seconds or two hours.",
     "citations": [
-      {"source": "TradingView Support: Understanding range charts", "url": "https://www.tradingview.com/support/solutions/43000474007-understanding-range-charts/", "section": "What are range bars", "accessed": "2026-08-06"}
+      {
+        "source": "TradingView Support: Understanding range charts",
+        "url": "https://www.tradingview.com/support/solutions/43000474007-understanding-range-charts/",
+        "section": "What are range bars",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 333
   },
   {
     "id": "market-data/renko-bar",
     "name": "Renko bar",
-    "aliases": ["Renko brick", "Renko chart", "renko"],
+    "aliases": [
+      "Renko brick",
+      "Renko chart",
+      "renko"
+    ],
     "domain": "Market data",
     "definition": "A Renko chart is a Japanese-origin price chart built of fixed-size 'bricks': a new brick is drawn in the direction of the move only when price surpasses the previous brick's boundary by the brick size, and never adjacent on the same line. Like point-and-figure, time plays no role; it is a technical-analysis framework for filtering noise, not a proven predictive method.",
     "intuition": "Renko stacks identical bricks in the direction of travel — you see a clean staircase of meaningful moves while small wiggles never make it onto the chart.",
     "mechanics": "Fix a brick size (e.g., 10 points). When price exceeds the last brick's upper or lower boundary by the brick size, draw a new brick offset to the right; moves larger than one brick add multiple bricks, and partial bricks are not plotted. Classic Renko uses only closing prices of the chosen time frame; a reversal conventionally requires a move of two brick sizes from the last brick's close.",
     "formula": "",
-    "relationships": ["Point-and-figure chart", "Range bar", "Kagi chart", "OHLC bar"],
+    "relationships": [
+      "Point-and-figure chart",
+      "Range bar",
+      "Kagi chart",
+      "OHLC bar"
+    ],
     "failure_modes": "Brick-size selection completely determines the chart: too small reintroduces noise, too large misses structure. Discarding time and volume removes context, and bricks drawn from closes can lag sharply in fast reversals.",
     "misconceptions": "Renko 'signals' are a repackaging of price movement, not independent confirmation — and because bricks form only after the required move, entries shown on the chart were not available at the brick's open price.",
     "example": "With a $1 brick size on a stock closing at 50.00, 50.40, 51.10, 51.30, two up-bricks are drawn (50→51, 51→52 requires 52.00, so only one) — only the 50→51 brick prints.",
     "citations": [
-      {"source": "Wikipedia: Renko chart", "url": "https://en.wikipedia.org/wiki/Renko_chart", "section": "Construction rules", "accessed": "2026-08-06"}
+      {
+        "source": "Wikipedia: Renko chart",
+        "url": "https://en.wikipedia.org/wiki/Renko_chart",
+        "section": "Construction rules",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 334
   },
   {
     "id": "market-data/point-and-figure-chart",
     "name": "Point-and-figure chart",
-    "aliases": ["P&F chart", "point and figure", "P&F"],
+    "aliases": [
+      "P&F chart",
+      "point and figure",
+      "P&F"
+    ],
     "domain": "Market data",
     "definition": "Point-and-figure is a century-old technical-analysis charting technique that plots price against changes in direction rather than against time: rising prices are drawn as columns of Xs and falling prices as columns of Os, with columns reversing only after a set reversal amount. It is an analytical framework for trend and pattern study, not a proven predictive law.",
     "intuition": "P&F ignores the clock and minor wiggles entirely — the chart only grows when price moves by a full box, and switches columns only on a meaningful reversal.",
     "mechanics": "Choose a box size (price increment per X/O) and a reversal criterion (traditionally 1 box, commonly 3). Add Xs upward as price rises by box increments and Os downward as it falls; move to a new column only when price reverses by the reversal number of boxes. Price changes smaller than the box size are filtered out, and if no significant move occurs, no new data is plotted.",
     "formula": "",
-    "relationships": ["Renko bar", "Kagi chart", "Range bar", "OHLC bar"],
+    "relationships": [
+      "Renko bar",
+      "Kagi chart",
+      "Range bar",
+      "OHLC bar"
+    ],
     "failure_modes": "Results are highly sensitive to box size and reversal settings, and discarding time and volume removes execution-relevant context. Classic P&F price targets (vertical/horizontal counts) are heuristics without reliable out-of-sample validation.",
     "misconceptions": "P&F columns are not time periods — a column can span days or minutes — and the filtered chart understates how much price action actually occurred.",
     "example": "With a $1 box and 3-box reversal, a stock rising from $50 to $54 draws four Xs; it must fall to $51 before a column of Os begins.",
     "citations": [
-      {"source": "Wikipedia: Point and figure chart", "url": "https://en.wikipedia.org/wiki/Point_and_figure_chart", "section": "Construction and history", "accessed": "2026-08-06"}
+      {
+        "source": "Wikipedia: Point and figure chart",
+        "url": "https://en.wikipedia.org/wiki/Point_and_figure_chart",
+        "section": "Construction and history",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 335
   },
   {
     "id": "market-data/heikin-ashi-candle",
     "name": "Heikin-Ashi candle",
-    "aliases": ["Heikin-Ashi", "average bar", "HA candle"],
+    "aliases": [
+      "Heikin-Ashi",
+      "average bar",
+      "HA candle"
+    ],
     "domain": "Market data",
     "definition": "Heikin-Ashi (Japanese for 'average bar') is a candlestick variant in which each candle's OHLC values are computed as weighted averages of actual prices and the previous Heikin-Ashi candle, smoothing the displayed price series. It is a visualization/analytical technique for highlighting trend; its displayed values are not actual traded prices.",
     "intuition": "Heikin-Ashi candles are 'pre-smoothed' candlesticks: trends look cleaner and reversals stand out, because each bar is averaged with its predecessor.",
     "mechanics": "HA-Close = (O+H+L+C)/4 of the real bar; HA-Open = (previous HA-Open + previous HA-Close)/2; HA-High = max(real high, HA-Open, HA-Close); HA-Low = min(real low, HA-Open, HA-Close). The recursion means each candle depends on the prior one, introducing lag.",
     "formula": "HA_C = (O+H+L+C)/4; HA_O = (HA_O_prev + HA_C_prev)/2; HA_H = max(H, HA_O, HA_C); HA_L = min(L, HA_O, HA_C), where O,H,L,C are the real bar's prices.",
-    "relationships": ["OHLC bar", "OHLCV bar", "Average price", "Candlestick chart"],
+    "relationships": [
+      "OHLC bar",
+      "OHLCV bar",
+      "Average price",
+      "Candlestick chart"
+    ],
     "failure_modes": "Because HA values are synthetic averages, the current HA close does not equal the market price, so signals based on HA levels lag and cannot be executed at displayed prices. Smoothing also erases gap information that matters for risk management.",
     "misconceptions": "Heikin-Ashi candles cannot be traded directly — a strategy backtested on HA prices uses prices that never existed. Fewer red candles in an uptrend is a smoothing artifact, not new information about the trend.",
     "example": "If a real bar is O=100, H=103, L=99, C=102 and the prior HA candle had HA_O=99, HA_C=100.5, then HA_C=101.0 and HA_O=99.75 — not equal to any real print.",
     "citations": [
-      {"source": "Wikipedia: Candlestick chart", "url": "https://en.wikipedia.org/wiki/Candlestick_chart", "section": "Heikin-Ashi candlesticks", "accessed": "2026-08-06"}
+      {
+        "source": "Wikipedia: Candlestick chart",
+        "url": "https://en.wikipedia.org/wiki/Candlestick_chart",
+        "section": "Heikin-Ashi candlesticks",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 336
   },
   {
     "id": "market-data/typical-price",
     "name": "Typical price",
-    "aliases": ["HLC average", "HLC/3"],
+    "aliases": [
+      "HLC average",
+      "HLC/3"
+    ],
     "domain": "Market data",
     "definition": "The typical price is the arithmetic mean of a bar's high, low, and close: (H+L+C)/3. It is a standard single-price summary of a trading bar, used as the price input of indicators such as the Money Flow Index and the Commodity Channel Index.",
     "intuition": "Typical price collapses a bar into one number that represents where trading happened, giving equal weight to the extremes and the close.",
     "mechanics": "Compute (High + Low + Close)/3 for each bar and optionally smooth the resulting series (e.g., with a moving average) for trend display. It serves as the price input in MFI's raw money flow (typical price × volume) and CCI's deviation calculations.",
     "formula": "TP = (H + L + C) / 3, where H, L, C are the bar's high, low, and close.",
-    "relationships": ["Median price", "Weighted close", "Average price", "Money flow index", "Commodity channel index", "OHLC bar"],
+    "relationships": [
+      "Median price",
+      "Weighted close",
+      "Average price",
+      "Money flow index",
+      "Commodity channel index",
+      "OHLC bar"
+    ],
     "failure_modes": "Equal weighting of high and low lets a single extreme print shift the summary as much as the close, while ignoring the open and the volume distribution within the bar. It is a convention, not a statistically optimal bar summary.",
     "misconceptions": "The typical price is not the price at which most volume traded (that would be closer to VWAP) and not necessarily near the close — treating it as 'the' bar price is a modeling choice.",
     "example": "For a bar with H=105, L=100, C=103, the typical price is (105+100+103)/3 = 102.67.",
     "citations": [
-      {"source": "StockCharts ChartSchool: Typical Price", "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/typical-price", "section": "Calculating the Typical Price Indicator", "accessed": "2026-08-06"}
+      {
+        "source": "StockCharts ChartSchool: Typical Price",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/typical-price",
+        "section": "Calculating the Typical Price Indicator",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 337
   },
   {
     "id": "market-data/median-price",
     "name": "Median price",
-    "aliases": ["midpoint price", "HL average", "HL/2"],
+    "aliases": [
+      "midpoint price",
+      "HL average",
+      "HL/2"
+    ],
     "domain": "Market data",
     "definition": "The median price is the midpoint of a bar's trading range: (H+L)/2. It summarizes a bar by the center of its extremes and, when averaged over periods, forms a smoother trend line than close-based averages because it is less affected by close-to-close fluctuations and outliers.",
     "intuition": "Median price is the halfway point of the bar's range — a quick measure of the bar's center of gravity that ignores where within the range the close landed.",
     "mechanics": "Compute (High + Low)/2 per bar; charting platforms typically then average the per-bar median prices over N periods (e.g., 14) to plot the Median Price indicator as a trend line or overlay.",
     "formula": "MP = (H + L) / 2, where H and L are the bar's high and low.",
-    "relationships": ["Typical price", "Weighted close", "Average price", "OHLC bar"],
+    "relationships": [
+      "Typical price",
+      "Weighted close",
+      "Average price",
+      "OHLC bar"
+    ],
     "failure_modes": "Ignoring open and close discards the most decision-relevant prints, and the midpoint is dominated by outlier extremes in volatile bars. Like all averages it lags, and it produces misleading signals in choppy, non-trending markets.",
     "misconceptions": "Despite the name, it is the midrange, not the statistical median of all trade prices in the bar — no trade-level distribution is involved.",
     "example": "For a bar with H=48.20 and L=46.80, the median price is 47.50 regardless of whether the close was 47.00 or 48.10.",
     "citations": [
-      {"source": "StockCharts ChartSchool: Median Price", "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/median-price", "section": "How Is the Median Price Indicator Calculated?", "accessed": "2026-08-06"}
+      {
+        "source": "StockCharts ChartSchool: Median Price",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/median-price",
+        "section": "How Is the Median Price Indicator Calculated?",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 338
   },
   {
     "id": "market-data/weighted-close",
     "name": "Weighted close",
-    "aliases": ["HLC close-weighted average", "HLCC/4"],
+    "aliases": [
+      "HLC close-weighted average",
+      "HLCC/4"
+    ],
     "domain": "Market data",
     "definition": "The weighted close is the average of a bar's high, low, and close with the close counted twice: (H+L+2C)/4. It is a bar-summary price that emphasizes the close — reflecting its importance for mark-to-market — over the bar's extremes.",
     "intuition": "Weighted close is the typical price with extra weight on the closing print, on the view that where the bar settled matters more than where it wandered.",
     "mechanics": "Compute (High + Low + Close×2)/4 for each bar and plot as a line or overlay; it is commonly combined with moving averages, using crossovers as trend signals.",
     "formula": "WC = (H + L + 2C) / 4, where H, L, C are the bar's high, low, and close.",
-    "relationships": ["Typical price", "Median price", "Average price", "Close price", "OHLC bar"],
+    "relationships": [
+      "Typical price",
+      "Median price",
+      "Average price",
+      "Close price",
+      "OHLC bar"
+    ],
     "failure_modes": "The 2× weight on the close is an arbitrary convention, and the measure still ignores the open and intra-bar volume distribution. As with other smoothed price lines, crossover signals lag and whipsaw in sideways markets.",
     "misconceptions": "Weighted close is not a volume-weighted measure — 'weighted' refers only to the doubled close in the average, not to traded volume.",
     "example": "For a bar with H=210, L=200, C=206, the weighted close is (210+200+2×206)/4 = 205.50.",
     "citations": [
-      {"source": "StockCharts ChartSchool: Weighted Close", "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/weighted-close", "section": "How To Calculate the Weighted Close Indicator", "accessed": "2026-08-06"}
+      {
+        "source": "StockCharts ChartSchool: Weighted Close",
+        "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/weighted-close",
+        "section": "How To Calculate the Weighted Close Indicator",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 339
   },
   {
     "id": "market-data/average-price",
     "name": "Average price",
-    "aliases": ["OHLC average", "OHLC/4", "mean price"],
+    "aliases": [
+      "OHLC average",
+      "OHLC/4",
+      "mean price"
+    ],
     "domain": "Market data",
     "definition": "In bar data, the average price is the arithmetic mean of a bar's four OHLC prices: (O+H+L+C)/4. It is the most neutral single-number summary of a bar — it is, for example, exactly the Heikin-Ashi close — though in session-level contexts 'average price' can instead mean a volume-weighted average over the period.",
     "intuition": "Average price treats all four of a bar's reference prices equally, giving a balanced 'center' of the period's action.",
     "mechanics": "Compute (Open + High + Low + Close)/4 per bar. The same construction appears as the close of a Heikin-Ashi candle; exchanges and vendors also publish session average prices, sometimes volume-weighted, so the exact convention must be checked per data source.",
     "formula": "AP = (O + H + L + C) / 4, where O, H, L, C are the bar's four prices.",
-    "relationships": ["Typical price", "Median price", "Weighted close", "Heikin-Ashi candle", "OHLC bar"],
+    "relationships": [
+      "Typical price",
+      "Median price",
+      "Weighted close",
+      "Heikin-Ashi candle",
+      "OHLC bar"
+    ],
     "failure_modes": "The unweighted mean ignores where volume concentrated inside the bar, so it can sit far from the prices at which most trading occurred. The term is ambiguous across sources (OHLC/4 vs VWAP vs average of period closes), which causes silent data mismatches.",
     "misconceptions": "Average price (OHLC/4) is not VWAP — no volume weighting is involved — and it is not the same as a moving average of closes.",
     "example": "For a bar with O=100, H=103, L=99, C=102, the average price is (100+103+99+102)/4 = 101.00, which is also that bar's Heikin-Ashi close.",
     "citations": [
-      {"source": "Wikipedia: Candlestick chart", "url": "https://en.wikipedia.org/wiki/Candlestick_chart", "section": "Heikin-Ashi candlesticks (Close = (open+high+low+close)/4)", "accessed": "2026-08-06"},
-      {"source": "Binance Spot API documentation (rest-api.md)", "url": "https://raw.githubusercontent.com/binance/binance-spot-api-docs/master/rest-api.md", "section": "Current average price endpoint", "accessed": "2026-08-06"}
+      {
+        "source": "Wikipedia: Candlestick chart",
+        "url": "https://en.wikipedia.org/wiki/Candlestick_chart",
+        "section": "Heikin-Ashi candlesticks (Close = (open+high+low+close)/4)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Binance Spot API documentation (rest-api.md)",
+        "url": "https://raw.githubusercontent.com/binance/binance-spot-api-docs/master/rest-api.md",
+        "section": "Current average price endpoint",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "Terminology varies by vendor: some feeds define average price over a session window rather than per bar; the OHLC/4 convention documented here is the standard per-bar form.",
     "master_index": 340
   },
   {
     "id": "market-data/true-range",
     "name": "True range",
-    "aliases": ["TR"],
+    "aliases": [
+      "TR"
+    ],
     "domain": "Market data",
     "definition": "True range is a volatility measure introduced by J. Welles Wilder Jr. (1978) that extends the bar's high-low range to capture gaps relative to the previous close. It is the largest of: current high minus low, |high − previous close|, and |low − previous close|; its smoothed average is the Average True Range (ATR).",
     "intuition": "Plain range misses overnight gaps. True range asks: how far did price actually travel, including any jump from yesterday's close to today's extremes?",
     "mechanics": "Compute the three candidate distances per bar and take the maximum: when the previous close lies inside today's range this reduces to high − low; gaps up or down are captured by the two absolute-value terms. Wilder smoothed TR with a 14-period smoothed moving average to obtain ATR.",
     "formula": "TR_t = max(H_t − L_t, |H_t − C_{t−1}|, |L_t − C_{t−1}|), where H_t, L_t are the current high and low and C_{t−1} is the previous close.",
-    "relationships": ["Average true range", "High price", "Low price", "Close price", "OHLC bar"],
+    "relationships": [
+      "Average true range",
+      "High price",
+      "Low price",
+      "Close price",
+      "OHLC bar"
+    ],
     "failure_modes": "True range measures magnitude only — it carries no directional information, and a single gap bar permanently elevates the smoothed ATR for the smoothing horizon. Because it is computed from price differences, its interpretation shifts with the instrument's price level.",
     "misconceptions": "A high true range does not signal a trend or a breakout direction — it only marks volatility. ATR is not a percentage volatility measure unless normalized by price.",
     "example": "If yesterday closed at 50 and today trades between 48 and 49, plain range is 1 but true range is max(1, 2, 1) = 2, capturing the gap down.",
     "citations": [
-      {"source": "Wikipedia: Average true range", "url": "https://en.wikipedia.org/wiki/Average_true_range", "section": "True range definition (citing Wilder, New Concepts in Technical Trading Systems, 1978)", "accessed": "2026-08-06"}
+      {
+        "source": "Wikipedia: Average true range",
+        "url": "https://en.wikipedia.org/wiki/Average_true_range",
+        "section": "True range definition (citing Wilder, New Concepts in Technical Trading Systems, 1978)",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 341
   },
   {
     "id": "market-data/rolling-maximum",
     "name": "Rolling maximum",
-    "aliases": ["rolling max", "moving maximum", "trailing maximum"],
+    "aliases": [
+      "rolling max",
+      "moving maximum",
+      "trailing maximum"
+    ],
     "domain": "Market data",
     "definition": "The rolling maximum is the highest value of a series within a trailing window of fixed length that slides forward one observation at a time. It underlies channel indicators such as Donchian channels and breakout systems.",
     "intuition": "At each point, look back over the last N bars and ask: what was the highest price seen? That level moves as old extremes drop out of the window.",
     "mechanics": "For window length w, compute max over observations x_{t−w+1}…x_t and repeat for each t; standard implementations (e.g., pandas rolling().max()) label the result at the window's right edge and return NaN until the window is full unless min_periods is set.",
     "formula": "RMax_t = max(x_{t−w+1}, …, x_t), where w is the window length.",
-    "relationships": ["Rolling minimum", "Donchian channel", "High price", "Rolling mean"],
+    "relationships": [
+      "Rolling minimum",
+      "Donchian channel",
+      "High price",
+      "Rolling mean"
+    ],
     "failure_modes": "The statistic is window-sensitive and jumps discontinuously when an old extreme exits the window, creating artificial 'breakdowns' of the level. Centering the window introduces lookahead bias into backtests.",
     "misconceptions": "A break above the rolling maximum is a mechanical event defined by the window choice, not independent evidence of a meaningful breakout.",
     "example": "With a 20-day rolling maximum on daily highs, if the highest high of the last 20 days is 112.30, today's upper Donchian line sits at 112.30.",
     "citations": [
-      {"source": "pandas User Guide: Windowing operations", "url": "https://pandas.pydata.org/docs/user_guide/window.html", "section": "Rolling window (supported aggregations incl. max)", "accessed": "2026-08-06"}
+      {
+        "source": "pandas User Guide: Windowing operations",
+        "url": "https://pandas.pydata.org/docs/user_guide/window.html",
+        "section": "Rolling window (supported aggregations incl. max)",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 342
   },
   {
     "id": "market-data/rolling-minimum",
     "name": "Rolling minimum",
-    "aliases": ["rolling min", "moving minimum", "trailing minimum"],
+    "aliases": [
+      "rolling min",
+      "moving minimum",
+      "trailing minimum"
+    ],
     "domain": "Market data",
     "definition": "The rolling minimum is the lowest value of a series within a trailing window of fixed length that slides forward one observation at a time. Together with the rolling maximum it defines the lower boundary of channel indicators such as Donchian channels.",
     "intuition": "At each point, look back over the last N bars and ask: what was the lowest price seen? The level ratchets as time passes and old lows expire from the window.",
     "mechanics": "For window length w, compute min over observations x_{t−w+1}…x_t at each t; implementations such as pandas rolling().min() label at the window's right edge and produce NaN until the window fills unless min_periods is set.",
     "formula": "RMin_t = min(x_{t−w+1}, …, x_t), where w is the window length.",
-    "relationships": ["Rolling maximum", "Donchian channel", "Low price", "Rolling median"],
+    "relationships": [
+      "Rolling maximum",
+      "Donchian channel",
+      "Low price",
+      "Rolling median"
+    ],
     "failure_modes": "Like the rolling maximum, it jumps discontinuously when an extreme exits the window and is entirely defined by the chosen window length; centered windows leak future data into the past.",
     "misconceptions": "The rolling minimum is not a support level in any market-microstructure sense — it is purely the trailing extreme over an arbitrary lookback.",
     "example": "With a 20-day rolling minimum on daily lows, if the lowest low of the last 20 days is 96.10, the lower Donchian line sits at 96.10 today.",
     "citations": [
-      {"source": "pandas User Guide: Windowing operations", "url": "https://pandas.pydata.org/docs/user_guide/window.html", "section": "Rolling window (supported aggregations incl. min)", "accessed": "2026-08-06"}
+      {
+        "source": "pandas User Guide: Windowing operations",
+        "url": "https://pandas.pydata.org/docs/user_guide/window.html",
+        "section": "Rolling window (supported aggregations incl. min)",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 343
   },
   {
     "id": "market-data/rolling-mean",
     "name": "Rolling mean",
-    "aliases": ["rolling average", "simple moving average", "SMA", "moving average"],
+    "aliases": [
+      "rolling average",
+      "simple moving average",
+      "SMA",
+      "moving average"
+    ],
     "domain": "Market data",
     "definition": "The rolling mean is the arithmetic average of a series over a trailing window of fixed length that slides forward one observation at a time. Applied to prices it is the simple moving average (SMA), the most common trend-smoothing statistic in market analysis.",
     "intuition": "The rolling mean smooths out bar-to-bar noise by averaging the last N values, so the line rises when recent values are generally higher than the ones dropping out.",
     "mechanics": "For window length w, sum the last w observations and divide by w at each step. pandas rolling(window).mean() labels the result at the right edge of the window and returns NaN for the first w−1 points by default (min_periods=w for fixed windows).",
     "formula": "μ_t = (1/w) Σ_{i=0}^{w−1} x_{t−i}, where w is the window length.",
-    "relationships": ["Rolling median", "Rolling standard deviation", "Moving average", "Rolling z-score"],
+    "relationships": [
+      "Rolling median",
+      "Rolling standard deviation",
+      "Moving average",
+      "Rolling z-score"
+    ],
     "failure_modes": "The mean lags the series by roughly half the window and is distorted by outliers, since each extreme pulls the average for w periods. Equal weighting of the oldest and newest observations is arbitrary; window changes can flip signals.",
     "misconceptions": "A moving-average crossover is a descriptive smoothing artifact, not a proven predictive signal; and the SMA is not 'the fair price' — it is a trailing average.",
     "example": "A 5-day rolling mean of closes 100, 102, 101, 103, 104 is (100+102+101+103+104)/5 = 102.0 on the fifth day.",
     "citations": [
-      {"source": "pandas User Guide: Windowing operations", "url": "https://pandas.pydata.org/docs/user_guide/window.html", "section": "Rolling window (mean aggregation)", "accessed": "2026-08-06"}
+      {
+        "source": "pandas User Guide: Windowing operations",
+        "url": "https://pandas.pydata.org/docs/user_guide/window.html",
+        "section": "Rolling window (mean aggregation)",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 344
   },
   {
     "id": "market-data/rolling-median",
     "name": "Rolling median",
-    "aliases": ["moving median", "median filter"],
+    "aliases": [
+      "moving median",
+      "median filter"
+    ],
     "domain": "Market data",
     "definition": "The rolling median is the median value of a series over a trailing window of fixed length that slides forward one observation at a time. It is a robust alternative to the rolling mean, insensitive to extreme values within the window.",
     "intuition": "Instead of averaging the last N bars, take the middle one — a single spike can pull a mean around but cannot move the median much.",
     "mechanics": "For window length w, sort the last w observations and take the middle value (average of the two middle values for even w) at each step. pandas supports rolling(window).median(), with the same right-edge labeling and min_periods conventions as other rolling aggregations.",
     "formula": "RMed_t = median(x_{t−w+1}, …, x_t), where w is the window length.",
-    "relationships": ["Rolling mean", "Median price", "Rolling maximum", "Rolling minimum"],
+    "relationships": [
+      "Rolling mean",
+      "Median price",
+      "Rolling maximum",
+      "Rolling minimum"
+    ],
     "failure_modes": "The median is a coarse, step-like statistic that can sit unchanged for many bars and then jump, which makes derivative-based signals awkward. It is also computationally heavier than the mean and still lagged by the window.",
     "misconceptions": "Robustness to outliers is not always desirable — in return series, extreme moves are often the information, and median-filtering them away changes the risk picture.",
     "example": "For the last 5 closes 100, 101, 99, 130, 102, the rolling median is 101 while the rolling mean is 106.4, showing the median's immunity to the 130 spike.",
     "citations": [
-      {"source": "pandas User Guide: Windowing operations", "url": "https://pandas.pydata.org/docs/user_guide/window.html", "section": "Rolling window (median aggregation)", "accessed": "2026-08-06"}
+      {
+        "source": "pandas User Guide: Windowing operations",
+        "url": "https://pandas.pydata.org/docs/user_guide/window.html",
+        "section": "Rolling window (median aggregation)",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 345
   },
   {
     "id": "market-data/rolling-standard-deviation",
     "name": "Rolling standard deviation",
-    "aliases": ["rolling volatility", "rolling std", "moving standard deviation"],
+    "aliases": [
+      "rolling volatility",
+      "rolling std",
+      "moving standard deviation"
+    ],
     "domain": "Market data",
     "definition": "The rolling standard deviation is the sample (or population) standard deviation of a series over a trailing window of fixed length that slides forward one observation at a time. Applied to returns it is the standard estimator of realized volatility and the width driver of Bollinger Bands.",
     "intuition": "It measures how spread out the last N returns (or prices) were — a live gauge of how violently the market has been moving recently.",
     "mechanics": "For window w, compute σ over the last w observations at each step; pandas rolling(window).std() uses the sample (unbiased, ddof=1) convention by default and labels at the window's right edge. On returns, annualization scales by √T (e.g., √252 for daily data).",
     "formula": "σ_t = sqrt( (1/(w−1)) Σ_{i=0}^{w−1} (x_{t−i} − μ_t)² ), where μ_t is the rolling mean over the same window (use 1/w for the population convention).",
-    "relationships": ["Rolling mean", "Rolling z-score", "Bollinger Bands", "Average true range", "Volatility"],
+    "relationships": [
+      "Rolling mean",
+      "Rolling z-score",
+      "Bollinger Bands",
+      "Average true range",
+      "Volatility"
+    ],
     "failure_modes": "The estimate assumes the window's observations come from one stable regime; volatility clustering makes short windows noisy and long windows slow to react. Squaring returns gives extreme observations outsized influence, and with w−1 denominators small windows are unreliable.",
     "misconceptions": "Rolling std of prices is not comparable across instruments or time as price levels drift — volatility is conventionally computed on returns, not price levels.",
     "example": "The 20-day rolling std of daily log returns at 0.015 (1.5%) annualizes to roughly 0.015 × √252 ≈ 23.8%.",
     "citations": [
-      {"source": "pandas User Guide: Windowing operations", "url": "https://pandas.pydata.org/docs/user_guide/window.html", "section": "Rolling window (std aggregation; numerical notes)", "accessed": "2026-08-06"}
+      {
+        "source": "pandas User Guide: Windowing operations",
+        "url": "https://pandas.pydata.org/docs/user_guide/window.html",
+        "section": "Rolling window (std aggregation; numerical notes)",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 346
   },
   {
     "id": "market-data/rolling-correlation",
     "name": "Rolling correlation",
-    "aliases": ["moving correlation", "trailing correlation"],
+    "aliases": [
+      "moving correlation",
+      "trailing correlation"
+    ],
     "domain": "Market data",
     "definition": "Rolling correlation is the Pearson correlation coefficient between two series computed over a trailing window of fixed length that slides forward one observation at a time. It tracks how the co-movement of two assets (typically their returns) evolves through time.",
     "intuition": "Instead of one correlation number for the whole history, you get a time series showing when two markets moved together and when they decoupled.",
     "mechanics": "For window w, compute the Pearson coefficient over the paired observations in the last w points at each t; pandas rolling().corr() supports Series–Series and pairwise DataFrame computations, ignoring missing values pairwise. Correlations are typically computed on returns, not price levels.",
     "formula": "ρ_t = Σ (x_i − μ_x)(y_i − μ_y) / sqrt( Σ (x_i − μ_x)² Σ (y_i − μ_y)² ), sums over the trailing w paired observations.",
-    "relationships": ["Rolling beta", "Rolling covariance", "Rolling standard deviation", "Correlation"],
+    "relationships": [
+      "Rolling beta",
+      "Rolling covariance",
+      "Rolling standard deviation",
+      "Correlation"
+    ],
     "failure_modes": "Short windows produce wildly unstable estimates that swing between −1 and +1 on noise; correlation computed on trending price levels is spuriously high. Crisis periods reveal that correlations estimated in calm windows understate co-movement exactly when diversification is needed.",
     "misconceptions": "A high rolling correlation over a window does not establish a stable relationship — window choice can manufacture or erase apparent correlation, and correlation is not causation.",
     "example": "A 60-day rolling correlation between SPY and TLT daily returns hovering near −0.4 that jumps toward +0.2 signals a regime shift in the stock-bond relationship.",
     "citations": [
-      {"source": "pandas User Guide: Windowing operations", "url": "https://pandas.pydata.org/docs/user_guide/window.html", "section": "Binary window functions (corr) and rolling pairwise covariances/correlations", "accessed": "2026-08-06"}
+      {
+        "source": "pandas User Guide: Windowing operations",
+        "url": "https://pandas.pydata.org/docs/user_guide/window.html",
+        "section": "Binary window functions (corr) and rolling pairwise covariances/correlations",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 347
   },
   {
     "id": "market-data/rolling-beta",
     "name": "Rolling beta",
-    "aliases": ["moving beta", "trailing beta"],
+    "aliases": [
+      "moving beta",
+      "trailing beta"
+    ],
     "domain": "Market data",
     "definition": "Rolling beta is the regression slope of an asset's returns on a benchmark's returns — covariance divided by benchmark variance — estimated over a trailing window that slides forward one observation at a time. It tracks how an asset's market sensitivity evolves rather than assuming a single static beta.",
     "intuition": "Beta asks 'when the market moves 1%, how much does this asset typically move?'; rolling beta shows that answer changing through time as the asset's risk profile shifts.",
     "mechanics": "For window w, compute β_t = Cov_w(r_asset, r_market) / Var_w(r_market) over the last w paired return observations at each t; pandas rolling().cov() and rolling().var() provide the components. The result is the CAPM-style beta estimated on the trailing sample.",
     "formula": "β_t = Cov_w(r_i, r_m) / Var_w(r_m), where r_i and r_m are the asset's and benchmark's returns over the trailing window of length w.",
-    "relationships": ["Rolling correlation", "Rolling standard deviation", "Beta", "CAPM"],
+    "relationships": [
+      "Rolling correlation",
+      "Rolling standard deviation",
+      "Beta",
+      "CAPM"
+    ],
     "failure_modes": "Beta estimates are regime-dependent: a window spanning a volatility spike or structural break blends incompatible regimes, and short windows give noisy, unstable slopes. Rolling beta is backward-looking and often fails to anticipate beta shifts at market turning points.",
     "misconceptions": "Beta is not correlation — it scales correlation by relative volatility — and a low trailing beta does not guarantee low future market sensitivity, especially for assets with option-like payoffs.",
     "example": "If over the last 252 days Cov(r_stock, r_S&P500) = 0.0030 and Var(r_S&P500) = 0.0020, the stock's rolling 1-year beta is 1.5.",
     "citations": [
-      {"source": "pandas User Guide: Windowing operations", "url": "https://pandas.pydata.org/docs/user_guide/window.html", "section": "Binary window functions (cov) and rolling pairwise covariances", "accessed": "2026-08-06"}
+      {
+        "source": "pandas User Guide: Windowing operations",
+        "url": "https://pandas.pydata.org/docs/user_guide/window.html",
+        "section": "Binary window functions (cov) and rolling pairwise covariances",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "Beta itself is defined by the CAPM/linear-regression literature; the citation documents the rolling covariance/variance computation used to estimate it on a trailing window.",
     "master_index": 348
   },
   {
     "id": "market-data/rolling-z-score",
     "name": "Rolling z-score",
-    "aliases": ["moving z-score", "rolling standardized value"],
+    "aliases": [
+      "moving z-score",
+      "rolling standardized value"
+    ],
     "domain": "Market data",
     "definition": "The rolling z-score standardizes each observation of a series by the rolling mean and rolling standard deviation of its trailing window: how many recent-standard-deviations the current value sits from the recent mean. It converts levels into a locally normalized scale used by mean-reversion and Bollinger-style analyses.",
     "intuition": "A z-score of +2 says 'today's value is unusually high compared with the recent past' — unusual measured in units of the recent volatility, not absolute price.",
     "mechanics": "At each t compute z_t = (x_t − μ_t)/σ_t, where μ_t and σ_t are the rolling mean and rolling standard deviation over the trailing window of length w. pandas rolling().mean() and rolling().std() supply the components; care is needed on whether the current observation is included in the window.",
     "formula": "z_t = (x_t − μ_t) / σ_t, with μ_t and σ_t the rolling mean and rolling standard deviation over the trailing window of length w.",
-    "relationships": ["Rolling mean", "Rolling standard deviation", "Bollinger Bands", "Mean reversion"],
+    "relationships": [
+      "Rolling mean",
+      "Rolling standard deviation",
+      "Bollinger Bands",
+      "Mean reversion"
+    ],
     "failure_modes": "Z-scores assume approximate local normality and stationarity; in trending or fat-tailed series, |z| > 2 events are far more common than the Gaussian 5%, so 'extreme' readings are not reliable reversal signals. The statistic also inherits the window sensitivity of its mean and std components.",
     "misconceptions": "A high z-score is not automatically an overbought signal — in a persistent trend, price can hold z > 2 for long stretches. The z-score is relative to an arbitrary lookback, not to any fundamental anchor.",
     "example": "If the 20-day rolling mean of a spread is 1.20 with rolling std 0.15 and today's spread is 1.65, the z-score is (1.65 − 1.20)/0.15 = +3.0.",
     "citations": [
-      {"source": "pandas User Guide: Windowing operations", "url": "https://pandas.pydata.org/docs/user_guide/window.html", "section": "Rolling window (mean and std aggregations)", "accessed": "2026-08-06"}
+      {
+        "source": "pandas User Guide: Windowing operations",
+        "url": "https://pandas.pydata.org/docs/user_guide/window.html",
+        "section": "Rolling window (mean and std aggregations)",
+        "accessed": "2026-08-06"
+      }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 349
   }
 ]

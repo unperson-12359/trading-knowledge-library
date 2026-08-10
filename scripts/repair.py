@@ -1,8 +1,8 @@
-"""Repair concept files damaged by killed agents.
+"""Repair concept files damaged by interrupted writes.
 
-- Salvages complete reviewed entries from truncated JSON (indicators, options).
-- Re-imports missing entries from sources/master_v1.txt as provisional.
-- Never touches intact entries; never deletes reviewed work.
+- Salvages complete entries from truncated JSON.
+- Re-imports missing entries from sources/master_v1.txt.
+- Never touches intact entries or deletes catalog work.
 - Asserts the library is whole afterwards: 1,500 unique entries, every
   master_index 1..1500 present exactly once.
 
@@ -16,10 +16,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from import_master import CONCEPTS_DIR, DOMAIN_MAP, MASTER, parse_master, slugify
 
-REVIEW_DATE = "2026-08-06"
-
-
-def provisional_entry(raw):
+def restored_entry(raw):
     domain = DOMAIN_MAP.get(raw["domain"], raw["domain"])
     return {
         "id": f"{slugify(domain)}/{slugify(raw['name'])}",
@@ -36,10 +33,6 @@ def provisional_entry(raw):
         "example": "",
         "citations": [],
         "source_hint": raw["source_hint"],
-        "status": "provisional",
-        "reviewed_by": "",
-        "review_date": "",
-        "review_note": "Restored from master_v1 during repair; verification pending.",
         "master_index": raw["index"],
     }
 
@@ -88,7 +81,7 @@ def main():
         have = {e["master_index"] for e in existing}
         missing = [idx for idx in sorted(expected) if idx not in have]
         for idx in missing:
-            existing.append(provisional_entry(expected[idx]))
+            existing.append(restored_entry(expected[idx]))
         existing.sort(key=lambda e: e["master_index"])
         atomic_write(path, existing)
         kept = len(have)
@@ -103,8 +96,7 @@ def main():
     assert idxs == list(range(1, 1501)), "master_index coverage broken"
     assert len({e["id"] for e in all_entries}) == 1500, "duplicate ids"
     assert len({e["name"].lower() for e in all_entries}) == 1500, "duplicate names"
-    reviewed = sum(1 for e in all_entries if e["status"] == "reviewed")
-    print(f"\nLIBRARY WHOLE: 1500 entries, reviewed={reviewed}, provisional={1500 - reviewed}")
+    print("\nLIBRARY WHOLE: 1500 entries, complete master_index coverage")
 
 
 if __name__ == "__main__":

@@ -2,11 +2,10 @@
 
 Usage: python scripts/status.py
 
-The command exits non-zero when the catalog is structurally incomplete or an
-entry labelled ``reviewed`` does not meet the v1 reviewed-entry contract.
+The command exits non-zero when the catalog is structurally incomplete,
+contains a placeholder, lacks required content, or has malformed citations.
 """
 import json
-import re
 import sys
 from datetime import date
 from pathlib import Path
@@ -14,12 +13,15 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 PLACEHOLDER = "A trading concept within"
-STATUSES = {"candidate", "provisional", "reviewed", "trusted", "disputed"}
-REQUIRED_REVIEWED = (
-    "definition", "intuition", "mechanics", "failure_modes", "misconceptions",
-    "example", "reviewed_by", "review_date",
+REQUIRED_TEXT = (
+    "id", "name", "domain", "definition", "intuition", "mechanics",
+    "failure_modes", "misconceptions", "example", "source_hint",
 )
+REQUIRED_LISTS = ("aliases", "relationships", "citations")
 REQUIRED_CITATION = ("source", "url", "section", "accessed")
+REMOVED_PROVENANCE_FIELDS = {
+    "status", "reviewed_by", "review_date", "review_note",
+}
 
 
 def _valid_date(value):
@@ -32,40 +34,44 @@ def _valid_date(value):
 
 def entry_errors(entry):
     errors = []
-    status = entry.get("status")
-    if status not in STATUSES:
-        errors.append(f"invalid status {status!r}")
+    forbidden = REMOVED_PROVENANCE_FIELDS.intersection(entry)
+    if forbidden:
+        errors.append("removed provenance fields present: " + ", ".join(sorted(forbidden)))
+
+    for field in REQUIRED_TEXT:
+        value = entry.get(field)
+        if not isinstance(value, str) or not value.strip():
+            errors.append(f"missing {field}")
+
     definition = entry.get("definition", "")
-    if not isinstance(definition, str) or not definition.strip():
-        errors.append("missing definition")
-    elif definition.startswith(PLACEHOLDER):
+    if isinstance(definition, str) and definition.startswith(PLACEHOLDER):
         errors.append("placeholder definition")
 
-    if status in {"reviewed", "trusted"}:
-        for field in REQUIRED_REVIEWED:
-            value = entry.get(field)
-            if not isinstance(value, str) or not value.strip():
-                errors.append(f"missing {field}")
-        if entry.get("review_date") and not _valid_date(entry["review_date"]):
-            errors.append("review_date is not ISO-8601")
-        citations = entry.get("citations")
-        if not isinstance(citations, list) or not citations:
-            errors.append("reviewed entry has no citations")
-        else:
-            for number, citation in enumerate(citations, 1):
-                if not isinstance(citation, dict):
-                    errors.append(f"citation {number} is not an object")
-                    continue
-                for field in REQUIRED_CITATION:
-                    value = citation.get(field)
-                    if not isinstance(value, str) or not value.strip():
-                        errors.append(f"citation {number} missing {field}")
-                url = citation.get("url", "")
-                parsed = urlparse(url)
-                if parsed.scheme not in {"http", "https"} or not parsed.netloc:
-                    errors.append(f"citation {number} has invalid URL")
-                if citation.get("accessed") and not _valid_date(citation["accessed"]):
-                    errors.append(f"citation {number} accessed is not ISO-8601")
+    for field in REQUIRED_LISTS:
+        if not isinstance(entry.get(field), list):
+            errors.append(f"{field} is not an array")
+
+    citations = entry.get("citations")
+    if isinstance(citations, list):
+        if not citations:
+            errors.append("entry has no citations")
+        for number, citation in enumerate(citations, 1):
+            if not isinstance(citation, dict):
+                errors.append(f"citation {number} is not an object")
+                continue
+            for field in REQUIRED_CITATION:
+                value = citation.get(field)
+                if not isinstance(value, str) or not value.strip():
+                    errors.append(f"citation {number} missing {field}")
+            url = citation.get("url", "")
+            parsed = urlparse(url)
+            if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+                errors.append(f"citation {number} has invalid URL")
+            if citation.get("accessed") and not _valid_date(citation["accessed"]):
+                errors.append(f"citation {number} accessed is not ISO-8601")
+
+    if not isinstance(entry.get("master_index"), int):
+        errors.append("master_index is not an integer")
     return errors
 
 
@@ -73,7 +79,7 @@ def main():
     entries = []
     failures = []
     rows = []
-    print(f"{'domain':44} {'n':>4} {'rev':>4} {'prov':>4} {'bad':>4}  state")
+    print(f"{'domain':44} {'n':>4} {'bad':>4}  state")
     for path in sorted((ROOT / "concepts").glob("*.json")):
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
@@ -91,14 +97,12 @@ def main():
                 bad += 1
                 label = entry.get("id") or entry.get("name") or "<unknown>"
                 failures.append(f"{path.name}: {label}: " + "; ".join(errors))
-        reviewed = sum(1 for entry in data if entry.get("status") == "reviewed")
-        provisional = sum(1 for entry in data if entry.get("status") == "provisional")
-        state = "DONE" if reviewed == len(data) and bad == 0 else "partial"
-        rows.append((path.stem, len(data), reviewed, provisional, bad, state))
+        state = "VALID" if bad == 0 else "INVALID"
+        rows.append((path.stem, len(data), bad, state))
         entries.extend(data)
 
     for row in rows:
-        print(f"{row[0]:44} {row[1]:>4} {row[2]:>4} {row[3]:>4} {row[4]:>4}  {row[5]}")
+        print(f"{row[0]:44} {row[1]:>4} {row[2]:>4}  {row[3]}")
 
     ids = [entry.get("id") for entry in entries]
     names = [str(entry.get("name", "")).casefold() for entry in entries]
@@ -109,18 +113,19 @@ def main():
         failures.append("duplicate or missing IDs exist")
     if len(set(names)) != len(names):
         failures.append("duplicate or missing names exist")
-    if sorted(indexes) != list(range(1, 1501)):
+    if not all(isinstance(index, int) for index in indexes):
+        failures.append("all master_index values must be integers")
+    elif sorted(indexes) != list(range(1, 1501)):
         failures.append("master_index must cover 1..1500 exactly once")
 
-    reviewed = sum(1 for entry in entries if entry.get("status") == "reviewed")
-    provisional = sum(1 for entry in entries if entry.get("status") == "provisional")
     placeholders = sum(
         1 for entry in entries
         if str(entry.get("definition", "")).startswith(PLACEHOLDER)
     )
+    citations = sum(len(entry.get("citations", [])) for entry in entries)
     print(
-        f"\nTOTAL entries={len(entries)} reviewed={reviewed} "
-        f"provisional={provisional} placeholders={placeholders} errors={len(failures)}"
+        f"\nTOTAL entries={len(entries)} citations={citations} "
+        f"placeholders={placeholders} errors={len(failures)}"
     )
     if failures:
         print("\nVALIDATION ERRORS")

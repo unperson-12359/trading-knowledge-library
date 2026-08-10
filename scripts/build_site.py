@@ -2,6 +2,7 @@
 
 Stdlib only. Generates:
   docs/index.html              dashboard + domain table + search
+  docs/about.html              AI disclosure and project methodology
   docs/all.html                A-Z index of every concept
   docs/<slug>/index.html       domain page 1 (25 entries/page)
   docs/<slug>/page-N.html      further domain pages
@@ -44,17 +45,11 @@ main{flex:1;padding:1.5rem 2rem;max-width:900px;min-width:0}
 h1{border-bottom:3px solid #111;padding-bottom:.3rem;font-size:1.6rem}
 .crumbs{font-family:system-ui;font-size:.8rem;color:#666;margin-bottom:1rem}
 .crumbs a{color:#666}
-.badge{display:inline-block;font-size:.68rem;font-weight:bold;padding:.1rem .45rem;border-radius:.7rem;vertical-align:middle;text-transform:uppercase;font-family:system-ui}
-.reviewed{background:#d8f3dc;color:#1b4332}.provisional{background:#fff3cd;color:#7f6000}
-.trusted{background:#cfe2ff;color:#084298}.disputed{background:#f8d7da;color:#842029}
-.candidate{background:#e2e3e5;color:#41464b}
 .entry{border-bottom:1px solid #ddd;padding:1rem 0}
 .entry h3{margin:0 0 .3rem;font-size:1.1rem}
 .entry h3 .anchor{color:#bbb;font-size:.8rem}
 .field{margin:.25rem 0}.label{font-weight:bold;font-family:system-ui;font-size:.75rem;text-transform:uppercase;color:#555}
 .formula{font-family:Consolas,monospace;background:#f4f4f4;padding:.4rem .6rem;border-radius:4px;font-size:.9rem;overflow-x:auto}
-.bar{background:#eee;border-radius:6px;overflow:hidden;height:1.1rem;margin:.3rem 0 1rem}
-.bar>div{background:#2d6a4f;height:100%}
 table{border-collapse:collapse;width:100%;font-family:system-ui;font-size:.88rem}
 td,th{border-bottom:1px solid #ddd;padding:.3rem .5rem;text-align:left}
 .meta{color:#666;font-size:.82rem;font-family:system-ui}
@@ -115,7 +110,6 @@ def anchor(name):
 
 def render_entry(e, prefix):
     parts = [f'<article class="entry" id="{anchor(e["name"])}"><h3>{esc(e["name"])} '
-             f'<span class="badge {esc(e["status"])}">{esc(e["status"])}</span> '
              f'<a class="anchor" href="#{anchor(e["name"])}">#</a></h3>']
     parts.append(f'<div class="field">{esc(e["definition"])}</div>')
     for key, label in FIELDS:
@@ -133,8 +127,6 @@ def render_entry(e, prefix):
         sec = f' — {esc(c["section"])}' if c.get("section") else ""
         parts.append(f'<div class="field"><span class="label">Source:</span> '
                      f'<a href="{url}" rel="noopener">{esc(c.get("source", url))}</a>{sec}</div>')
-    if e.get("review_note"):
-        parts.append(f'<div class="meta">Note: {esc(e["review_note"])}</div>')
     parts.append("</article>")
     return "\n".join(parts)
 
@@ -143,9 +135,8 @@ def page(title, body, prefix, slug, domains, extra_head="", description=""):
     links = []
     for s, d in domains:
         active = ' class="active"' if s == slug else ""
-        r = sum(1 for e in d if e["status"] == "reviewed")
         links.append(f'<li><a href="{prefix}{s}/"{active}>{esc(d[0]["domain"])} '
-                     f'<span class="count">{r}/{len(d)}</span></a></li>')
+                     f'<span class="count">{len(d)}</span></a></li>')
     nav = (f'<nav id="sidebar" aria-label="Domains">'
            f'<h2><a href="{prefix}index.html" style="color:#111">Trading Library</a></h2>'
            f'<input id="search" type="search" placeholder="Search 1,500 concepts…" '
@@ -154,13 +145,16 @@ def page(title, body, prefix, slug, domains, extra_head="", description=""):
            f'<details class="tocwrap" open><summary class="meta">Domains</summary>'
            f'<ul class="navlist"><li><a href="{prefix}all.html"'
            + (' class="active"' if slug == "all" else "")
-           + f'>A–Z index</a></li>{"".join(links)}</ul></details></nav>')
+           + f'>A–Z index</a></li><li><a href="{prefix}about.html"'
+           + (' class="active"' if slug == "about" else "")
+           + f'>About &amp; Methodology</a></li>{"".join(links)}</ul></details></nav>')
     desc = f'<meta name="description" content="{esc(description)}">' if description else ""
     return (f"<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'>"
             f"<meta name='viewport' content='width=device-width,initial-scale=1'>"
             f"<title>{esc(title)}</title>{desc}{extra_head}<style>{CSS}</style></head>"
             f"<body>{nav}<main>{body}"
             f"<p class='meta'>Generated {date.today().isoformat()} · "
+            f"<a href='{prefix}about.html'>About &amp; Methodology</a> · "
             f"<a href='https://github.com/unperson-12359/trading-knowledge-library'>GitHub</a></p>"
             f"</main><script>{SEARCH_JS}</script></body></html>")
 
@@ -198,12 +192,9 @@ def main():
         domains.append((p.stem, json.loads(p.read_text(encoding="utf-8"))))
 
     total = sum(len(d) for _, d in domains)
-    reviewed = sum(1 for _, d in domains for e in d if e["status"] == "reviewed")
-    pct = round(100 * reviewed / total)
-
     written = set()      # relative paths of generated pages, for the link checker
     search_index = []    # {n, d, u}
-    az = {}              # letter -> [(name, url, status)]
+    az = {}              # letter -> [(name, url)]
 
     # ---- domain pages (paginated) ----
     for di, (slug, data) in enumerate(domains):
@@ -213,8 +204,6 @@ def main():
         ddir.mkdir()
         prev_slug = domains[di - 1][0] if di > 0 else None
         next_slug = domains[di + 1][0] if di + 1 < len(domains) else None
-        r = sum(1 for e in data if e["status"] == "reviewed")
-
         toc = '<div class="toc">' + "".join(
             f'<div><a href="#{anchor(e["name"])}">{esc(e["name"])}</a></div>' for e in data) + "</div>"
 
@@ -225,8 +214,8 @@ def main():
                 url = f"{slug}/" if pno == 1 else f"{slug}/page-{pno}.html"
                 url += f"#{anchor(e['name'])}"
                 search_index.append({"n": e["name"], "d": data[0]["domain"],
-                                     "u": url, "s": e["status"]})
-                az.setdefault(e["name"][0].upper(), []).append((e["name"], url, e["status"]))
+                                     "u": url})
+                az.setdefault(e["name"][0].upper(), []).append((e["name"], url))
 
             lo, hi = (pno - 1) * PER_PAGE + 1, min(n, pno * PER_PAGE)
             crumbs = (f'<div class="crumbs"><a href="../index.html">Home</a> / '
@@ -245,7 +234,7 @@ def main():
             domnav += "</div>"
 
             body = (crumbs + f"<h1>{esc(data[0]['domain'])}</h1>"
-                    f'<p class="meta">{n} concepts · {r} reviewed · '
+                    f'<p class="meta">{n} concepts · '
                     f'<span class="showing">showing {lo}–{hi} of {n}</span></p>'
                     + (toc if pno == 1 else "")
                     + pager(slug, pno, n_pages)
@@ -254,7 +243,7 @@ def main():
             title = f"{data[0]['domain']}" + (f" — page {pno}" if pno > 1 else "")
             (ddir / fname).write_text(
                 page(title, body, "../", slug, domains, extra_head=head,
-                     description=f"{data[0]['domain']}: {n} trading concepts, source-verified."),
+                     description=f"{data[0]['domain']}: {n} trading concepts with citations."),
                 encoding="utf-8")
             written.add(f"{slug}/{fname}")
 
@@ -266,9 +255,8 @@ def main():
                f'<div class="pager">{alpha_nav}</div>']
     for l in letters:
         az_body.append(f'<h2 id="L-{l}">{l}</h2><ul>')
-        for name, url, status in sorted(az[l], key=lambda x: x[0].lower()):
-            az_body.append(f'<li><a href="{url}">{esc(name)}</a> '
-                           f'<span class="badge {status}">{status}</span></li>')
+        for name, url in sorted(az[l], key=lambda x: x[0].lower()):
+            az_body.append(f'<li><a href="{url}">{esc(name)}</a></li>')
         az_body.append("</ul>")
     (DOCS / "all.html").write_text(
         page("A–Z index", "\n".join(az_body), "", "all", domains), encoding="utf-8")
@@ -278,27 +266,52 @@ def main():
     rows = []
     for slug, data in domains:
         n = len(data)
-        r = sum(1 for e in data if e["status"] == "reviewed")
         rows.append(f"<tr><td><a href='{slug}/'>{esc(data[0]['domain'])}</a></td>"
-                    f"<td>{n}</td><td>{r}</td><td>{n - r}</td></tr>")
+                    f"<td>{n}</td></tr>")
     index_body = (
         '<div class="crumbs">Home</div>'
         "<h1>Pakupai Trading Knowledge Library</h1>"
-        "<p>A machine-readable, source-verified knowledge base of trading concepts. "
-        "Every reviewed entry carries an exact citation to an authoritative source. "
+        "<p>A machine-readable library of trading concepts with definitions, mechanics, "
+        "failure modes, misconceptions, examples, relationships, and citations. "
         "Phase 1 of Pakupai: the knowledge foundation for AI-native trading.</p>"
-        f"<p><strong>{reviewed} of {total} concepts reviewed ({pct}%)</strong></p>"
-        f"<div class='bar'><div style='width:{pct}%'></div></div>"
-        "<p class='meta'>Trust levels: <span class='badge reviewed'>reviewed</span> verified with exact "
-        "citation · <span class='badge provisional'>provisional</span> awaiting citation-level review</p>"
+        f"<p><strong>{total} concepts across {len(domains)} domains</strong></p>"
+        "<p class='meta'>Built with AI systems. Read the "
+        "<a href='about.html'>About &amp; Methodology</a> disclosure before using the material.</p>"
         "<h2>Domains</h2>"
-        "<table><tr><th>Domain</th><th>Concepts</th><th>Reviewed</th><th>Provisional</th></tr>"
+        "<table><tr><th>Domain</th><th>Concepts</th></tr>"
         + "".join(rows) + "</table>")
     (DOCS / "index.html").write_text(
         page("Pakupai Trading Knowledge Library", index_body, "", "", domains,
-             description="Source-verified trading knowledge base: 1,500 concepts with exact citations."),
+             description="AI-built trading knowledge library: 1,500 concepts with citations."),
         encoding="utf-8")
     written.add("index.html")
+
+    # ---- about / methodology ----
+    about_body = (
+        '<div class="crumbs"><a href="index.html">Home</a> / About &amp; Methodology</div>'
+        "<h1>About &amp; Methodology</h1>"
+        "<h2>AI disclosure</h2>"
+        "<p>This project is built and maintained with AI systems. AI is used to research, "
+        "draft, organize, and update the material. The content may contain errors or "
+        "omissions; inspect the cited sources and verify critical information independently. "
+        "Nothing here is financial advice, a recommendation, or evidence that a trading "
+        "setup is profitable.</p>"
+        "<h2>How the library is organized</h2>"
+        "<p>The canonical data lives in structured JSON. This website and the text export are "
+        "generated from that data. Entries emphasize mechanics, failure modes, misconceptions, "
+        "worked examples, relationships, and direct citations.</p>"
+        "<h2>Source policy</h2>"
+        "<p>Direct regulatory, exchange, protocol, technical, and canonical research sources "
+        "are preferred. Secondary sources are used when direct material is unavailable. A "
+        "citation supports a definition or mechanism; it does not demonstrate profitability.</p>"
+        "<h2>Use responsibly</h2>"
+        "<p>Market rules, venue mechanics, and software behavior change. Verify time-sensitive "
+        "details against current official documentation before relying on them.</p>")
+    (DOCS / "about.html").write_text(
+        page("About & Methodology", about_body, "", "about", domains,
+             description="AI disclosure and methodology for the Pakupai Trading Knowledge Library."),
+        encoding="utf-8")
+    written.add("about.html")
 
     # ---- search index + sitemap ----
     (DOCS / "search-index.json").write_text(
@@ -330,8 +343,7 @@ def main():
                 broken.append(f"{rel} -> {target}")
     assert not broken, f"broken internal links:\n" + "\n".join(broken[:20])
 
-    print(f"site built: {len(written)} pages, {total} entries, "
-          f"{reviewed} reviewed ({pct}%), 0 broken links")
+    print(f"site built: {len(written)} pages, {total} entries, 0 broken links")
 
 
 if __name__ == "__main__":

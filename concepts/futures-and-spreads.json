@@ -2,13 +2,22 @@
   {
     "id": "futures-and-spreads/futures-curve",
     "name": "Futures curve",
-    "aliases": ["forward curve", "futures forward curve"],
+    "aliases": [
+      "forward curve",
+      "futures forward curve"
+    ],
     "domain": "Futures and spreads",
     "definition": "The set of prices of futures contracts on the same underlying asset across successive delivery months, plotted as price against time to maturity. Its shape (upward-sloping, downward-sloping, or mixed) summarizes how the market prices near-term versus deferred delivery.",
     "intuition": "It is the price 'map' of the same commodity or asset at different future delivery dates — like reading the market's price tag for delivery in each coming month.",
     "mechanics": "Constructed by taking settlement prices of all listed contract months for one underlying and ordering them by expiration date. The curve's slope defines market states: upward slope is contango, downward slope is backwardation, and the curve reshapes as participants revise expectations, inventories, and carrying costs.",
     "formula": "Curve = { F(t, T1), F(t, T2), ..., F(t, Tn) } where F(t, Ti) is the futures price at time t for delivery month Ti, with T1 < T2 < ... < Tn.",
-    "relationships": ["Term structure", "Contango", "Backwardation", "Roll yield", "Basis"],
+    "relationships": [
+      "Term structure",
+      "Contango",
+      "Backwardation",
+      "Roll yield",
+      "Basis"
+    ],
     "failure_modes": "The curve is a snapshot, not a forecast: distant months can be illiquid, so their prices may reflect wide spreads or stale quotes rather than genuine expectations. Comparing curves across days without accounting for contract roll and settlement conventions distorts the apparent shape.",
     "misconceptions": "A common mistake is treating the deferred futures price as the market's forecast of the future spot price; futures prices embed carrying costs, convenience yield, and risk premia, so they are not unbiased predictions.",
     "example": "If WTI crude settles at $78 for the front month, $79 for the next month, and $80.50 for delivery six months out, the futures curve slopes upward (contango); if the six-month price drops below the front month, the curve has flipped to backwardation.",
@@ -21,22 +30,28 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 956
   },
   {
     "id": "futures-and-spreads/term-structure",
     "name": "Term structure",
-    "aliases": ["futures term structure", "price term structure"],
+    "aliases": [
+      "futures term structure",
+      "price term structure"
+    ],
     "domain": "Futures and spreads",
     "definition": "The relationship between the prices (or yields) of contracts on the same underlying asset and their times to maturity or delivery. In futures markets it is synonymous with the futures curve; in rates markets it refers to the yield curve across maturities.",
     "intuition": "It answers the question: how does price change purely as a function of when delivery or maturity occurs, holding the asset itself constant?",
     "mechanics": "Extracted by holding the underlying constant and varying only the maturity dimension: for commodity futures, the sequence of contract-month prices; for interest rates, yields across maturities. The slope and curvature of the term structure drive roll yield, calendar-spread pricing, and steepener/flattener views.",
     "formula": "",
-    "relationships": ["Futures curve", "Contango", "Backwardation", "Steepener", "Flattener", "Futures calendar spread"],
+    "relationships": [
+      "Futures curve",
+      "Contango",
+      "Backwardation",
+      "Steepener",
+      "Flattener",
+      "Futures calendar spread"
+    ],
     "failure_modes": "Term structure mixes expectations with carrying costs, storage, convenience yield, and risk premia, so reading it as a pure forecast of future spot prices is invalid. In thinly traded maturities the observed structure can be distorted by illiquidity.",
     "misconceptions": "It is often assumed the term structure is stable or slowly mean-reverting; in practice it can invert within days on supply shocks (e.g., pipeline outages flipping crude from contango to backwardation).",
     "example": "Soybean futures show November at $12.10, January at $12.25, and March at $12.35 per bushel: this rising term structure reflects storage and financing costs of carrying beans from harvest into spring.",
@@ -49,22 +64,28 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 957
   },
   {
     "id": "futures-and-spreads/contango",
     "name": "Contango",
-    "aliases": ["carrying charge market", "normal market"],
+    "aliases": [
+      "carrying charge market",
+      "normal market"
+    ],
     "domain": "Futures and spreads",
     "definition": "A market situation in which prices in succeeding delivery months are progressively higher than in the nearest delivery month, i.e. the futures curve slopes upward. For physically delivered contracts, contango typically reflects storage, financing, and insurance costs of carrying the commodity; it is the opposite of backwardation.",
     "intuition": "The further out in time you buy delivery, the more you pay — because someone has to store, finance, and insure the goods until then.",
     "mechanics": "Measured by comparing contract months: F(t, T2) > F(t, T1) for T2 > T1. Physically delivered futures may sit in contango because of fundamental factors like storage, financing (cost to carry), and insurance; the curve can move between contango and backwardation as expectations and inventories change.",
     "formula": "Contango condition: F(t, T2) > F(t, T1) for T2 > T1; often summarized by the calendar spread F(t, T2) - F(t, T1) > 0.",
-    "relationships": ["Backwardation", "Futures curve", "Cost of carry", "Roll yield", "Cash-and-carry arbitrage", "Futures calendar spread"],
+    "relationships": [
+      "Backwardation",
+      "Futures curve",
+      "Cost of carry",
+      "Roll yield",
+      "Cash-and-carry arbitrage",
+      "Futures calendar spread"
+    ],
     "failure_modes": "Contango describes curve shape, not direction of future prices; spot prices can rise strongly while the curve stays in contango. Persistent deep contango imposes negative roll yield on passive long futures positions, which can dominate returns even when the spot price is flat.",
     "misconceptions": "Contango is not a prediction that prices will rise; nor does it make the market 'abnormal' — it is the typical state for storable commodities with positive carrying costs. The opposite of contango is backwardation, not a 'normal market' in the Keynesian sense (normal backwardation is a separate, contested hypothesis).",
     "example": "Gold quoted at $360.00 per ounce for January and $355.00 for June would be backwardation; the reverse — January $360 and June $365 — is contango, with the $5 difference approximating five months of financing and storage.",
@@ -83,22 +104,27 @@
       }
     ],
     "source_hint": "Canonical literature / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 958
   },
   {
     "id": "futures-and-spreads/backwardation",
     "name": "Backwardation",
-    "aliases": ["inverted market"],
+    "aliases": [
+      "inverted market"
+    ],
     "domain": "Futures and spreads",
     "definition": "A market situation in which futures prices are progressively lower in the more distant delivery months than in the nearer months or spot, i.e. the futures curve slopes downward. It is the opposite of contango and often signals tight near-term supply or a high convenience yield on holding the physical commodity.",
     "intuition": "Buyers pay a premium to get the commodity now rather than later — immediacy is worth more than future delivery.",
     "mechanics": "Measured by comparing contract months: F(t, T2) < F(t, T1) for T2 > T1. Backwardation arises when the benefit of owning the physical material (convenience yield, e.g. keeping a production process running) exceeds storage and financing costs; the CFTC glossary illustrates it as a January gold quote of $360 versus $355 for June.",
     "formula": "Backwardation condition: F(t, T2) < F(t, T1) for T2 > T1; calendar spread F(t, T2) - F(t, T1) < 0.",
-    "relationships": ["Contango", "Futures curve", "Convenience yield", "Roll yield", "Reverse cash-and-carry arbitrage", "Basis"],
+    "relationships": [
+      "Contango",
+      "Futures curve",
+      "Convenience yield",
+      "Roll yield",
+      "Reverse cash-and-carry arbitrage",
+      "Basis"
+    ],
     "failure_modes": "Backwardation rewards long futures positions via positive roll yield only if the curve shape persists; a sudden supply normalization can flip the curve to contango and erase the roll advantage. Near-dated spikes can make the measured backwardation exaggerated relative to deferred months.",
     "misconceptions": "Backwardation is not necessarily a sign that prices are about to fall; it is a statement about relative prices across delivery months. It is also not 'abnormal' in any regulatory sense — it is a standard response to scarcity.",
     "example": "If the WTI front month trades at $85 while the contract six months out trades at $81, the market is backwardated by $4, typical of a tight, undersupplied crude market.",
@@ -117,22 +143,26 @@
       }
     ],
     "source_hint": "Canonical literature / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 959
   },
   {
     "id": "futures-and-spreads/basis",
     "name": "Basis",
-    "aliases": ["cash-futures basis"],
+    "aliases": [
+      "cash-futures basis"
+    ],
     "domain": "Futures and spreads",
     "definition": "The difference between the spot or cash price of a commodity and the price of the nearest futures contract for the same or a related commodity, typically calculated as cash minus futures. It is usually computed against the futures contract next to expire and may reflect differences in time, product form, grade, or location.",
     "intuition": "Basis is the local truth adjustment: what you actually pay or receive at your elevator, hub, or grade versus the exchange's quoted futures price.",
     "mechanics": "Computed as Basis = cash price - futures price (per CFTC convention). Commercial participants quote cash transactions as a premium or discount to futures (e.g. '10 cents over December corn'); hedgers lock in the basis rather than the flat price, and basis tends to narrow (converge) as the futures contract approaches delivery.",
     "formula": "Basis = P_cash - P_futures (CFTC convention: cash minus futures, usually versus the contract next to expire).",
-    "relationships": ["Contango", "Backwardation", "Futures curve", "Cost of carry", "Futures calendar spread"],
+    "relationships": [
+      "Contango",
+      "Backwardation",
+      "Futures curve",
+      "Cost of carry",
+      "Futures calendar spread"
+    ],
     "failure_modes": "Basis is location- and grade-specific, so a futures hedge against a mismatched grade or delivery point leaves residual basis risk — the basis can widen or narrow unexpectedly between hedge placement and lifting. In delivery squeezes or logistics disruptions, basis can move violently even when flat prices are quiet.",
     "misconceptions": "Traders often assume the basis always converges smoothly to zero at expiration; convergence holds only for the deliverable grade at the specified delivery point, and can fail under delivery frictions. Basis is also not the same as the calendar spread between two futures months.",
     "example": "If a grain elevator bids $5.80 per bushel cash for corn while December corn futures trade at $6.00, the local basis is $5.80 - $6.00 = -$0.20, quoted as '20 under December'.",
@@ -145,22 +175,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 960
   },
   {
     "id": "futures-and-spreads/cash-and-carry-arbitrage",
     "name": "Cash-and-carry arbitrage",
-    "aliases": ["cash and carry", "carry arbitrage"],
+    "aliases": [
+      "cash and carry",
+      "carry arbitrage"
+    ],
     "domain": "Futures and spreads",
     "definition": "A market-neutral strategy that combines buying an asset in the cash (spot) market with selling a futures contract on the same asset, to exploit a futures price that is high relative to the spot price plus carrying costs. The arbitrageur holds ('carries') the asset until futures expiration and delivers it against the short futures position.",
     "intuition": "If the futures price overpays for future delivery relative to what it costs to buy, store, and finance the goods today, you can lock in that overpayment by buying now and selling forward.",
     "mechanics": "Buy the asset at spot price S and simultaneously short the futures at price F. Hold the asset, paying storage, insurance, and financing (the cost of carry), until expiration, then deliver against the futures. The trade is viable only if F exceeds S plus total carrying costs; market risk is largely removed because the asset is delivered against the contract rather than sold in the open market.",
     "formula": "Arbitrage profit = F - S - C, where F = futures sale price, S = spot purchase price, C = total carrying costs (financing + storage + insurance) to expiration. Viable when F > S + C.",
-    "relationships": ["Reverse cash-and-carry arbitrage", "Cost of carry", "Contango", "Basis", "Futures curve"],
+    "relationships": [
+      "Reverse cash-and-carry arbitrage",
+      "Cost of carry",
+      "Contango",
+      "Basis",
+      "Futures curve"
+    ],
     "failure_modes": "Not truly riskless: carrying costs or margin rates can rise after the trade is put on, eroding the locked-in margin. In physical commodities, delivery specifications, storage capacity constraints, and logistics can make the theoretical arbitrage unexecutable at scale.",
     "misconceptions": "It is often called a 'risk-free' trade, but it is only market-direction-neutral — financing, storage, margin, and delivery risks remain. It is also wrongly assumed to be available in any contango market; the contango must exceed the full cost of carry.",
     "example": "An asset trades at $100 spot with one-month futures at $104 and monthly carrying costs of $3: buy spot, short the futures, carry and deliver at expiration for a locked-in gain of $1.",
@@ -173,22 +208,26 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 961
   },
   {
     "id": "futures-and-spreads/reverse-cash-and-carry-arbitrage",
     "name": "Reverse cash-and-carry arbitrage",
-    "aliases": ["reverse cash and carry"],
+    "aliases": [
+      "reverse cash and carry"
+    ],
     "domain": "Futures and spreads",
     "definition": "The mirror image of cash-and-carry arbitrage: a market-neutral strategy that shorts the asset in the cash market while buying its futures contract, exploiting a futures price that is low relative to spot, a condition associated with backwardation. At maturity the arbitrageur takes delivery against the long futures and uses it to cover the short position.",
     "intuition": "If the market prices future delivery cheaply compared with today's spot, sell high now and lock in cheap re-purchase later through the futures contract.",
     "mechanics": "Sell (short) the asset at spot price S and simultaneously buy the futures at F, where F < S. Invest or use the short-sale proceeds, pay the costs of maintaining the short (borrowing fees, dividends or convenience-yield compensation), then accept delivery at expiration to close the short. Viable only when S exceeds F plus the costs of carrying the short position.",
     "formula": "Arbitrage profit = S - F - C_short, where S = spot sale proceeds, F = futures purchase price, C_short = costs of maintaining the short position to expiration. Viable when S > F + C_short.",
-    "relationships": ["Cash-and-carry arbitrage", "Backwardation", "Cost of carry", "Convenience yield", "Basis"],
+    "relationships": [
+      "Cash-and-carry arbitrage",
+      "Backwardation",
+      "Cost of carry",
+      "Convenience yield",
+      "Basis"
+    ],
     "failure_modes": "Shorting physical commodities can be difficult or impossible — borrow may be unavailable, recallable, or prohibitively expensive, so this leg often fails first. Margin calls on the short and rising borrow costs can force early unwinding before the convergence profit is realized.",
     "misconceptions": "It is not simply 'the opposite trade with the same risk profile'; the short leg in physical markets faces structural constraints (storage economics reward holding, not shorting) that cash-and-carry does not. It also does not require betting that backwardation will persist — only that spot-futures convergence occurs by expiry.",
     "example": "An asset trades at $104 spot with one-month futures at $100 and $2 in short-position carrying costs: short spot, buy futures, take delivery to cover the short at expiry for a locked-in $2 gain.",
@@ -201,22 +240,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 962
   },
   {
     "id": "futures-and-spreads/cost-of-carry",
     "name": "Cost of carry",
-    "aliases": ["carrying charges", "carry"],
+    "aliases": [
+      "carrying charges",
+      "carry"
+    ],
     "domain": "Futures and spreads",
     "definition": "The cost of storing a physical commodity or holding a financial instrument over a period of time, including insurance, storage, and interest on the funds committed, plus other incidental costs. A market in which futures prices rise with each successive maturity by at least these charges is called a carrying-charge market; if the charges fully reimburse the holder, the carry is 'full'.",
     "intuition": "It is the total bill for holding an asset from today until a future delivery date — rent for the warehouse, insurance premiums, and the interest on the money tied up.",
     "mechanics": "Cost of carry links spot and futures prices: in equilibrium the futures price equals the spot price plus carry (for commodities, adjusted down by convenience yield). Comparing the actual futures premium to the cost of carry reveals whether the curve is at full carry (arbitrage-bound) or not, and drives cash-and-carry decisions.",
     "formula": "F = S * e^((r + u - y) * T), where F = futures price, S = spot price, r = financing (interest) rate, u = storage and insurance cost rate, y = convenience yield, T = time to delivery in years. Net monetary carry without convenience yield: F = S * (1 + r + u)^T.",
-    "relationships": ["Convenience yield", "Contango", "Cash-and-carry arbitrage", "Basis", "Futures curve"],
+    "relationships": [
+      "Convenience yield",
+      "Contango",
+      "Cash-and-carry arbitrage",
+      "Basis",
+      "Futures curve"
+    ],
     "failure_modes": "The model assumes storage and financing are freely available at known rates; in storage-constrained markets (e.g. full tank farms at Cushing) realized carry diverges from quoted rates. For financial futures, dividends, repo rates, and borrow costs complicate the simple financing term.",
     "misconceptions": "Cost of carry is not itself a forecast of where futures should trade as a floor in all markets — with a large convenience yield, futures can trade below spot plus carry indefinitely (backwardation) without creating an exploitable arbitrage.",
     "example": "If spot gold is $1,800/oz, annual financing is 5%, and storage/insurance is 0.5%, the one-year full-carry futures price is about $1,899/oz; a futures quote well above that invites cash-and-carry arbitrage.",
@@ -229,22 +273,26 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 963
   },
   {
     "id": "futures-and-spreads/convenience-yield",
     "name": "Convenience yield",
-    "aliases": ["convenience return"],
+    "aliases": [
+      "convenience return"
+    ],
     "domain": "Futures and spreads",
     "definition": "The implied benefit or return from physically holding a commodity inventory — for example, keeping a production process running or avoiding stockouts — rather than holding a futures contract on it. It is inversely related to inventory levels: when stocks are high the convenience yield is low, and when stocks are low it is high.",
     "intuition": "Owning the actual barrel or bushel has an option value a paper contract does not: you can use it, sell it, or keep your plant running when supply is tight.",
     "mechanics": "Enters futures pricing as an offset to the monetary cost of carry: F = S * e^((r + u - y) * T). It is not directly observable; it is backed out as the residual that reconciles the futures curve with spot price, financing, and storage costs. A convenience yield larger than r + u produces backwardation.",
     "formula": "y = r + u - (1/T) * ln(F / S), derived from F = S * e^((r + u - y) * T); y = convenience yield, r = financing rate, u = storage cost rate, F = futures price, S = spot price, T = time to delivery.",
-    "relationships": ["Cost of carry", "Backwardation", "Contango", "Futures curve", "Reverse cash-and-carry arbitrage"],
+    "relationships": [
+      "Cost of carry",
+      "Backwardation",
+      "Contango",
+      "Futures curve",
+      "Reverse cash-and-carry arbitrage"
+    ],
     "failure_modes": "Because it is an unobserved residual, convenience yield estimates inherit every measurement error in spot prices, financing rates, and storage costs. During delivery squeezes the implied yield can spike to levels that reflect market dysfunction rather than genuine economic benefit.",
     "misconceptions": "It is not a cash flow the inventory holder actually receives like a dividend; it is an implicit, state-dependent value that only materializes in scarcity. Assuming it is constant over time or across commodities leads to mispriced curve trades.",
     "example": "A refiner holding crude inventory during a supply disruption can keep its units running while competitors scramble for spot cargoes; this flexibility is the convenience yield, and it is why spot crude can trade above deferred futures.",
@@ -257,22 +305,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 964
   },
   {
     "id": "futures-and-spreads/roll-yield",
     "name": "Roll yield",
-    "aliases": ["roll return", "roll return/yield"],
+    "aliases": [
+      "roll return",
+      "roll return/yield"
+    ],
     "domain": "Futures and spreads",
     "definition": "The return generated when a futures position is rolled from a near-term expiring contract into a longer-dated contract, arising from the price difference between the two contracts as the near contract converges toward spot. It is positive for long positions in backwardation and negative in contango.",
     "intuition": "Because a futures price must meet the spot price at expiry, holding and renewing a position earns (or costs) the gap between the expiring contract and the next one, even if the spot price never moves.",
     "mechanics": "To stay exposed without taking delivery, a holder sells the expiring contract and buys the next month. In backwardation the expiring contract is sold at a higher price than the deferred contract bought, generating a positive roll yield; in contango the holder sells low and buys high, generating a negative roll yield. Roll yield plus spot-price change approximates the total return of a futures position.",
     "formula": "Roll yield = (total change in futures prices) - (total change in spot price); equivalently for a single roll, approximately (F_near - F_deferred) / F_near for a long position.",
-    "relationships": ["Contango", "Backwardation", "Futures curve", "Futures calendar spread", "Convergence"],
+    "relationships": [
+      "Contango",
+      "Backwardation",
+      "Futures curve",
+      "Futures calendar spread",
+      "Convergence"
+    ],
     "failure_modes": "Roll yield is realized only if the curve shape persists through the roll window; a curve that flips between rolls turns an expected gain into a loss. It is also path-dependent: rolling on days of anomalous spread widening (e.g. ETF roll windows exploited by other traders) worsens realized roll relative to the quoted curve slope.",
     "misconceptions": "Roll yield is not a guaranteed 'carry' return like bond coupon income; it is a consequence of curve shape that can change sign at any time. Commodity-index returns are not spot returns — long-run divergences between the two are largely roll yield, not management error.",
     "example": "An investor long 100 crude contracts rolls each month while the market is backwardated by $1 per month: each roll re-establishes the position $1 per barrel cheaper, adding roughly that amount per month to returns even if spot prices are flat.",
@@ -285,22 +338,30 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 965
   },
   {
     "id": "futures-and-spreads/futures-calendar-spread",
     "name": "Futures calendar spread",
-    "aliases": ["calendar spread", "time spread", "horizontal spread", "interdelivery spread"],
+    "aliases": [
+      "calendar spread",
+      "time spread",
+      "horizontal spread",
+      "interdelivery spread"
+    ],
     "domain": "Futures and spreads",
     "definition": "The simultaneous purchase of one delivery month of a futures contract and sale of a different delivery month of the same futures contract. The position is a bet on the change in the price relationship between the two months (the term structure) rather than on the outright direction of the market.",
     "intuition": "Instead of betting on whether the price goes up or down, you bet on whether near delivery gets more expensive or cheaper relative to later delivery.",
     "mechanics": "A long calendar spread buys the nearby month and sells the deferred month; it gains if the nearby outperforms (spread tightens or inverts). Prices are quoted as the difference between the two months, and exchanges list calendar spreads as single instruments to remove legging risk. Margin requirements are typically lower than for outright positions because the legs partially offset.",
     "formula": "Spread price = F(nearby) - F(deferred); long-spread P&L = change in spread * contract multiplier.",
-    "relationships": ["Intracommodity spread", "Butterfly spread", "Term structure", "Roll yield", "Contango", "Backwardation"],
+    "relationships": [
+      "Intracommodity spread",
+      "Butterfly spread",
+      "Term structure",
+      "Roll yield",
+      "Contango",
+      "Backwardation"
+    ],
     "failure_modes": "Spreads can move against the trader on factors that barely affect flat price — storage changes, delivery logistics, or position-limit liquidations in the expiring month. Liquidity in deferred months is thinner, so spread execution costs and slippage can be larger than quoted outright markets suggest.",
     "misconceptions": "Calendar spreads are not 'low risk' in an absolute sense — old-crop/new-crop spreads or delivery squeezes can move as violently as outrights. Being long and short the same commodity does not make the position hedged; it makes it a relative-value position.",
     "example": "A trader buys December corn futures at $6.00 and sells March corn at $6.15 (long the calendar spread at -$0.15); if the spread narrows to -$0.05, the position gains $0.10 per bushel.",
@@ -313,22 +374,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 966
   },
   {
     "id": "futures-and-spreads/intercommodity-spread",
     "name": "Intercommodity spread",
-    "aliases": ["intermarket spread"],
+    "aliases": [
+      "intermarket spread"
+    ],
     "domain": "Futures and spreads",
     "definition": "A spread in which the long and short legs are in two different but generally related commodity markets — for example, corn versus soybeans or crude oil versus gasoline. In interest-rate futures, yield curve spread trades are treated by CME Group as intercommodity spreads.",
     "intuition": "You trade the price relationship between two linked commodities — betting that one gains value relative to the other — rather than the direction of either market alone.",
     "mechanics": "The trader buys futures in one commodity and sells futures in a related commodity, often in a ratio that equalizes economic exposure (e.g. the 3-2-1 crack spread). The position reflects relative supply-demand shifts between the two markets; exchanges may grant margin offsets for recognized intercommodity spread pairs.",
     "formula": "Spread = P_A - k * P_B, where P_A and P_B are the prices of the two related commodities and k is a conversion/hedge ratio adjusting for units, grade, or DV01.",
-    "relationships": ["Crack spread", "Crush spread", "Steepener", "Flattener", "Intracommodity spread", "Futures calendar spread"],
+    "relationships": [
+      "Crack spread",
+      "Crush spread",
+      "Steepener",
+      "Flattener",
+      "Intracommodity spread",
+      "Futures calendar spread"
+    ],
     "failure_modes": "The economic link between the commodities can break — a demand shock hitting only one leg (e.g. a gasoline-specific refinery outage) turns a 'relative value' position into an outright directional loss. Mismatched units, grades, or delivery calendars leave residual basis risk on both legs.",
     "misconceptions": "Relatedness does not imply cointegration: correlated commodities can diverge for months, and historical spread ranges are not hard bounds. Intercommodity spreads are not inherently safer than outrights — two legs mean two sources of gap risk.",
     "example": "A trader buys 3 crude oil futures and sells 2 gasoline and 1 heating oil futures — an intercommodity crack spread expressing a view on refining margins rather than on the oil price level.",
@@ -341,22 +407,28 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 967
   },
   {
     "id": "futures-and-spreads/intracommodity-spread",
     "name": "Intracommodity spread",
-    "aliases": ["interdelivery spread", "intra-market spread"],
+    "aliases": [
+      "interdelivery spread",
+      "intra-market spread"
+    ],
     "domain": "Futures and spreads",
     "definition": "A spread involving two different delivery months of the same commodity — the CFTC glossary defines the interdelivery spread as exactly this and notes it is also called an intracommodity spread. It is functionally identical to the futures calendar spread: the trader is long one month and short another of the same contract.",
     "intuition": "Same commodity, different months: you trade the shape of one market's own curve rather than its level.",
     "mechanics": "Buy one delivery month and simultaneously sell another delivery month of the same futures contract. The position isolates the calendar-spread component of the term structure — carrying charges, storage economics, and seasonal supply — and is quoted and margined as a spread, often at reduced margin versus outrights.",
     "formula": "Spread price = F(T1) - F(T2) for delivery months T1 != T2 of the same contract.",
-    "relationships": ["Futures calendar spread", "Intercommodity spread", "Term structure", "Cost of carry", "Contango", "Backwardation"],
+    "relationships": [
+      "Futures calendar spread",
+      "Intercommodity spread",
+      "Term structure",
+      "Cost of carry",
+      "Contango",
+      "Backwardation"
+    ],
     "failure_modes": "The two months can decouple sharply around delivery events — first notice day, position-limit liquidations, or deliverable-supply squeezes can move the near leg violently while the deferred leg barely reacts. Low liquidity in back months raises execution risk on the spread.",
     "misconceptions": "Because both legs are the same commodity, traders assume the position is nearly riskless; in reality old-crop/new-crop and front-month squeezes produce some of the largest moves in futures markets. 'Intracommodity' and 'calendar' spreads are the same structure, not distinct strategies.",
     "example": "Buying July wheat and selling December wheat is an intracommodity spread: the position profits if July gains relative to December, e.g. when old-crop supplies tighten into summer.",
@@ -369,22 +441,26 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 968
   },
   {
     "id": "futures-and-spreads/crack-spread",
     "name": "Crack spread",
-    "aliases": ["3-2-1 crack spread", "refining margin spread"],
+    "aliases": [
+      "3-2-1 crack spread",
+      "refining margin spread"
+    ],
     "domain": "Futures and spreads",
     "definition": "In energy futures, the simultaneous purchase of crude oil futures and sale of petroleum product futures (or the reverse) to establish a refining margin; also the calculated theoretical market value of the refined products obtainable from a barrel of crude after it is 'cracked'. Common variants are the gasoline crack, heating oil crack, and the 3-2-1 crack spread of three crude contracts against two gasoline and one heating oil contract.",
     "intuition": "It is the refinery's gross margin traded as an instrument: what you can sell the gasoline and diesel for, minus what the crude cost you.",
     "mechanics": "The 3-2-1 ratio approximates the typical product yield from refining three barrels of crude into roughly two barrels of gasoline and one barrel of heating oil. Refiners hedge by buying crude and selling products (locking the margin); traders express margin views with the reverse. Prices must be converted to common units ($/barrel) before differencing.",
     "formula": "3-2-1 crack spread ($/bbl) = (2 * P_gasoline + 1 * P_heating_oil) / 3 - P_crude, with gasoline and heating oil prices converted from $/gallon to $/barrel (x 42).",
-    "relationships": ["Intercommodity spread", "Crush spread", "Spark spread", "Basis"],
+    "relationships": [
+      "Intercommodity spread",
+      "Crush spread",
+      "Spark spread",
+      "Basis"
+    ],
     "failure_modes": "The 3-2-1 ratio is a stylized yield; actual refinery output varies by crude slate and configuration, so the traded spread does not perfectly hedge any single plant. Product and crude delivery months, grades, and locations differ, leaving timing and basis risk on each leg.",
     "misconceptions": "The crack spread is not a forecast of crude prices — it measures the relative value of products to crude. A widening crack does not necessarily mean crude will fall or products will rise in absolute terms; both legs can move in the same direction.",
     "example": "With crude at $80/bbl, gasoline at $2.50/gal ($105/bbl), and heating oil at $2.60/gal ($109.20/bbl), the 3-2-1 crack is (2*105 + 109.20)/3 - 80 = $26.40/bbl of gross refining margin.",
@@ -397,22 +473,26 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 969
   },
   {
     "id": "futures-and-spreads/crush-spread",
     "name": "Crush spread",
-    "aliases": ["soybean crush", "board crush", "gross processing margin"],
+    "aliases": [
+      "soybean crush",
+      "board crush",
+      "gross processing margin"
+    ],
     "domain": "Futures and spreads",
     "definition": "In the soybean futures market, the simultaneous purchase of soybean futures and sale of soybean meal and soybean oil futures to establish a processing margin (the reverse — selling beans and buying products — is the reverse crush). It expresses the value added by crushing raw soybeans into meal and oil.",
     "intuition": "It is the soybean processor's gross profit line turned into a trade: what meal and oil sell for, minus what the beans cost.",
     "mechanics": "One soybean futures contract (5,000 bushels) crushes into roughly 44,000 lb of meal and 11,000 lb of oil, so product legs are sized to those conversion ratios. Processors use the crush to lock in margins; speculators trade views on the spread between input (beans) and outputs (meal, oil). Values must be converted to a common per-bushel basis.",
     "formula": "Gross processing margin ($/bu) = (P_meal($/ton) * 0.022 + P_oil(cents/lb) * 0.11) - P_soybeans($/bu), where the coefficients convert 48 lb meal and 11 lb oil yields per 60-lb bushel into bushel equivalents.",
-    "relationships": ["Intercommodity spread", "Crack spread", "Basis"],
+    "relationships": [
+      "Intercommodity spread",
+      "Crack spread",
+      "Basis"
+    ],
     "failure_modes": "Meal and oil legs have their own seasonal and demand drivers (livestock feed demand, biodiesel mandates), so the crush can move violently even when soybean prices are stable. Conversion ratios are approximate; actual plant yields differ, and delivery-calendar mismatches add basis risk.",
     "misconceptions": "The crush margin is not the processor's profit — it excludes energy, labor, transport, and capital costs. A high board crush does not guarantee plant profitability, and a negative screen crush does not mean no plant will run, since plants hedge at different times and prices.",
     "example": "With soybeans at $12.00/bu, meal at $360/ton, and oil at 50 cents/lb, the gross processing margin is 360*0.022 + 0.50*11 - 12.00 = $7.92 + $5.50 - $12.00 = $1.42 per bushel.",
@@ -425,22 +505,24 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 970
   },
   {
     "id": "futures-and-spreads/spark-spread",
     "name": "Spark spread",
-    "aliases": ["electricity-gas spread"],
+    "aliases": [
+      "electricity-gas spread"
+    ],
     "domain": "Futures and spreads",
     "definition": "The difference between the price received by a generator for electricity produced and the cost of the natural gas needed to produce that electricity — a common metric for estimating the profitability of natural gas-fired generation. It is typically calculated from daily spot prices for power and gas at regional trading points, using a benchmark heat rate.",
     "intuition": "It is the gas power plant's gross margin per megawatt-hour: the electricity price minus the fuel bill to generate it.",
     "mechanics": "Computed as power price minus natural gas price times heat rate. The heat rate (e.g. 7,000 Btu/kWh for an efficient combined-cycle unit per EIA's benchmark) converts the gas cost into $/MWh. Traders and analysts track spark spreads across regions and time; forward spark spreads are traded OTC and on exchanges as power-versus-gas spread positions.",
     "formula": "Spark spread ($/MWh) = P_power($/MWh) - P_gas($/mmBtu) * HR(mmBtu/MWh), where HR is the generator heat rate (EIA benchmark: 7,000 Btu/kWh = 7 mmBtu/MWh).",
-    "relationships": ["Dark spread", "Crack spread", "Intercommodity spread"],
+    "relationships": [
+      "Dark spread",
+      "Crack spread",
+      "Intercommodity spread"
+    ],
     "failure_modes": "It excludes pipeline/transport costs, other variable costs like operations and maintenance, taxes, and fixed expenses, so it is an indicator of market conditions, not an exact measure of any one plant's profitability. Power prices are spiky and region-specific, so a benchmark heat rate can badly misrepresent older, less efficient units.",
     "misconceptions": "A positive spark spread does not mean a plant is profitable overall — it only covers fuel. Negative spark spreads do occur and simply mean generating at market fuel cost loses money against the power price (EIA simply does not report negative values in some tables).",
     "example": "With power at $45/MWh, natural gas at $3.00/mmBtu, and a 7,000 Btu/kWh heat rate, the spark spread is 45 - 3.00*7 = $24/MWh.",
@@ -453,22 +535,24 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 971
   },
   {
     "id": "futures-and-spreads/dark-spread",
     "name": "Dark spread",
-    "aliases": ["electricity-coal spread"],
+    "aliases": [
+      "electricity-coal spread"
+    ],
     "domain": "Futures and spreads",
     "definition": "The difference between the price received by a generator for electricity produced and the cost of the coal needed to produce it — the coal-fired analogue of the spark spread, used to estimate returns over fuel costs of coal generation. It can be computed from current spot prices or from forward prices.",
     "intuition": "It is the coal plant's gross margin per megawatt-hour: the power price minus the coal bill (including getting the coal to the plant).",
     "mechanics": "Computed as a flat (on-peak/off-peak blended, reflecting baseload operation) power price minus coal cost, where coal cost = prompt-month coal futures price plus a transportation rate, multiplied by the coal plant heat rate (e.g. EIA's generic 10,000 Btu/kWh steam turbine). Coal is often priced via futures because long-term contract prices are not public.",
     "formula": "Dark spread ($/MWh) = P_power($/MWh) - (P_coal($/mmBtu) + transport($/mmBtu)) * HR(mmBtu/MWh), with HR the coal unit heat rate (EIA generic: 10,000 Btu/kWh).",
-    "relationships": ["Spark spread", "Crack spread", "Intercommodity spread"],
+    "relationships": [
+      "Spark spread",
+      "Crack spread",
+      "Intercommodity spread"
+    ],
     "failure_modes": "Like the spark spread, it omits finance charges, environmental costs, O&M, and taxes, so it is a general indicator rather than a precise plant-level measure. Substituting prompt-month futures for actual long-term coal contract prices can badly misstate a specific plant's true fuel cost.",
     "misconceptions": "The 'dark' label has nothing to do with dark pools or off-exchange trading; it refers to coal (as spark refers to gas ignition). Nor does a rising dark spread imply coal generation is growing — it may simply reflect weak gas or strong power prices.",
     "example": "With flat power at $40/MWh, PRB coal futures at $0.80/mmBtu, transport at $1.00/mmBtu, and a 10,000 Btu/kWh heat rate, the dark spread is 40 - 1.80*10 = $22/MWh.",
@@ -481,22 +565,25 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 972
   },
   {
     "id": "futures-and-spreads/ted-spread",
     "name": "TED spread",
-    "aliases": ["Treasury-Eurodollar spread", "TEDRATE"],
+    "aliases": [
+      "Treasury-Eurodollar spread",
+      "TEDRATE"
+    ],
     "domain": "Futures and spreads",
     "definition": "The spread between the 3-month LIBOR based on US dollars and the 3-month US Treasury bill yield, historically used as a gauge of perceived credit risk in the interbank market versus risk-free government debt. The FRED series (TEDRATE) was discontinued in January 2022 when 3-month USD LIBOR ceased publication; SOFR-based spreads are the suggested modern analogue.",
     "intuition": "It measures how much extra interest banks demand to lend to each other compared with what the US government pays — a fear gauge for bank credit risk.",
     "mechanics": "Computed daily as TED = 3-month USD LIBOR minus 3-month T-bill rate. Widening signals rising interbank credit/liquidity stress (as in 2008, when it spiked from tens of basis points to over 450); narrowing signals normalizing bank credit conditions. Eurodollar futures on LIBOR were the futures-market leg of the original trade.",
     "formula": "TED spread = r_3M_LIBOR - r_3M_Tbill, in percentage points (FRED series TEDRATE, daily, percent).",
-    "relationships": ["Credit spread", "Term structure", "Futures curve"],
+    "relationships": [
+      "Credit spread",
+      "Term structure",
+      "Futures curve"
+    ],
     "failure_modes": "The measure died with its input: USD LIBOR was removed from FRED on January 31, 2022, so the classic TED spread no longer updates and historical comparisons must be spliced with SOFR-based spreads. Even historically, LIBOR was a survey-based rate subject to manipulation and thinning interbank volumes, distorting the signal.",
     "misconceptions": "The TED spread was never a measure of stock-market or inflation risk — it specifically priced interbank unsecured credit versus sovereign risk. A low TED spread did not prove banks were healthy, only that measured LIBOR-Treasury differentials were narrow.",
     "example": "In October 2008 the TED spread widened above 4.5 percentage points as LIBOR spiked on counterparty fear while T-bill yields collapsed on safe-haven demand — an extreme reading of interbank stress.",
@@ -509,22 +596,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "Underlying series discontinued January 2022 with the end of USD LIBOR; FRED recommends SOFR-based spreads for a similar credit-risk gauge.",
     "master_index": 973
   },
   {
     "id": "futures-and-spreads/butterfly-spread",
     "name": "Butterfly spread",
-    "aliases": ["futures butterfly", "fly"],
+    "aliases": [
+      "futures butterfly",
+      "fly"
+    ],
     "domain": "Futures and spreads",
     "definition": "A three-month futures spread that combines a near-term spread and a longer-term spread: the trader buys two different delivery months and sells an intermediate month twice (or the reverse), in a 1:-2:1 ratio. The position expresses a view that the middle month — the 'whipping post' or belly — will underperform or outperform the two outer months (the wings).",
     "intuition": "It bets on the curvature of the futures curve: whether the middle of the curve is too cheap or too rich relative to its neighbors, while largely cancelling out outright and simple calendar-spread exposure.",
     "mechanics": "Constructed as long one near month, short two middle months, long one deferred month (or inverted). It can be decomposed into a bull spread plus a bear spread sharing the middle leg. Because it is long and short the same commodity in different months, it carries lower margin than outrights; profit depends on how the belly moves relative to the wings, not on the flat price level.",
     "formula": "Butterfly value = F(T1) - 2 * F(T2) + F(T3), where T1 < T2 < T3 are delivery months; a long butterfly profits when this combination moves in the direction traded.",
-    "relationships": ["Futures calendar spread", "Intracommodity spread", "Term structure", "Steepener", "Flattener"],
+    "relationships": [
+      "Futures calendar spread",
+      "Intracommodity spread",
+      "Term structure",
+      "Steepener",
+      "Flattener"
+    ],
     "failure_modes": "The spread has three points of exposure: if the curve shifts in parallel or as a simple twist rather than changing curvature, the butterfly may gain or lose little, or behave unlike the trader's view. Thin liquidity in some months magnifies execution risk across three legs, and exchange-listed butterfly instruments mitigate but do not eliminate slippage.",
     "misconceptions": "The futures butterfly is not the options butterfly: there is no strike-price payoff diagram or bounded profit zone — P&L is linear in the month-to-month spread changes. Being 'long and short the same commodity' does not make it low-risk; old-crop/new-crop butterflies can be highly volatile.",
     "example": "A corn trader buys July, sells September twice, and buys December, expecting the tight old-crop July and the new-crop December to strengthen against September; the position tracks the Jul-Sep and Sep-Dec calendar legs as one combined trade.",
@@ -537,22 +629,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "Primary-source coverage of the futures (not options) butterfly is thin; definition grounded in StoneX (a major FCM) educational material. The CFTC glossary covers only the options version.",
     "master_index": 974
   },
   {
     "id": "futures-and-spreads/steepener",
     "name": "Steepener",
-    "aliases": ["curve steepener", "yield curve steepener"],
+    "aliases": [
+      "curve steepener",
+      "yield curve steepener"
+    ],
     "domain": "Futures and spreads",
     "definition": "A yield curve spread trade that gains when the yield differential between longer-maturity and shorter-maturity rates increases (the curve steepens). It is executed long the front (shorter-maturity) leg and short the back (longer-maturity) leg, typically with Treasury futures or cash bonds weighted to be DV01-neutral.",
     "intuition": "You are betting the gap between long-term and short-term interest rates widens — whatever happens to the overall level of rates.",
     "mechanics": "Buy the spread: long the short-end instrument (e.g. 2-year Treasury futures) and short the long-end instrument (e.g. 10- or 30-year futures). Because the back leg has a larger DV01, a hedge ratio is computed so the position is DV01-neutral and P&L depends on the spread change rather than parallel rate moves; CME Group lists fixed-ratio yield curve spreads (e.g. NOB, TUF) for simplified execution.",
     "formula": "Curve spread = y_long_maturity - y_short_maturity; steepener P&L approx = (change in spread in bp) * position DV01.",
-    "relationships": ["Flattener", "Bull steepener", "Bear steepener", "Intercommodity spread", "Term structure"],
+    "relationships": [
+      "Flattener",
+      "Bull steepener",
+      "Bear steepener",
+      "Intercommodity spread",
+      "Term structure"
+    ],
     "failure_modes": "DV01-neutral construction still carries curve-shape (butterfly) and convexity risk, and the hedge ratio drifts as yields move, requiring rebalancing. Fixed-ratio exchange spreads simplify execution but leave residual ('tail') DV01 risk. Steepening driven by a violent bear move can inflict mark-to-market pain through margin even when the spread view is right.",
     "misconceptions": "A steepener is not a bet that rates will rise or fall — it isolates the slope. 'Buy the spread' in steepener context means long front leg/short back leg, which is the opposite of buying the longer-maturity yield; quoting conventions ('net change') confuse newcomers.",
     "example": "A trader buys 2-year Treasury futures and sells 10-year futures DV01-neutral when the 2s10s spread is -30 bp; if the spread widens to +20 bp, the position profits by roughly 50 bp times the position DV01.",
@@ -565,22 +662,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 975
   },
   {
     "id": "futures-and-spreads/flattener",
     "name": "Flattener",
-    "aliases": ["curve flattener", "yield curve flattener"],
+    "aliases": [
+      "curve flattener",
+      "yield curve flattener"
+    ],
     "domain": "Futures and spreads",
     "definition": "A yield curve spread trade that gains when the yield differential between longer-maturity and shorter-maturity rates decreases (the curve flattens or inverts). It is executed short the front (shorter-maturity) leg and long the back (longer-maturity) leg, typically DV01-neutral using Treasury futures or cash bonds.",
     "intuition": "You are betting the gap between long-term and short-term rates shrinks — again, independent of whether the overall rate level rises or falls.",
     "mechanics": "Sell the spread: short the short-end instrument and long the long-end instrument. As with the steepener, legs are ratioed so the position is DV01-neutral, isolating the change in the yield differential; CME Group lists fixed-ratio curve spreads to remove legging risk and obtain margin offsets.",
     "formula": "Curve spread = y_long_maturity - y_short_maturity; flattener P&L approx = -(change in spread in bp) * position DV01.",
-    "relationships": ["Steepener", "Bull flattener", "Bear flattener", "Intercommodity spread", "Term structure"],
+    "relationships": [
+      "Steepener",
+      "Bull flattener",
+      "Bear flattener",
+      "Intercommodity spread",
+      "Term structure"
+    ],
     "failure_modes": "Flattening can stall for long periods, leaving the position exposed to negative carry and roll on the futures legs. DV01 neutrality does not protect against non-parallel kinks (e.g. the 5-year point moving independently) or against convexity differences between the two legs.",
     "misconceptions": "A flattener does not require the curve to fully invert to profit — any narrowing of the spread helps. It is also not equivalent to simply shorting bonds: a parallel rise in yields is designed to wash out, leaving only the relative move.",
     "example": "Ahead of expected Fed hikes, a trader shorts 2-year futures and buys 10-year futures DV01-neutral; as front-end yields rise faster than long-end yields and 2s10s narrows from 80 bp to 30 bp, the position gains roughly 50 bp times DV01.",
@@ -593,10 +695,6 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 976
   },
   {
@@ -608,7 +706,13 @@
     "intuition": "The curve steepens from the front end rallying: short rates drop (short bonds rise) faster than long rates.",
     "mechanics": "Classified by decomposing the spread change: the 2s10s (or similar) spread widens while the short-end yield falls. A trader positioned for it holds a steepener (long front leg, short back leg), which gains from the widening; the 'bull' label describes the rate-direction component of the move, not a separate instrument.",
     "formula": "Condition: Δy_short < 0 and Δ(y_long - y_short) > 0, i.e. the front-end yield falls while the spread widens.",
-    "relationships": ["Steepener", "Bear steepener", "Bull flattener", "Flattener", "Term structure"],
+    "relationships": [
+      "Steepener",
+      "Bear steepener",
+      "Bull flattener",
+      "Flattener",
+      "Term structure"
+    ],
     "failure_modes": "The taxonomy is descriptive, not predictive: labeling a move a bull steepener after the fact does not indicate it will continue. Expectations of rate cuts can already be priced in, so the steepening may be exhausted by the time it is identified; a hawkish surprise can reverse it abruptly.",
     "misconceptions": "Bull steepener does not mean all yields rise or that long bonds lose money — typically the whole curve rallies, just more at the front. It is also not inherently bullish for stocks in all environments; a steepener driven by recession panic can coincide with equity selloffs.",
     "example": "The 2-year Treasury yield falls from 4.8% to 4.2% on expected Fed cuts while the 10-year falls only from 4.4% to 4.3%; the 2s10s spread widens from -40 bp to +10 bp — a bull steepener.",
@@ -621,10 +725,6 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "Bull/bear steepener-flattener taxonomy is practitioner terminology with no regulator/exchange definition; sourced from an established fixed-income education site.",
     "master_index": 977
   },
   {
@@ -636,7 +736,13 @@
     "intuition": "The curve steepens from the long end selling off: long rates rise (long bonds fall) faster than short rates.",
     "mechanics": "Classified by decomposing the spread change: the long-end yield rises faster than the front-end yield, widening the spread. A steepener position (long front leg, short back leg) gains; the short back leg captures most of the move because the long end drives the steepening.",
     "formula": "Condition: Δy_long > 0 and Δ(y_long - y_short) > 0, i.e. the back-end yield rises faster than the front-end yield.",
-    "relationships": ["Steepener", "Bull steepener", "Bear flattener", "Flattener", "Term structure"],
+    "relationships": [
+      "Steepener",
+      "Bull steepener",
+      "Bear flattener",
+      "Flattener",
+      "Term structure"
+    ],
     "failure_modes": "Descriptive, not predictive: bear steepeners can reverse violently on flight-to-safety rallies that hit the long end hardest. Inflation-driven steepening may also be accompanied by rising real yields that pressure the same risk assets the trader holds elsewhere.",
     "misconceptions": "It does not mean short rates are static — they may also rise, just less. Nor does a bear steepener necessarily signal imminent Fed hikes; it can reflect rising term premium or supply concerns in long-dated issuance.",
     "example": "The 10-year yield rises from 4.0% to 4.6% on inflation fears while the 2-year rises only from 4.5% to 4.7%; the 2s10s spread widens from -50 bp to -10 bp — a bear steepener.",
@@ -649,10 +755,6 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "Practitioner taxonomy without primary-source definition; sourced from an established fixed-income education site.",
     "master_index": 978
   },
   {
@@ -664,7 +766,13 @@
     "intuition": "The curve flattens from the long end rallying: long rates drop faster than short rates.",
     "mechanics": "Classified by decomposing the spread change: the back-end yield falls faster than the front-end yield, narrowing the spread. A flattener position (short front leg, long back leg) gains; the long back leg, with its high duration, captures most of the rally.",
     "formula": "Condition: Δy_long < 0 and Δ(y_long - y_short) < 0, i.e. the back-end yield falls faster than the front-end yield.",
-    "relationships": ["Flattener", "Bear flattener", "Bull steepener", "Steepener", "Term structure"],
+    "relationships": [
+      "Flattener",
+      "Bear flattener",
+      "Bull steepener",
+      "Steepener",
+      "Term structure"
+    ],
     "failure_modes": "Descriptive, not predictive: bull flatteners often occur late in tightening cycles and can reverse if the short end suddenly re-prices. Because the long leg dominates the P&L, a flattener during a bull flattener is effectively a large duration bet, with corresponding mark-to-market volatility.",
     "misconceptions": "A bull flattener is not 'good news for borrowers' in a simple sense — it frequently signals recession risk (long yields falling on growth fears while the policy rate stays high). It also does not mean short rates cannot fall at all; they simply fall less.",
     "example": "The 10-year yield drops from 4.5% to 3.9% on a growth scare while the 2-year holds near 4.9%; the 2s10s spread narrows from -40 bp to -100 bp — a bull flattener.",
@@ -677,10 +785,6 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "Practitioner taxonomy without primary-source definition; sourced from an established fixed-income education site.",
     "master_index": 979
   },
   {
@@ -692,7 +796,13 @@
     "intuition": "The curve flattens from the front end selling off: short rates rise faster than long rates, usually as the central bank hikes.",
     "mechanics": "Classified by decomposing the spread change: the front-end yield rises faster than the back-end yield, narrowing or inverting the spread. A flattener position (short front leg, long back leg) gains, with the short front leg capturing most of the move as policy-rate expectations re-price.",
     "formula": "Condition: Δy_short > 0 and Δ(y_long - y_short) < 0, i.e. the front-end yield rises faster than the back-end yield.",
-    "relationships": ["Flattener", "Bull flattener", "Bear steepener", "Steepener", "Term structure"],
+    "relationships": [
+      "Flattener",
+      "Bull flattener",
+      "Bear steepener",
+      "Steepener",
+      "Term structure"
+    ],
     "failure_modes": "Descriptive, not predictive: bear flattening late in a hiking cycle often precedes a sharp bull flattener or bull steepener, so extrapolating the pattern is hazardous. Persistent inversion can also create carry drag on flattener positions held through long plateaus.",
     "misconceptions": "A bear flattener does not require long rates to fall — they usually rise too, just less than short rates. Curve inversion produced by bear flattening is a descriptive state, not a mechanical guarantee of recession.",
     "example": "During an aggressive hiking cycle the 2-year yield climbs from 3.0% to 5.0% while the 10-year rises only from 3.2% to 4.2%; the 2s10s spread narrows from +20 bp to -80 bp — a bear flattener.",
@@ -705,22 +815,25 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "Practitioner taxonomy without primary-source definition; sourced from an established fixed-income education site.",
     "master_index": 980
   },
   {
     "id": "futures-and-spreads/open-interest-change",
     "name": "Open interest change",
-    "aliases": ["change in open interest", "delta OI"],
+    "aliases": [
+      "change in open interest",
+      "delta OI"
+    ],
     "domain": "Futures and spreads",
     "definition": "The day-over-day (or period-over-period) change in open interest — the total number of futures contracts, long or short, in a delivery month or market that have been entered into and not yet liquidated by an offsetting transaction or fulfilled by delivery. Rising open interest indicates new positions being created; falling open interest indicates positions being closed.",
     "intuition": "Volume counts how many contracts changed hands; the change in open interest tells you whether hands are entering or leaving the market.",
     "mechanics": "Computed as OI_t - OI_{t-1} from exchange-published open interest. A trade between two new entrants increases OI by one; between two existing holders closing out, it decreases OI by one; between an entrant and an exiter, OI is unchanged. Analysts combine the sign of the OI change with price direction to infer whether money is flowing into or out of a move.",
     "formula": "ΔOI = OI_t - OI_{t-1}, where OI = total open contracts (each counted once, either on the long or short side).",
-    "relationships": ["Volume-open-interest analysis", "Commitments of Traders report", "Open interest"],
+    "relationships": [
+      "Volume-open-interest analysis",
+      "Commitments of Traders report",
+      "Open interest"
+    ],
     "failure_modes": "OI changes say nothing about who is trading or their intent — the same increase can be new speculative longs or new commercial shorts. Around contract roll periods, front-month OI mechanically falls while deferred OI rises, so contract-level changes mislead unless aggregated across the curve.",
     "misconceptions": "Rising open interest does not mean 'more buyers than sellers' — every futures contract has both a buyer and a seller by construction. It also does not measure volume; high volume with flat OI indicates churn (day trading) rather than new positioning.",
     "example": "Crude oil OI rises from 1.80 million to 1.85 million contracts (+50,000) while price rallies $2: new money is entering long and short, which analysts read as fresh positioning behind the move rather than short covering.",
@@ -733,22 +846,25 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 981
   },
   {
     "id": "futures-and-spreads/volume-open-interest-analysis",
     "name": "Volume-open-interest analysis",
-    "aliases": ["volume and OI analysis", "price-volume-OI framework"],
+    "aliases": [
+      "volume and OI analysis",
+      "price-volume-OI framework"
+    ],
     "domain": "Futures and spreads",
     "definition": "A technical-analysis framework for futures markets that interprets price trends jointly with trading volume and open interest to judge whether a move is supported by new positioning or by liquidation of existing positions. It is an analytical framework or heuristic, not a proven predictive law.",
     "intuition": "Price tells you where the market went; volume tells you how much business was done; open interest tells you whether traders are staying or leaving — read together, they describe the 'conviction' behind a move.",
     "mechanics": "The classic readings: price up + volume up + OI up is taken as a strong trend (new money entering); price up + OI down suggests short covering (weaker); price down + OI up suggests new shorts entering; price down + OI down suggests long liquidation. The CFTC glossary notes chartists plot trends of price movements, volume of trading, and open interest together.",
     "formula": "",
-    "relationships": ["Open interest change", "Commitments of Traders report", "Open interest"],
+    "relationships": [
+      "Open interest change",
+      "Commitments of Traders report",
+      "Open interest"
+    ],
     "failure_modes": "The framework is unfalsifiable in its loose form — the same OI/volume pattern can be rationalized as bullish or bearish after the fact. Roll periods, spread trading, and block/EFP activity distort both volume and OI, and rising electronic market-making has weakened the link between OI changes and directional conviction.",
     "misconceptions": "High volume does not 'confirm' a trend in any causal sense, and OI cannot show net bullishness because every contract has a long and a short. The rules of thumb come from practitioner lore, not from validated statistical models.",
     "example": "Wheat rallies 3% on record volume while total open interest climbs 8%: the analyst reads new longs and shorts entering and treats the breakout as position-backed; a similar rally on falling OI would be read as short covering and viewed with more suspicion.",
@@ -761,22 +877,28 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "Interpretive rules are practitioner convention; the citation grounds the underlying data definitions (volume, open interest, charting practice), not any predictive claim.",
     "master_index": 982
   },
   {
     "id": "futures-and-spreads/commitments-of-traders-report",
     "name": "Commitments of Traders report",
-    "aliases": ["COT report", "COT"],
+    "aliases": [
+      "COT report",
+      "COT"
+    ],
     "domain": "Futures and spreads",
     "definition": "A weekly report published by the CFTC providing a breakdown of each Tuesday's open interest for markets in which 20 or more traders hold positions at or above CFTC-established reporting levels. The legacy report separates open interest into commercial, non-commercial, and non-reportable holdings; disaggregated and TFF variants provide finer categories.",
     "intuition": "It is a weekly census of who is long and who is short in each major futures market — hedgers versus speculators versus small traders.",
     "mechanics": "Compiled from confidential daily large-trader data collected under the CFTC's market surveillance program, published Fridays reflecting Tuesday positions. Available in futures-only and futures-and-options-combined formats, short and long formats; long-format reports add nonreportable positions, crop-year breakdowns, and concentration ratios for the largest four and eight traders.",
     "formula": "",
-    "relationships": ["Commercial trader", "Noncommercial trader", "Managed money", "Producer merchant processor user", "Swap dealer category", "Open interest change"],
+    "relationships": [
+      "Commercial trader",
+      "Noncommercial trader",
+      "Managed money",
+      "Producer merchant processor user",
+      "Swap dealer category",
+      "Open interest change"
+    ],
     "failure_modes": "The data are three days stale at publication and classify traders, not trades — a 'commercial' position is not necessarily a hedge, and staff classification involves judgment. Categories can be reclassified over time, and historical disaggregated data were backcast using recent classifications, reducing accuracy further back in time.",
     "misconceptions": "COT is not a real-time positioning feed, and 'noncommercial net position' is not 'the dumb money' — the category includes sophisticated macro funds. Extreme readings are not mechanical contrarian signals; large speculative positions can persist and grow for months in trending markets.",
     "example": "The legacy COT for corn shows commercials net short 300,000 contracts and noncommercials net long 220,000; analysts track how these net positions shift week to week as a positioning indicator.",
@@ -795,22 +917,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 983
   },
   {
     "id": "futures-and-spreads/commercial-trader",
     "name": "Commercial trader",
-    "aliases": ["commercials", "hedgers (COT context)"],
+    "aliases": [
+      "commercials",
+      "hedgers (COT context)"
+    ],
     "domain": "Futures and spreads",
     "definition": "In the CFTC's legacy Commitments of Traders report, a reportable trader whose futures positions are commercially motivated — traditionally producers, merchants, processors, and users of the physical commodity who manage business risks by hedging, plus swap dealers offsetting OTC risk in the futures market. In the Disaggregated COT this group is split into Producer/Merchant/Processor/User and Swap Dealers.",
     "intuition": "Commercials are the industry players using futures to insure their real business, not to bet on price direction.",
     "mechanics": "Classification is made by CFTC staff from Form 40 disclosures and other information, based on the trader's predominant activity; staff classify traders, not individual trades, so a commercial's positions may include some non-hedge activity. Legacy commercial open interest is published long, short, and (for count purposes) spreading.",
     "formula": "",
-    "relationships": ["Noncommercial trader", "Producer merchant processor user", "Swap dealer category", "Commitments of Traders report", "Basis"],
+    "relationships": [
+      "Noncommercial trader",
+      "Producer merchant processor user",
+      "Swap dealer category",
+      "Commitments of Traders report",
+      "Basis"
+    ],
     "failure_modes": "Because classification follows the trader rather than the trade, commercial positions can include speculation and swap-dealer inventory, muddying the 'hedging' interpretation. Multi-functional organizations are placed in one category by predominant activity, so mixed businesses are imperfectly represented.",
     "misconceptions": "Commercials are not automatically 'smart money' that is always right — they are hedgers whose net short in a bull market simply reflects offsetting long physical exposure. Their net position is a byproduct of risk transfer, not a directional forecast.",
     "example": "A grain elevator that has bought farmers' corn sells corn futures to lock in the price; in the legacy COT its short futures are reported as commercial positions.",
@@ -823,22 +950,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 984
   },
   {
     "id": "futures-and-spreads/noncommercial-trader",
     "name": "Noncommercial trader",
-    "aliases": ["non-commercials", "large speculators", "speculators (COT context)"],
+    "aliases": [
+      "non-commercials",
+      "large speculators",
+      "speculators (COT context)"
+    ],
     "domain": "Futures and spreads",
     "definition": "In the CFTC's legacy Commitments of Traders report, a reportable trader who does not qualify as commercial — encompassing professional money managers such as CTAs, CPOs, and hedge funds as well as a wide array of other non-commercial (speculative) traders. In the Disaggregated COT this group is split into Managed Money and Other Reportables.",
     "intuition": "Noncommercials are the market's risk-takers: participants trading futures for profit rather than to hedge a physical business.",
     "mechanics": "Classification is by CFTC staff judgment using Form 40 and other data, based on predominant activity. The legacy report shows noncommercial open interest long, short, and spreading, where spreading is the computed amount of offsetting long and short positions held by the same trader in different calendar months.",
     "formula": "",
-    "relationships": ["Commercial trader", "Managed money", "Commitments of Traders report", "Open interest change"],
+    "relationships": [
+      "Commercial trader",
+      "Managed money",
+      "Commitments of Traders report",
+      "Open interest change"
+    ],
     "failure_modes": "The category is a residual mix — trend-following CTAs, discretionary macro funds, and other speculators are lumped together, so aggregate 'speculative' positioning can hide offsetting sub-currents. Classification involves judgment and can change over time, breaking continuity in historical series.",
     "misconceptions": "Noncommercial does not mean retail or uninformed — most are professional managers; nor does a large noncommercial net position reliably mark tops or bottoms, since trends can extend positioning far beyond historical extremes.",
     "example": "A CTA running a trend-following program builds a net long of 50,000 crude oil contracts; these appear in the legacy COT as noncommercial longs, and in the Disaggregated COT as managed money.",
@@ -851,22 +983,26 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 985
   },
   {
     "id": "futures-and-spreads/managed-money",
     "name": "Managed money",
-    "aliases": ["money managers (COT)", "managed money category"],
+    "aliases": [
+      "money managers (COT)",
+      "managed money category"
+    ],
     "domain": "Futures and spreads",
     "definition": "A trader category in the CFTC's Disaggregated Commitments of Traders report comprising registered commodity trading advisors (CTAs), registered commodity pool operators (CPOs), and unregistered funds identified by the CFTC — traders engaged in managing and conducting organized futures trading on behalf of clients.",
     "intuition": "It is the 'fund money' line in the COT report: positions run by professional managers trading other people's capital.",
     "mechanics": "CFTC staff assign reportable traders to the category using Form 40 data and other information, based on predominant activity; hedge funds are included regardless of registration status. Managed money open interest is reported long, short, and spreading, where spreading is computed from offsetting positions in different calendar months of the same or related contracts.",
     "formula": "",
-    "relationships": ["Noncommercial trader", "Commitments of Traders report", "Swap dealer category", "Open interest change"],
+    "relationships": [
+      "Noncommercial trader",
+      "Commitments of Traders report",
+      "Swap dealer category",
+      "Open interest change"
+    ],
     "failure_modes": "Classification is at the trader level, so a fund's hedge-like spread books and directional books are aggregated; the spreading column partially offsets but residual judgment remains. Unregistered and offshore funds are identified only where the CFTC can identify them, so coverage is not perfectly complete.",
     "misconceptions": "Managed money is not synonymous with all speculators — other reportables also speculate; nor is it the same as the legacy noncommercial category, which also included non-fund speculators. Managed-money net length is a positioning fact, not evidence of informed forecasting skill.",
     "example": "A CPO operating a commodity pool with a large long in gold futures is classified as managed money; its position appears in the Disaggregated COT's managed money long column each week.",
@@ -879,22 +1015,27 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 986
   },
   {
     "id": "futures-and-spreads/producer-merchant-processor-user",
     "name": "Producer merchant processor user",
-    "aliases": ["PMPU", "producer/merchant/processor/user"],
+    "aliases": [
+      "PMPU",
+      "producer/merchant/processor/user"
+    ],
     "domain": "Futures and spreads",
     "definition": "A trader category in the CFTC's Disaggregated Commitments of Traders report: an entity that predominantly engages in the production, processing, packing, or handling of a physical commodity and uses the futures markets to manage or hedge risks associated with those activities.",
     "intuition": "These are the true commercials of the physical supply chain — the farmers, elevators, crushers, and end-users hedging real inventory and inputs.",
     "mechanics": "CFTC staff classify reportable traders into the category using Form 40 data and, where appropriate, direct conversations, based on predominant activity. For this category open interest is reported only as long or short — no spreading column — unlike the swap dealer, managed money, and other reportables categories.",
     "formula": "",
-    "relationships": ["Commercial trader", "Swap dealer category", "Managed money", "Commitments of Traders report", "Basis"],
+    "relationships": [
+      "Commercial trader",
+      "Swap dealer category",
+      "Managed money",
+      "Commitments of Traders report",
+      "Basis"
+    ],
     "failure_modes": "Some PMPU-classified traders also engage in swaps activity, and the CFTC cannot know with certainty that all of a trader's activity is hedging, since staff classify traders, not their trading activity. Multi-service organizations centralized in one trading entity force judgment calls on predominant activity.",
     "misconceptions": "The category is not limited to farmers and miners — merchants and processors (e.g. grain elevators, soybean crushers, refiners) count too. Their positions should not be read as directional views; a PMPU short usually represents hedged physical inventory.",
     "example": "A flour miller that buys wheat futures to hedge its forward flour sales is classified as a producer/merchant/processor/user, and its longs appear in that COT column.",
@@ -907,22 +1048,26 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 987
   },
   {
     "id": "futures-and-spreads/swap-dealer-category",
     "name": "Swap dealer category",
-    "aliases": ["swap dealers (COT)", "swap dealer classification"],
+    "aliases": [
+      "swap dealers (COT)",
+      "swap dealer classification"
+    ],
     "domain": "Futures and spreads",
     "definition": "A trader category in the CFTC's Disaggregated Commitments of Traders report: an entity that deals primarily in swaps for a commodity and uses the futures markets to manage or hedge the risk associated with those swaps transactions, whether its counterparties are speculators such as hedge funds or traditional commercial clients.",
     "intuition": "These are banks and dealers whose futures positions are the warehouse for risk they took on from OTC swap clients — the futures leg is the hedge, not the bet.",
     "mechanics": "The category was created in 2009 on the recommendation of the CFTC's 2008 Staff Report on Commodity Swap Dealers & Index Traders, splitting swap dealers out of the legacy commercial category. Swap dealer open interest is reported long, short, and spreading; commodity index business typically appears here because dealers hedge index swaps with futures.",
     "formula": "",
-    "relationships": ["Commercial trader", "Producer merchant processor user", "Managed money", "Commitments of Traders report"],
+    "relationships": [
+      "Commercial trader",
+      "Producer merchant processor user",
+      "Managed money",
+      "Commitments of Traders report"
+    ],
     "failure_modes": "Some swap-dealer-classified traders also conduct physical-commodity commercial activity, blurring the line with the PMPU category; classification reflects predominant activity and can change. The category is related to, but not identical with, the commodity index trader category in the CIT supplement — direct index investors using futures fall under managed money or other reportables instead.",
     "misconceptions": "A large swap-dealer long is not a speculative bet — it typically hedges short exposure from client index swaps. The category also does not map to the legal registration definition of 'swap dealer' under Dodd-Frank (which carries a de minimis notional threshold); it is a COT reporting classification.",
     "example": "An investment bank that sells a commodity index swap to a pension fund buys the underlying basket of futures to hedge; its futures longs are reported in the Disaggregated COT under swap dealers.",
@@ -935,10 +1080,6 @@
       }
     ],
     "source_hint": "Authoritative domain source / exact citation pending",
-    "status": "reviewed",
-    "reviewed_by": "verification swarm v1",
-    "review_date": "2026-08-06",
-    "review_note": "",
     "master_index": 988
   }
 ]
