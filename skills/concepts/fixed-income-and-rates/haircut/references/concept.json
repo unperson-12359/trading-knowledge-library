@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/haircut",
+  "canonical_sha256": "18a3d2527795253a02c9926efc9b8cece91790ed85c0938710a384abecf5e9f6",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/haircut",
+    "name": "Haircut",
+    "aliases": [
+      "margin (in collateral lending)"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "The percentage reduction applied to the market value of collateral when determining how much cash can be borrowed against it. In a repo, the haircut is the gap between the collateral's value and the cash lent, protecting the lender against a fall in collateral value before it could be sold.",
+    "intuition": "If you pledge $1 million of bonds with a 5% haircut, the lender only gives you $950,000 — the haircut is the lender's safety cushion.",
+    "mechanics": "Cash lent = collateral market value × (1 − haircut). Haircuts are set per asset class based on price volatility, liquidity, credit quality, and borrower risk; riskier or less liquid collateral receives larger haircuts.",
+    "formula": "Loan amount = collateral value × (1 − h), where h is the haircut (e.g. h = 0.05 for 5%).",
+    "relationships": [
+      "Repo rate",
+      "Secured Overnight Financing Rate",
+      "Overnight rate"
+    ],
+    "failure_modes": "Haircuts set in calm times can prove inadequate in stressed markets when collateral gaps down in value; conversely, abrupt haircut increases force deleveraging and can propagate fire sales, as seen in 2008.",
+    "misconceptions": "A haircut is not a fee or interest charge — it reduces the amount lent, not the price of the loan, and the full collateral value (less the loan) is returned when the repo unwinds.",
+    "example": "Pledging $1,000,000 of Treasury bonds at a 2% haircut lets the borrower draw $980,000 in cash; the extra $20,000 of collateral covers the lender if bond prices fall.",
+    "citations": [
+      {
+        "source": "Investopedia, Haircut",
+        "url": "https://www.investopedia.com/terms/h/haircut.asp",
+        "section": "How a Haircut Works",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

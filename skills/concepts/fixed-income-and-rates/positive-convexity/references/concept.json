@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/positive-convexity",
+  "canonical_sha256": "cabf6c574f56eae4817c4265de76299d39394b2308370b98612675d199156d02",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/positive-convexity",
+    "name": "Positive convexity",
+    "aliases": [],
+    "domain": "Fixed income and rates",
+    "definition": "A property of a bond whose price-yield relationship is convex: prices rise more when yields fall and fall less when yields rise than duration alone predicts. All standard non-callable fixed-rate bonds exhibit positive convexity; the effect grows with longer maturity and lower coupons.",
+    "intuition": "The bond's price accelerates in your favor: you gain a bit extra when rates fall and lose a bit less when rates rise, compared with the straight-line duration estimate.",
+    "mechanics": "Convexity is the curvature (second derivative) of the price-yield function; with positive convexity, duration falls as yields rise and rises as yields fall. The effect is most pronounced in long-duration, low-coupon bonds, and the price impact is captured by adding a convexity adjustment to the duration estimate.",
+    "formula": "Convexity ≈ (P(−) + P(+) − 2 × P_0) / (P_0 × Δy²) > 0; price change ≈ −ModDur × Δy × P_0 + ½ × Convexity × (Δy)² × P_0.",
+    "relationships": [
+      "Negative convexity",
+      "Macaulay duration",
+      "Effective duration",
+      "DV01"
+    ],
+    "failure_modes": "Convexity benefits are already priced in (higher-convexity bonds trade at lower yields), so it is not a free advantage; for small rate moves the convexity term is negligible and adds little to the duration estimate.",
+    "misconceptions": "Positive convexity is not a guarantee of outperformance and does not mean prices cannot fall; it only describes the curvature of the price-yield relationship.",
+    "example": "A 30-year zero-coupon bond has very high positive convexity: a 100 bp yield decline lifts its price by more than duration suggests, while a 100 bp rise costs it less.",
+    "citations": [
+      {
+        "source": "Fidelity, Duration: Understanding the Relationship Between Bond Prices and Interest Rates",
+        "url": "https://www.fidelity.com/learning-center/investment-products/fixed-income-bonds/duration",
+        "section": "Using a bond's convexity to gauge interest rate risk",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

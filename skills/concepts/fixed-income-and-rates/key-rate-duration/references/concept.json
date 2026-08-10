@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/key-rate-duration",
+  "canonical_sha256": "f8cde33ed8f452cdabc24d0e7499d822cb5f10d77eae86a9e3290219d89c2d54",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/key-rate-duration",
+    "name": "Key rate duration",
+    "aliases": [
+      "partial duration"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "A measure of a bond's or portfolio's price sensitivity to a change in yield at one specific maturity point on the curve, holding other points fixed. The set of key rate durations across maturities decomposes total interest-rate sensitivity, and they sum (approximately) to the effective duration.",
+    "intuition": "Instead of asking 'what if all rates move?', it asks 'what if only the 5-year rate moves?' — locating where along the curve a portfolio's risk actually sits.",
+    "mechanics": "The yield at a chosen key maturity (e.g. 2, 5, 10, 30 years) is shifted by a small amount (with the shift tapered to neighboring points), the security is repriced both ways, and duration is computed from the price changes; repeating across 11 standard maturities gives a sensitivity profile used for non-parallel curve hedging.",
+    "formula": "KRD_i = (P(−) − P(+)) / (2 × Δy × P_0), where P(−), P(+) are prices after a 1% down/up shift of the key rate at maturity i, and P_0 the original price.",
+    "relationships": [
+      "Effective duration",
+      "DV01",
+      "Yield curve",
+      "Macaulay duration"
+    ],
+    "failure_modes": "Real yield curves rarely move one point at a time, so isolated key rate shifts are artificial; results also depend on how the shift is tapered to adjacent maturities, making values convention-dependent.",
+    "misconceptions": "A high total duration does not reveal curve exposure: two portfolios with the same effective duration can have very different key rate profiles and behave oppositely when the curve twists.",
+    "example": "A portfolio with a 10-year key rate duration of 4.0 loses roughly 4% of value if the 10-year rate alone rises 100 bp, regardless of what other maturities do.",
+    "citations": [
+      {
+        "source": "Investopedia, Key Rate Duration",
+        "url": "https://www.investopedia.com/terms/k/keyrateduration.asp",
+        "section": "What Is Key Rate Duration?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

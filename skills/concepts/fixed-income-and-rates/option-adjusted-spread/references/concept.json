@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/option-adjusted-spread",
+  "canonical_sha256": "2584940d990b7e7ac7db6a55ed5a950d3e7e7117dd0bc86ad3abc411037817f7",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/option-adjusted-spread",
+    "name": "Option-adjusted spread",
+    "aliases": [
+      "OAS"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "The constant spread added to a benchmark spot curve that makes the model value of a security's cash flows — adjusted for the value of embedded options such as calls or prepayment rights — equal to its market price. It is the standard spread measure for callable bonds and mortgage-backed securities.",
+    "intuition": "It is the yield premium a bond pays over Treasuries after stripping out the value of any options hidden in the bond, leaving a cleaner measure of credit and liquidity compensation.",
+    "mechanics": "An interest-rate model generates many rate paths; cash flows on each path reflect option exercise (e.g. calls or prepayments). The spread over the benchmark curve that equates the average present value across paths to the market price is the OAS. ICE BofA computes index OAS as the market-cap-weighted average of constituent bond OAS versus a spot Treasury curve.",
+    "formula": "Price = (1/N) Σ_paths Σ_t CF_t(path) × DF_t(path; benchmark + OAS); OAS is solved numerically.",
+    "relationships": [
+      "Z-spread",
+      "Credit spread",
+      "Yield spread",
+      "Negative convexity"
+    ],
+    "failure_modes": "OAS is model-dependent: results vary with the volatility assumptions and interest-rate/prepayment model used, so OAS values from different models are not strictly comparable. It is also an average over scenarios, not a guaranteed earned spread.",
+    "misconceptions": "OAS is not the spread an investor will actually realize; realized excess return depends on path, default, and prepayment outcomes, not just the option adjustment.",
+    "example": "The ICE BofA US Corporate Index OAS (FRED series BAMLC0A0CM) stood around 0.8–1.0% in calm periods and spiked above 4% in March 2020, reflecting the market-wide corporate spread adjustment over the Treasury spot curve.",
+    "citations": [
+      {
+        "source": "FRED, ICE BofA US Corporate Index Option-Adjusted Spread [BAMLC0A0CM] (source: ICE Data Indices)",
+        "url": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
+        "section": "Notes",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

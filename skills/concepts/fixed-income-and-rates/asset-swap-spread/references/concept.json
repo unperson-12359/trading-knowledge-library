@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/asset-swap-spread",
+  "canonical_sha256": "053300b9cfc333fab57f5da4c922f37d50dae01f9a622cf637612e9c83a642d2",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/asset-swap-spread",
+    "name": "Asset swap spread",
+    "aliases": [
+      "ASW spread"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "The spread over the floating benchmark in an asset swap — a package in which an investor buys a fixed-rate bond and simultaneously enters an interest rate swap, paying the bond's fixed coupons and receiving a floating rate plus a spread. It expresses the bond's yield relative to the swap curve rather than to government bonds.",
+    "intuition": "It measures how much extra return a bond offers once its interest-rate exposure has been swapped away, isolating the credit and liquidity premium versus the derivatives market's benchmark.",
+    "mechanics": "In a par asset swap, the investor pays the bond's fixed coupon into the swap and receives floating (e.g. SOFR) plus or minus a fixed spread; the package is priced at par, and the spread solves for the floating-leg margin. The asset swap spread is thus the difference between the bond's economics and the matched-maturity swap rate, expressed in basis points.",
+    "formula": "ASW spread ≈ bond's spread over the swap curve such that (bond price + swap value) = par at inception; roughly ASW ≈ (bond yield − swap rate) adjusted for any premium/discount to par amortized over the swap.",
+    "relationships": [
+      "Swap spread",
+      "Z-spread",
+      "Credit spread",
+      "Option-adjusted spread"
+    ],
+    "failure_modes": "The spread depends on the swap benchmark and the assumed funding of the position; benchmark transitions (LIBOR to SOFR) changed its level and comparability. Unlike a CDS, an asset swap does not terminate on default, so it embeds recovery-risk differences.",
+    "misconceptions": "A high asset swap spread does not mean the position is protected against default — the investor keeps the bond's credit risk, since the swap typically continues even if the issuer defaults.",
+    "example": "An investor buys a bond yielding 6% when the matched swap rate is 5%; after accounting for the price premium, the asset swap spread might be quoted as SOFR + 50 bp.",
+    "citations": [
+      {
+        "source": "Investopedia, Asset Swap",
+        "url": "https://www.investopedia.com/terms/a/assetswap.asp",
+        "section": "Exploring Asset Swap Spreads",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

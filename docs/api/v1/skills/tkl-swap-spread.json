@@ -1,0 +1,80 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-swap-spread",
+  "concept_id": "fixed-income-and-rates/swap-spread",
+  "display_name": "Swap spread",
+  "domain": "Fixed income and rates",
+  "description": "Explain, compare, or apply Swap spread using the library's structured Fixed income and rates reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Swap spread",
+    "interest rate swap spread",
+    "explain Swap spread",
+    "apply Swap spread to a trading question",
+    "common misconception about Swap spread"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 53,
+  "package_path": "skills/concepts/fixed-income-and-rates/swap-spread",
+  "canonical": {
+    "source_path": "concepts/fixed-income-and-rates.json",
+    "sha256": "257f544d84cd78267ad067ca3b63fd3713fe123872f2b49253cc05f348c4fe2c"
+  },
+  "related_concept_ids": [
+    "fixed-income-and-rates/asset-swap-spread",
+    "fixed-income-and-rates/yield-spread",
+    "fixed-income-and-rates/credit-spread",
+    "fixed-income-and-rates/repo-rate",
+    "fixed-income-and-rates/secured-overnight-financing-rate"
+  ]
+}

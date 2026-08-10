@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/negative-convexity",
+  "canonical_sha256": "35af740c823419c8cedadb116f4d8b37a59a1ea6de86641465afbed8a5b5d2e4",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/negative-convexity",
+    "name": "Negative convexity",
+    "aliases": [],
+    "domain": "Fixed income and rates",
+    "definition": "A property of a bond whose price-yield relationship is concave: prices rise less when yields fall and fall more when yields rise than duration alone predicts. It is typical of callable bonds and mortgage-backed securities, whose cash flows shorten when rates decline (calls/prepayments) and lengthen when rates rise.",
+    "intuition": "The bond works against you both ways: it stops appreciating just when rates fall (because it gets called or prepaid) and keeps falling when rates rise.",
+    "mechanics": "Convexity is the second derivative of price with respect to yield, approximated as (P(−) + P(+) − 2P_0) / (P_0 × Δy²); when this quantity is negative, duration rises as yields rise (extension risk) and falls as yields fall (contraction risk), making duration-only hedges systematically wrong in the adverse direction.",
+    "formula": "Convexity ≈ (P(−) + P(+) − 2 × P_0) / (P_0 × Δy²); negative when P(−) + P(+) < 2 × P_0.",
+    "relationships": [
+      "Positive convexity",
+      "Effective duration",
+      "Option-adjusted spread",
+      "DV01"
+    ],
+    "failure_modes": "Duration-based estimates fail precisely when they are most needed (large rate moves) for negatively convex securities; hedging MBS or callable books with duration alone creates pro-cyclical hedging flows that can amplify rate swings.",
+    "misconceptions": "Negative convexity does not mean the bond must lose money; it means the price response is asymmetric, and investors are compensated for bearing it through higher yield (option-adjusted spread).",
+    "example": "A callable bond priced at 100 might gain only 3 points if yields fall 100 bp (its price is capped near the call price) but lose 6 points if yields rise 100 bp.",
+    "citations": [
+      {
+        "source": "Investopedia, Negative Convexity",
+        "url": "https://www.investopedia.com/terms/n/negative_convexity.asp",
+        "section": "What Is Negative Convexity?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

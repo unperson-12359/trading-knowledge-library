@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/z-spread",
+  "canonical_sha256": "45429c2b0cc9dafd8fdfbd0cf800cba9e44bdb2c7b12eedf49660a61c841495a",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/z-spread",
+    "name": "Z-spread",
+    "aliases": [
+      "zero-volatility spread",
+      "static spread"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "The constant spread that, when added to each point of the Treasury (or benchmark) spot rate curve, makes the present value of a bond's cash flows equal to its market price. Unlike a nominal spread measured at a single maturity, it accounts for the entire term structure; unlike OAS, it does not adjust for embedded options.",
+    "intuition": "It is the single number of extra yield the bond must offer at every point along the curve for its promised cash flows to be worth today's price.",
+    "mechanics": "Each cash flow is discounted at the benchmark spot rate for its maturity plus the spread Z; Z is solved numerically so the discounted cash flows sum to the full (dirty) price. For option-free bonds the Z-spread and OAS coincide; for bonds with embedded options the Z-spread includes compensation for option risk.",
+    "formula": "P = Σ_t CF_t / (1 + (z_t + Z)/2)^(2t), where P is the full price, CF_t the cash flow at time t, z_t the spot rate at t, and Z the Z-spread (semiannual convention).",
+    "relationships": [
+      "Option-adjusted spread",
+      "Credit spread",
+      "Yield spread",
+      "Spot rate curve"
+    ],
+    "failure_modes": "For callable or prepayable bonds the Z-spread misattributes option value to credit/liquidity, overstating the option-free spread; it also assumes cash flows are certain, so it is misleading for credit-risky securities near distress.",
+    "misconceptions": "The 'zero-volatility' name does not mean the bond is riskless; it means the spread is constant and no interest-rate volatility model (option adjustment) is applied.",
+    "example": "A 3-year bond priced at 104.90 with cash flows of 5, 5, and 105 against spot rates of 2.5%, 2.7%, and 3.0% has a Z-spread of about 0.29% (29 bp).",
+    "citations": [
+      {
+        "source": "Investopedia, Zero-Volatility Spread (Z-Spread)",
+        "url": "https://www.investopedia.com/terms/z/zspread.asp",
+        "section": "Understanding the Zero-Volatility Spread Formula and Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

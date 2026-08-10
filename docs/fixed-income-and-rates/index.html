@@ -207,6 +207,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="credit-spread"><h3>Credit spread <a class="anchor" href="#credit-spread">#</a></h3>
 <div class="field">The difference between the yield on the debt securities of a particular corporate or sovereign borrower (or a rating class of borrowers) and the yield on similar-maturity Treasury securities. It compensates investors for bearing default and credit-migration risk, plus a liquidity component.</div>
+<div class="skill-links"><a href="../skills/tkl-credit-spread/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the extra interest a risky borrower must pay over the government to persuade investors to lend to it.</div>
 <div class="field"><span class="label">Mechanics:</span> Measured as corporate (or other non-Treasury) yield minus the matched-maturity Treasury yield, or at index level as an option-adjusted spread over the Treasury spot curve, e.g. the ICE BofA US Corporate Index OAS published on FRED.</div>
 <div class="field"><span class="label">Failure modes:</span> Spreads conflate expected default losses, risk premia, and illiquidity, so they overstate pure default compensation; in crises, liquidity-driven widening can look like surging default risk. Maturity or option mismatches also distort simple yield differences.</div>
@@ -220,6 +221,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="option-adjusted-spread"><h3>Option-adjusted spread <a class="anchor" href="#option-adjusted-spread">#</a></h3>
 <div class="field">The constant spread added to a benchmark spot curve that makes the model value of a security&#x27;s cash flows — adjusted for the value of embedded options such as calls or prepayment rights — equal to its market price. It is the standard spread measure for callable bonds and mortgage-backed securities.</div>
+<div class="skill-links"><a href="../skills/tkl-option-adjusted-spread/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the yield premium a bond pays over Treasuries after stripping out the value of any options hidden in the bond, leaving a cleaner measure of credit and liquidity compensation.</div>
 <div class="field"><span class="label">Mechanics:</span> An interest-rate model generates many rate paths; cash flows on each path reflect option exercise (e.g. calls or prepayments). The spread over the benchmark curve that equates the average present value across paths to the market price is the OAS. ICE BofA computes index OAS as the market-cap-weighted average of constituent bond OAS versus a spot Treasury curve.</div>
 <div class="field"><span class="label">Failure modes:</span> OAS is model-dependent: results vary with the volatility assumptions and interest-rate/prepayment model used, so OAS values from different models are not strictly comparable. It is also an average over scenarios, not a guaranteed earned spread.</div>
@@ -232,6 +234,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="z-spread"><h3>Z-spread <a class="anchor" href="#z-spread">#</a></h3>
 <div class="field">The constant spread that, when added to each point of the Treasury (or benchmark) spot rate curve, makes the present value of a bond&#x27;s cash flows equal to its market price. Unlike a nominal spread measured at a single maturity, it accounts for the entire term structure; unlike OAS, it does not adjust for embedded options.</div>
+<div class="skill-links"><a href="../skills/tkl-z-spread/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the single number of extra yield the bond must offer at every point along the curve for its promised cash flows to be worth today&#x27;s price.</div>
 <div class="field"><span class="label">Mechanics:</span> Each cash flow is discounted at the benchmark spot rate for its maturity plus the spread Z; Z is solved numerically so the discounted cash flows sum to the full (dirty) price. For option-free bonds the Z-spread and OAS coincide; for bonds with embedded options the Z-spread includes compensation for option risk.</div>
 <div class="field"><span class="label">Failure modes:</span> For callable or prepayable bonds the Z-spread misattributes option value to credit/liquidity, overstating the option-free spread; it also assumes cash flows are certain, so it is misleading for credit-risky securities near distress.</div>
@@ -244,6 +247,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="asset-swap-spread"><h3>Asset swap spread <a class="anchor" href="#asset-swap-spread">#</a></h3>
 <div class="field">The spread over the floating benchmark in an asset swap — a package in which an investor buys a fixed-rate bond and simultaneously enters an interest rate swap, paying the bond&#x27;s fixed coupons and receiving a floating rate plus a spread. It expresses the bond&#x27;s yield relative to the swap curve rather than to government bonds.</div>
+<div class="skill-links"><a href="../skills/tkl-asset-swap-spread/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It measures how much extra return a bond offers once its interest-rate exposure has been swapped away, isolating the credit and liquidity premium versus the derivatives market&#x27;s benchmark.</div>
 <div class="field"><span class="label">Mechanics:</span> In a par asset swap, the investor pays the bond&#x27;s fixed coupon into the swap and receives floating (e.g. SOFR) plus or minus a fixed spread; the package is priced at par, and the spread solves for the floating-leg margin. The asset swap spread is thus the difference between the bond&#x27;s economics and the matched-maturity swap rate, expressed in basis points.</div>
 <div class="field"><span class="label">Failure modes:</span> The spread depends on the swap benchmark and the assumed funding of the position; benchmark transitions (LIBOR to SOFR) changed its level and comparability. Unlike a CDS, an asset swap does not terminate on default, so it embeds recovery-risk differences.</div>
@@ -256,6 +260,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="swap-spread"><h3>Swap spread <a class="anchor" href="#swap-spread">#</a></h3>
 <div class="field">The difference between the fixed rate on a plain-vanilla interest rate swap of a given maturity and the yield on a government bond of the same maturity. It reflects the relative pricing of the derivatives and government bond markets, including intermediation and funding costs.</div>
+<div class="skill-links"><a href="../skills/tkl-swap-spread/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It compares the cost of exchanging fixed-for-floating payments in the swap market with the government&#x27;s borrowing cost — a gauge of how dealers price balance-sheet usage and of relative supply and demand in the two markets.</div>
 <div class="field"><span class="label">Mechanics:</span> Swap rate minus same-maturity government bond yield, in basis points. Arbitrage links the two markets (hold the bond funded via repo, pay fixed on the swap), but dealer balance-sheet costs, repo funding rates, bond supply, and demand to receive fixed can push spreads away from zero; long-maturity USD spreads have been persistently negative in recent years, and the shift from LIBOR to risk-free rates such as SOFR mechanically lowered swap spreads.</div>
 <div class="field"><span class="label">Failure modes:</span> Spreads are not a pure credit measure: they move with repo funding costs, dealer constraints, Treasury supply, and benchmark conventions, so treating them as a simple risk gauge misleads. Negative spreads are not exploitable arbitrage profits — they compensate intermediaries for real balance-sheet costs.</div>
@@ -268,6 +273,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="dv01"><h3>DV01 <a class="anchor" href="#dv01">#</a></h3>
 <div class="field">The change in a bond&#x27;s (or portfolio&#x27;s) value, in currency units, for a one-basis-point (0.01%) change in yield. In the U.S. it is also called the dollar value of an 01; it is essentially the price value of a basis point (PVBP), often written PV01.</div>
+<div class="skill-links"><a href="../skills/tkl-dv01/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It answers the trader&#x27;s core question: how many dollars do I make or lose if yields move by one basis point?</div>
 <div class="field"><span class="label">Mechanics:</span> Computed either analytically as modified duration times full price times 0.0001, or numerically by repricing the position with yields shifted up and down one basis point and halving the difference. Because it is additive across positions, it is the standard unit for sizing and hedging interest-rate risk.</div>
 <div class="field"><span class="label">Failure modes:</span> DV01 is a linear (first-order) sensitivity: for large yield moves it ignores convexity, so realized P&amp;L deviates from the DV01 estimate. For option-embedded bonds it shifts with the level of rates.</div>
@@ -280,6 +286,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="pv01"><h3>PV01 <a class="anchor" href="#pv01">#</a></h3>
 <div class="field">The change in the present value (full price) of a bond or swap for a one-basis-point change in yield. It is the same quantity as PVBP and the U.S. market term DV01; in swap markets PV01 is the standard sensitivity measure per basis point of the swap rate.</div>
+<div class="skill-links"><a href="../skills/tkl-pv01/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the cash value gained or lost when the relevant rate ticks up or down by a single basis point.</div>
 <div class="field"><span class="label">Mechanics:</span> Estimated numerically by repricing with yields one basis point lower and one basis point higher and taking half the difference, which works even when cash flows are uncertain (e.g. callable bonds); analytically it equals modified duration times price times 0.0001.</div>
 <div class="field"><span class="label">Failure modes:</span> Like all first-order sensitivities it ignores convexity and is valid only locally; PV01 quoted on swaps depends on curve-construction and discounting conventions, so cross-vendor values can differ slightly.</div>
@@ -292,6 +299,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="key-rate-duration"><h3>Key rate duration <a class="anchor" href="#key-rate-duration">#</a></h3>
 <div class="field">A measure of a bond&#x27;s or portfolio&#x27;s price sensitivity to a change in yield at one specific maturity point on the curve, holding other points fixed. The set of key rate durations across maturities decomposes total interest-rate sensitivity, and they sum (approximately) to the effective duration.</div>
+<div class="skill-links"><a href="../skills/tkl-key-rate-duration/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Instead of asking &#x27;what if all rates move?&#x27;, it asks &#x27;what if only the 5-year rate moves?&#x27; — locating where along the curve a portfolio&#x27;s risk actually sits.</div>
 <div class="field"><span class="label">Mechanics:</span> The yield at a chosen key maturity (e.g. 2, 5, 10, 30 years) is shifted by a small amount (with the shift tapered to neighboring points), the security is repriced both ways, and duration is computed from the price changes; repeating across 11 standard maturities gives a sensitivity profile used for non-parallel curve hedging.</div>
 <div class="field"><span class="label">Failure modes:</span> Real yield curves rarely move one point at a time, so isolated key rate shifts are artificial; results also depend on how the shift is tapered to adjacent maturities, making values convention-dependent.</div>
@@ -304,6 +312,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="effective-duration"><h3>Effective duration <a class="anchor" href="#effective-duration">#</a></h3>
 <div class="field">A bond&#x27;s price sensitivity to a parallel shift in the benchmark yield curve, computed numerically by repricing the bond at higher and lower yields while allowing cash flows to change (e.g. via call or prepayment options). It is the appropriate duration measure for bonds with embedded options, where cash flows are not fixed.</div>
+<div class="skill-links"><a href="../skills/tkl-effective-duration/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It measures how much a bond&#x27;s price actually moves when rates move, recognizing that for callable or mortgage bonds the payments themselves change when rates change.</div>
 <div class="field"><span class="label">Mechanics:</span> The bond is valued under a small downward and upward parallel shift of the curve (using a model that adjusts cash flows for embedded options), and duration is approximated from the three prices; it equals the percentage price change for a 1% parallel rate move.</div>
 <div class="field"><span class="label">Failure modes:</span> It assumes parallel curve shifts, so it misses reshaping risk; it is also model-dependent for option-embedded bonds, since the prepayment or option model determines the shifted prices.</div>
@@ -317,6 +326,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="macaulay-duration"><h3>Macaulay duration <a class="anchor" href="#macaulay-duration">#</a></h3>
 <div class="field">The weighted-average time until a bond&#x27;s cash flows are received, with each cash flow weighted by its share of the bond&#x27;s present value. Expressed in years, it equals maturity for a zero-coupon bond and is always shorter than maturity for a coupon bond; it is the foundation from which modified and effective duration are derived.</div>
+<div class="skill-links"><a href="../skills/tkl-macaulay-duration/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the &#x27;center of gravity&#x27; of a bond&#x27;s payments — the single point in time at which the average dollar of the bond&#x27;s value arrives.</div>
 <div class="field"><span class="label">Mechanics:</span> Each cash flow&#x27;s present value is divided by the bond&#x27;s full price to get a weight; the weights are multiplied by the time to receipt and summed. Dividing Macaulay duration by (1 + yield per period) gives modified duration, the direct price-sensitivity measure.</div>
 <div class="field"><span class="label">Failure modes:</span> As a time measure it applies cleanly only to fixed cash flows; for callable or floating-rate instruments the cash-flow weights are not fixed, so Macaulay duration is undefined or misleading without an options model.</div>
@@ -328,6 +338,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="negative-convexity"><h3>Negative convexity <a class="anchor" href="#negative-convexity">#</a></h3>
 <div class="field">A property of a bond whose price-yield relationship is concave: prices rise less when yields fall and fall more when yields rise than duration alone predicts. It is typical of callable bonds and mortgage-backed securities, whose cash flows shorten when rates decline (calls/prepayments) and lengthen when rates rise.</div>
+<div class="skill-links"><a href="../skills/tkl-negative-convexity/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The bond works against you both ways: it stops appreciating just when rates fall (because it gets called or prepaid) and keeps falling when rates rise.</div>
 <div class="field"><span class="label">Mechanics:</span> Convexity is the second derivative of price with respect to yield, approximated as (P(−) + P(+) − 2P_0) / (P_0 × Δy²); when this quantity is negative, duration rises as yields rise (extension risk) and falls as yields fall (contraction risk), making duration-only hedges systematically wrong in the adverse direction.</div>
 <div class="field"><span class="label">Failure modes:</span> Duration-based estimates fail precisely when they are most needed (large rate moves) for negatively convex securities; hedging MBS or callable books with duration alone creates pro-cyclical hedging flows that can amplify rate swings.</div>
@@ -339,6 +350,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="positive-convexity"><h3>Positive convexity <a class="anchor" href="#positive-convexity">#</a></h3>
 <div class="field">A property of a bond whose price-yield relationship is convex: prices rise more when yields fall and fall less when yields rise than duration alone predicts. All standard non-callable fixed-rate bonds exhibit positive convexity; the effect grows with longer maturity and lower coupons.</div>
+<div class="skill-links"><a href="../skills/tkl-positive-convexity/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The bond&#x27;s price accelerates in your favor: you gain a bit extra when rates fall and lose a bit less when rates rise, compared with the straight-line duration estimate.</div>
 <div class="field"><span class="label">Mechanics:</span> Convexity is the curvature (second derivative) of the price-yield function; with positive convexity, duration falls as yields rise and rises as yields fall. The effect is most pronounced in long-duration, low-coupon bonds, and the price impact is captured by adding a convexity adjustment to the duration estimate.</div>
 <div class="field"><span class="label">Failure modes:</span> Convexity benefits are already priced in (higher-convexity bonds trade at lower yields), so it is not a free advantage; for small rate moves the convexity term is negligible and adds little to the duration estimate.</div>
@@ -350,6 +362,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="basis-point"><h3>Basis point <a class="anchor" href="#basis-point">#</a></h3>
 <div class="field">A unit of measure for interest rates and yields equal to one one-hundredth of a percentage point (0.01%). It is the standard unit for quoting yield changes, spreads, and rate moves.</div>
+<div class="skill-links"><a href="../skills/tkl-basis-point/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the &#x27;cent&#x27; of interest rates: saying &#x27;up 25 basis points&#x27; unambiguously means up 0.25 percentage points.</div>
 <div class="field"><span class="label">Mechanics:</span> Yields, spreads, and rate changes are multiplied by 100 to convert percentage points to basis points; e.g. the Federal Reserve describes changes in the federal funds target in basis points, and DV01 measures value change per one basis point.</div>
 <div class="field"><span class="label">Failure modes:</span> Confusion between basis points and percent (or between relative percent change and percentage-point change) causes order-of-magnitude errors in P&amp;L and risk calculations.</div>
@@ -363,6 +376,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="policy-rate"><h3>Policy rate <a class="anchor" href="#policy-rate">#</a></h3>
 <div class="field">The short-term interest rate that a central bank sets (or targets) to implement monetary policy. In the United States it is the Federal Open Market Committee&#x27;s target range for the federal funds rate, which the New York Fed&#x27;s trading desk defends through open market operations and administered rates.</div>
+<div class="skill-links"><a href="../skills/tkl-policy-rate/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the central bank&#x27;s main dial: raising it tightens financial conditions to cool the economy, lowering it loosens conditions to stimulate activity.</div>
 <div class="field"><span class="label">Mechanics:</span> The FOMC announces a target range for the federal funds rate; the Desk conducts repo, reverse repo, and other operations, and sets administered rates (interest on reserve balances, ON RRP offering rate, standing repo rate) to keep the effective market rate within the range.</div>
 <div class="field"><span class="label">Failure modes:</span> The policy rate directly anchors only very short-term rates; long-term yields are driven by expectations and term premia, so policy moves can fail to transmit (e.g. the 2000s &#x27;conundrum&#x27; when long yields fell as the Fed hiked). At the zero lower bound, the rate loses room as a tool.</div>
@@ -374,6 +388,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="overnight-rate"><h3>Overnight rate <a class="anchor" href="#overnight-rate">#</a></h3>
 <div class="field">The interest rate on loans or deposits with a maturity of one business day, typically traded between financial institutions to manage daily reserve or cash positions. Key U.S. overnight rates include the effective federal funds rate (unsecured) and SOFR (secured by Treasury collateral).</div>
+<div class="skill-links"><a href="../skills/tkl-overnight-rate/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the price of borrowing money until tomorrow — the shortest-maturity interest rate in the financial system and the anchor for all longer rates.</div>
 <div class="field"><span class="label">Mechanics:</span> Institutions lend and borrow cash for one day in money markets; transaction-level data are aggregated into published benchmarks (the New York Fed computes EFFR and SOFR as volume-weighted medians of overnight transactions). Central banks steer overnight rates to implement policy.</div>
 <div class="field"><span class="label">Failure modes:</span> Overnight rates can spike under collateral or reserve scarcity (e.g. the September 2019 repo spike), breaking the link with the policy target; month- and quarter-end reporting effects also distort measured rates.</div>

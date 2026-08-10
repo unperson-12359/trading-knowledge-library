@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/dv01",
+  "canonical_sha256": "b6a138b0f81dfe489fd5531181fac35b7274c0f6f712dfe852027731ea032ce3",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/dv01",
+    "name": "DV01",
+    "aliases": [
+      "dollar value of a basis point",
+      "PVBP",
+      "basis point value",
+      "BPV"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "The change in a bond's (or portfolio's) value, in currency units, for a one-basis-point (0.01%) change in yield. In the U.S. it is also called the dollar value of an 01; it is essentially the price value of a basis point (PVBP), often written PV01.",
+    "intuition": "It answers the trader's core question: how many dollars do I make or lose if yields move by one basis point?",
+    "mechanics": "Computed either analytically as modified duration times full price times 0.0001, or numerically by repricing the position with yields shifted up and down one basis point and halving the difference. Because it is additive across positions, it is the standard unit for sizing and hedging interest-rate risk.",
+    "formula": "DV01 = ModDur × P × 0.0001, where ModDur is modified duration and P the full price; equivalently DV01 = (PV(−1bp) − PV(+1bp)) / 2.",
+    "relationships": [
+      "PV01",
+      "Macaulay duration",
+      "Effective duration",
+      "Key rate duration",
+      "Basis point"
+    ],
+    "failure_modes": "DV01 is a linear (first-order) sensitivity: for large yield moves it ignores convexity, so realized P&L deviates from the DV01 estimate. For option-embedded bonds it shifts with the level of rates.",
+    "misconceptions": "DV01 is not a percentage and not a probability; and a DV01-hedged book is only hedged against small parallel yield moves, not against curve reshaping or volatility changes.",
+    "example": "A bond with modified duration 8.5 and full price 101 has DV01 ≈ 8.5 × 101 × 0.0001 ≈ $0.0859 per $100 face — about $859 per $1 million face per basis point.",
+    "citations": [
+      {
+        "source": "AnalystPrep, CFA Level 1 Fixed Income — Modified Duration, Money Duration, and Price Value of a Basis Point (PVBP)",
+        "url": "https://analystprep.com/cfa-level-1-exam/fixed-income/modified-duration-money-duration-and-price-value-of-a-basis-point-pvbp/",
+        "section": "Price Value of a Basis Point (PVBP)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/effective-duration",
+  "canonical_sha256": "8e333e0abbac248899eba9742b4a8d836602a05c87f607581912a9c1e20544f0",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/effective-duration",
+    "name": "Effective duration",
+    "aliases": [
+      "option-adjusted duration"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "A bond's price sensitivity to a parallel shift in the benchmark yield curve, computed numerically by repricing the bond at higher and lower yields while allowing cash flows to change (e.g. via call or prepayment options). It is the appropriate duration measure for bonds with embedded options, where cash flows are not fixed.",
+    "intuition": "It measures how much a bond's price actually moves when rates move, recognizing that for callable or mortgage bonds the payments themselves change when rates change.",
+    "mechanics": "The bond is valued under a small downward and upward parallel shift of the curve (using a model that adjusts cash flows for embedded options), and duration is approximated from the three prices; it equals the percentage price change for a 1% parallel rate move.",
+    "formula": "EffDur = (P(−) − P(+)) / (2 × Δy × P_0), where P(−), P(+) are prices after a parallel curve shift down/up of Δy, and P_0 the current price.",
+    "relationships": [
+      "Macaulay duration",
+      "Key rate duration",
+      "DV01",
+      "Negative convexity",
+      "Option-adjusted spread"
+    ],
+    "failure_modes": "It assumes parallel curve shifts, so it misses reshaping risk; it is also model-dependent for option-embedded bonds, since the prepayment or option model determines the shifted prices.",
+    "misconceptions": "Duration is not the bond's maturity and not a fixed property of the security — effective duration changes as rates, volatility, and time move, especially for callable bonds.",
+    "example": "If a callable bond priced at 100 would be worth 103.5 at rates 50 bp lower and 96.8 at rates 50 bp higher, its effective duration is (103.5 − 96.8)/(2 × 0.005 × 100) = 6.7.",
+    "citations": [
+      {
+        "source": "AnalystPrep, CFA Level 1 Fixed Income — Modified Duration, Money Duration, and Price Value of a Basis Point (PVBP)",
+        "url": "https://analystprep.com/cfa-level-1-exam/fixed-income/modified-duration-money-duration-and-price-value-of-a-basis-point-pvbp/",
+        "section": "Approximating Modified Duration",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Fidelity, Duration: Understanding the Relationship Between Bond Prices and Interest Rates",
+        "url": "https://www.fidelity.com/learning-center/investment-products/fixed-income-bonds/duration",
+        "section": "Using a bond's duration to gauge interest rate risk",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

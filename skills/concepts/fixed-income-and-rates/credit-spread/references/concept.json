@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/credit-spread",
+  "canonical_sha256": "acc22f5422259b68a2d3b169f38f6a8f00da096bf15fbe83a9b5e1516f652a82",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/credit-spread",
+    "name": "Credit spread",
+    "aliases": [
+      "default spread"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "The difference between the yield on the debt securities of a particular corporate or sovereign borrower (or a rating class of borrowers) and the yield on similar-maturity Treasury securities. It compensates investors for bearing default and credit-migration risk, plus a liquidity component.",
+    "intuition": "It is the extra interest a risky borrower must pay over the government to persuade investors to lend to it.",
+    "mechanics": "Measured as corporate (or other non-Treasury) yield minus the matched-maturity Treasury yield, or at index level as an option-adjusted spread over the Treasury spot curve, e.g. the ICE BofA US Corporate Index OAS published on FRED.",
+    "formula": "Credit spread = y(corporate bond) − y(matched-maturity Treasury), in basis points.",
+    "relationships": [
+      "Yield spread",
+      "Option-adjusted spread",
+      "Z-spread",
+      "Swap spread"
+    ],
+    "failure_modes": "Spreads conflate expected default losses, risk premia, and illiquidity, so they overstate pure default compensation; in crises, liquidity-driven widening can look like surging default risk. Maturity or option mismatches also distort simple yield differences.",
+    "misconceptions": "The credit spread is not a direct estimate of default probability, and a high spread does not by itself imply a mispricing or an attractive trade.",
+    "example": "If BBB-rated 10-year corporate bonds yield 5.5% while the 10-year Treasury yields 4.3%, the credit spread is 120 basis points.",
+    "citations": [
+      {
+        "source": "CFTC Glossary (A Guide to the Language of the Futures Industry)",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Credit Spread",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "FRED, ICE BofA US Corporate Index Option-Adjusted Spread [BAMLC0A0CM]",
+        "url": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
+        "section": "Notes",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

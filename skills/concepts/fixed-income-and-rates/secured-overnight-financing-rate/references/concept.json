@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/secured-overnight-financing-rate",
+  "canonical_sha256": "d88a16f2a4ea2ba1eb90c63acf672f10d6710c846168367d352f01cf3aaa20cf",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/secured-overnight-financing-rate",
+    "name": "Secured Overnight Financing Rate",
+    "aliases": [
+      "SOFR"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "A broad measure of the cost of borrowing cash overnight collateralized by U.S. Treasury securities, published each business day by the Federal Reserve Bank of New York. It is the principal U.S. dollar benchmark that replaced LIBOR for derivatives and loans.",
+    "intuition": "It is the going rate for a one-day loan backed by Treasuries — essentially a near-risk-free overnight borrowing cost built from actual repo market transactions.",
+    "mechanics": "SOFR is calculated as a volume-weighted median of transaction-level tri-party repo data, GCF Repo data, and bilateral Treasury repo cleared through FICC's DVP service (filtered to remove specials), and is published at approximately 8:00 a.m. ET each business day.",
+    "formula": "",
+    "relationships": [
+      "Repo rate",
+      "Overnight rate",
+      "Federal funds rate",
+      "Swap spread"
+    ],
+    "failure_modes": "Because it is secured and transaction-based, SOFR can spike when repo funding is scarce (e.g. September 2019) and reflects collateral market conditions rather than bank credit risk; unlike LIBOR it has no term or credit component, complicating its use in loan pricing.",
+    "misconceptions": "SOFR is not set by the Federal Reserve as a policy rate, nor is it a forecast — it is a backward-looking measure of realized overnight repo transactions.",
+    "example": "A floating-rate note might pay 'SOFR + 80 bp', resetting its coupon off the daily-published SOFR benchmark.",
+    "citations": [
+      {
+        "source": "Federal Reserve Bank of New York, Secured Overnight Financing Rate (SOFR)",
+        "url": "https://www.newyorkfed.org/markets/reference-rates/sofr",
+        "section": "SOFR definition and calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

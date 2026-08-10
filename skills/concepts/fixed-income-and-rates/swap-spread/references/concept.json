@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/swap-spread",
+  "canonical_sha256": "257f544d84cd78267ad067ca3b63fd3713fe123872f2b49253cc05f348c4fe2c",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/swap-spread",
+    "name": "Swap spread",
+    "aliases": [
+      "interest rate swap spread"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "The difference between the fixed rate on a plain-vanilla interest rate swap of a given maturity and the yield on a government bond of the same maturity. It reflects the relative pricing of the derivatives and government bond markets, including intermediation and funding costs.",
+    "intuition": "It compares the cost of exchanging fixed-for-floating payments in the swap market with the government's borrowing cost — a gauge of how dealers price balance-sheet usage and of relative supply and demand in the two markets.",
+    "mechanics": "Swap rate minus same-maturity government bond yield, in basis points. Arbitrage links the two markets (hold the bond funded via repo, pay fixed on the swap), but dealer balance-sheet costs, repo funding rates, bond supply, and demand to receive fixed can push spreads away from zero; long-maturity USD spreads have been persistently negative in recent years, and the shift from LIBOR to risk-free rates such as SOFR mechanically lowered swap spreads.",
+    "formula": "Swap spread = swap rate(maturity T) − government bond yield(maturity T), in basis points.",
+    "relationships": [
+      "Asset swap spread",
+      "Yield spread",
+      "Credit spread",
+      "Repo rate",
+      "Secured Overnight Financing Rate"
+    ],
+    "failure_modes": "Spreads are not a pure credit measure: they move with repo funding costs, dealer constraints, Treasury supply, and benchmark conventions, so treating them as a simple risk gauge misleads. Negative spreads are not exploitable arbitrage profits — they compensate intermediaries for real balance-sheet costs.",
+    "misconceptions": "A negative swap spread is not a 'free lunch' arbitrage left on the table; capturing it requires repo-funded bond holdings whose financing and balance-sheet costs consume the apparent profit.",
+    "example": "If the 10-year SOFR swap rate is 3.60% and the 10-year Treasury yields 4.05%, the 10-year swap spread is −45 basis points.",
+    "citations": [
+      {
+        "source": "BIS Quarterly Review, December 2024 — 'Negative interest rate swap spreads signal pressure in government debt absorption'",
+        "url": "https://www.bis.org/publ/qtrpdf/r_qt2412y.htm",
+        "section": "Special feature box",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/repo-rate",
+  "canonical_sha256": "e7f4e5b503e44ca969a84571bfe0d7e60650d06d478b2c46bbbb387986d41cc2",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/repo-rate",
+    "name": "Repo rate",
+    "aliases": [
+      "repurchase agreement rate"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "The implicit interest rate on a repurchase agreement, a transaction in which one party sells securities and agrees to repurchase them later at a slightly higher price — economically a loan collateralized by securities. The rate is set by the difference between the sale and repurchase prices relative to the term.",
+    "intuition": "It is the cost of borrowing cash against bonds: you hand over the securities, get cash, and pay back a bit more later — that bit more, annualized, is the repo rate.",
+    "mechanics": "In a repo the cash borrower sells securities and commits to repurchase them at a predetermined higher price; the price gap implies the repo interest. General collateral (GC) rates apply to non-specific securities, while repos on particular issues in high demand ('specials') trade at lower rates. The New York Fed uses repo and reverse repo operations to help keep the fed funds rate in its target range.",
+    "formula": "Repo rate = ((repurchase price − sale price) / sale price) × (360 or 365 / term in days), per the market's day-count convention.",
+    "relationships": [
+      "Haircut",
+      "Secured Overnight Financing Rate",
+      "Overnight rate",
+      "Swap spread",
+      "Federal funds rate"
+    ],
+    "failure_modes": "Repo rates can spike abruptly when collateral or dealer balance-sheet capacity is scarce (September 2019, March 2020), transmitting stress across funding markets; specialness can also drive individual-issue repo rates far below GC, distorting funding-cost readings.",
+    "misconceptions": "A repo is not an outright sale of the bond for risk-transfer purposes — the seller retains the economic exposure and the obligation to repurchase, so it functions as secured borrowing.",
+    "example": "A dealer sells $100 million of Treasuries overnight and agrees to repurchase them for $100.015 million; the implied overnight repo rate is about 5.4% annualized (0.015/100 × 360).",
+    "citations": [
+      {
+        "source": "Federal Reserve Bank of New York, Repo and Reverse Repo Agreements",
+        "url": "https://www.newyorkfed.org/markets/domestic-market-operations/monetary-policy-implementation/repo-reverse-repo-agreements",
+        "section": "Overview of repo and reverse repo operations",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Federal Reserve Bank of New York, Secured Overnight Financing Rate (SOFR)",
+        "url": "https://www.newyorkfed.org/markets/reference-rates/sofr",
+        "section": "General collateral vs. specials",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

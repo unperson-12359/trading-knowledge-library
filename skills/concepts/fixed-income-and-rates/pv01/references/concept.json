@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/pv01",
+  "canonical_sha256": "91dca7b206c9f3279f7c5ff4e5af85dfe9789981dde37dfa090a98f7ecbb1494",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/pv01",
+    "name": "PV01",
+    "aliases": [
+      "present value of a basis point",
+      "PVBP",
+      "price value of a basis point"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "The change in the present value (full price) of a bond or swap for a one-basis-point change in yield. It is the same quantity as PVBP and the U.S. market term DV01; in swap markets PV01 is the standard sensitivity measure per basis point of the swap rate.",
+    "intuition": "It is the cash value gained or lost when the relevant rate ticks up or down by a single basis point.",
+    "mechanics": "Estimated numerically by repricing with yields one basis point lower and one basis point higher and taking half the difference, which works even when cash flows are uncertain (e.g. callable bonds); analytically it equals modified duration times price times 0.0001.",
+    "formula": "PV01 = (PV(−1bp) − PV(+1bp)) / 2 ≈ ModDur × P × 0.0001.",
+    "relationships": [
+      "DV01",
+      "Effective duration",
+      "Macaulay duration",
+      "Key rate duration",
+      "Basis point"
+    ],
+    "failure_modes": "Like all first-order sensitivities it ignores convexity and is valid only locally; PV01 quoted on swaps depends on curve-construction and discounting conventions, so cross-vendor values can differ slightly.",
+    "misconceptions": "PV01 and DV01 are sometimes claimed to be fundamentally different measures; in practice both denote the present-value change per basis point, with naming differences by market segment rather than by concept.",
+    "example": "If a swap's present value rises by $4,600 when its rate falls 1 bp and falls by $4,400 when the rate rises 1 bp, its PV01 ≈ (4,600 + 4,400)/2 = $4,500 per bp on the position.",
+    "citations": [
+      {
+        "source": "AnalystPrep, CFA Level 1 Fixed Income — Modified Duration, Money Duration, and Price Value of a Basis Point (PVBP)",
+        "url": "https://analystprep.com/cfa-level-1-exam/fixed-income/modified-duration-money-duration-and-price-value-of-a-basis-point-pvbp/",
+        "section": "Price Value of a Basis Point (PVBP)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

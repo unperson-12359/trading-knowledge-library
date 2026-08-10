@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "fixed-income-and-rates/term-premium",
+  "canonical_sha256": "8997cb4f38d62f4e12ac1ab582d129008356833825e22d5e5c4c6461073648d0",
+  "source_path": "concepts/fixed-income-and-rates.json",
+  "concept": {
+    "id": "fixed-income-and-rates/term-premium",
+    "name": "Term premium",
+    "aliases": [
+      "bond term premium"
+    ],
+    "domain": "Fixed income and rates",
+    "definition": "The extra yield investors demand for holding a longer-term bond instead of rolling over a series of short-term instruments — compensation for the risk that future rates and inflation differ from expectations. It is the difference between a long-term yield and the expected average of future short rates, and it is not directly observable.",
+    "intuition": "Locking your money up for ten years is riskier than renewing a one-year loan ten times; the term premium is the extra pay for bearing that risk.",
+    "mechanics": "Estimated with term-structure models: a model (e.g. the Fed's Kim–Wright three-factor arbitrage-free model, published on FRED as THREEFYTP10) decomposes observed yields into expected short-rate paths plus a residual term premium. Estimates are model-dependent and can be negative.",
+    "formula": "y(T) ≈ (1/T) × Σ E[short rate_t] + TP(T), where y(T) is the T-year yield and TP(T) the term premium.",
+    "relationships": [
+      "Yield curve",
+      "Forward rate curve",
+      "Breakeven inflation",
+      "Policy rate"
+    ],
+    "failure_modes": "Term premium estimates vary substantially across models and can flip sign with specification changes; using any single estimate as ground truth for 'rich/cheap' bonds is fragile.",
+    "misconceptions": "The term premium is not a measured quantity like a yield — it is a model-implied residual, and a rising long yield does not tell you whether expectations or the premium moved without a model.",
+    "example": "If the 10-year Treasury yields 4.5% while the expected average short rate over the decade is 4.0%, the model-implied 10-year term premium is about 0.5%.",
+    "citations": [
+      {
+        "source": "FRED, Term Premium on a 10 Year Zero Coupon Bond [THREEFYTP10] (source: Board of Governors, Kim and Wright 2005)",
+        "url": "https://fred.stlouisfed.org/series/THREEFYTP10",
+        "section": "Notes",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
