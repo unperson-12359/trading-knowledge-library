@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/block-space",
+  "canonical_sha256": "e9de64576b36c91e48cdfeb983e92359e56d9967e14209c75eeb020d7acdf03f",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/block-space",
+    "name": "Block space",
+    "aliases": [
+      "blockspace"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Block space is the finite capacity of each block to include transactions, measured in gas (Ethereum) or bytes/weight (Bitcoin); it is the scarce resource that gas markets price.",
+    "intuition": "Each block is a truck with a fixed cargo hold leaving at fixed intervals — when more freight shows up than fits, shippers bid up the price of space.",
+    "mechanics": "Ethereum blocks target half the block gas limit (e.g. 15M of a 30M limit) and can expand to the limit under demand; the base fee rises or falls up to 12.5% per block to push usage back toward the target. Because each transaction consumes gas against this cap, demand for block space directly sets fee levels.",
+    "formula": "",
+    "relationships": [
+      "Gas fee",
+      "Mempool",
+      "Layer 2",
+      "Rollup"
+    ],
+    "failure_modes": "Sustained congestion makes the chain unusable for low-value transactions and invites MEV bidding wars; raising the block limit trades decentralization for capacity by increasing node hardware requirements.",
+    "misconceptions": "Block space scarcity is a design choice, not an accident — unbounded blocks would centralize validation. High fees signal demand for space, not a broken fee mechanism.",
+    "example": "If an NFT mint fills blocks to the 30M gas limit for several blocks in a row, the base fee compounds upward by 12.5% per full block, and a simple transfer that cost 10 gwei can jump past 200 gwei within minutes.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Gas and fees",
+        "url": "https://ethereum.org/en/developers/docs/gas/",
+        "section": "How are gas fees calculated?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

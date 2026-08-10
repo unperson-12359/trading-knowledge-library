@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/transaction-finality",
+  "canonical_sha256": "06bd9844ff923d9c223860adf6f8848c3f58fe1231f78cbbebfb99764786c097",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/transaction-finality",
+    "name": "Transaction finality",
+    "aliases": [
+      "finality"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Transaction finality is the point at which a transaction's inclusion in the chain becomes irreversible — on proof-of-stake Ethereum, when the block containing it sits under checkpoints justified and finalized by ≥2/3 of staked ETH, so reversal would require burning at least one-third of all stake.",
+    "intuition": "Finality is when 'pending' becomes 'set in stone' — before it, the chain can still be rewritten; after it, reversal would cost attackers billions.",
+    "mechanics": "Ethereum divides time into 32-slot epochs; validators vote on checkpoint pairs, and a checkpoint with a two-thirds supermajority becomes justified, then finalized when the next checkpoint is justified (~2 epochs, ≈13 minutes). In proof-of-work chains finality is only probabilistic: confidence grows with each confirmation but never becomes absolute.",
+    "formula": "",
+    "relationships": [
+      "Confirmation",
+      "Consensus mechanism",
+      "Proof of stake",
+      "Bridge"
+    ],
+    "failure_modes": "If >1/3 of stake goes offline or votes against finality, the chain stalls and the inactivity leak must burn dissenting stake to recover; bridges and exchanges that credit deposits before finality are exposed to reorg double-spends.",
+    "misconceptions": "One confirmation is not finality — recent blocks can be reorganized. PoS finality is economic, not absolute: reversal is possible in principle if attackers are willing to be mass-slashed.",
+    "example": "An exchange crediting ETH deposits waits for finalization (~15 minutes): reverting a finalized deposit would require an attacker to get at least one-third of all staked ETH destroyed, an economically irrational cost.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Proof-of-stake (PoS)",
+        "url": "https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/",
+        "section": "What is proof-of-stake (PoS)?",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Ethereum.org developer docs - Transactions",
+        "url": "https://ethereum.org/en/developers/docs/transactions/",
+        "section": "Transaction lifecycle",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

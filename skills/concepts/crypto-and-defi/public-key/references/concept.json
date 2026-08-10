@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/public-key",
+  "canonical_sha256": "187fe17f9203ddf28612cf2a647b635eb1ab4ffa14e73aa86170b1e7c3d3de99",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/public-key",
+    "name": "Public key",
+    "aliases": [],
+    "domain": "Crypto and DeFi",
+    "definition": "A public key is the openly shareable half of an account's cryptographic key pair, derived one-way from the private key and used by the network to verify signatures and derive the account address.",
+    "intuition": "It is like your email address for money: anyone can know it and send you funds, but only the matching private key can spend them.",
+    "mechanics": "The public key is computed from the private key by elliptic-curve multiplication, which is infeasible to reverse. On Ethereum, the account address is the last 20 bytes of the Keccak-256 hash of the public key; when a signed transaction is broadcast, nodes recover the public key from the signature to prove the sender's identity.",
+    "formula": "public_key = private_key × G (one-way elliptic curve multiplication); address = last 20 bytes of Keccak256(public_key), prefixed with 0x.",
+    "relationships": [
+      "Private key",
+      "Wallet",
+      "Seed phrase"
+    ],
+    "failure_modes": "Sharing a public key or address is safe for receiving funds, but address reuse and public on-chain history destroy privacy since anyone can trace all associated activity.",
+    "misconceptions": "A public key is not the same as an address — the address is a hash of the public key, and the public key itself is only revealed on-chain when the account first sends a transaction.",
+    "example": "An Ethereum address such as 0x5e97870f263700f46aa00d967821199b9bc5a120 is derived by hashing the account's public key; anyone can verify that a transaction signed by the matching private key genuinely came from that account.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Ethereum accounts",
+        "url": "https://ethereum.org/en/developers/docs/accounts/",
+        "section": "Externally-owned accounts and key pairs",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

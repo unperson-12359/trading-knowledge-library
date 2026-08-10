@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/proof-of-stake",
+  "canonical_sha256": "c065b4e82ae3acfe8f2f9aab3bb4d103ed9be6d4fe62a214855ff5b1eb5bdd43",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/proof-of-stake",
+    "name": "Proof of stake",
+    "aliases": [
+      "PoS"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Proof of stake (PoS) is a Sybil-resistance and block-author-selection mechanism in which validators lock capital (stake) that can be destroyed (slashed) for dishonest behavior, and are pseudo-randomly selected to propose and attest to blocks.",
+    "intuition": "Instead of proving you burned electricity, you post a bond: misbehave and your bond is burned, so cheating costs you directly.",
+    "mechanics": "In Ethereum's PoS, a validator deposits 32 ETH, runs execution, consensus and validator clients, and is randomly selected to propose blocks in 12-second slots while committees attest each epoch. Casper-FFG finalizes checkpoints backed by ≥2/3 of staked ETH; equivocation or contradictory attestations are slashable.",
+    "formula": "",
+    "relationships": [
+      "Consensus mechanism",
+      "Validator",
+      "Staking",
+      "Transaction finality",
+      "Proof of work"
+    ],
+    "failure_modes": "An attacker with >1/3 of stake can stall finality, and with a majority can steer the fork choice; long-range attacks and weak subjectivity require checkpoints; staking-pool centralization can concentrate effective control.",
+    "misconceptions": "PoS does not pay interest for 'locking money in a bank' — rewards pay for active validation duties, and downtime or misbehavior incurs penalties. Staked capital is not risk-free yield.",
+    "example": "A user deposits 32 ETH into the Ethereum deposit contract, joins the activation queue, and then attests every epoch (~6.4 minutes); if they propose two blocks in the same slot, part of their stake is slashed and they are ejected.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Proof-of-stake (PoS)",
+        "url": "https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/",
+        "section": "What is proof-of-stake (PoS)?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

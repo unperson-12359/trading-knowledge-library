@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/consensus-mechanism",
+  "canonical_sha256": "a4ee05c1b45601769ab845d6073f15e96f51f8c5c2f448dd60604bcc891aa1d3",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/consensus-mechanism",
+    "name": "Consensus mechanism",
+    "aliases": [
+      "consensus protocol",
+      "consensus algorithm"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A consensus mechanism is the complete stack of protocols, incentives and ideas that allows a distributed network of nodes to agree on a single state of a blockchain, including Sybil resistance, block author selection and a chain-selection (fork-choice) rule.",
+    "intuition": "It is the rulebook that lets thousands of strangers agree on one version of history without a referee.",
+    "mechanics": "A Sybil-resistance component (e.g. proof-of-work's energy expenditure or proof-of-stake's locked capital) makes it costly to fake identities; a block-production protocol selects who proposes and validates blocks; and a fork-choice rule (longest/heaviest chain) resolves competing versions. Economic rewards and penalties align honest behavior.",
+    "formula": "",
+    "relationships": [
+      "Proof of work",
+      "Proof of stake",
+      "Blockchain",
+      "Validator",
+      "Miner",
+      "Transaction finality"
+    ],
+    "failure_modes": "If an attacker obtains 51% of hash power or a large share of stake, they can censor or reorder transactions and, below finality thresholds, reorganize the chain; bugs in the fork-choice rule can cause chain splits.",
+    "misconceptions": "Proof-of-work and proof-of-stake alone are not complete consensus mechanisms — they are Sybil-resistance and block-author-selection components inside one (e.g. Ethereum's Gasper combines Casper-FFG with LMD-GHOST).",
+    "example": "On Ethereum, consensus is reached when validators representing at least two-thirds of total staked ETH attest to checkpoint blocks, at which point those checkpoints are justified and then finalized.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Consensus mechanisms",
+        "url": "https://ethereum.org/en/developers/docs/consensus-mechanisms/",
+        "section": "What is a consensus mechanism?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/node",
+  "canonical_sha256": "628613b2942d21a5eb23d408393bc942eaf91259a6041a53da9068c61491a682",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/node",
+    "name": "Node",
+    "aliases": [
+      "full node"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A node is any computer running blockchain client software that connects to peers, propagates transactions and blocks, and verifies data against the protocol's consensus rules.",
+    "intuition": "Every node keeps its own copy of the ledger and checks the math itself — 'don't trust, verify'.",
+    "mechanics": "Full nodes download and validate every block and re-execute transactions, pruning old state; archive nodes additionally retain all historical states; light nodes download only block headers and request proofs from full nodes. On Ethereum a node pairs an execution client (EVM/state) with a consensus client (proof-of-stake).",
+    "formula": "",
+    "relationships": [
+      "Blockchain",
+      "Validator",
+      "Miner",
+      "Consensus mechanism"
+    ],
+    "failure_modes": "If most users rely on a few hosted node/RPC providers, the network re-centralizes in practice even with many independent nodes; a bug in a dominant client can take down a large share of the network simultaneously.",
+    "misconceptions": "Running a node does not by itself earn rewards — only miners (PoW) or validators (PoS) are paid. A light node trusts block headers and does not fully verify state.",
+    "example": "An Ethereum full node stores recent state (typically the last 128 blocks), verifies every new block against consensus rules, and serves data to light clients and wallets via its RPC endpoint.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Nodes and clients",
+        "url": "https://ethereum.org/en/developers/docs/nodes-and-clients/",
+        "section": "What are nodes and clients?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

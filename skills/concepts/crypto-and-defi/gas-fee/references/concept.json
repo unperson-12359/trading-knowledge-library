@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/gas-fee",
+  "canonical_sha256": "bf7b2b780135b686f11c896fda4705ac3c8b11f56d85d8fe13ec87921ba4cd6d",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/gas-fee",
+    "name": "Gas fee",
+    "aliases": [
+      "transaction fee",
+      "network fee"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A gas fee is the payment, denominated in the chain's native currency, that compensates the network for the computational resources a transaction consumes, priced per unit of 'gas' — the protocol's measure of computational effort.",
+    "intuition": "Gas is the meter on the world's shared computer: every operation you run ticks up a bill you must pay, whether or not the transaction succeeds.",
+    "mechanics": "Fee = gas units used × (base fee + priority fee). The base fee is set by the protocol per block (adjusting up to ±12.5% based on demand against a target block size) and is burned; the priority fee (tip) goes to the validator to incentivize inclusion. Users can cap total spend with maxFeePerGas, and unused gas is refunded.",
+    "formula": "gas fee = gas_used × (base_fee + priority_fee); e.g. 21,000 × (10 + 2) gwei = 252,000 gwei = 0.000252 ETH.",
+    "relationships": [
+      "Smart contract",
+      "Block space",
+      "Mempool",
+      "Transaction count"
+    ],
+    "failure_modes": "Demand spikes can push fees above the value of small transactions, pricing users out; setting a gas limit too low causes the transaction to run out of gas, fail, and still consume the fee.",
+    "misconceptions": "Gas fees are not paid to a company — the base fee is burned and only the tip reaches the validator. A failed transaction still costs gas because computation was performed.",
+    "example": "Sending 1 ETH with a base fee of 10 gwei and a 2 gwei tip costs 21,000 × 12 gwei = 0.000252 ETH; the sender pays 1.000252 ETH total, the base fee of 0.00021 ETH is burned, and the validator keeps the 0.000042 ETH tip.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Gas and fees",
+        "url": "https://ethereum.org/en/developers/docs/gas/",
+        "section": "How are gas fees calculated?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/rollup",
+  "canonical_sha256": "0f93eff9a1875b975356e39c2d31bda6f68dca7ec74613a186d1a3c7d469b3ae",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/rollup",
+    "name": "Rollup",
+    "aliases": [
+      "roll-up"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A rollup is a layer-2 scaling solution that executes transactions off the layer-1 chain and then posts the transaction data (and a state commitment) back to the L1, so that the L1's consensus secures and finalizes the rolled-up state.",
+    "intuition": "A rollup runs thousands of transactions on a fast side system, then drops one summarized receipt onto Ethereum — the L1 keeps the evidence needed to check or reconstruct everything.",
+    "mechanics": "An operator batches offchain transactions, executes them, and publishes compressed data (as calldata or blobs) plus a new state root to an L1 rollup contract. Optimistic rollups assume validity and allow fraud challenges; zero-knowledge rollups attach a validity proof. Because the data lives on L1, anyone can reconstruct the rollup state and force exits.",
+    "formula": "",
+    "relationships": [
+      "Layer 2",
+      "Optimistic rollup",
+      "Zero-knowledge rollup",
+      "Layer 1",
+      "Bridge"
+    ],
+    "failure_modes": "Centralized sequencers can censor or reorder transactions; if data posting stops or the prover/fraud-proof system fails, users may be unable to exit; upgrade keys and admin controls on rollup contracts introduce trust assumptions.",
+    "misconceptions": "Posting data to L1 does not mean the L1 re-executes the transactions — execution happens offchain and the L1 stores evidence. Rollup transactions are not 'instantly final' — they finalize only when the L1 accepts the batch (and, for optimistic rollups, the challenge window closes).",
+    "example": "An Ethereum block targeting 15M gas can carry roughly 78,000 compressed rollup transactions per block in theory; a rollup batching 2,000 transfers per post gives users cent-level fees while Ethereum's validators secure the data.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Layer-2 scaling",
+        "url": "https://ethereum.org/en/developers/docs/scaling/layer-2-rollups/",
+        "section": "Layer 2 scaling",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/private-key",
+  "canonical_sha256": "c681cea3c55aed0b1b7f9d364b389f1d67043744aeffa1a27c4c795774b9d244",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/private-key",
+    "name": "Private key",
+    "aliases": [
+      "secret key"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A private key is a secret 256-bit number that controls an externally owned blockchain account: whoever knows it can sign transactions and spend the account's funds, so it must never be revealed.",
+    "intuition": "The private key is the one true password to your coins — there is no recovery desk if it leaks or is lost.",
+    "mechanics": "Wallets generate a random private key (64 hex characters); the corresponding public key is derived via elliptic-curve multiplication (ECDSA/secp256k1 on Ethereum), and the address is the last 20 bytes of the Keccak-256 hash of the public key. Signing a transaction with the private key proves authorization without revealing the key.",
+    "formula": "public_key = private_key × G (elliptic curve point multiplication with generator G); address = last 20 bytes of Keccak256(public_key).",
+    "relationships": [
+      "Public key",
+      "Seed phrase",
+      "Wallet"
+    ],
+    "failure_modes": "Key theft (malware, phishing, insecure backups) gives irreversible control of funds; key loss is final because no one can regenerate a private key from an address — the derivation is one-way.",
+    "misconceptions": "A private key cannot be recovered from the public address — reversing the hash or the elliptic-curve multiplication is computationally infeasible. Changing a wallet password does not change or protect an already-leaked key.",
+    "example": "A private key looks like ffffffff...415f (64 hex chars); exposing it once in a screenshot or cloud note lets anyone sweep the account's entire balance in a single signed transaction.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Ethereum accounts",
+        "url": "https://ethereum.org/en/developers/docs/accounts/",
+        "section": "Externally-owned accounts and key pairs",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

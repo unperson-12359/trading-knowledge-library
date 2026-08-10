@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/validator",
+  "canonical_sha256": "9328610756376dc00a6e1aaff5378961ed02ffcce365d33c2efb9db5b7c1e357",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/validator",
+    "name": "Validator",
+    "aliases": [],
+    "domain": "Crypto and DeFi",
+    "definition": "A validator is a node participant in a proof-of-stake network that has deposited stake and is responsible for checking new blocks, attesting to the head of the chain, and occasionally proposing new blocks, earning rewards for honest work and penalties or slashing for failures or misbehavior.",
+    "intuition": "A validator is like a juror with money on the table: it votes on what the true chain is, and loses money if it lies or sleeps.",
+    "mechanics": "On Ethereum, a validator is activated by depositing 32 ETH into the deposit contract and running execution, consensus and validator clients. Each 12-second slot one validator is chosen to propose a block and committees attest; attesting and proposing correctly yields ETH rewards, while being offline leaks stake and equivocation is slashed.",
+    "formula": "",
+    "relationships": [
+      "Proof of stake",
+      "Staking",
+      "Node",
+      "Consensus mechanism",
+      "Liquid staking token"
+    ],
+    "failure_modes": "Correlated misbehavior (mass slashing) can destroy large fractions of stake; client monoculture means a bug in a majority client can cause correlated penalties across the network; key compromise lets an attacker get the validator slashed.",
+    "misconceptions": "Running a validator is not passive income — it requires uptime and correct signing, and offline validators steadily lose ETH. Staking through a pool still carries the underlying validator risks.",
+    "example": "A validator that stays online and attests correctly earns roughly a few percent APR on its 32 ETH; one that is slashed in an isolated incident loses about 1 ETH immediately plus additional penalties over a 36-day forced exit.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Proof-of-stake (PoS)",
+        "url": "https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/",
+        "section": "What is proof-of-stake (PoS)?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/smart-contract",
+  "canonical_sha256": "05a94b2e07a7cb9b8ad524da8423416ddd1c6583194eed47c615ab1c545ec9ca",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/smart-contract",
+    "name": "Smart contract",
+    "aliases": [
+      "contract"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A smart contract is a program deployed to a blockchain — a collection of code (functions) and data (state) at a specific address — that executes automatically and exactly as written when called by a transaction.",
+    "intuition": "A vending machine for logic: given the right inputs and fee, a guaranteed, unstoppable output, with no operator able to intervene.",
+    "mechanics": "Developers compile code (e.g. Solidity) to EVM bytecode and deploy it via a transaction; the contract then exists as an account type with a balance and storage but no private key. Users and other contracts invoke its functions by sending transactions that pay gas; execution is deterministic and replicated by every node, and deployed code cannot be altered by default.",
+    "formula": "",
+    "relationships": [
+      "Gas fee",
+      "Oracle",
+      "Decentralized exchange",
+      "Lending protocol",
+      "Blockchain"
+    ],
+    "failure_modes": "Bugs are immutable — exploits like re-entrancy or logic errors can drain contracts with no way to patch or reverse; contracts cannot fetch off-chain data themselves and inherit the risks of whatever oracle they trust.",
+    "misconceptions": "Smart contracts are neither 'smart' nor legal contracts — they only execute code, cannot interpret intent, and cannot access real-world data without an oracle. 'Code is law' fails badly when the code has bugs.",
+    "example": "A simple contract might hold 100 cupcake balances and release one to any caller who sends 1 ETH; once deployed, no one — including its creator — can change the 1 ETH price or freeze the cupcakes.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Smart contracts",
+        "url": "https://ethereum.org/en/developers/docs/smart-contracts/",
+        "section": "What is a smart contract?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

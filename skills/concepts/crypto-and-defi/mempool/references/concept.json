@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/mempool",
+  "canonical_sha256": "795242b2822e7c967cc27721970b18d10c6af3829c5bfe188e73eb0d8fcecd44",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/mempool",
+    "name": "Mempool",
+    "aliases": [
+      "transaction pool",
+      "txpool"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "The mempool (memory pool) is each node's local holding area for valid broadcast transactions that have not yet been included in a block; block producers select transactions from it, typically by fee offered.",
+    "intuition": "It is the public waiting room for transactions — and because everyone can read it, predators can see your trade before it executes.",
+    "mechanics": "When a user broadcasts a transaction, each receiving node validates it, adds it to its local mempool and gossips it to peers. Validators pick transactions (usually highest priority fee first) when building a block; transactions can linger, be replaced by higher-fee versions, or be dropped. Public visibility of pending transactions enables front-running and sandwich attacks.",
+    "formula": "",
+    "relationships": [
+      "Gas fee",
+      "Block space",
+      "Sandwich attack",
+      "Maximal extractable value",
+      "Blockchain front-running"
+    ],
+    "failure_modes": "Public mempool visibility lets searchers front-run or sandwich pending trades; congestion can leave low-fee transactions pending indefinitely, and private relay channels used to avoid this reintroduce centralization.",
+    "misconceptions": "The mempool is not a single global queue — each node has its own mempool and they can differ. Inclusion is not FIFO; ordering is at the block builder's discretion and usually fee-driven.",
+    "example": "A 100 ETH Uniswap buy sits in the mempool for ~12 seconds before inclusion; a sandwich bot sees it, buys the same token in front of it, lets the victim's trade push the price up, and sells immediately after for a profit.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Proof-of-stake (PoS)",
+        "url": "https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/",
+        "section": "What is proof-of-stake (PoS)?",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Ethereum.org developer docs - Maximal extractable value (MEV)",
+        "url": "https://ethereum.org/en/developers/docs/mev/",
+        "section": "MEV examples",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

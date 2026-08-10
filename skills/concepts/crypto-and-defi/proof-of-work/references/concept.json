@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/proof-of-work",
+  "canonical_sha256": "062ac31b2d60e106a6c77850653b3aaf313d6df58b23ff69f4afecd3b85546d2",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/proof-of-work",
+    "name": "Proof of work",
+    "aliases": [
+      "PoW"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "Proof of work (PoW) is a Sybil-resistance and block-author-selection mechanism in which miners compete to find a nonce that makes a block's hash fall below a difficulty target, expending real-world computation; the chain with the most accumulated work is treated as canonical.",
+    "intuition": "Miners burn electricity on a lottery; the winning ticket lets them write the next page of the ledger, and cheating would require out-computing the whole honest network.",
+    "mechanics": "Miners repeatedly hash a candidate block header with different nonces until the hash meets the target set by the difficulty parameter; difficulty retargets to keep average block time constant. Validity is cheap to verify but expensive to produce, and the longest (most-work) chain rule resolves forks.",
+    "formula": "Find nonce n such that H(block_header(n)) <= T, where T = target set by difficulty (lower T = harder); probability per hash ≈ T / 2^256 (SHA-256).",
+    "relationships": [
+      "Consensus mechanism",
+      "Miner",
+      "Hash rate",
+      "Blockchain",
+      "Proof of stake"
+    ],
+    "failure_modes": "An attacker controlling a majority of hash rate can double-spend by mining a private chain that outpaces the honest one; mining-pool centralization and hardware/energy concentration erode the security model.",
+    "misconceptions": "PoW does not 'solve a useful puzzle' — the computation is deliberately useless work whose only purpose is to be costly. High hash rate secures history but does not increase transaction throughput.",
+    "example": "In Bitcoin, miners increment a nonce until the block hash has the required number of leading zero bits; at ~10-minute block targets, an attacker trying to reverse a 6-block-deep transaction must redo that work and then outpace all honest miners, an economically prohibitive task.",
+    "citations": [
+      {
+        "source": "Nakamoto, Bitcoin: A Peer-to-Peer Electronic Cash System (whitepaper)",
+        "url": "https://bitcoin.org/bitcoin.pdf",
+        "section": "Sections 4-6: Proof-of-Work, Network, Incentive",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Ethereum.org developer docs - Proof-of-work (PoW)",
+        "url": "https://ethereum.org/en/developers/docs/consensus-mechanisms/pow/",
+        "section": "What is Proof-of-work (PoW)?",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

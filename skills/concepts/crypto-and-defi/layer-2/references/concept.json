@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/layer-2",
+  "canonical_sha256": "15adfa393d907f18dff57d6e94901eb086c952eb2cd8e0f66ecd3a7ec6bb7a14",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/layer-2",
+    "name": "Layer 2",
+    "aliases": [
+      "L2"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A layer 2 (L2) is a protocol built on top of a layer-1 blockchain that handles transactions off the base chain to increase speed and throughput while deriving its security from the L1's consensus — chiefly via rollups, state channels, or related constructions.",
+    "intuition": "An L2 is an express lane that does the fast driving elsewhere but files the paperwork at the L1 courthouse, so the L1's security still backs every transaction.",
+    "mechanics": "Users transact on the L2 (usually via an operator called a sequencer); the L2 batches transactions and posts compressed data and/or proofs to L1 contracts. Rollups (optimistic or zero-knowledge) anchor data availability and dispute resolution on the L1; true L2s can be exited trustlessly using the on-chain data, unlike sidechains.",
+    "formula": "",
+    "relationships": [
+      "Layer 1",
+      "Rollup",
+      "Optimistic rollup",
+      "Zero-knowledge rollup",
+      "Bridge"
+    ],
+    "failure_modes": "Most L2s run a single centralized sequencer that can censor or reorder transactions and is a liveness single point of failure; bridge contracts holding L1 escrow are high-value exploit targets.",
+    "misconceptions": "Not everything marketed as L2 inherits L1 security — sidechains and validiums secure their own data and are weaker. Cheap L2 fees do not mean the L2 is trustless; sequencer centralization is the norm today.",
+    "example": "On Arbitrum (an optimistic rollup), a token swap costs a few cents instead of several dollars on Ethereum; the batch containing it is posted to Ethereum, and withdrawals to L1 finalize after a ~7-day challenge window unless a fast-exit liquidity provider is used.",
+    "citations": [
+      {
+        "source": "Ethereum.org developer docs - Layer-2 scaling",
+        "url": "https://ethereum.org/en/developers/docs/scaling/layer-2-rollups/",
+        "section": "Layer 2 scaling",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Ethereum.org glossary",
+        "url": "https://ethereum.org/en/glossary/",
+        "section": "Term definitions",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

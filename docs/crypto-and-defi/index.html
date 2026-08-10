@@ -87,6 +87,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="distributed-ledger"><h3>Distributed ledger <a class="anchor" href="#distributed-ledger">#</a></h3>
 <div class="field">A distributed ledger is a database that is replicated, shared and synchronized across multiple nodes or institutions, with updates agreed through a consensus process rather than written by a single central administrator.</div>
+<div class="skill-links"><a href="../skills/tkl-distributed-ledger/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Instead of one bank keeping the master copy of the books, every participant keeps an identical copy and they all agree on each new entry.</div>
 <div class="field"><span class="label">Mechanics:</span> Each node holds a copy of the ledger; new records are propagated through the peer-to-peer network and accepted only if they satisfy the protocol&#x27;s validation and consensus rules. A blockchain is one specific form of distributed ledger that orders records in cryptographically chained blocks, but DLT also includes non-block structures (e.g. DAGs, permissioned ledgers).</div>
 <div class="field"><span class="label">Failure modes:</span> If the consensus layer or validator set is compromised or centralized in practice, the ledger can be censored or rewritten despite nominal distribution; poor network connectivity can partition the ledger into divergent views.</div>
@@ -99,6 +100,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="consensus-mechanism"><h3>Consensus mechanism <a class="anchor" href="#consensus-mechanism">#</a></h3>
 <div class="field">A consensus mechanism is the complete stack of protocols, incentives and ideas that allows a distributed network of nodes to agree on a single state of a blockchain, including Sybil resistance, block author selection and a chain-selection (fork-choice) rule.</div>
+<div class="skill-links"><a href="../skills/tkl-consensus-mechanism/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the rulebook that lets thousands of strangers agree on one version of history without a referee.</div>
 <div class="field"><span class="label">Mechanics:</span> A Sybil-resistance component (e.g. proof-of-work&#x27;s energy expenditure or proof-of-stake&#x27;s locked capital) makes it costly to fake identities; a block-production protocol selects who proposes and validates blocks; and a fork-choice rule (longest/heaviest chain) resolves competing versions. Economic rewards and penalties align honest behavior.</div>
 <div class="field"><span class="label">Failure modes:</span> If an attacker obtains 51% of hash power or a large share of stake, they can censor or reorder transactions and, below finality thresholds, reorganize the chain; bugs in the fork-choice rule can cause chain splits.</div>
@@ -110,6 +112,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="proof-of-work"><h3>Proof of work <a class="anchor" href="#proof-of-work">#</a></h3>
 <div class="field">Proof of work (PoW) is a Sybil-resistance and block-author-selection mechanism in which miners compete to find a nonce that makes a block&#x27;s hash fall below a difficulty target, expending real-world computation; the chain with the most accumulated work is treated as canonical.</div>
+<div class="skill-links"><a href="../skills/tkl-proof-of-work/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Miners burn electricity on a lottery; the winning ticket lets them write the next page of the ledger, and cheating would require out-computing the whole honest network.</div>
 <div class="field"><span class="label">Mechanics:</span> Miners repeatedly hash a candidate block header with different nonces until the hash meets the target set by the difficulty parameter; difficulty retargets to keep average block time constant. Validity is cheap to verify but expensive to produce, and the longest (most-work) chain rule resolves forks.</div>
 <div class="field"><span class="label">Failure modes:</span> An attacker controlling a majority of hash rate can double-spend by mining a private chain that outpaces the honest one; mining-pool centralization and hardware/energy concentration erode the security model.</div>
@@ -123,6 +126,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="proof-of-stake"><h3>Proof of stake <a class="anchor" href="#proof-of-stake">#</a></h3>
 <div class="field">Proof of stake (PoS) is a Sybil-resistance and block-author-selection mechanism in which validators lock capital (stake) that can be destroyed (slashed) for dishonest behavior, and are pseudo-randomly selected to propose and attest to blocks.</div>
+<div class="skill-links"><a href="../skills/tkl-proof-of-stake/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Instead of proving you burned electricity, you post a bond: misbehave and your bond is burned, so cheating costs you directly.</div>
 <div class="field"><span class="label">Mechanics:</span> In Ethereum&#x27;s PoS, a validator deposits 32 ETH, runs execution, consensus and validator clients, and is randomly selected to propose blocks in 12-second slots while committees attest each epoch. Casper-FFG finalizes checkpoints backed by ≥2/3 of staked ETH; equivocation or contradictory attestations are slashable.</div>
 <div class="field"><span class="label">Failure modes:</span> An attacker with &gt;1/3 of stake can stall finality, and with a majority can steer the fork choice; long-range attacks and weak subjectivity require checkpoints; staking-pool centralization can concentrate effective control.</div>
@@ -134,6 +138,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="validator"><h3>Validator <a class="anchor" href="#validator">#</a></h3>
 <div class="field">A validator is a node participant in a proof-of-stake network that has deposited stake and is responsible for checking new blocks, attesting to the head of the chain, and occasionally proposing new blocks, earning rewards for honest work and penalties or slashing for failures or misbehavior.</div>
+<div class="skill-links"><a href="../skills/tkl-validator/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A validator is like a juror with money on the table: it votes on what the true chain is, and loses money if it lies or sleeps.</div>
 <div class="field"><span class="label">Mechanics:</span> On Ethereum, a validator is activated by depositing 32 ETH into the deposit contract and running execution, consensus and validator clients. Each 12-second slot one validator is chosen to propose a block and committees attest; attesting and proposing correctly yields ETH rewards, while being offline leaks stake and equivocation is slashed.</div>
 <div class="field"><span class="label">Failure modes:</span> Correlated misbehavior (mass slashing) can destroy large fractions of stake; client monoculture means a bug in a majority client can cause correlated penalties across the network; key compromise lets an attacker get the validator slashed.</div>
@@ -144,6 +149,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="miner"><h3>Miner <a class="anchor" href="#miner">#</a></h3>
 <div class="field">A miner is a network participant in a proof-of-work blockchain that expends computation to find valid block hashes, collecting new coins (block subsidy) and transaction fees in exchange for extending the chain.</div>
+<div class="skill-links"><a href="../skills/tkl-miner/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Miners are the bookkeepers of a PoW chain who pay for their write access with electricity instead of collateral.</div>
 <div class="field"><span class="label">Mechanics:</span> Miners gather transactions into a candidate block and repeatedly hash its header with varying nonces until the hash meets the difficulty target; the first to succeed broadcasts the block and earns the block reward (new issuance plus fees). Difficulty retargets so that, regardless of total hash rate, blocks arrive at a target interval.</div>
 <div class="field"><span class="label">Failure modes:</span> Miners controlling a majority of hash rate can censor transactions or execute double-spends; falling coin price with fixed energy costs can force miners offline (miner capitulation), temporarily reducing network security.</div>
@@ -155,6 +161,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="node"><h3>Node <a class="anchor" href="#node">#</a></h3>
 <div class="field">A node is any computer running blockchain client software that connects to peers, propagates transactions and blocks, and verifies data against the protocol&#x27;s consensus rules.</div>
+<div class="skill-links"><a href="../skills/tkl-node/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Every node keeps its own copy of the ledger and checks the math itself — &#x27;don&#x27;t trust, verify&#x27;.</div>
 <div class="field"><span class="label">Mechanics:</span> Full nodes download and validate every block and re-execute transactions, pruning old state; archive nodes additionally retain all historical states; light nodes download only block headers and request proofs from full nodes. On Ethereum a node pairs an execution client (EVM/state) with a consensus client (proof-of-stake).</div>
 <div class="field"><span class="label">Failure modes:</span> If most users rely on a few hosted node/RPC providers, the network re-centralizes in practice even with many independent nodes; a bug in a dominant client can take down a large share of the network simultaneously.</div>
@@ -166,6 +173,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="wallet"><h3>Wallet <a class="anchor" href="#wallet">#</a></h3>
 <div class="field">A wallet is an application or device that manages a user&#x27;s cryptographic keys and uses them to view balances, sign transactions and interact with blockchain applications; the assets themselves live on the ledger, not inside the wallet.</div>
+<div class="skill-links"><a href="../skills/tkl-wallet/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A wallet is a keychain plus a window into the blockchain, not a purse that &#x27;holds&#x27; coins.</div>
 <div class="field"><span class="label">Mechanics:</span> Wallets generate and store private keys (often derived from a seed phrase), derive public addresses, and sign transaction requests that are then broadcast to the network. They come as browser extensions, mobile or desktop apps, or hardware devices that keep keys offline; custodial &#x27;wallets&#x27; at exchanges instead entrust keys to the platform.</div>
 <div class="field"><span class="label">Failure modes:</span> Phishing sites and malicious approvals trick users into signing transactions that drain their accounts; lost keys or seed phrases mean permanent, unrecoverable loss since there is no password reset.</div>
@@ -178,6 +186,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="private-key"><h3>Private key <a class="anchor" href="#private-key">#</a></h3>
 <div class="field">A private key is a secret 256-bit number that controls an externally owned blockchain account: whoever knows it can sign transactions and spend the account&#x27;s funds, so it must never be revealed.</div>
+<div class="skill-links"><a href="../skills/tkl-private-key/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The private key is the one true password to your coins — there is no recovery desk if it leaks or is lost.</div>
 <div class="field"><span class="label">Mechanics:</span> Wallets generate a random private key (64 hex characters); the corresponding public key is derived via elliptic-curve multiplication (ECDSA/secp256k1 on Ethereum), and the address is the last 20 bytes of the Keccak-256 hash of the public key. Signing a transaction with the private key proves authorization without revealing the key.</div>
 <div class="field"><span class="label">Failure modes:</span> Key theft (malware, phishing, insecure backups) gives irreversible control of funds; key loss is final because no one can regenerate a private key from an address — the derivation is one-way.</div>
@@ -190,6 +199,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="public-key"><h3>Public key <a class="anchor" href="#public-key">#</a></h3>
 <div class="field">A public key is the openly shareable half of an account&#x27;s cryptographic key pair, derived one-way from the private key and used by the network to verify signatures and derive the account address.</div>
+<div class="skill-links"><a href="../skills/tkl-public-key/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is like your email address for money: anyone can know it and send you funds, but only the matching private key can spend them.</div>
 <div class="field"><span class="label">Mechanics:</span> The public key is computed from the private key by elliptic-curve multiplication, which is infeasible to reverse. On Ethereum, the account address is the last 20 bytes of the Keccak-256 hash of the public key; when a signed transaction is broadcast, nodes recover the public key from the signature to prove the sender&#x27;s identity.</div>
 <div class="field"><span class="label">Failure modes:</span> Sharing a public key or address is safe for receiving funds, but address reuse and public on-chain history destroy privacy since anyone can trace all associated activity.</div>
@@ -201,6 +211,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="seed-phrase"><h3>Seed phrase <a class="anchor" href="#seed-phrase">#</a></h3>
 <div class="field">A seed phrase (recovery phrase) is a human-readable list of typically 12 or 24 words that encodes the entropy from which all of a wallet&#x27;s private keys are deterministically derived, serving as the master backup for the wallet.</div>
+<div class="skill-links"><a href="../skills/tkl-seed-phrase/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the master key written in words: anyone who reads it owns everything the wallet controls, forever.</div>
 <div class="field"><span class="label">Mechanics:</span> Wallets following standards such as BIP-39 generate the phrase from random entropy and derive the entire key hierarchy from it, so re-entering the phrase on any compatible wallet regenerates the same accounts. Wallet providers instruct users to write it down offline because it is the only recovery path.</div>
 <div class="field"><span class="label">Failure modes:</span> Phishing attacks that ask users to &#x27;verify&#x27; their seed phrase are the dominant wallet-drain vector; storing it in cloud notes, photos or email makes remote theft trivial, and losing it makes funds unrecoverable.</div>
@@ -213,6 +224,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="smart-contract"><h3>Smart contract <a class="anchor" href="#smart-contract">#</a></h3>
 <div class="field">A smart contract is a program deployed to a blockchain — a collection of code (functions) and data (state) at a specific address — that executes automatically and exactly as written when called by a transaction.</div>
+<div class="skill-links"><a href="../skills/tkl-smart-contract/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A vending machine for logic: given the right inputs and fee, a guaranteed, unstoppable output, with no operator able to intervene.</div>
 <div class="field"><span class="label">Mechanics:</span> Developers compile code (e.g. Solidity) to EVM bytecode and deploy it via a transaction; the contract then exists as an account type with a balance and storage but no private key. Users and other contracts invoke its functions by sending transactions that pay gas; execution is deterministic and replicated by every node, and deployed code cannot be altered by default.</div>
 <div class="field"><span class="label">Failure modes:</span> Bugs are immutable — exploits like re-entrancy or logic errors can drain contracts with no way to patch or reverse; contracts cannot fetch off-chain data themselves and inherit the risks of whatever oracle they trust.</div>
@@ -224,6 +236,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="gas-fee"><h3>Gas fee <a class="anchor" href="#gas-fee">#</a></h3>
 <div class="field">A gas fee is the payment, denominated in the chain&#x27;s native currency, that compensates the network for the computational resources a transaction consumes, priced per unit of &#x27;gas&#x27; — the protocol&#x27;s measure of computational effort.</div>
+<div class="skill-links"><a href="../skills/tkl-gas-fee/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Gas is the meter on the world&#x27;s shared computer: every operation you run ticks up a bill you must pay, whether or not the transaction succeeds.</div>
 <div class="field"><span class="label">Mechanics:</span> Fee = gas units used × (base fee + priority fee). The base fee is set by the protocol per block (adjusting up to ±12.5% based on demand against a target block size) and is burned; the priority fee (tip) goes to the validator to incentivize inclusion. Users can cap total spend with maxFeePerGas, and unused gas is refunded.</div>
 <div class="field"><span class="label">Failure modes:</span> Demand spikes can push fees above the value of small transactions, pricing users out; setting a gas limit too low causes the transaction to run out of gas, fail, and still consume the fee.</div>
@@ -236,6 +249,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="block-space"><h3>Block space <a class="anchor" href="#block-space">#</a></h3>
 <div class="field">Block space is the finite capacity of each block to include transactions, measured in gas (Ethereum) or bytes/weight (Bitcoin); it is the scarce resource that gas markets price.</div>
+<div class="skill-links"><a href="../skills/tkl-block-space/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Each block is a truck with a fixed cargo hold leaving at fixed intervals — when more freight shows up than fits, shippers bid up the price of space.</div>
 <div class="field"><span class="label">Mechanics:</span> Ethereum blocks target half the block gas limit (e.g. 15M of a 30M limit) and can expand to the limit under demand; the base fee rises or falls up to 12.5% per block to push usage back toward the target. Because each transaction consumes gas against this cap, demand for block space directly sets fee levels.</div>
 <div class="field"><span class="label">Failure modes:</span> Sustained congestion makes the chain unusable for low-value transactions and invites MEV bidding wars; raising the block limit trades decentralization for capacity by increasing node hardware requirements.</div>
@@ -247,6 +261,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="mempool"><h3>Mempool <a class="anchor" href="#mempool">#</a></h3>
 <div class="field">The mempool (memory pool) is each node&#x27;s local holding area for valid broadcast transactions that have not yet been included in a block; block producers select transactions from it, typically by fee offered.</div>
+<div class="skill-links"><a href="../skills/tkl-mempool/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the public waiting room for transactions — and because everyone can read it, predators can see your trade before it executes.</div>
 <div class="field"><span class="label">Mechanics:</span> When a user broadcasts a transaction, each receiving node validates it, adds it to its local mempool and gossips it to peers. Validators pick transactions (usually highest priority fee first) when building a block; transactions can linger, be replaced by higher-fee versions, or be dropped. Public visibility of pending transactions enables front-running and sandwich attacks.</div>
 <div class="field"><span class="label">Failure modes:</span> Public mempool visibility lets searchers front-run or sandwich pending trades; congestion can leave low-fee transactions pending indefinitely, and private relay channels used to avoid this reintroduce centralization.</div>
@@ -259,6 +274,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="transaction-finality"><h3>Transaction finality <a class="anchor" href="#transaction-finality">#</a></h3>
 <div class="field">Transaction finality is the point at which a transaction&#x27;s inclusion in the chain becomes irreversible — on proof-of-stake Ethereum, when the block containing it sits under checkpoints justified and finalized by ≥2/3 of staked ETH, so reversal would require burning at least one-third of all stake.</div>
+<div class="skill-links"><a href="../skills/tkl-transaction-finality/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Finality is when &#x27;pending&#x27; becomes &#x27;set in stone&#x27; — before it, the chain can still be rewritten; after it, reversal would cost attackers billions.</div>
 <div class="field"><span class="label">Mechanics:</span> Ethereum divides time into 32-slot epochs; validators vote on checkpoint pairs, and a checkpoint with a two-thirds supermajority becomes justified, then finalized when the next checkpoint is justified (~2 epochs, ≈13 minutes). In proof-of-work chains finality is only probabilistic: confidence grows with each confirmation but never becomes absolute.</div>
 <div class="field"><span class="label">Failure modes:</span> If &gt;1/3 of stake goes offline or votes against finality, the chain stalls and the inactivity leak must burn dissenting stake to recover; bridges and exchanges that credit deposits before finality are exposed to reorg double-spends.</div>
@@ -271,6 +287,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="confirmation"><h3>Confirmation <a class="anchor" href="#confirmation">#</a></h3>
 <div class="field">A confirmation is the inclusion of a transaction in a mined/validated block; each additional block built on top counts as another confirmation and exponentially reduces the probability that the transaction is reversed.</div>
+<div class="skill-links"><a href="../skills/tkl-confirmation/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Each confirmation is another layer of concrete poured over your transaction — one layer can be broken through, six is conventional vault-grade.</div>
 <div class="field"><span class="label">Mechanics:</span> In proof-of-work chains, the probability that an attacker catches up to the honest chain decays exponentially with the number of confirmations (Nakamoto&#x27;s analysis), so receivers wait for N blocks (conventionally 6 for Bitcoin, ≈60 minutes) before treating payment as safe. On proof-of-stake Ethereum, confirmations culminate in explicit finality after two epochs.</div>
 <div class="field"><span class="label">Failure modes:</span> Accepting zero-confirmation transactions exposes the receiver to double-spends; during chain reorganizations, even confirmed transactions can temporarily be dropped back to pending.</div>
@@ -283,6 +300,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="layer-1"><h3>Layer 1 <a class="anchor" href="#layer-1">#</a></h3>
 <div class="field">A layer 1 (L1) is the base blockchain network itself — such as Ethereum or Bitcoin — that provides its own consensus, data availability and settlement, and on which layer-2 systems anchor their security.</div>
+<div class="skill-links"><a href="../skills/tkl-layer-1/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The L1 is the bedrock courthouse of record: slower and expensive, but its rulings are final and everything built above ultimately defers to it.</div>
 <div class="field"><span class="label">Mechanics:</span> L1s execute and validate all transactions directly on the base chain, so throughput is bounded by what ordinary nodes can process; scaling the L1 itself (onchain scaling) requires protocol changes. Layer-2 rollups move execution off the L1 but post transaction data or proofs back to it, inheriting its security and finality.</div>
 <div class="field"><span class="label">Failure modes:</span> L1 congestion prices out users and pushes activity to less secure venues; a consensus failure or successful attack on the L1 undermines every layer 2 anchored to it.</div>
@@ -295,6 +313,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="layer-2"><h3>Layer 2 <a class="anchor" href="#layer-2">#</a></h3>
 <div class="field">A layer 2 (L2) is a protocol built on top of a layer-1 blockchain that handles transactions off the base chain to increase speed and throughput while deriving its security from the L1&#x27;s consensus — chiefly via rollups, state channels, or related constructions.</div>
+<div class="skill-links"><a href="../skills/tkl-layer-2/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> An L2 is an express lane that does the fast driving elsewhere but files the paperwork at the L1 courthouse, so the L1&#x27;s security still backs every transaction.</div>
 <div class="field"><span class="label">Mechanics:</span> Users transact on the L2 (usually via an operator called a sequencer); the L2 batches transactions and posts compressed data and/or proofs to L1 contracts. Rollups (optimistic or zero-knowledge) anchor data availability and dispute resolution on the L1; true L2s can be exited trustlessly using the on-chain data, unlike sidechains.</div>
 <div class="field"><span class="label">Failure modes:</span> Most L2s run a single centralized sequencer that can censor or reorder transactions and is a liveness single point of failure; bridge contracts holding L1 escrow are high-value exploit targets.</div>
@@ -307,6 +326,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="rollup"><h3>Rollup <a class="anchor" href="#rollup">#</a></h3>
 <div class="field">A rollup is a layer-2 scaling solution that executes transactions off the layer-1 chain and then posts the transaction data (and a state commitment) back to the L1, so that the L1&#x27;s consensus secures and finalizes the rolled-up state.</div>
+<div class="skill-links"><a href="../skills/tkl-rollup/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A rollup runs thousands of transactions on a fast side system, then drops one summarized receipt onto Ethereum — the L1 keeps the evidence needed to check or reconstruct everything.</div>
 <div class="field"><span class="label">Mechanics:</span> An operator batches offchain transactions, executes them, and publishes compressed data (as calldata or blobs) plus a new state root to an L1 rollup contract. Optimistic rollups assume validity and allow fraud challenges; zero-knowledge rollups attach a validity proof. Because the data lives on L1, anyone can reconstruct the rollup state and force exits.</div>
 <div class="field"><span class="label">Failure modes:</span> Centralized sequencers can censor or reorder transactions; if data posting stops or the prover/fraud-proof system fails, users may be unable to exit; upgrade keys and admin controls on rollup contracts introduce trust assumptions.</div>

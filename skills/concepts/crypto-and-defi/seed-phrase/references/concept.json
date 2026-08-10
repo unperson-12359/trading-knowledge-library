@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "crypto-and-defi/seed-phrase",
+  "canonical_sha256": "9271743064c100598173b006a903735144d11ae9714dc8054fa6a51ac14fc3d6",
+  "source_path": "concepts/crypto-and-defi.json",
+  "concept": {
+    "id": "crypto-and-defi/seed-phrase",
+    "name": "Seed phrase",
+    "aliases": [
+      "recovery phrase",
+      "mnemonic phrase",
+      "backup phrase"
+    ],
+    "domain": "Crypto and DeFi",
+    "definition": "A seed phrase (recovery phrase) is a human-readable list of typically 12 or 24 words that encodes the entropy from which all of a wallet's private keys are deterministically derived, serving as the master backup for the wallet.",
+    "intuition": "It is the master key written in words: anyone who reads it owns everything the wallet controls, forever.",
+    "mechanics": "Wallets following standards such as BIP-39 generate the phrase from random entropy and derive the entire key hierarchy from it, so re-entering the phrase on any compatible wallet regenerates the same accounts. Wallet providers instruct users to write it down offline because it is the only recovery path.",
+    "formula": "",
+    "relationships": [
+      "Private key",
+      "Wallet",
+      "Public key"
+    ],
+    "failure_modes": "Phishing attacks that ask users to 'verify' their seed phrase are the dominant wallet-drain vector; storing it in cloud notes, photos or email makes remote theft trivial, and losing it makes funds unrecoverable.",
+    "misconceptions": "A seed phrase cannot be changed after the fact — if it leaks, the only remedy is moving funds to accounts derived from a new phrase. The wallet app's password does not protect a leaked phrase.",
+    "example": "A 12-word phrase like 'there aeroplane curve vent formation doge possible product distinct under spirit lamp' can regenerate every account in the wallet on a new device; whoever types it into any wallet software gains full control of the funds.",
+    "citations": [
+      {
+        "source": "Ethereum.org - What's an Ethereum wallet?",
+        "url": "https://ethereum.org/en/wallets/",
+        "section": "Wallets, accounts, keys and addresses",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Ethereum.org glossary",
+        "url": "https://ethereum.org/en/glossary/",
+        "section": "Term definitions",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
