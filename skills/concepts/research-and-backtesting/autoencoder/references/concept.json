@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/autoencoder",
+  "canonical_sha256": "7264c4a0a05d4fd8daa3a3f99d6802b4cb1aeb0deefd469cf7d08d93f861e481",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/autoencoder",
+    "name": "Autoencoder",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A neural network trained to reconstruct its input through a constrained latent representation produced by an encoder and decoded back to input space.",
+    "intuition": "It is a learnable mapping or representation used to turn features into predictions or groups.",
+    "mechanics": "Pass training inputs through encoder and decoder, minimize reconstruction loss, then use latent codes or reconstruction errors for downstream analysis.",
+    "formula": "Reconstruction error = loss(x, decoder(encoder(x)))",
+    "relationships": [
+      "Neural network",
+      "Principal component analysis",
+      "Anomaly detection"
+    ],
+    "failure_modes": "Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.",
+    "misconceptions": "Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.",
+    "example": "An autoencoder trained on normal returns flags a day whose reconstruction error exceeds the training threshold as anomalous.",
+    "citations": [
+      {
+        "source": "Keras example, Timeseries anomaly detection using an Autoencoder",
+        "url": "https://keras.io/examples/timeseries/timeseries_anomaly_detection/",
+        "section": "Reconstruction autoencoder workflow",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

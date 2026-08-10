@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/random-forest",
+  "canonical_sha256": "2f95bf78ebe46fdbf72f439155dc35c6e6ac73f59b160cca578fdc595180199c",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/random-forest",
+    "name": "Random forest",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A bagged ensemble of decision trees that also randomizes the candidate features considered at splits, reducing correlation among trees.",
+    "intuition": "It is a learnable mapping or representation used to turn features into predictions or groups.",
+    "mechanics": "Bootstrap rows for each tree, choose splits from random feature subsets, grow many trees, then average regression values or vote on classes.",
+    "formula": "",
+    "relationships": [
+      "Bagging",
+      "Decision tree",
+      "Ensemble model"
+    ],
+    "failure_modes": "Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.",
+    "misconceptions": "Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.",
+    "example": "Five hundred trees each consider sqrt(p) features per split; 310 vote for an up day, producing class 1.",
+    "citations": [
+      {
+        "source": "scikit-learn API, ensemble methods",
+        "url": "https://scikit-learn.org/stable/api/sklearn.ensemble.html",
+        "section": "Bagging, boosting, random forests, voting, and stacking",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

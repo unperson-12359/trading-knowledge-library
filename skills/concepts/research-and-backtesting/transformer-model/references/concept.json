@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/transformer-model",
+  "canonical_sha256": "025e480508d99f8a79ab989a795e6168efc5509f3d31e1ebef6e5f58f647c4c8",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/transformer-model",
+    "name": "Transformer model",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A sequence model built from attention and position-wise transformations rather than recurrent state updates.",
+    "intuition": "It is a learnable mapping or representation used to turn features into predictions or groups.",
+    "mechanics": "Embed inputs with position information, apply multi-head self-attention and feed-forward blocks with residual connections and normalization, then map outputs to the task.",
+    "formula": "Attention(Q,K,V) = softmax(Q K^T / sqrt(d_k)) V",
+    "relationships": [
+      "Attention mechanism",
+      "Neural network",
+      "Time series"
+    ],
+    "failure_modes": "Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.",
+    "misconceptions": "Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.",
+    "example": "A Transformer attends across 128 return observations in parallel and pools the encoded sequence for classification.",
+    "citations": [
+      {
+        "source": "Vaswani et al., Attention Is All You Need",
+        "url": "https://arxiv.org/abs/1706.03762",
+        "section": "Sections 1 and 3: attention and Transformer architecture",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

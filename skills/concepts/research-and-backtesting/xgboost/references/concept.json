@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/xgboost",
+  "canonical_sha256": "4ff6d353f2d8fa001b37bb74612fa00d1ce1dfbb7aff98a9d26e41a40e855fe1",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/xgboost",
+    "name": "XGBoost",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A scalable gradient-tree-boosting system using a regularized objective, second-order loss approximation, sparsity-aware split handling, and optimized tree construction.",
+    "intuition": "It is a learnable mapping or representation used to turn features into predictions or groups.",
+    "mechanics": "At each boosting round, use gradients and Hessians to choose tree splits and leaf weights, add the regularized tree, and update predictions.",
+    "formula": "Prediction = sum of tree leaf scores; objective = loss + sum of tree penalties",
+    "relationships": [
+      "Gradient boosting",
+      "Regularization",
+      "Ensemble model"
+    ],
+    "failure_modes": "Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.",
+    "misconceptions": "Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.",
+    "example": "A binary classifier adds 200 shallow trees at learning rate 0.05 and converts the summed margin through a logistic link.",
+    "citations": [
+      {
+        "source": "Chen and Guestrin, XGBoost: A Scalable Tree Boosting System",
+        "url": "https://arxiv.org/abs/1603.02754",
+        "section": "Regularized objective and gradient tree boosting",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

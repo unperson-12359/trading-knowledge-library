@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/long-short-term-memory-network",
+  "canonical_sha256": "a445e58f16123cd7137386d1ed534e1b2e0b76c3a0850e6221a2c7eb5b49c52a",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/long-short-term-memory-network",
+    "name": "Long short-term memory network",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A gated recurrent neural network whose cell state and input, forget, and output gates regulate information retention across long sequences.",
+    "intuition": "It is a learnable mapping or representation used to turn features into predictions or groups.",
+    "mechanics": "At each time step compute gate values, update the cell state from retained and candidate information, then expose a gated hidden state.",
+    "formula": "c_t = f_t c_(t-1) + i_t g_t; h_t = o_t tanh(c_t)",
+    "relationships": [
+      "Recurrent neural network",
+      "Neural network",
+      "Attention mechanism"
+    ],
+    "failure_modes": "Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.",
+    "misconceptions": "Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.",
+    "example": "An LSTM reads 60 daily feature vectors and uses its final hidden state to forecast the next five-day return.",
+    "citations": [
+      {
+        "source": "Keras API, Recurrent layers",
+        "url": "https://keras.io/api/layers/recurrent_layers/",
+        "section": "SimpleRNN and LSTM layers",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

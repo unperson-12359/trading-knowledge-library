@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/gradient-boosting",
+  "canonical_sha256": "b6172fd2a943bb0f9bd0ad61923e00cc8b87b3027ec68516352bd2e945133a4f",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/gradient-boosting",
+    "name": "Gradient boosting",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "Boosting that adds weak learners fitted to the negative gradient of a differentiable loss with respect to current predictions.",
+    "intuition": "It is a learnable mapping or representation used to turn features into predictions or groups.",
+    "mechanics": "Compute current predictions and loss gradients, fit a small tree to those gradients, scale it by a learning rate, and add it to the model.",
+    "formula": "",
+    "relationships": [
+      "Boosting",
+      "XGBoost",
+      "Objective function"
+    ],
+    "failure_modes": "Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.",
+    "misconceptions": "Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.",
+    "example": "A regression tree fitted to residual-like gradients is multiplied by 0.05 and added as iteration 20.",
+    "citations": [
+      {
+        "source": "scikit-learn API, ensemble methods",
+        "url": "https://scikit-learn.org/stable/api/sklearn.ensemble.html",
+        "section": "Bagging, boosting, random forests, voting, and stacking",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

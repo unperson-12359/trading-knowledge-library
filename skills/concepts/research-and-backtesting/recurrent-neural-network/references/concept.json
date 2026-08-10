@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/recurrent-neural-network",
+  "canonical_sha256": "a232c2c76ad25ed3cecd353cd7a064595cec054e53bdf876a4514c6e2e6e9673",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/recurrent-neural-network",
+    "name": "Recurrent neural network",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A neural network for sequences that updates a hidden state from the current input and previous state, sharing parameters across time steps.",
+    "intuition": "It is a learnable mapping or representation used to turn features into predictions or groups.",
+    "mechanics": "Process observations in order using h_t = activation(W_x x_t + W_h h_previous + b), then map states to outputs and train through time.",
+    "formula": "h_t = f(W_x x_t + W_h h_(t-1) + b)",
+    "relationships": [
+      "Neural network",
+      "Long short-term memory network",
+      "Time series"
+    ],
+    "failure_modes": "Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.",
+    "misconceptions": "Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.",
+    "example": "A 30-day return sequence updates one hidden state per day and the final state predicts day 31 direction.",
+    "citations": [
+      {
+        "source": "Keras API, Recurrent layers",
+        "url": "https://keras.io/api/layers/recurrent_layers/",
+        "section": "SimpleRNN and LSTM layers",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}

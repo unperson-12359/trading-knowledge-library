@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "concept_id": "research-and-backtesting/attention-mechanism",
+  "canonical_sha256": "0a3009b0d0ea8f152813d1827f8e06a9d32adb7a45d186a29be3324064fe9b82",
+  "source_path": "concepts/research-and-backtesting.json",
+  "concept": {
+    "id": "research-and-backtesting/attention-mechanism",
+    "name": "Attention mechanism",
+    "aliases": [],
+    "domain": "Research and backtesting",
+    "definition": "A differentiable operation that forms each output as a weighted combination of value vectors, with weights derived from compatibility between queries and keys.",
+    "intuition": "It is a learnable mapping or representation used to turn features into predictions or groups.",
+    "mechanics": "Compute query-key scores, scale and normalize them with softmax, then multiply the resulting weights by values; multiple heads learn different projections.",
+    "formula": "Attention(Q,K,V) = softmax(Q K^T / sqrt(d_k)) V",
+    "relationships": [
+      "Transformer model",
+      "Neural network",
+      "Time series"
+    ],
+    "failure_modes": "Flexible models can fit noise, shift under new regimes, and conceal instability when tuning is repeated on the same validation data.",
+    "misconceptions": "Greater model complexity or in-sample accuracy does not by itself imply better out-of-sample trading results.",
+    "example": "A query for the current day assigns 60% of its weight to a recent volatility shock and smaller weights to other days.",
+    "citations": [
+      {
+        "source": "Vaswani et al., Attention Is All You Need",
+        "url": "https://arxiv.org/abs/1706.03762",
+        "section": "Sections 1 and 3: attention and Transformer architecture",
+        "accessed": "2026-08-09"
+      }
+    ]
+  }
+}
