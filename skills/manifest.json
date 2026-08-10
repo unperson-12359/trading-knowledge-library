@@ -2,7 +2,7 @@
   "$schema": "../schemas/skill-manifest.schema.json",
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 440,
+  "completed_count": 460,
   "skills": [
     {
       "$schema": "../../../../schemas/concept-skill.schema.json",
@@ -35567,6 +35567,1619 @@
         "time-series-analysis/autocorrelation-function",
         "time-series-analysis/ar-model",
         "time-series-analysis/arma-model"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-white-noise",
+      "concept_id": "time-series-analysis/white-noise",
+      "display_name": "White noise",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply White noise using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "White noise",
+        "white noise process",
+        "WN",
+        "explain White noise",
+        "apply White noise to a trading question",
+        "common misconception about White noise"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/white-noise",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "30582d648f56d6b8afe52307222ff3bceefc08453ed339779106fed386c68322"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/innovation",
+        "time-series-analysis/random-walk",
+        "time-series-analysis/autocorrelation",
+        "time-series-analysis/ar-model",
+        "time-series-analysis/stationarity"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-innovation",
+      "concept_id": "time-series-analysis/innovation",
+      "display_name": "Innovation",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Innovation using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Innovation",
+        "shock",
+        "disturbance",
+        "one-step-ahead prediction error",
+        "explain Innovation",
+        "apply Innovation to a trading question",
+        "common misconception about Innovation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/innovation",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "94fff3e8bdf5366c6c69fb0b36af32a2df05ce5df5441eb0a3c464ba09835c5b"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/white-noise",
+        "time-series-analysis/ar-model",
+        "time-series-analysis/ma-model",
+        "time-series-analysis/state-space-model",
+        "time-series-analysis/residual"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-ar-model",
+      "concept_id": "time-series-analysis/ar-model",
+      "display_name": "AR model",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply AR model using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "AR model",
+        "autoregressive model",
+        "AR(p)",
+        "explain AR model",
+        "apply AR model to a trading question",
+        "common misconception about AR model"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/ar-model",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "004f155fecbf439a4382ce94fe8492bc939f2b9f78ce7050afd8af3432261a35"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/ma-model",
+        "time-series-analysis/arma-model",
+        "time-series-analysis/partial-autocorrelation-function",
+        "time-series-analysis/stationarity",
+        "time-series-analysis/innovation"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-ma-model",
+      "concept_id": "time-series-analysis/ma-model",
+      "display_name": "MA model",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply MA model using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "MA model",
+        "moving average model",
+        "MA(q)",
+        "explain MA model",
+        "apply MA model to a trading question",
+        "common misconception about MA model"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/ma-model",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "6da4c3119f34c3128a0224da69fac22bd3a74a3cc437803a15f68f5a81a4891d"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/ar-model",
+        "time-series-analysis/arma-model",
+        "time-series-analysis/innovation",
+        "time-series-analysis/white-noise",
+        "time-series-analysis/autocorrelation-function"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-arma-model",
+      "concept_id": "time-series-analysis/arma-model",
+      "display_name": "ARMA model",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply ARMA model using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "ARMA model",
+        "ARMA(p,q)",
+        "Box-Jenkins model",
+        "explain ARMA model",
+        "apply ARMA model to a trading question",
+        "common misconception about ARMA model"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/arma-model",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "7d946c9927de251ce96ac163383833d5febde04bd153c3a8a9d71d720c22103a"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/ar-model",
+        "time-series-analysis/ma-model",
+        "time-series-analysis/arima-model",
+        "time-series-analysis/seasonal-arima",
+        "time-series-analysis/stationarity",
+        "time-series-analysis/autocorrelation-function"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-arima-model",
+      "concept_id": "time-series-analysis/arima-model",
+      "display_name": "ARIMA model",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply ARIMA model using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "ARIMA model",
+        "ARIMA(p,d,q)",
+        "Box-Jenkins model",
+        "explain ARIMA model",
+        "apply ARIMA model to a trading question",
+        "common misconception about ARIMA model"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/arima-model",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "d5481d55823d1532c7de48455cd781a6f11367bff0da6e8f2f699f42386a3c96"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/arma-model",
+        "time-series-analysis/ar-model",
+        "time-series-analysis/ma-model",
+        "time-series-analysis/seasonal-arima",
+        "time-series-analysis/stationarity",
+        "time-series-analysis/unit-root"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-seasonal-arima",
+      "concept_id": "time-series-analysis/seasonal-arima",
+      "display_name": "Seasonal ARIMA",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Seasonal ARIMA using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Seasonal ARIMA",
+        "SARIMA",
+        "SARIMA(p,d,q)(P,D,Q)s",
+        "multiplicative seasonal ARIMA",
+        "explain Seasonal ARIMA",
+        "apply Seasonal ARIMA to a trading question",
+        "common misconception about Seasonal ARIMA"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/seasonal-arima",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "63e79e19581d3dccda9457faf67e2d25537b514904fd9610b0c4155aa447696b"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/arima-model",
+        "time-series-analysis/arma-model",
+        "time-series-analysis/stationarity",
+        "time-series-analysis/white-noise"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-vector-autoregression",
+      "concept_id": "time-series-analysis/vector-autoregression",
+      "display_name": "Vector autoregression",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Vector autoregression using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Vector autoregression",
+        "VAR",
+        "VAR(p)",
+        "explain Vector autoregression",
+        "apply Vector autoregression to a trading question",
+        "common misconception about Vector autoregression"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/vector-autoregression",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "7a3ebd8c710a93f3fe63e5f94712e25fc4d970bc8274eb5a86358931e97fe469"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/ar-model",
+        "time-series-analysis/granger-causality",
+        "time-series-analysis/cointegration",
+        "time-series-analysis/error-correction-model",
+        "time-series-analysis/ordinary-least-squares"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-cointegration",
+      "concept_id": "time-series-analysis/cointegration",
+      "display_name": "Cointegration",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Cointegration using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Cointegration",
+        "cointegrated series",
+        "long-run equilibrium relationship",
+        "explain Cointegration",
+        "apply Cointegration to a trading question",
+        "common misconception about Cointegration"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/cointegration",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "488072287b8d3331142a93b43a83f4d1038c4dedd30e6ff576b5eab61a702e8b"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/error-correction-model",
+        "time-series-analysis/unit-root",
+        "time-series-analysis/stationarity",
+        "time-series-analysis/vector-autoregression"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-error-correction-model",
+      "concept_id": "time-series-analysis/error-correction-model",
+      "display_name": "Error-correction model",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Error-correction model using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Error-correction model",
+        "ECM",
+        "VECM",
+        "vector error-correction model",
+        "explain Error-correction model",
+        "apply Error-correction model to a trading question",
+        "common misconception about Error-correction model"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/error-correction-model",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "ed10fedf1aef71fbb06285f71a96ffaf52de5b3cf7222fe397946f24ac85df37"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/cointegration",
+        "time-series-analysis/vector-autoregression",
+        "time-series-analysis/unit-root",
+        "time-series-analysis/stationarity"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-granger-causality",
+      "concept_id": "time-series-analysis/granger-causality",
+      "display_name": "Granger causality",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Granger causality using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Granger causality",
+        "Granger causality test",
+        "Granger-Sims causality",
+        "explain Granger causality",
+        "apply Granger causality to a trading question",
+        "common misconception about Granger causality"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/granger-causality",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "a17886ba6f60e9b2d7ee83502c4fa572ef24095043c84ad670057358e6552de3"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/vector-autoregression",
+        "time-series-analysis/ar-model",
+        "time-series-analysis/cointegration",
+        "time-series-analysis/time-series"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-heteroskedasticity",
+      "concept_id": "time-series-analysis/heteroskedasticity",
+      "display_name": "Heteroskedasticity",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Heteroskedasticity using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Heteroskedasticity",
+        "heteroscedasticity",
+        "non-constant variance",
+        "explain Heteroskedasticity",
+        "apply Heteroskedasticity to a trading question",
+        "common misconception about Heteroskedasticity"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/heteroskedasticity",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "f9f5ccd1965272d2e5015567a28bd2799dbf7ae094d7866b8ce03b2df64d80f0"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/conditional-heteroskedasticity",
+        "time-series-analysis/ordinary-least-squares",
+        "time-series-analysis/residual",
+        "time-series-analysis/arch-model",
+        "time-series-analysis/linear-regression"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-conditional-heteroskedasticity",
+      "concept_id": "time-series-analysis/conditional-heteroskedasticity",
+      "display_name": "Conditional heteroskedasticity",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Conditional heteroskedasticity using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Conditional heteroskedasticity",
+        "time-varying volatility",
+        "volatility clustering",
+        "explain Conditional heteroskedasticity",
+        "apply Conditional heteroskedasticity to a trading question",
+        "common misconception about Conditional heteroskedasticity"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/conditional-heteroskedasticity",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "a00e78398fec0be112b7fbccb5fd7496aa2a62af3eb6968b11592ee5fee3bfb6"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/heteroskedasticity",
+        "time-series-analysis/arch-model",
+        "time-series-analysis/garch-model",
+        "time-series-analysis/innovation",
+        "time-series-analysis/stochastic-volatility-model"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-arch-model",
+      "concept_id": "time-series-analysis/arch-model",
+      "display_name": "ARCH model",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply ARCH model using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "ARCH model",
+        "ARCH(q)",
+        "autoregressive conditional heteroscedasticity",
+        "explain ARCH model",
+        "apply ARCH model to a trading question",
+        "common misconception about ARCH model"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/arch-model",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "6f26ca8d8e19fca680b0cdd45723903e31b987fb56f288b80a956d28248409e8"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/garch-model",
+        "time-series-analysis/conditional-heteroskedasticity",
+        "time-series-analysis/heteroskedasticity",
+        "time-series-analysis/innovation"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-garch-model",
+      "concept_id": "time-series-analysis/garch-model",
+      "display_name": "GARCH model",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply GARCH model using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "GARCH model",
+        "GARCH(p,q)",
+        "generalized autoregressive conditional heteroskedasticity",
+        "explain GARCH model",
+        "apply GARCH model to a trading question",
+        "common misconception about GARCH model"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/garch-model",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "f473a06dd2efed31f3d04c0aff06c1f25bf998b615a54baf462ebab373be87a6"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/arch-model",
+        "time-series-analysis/egarch-model",
+        "time-series-analysis/gjr-garch-model",
+        "time-series-analysis/conditional-heteroskedasticity",
+        "time-series-analysis/stochastic-volatility-model"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-egarch-model",
+      "concept_id": "time-series-analysis/egarch-model",
+      "display_name": "EGARCH model",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply EGARCH model using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "EGARCH model",
+        "exponential GARCH",
+        "EGARCH(1,1)",
+        "explain EGARCH model",
+        "apply EGARCH model to a trading question",
+        "common misconception about EGARCH model"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/egarch-model",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "6880824851d871097861f81e061a8a673dba75f01b05f4cc50ac48588158f4e6"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/garch-model",
+        "time-series-analysis/gjr-garch-model",
+        "time-series-analysis/conditional-heteroskedasticity",
+        "time-series-analysis/stochastic-volatility-model"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-gjr-garch-model",
+      "concept_id": "time-series-analysis/gjr-garch-model",
+      "display_name": "GJR-GARCH model",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply GJR-GARCH model using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "GJR-GARCH model",
+        "GJR-GARCH(1,1,1)",
+        "threshold GARCH",
+        "explain GJR-GARCH model",
+        "apply GJR-GARCH model to a trading question",
+        "common misconception about GJR-GARCH model"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/gjr-garch-model",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "ca0d4d20bd498cb2ebbf41fbe7e5da98017f63528f3f6e7fc3795fe6b99b1733"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/garch-model",
+        "time-series-analysis/egarch-model",
+        "time-series-analysis/conditional-heteroskedasticity"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-stochastic-volatility-model",
+      "concept_id": "time-series-analysis/stochastic-volatility-model",
+      "display_name": "Stochastic volatility model",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Stochastic volatility model using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Stochastic volatility model",
+        "SV model",
+        "Heston model",
+        "explain Stochastic volatility model",
+        "apply Stochastic volatility model to a trading question",
+        "common misconception about Stochastic volatility model"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/stochastic-volatility-model",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "1fca52952c568d6f71eb6a89b80cbb55c4c8203161b7b29114d2b07a6debcd02"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/conditional-heteroskedasticity",
+        "time-series-analysis/garch-model",
+        "time-series-analysis/state-space-model",
+        "time-series-analysis/kalman-filter"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-hidden-markov-model",
+      "concept_id": "time-series-analysis/hidden-markov-model",
+      "display_name": "Hidden Markov model",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Hidden Markov model using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Hidden Markov model",
+        "HMM",
+        "explain Hidden Markov model",
+        "apply Hidden Markov model to a trading question",
+        "common misconception about Hidden Markov model"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/hidden-markov-model",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "a063ae501d7faaeea59c2f5eb5487b0c8f725bbf3ebabc4eafb0182799cbeffe"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/regime-switching-model",
+        "time-series-analysis/state-space-model",
+        "time-series-analysis/kalman-filter",
+        "time-series-analysis/maximum-likelihood-estimation"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-kalman-filter",
+      "concept_id": "time-series-analysis/kalman-filter",
+      "display_name": "Kalman filter",
+      "domain": "Time-series analysis",
+      "description": "Explain, compare, or apply Kalman filter using the library's structured Time-series analysis reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Kalman filter",
+        "Kalman-Bucy filter",
+        "linear quadratic estimator",
+        "explain Kalman filter",
+        "apply Kalman filter to a trading question",
+        "common misconception about Kalman filter"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 23,
+      "package_path": "skills/concepts/time-series-analysis/kalman-filter",
+      "canonical": {
+        "source_path": "concepts/time-series-analysis.json",
+        "sha256": "e6d58ed01ae915d960f9b1f486ac5b873176082ae701701f2566ed14c61955a8"
+      },
+      "related_concept_ids": [
+        "time-series-analysis/state-space-model",
+        "time-series-analysis/hidden-markov-model",
+        "time-series-analysis/innovation",
+        "time-series-analysis/stochastic-volatility-model"
       ]
     }
   ]

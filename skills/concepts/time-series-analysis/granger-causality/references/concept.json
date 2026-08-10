@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/granger-causality",
+  "canonical_sha256": "a17886ba6f60e9b2d7ee83502c4fa572ef24095043c84ad670057358e6552de3",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/granger-causality",
+    "name": "Granger causality",
+    "aliases": [
+      "Granger causality test",
+      "Granger-Sims causality"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A statistical precedence concept: a series x Granger-causes y if past values of x improve the forecast of y beyond what past values of y alone provide, tested by F-tests on lagged coefficients in an autoregression or VAR. Introduced by Granger (1969).",
+    "intuition": "If knowing yesterday's thunder helps predict today's rain beyond what yesterday's rain tells you, thunder Granger-causes rain: it is incremental predictive content, not metaphysical cause.",
+    "mechanics": "Regress y_t on p of its own lags (restricted model), then add p lags of x_t (unrestricted model); an F-test of the joint null that all x-lag coefficients are zero rejects Granger non-causality. The test runs in both directions and generalizes in a VAR to block-exogeneity Wald tests.",
+    "formula": "In y_t = a_0 + sum_{i=1}^p a_i y_{t-i} + sum_{j=1}^p b_j x_{t-j} + e_t, x Granger-causes y if the b_j are jointly non-zero (F-test of H_0: b_1 = ... = b_p = 0).",
+    "relationships": [
+      "Vector autoregression",
+      "AR model",
+      "Cointegration",
+      "Time series"
+    ],
+    "failure_modes": "Results are sensitive to lag length, sample period, and omitted variables: an omitted common driver manufactures apparent causality. With integrated or cointegrated data, standard F-test distributions are invalid without Toda-Yamamoto or VECM adjustments.",
+    "misconceptions": "That Granger causality is true causality: it is only incremental predictability within the chosen information set, and enlarging that set can reverse the conclusion.",
+    "example": "Testing whether money-supply growth Granger-causes GDP growth amounts to adding lagged money growth to an autoregression of GDP growth and jointly testing its coefficients.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.2307/1912791",
+        "url": "https://api.crossref.org/works/10.2307/1912791",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

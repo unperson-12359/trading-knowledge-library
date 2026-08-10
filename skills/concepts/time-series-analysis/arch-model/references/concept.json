@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/arch-model",
+  "canonical_sha256": "6f26ca8d8e19fca680b0cdd45723903e31b987fb56f288b80a956d28248409e8",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/arch-model",
+    "name": "ARCH model",
+    "aliases": [
+      "ARCH(q)",
+      "autoregressive conditional heteroscedasticity"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "Autoregressive conditional heteroskedasticity: a model in which the conditional variance of the current innovation is a linear function of past squared innovations, so volatility is serially correlated and forecastable. Engle (1982) introduced it to model the time-varying variance of inflation.",
+    "intuition": "Treat variance like an autoregression on squared shocks: if yesterday's surprise was big, today's expected variance is big, which produces the volatility clustering seen in financial returns.",
+    "mechanics": "ARCH(q) sets sigma_t^2 = omega + sum_{i=1}^q alpha_i epsilon_{t-i}^2 with omega > 0 and alpha_i >= 0, fitted by maximum likelihood jointly with a mean equation (e.g., ARMA). Covariance stationarity of the process requires the sum of the alpha_i to be less than one.",
+    "formula": "epsilon_t = sigma_t z_t, z_t ~ i.i.d.(0,1); sigma_t^2 = omega + alpha_1 epsilon_{t-1}^2 + ... + alpha_q epsilon_{t-q}^2, with omega > 0, alpha_i >= 0, and sum alpha_i < 1 for covariance stationarity.",
+    "relationships": [
+      "GARCH model",
+      "Conditional heteroskedasticity",
+      "Heteroskedasticity",
+      "Innovation"
+    ],
+    "failure_modes": "A large q is often needed to capture long volatility memory, making estimation noisy, and symmetric ARCH cannot represent the leverage effect whereby negative shocks raise volatility more than positive ones. Structural breaks inflate apparent persistence.",
+    "misconceptions": "That ARCH models the conditional mean: it models the conditional variance of the error, while the mean equation (often zero or ARMA) is specified separately.",
+    "example": "Engle's original application modeled the variance of UK inflation as depending on squared forecast errors from earlier quarters, separating periods of high and low inflation uncertainty.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.2307/1912773",
+        "url": "https://api.crossref.org/works/10.2307/1912773",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/garch-model",
+  "canonical_sha256": "f473a06dd2efed31f3d04c0aff06c1f25bf998b615a54baf462ebab373be87a6",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/garch-model",
+    "name": "GARCH model",
+    "aliases": [
+      "GARCH(p,q)",
+      "generalized autoregressive conditional heteroskedasticity"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "Generalized ARCH: a model in which the conditional variance depends on both past squared innovations and past conditional variances, parsimoniously capturing the slowly decaying volatility persistence of financial returns. Introduced by Bollerslev (1986).",
+    "intuition": "Variance today is a weighted average of a long-run level, yesterday's shock, and yesterday's variance estimate: a smoothing recursion that reacts to shocks but relaxes back to normal gradually.",
+    "mechanics": "GARCH(p,q) sets sigma_t^2 = omega + sum_{i=1}^q alpha_i epsilon_{t-i}^2 + sum_{j=1}^p beta_j sigma_{t-j}^2; a GARCH(1,1) approximates a high-order ARCH with three parameters and is estimated by (quasi-)maximum likelihood. Covariance stationarity requires the persistence sum alpha + beta to be below 1, though values near 1 are typical for daily asset returns.",
+    "formula": "sigma_t^2 = omega + alpha epsilon_{t-1}^2 + beta sigma_{t-1}^2 with omega > 0, alpha >= 0, beta >= 0, alpha + beta < 1; the unconditional variance is omega / (1 - alpha - beta).",
+    "relationships": [
+      "ARCH model",
+      "EGARCH model",
+      "GJR-GARCH model",
+      "Conditional heteroskedasticity",
+      "Stochastic volatility model"
+    ],
+    "failure_modes": "Symmetric GARCH misses the asymmetric response of volatility to negative shocks (addressed by EGARCH and GJR-GARCH), and structural breaks are absorbed as near-unit persistence. Quasi-MLE standard errors are fragile if the innovation distribution is misspecified.",
+    "misconceptions": "That a GARCH forecast of high volatility implies a predictable direction for returns: GARCH forecasts variance only and says nothing about the sign of returns.",
+    "example": "Fitting GARCH(1,1) to daily equity returns typically yields alpha around 0.08 and beta around 0.90, so a volatility shock decays with a half-life of roughly 6-7 trading days.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1016/0304-4076(86)90063-1",
+        "url": "https://api.crossref.org/works/10.1016/0304-4076(86)90063-1",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

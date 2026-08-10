@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/conditional-heteroskedasticity",
+  "canonical_sha256": "a00e78398fec0be112b7fbccb5fd7496aa2a62af3eb6968b11592ee5fee3bfb6",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/conditional-heteroskedasticity",
+    "name": "Conditional heteroskedasticity",
+    "aliases": [
+      "time-varying volatility",
+      "volatility clustering"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "Time-varying variance of a time series in which the variance of the innovation, conditional on past information, changes predictably over time, typically clustering so that large changes are followed by large changes. This is the defining feature modeled by the ARCH family introduced by Engle (1982).",
+    "intuition": "Volatility comes in waves: after a big market move, the near future is likely to be volatile too, so the risk forecast should update with recent shocks instead of being one fixed number.",
+    "mechanics": "The innovation is written epsilon_t = sigma_t z_t with z_t i.i.d. and sigma_t^2 a function of past information (past squared innovations in ARCH, plus past variances in GARCH). Conditional variance is then forecastable even when the conditional mean is not, and it is estimated by maximum likelihood jointly with the mean equation.",
+    "formula": "epsilon_t = sigma_t z_t with z_t ~ i.i.d.(0,1); Var(epsilon_t | F_{t-1}) = sigma_t^2 = f(epsilon_{t-1}^2, epsilon_{t-2}^2, ..., sigma_{t-1}^2, ...).",
+    "relationships": [
+      "Heteroskedasticity",
+      "ARCH model",
+      "GARCH model",
+      "Innovation",
+      "Stochastic volatility model"
+    ],
+    "failure_modes": "Conditional-variance models assume a stable data-generating process; structural breaks in unconditional volatility are absorbed into spuriously high persistence estimates. Forecasts revert to the unconditional variance within a modest horizon.",
+    "misconceptions": "That volatility clustering contradicts unpredictability of returns: returns can be nearly unforecastable in level while their squares are strongly autocorrelated.",
+    "example": "For S&P 500 daily returns, the ACF of returns is near zero while the ACF of squared returns is large and slowly decaying, evidence of conditional heteroskedasticity that motivates GARCH-type models.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.2307/1912773",
+        "url": "https://api.crossref.org/works/10.2307/1912773",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

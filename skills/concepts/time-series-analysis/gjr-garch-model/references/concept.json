@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/gjr-garch-model",
+  "canonical_sha256": "ca0d4d20bd498cb2ebbf41fbe7e5da98017f63528f3f6e7fc3795fe6b99b1733",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/gjr-garch-model",
+    "name": "GJR-GARCH model",
+    "aliases": [
+      "GJR-GARCH(1,1,1)",
+      "threshold GARCH"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A threshold GARCH variant of Glosten, Jagannathan and Runkle (1993) in which squared innovations enter the variance equation with an extra coefficient when the previous innovation was negative, allowing bad news to raise volatility more than good news while remaining in the standard GARCH estimation framework.",
+    "intuition": "It is the GARCH recursion with a switch: yesterday's loss flips on an extra volatility boost that an equal-sized gain does not trigger.",
+    "mechanics": "GJR-GARCH(1,1,1) sets sigma_t^2 = omega + alpha epsilon_{t-1}^2 + gamma epsilon_{t-1}^2 I(epsilon_{t-1} < 0) + beta sigma_{t-1}^2, estimated by maximum likelihood; gamma > 0 measures the leverage effect and the news-impact curve is kinked at zero. Covariance stationarity requires alpha + beta + gamma/2 < 1.",
+    "formula": "sigma_t^2 = omega + (alpha + gamma I_{t-1}) epsilon_{t-1}^2 + beta sigma_{t-1}^2, where I_{t-1} = 1 if epsilon_{t-1} < 0 and 0 otherwise; the unconditional variance is omega / (1 - alpha - beta - gamma/2).",
+    "relationships": [
+      "GARCH model",
+      "EGARCH model",
+      "Conditional heteroskedasticity"
+    ],
+    "failure_modes": "The 0/1 indicator is a crude step that can misstate the smoothness of the true news-impact curve, and gamma is noisy in calm samples with few large negative shocks. Like other GARCH variants, it is sensitive to structural breaks.",
+    "misconceptions": "That GJR-GARCH predicts negative returns: the asymmetry is in the variance response to realized shocks, not in the conditional mean.",
+    "example": "On daily S&P 500 returns, estimates typically find gamma significant and positive, so a -2% day raises next-day variance by roughly twice what a +2% day does.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1111/j.1540-6261.1993.tb05128.x",
+        "url": "https://api.crossref.org/works/10.1111/j.1540-6261.1993.tb05128.x",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

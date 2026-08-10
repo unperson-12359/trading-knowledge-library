@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/ar-model",
+  "canonical_sha256": "004f155fecbf439a4382ce94fe8492bc939f2b9f78ce7050afd8af3432261a35",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/ar-model",
+    "name": "AR model",
+    "aliases": [
+      "autoregressive model",
+      "AR(p)"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A time-series model in which the current value is expressed as a linear combination of its own p previous values plus a white-noise innovation. It is a linear regression of the series on its own lags and is stationary when the roots of its characteristic polynomial lie outside the unit circle.",
+    "intuition": "An AR model says today is explained by momentum or mean-reversion from the recent past: how much of yesterday (and the days before) carries into today.",
+    "mechanics": "An AR(p) model X_t = delta + phi_1*X_{t-1} + ... + phi_p*X_{t-p} + A_t is fit by linear least squares or maximum likelihood; the order p is identified from the PACF cutoff and information criteria. Its ACF decays gradually while its PACF cuts off after lag p. Stationarity requires the coefficients to satisfy constraints (e.g., |phi_1| < 1 for AR(1)).",
+    "formula": "X_t = delta + phi_1*X_{t-1} + ... + phi_p*X_{t-p} + A_t, where delta = (1 - sum phi_i)*mu with mu the process mean, and A_t white noise.",
+    "relationships": [
+      "MA model",
+      "ARMA model",
+      "Partial autocorrelation function",
+      "Stationarity",
+      "Innovation"
+    ],
+    "failure_modes": "Pure AR structure cannot capture shock-driven dynamics that need MA terms; wrong order selection underfits (residual autocorrelation) or overfits (poor out-of-sample forecasts). AR coefficients estimated on trending or non-stationary data are biased toward spurious persistence.",
+    "misconceptions": "That a high R-squared in an AR regression of a price level indicates forecasting power - levels regressions on near-unit-root data are misleading; returns-based AR models for stocks show little exploitable linear predictability.",
+    "example": "An AR(2) fitted to monthly industrial production uses the two previous months' values to forecast the next, with the PACF showing significant spikes at lags 1 and 2.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods, Section 6.4.4.4 Common Approaches to Univariate Time Series",
+        "url": "https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc444.htm",
+        "section": "6.4.4.4 (Autoregressive (AR) Models)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

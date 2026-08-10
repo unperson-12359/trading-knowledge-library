@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/stochastic-volatility-model",
+  "canonical_sha256": "1fca52952c568d6f71eb6a89b80cbb55c4c8203161b7b29114d2b07a6debcd02",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/stochastic-volatility-model",
+    "name": "Stochastic volatility model",
+    "aliases": [
+      "SV model",
+      "Heston model"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A class of models in which volatility is itself a latent stochastic process evolving with its own innovations, rather than a deterministic function of past observed shocks as in GARCH. In continuous time, Heston (1993) models variance as a mean-reverting square-root process driven by its own Brownian motion, possibly correlated with the price shock.",
+    "intuition": "Volatility is an unobserved state variable that wanders randomly and mean-reverts; you see it only through the size of price moves, so inference filters the hidden volatility out of the return data.",
+    "mechanics": "In the Heston specification, dS_t = mu S_t dt + sqrt(v_t) S_t dW^S_t and dv_t = kappa (theta - v_t) dt + sigma_v sqrt(v_t) dW^v_t with correlation rho between the Brownian motions; rho < 0 generates the leverage effect and the implied-volatility skew. Estimation uses filtering or method-of-moments for discrete SV, or semi-closed-form characteristic functions for option pricing under Heston.",
+    "formula": "dv_t = kappa (theta - v_t) dt + sigma_v sqrt(v_t) dW^v_t, corr(dW^S_t, dW^v_t) = rho; kappa is the mean-reversion speed, theta the long-run variance, and sigma_v the vol-of-vol.",
+    "relationships": [
+      "Conditional heteroskedasticity",
+      "GARCH model",
+      "State-space model",
+      "Kalman filter"
+    ],
+    "failure_modes": "The latent state makes the likelihood intractable in closed form, so estimation is computationally heavy and mean-reversion and vol-of-vol parameters are weakly identified on short samples. Wrong volatility dynamics misprice options even when returns are fit well.",
+    "misconceptions": "That stochastic volatility and GARCH are interchangeable: GARCH variance is measurable given past data, whereas SV variance has its own shock, an extra source of randomness with different option-pricing implications.",
+    "example": "Heston's semi-closed-form option formula uses the characteristic function of the stock under stochastic variance, reproducing the volatility smile that constant-variance Black-Scholes cannot.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1093/rfs/6.2.327",
+        "url": "https://api.crossref.org/works/10.1093/rfs/6.2.327",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

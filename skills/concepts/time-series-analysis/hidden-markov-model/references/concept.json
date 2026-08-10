@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/hidden-markov-model",
+  "canonical_sha256": "a063ae501d7faaeea59c2f5eb5487b0c8f725bbf3ebabc4eafb0182799cbeffe",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/hidden-markov-model",
+    "name": "Hidden Markov model",
+    "aliases": [
+      "HMM"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A probabilistic model in which an unobserved finite-state Markov chain generates observable emissions whose distribution depends on the current hidden state, specified by initial-state, transition, and emission probabilities. Rabiner's (1989) tutorial standardized its three canonical problems: evaluation, decoding, and learning.",
+    "intuition": "You cannot see the weather directly, only whether people carry umbrellas; from the umbrella sequence you infer the hidden rainy-or-sunny sequence, given how states persist and how each state produces observations.",
+    "mechanics": "The forward-backward algorithm computes the likelihood of an observation sequence and posterior state probabilities; the Viterbi algorithm decodes the most likely hidden state path; Baum-Welch (EM) re-estimates transition and emission parameters. In financial time series the emissions are typically Gaussian or Student-t densities on returns.",
+    "formula": "lambda = (A, B, pi): A = [a_ij] with a_ij = P(s_{t+1} = j | s_t = i); B = [b_j(o)] with b_j(o) = P(o_t = o | s_t = j); pi_j = P(s_1 = j).",
+    "relationships": [
+      "Regime-switching model",
+      "State-space model",
+      "Kalman filter",
+      "Maximum likelihood estimation"
+    ],
+    "failure_modes": "EM converges to local optima, so results depend on initialization, and the number of states must be chosen heuristically. The geometric state-duration distribution implied by a first-order chain may not match real regime persistence.",
+    "misconceptions": "That the Viterbi path equals the sequence of individually most probable states: they can differ, because Viterbi maximizes the joint probability of the whole path.",
+    "example": "A two-state Gaussian HMM on daily returns separates a low-volatility drift state from a high-volatility drawdown state, and Viterbi decoding yields a hidden regime timeline used as a trend filter.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1109/5.18626",
+        "url": "https://api.crossref.org/works/10.1109/5.18626",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

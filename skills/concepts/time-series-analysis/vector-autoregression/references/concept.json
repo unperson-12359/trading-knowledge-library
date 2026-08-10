@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/vector-autoregression",
+  "canonical_sha256": "7a3ebd8c710a93f3fe63e5f94712e25fc4d970bc8274eb5a86358931e97fe469",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/vector-autoregression",
+    "name": "Vector autoregression",
+    "aliases": [
+      "VAR",
+      "VAR(p)"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A multivariate time-series model in which each variable of a system is regressed on its own lags and the lags of every other variable, treating all variables as jointly endogenous. Sims (1980) introduced it as an alternative to heavily restricted simultaneous-equation macro models.",
+    "intuition": "Instead of deciding in advance which variable drives which, let every variable potentially influence every other with lags and let the data reveal the dynamic interactions.",
+    "mechanics": "A VAR(p) for a k-vector y_t stacks k equations, each estimated by OLS on the same regressors (a constant and p lags of all variables). Analysis proceeds through Granger-causality tests, impulse-response functions, and forecast-error variance decompositions; structural interpretation requires additional identifying restrictions.",
+    "formula": "y_t = c + A_1 y_{t-1} + ... + A_p y_{t-p} + u_t, where y_t is a k-vector, each A_i a k x k coefficient matrix, and u_t vector white noise with covariance matrix Sigma_u.",
+    "relationships": [
+      "AR model",
+      "Granger causality",
+      "Cointegration",
+      "Error-correction model",
+      "Ordinary least squares"
+    ],
+    "failure_modes": "The parameter count grows quadratically in the number of variables, so VARs overfit quickly in short samples. Reduced-form residuals are correlated across equations, so impulse responses depend on the chosen identification scheme or variable ordering.",
+    "misconceptions": "That a VAR reveals structural causal relationships: without identifying restrictions it is a reduced-form summary of dynamic correlations, and Granger-causal ordering is not economic causation.",
+    "example": "A bivariate VAR on 10-year yields and inflation traces how a one-standard-deviation inflation shock propagates into yields over the following quarters through the impulse-response function.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.2307/1912017",
+        "url": "https://api.crossref.org/works/10.2307/1912017",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

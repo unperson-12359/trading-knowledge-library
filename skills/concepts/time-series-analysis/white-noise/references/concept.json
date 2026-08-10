@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/white-noise",
+  "canonical_sha256": "30582d648f56d6b8afe52307222ff3bceefc08453ed339779106fed386c68322",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/white-noise",
+    "name": "White noise",
+    "aliases": [
+      "white noise process",
+      "WN"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A time series of uncorrelated random variables with zero mean and constant finite variance - a process with no linear dependence structure at any lag. White noise is the building block (shock sequence) of ARMA-type models and the benchmark against which randomness is tested.",
+    "intuition": "White noise is pure unpredictable static: every value is a fresh, unrelated draw, so no pattern in the past helps predict the future.",
+    "mechanics": "A white-noise sequence {epsilon_t} satisfies E[epsilon_t] = 0, Var(epsilon_t) = sigma^2, and Cov(epsilon_t, epsilon_{t+h}) = 0 for h != 0. Its ACF is zero at all lags (sample values fall inside the +/-1.96/sqrt(N) bands). Gaussian white noise adds independence and normality; weaker white noise allows uncorrelated but dependent increments.",
+    "formula": "epsilon_t ~ WN(0, sigma^2): E[epsilon_t] = 0, Var(epsilon_t) = sigma^2, Cov(epsilon_t, epsilon_{t+h}) = 0 for all h != 0.",
+    "relationships": [
+      "Innovation",
+      "Random walk",
+      "Autocorrelation",
+      "AR model",
+      "Stationarity"
+    ],
+    "failure_modes": "Uncorrelatedness rules out only linear predictability: squared white-noise-like financial returns are strongly autocorrelated (volatility clustering), so a series can be white noise yet have predictable variance. Tests for white noise can also fail to detect weak dependence in short samples.",
+    "misconceptions": "That white noise must be normally distributed (it need only be uncorrelated with constant variance), and that a model whose residuals look like white noise is necessarily a good forecasting model (it only means no linear structure remains).",
+    "example": "Residuals from a well-specified ARMA model of daily returns should behave approximately like white noise: their autocorrelation plot shows no spikes outside the confidence bands.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods, Section 1.3.3.1 Autocorrelation Plot",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/autocopl.htm",
+        "section": "1.3.3.1 (Questions: 'Is the observed time series white noise?')",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

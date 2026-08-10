@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/egarch-model",
+  "canonical_sha256": "6880824851d871097861f81e061a8a673dba75f01b05f4cc50ac48588158f4e6",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/egarch-model",
+    "name": "EGARCH model",
+    "aliases": [
+      "exponential GARCH",
+      "EGARCH(1,1)"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "Exponential GARCH: Nelson's (1991) model of the log conditional variance as a function of past standardized innovations with separate magnitude and sign terms, guaranteeing positive variance without parameter constraints and capturing the asymmetric (leverage) response of volatility to negative shocks.",
+    "intuition": "Because it models log variance, the variance can never go negative, and the sign term lets bad news lift volatility more than good news of the same size, matching the leverage effect in equity returns.",
+    "mechanics": "EGARCH(1,1) sets log sigma_t^2 = omega + beta log sigma_{t-1}^2 + alpha (|z_{t-1}| - E|z_{t-1}|) + gamma z_{t-1} with standardized innovation z_t = epsilon_t / sigma_t, estimated by maximum likelihood; gamma < 0 produces higher volatility after negative shocks, and the log form needs no non-negativity constraints.",
+    "formula": "ln sigma_t^2 = omega + beta ln sigma_{t-1}^2 + alpha (|z_{t-1}| - E|z_{t-1}|) + gamma z_{t-1}, z_t = epsilon_t / sigma_t; gamma < 0 gives the leverage effect.",
+    "relationships": [
+      "GARCH model",
+      "GJR-GARCH model",
+      "Conditional heteroskedasticity",
+      "Stochastic volatility model"
+    ],
+    "failure_modes": "Because variance enters in logs, the model is sensitive to very small standardized residuals and estimation is less stable than for plain GARCH; forecasts of variance (not log variance) need exponentiation with Jensen-inequality corrections. It shares GARCH's sensitivity to structural breaks.",
+    "misconceptions": "That the asymmetry term measures skewness of returns: it measures the asymmetric impact of signed innovations on future variance, distinct from unconditional skewness.",
+    "example": "Nelson applied EGARCH to U.S. stock returns and found a negative sign coefficient: a negative return shock raises next-period variance substantially more than an equal positive shock.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.2307/2938260",
+        "url": "https://api.crossref.org/works/10.2307/2938260",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

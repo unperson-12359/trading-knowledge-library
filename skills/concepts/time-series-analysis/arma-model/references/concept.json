@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/arma-model",
+  "canonical_sha256": "7d946c9927de251ce96ac163383833d5febde04bd153c3a8a9d71d720c22103a",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/arma-model",
+    "name": "ARMA model",
+    "aliases": [
+      "ARMA(p,q)",
+      "Box-Jenkins model"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A time-series model combining an autoregressive part of order p and a moving-average part of order q, expressing a stationary series as a function of its own lagged values and lagged innovations. Box and Jenkins popularized a systematic identification-estimation-validation methodology for ARMA models.",
+    "intuition": "ARMA captures both ways the past echoes into the present: through the series' own lagged levels and through lingering shocks.",
+    "mechanics": "ARMA(p,q): X_t = delta + phi_1*X_{t-1} + ... + phi_p*X_{t-p} + A_t - theta_1*A_{t-1} - ... - theta_q*A_{t-q}. By the Wold decomposition any weakly stationary process can be approximated by an ARMA model. Fitting requires a stationary series (difference first if needed, giving ARIMA), moderately long samples (roughly 50-100+ observations), and maximum likelihood estimation; ACF/PACF patterns guide the choice of p and q.",
+    "formula": "X_t = delta + sum_{i=1..p} phi_i*X_{t-i} + A_t - sum_{j=1..q} theta_j*A_{t-j}, with A_t white noise.",
+    "relationships": [
+      "AR model",
+      "MA model",
+      "ARIMA model",
+      "Seasonal ARIMA",
+      "Stationarity",
+      "Autocorrelation function"
+    ],
+    "failure_modes": "ARMA assumes linearity, stationarity, and time-invariant parameters; structural breaks, regime changes, and volatility clustering in financial data violate these, so fitted models deteriorate out of sample. Parameter redundancy (near-common AR/MA factors) causes identification problems.",
+    "misconceptions": "That a high in-sample ARMA fit implies the series is predictable going forward; in-sample fit does not establish out-of-sample forecast skill, and near-zero-return predictability in asset prices is the empirical norm.",
+    "example": "An ARMA(1,1) fitted to a stationary macro series uses last period's value and last period's shock to forecast, identified by decaying patterns in both the ACF and PACF.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods, Section 6.4.4.5 Box-Jenkins Models",
+        "url": "https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc445.htm",
+        "section": "6.4.4.5",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

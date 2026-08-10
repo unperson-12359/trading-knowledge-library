@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/cointegration",
+  "canonical_sha256": "488072287b8d3331142a93b43a83f4d1038c4dedd30e6ff576b5eab61a702e8b",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/cointegration",
+    "name": "Cointegration",
+    "aliases": [
+      "cointegrated series",
+      "long-run equilibrium relationship"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A property of two or more individually non-stationary (e.g., I(1)) series for which some linear combination of them is stationary, indicating a stable long-run equilibrium relationship even though each series wanders. Engle and Granger (1987) formalized the concept together with its representation, estimation, and testing.",
+    "intuition": "Two drunkards on a leash: each price wanders unpredictably, but the spread between them is tethered and keeps snapping back, so the spread is forecastable even though the levels are not.",
+    "mechanics": "In the Engle-Granger two-step procedure, one I(1) series is regressed on the other(s) by OLS and the residuals are tested for stationarity (augmented Dickey-Fuller); if the residuals are I(0), the series are cointegrated and the regression estimates the long-run vector. Johansen's likelihood procedure generalizes this to multiple cointegrating vectors within a VAR.",
+    "formula": "If x_t and y_t are each I(1) and there exists beta such that z_t = y_t - beta x_t is I(0), then y_t and x_t are cointegrated with cointegrating vector (1, -beta).",
+    "relationships": [
+      "Error-correction model",
+      "Unit root",
+      "Stationarity",
+      "Vector autoregression"
+    ],
+    "failure_modes": "Standard OLS on non-cointegrated I(1) series yields spurious regressions with inflated R-squared and t-statistics. Cointegration tests have low power and are sensitive to structural breaks, lag length, and sample period.",
+    "misconceptions": "That high correlation between two trending series implies a meaningful relationship: correlated random walks are typically spurious, and only a stationary residual spread evidences a genuine equilibrium.",
+    "example": "Spot and futures prices of crude oil each behave like unit-root processes, but their spread (the basis) is stationary, so pairs strategies model the basis rather than either level.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.2307/1913236",
+        "url": "https://api.crossref.org/works/10.2307/1913236",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

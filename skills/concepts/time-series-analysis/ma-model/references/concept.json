@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/ma-model",
+  "canonical_sha256": "6da4c3119f34c3128a0224da69fac22bd3a74a3cc437803a15f68f5a81a4891d",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/ma-model",
+    "name": "MA model",
+    "aliases": [
+      "moving average model",
+      "MA(q)"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A time-series model in which the current value is a constant plus a linear combination of the current and q past white-noise innovations. Despite the name, it is not a smoothing average of the series but a regression on unobserved past shocks, and it is always stationary.",
+    "intuition": "An MA model says shocks linger for exactly q periods and then vanish: today's value reflects today's surprise plus fading echoes of the last q surprises.",
+    "mechanics": "An MA(q) model X_t = mu + A_t - theta_1*A_{t-1} - ... - theta_q*A_{t-q} cannot be fit by ordinary least squares because the A terms are unobserved, so iterative nonlinear (maximum likelihood) estimation is used. Its ACF cuts off after lag q while its PACF decays, the mirror image of AR behavior.",
+    "formula": "X_t = mu + A_t - theta_1*A_{t-1} - theta_2*A_{t-2} - ... - theta_q*A_{t-q}, with A_t white-noise innovations and q the model order.",
+    "relationships": [
+      "AR model",
+      "ARMA model",
+      "Innovation",
+      "White noise",
+      "Autocorrelation function"
+    ],
+    "failure_modes": "Estimation is numerically harder than AR because innovations are latent; non-invertible parameterizations make forecasts unstable. MA structure cannot capture momentum-like dependence on lagged levels.",
+    "misconceptions": "That an MA model is the same as a moving-average smoothing of prices used in technical analysis; the MA(q) time-series model weights past shocks, not past observed values.",
+    "example": "An MA(1) for daily returns says today's return depends on today's news shock plus a fraction of yesterday's shock, so the ACF is nonzero only at lag 1.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods, Section 6.4.4.4 Common Approaches to Univariate Time Series",
+        "url": "https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc444.htm",
+        "section": "6.4.4.4 (Moving Average (MA) Models)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

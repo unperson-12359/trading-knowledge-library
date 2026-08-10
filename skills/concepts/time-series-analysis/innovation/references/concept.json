@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/innovation",
+  "canonical_sha256": "94fff3e8bdf5366c6c69fb0b36af32a2df05ce5df5441eb0a3c464ba09835c5b",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/innovation",
+    "name": "Innovation",
+    "aliases": [
+      "shock",
+      "disturbance",
+      "one-step-ahead prediction error"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "The unpredictable new information entering a time series at each period - the part of the current value that cannot be forecast from the series' own past. In ARMA and state-space models, innovations are the white-noise input sequence that drives the process.",
+    "intuition": "The innovation is the surprise in each new observation: the gap between what actually happened and the best prediction you could have made a period earlier.",
+    "mechanics": "In an MA model the current value is a weighted sum of current and past innovations; in an AR model the innovation A_t is the white-noise term added to the predictable autoregressive part. Model estimation treats fitted one-step-ahead errors as innovation estimates, and a correctly specified model leaves innovations that resemble white noise.",
+    "formula": "For AR(p): X_t = delta + phi_1*X_{t-1} + ... + phi_p*X_{t-p} + A_t, where A_t is the white-noise innovation. Formally, the innovation is nu_t = X_t - E[X_t | X_{t-1}, X_{t-2}, ...].",
+    "relationships": [
+      "White noise",
+      "AR model",
+      "MA model",
+      "State-space model",
+      "Residual"
+    ],
+    "failure_modes": "Estimated innovations inherit model misspecification: if the model is wrong, the 'innovations' retain structure and are not genuine surprises. Non-Gaussian innovation distributions (fat tails in finance) break Gaussian-likelihood-based inference.",
+    "misconceptions": "That innovation and residual are identical concepts (residuals are sample-based estimates of innovations from a fitted model), and that innovations must be independent rather than merely unpredictable in the linear sense.",
+    "example": "If an AR(1) model predicts today's return as 0.3 times yesterday's, the difference between the realized return and that prediction is today's innovation.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods, Section 6.4.4.4 Common Approaches to Univariate Time Series",
+        "url": "https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc444.htm",
+        "section": "6.4.4.4 (AR and MA model definitions; A_t as white noise)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

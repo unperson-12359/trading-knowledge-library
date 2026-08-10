@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/kalman-filter",
+  "canonical_sha256": "e6d58ed01ae915d960f9b1f486ac5b873176082ae701701f2566ed14c61955a8",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/kalman-filter",
+    "name": "Kalman filter",
+    "aliases": [
+      "Kalman-Bucy filter",
+      "linear quadratic estimator"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A recursive algorithm for optimal linear estimation of the hidden state of a linear Gaussian state-space system, alternating prediction and update steps that weight new observations by their information content. Kalman (1960) derived it as the solution to the linear filtering and prediction problem.",
+    "intuition": "Keep a running best guess of an unobservable quantity plus your uncertainty about it; each new noisy observation nudges the guess toward the data, by more when the data are precise relative to your uncertainty.",
+    "mechanics": "The prediction step projects the state mean and covariance forward through the transition equation; the update step computes the Kalman gain K_t = P_{t|t-1} H' (H P_{t|t-1} H' + R)^{-1} and revises the state using the innovation y_t - H x_{t|t-1}. For linear Gaussian systems the filter is the exact minimum mean-square-error estimator; extended, unscented, and particle variants handle nonlinearity.",
+    "formula": "State: x_t = F x_{t-1} + w_t, w_t ~ N(0,Q); observation: y_t = H x_t + v_t, v_t ~ N(0,R); update: x_{t|t} = x_{t|t-1} + K_t (y_t - H x_{t|t-1}).",
+    "relationships": [
+      "State-space model",
+      "Hidden Markov model",
+      "Innovation",
+      "Stochastic volatility model"
+    ],
+    "failure_modes": "Exact optimality holds only for linear Gaussian systems; with heavy-tailed noise the filter is merely the best linear estimator and is badly distorted by outliers. Misspecified process and observation noise covariances (Q and R) degrade or destabilize estimates.",
+    "misconceptions": "That the Kalman filter is a smoother: it is a causal online filter using only past and current data, while retrospective refinement requires the separate Rauch-Tung-Striebel smoother.",
+    "example": "In pairs trading the hedge ratio is modeled as a random-walk state observed through the spread, and the Kalman filter updates the ratio online as the relationship drifts.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.1115/1.3662552",
+        "url": "https://api.crossref.org/works/10.1115/1.3662552",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/error-correction-model",
+  "canonical_sha256": "ed10fedf1aef71fbb06285f71a96ffaf52de5b3cf7222fe397946f24ac85df37",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/error-correction-model",
+    "name": "Error-correction model",
+    "aliases": [
+      "ECM",
+      "VECM",
+      "vector error-correction model"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A dynamic model for cointegrated series in which short-run changes respond to lagged changes plus an error-correction term measuring the deviation from the long-run equilibrium, so the system adjusts back toward equilibrium over time. Its validity follows from the Granger representation theorem of Engle and Granger (1987).",
+    "intuition": "The cointegrating spread acts like a rubber band: when last period's gap from equilibrium was wide, today's changes pull the series back toward it, at a speed set by the adjustment coefficient.",
+    "mechanics": "Estimate the long-run cointegrating vector, form the equilibrium error z_{t-1} = y_{t-1} - beta x_{t-1}, and regress Delta y_t on lagged changes of both series plus alpha z_{t-1}; a negative, significant alpha confirms error correction. In the vector setting (VECM) each equation carries its own loading on the equilibrium errors.",
+    "formula": "Delta y_t = alpha (y_{t-1} - beta x_{t-1}) + sum_i gamma_i Delta y_{t-i} + sum_j delta_j Delta x_{t-j} + epsilon_t, where alpha < 0 is the speed of adjustment and (y - beta x) the equilibrium error.",
+    "relationships": [
+      "Cointegration",
+      "Vector autoregression",
+      "Unit root",
+      "Stationarity"
+    ],
+    "failure_modes": "Everything hinges on the estimated cointegrating vector: if it is misspecified or unstable, the error-correction term injects noise rather than signal. Adjustment may be asymmetric or threshold-type in practice, which the linear ECM misses.",
+    "misconceptions": "That the error-correction term by itself shows which variable does the adjusting: the loading coefficients must be estimated (weak exogeneity tested), and interpreting alpha as causality carries the usual reduced-form cautions.",
+    "example": "Modeling consumption changes as Delta c_t = -0.2 (c_{t-1} - 0.9 y_{t-1}) + short-run dynamics implies consumption closes about 20% of its gap from the long-run income relationship each quarter.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.2307/1913236",
+        "url": "https://api.crossref.org/works/10.2307/1913236",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

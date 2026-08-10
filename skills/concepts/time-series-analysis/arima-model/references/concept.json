@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/arima-model",
+  "canonical_sha256": "d5481d55823d1532c7de48455cd781a6f11367bff0da6e8f2f699f42386a3c96",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/arima-model",
+    "name": "ARIMA model",
+    "aliases": [
+      "ARIMA(p,d,q)",
+      "Box-Jenkins model"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "An integrated autoregressive moving-average model, ARIMA(p,d,q), that extends the ARMA model to non-stationary series by differencing the data d times and then fitting autoregressive (order p) and moving-average (order q) terms to the differenced series. It is the core of the Box-Jenkins identification-estimation-validation methodology.",
+    "intuition": "Many real series wander with a trend or unit root, so you difference them until they look stationary, model the differences with an ARMA model, and sum forecasts back up to the original scale.",
+    "mechanics": "Identification uses the ACF and PACF of the (possibly differenced) series to choose p, d, q; parameters are estimated by (conditional) maximum likelihood; residuals are checked for remaining autocorrelation. Forecasts of the differenced series are integrated (cumulatively summed) to produce level forecasts.",
+    "formula": "phi(B)(1-B)^d X_t = c + theta(B) A_t, where B is the backshift operator, phi(B) = 1 - phi_1 B - ... - phi_p B^p the AR polynomial, theta(B) = 1 - theta_1 B - ... - theta_q B^q the MA polynomial, and A_t white noise.",
+    "relationships": [
+      "ARMA model",
+      "AR model",
+      "MA model",
+      "Seasonal ARIMA",
+      "Stationarity",
+      "Unit root"
+    ],
+    "failure_modes": "The differencing choice is fragile: under-differencing leaves a unit root and spurious inference, while over-differencing induces artificial moving-average structure and inflates forecast variance. ARIMA also assumes a stable linear process, so structural breaks degrade forecasts.",
+    "misconceptions": "That ARIMA models trending or seasonal series directly: the 'I' handles only stochastic trends via differencing, and periodic structure needs seasonal terms or prior deseasonalizing. A good in-sample fit also does not imply genuine predictive content.",
+    "example": "Log prices of an equity index are close to a random walk, so an ARIMA(0,1,1) models the change in log price as a moving average of past forecast errors and integrates the forecasts back to price levels.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods, Section 6.4.4.5 Box-Jenkins Models",
+        "url": "https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc445.htm",
+        "section": "6.4.4.5",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/seasonal-arima",
+  "canonical_sha256": "63e79e19581d3dccda9457faf67e2d25537b514904fd9610b0c4155aa447696b",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/seasonal-arima",
+    "name": "Seasonal ARIMA",
+    "aliases": [
+      "SARIMA",
+      "SARIMA(p,d,q)(P,D,Q)s",
+      "multiplicative seasonal ARIMA"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A multiplicative extension of the ARIMA model that adds seasonal autoregressive, seasonal differencing, and seasonal moving-average terms at the seasonal period s, written SARIMA(p,d,q)(P,D,Q)_s, to model series with stable repeating periodic patterns.",
+    "intuition": "Monthly sales or quarterly earnings resemble not only the adjacent period but the same period a year ago, so the model regresses on lags spaced by the season length as well as on short lags.",
+    "mechanics": "In addition to the non-seasonal operators phi(B), theta(B) and differencing (1-B)^d, the model includes seasonal polynomials Phi(B^s), Theta(B^s) and seasonal differencing (1-B^s)^D, usually combined multiplicatively. Identification examines ACF spikes at the seasonal lags s, 2s, ... alongside the short lags.",
+    "formula": "phi(B) Phi(B^s) (1-B)^d (1-B^s)^D X_t = theta(B) Theta(B^s) A_t, where s is the seasonal period and (P,D,Q) the seasonal AR, differencing, and MA orders.",
+    "relationships": [
+      "ARIMA model",
+      "ARMA model",
+      "Stationarity",
+      "White noise"
+    ],
+    "failure_modes": "The parameter count grows quickly with seasonal terms, inviting overfitting on short samples; several full seasonal cycles are needed for identification. If the seasonal pattern itself shifts (calendar changes, regime change), the fixed-period terms misfit.",
+    "misconceptions": "That seasonal ARIMA discovers arbitrary periodicities: s must be specified a priori from the data frequency, and the model assumes the seasonal period and shape are stable over the sample.",
+    "example": "Monthly airline passengers spike every December; SARIMA(0,1,1)(0,1,1)_12 differences once and seasonally, then models residuals with both a one-month and a twelve-month moving-average term.",
+    "citations": [
+      {
+        "source": "NIST/SEMATECH e-Handbook of Statistical Methods, Section 6.4.4.5 Box-Jenkins Models",
+        "url": "https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc445.htm",
+        "section": "6.4.4.5 (seasonal extension of Box-Jenkins models)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

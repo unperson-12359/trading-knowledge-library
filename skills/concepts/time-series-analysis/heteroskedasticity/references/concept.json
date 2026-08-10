@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "time-series-analysis/heteroskedasticity",
+  "canonical_sha256": "f9f5ccd1965272d2e5015567a28bd2799dbf7ae094d7866b8ce03b2df64d80f0",
+  "source_path": "concepts/time-series-analysis.json",
+  "concept": {
+    "id": "time-series-analysis/heteroskedasticity",
+    "name": "Heteroskedasticity",
+    "aliases": [
+      "heteroscedasticity",
+      "non-constant variance"
+    ],
+    "domain": "Time-series analysis",
+    "definition": "A violation of the constant-error-variance assumption in regression in which the conditional variance of the disturbance varies across observations, typically as a function of the regressors or of time. OLS coefficients remain unbiased under heteroskedasticity but are no longer efficient, and conventional standard errors are biased.",
+    "intuition": "The size of the model's mistakes is not constant: errors may balloon for large values of a regressor or in turbulent periods, so treating every observation as equally precise is wrong.",
+    "mechanics": "Detected by plotting squared residuals against fitted values or regressors and by formal tests such as Breusch-Pagan (regress squared residuals on the regressors and test joint significance) or White's test. Remedies include heteroskedasticity-consistent (White/Huber) standard errors, generalized least squares, or explicit variance models.",
+    "formula": "Var(epsilon_i | x_i) = sigma_i^2 != sigma^2; in the Breusch-Pagan test, e_i^2 is regressed on x_i and nR^2 of that regression is asymptotically chi-squared under homoskedasticity.",
+    "relationships": [
+      "Conditional heteroskedasticity",
+      "Ordinary least squares",
+      "Residual",
+      "ARCH model",
+      "Linear regression"
+    ],
+    "failure_modes": "Ignoring heteroskedasticity invalidates t- and F-tests and confidence intervals even though point estimates stay unbiased; in finance, volatility clustering makes homoskedastic inference badly overconfident.",
+    "misconceptions": "That heteroskedasticity biases the coefficient estimates: it does not; it corrupts inference (standard errors) and efficiency, not the unbiasedness of OLS.",
+    "example": "A regression of household consumption on income shows residual spread widening with income; a Breusch-Pagan test on squared residuals rejects constant variance, so White standard errors are reported instead.",
+    "citations": [
+      {
+        "source": "Crossref metadata record for DOI 10.2307/1911963",
+        "url": "https://api.crossref.org/works/10.2307/1911963",
+        "section": "bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

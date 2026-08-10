@@ -205,6 +205,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="white-noise"><h3>White noise <a class="anchor" href="#white-noise">#</a></h3>
 <div class="field">A time series of uncorrelated random variables with zero mean and constant finite variance - a process with no linear dependence structure at any lag. White noise is the building block (shock sequence) of ARMA-type models and the benchmark against which randomness is tested.</div>
+<div class="skill-links"><a href="../skills/tkl-white-noise/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> White noise is pure unpredictable static: every value is a fresh, unrelated draw, so no pattern in the past helps predict the future.</div>
 <div class="field"><span class="label">Mechanics:</span> A white-noise sequence {epsilon_t} satisfies E[epsilon_t] = 0, Var(epsilon_t) = sigma^2, and Cov(epsilon_t, epsilon_{t+h}) = 0 for h != 0. Its ACF is zero at all lags (sample values fall inside the +/-1.96/sqrt(N) bands). Gaussian white noise adds independence and normality; weaker white noise allows uncorrelated but dependent increments.</div>
 <div class="field"><span class="label">Failure modes:</span> Uncorrelatedness rules out only linear predictability: squared white-noise-like financial returns are strongly autocorrelated (volatility clustering), so a series can be white noise yet have predictable variance. Tests for white noise can also fail to detect weak dependence in short samples.</div>
@@ -217,6 +218,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="innovation"><h3>Innovation <a class="anchor" href="#innovation">#</a></h3>
 <div class="field">The unpredictable new information entering a time series at each period - the part of the current value that cannot be forecast from the series&#x27; own past. In ARMA and state-space models, innovations are the white-noise input sequence that drives the process.</div>
+<div class="skill-links"><a href="../skills/tkl-innovation/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The innovation is the surprise in each new observation: the gap between what actually happened and the best prediction you could have made a period earlier.</div>
 <div class="field"><span class="label">Mechanics:</span> In an MA model the current value is a weighted sum of current and past innovations; in an AR model the innovation A_t is the white-noise term added to the predictable autoregressive part. Model estimation treats fitted one-step-ahead errors as innovation estimates, and a correctly specified model leaves innovations that resemble white noise.</div>
 <div class="field"><span class="label">Failure modes:</span> Estimated innovations inherit model misspecification: if the model is wrong, the &#x27;innovations&#x27; retain structure and are not genuine surprises. Non-Gaussian innovation distributions (fat tails in finance) break Gaussian-likelihood-based inference.</div>
@@ -229,6 +231,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="ar-model"><h3>AR model <a class="anchor" href="#ar-model">#</a></h3>
 <div class="field">A time-series model in which the current value is expressed as a linear combination of its own p previous values plus a white-noise innovation. It is a linear regression of the series on its own lags and is stationary when the roots of its characteristic polynomial lie outside the unit circle.</div>
+<div class="skill-links"><a href="../skills/tkl-ar-model/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> An AR model says today is explained by momentum or mean-reversion from the recent past: how much of yesterday (and the days before) carries into today.</div>
 <div class="field"><span class="label">Mechanics:</span> An AR(p) model X_t = delta + phi_1*X_{t-1} + ... + phi_p*X_{t-p} + A_t is fit by linear least squares or maximum likelihood; the order p is identified from the PACF cutoff and information criteria. Its ACF decays gradually while its PACF cuts off after lag p. Stationarity requires the coefficients to satisfy constraints (e.g., |phi_1| &lt; 1 for AR(1)).</div>
 <div class="field"><span class="label">Failure modes:</span> Pure AR structure cannot capture shock-driven dynamics that need MA terms; wrong order selection underfits (residual autocorrelation) or overfits (poor out-of-sample forecasts). AR coefficients estimated on trending or non-stationary data are biased toward spurious persistence.</div>
@@ -241,6 +244,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="ma-model"><h3>MA model <a class="anchor" href="#ma-model">#</a></h3>
 <div class="field">A time-series model in which the current value is a constant plus a linear combination of the current and q past white-noise innovations. Despite the name, it is not a smoothing average of the series but a regression on unobserved past shocks, and it is always stationary.</div>
+<div class="skill-links"><a href="../skills/tkl-ma-model/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> An MA model says shocks linger for exactly q periods and then vanish: today&#x27;s value reflects today&#x27;s surprise plus fading echoes of the last q surprises.</div>
 <div class="field"><span class="label">Mechanics:</span> An MA(q) model X_t = mu + A_t - theta_1*A_{t-1} - ... - theta_q*A_{t-q} cannot be fit by ordinary least squares because the A terms are unobserved, so iterative nonlinear (maximum likelihood) estimation is used. Its ACF cuts off after lag q while its PACF decays, the mirror image of AR behavior.</div>
 <div class="field"><span class="label">Failure modes:</span> Estimation is numerically harder than AR because innovations are latent; non-invertible parameterizations make forecasts unstable. MA structure cannot capture momentum-like dependence on lagged levels.</div>
@@ -253,6 +257,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="arma-model"><h3>ARMA model <a class="anchor" href="#arma-model">#</a></h3>
 <div class="field">A time-series model combining an autoregressive part of order p and a moving-average part of order q, expressing a stationary series as a function of its own lagged values and lagged innovations. Box and Jenkins popularized a systematic identification-estimation-validation methodology for ARMA models.</div>
+<div class="skill-links"><a href="../skills/tkl-arma-model/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> ARMA captures both ways the past echoes into the present: through the series&#x27; own lagged levels and through lingering shocks.</div>
 <div class="field"><span class="label">Mechanics:</span> ARMA(p,q): X_t = delta + phi_1*X_{t-1} + ... + phi_p*X_{t-p} + A_t - theta_1*A_{t-1} - ... - theta_q*A_{t-q}. By the Wold decomposition any weakly stationary process can be approximated by an ARMA model. Fitting requires a stationary series (difference first if needed, giving ARIMA), moderately long samples (roughly 50-100+ observations), and maximum likelihood estimation; ACF/PACF patterns guide the choice of p and q.</div>
 <div class="field"><span class="label">Failure modes:</span> ARMA assumes linearity, stationarity, and time-invariant parameters; structural breaks, regime changes, and volatility clustering in financial data violate these, so fitted models deteriorate out of sample. Parameter redundancy (near-common AR/MA factors) causes identification problems.</div>
@@ -265,6 +270,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="arima-model"><h3>ARIMA model <a class="anchor" href="#arima-model">#</a></h3>
 <div class="field">An integrated autoregressive moving-average model, ARIMA(p,d,q), that extends the ARMA model to non-stationary series by differencing the data d times and then fitting autoregressive (order p) and moving-average (order q) terms to the differenced series. It is the core of the Box-Jenkins identification-estimation-validation methodology.</div>
+<div class="skill-links"><a href="../skills/tkl-arima-model/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Many real series wander with a trend or unit root, so you difference them until they look stationary, model the differences with an ARMA model, and sum forecasts back up to the original scale.</div>
 <div class="field"><span class="label">Mechanics:</span> Identification uses the ACF and PACF of the (possibly differenced) series to choose p, d, q; parameters are estimated by (conditional) maximum likelihood; residuals are checked for remaining autocorrelation. Forecasts of the differenced series are integrated (cumulatively summed) to produce level forecasts.</div>
 <div class="field"><span class="label">Failure modes:</span> The differencing choice is fragile: under-differencing leaves a unit root and spurious inference, while over-differencing induces artificial moving-average structure and inflates forecast variance. ARIMA also assumes a stable linear process, so structural breaks degrade forecasts.</div>
@@ -277,6 +283,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="seasonal-arima"><h3>Seasonal ARIMA <a class="anchor" href="#seasonal-arima">#</a></h3>
 <div class="field">A multiplicative extension of the ARIMA model that adds seasonal autoregressive, seasonal differencing, and seasonal moving-average terms at the seasonal period s, written SARIMA(p,d,q)(P,D,Q)_s, to model series with stable repeating periodic patterns.</div>
+<div class="skill-links"><a href="../skills/tkl-seasonal-arima/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Monthly sales or quarterly earnings resemble not only the adjacent period but the same period a year ago, so the model regresses on lags spaced by the season length as well as on short lags.</div>
 <div class="field"><span class="label">Mechanics:</span> In addition to the non-seasonal operators phi(B), theta(B) and differencing (1-B)^d, the model includes seasonal polynomials Phi(B^s), Theta(B^s) and seasonal differencing (1-B^s)^D, usually combined multiplicatively. Identification examines ACF spikes at the seasonal lags s, 2s, ... alongside the short lags.</div>
 <div class="field"><span class="label">Failure modes:</span> The parameter count grows quickly with seasonal terms, inviting overfitting on short samples; several full seasonal cycles are needed for identification. If the seasonal pattern itself shifts (calendar changes, regime change), the fixed-period terms misfit.</div>
@@ -289,6 +296,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="vector-autoregression"><h3>Vector autoregression <a class="anchor" href="#vector-autoregression">#</a></h3>
 <div class="field">A multivariate time-series model in which each variable of a system is regressed on its own lags and the lags of every other variable, treating all variables as jointly endogenous. Sims (1980) introduced it as an alternative to heavily restricted simultaneous-equation macro models.</div>
+<div class="skill-links"><a href="../skills/tkl-vector-autoregression/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Instead of deciding in advance which variable drives which, let every variable potentially influence every other with lags and let the data reveal the dynamic interactions.</div>
 <div class="field"><span class="label">Mechanics:</span> A VAR(p) for a k-vector y_t stacks k equations, each estimated by OLS on the same regressors (a constant and p lags of all variables). Analysis proceeds through Granger-causality tests, impulse-response functions, and forecast-error variance decompositions; structural interpretation requires additional identifying restrictions.</div>
 <div class="field"><span class="label">Failure modes:</span> The parameter count grows quadratically in the number of variables, so VARs overfit quickly in short samples. Reduced-form residuals are correlated across equations, so impulse responses depend on the chosen identification scheme or variable ordering.</div>
@@ -301,6 +309,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="cointegration"><h3>Cointegration <a class="anchor" href="#cointegration">#</a></h3>
 <div class="field">A property of two or more individually non-stationary (e.g., I(1)) series for which some linear combination of them is stationary, indicating a stable long-run equilibrium relationship even though each series wanders. Engle and Granger (1987) formalized the concept together with its representation, estimation, and testing.</div>
+<div class="skill-links"><a href="../skills/tkl-cointegration/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Two drunkards on a leash: each price wanders unpredictably, but the spread between them is tethered and keeps snapping back, so the spread is forecastable even though the levels are not.</div>
 <div class="field"><span class="label">Mechanics:</span> In the Engle-Granger two-step procedure, one I(1) series is regressed on the other(s) by OLS and the residuals are tested for stationarity (augmented Dickey-Fuller); if the residuals are I(0), the series are cointegrated and the regression estimates the long-run vector. Johansen&#x27;s likelihood procedure generalizes this to multiple cointegrating vectors within a VAR.</div>
 <div class="field"><span class="label">Failure modes:</span> Standard OLS on non-cointegrated I(1) series yields spurious regressions with inflated R-squared and t-statistics. Cointegration tests have low power and are sensitive to structural breaks, lag length, and sample period.</div>
@@ -313,6 +322,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="error-correction-model"><h3>Error-correction model <a class="anchor" href="#error-correction-model">#</a></h3>
 <div class="field">A dynamic model for cointegrated series in which short-run changes respond to lagged changes plus an error-correction term measuring the deviation from the long-run equilibrium, so the system adjusts back toward equilibrium over time. Its validity follows from the Granger representation theorem of Engle and Granger (1987).</div>
+<div class="skill-links"><a href="../skills/tkl-error-correction-model/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The cointegrating spread acts like a rubber band: when last period&#x27;s gap from equilibrium was wide, today&#x27;s changes pull the series back toward it, at a speed set by the adjustment coefficient.</div>
 <div class="field"><span class="label">Mechanics:</span> Estimate the long-run cointegrating vector, form the equilibrium error z_{t-1} = y_{t-1} - beta x_{t-1}, and regress Delta y_t on lagged changes of both series plus alpha z_{t-1}; a negative, significant alpha confirms error correction. In the vector setting (VECM) each equation carries its own loading on the equilibrium errors.</div>
 <div class="field"><span class="label">Failure modes:</span> Everything hinges on the estimated cointegrating vector: if it is misspecified or unstable, the error-correction term injects noise rather than signal. Adjustment may be asymmetric or threshold-type in practice, which the linear ECM misses.</div>
@@ -325,6 +335,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="granger-causality"><h3>Granger causality <a class="anchor" href="#granger-causality">#</a></h3>
 <div class="field">A statistical precedence concept: a series x Granger-causes y if past values of x improve the forecast of y beyond what past values of y alone provide, tested by F-tests on lagged coefficients in an autoregression or VAR. Introduced by Granger (1969).</div>
+<div class="skill-links"><a href="../skills/tkl-granger-causality/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> If knowing yesterday&#x27;s thunder helps predict today&#x27;s rain beyond what yesterday&#x27;s rain tells you, thunder Granger-causes rain: it is incremental predictive content, not metaphysical cause.</div>
 <div class="field"><span class="label">Mechanics:</span> Regress y_t on p of its own lags (restricted model), then add p lags of x_t (unrestricted model); an F-test of the joint null that all x-lag coefficients are zero rejects Granger non-causality. The test runs in both directions and generalizes in a VAR to block-exogeneity Wald tests.</div>
 <div class="field"><span class="label">Failure modes:</span> Results are sensitive to lag length, sample period, and omitted variables: an omitted common driver manufactures apparent causality. With integrated or cointegrated data, standard F-test distributions are invalid without Toda-Yamamoto or VECM adjustments.</div>
@@ -337,6 +348,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="heteroskedasticity"><h3>Heteroskedasticity <a class="anchor" href="#heteroskedasticity">#</a></h3>
 <div class="field">A violation of the constant-error-variance assumption in regression in which the conditional variance of the disturbance varies across observations, typically as a function of the regressors or of time. OLS coefficients remain unbiased under heteroskedasticity but are no longer efficient, and conventional standard errors are biased.</div>
+<div class="skill-links"><a href="../skills/tkl-heteroskedasticity/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> The size of the model&#x27;s mistakes is not constant: errors may balloon for large values of a regressor or in turbulent periods, so treating every observation as equally precise is wrong.</div>
 <div class="field"><span class="label">Mechanics:</span> Detected by plotting squared residuals against fitted values or regressors and by formal tests such as Breusch-Pagan (regress squared residuals on the regressors and test joint significance) or White&#x27;s test. Remedies include heteroskedasticity-consistent (White/Huber) standard errors, generalized least squares, or explicit variance models.</div>
 <div class="field"><span class="label">Failure modes:</span> Ignoring heteroskedasticity invalidates t- and F-tests and confidence intervals even though point estimates stay unbiased; in finance, volatility clustering makes homoskedastic inference badly overconfident.</div>
@@ -349,6 +361,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="conditional-heteroskedasticity"><h3>Conditional heteroskedasticity <a class="anchor" href="#conditional-heteroskedasticity">#</a></h3>
 <div class="field">Time-varying variance of a time series in which the variance of the innovation, conditional on past information, changes predictably over time, typically clustering so that large changes are followed by large changes. This is the defining feature modeled by the ARCH family introduced by Engle (1982).</div>
+<div class="skill-links"><a href="../skills/tkl-conditional-heteroskedasticity/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Volatility comes in waves: after a big market move, the near future is likely to be volatile too, so the risk forecast should update with recent shocks instead of being one fixed number.</div>
 <div class="field"><span class="label">Mechanics:</span> The innovation is written epsilon_t = sigma_t z_t with z_t i.i.d. and sigma_t^2 a function of past information (past squared innovations in ARCH, plus past variances in GARCH). Conditional variance is then forecastable even when the conditional mean is not, and it is estimated by maximum likelihood jointly with the mean equation.</div>
 <div class="field"><span class="label">Failure modes:</span> Conditional-variance models assume a stable data-generating process; structural breaks in unconditional volatility are absorbed into spuriously high persistence estimates. Forecasts revert to the unconditional variance within a modest horizon.</div>
@@ -361,6 +374,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="arch-model"><h3>ARCH model <a class="anchor" href="#arch-model">#</a></h3>
 <div class="field">Autoregressive conditional heteroskedasticity: a model in which the conditional variance of the current innovation is a linear function of past squared innovations, so volatility is serially correlated and forecastable. Engle (1982) introduced it to model the time-varying variance of inflation.</div>
+<div class="skill-links"><a href="../skills/tkl-arch-model/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Treat variance like an autoregression on squared shocks: if yesterday&#x27;s surprise was big, today&#x27;s expected variance is big, which produces the volatility clustering seen in financial returns.</div>
 <div class="field"><span class="label">Mechanics:</span> ARCH(q) sets sigma_t^2 = omega + sum_{i=1}^q alpha_i epsilon_{t-i}^2 with omega &gt; 0 and alpha_i &gt;= 0, fitted by maximum likelihood jointly with a mean equation (e.g., ARMA). Covariance stationarity of the process requires the sum of the alpha_i to be less than one.</div>
 <div class="field"><span class="label">Failure modes:</span> A large q is often needed to capture long volatility memory, making estimation noisy, and symmetric ARCH cannot represent the leverage effect whereby negative shocks raise volatility more than positive ones. Structural breaks inflate apparent persistence.</div>
@@ -373,6 +387,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="garch-model"><h3>GARCH model <a class="anchor" href="#garch-model">#</a></h3>
 <div class="field">Generalized ARCH: a model in which the conditional variance depends on both past squared innovations and past conditional variances, parsimoniously capturing the slowly decaying volatility persistence of financial returns. Introduced by Bollerslev (1986).</div>
+<div class="skill-links"><a href="../skills/tkl-garch-model/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Variance today is a weighted average of a long-run level, yesterday&#x27;s shock, and yesterday&#x27;s variance estimate: a smoothing recursion that reacts to shocks but relaxes back to normal gradually.</div>
 <div class="field"><span class="label">Mechanics:</span> GARCH(p,q) sets sigma_t^2 = omega + sum_{i=1}^q alpha_i epsilon_{t-i}^2 + sum_{j=1}^p beta_j sigma_{t-j}^2; a GARCH(1,1) approximates a high-order ARCH with three parameters and is estimated by (quasi-)maximum likelihood. Covariance stationarity requires the persistence sum alpha + beta to be below 1, though values near 1 are typical for daily asset returns.</div>
 <div class="field"><span class="label">Failure modes:</span> Symmetric GARCH misses the asymmetric response of volatility to negative shocks (addressed by EGARCH and GJR-GARCH), and structural breaks are absorbed as near-unit persistence. Quasi-MLE standard errors are fragile if the innovation distribution is misspecified.</div>
