@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/volatility-risk-premium",
+  "canonical_sha256": "88675a7d501463d0b55c07c313adad39e88c8b8158af1a70786baf6a5c100a55",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/volatility-risk-premium",
+    "name": "Volatility risk premium",
+    "aliases": [
+      "IV-RV spread",
+      "implied minus realized volatility premium"
+    ],
+    "domain": "Options",
+    "definition": "The volatility risk premium is the tendency of option-implied volatility to exceed subsequently realized volatility, making net sellers of options profitable on average and net buyers unprofitable on average. It is the volatility-units counterpart of the variance risk premium and the empirical basis for systematic option-selling strategies.",
+    "intuition": "Options usually cost more than the movement they end up delivering: implied volatility overstates realized volatility most of the time, and that persistent overpricing is the wage paid to option sellers.",
+    "mechanics": "Measured per expiry as implied volatility at trade date minus realized volatility over the option's life (IV - RV). The premium is concentrated in equity index options, varies through time, and turns sharply negative in crashes when realized volatility explodes past implied. It is related to but distinct from the variance risk premium, which is measured in variance (squared) units and is the cleaner theoretical object.",
+    "formula": "VRP per trade ~ IV(entry) - RV(over option life); aggregated as average implied minus average realized volatility.",
+    "relationships": [
+      "Variance risk premium",
+      "Implied volatility",
+      "Volatility smile",
+      "Short strangle",
+      "Iron condor",
+      "Theta"
+    ],
+    "failure_modes": "The premium's existence does not survive naive harvesting: short-volatility strategies realize their losses in concentrated crashes (negative skew), and after costs, margin drag, and gap risk the achievable premium is far smaller than the raw IV-RV gap suggests. Backtests of 'free' premium routinely omit these frictions.",
+    "misconceptions": "Implied exceeding realized most of the time is not a market inefficiency you can simply collect — it is a risk price, and the episodes when realized exceeds implied are exactly when leveraged short-vol books blow up. It also does not imply option buyers are irrational; they are buying insurance.",
+    "example": "If one-month SPX options are sold at 18% implied volatility and the index subsequently realizes 14%, the seller captured a 4-vol-point premium; in October 2008 realized volatility reached multiples of implied, reversing months of premium in weeks.",
+    "citations": [
+      {
+        "source": "Variance risk premium — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Variance_risk_premium",
+        "section": "Definition and analysis",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Iron condor — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Iron_condor",
+        "section": "Short iron condor (volatility risk premium definition)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

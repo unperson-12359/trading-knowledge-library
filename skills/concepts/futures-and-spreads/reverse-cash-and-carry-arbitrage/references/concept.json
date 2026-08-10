@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "futures-and-spreads/reverse-cash-and-carry-arbitrage",
+  "canonical_sha256": "3f5dff4524545c9c627096e3996d708dfc976077015ece0c2a4ed9387c15736b",
+  "source_path": "concepts/futures-and-spreads.json",
+  "concept": {
+    "id": "futures-and-spreads/reverse-cash-and-carry-arbitrage",
+    "name": "Reverse cash-and-carry arbitrage",
+    "aliases": [
+      "reverse cash and carry"
+    ],
+    "domain": "Futures and spreads",
+    "definition": "The mirror image of cash-and-carry arbitrage: a market-neutral strategy that shorts the asset in the cash market while buying its futures contract, exploiting a futures price that is low relative to spot, a condition associated with backwardation. At maturity the arbitrageur takes delivery against the long futures and uses it to cover the short position.",
+    "intuition": "If the market prices future delivery cheaply compared with today's spot, sell high now and lock in cheap re-purchase later through the futures contract.",
+    "mechanics": "Sell (short) the asset at spot price S and simultaneously buy the futures at F, where F < S. Invest or use the short-sale proceeds, pay the costs of maintaining the short (borrowing fees, dividends or convenience-yield compensation), then accept delivery at expiration to close the short. Viable only when S exceeds F plus the costs of carrying the short position.",
+    "formula": "Arbitrage profit = S - F - C_short, where S = spot sale proceeds, F = futures purchase price, C_short = costs of maintaining the short position to expiration. Viable when S > F + C_short.",
+    "relationships": [
+      "Cash-and-carry arbitrage",
+      "Backwardation",
+      "Cost of carry",
+      "Convenience yield",
+      "Basis"
+    ],
+    "failure_modes": "Shorting physical commodities can be difficult or impossible — borrow may be unavailable, recallable, or prohibitively expensive, so this leg often fails first. Margin calls on the short and rising borrow costs can force early unwinding before the convergence profit is realized.",
+    "misconceptions": "It is not simply 'the opposite trade with the same risk profile'; the short leg in physical markets faces structural constraints (storage economics reward holding, not shorting) that cash-and-carry does not. It also does not require betting that backwardation will persist — only that spot-futures convergence occurs by expiry.",
+    "example": "An asset trades at $104 spot with one-month futures at $100 and $2 in short-position carrying costs: short spot, buy futures, take delivery to cover the short at expiry for a locked-in $2 gain.",
+    "citations": [
+      {
+        "source": "Investopedia: Reverse Cash-and-Carry Arbitrage",
+        "url": "https://www.investopedia.com/terms/r/reverse-cash-and-carry-arbitrage.asp",
+        "section": "How Reverse Cash-and-Carry Arbitrage Works; Example",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

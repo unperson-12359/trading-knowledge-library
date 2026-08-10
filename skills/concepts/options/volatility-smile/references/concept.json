@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/volatility-smile",
+  "canonical_sha256": "c064d95bf1a945f65b8f434c67fda8531476f0e859d1b17caa5bd1d530c484d5",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/volatility-smile",
+    "name": "Volatility smile",
+    "aliases": [
+      "smile",
+      "vol smile"
+    ],
+    "domain": "Options",
+    "definition": "The volatility smile is the empirical pattern in which options at strikes far from the money trade at higher implied volatilities than at-the-money options of the same expiration, producing a U-shaped (or skewed) curve of implied volatility versus strike. It contradicts the constant-volatility assumption of Black-Scholes and reflects the market's pricing of fat-tailed and asymmetric return distributions.",
+    "intuition": "If Black-Scholes were right, every strike would imply the same volatility; instead the market charges extra for the wings, tracing a smile — the visible signature that crash and rally insurance costs more than the model says it should.",
+    "mechanics": "Plotting implied volatility against strike (or delta) for one expiry yields the smile/skew curve; equity markets show a downward-sloping 'skew' or 'smirk' (OTM puts bid), FX markets a more symmetric smile. The smile appeared prominently in equity index options only after the 1987 crash, as traders repriced tail risk. Smile-consistent pricing motivates stochastic-volatility (Heston), local-volatility (Dupire), and jump models.",
+    "formula": "",
+    "relationships": [
+      "Volatility skew",
+      "Volatility surface",
+      "Volatility term structure",
+      "Implied volatility",
+      "Black-Scholes model",
+      "Deep out-of-the-money option",
+      "Risk reversal"
+    ],
+    "failure_modes": "Interpolating or extrapolating the smile naively can imply negative probabilities or arbitrageable prices (butterfly/calendar arbitrage); smiles also morph non-parallel in stress, so hedges calibrated to one smile shape fail when the shape itself moves.",
+    "misconceptions": "The smile is not proof that 'the market predicts a crash' — wing implied vols embed supply, demand, and risk premia as well as probability beliefs. It is also not an arbitrage opportunity; it is the set of prices the market actually charges.",
+    "example": "With SPX at 5,000 and 30-day ATM implied vol at 14%, the 4,500 put might trade at 22% implied and the 5,500 call at 12% — the characteristic equity skew, one side of the smile family.",
+    "citations": [
+      {
+        "source": "Volatility smile — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Volatility_smile",
+        "section": "Implied volatility; smile vs skew",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Black-Scholes model — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model",
+        "section": "Black-Scholes in practice: the volatility smile",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

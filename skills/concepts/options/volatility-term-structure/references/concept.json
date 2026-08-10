@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/volatility-term-structure",
+  "canonical_sha256": "71be39ca026258302ffb40a65cdfc01069e18c276baabf5dc550e24ca6f4a6ef",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/volatility-term-structure",
+    "name": "Volatility term structure",
+    "aliases": [
+      "vol term structure",
+      "IV term structure"
+    ],
+    "domain": "Options",
+    "definition": "The volatility term structure is the pattern of at-the-money implied volatility across option expiration dates for the same underlying — typically upward sloping in calm markets (contango) and inverted (near-dated vols above far-dated) around known events or in stressed markets.",
+    "intuition": "It is the market's calendar of anxiety: comparing implied vol by expiry shows when traders expect turbulence — before an earnings date or election, near-dated vols pop above the back months.",
+    "mechanics": "ATM implied volatilities are extracted per expiry and plotted against time to maturity; known events (earnings, Fed meetings, harvest reports) create localized humps, after which vol typically falls ('vol crush'). The term structure's slope drives calendar-spread economics and the pricing of variance at different horizons, and it mean-reverts because long-dated vols anchor toward long-run averages.",
+    "formula": "",
+    "relationships": [
+      "Volatility surface",
+      "Volatility smile",
+      "Forward volatility",
+      "Calendar spread",
+      "Implied volatility",
+      "Vega"
+    ],
+    "failure_modes": "Comparing raw implied vols across expiries without adjusting for time misleads: total variance grows with horizon, so a 'flat' term structure still implies changing per-period volatility. Event humps also make naive contango/backwardation reads ambiguous around catalysts.",
+    "misconceptions": "An inverted term structure is not necessarily a trading signal to sell front-month vol — the elevation usually prices a specific scheduled event whose realized move may justify it. The term structure describes implied, not expected realized, volatility.",
+    "example": "With XYZ earnings in 10 days, the 2-week ATM implied vol trades at 45% while 3-month sits at 25%: an inverted term structure concentrated around the event, which typically collapses once the report is out.",
+    "citations": [
+      {
+        "source": "Volatility smile — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Volatility_smile",
+        "section": "Term structure of volatility",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

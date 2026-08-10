@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/expected-move",
+  "canonical_sha256": "5a475425d6ccd35e2fe1e9ba023f1213fb40f39b76f0cd968a3746daf045000b",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/expected-move",
+    "name": "Expected move",
+    "aliases": [
+      "expected range",
+      "1-sigma expected move"
+    ],
+    "domain": "Options",
+    "definition": "The expected move is the estimated price range within which an underlying is expected to trade by a given expiration with approximately one-standard-deviation (~68%) probability, derived from option prices — typically computed as about 85% of the at-the-money straddle price or directly from ATM implied volatility scaled by the square root of time.",
+    "intuition": "It is the options market's plus-or-minus error bar on the stock: a $100 stock with a $5 expected move is priced to stay roughly between $95 and $105 two-thirds of the time.",
+    "mechanics": "Vendor conventions vary: Barchart computes the expected move as 0.85 x the weighted average of the two calls and two puts nearest the money; brokerage platforms often display S x IV x sqrt(T/365). The expected move is used to place strikes for credit spreads and condors outside the priced range and to contextualize event risk.",
+    "formula": "Expected move ~ 0.85 x ATM straddle, or S x IV x sqrt(T/365) for a 1-standard-deviation range over T days.",
+    "relationships": [
+      "Implied move",
+      "Implied volatility",
+      "Long straddle",
+      "Iron condor",
+      "Volatility term structure"
+    ],
+    "failure_modes": "The 68% interpretation assumes a distribution the market does not actually price: fat tails make out-of-range outcomes far more frequent than one-sigma intuition suggests, and event windows concentrate the move into minutes, so the range is routinely breached around catalysts.",
+    "misconceptions": "The expected move is not a target or support/resistance level with predictive force — it is a restatement of option prices. Selling strikes 'just outside the expected move' is selling roughly one-sigma insurance, with the tail risk that implies, not a statistical edge.",
+    "example": "XYZ at $200 with 30-day IV of 24%: the one-month expected move is about 200 x 0.24 x sqrt(30/365) ≈ $13.75, so the platform displays an expected range of roughly $186 to $214.",
+    "citations": [
+      {
+        "source": "Barchart — Expected Move methodology",
+        "url": "https://www.barchart.com/stocks/quotes/%24SPX/expected-move",
+        "section": "Expected Move calculation (85% of ATM straddle; 68% one-standard-deviation basis)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

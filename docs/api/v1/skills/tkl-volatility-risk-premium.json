@@ -1,0 +1,82 @@
+{
+  "$schema": "https://unperson-12359.github.io/trading-knowledge-library/schemas/concept-skill.schema.json",
+  "schema_version": 1,
+  "version": 1,
+  "skill_name": "tkl-volatility-risk-premium",
+  "concept_id": "options/volatility-risk-premium",
+  "display_name": "Volatility risk premium",
+  "domain": "Options",
+  "description": "Explain, compare, or apply Volatility risk premium using the library's structured Options reference, including failure modes and misconceptions.",
+  "trigger_phrases": [
+    "Volatility risk premium",
+    "IV-RV spread",
+    "implied minus realized volatility premium",
+    "explain Volatility risk premium",
+    "apply Volatility risk premium to a trading question",
+    "common misconception about Volatility risk premium"
+  ],
+  "supported_intents": [
+    "explain",
+    "compare",
+    "apply",
+    "diagnose-misconception"
+  ],
+  "context_requirements": {
+    "required": [
+      "the user's question or claim",
+      "the intended analysis context"
+    ],
+    "optional": [
+      "market and venue",
+      "timeframe",
+      "current observations",
+      "risk constraints"
+    ]
+  },
+  "workflow": [
+    "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+    "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+    "Use the definition, mechanics, relationships, and citations as sourced facts.",
+    "Request or label missing context before applying the concept to a market situation.",
+    "Separate sourced facts from analytical inferences and unknown live conditions.",
+    "State the concept's failure modes and misconceptions before giving a practical implication.",
+    "Cite the carried sources and return JSON when the user requests machine-readable output."
+  ],
+  "constraints": [
+    "Do not invent live market data, venue rules, or user positions.",
+    "Do not place orders or claim certainty or guaranteed profitability.",
+    "Do not present educational analysis as personalized financial advice.",
+    "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+    "Flag stale or venue-specific facts that require current official documentation."
+  ],
+  "output_contract": {
+    "format": "human-readable-or-json-on-request",
+    "required_fields": [
+      "concept_id",
+      "intent",
+      "summary",
+      "facts",
+      "inferences",
+      "unknowns",
+      "failure_modes",
+      "misconceptions",
+      "citations",
+      "warning"
+    ]
+  },
+  "core": false,
+  "batch_number": 49,
+  "package_path": "skills/concepts/options/volatility-risk-premium",
+  "canonical": {
+    "source_path": "concepts/options.json",
+    "sha256": "88675a7d501463d0b55c07c313adad39e88c8b8158af1a70786baf6a5c100a55"
+  },
+  "related_concept_ids": [
+    "options/variance-risk-premium",
+    "risk-and-performance/implied-volatility",
+    "options/volatility-smile",
+    "options/short-strangle",
+    "options/iron-condor",
+    "options/theta"
+  ]
+}

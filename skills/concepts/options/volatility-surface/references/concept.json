@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/volatility-surface",
+  "canonical_sha256": "e0d1595df1525d5b4d96553ac99e2ea8343d7bfd28e492ac2dac4b63d6be8306",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/volatility-surface",
+    "name": "Volatility surface",
+    "aliases": [
+      "implied volatility surface",
+      "IV surface",
+      "vol surface"
+    ],
+    "domain": "Options",
+    "definition": "The volatility surface is the three-dimensional representation of implied volatility as a function of both strike (or moneyness/delta) and time to expiration for options on one underlying — combining the volatility smile/skew across strikes with the term structure across expiries into a single object used for pricing, quoting, and risk management.",
+    "intuition": "It is the complete topographic map of option prices translated into volatility units: every strike-and-expiry pair sits at its own implied-vol altitude, and traders read the terrain for relative cheapness.",
+    "mechanics": "Practitioners build the surface by inverting a pricing model (Black-Scholes or Black-76) at every listed strike and expiry, then interpolating with arbitrage-constrained schemes (e.g., SVI fits). Surfaces are quoted in strike terms (absolute) or delta/moneyness terms (relative), and their evolution is described by heuristics such as sticky-strike versus sticky-delta. Off-model derivatives are priced by interpolation on the surface.",
+    "formula": "",
+    "relationships": [
+      "Volatility smile",
+      "Volatility skew",
+      "Volatility term structure",
+      "Implied volatility",
+      "Black-Scholes model",
+      "Vanna",
+      "Volga"
+    ],
+    "failure_modes": "The surface is a snapshot, not a dynamics model: hedging strategies need assumptions about how the surface moves with spot (sticky-strike vs sticky-delta), and the wrong assumption systematically misprices hedge P&L. Sparse or wide quotes at the wings make surface construction fragile exactly where tail exposures live.",
+    "misconceptions": "The surface is not a forecast of future volatility at each point — it is a quoting convention for today's prices. Treating each point as an independent expectation ignores that no-arbitrage tightly constrains how the surface can bend.",
+    "example": "An SPX surface might show 30-day vol rising from 14% ATM to 22% at the 10-delta put, while the 1-year tenor shows a milder 16%-to-19% slope — one object capturing both skew and term structure.",
+    "citations": [
+      {
+        "source": "Volatility smile — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Volatility_smile",
+        "section": "Implied volatility surface; Evolution: sticky",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Black model — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Black_model",
+        "section": "Applications (Black implied volatilities and surfaces)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

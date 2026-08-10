@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "futures-and-spreads/cash-and-carry-arbitrage",
+  "canonical_sha256": "f0917d4f3479d49276f8c7537ee4632214d43b4f78c369963eedeb74db2a104b",
+  "source_path": "concepts/futures-and-spreads.json",
+  "concept": {
+    "id": "futures-and-spreads/cash-and-carry-arbitrage",
+    "name": "Cash-and-carry arbitrage",
+    "aliases": [
+      "cash and carry",
+      "carry arbitrage"
+    ],
+    "domain": "Futures and spreads",
+    "definition": "A market-neutral strategy that combines buying an asset in the cash (spot) market with selling a futures contract on the same asset, to exploit a futures price that is high relative to the spot price plus carrying costs. The arbitrageur holds ('carries') the asset until futures expiration and delivers it against the short futures position.",
+    "intuition": "If the futures price overpays for future delivery relative to what it costs to buy, store, and finance the goods today, you can lock in that overpayment by buying now and selling forward.",
+    "mechanics": "Buy the asset at spot price S and simultaneously short the futures at price F. Hold the asset, paying storage, insurance, and financing (the cost of carry), until expiration, then deliver against the futures. The trade is viable only if F exceeds S plus total carrying costs; market risk is largely removed because the asset is delivered against the contract rather than sold in the open market.",
+    "formula": "Arbitrage profit = F - S - C, where F = futures sale price, S = spot purchase price, C = total carrying costs (financing + storage + insurance) to expiration. Viable when F > S + C.",
+    "relationships": [
+      "Reverse cash-and-carry arbitrage",
+      "Cost of carry",
+      "Contango",
+      "Basis",
+      "Futures curve"
+    ],
+    "failure_modes": "Not truly riskless: carrying costs or margin rates can rise after the trade is put on, eroding the locked-in margin. In physical commodities, delivery specifications, storage capacity constraints, and logistics can make the theoretical arbitrage unexecutable at scale.",
+    "misconceptions": "It is often called a 'risk-free' trade, but it is only market-direction-neutral — financing, storage, margin, and delivery risks remain. It is also wrongly assumed to be available in any contango market; the contango must exceed the full cost of carry.",
+    "example": "An asset trades at $100 spot with one-month futures at $104 and monthly carrying costs of $3: buy spot, short the futures, carry and deliver at expiration for a locked-in gain of $1.",
+    "citations": [
+      {
+        "source": "Investopedia: Cash-and-Carry Arbitrage Explained",
+        "url": "https://www.investopedia.com/terms/c/cash-and-carry-arbitrage.asp",
+        "section": "Basics of Cash-and-Carry Arbitrage Explained; Example",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/max-pain",
+  "canonical_sha256": "4a161920f3c3a26253020ec886fc68c1c8f431bf552f120ee7a34b64fb40ed0c",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/max-pain",
+    "name": "Max pain",
+    "aliases": [
+      "max pain price",
+      "maximum pain strike"
+    ],
+    "domain": "Options",
+    "definition": "Max pain is the strike price at which the aggregate expiration value of outstanding options (open interest) would be smallest — the underlying price at which the greatest total value of calls and puts would expire worthless, inflicting maximum loss on option holders in aggregate. 'Max pain theory' is the hypothesis that prices tend to gravitate toward this level into expiration.",
+    "intuition": "Compute, for every possible expiration price, the total dollar loss of all option holders; the price that maximizes that collective pain is the max pain strike.",
+    "mechanics": "For each candidate strike, multiply the intrinsic value of calls and puts by their open interest at every listed strike and sum the dollar totals; the candidate minimizing that aggregate intrinsic payout is the max pain price. The number moves as open interest changes and is published by analytics vendors as a sentiment reference.",
+    "formula": "Max pain = argmin over candidate prices S of [sum over strikes K of (OI_call(K)*max(S-K,0) + OI_put(K)*max(K-S,0))].",
+    "relationships": [
+      "Open interest",
+      "Pin risk",
+      "Option chain",
+      "Moneyness",
+      "Gamma exposure"
+    ],
+    "failure_modes": "The theory is controversial and not consistently supported: the underlying's price is driven by far more than option open interest, and any apparent pinning can reflect ordinary hedging flows rather than manipulation. Treating a computed max pain level as a price target is unsupported by evidence.",
+    "misconceptions": "Max pain does not imply a conspiracy of writers steering price — most option exposure is held by hedged market makers and institutions, for whom expiration value is not a simple loss. The metric also ignores that much open interest closes or rolls before expiration.",
+    "example": "If XYZ open interest is concentrated in $100 calls and $95 puts, and computing total holder losses across candidate prices finds the minimum payout at $98, then $98 is quoted as that expiration's max pain price.",
+    "citations": [
+      {
+        "source": "SpotGamma Support — Max Pain Theory Explained",
+        "url": "https://support.spotgamma.com/hc/en-us/articles/12772191681299-Max-Pain-Theory-Explained",
+        "section": "Definition; Calculating Max Pain; Limitations",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

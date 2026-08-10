@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/volatility-skew",
+  "canonical_sha256": "158b0cabb3bdd55bf007e8d13e2024374d67417b980073d3b8b6d2b2e3b8c55d",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/volatility-skew",
+    "name": "Volatility skew",
+    "aliases": [
+      "skew",
+      "smirk",
+      "volatility smirk"
+    ],
+    "domain": "Options",
+    "definition": "Volatility skew is the asymmetric form of the volatility smile in which implied volatility decreases monotonically as strike rises — out-of-the-money puts trading at richer implied volatilities than at-the-money and out-of-the-money calls. It is the persistent pattern in equity and equity-index options, reflecting demand for downside protection and the market's pricing of negative return skewness.",
+    "intuition": "Equity traders pay up for crash insurance and sell upside lottery tickets cheap, so implied volatility tilts: expensive on the low strikes, cheap on the high strikes.",
+    "mechanics": "Skew is measured as the slope of implied volatility across strikes or deltas for a fixed expiry, and is quoted in volatility markets via risk reversals (IV of a delta call minus the matching put). Structural drivers include institutional put hedging ('investment skew') and concentrated speculative demand ('demand skew'); skew steepens in sell-offs and flattens in calm rallies.",
+    "formula": "Skew quote: RR(25d) = IV(25-delta call) - IV(25-delta put); a negative value indicates downside puts richer than upside calls.",
+    "relationships": [
+      "Volatility smile",
+      "Volatility surface",
+      "Risk reversal",
+      "Implied volatility",
+      "Put option",
+      "Volatility term structure"
+    ],
+    "failure_modes": "Trading the skew as if it were a stable statistical object fails in regime shifts — skew flattens violently during squeezes and steepens in crashes, hurting positions calibrated to historical averages. Cross-sectional skew comparisons also break down when term structures differ.",
+    "misconceptions": "Steep skew does not mean a crash is imminent: it is a chronic feature of equity option pricing since 1987, reflecting hedging demand and risk premia rather than a point forecast. Nor does rich put skew automatically make put buying a bad trade — it must be weighed against realized crash frequency.",
+    "example": "A 30-day SPX 25-delta risk reversal of -4 vol points means the 25-delta put trades 4 implied-volatility points above the 25-delta call, the market's standard pricing of downside asymmetry.",
+    "citations": [
+      {
+        "source": "Volatility smile — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Volatility_smile",
+        "section": "Implied volatility (skew, smirk, investment vs demand skew)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Risk reversal — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Risk_reversal",
+        "section": "Risk reversal measure of vol-skew",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

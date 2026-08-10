@@ -2,7 +2,7 @@
   "$schema": "../schemas/skill-manifest.schema.json",
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 960,
+  "completed_count": 980,
   "skills": [
     {
       "$schema": "../../../../schemas/concept-skill.schema.json",
@@ -77813,6 +77813,1632 @@
         "options/binomial-option-model",
         "options/volatility-smile",
         "risk-and-performance/implied-volatility"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-volatility-smile",
+      "concept_id": "options/volatility-smile",
+      "display_name": "Volatility smile",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Volatility smile using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Volatility smile",
+        "smile",
+        "vol smile",
+        "explain Volatility smile",
+        "apply Volatility smile to a trading question",
+        "common misconception about Volatility smile"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/options/volatility-smile",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "c064d95bf1a945f65b8f434c67fda8531476f0e859d1b17caa5bd1d530c484d5"
+      },
+      "related_concept_ids": [
+        "options/volatility-skew",
+        "options/volatility-surface",
+        "options/volatility-term-structure",
+        "risk-and-performance/implied-volatility",
+        "options/black-scholes-model",
+        "options/deep-out-of-the-money-option",
+        "options/risk-reversal"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-volatility-skew",
+      "concept_id": "options/volatility-skew",
+      "display_name": "Volatility skew",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Volatility skew using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Volatility skew",
+        "skew",
+        "smirk",
+        "volatility smirk",
+        "explain Volatility skew",
+        "apply Volatility skew to a trading question",
+        "common misconception about Volatility skew"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/options/volatility-skew",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "158b0cabb3bdd55bf007e8d13e2024374d67417b980073d3b8b6d2b2e3b8c55d"
+      },
+      "related_concept_ids": [
+        "options/volatility-smile",
+        "options/volatility-surface",
+        "options/risk-reversal",
+        "risk-and-performance/implied-volatility",
+        "options/put-option",
+        "options/volatility-term-structure"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-volatility-term-structure",
+      "concept_id": "options/volatility-term-structure",
+      "display_name": "Volatility term structure",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Volatility term structure using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Volatility term structure",
+        "vol term structure",
+        "IV term structure",
+        "explain Volatility term structure",
+        "apply Volatility term structure to a trading question",
+        "common misconception about Volatility term structure"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/options/volatility-term-structure",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "71be39ca026258302ffb40a65cdfc01069e18c276baabf5dc550e24ca6f4a6ef"
+      },
+      "related_concept_ids": [
+        "options/volatility-surface",
+        "options/volatility-smile",
+        "options/forward-volatility",
+        "risk-and-performance/implied-volatility",
+        "options/vega"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-volatility-surface",
+      "concept_id": "options/volatility-surface",
+      "display_name": "Volatility surface",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Volatility surface using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Volatility surface",
+        "implied volatility surface",
+        "IV surface",
+        "vol surface",
+        "explain Volatility surface",
+        "apply Volatility surface to a trading question",
+        "common misconception about Volatility surface"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/options/volatility-surface",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "e0d1595df1525d5b4d96553ac99e2ea8343d7bfd28e492ac2dac4b63d6be8306"
+      },
+      "related_concept_ids": [
+        "options/volatility-smile",
+        "options/volatility-skew",
+        "options/volatility-term-structure",
+        "risk-and-performance/implied-volatility",
+        "options/black-scholes-model",
+        "options/vanna",
+        "options/volga"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-forward-volatility",
+      "concept_id": "options/forward-volatility",
+      "display_name": "Forward volatility",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Forward volatility using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Forward volatility",
+        "forward implied volatility",
+        "forward vol",
+        "explain Forward volatility",
+        "apply Forward volatility to a trading question",
+        "common misconception about Forward volatility"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/options/forward-volatility",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "3e069273462b6e37d8c42b8016a0499a5363ab5024519d1b33c477059cbab2aa"
+      },
+      "related_concept_ids": [
+        "options/volatility-term-structure",
+        "options/volatility-surface",
+        "risk-and-performance/implied-volatility",
+        "options/variance-risk-premium"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-variance-risk-premium",
+      "concept_id": "options/variance-risk-premium",
+      "display_name": "Variance risk premium",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Variance risk premium using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Variance risk premium",
+        "VRP",
+        "explain Variance risk premium",
+        "apply Variance risk premium to a trading question",
+        "common misconception about Variance risk premium"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/options/variance-risk-premium",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "b2017e69920ed982b0de0f613de0950680b747e867db8d275d54ec90862a268a"
+      },
+      "related_concept_ids": [
+        "options/volatility-risk-premium",
+        "risk-and-performance/implied-volatility",
+        "options/volatility-surface",
+        "options/risk-neutral-probability",
+        "options/short-straddle"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-volatility-risk-premium",
+      "concept_id": "options/volatility-risk-premium",
+      "display_name": "Volatility risk premium",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Volatility risk premium using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Volatility risk premium",
+        "IV-RV spread",
+        "implied minus realized volatility premium",
+        "explain Volatility risk premium",
+        "apply Volatility risk premium to a trading question",
+        "common misconception about Volatility risk premium"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/options/volatility-risk-premium",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "88675a7d501463d0b55c07c313adad39e88c8b8158af1a70786baf6a5c100a55"
+      },
+      "related_concept_ids": [
+        "options/variance-risk-premium",
+        "risk-and-performance/implied-volatility",
+        "options/volatility-smile",
+        "options/short-strangle",
+        "options/iron-condor",
+        "options/theta"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-implied-move",
+      "concept_id": "options/implied-move",
+      "display_name": "Implied move",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Implied move using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Implied move",
+        "implied range",
+        "options-implied move",
+        "explain Implied move",
+        "apply Implied move to a trading question",
+        "common misconception about Implied move"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/options/implied-move",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "561905080efe7f8355cd0e1cfdc92efd7caa802e4624237a17f288ea7b650a8b"
+      },
+      "related_concept_ids": [
+        "options/expected-move",
+        "options/long-straddle",
+        "risk-and-performance/implied-volatility",
+        "options/volatility-term-structure",
+        "options/at-the-money-option"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-expected-move",
+      "concept_id": "options/expected-move",
+      "display_name": "Expected move",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Expected move using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Expected move",
+        "expected range",
+        "1-sigma expected move",
+        "explain Expected move",
+        "apply Expected move to a trading question",
+        "common misconception about Expected move"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/options/expected-move",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "5a475425d6ccd35e2fe1e9ba023f1213fb40f39b76f0cd968a3746daf045000b"
+      },
+      "related_concept_ids": [
+        "options/implied-move",
+        "risk-and-performance/implied-volatility",
+        "options/long-straddle",
+        "options/iron-condor",
+        "options/volatility-term-structure"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-gamma-exposure",
+      "concept_id": "options/gamma-exposure",
+      "display_name": "Gamma exposure",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Gamma exposure using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Gamma exposure",
+        "GEX",
+        "net gamma exposure",
+        "explain Gamma exposure",
+        "apply Gamma exposure to a trading question",
+        "common misconception about Gamma exposure"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/options/gamma-exposure",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "432eb144b1008caf3404fae96c47788dc55b1ffd772504e5b3f762c3b2884976"
+      },
+      "related_concept_ids": [
+        "options/dealer-gamma",
+        "options/gamma",
+        "contract-mechanics/open-interest",
+        "options/option-chain",
+        "options/charm"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-dealer-gamma",
+      "concept_id": "options/dealer-gamma",
+      "display_name": "Dealer gamma",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Dealer gamma using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Dealer gamma",
+        "market-maker gamma",
+        "dealer gamma positioning",
+        "explain Dealer gamma",
+        "apply Dealer gamma to a trading question",
+        "common misconception about Dealer gamma"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/options/dealer-gamma",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "ccbbea17902b830ef99a6648035e156c5e863f5832a3ce4142601f3e950504dc"
+      },
+      "related_concept_ids": [
+        "options/gamma-exposure",
+        "options/gamma",
+        "contract-mechanics/open-interest",
+        "options/pin-risk",
+        "options/charm"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-max-pain",
+      "concept_id": "options/max-pain",
+      "display_name": "Max pain",
+      "domain": "Options",
+      "description": "Explain, compare, or apply Max pain using the library's structured Options reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Max pain",
+        "max pain price",
+        "maximum pain strike",
+        "explain Max pain",
+        "apply Max pain to a trading question",
+        "common misconception about Max pain"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/options/max-pain",
+      "canonical": {
+        "source_path": "concepts/options.json",
+        "sha256": "4a161920f3c3a26253020ec886fc68c1c8f431bf552f120ee7a34b64fb40ed0c"
+      },
+      "related_concept_ids": [
+        "contract-mechanics/open-interest",
+        "options/pin-risk",
+        "options/option-chain",
+        "options/moneyness",
+        "options/gamma-exposure"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-futures-curve",
+      "concept_id": "futures-and-spreads/futures-curve",
+      "display_name": "Futures curve",
+      "domain": "Futures and spreads",
+      "description": "Explain, compare, or apply Futures curve using the library's structured Futures and spreads reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Futures curve",
+        "forward curve",
+        "futures forward curve",
+        "explain Futures curve",
+        "apply Futures curve to a trading question",
+        "common misconception about Futures curve"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/futures-and-spreads/futures-curve",
+      "canonical": {
+        "source_path": "concepts/futures-and-spreads.json",
+        "sha256": "c82bc9a90ea4918ffcf5c78cfda4dc0876db5d9675e6ce799638f89053744adf"
+      },
+      "related_concept_ids": [
+        "futures-and-spreads/term-structure",
+        "futures-and-spreads/contango",
+        "futures-and-spreads/backwardation",
+        "futures-and-spreads/roll-yield",
+        "futures-and-spreads/basis"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-term-structure",
+      "concept_id": "futures-and-spreads/term-structure",
+      "display_name": "Term structure",
+      "domain": "Futures and spreads",
+      "description": "Explain, compare, or apply Term structure using the library's structured Futures and spreads reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Term structure",
+        "futures term structure",
+        "price term structure",
+        "explain Term structure",
+        "apply Term structure to a trading question",
+        "common misconception about Term structure"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/futures-and-spreads/term-structure",
+      "canonical": {
+        "source_path": "concepts/futures-and-spreads.json",
+        "sha256": "b59aed6420fd52e72d057e2dd70b65a40c13dbf8b2f3ec6cde97662babc759b0"
+      },
+      "related_concept_ids": [
+        "futures-and-spreads/futures-curve",
+        "futures-and-spreads/contango",
+        "futures-and-spreads/backwardation",
+        "futures-and-spreads/steepener",
+        "futures-and-spreads/flattener",
+        "futures-and-spreads/futures-calendar-spread"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-contango",
+      "concept_id": "futures-and-spreads/contango",
+      "display_name": "Contango",
+      "domain": "Futures and spreads",
+      "description": "Explain, compare, or apply Contango using the library's structured Futures and spreads reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Contango",
+        "carrying charge market",
+        "normal market",
+        "explain Contango",
+        "apply Contango to a trading question",
+        "common misconception about Contango"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/futures-and-spreads/contango",
+      "canonical": {
+        "source_path": "concepts/futures-and-spreads.json",
+        "sha256": "eb1a75b4fd0348a78b0492e53398f1681aa7cc76d219bd8e92e7964b2d80594b"
+      },
+      "related_concept_ids": [
+        "futures-and-spreads/backwardation",
+        "futures-and-spreads/futures-curve",
+        "futures-and-spreads/cost-of-carry",
+        "futures-and-spreads/roll-yield",
+        "futures-and-spreads/cash-and-carry-arbitrage",
+        "futures-and-spreads/futures-calendar-spread"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-backwardation",
+      "concept_id": "futures-and-spreads/backwardation",
+      "display_name": "Backwardation",
+      "domain": "Futures and spreads",
+      "description": "Explain, compare, or apply Backwardation using the library's structured Futures and spreads reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Backwardation",
+        "inverted market",
+        "explain Backwardation",
+        "apply Backwardation to a trading question",
+        "common misconception about Backwardation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/futures-and-spreads/backwardation",
+      "canonical": {
+        "source_path": "concepts/futures-and-spreads.json",
+        "sha256": "200bc9f9776d012612e1f9c77d0724b061f8149e1f8381ca2e84398c46f18de9"
+      },
+      "related_concept_ids": [
+        "futures-and-spreads/contango",
+        "futures-and-spreads/futures-curve",
+        "futures-and-spreads/convenience-yield",
+        "futures-and-spreads/roll-yield",
+        "futures-and-spreads/reverse-cash-and-carry-arbitrage",
+        "futures-and-spreads/basis"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-basis",
+      "concept_id": "futures-and-spreads/basis",
+      "display_name": "Basis",
+      "domain": "Futures and spreads",
+      "description": "Explain, compare, or apply Basis using the library's structured Futures and spreads reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Basis",
+        "cash-futures basis",
+        "explain Basis",
+        "apply Basis to a trading question",
+        "common misconception about Basis"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/futures-and-spreads/basis",
+      "canonical": {
+        "source_path": "concepts/futures-and-spreads.json",
+        "sha256": "f3a1bcf58ddfcd5269dfee8250bcb7957ed1db3f593f5590cdabd133cc2877fe"
+      },
+      "related_concept_ids": [
+        "futures-and-spreads/contango",
+        "futures-and-spreads/backwardation",
+        "futures-and-spreads/futures-curve",
+        "futures-and-spreads/cost-of-carry",
+        "futures-and-spreads/futures-calendar-spread"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-cash-and-carry-arbitrage",
+      "concept_id": "futures-and-spreads/cash-and-carry-arbitrage",
+      "display_name": "Cash-and-carry arbitrage",
+      "domain": "Futures and spreads",
+      "description": "Explain, compare, or apply Cash-and-carry arbitrage using the library's structured Futures and spreads reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Cash-and-carry arbitrage",
+        "cash and carry",
+        "carry arbitrage",
+        "explain Cash-and-carry arbitrage",
+        "apply Cash-and-carry arbitrage to a trading question",
+        "common misconception about Cash-and-carry arbitrage"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/futures-and-spreads/cash-and-carry-arbitrage",
+      "canonical": {
+        "source_path": "concepts/futures-and-spreads.json",
+        "sha256": "f0917d4f3479d49276f8c7537ee4632214d43b4f78c369963eedeb74db2a104b"
+      },
+      "related_concept_ids": [
+        "futures-and-spreads/reverse-cash-and-carry-arbitrage",
+        "futures-and-spreads/cost-of-carry",
+        "futures-and-spreads/contango",
+        "futures-and-spreads/basis",
+        "futures-and-spreads/futures-curve"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-reverse-cash-and-carry-arbitrage",
+      "concept_id": "futures-and-spreads/reverse-cash-and-carry-arbitrage",
+      "display_name": "Reverse cash-and-carry arbitrage",
+      "domain": "Futures and spreads",
+      "description": "Explain, compare, or apply Reverse cash-and-carry arbitrage using the library's structured Futures and spreads reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Reverse cash-and-carry arbitrage",
+        "reverse cash and carry",
+        "explain Reverse cash-and-carry arbitrage",
+        "apply Reverse cash-and-carry arbitrage to a trading question",
+        "common misconception about Reverse cash-and-carry arbitrage"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/futures-and-spreads/reverse-cash-and-carry-arbitrage",
+      "canonical": {
+        "source_path": "concepts/futures-and-spreads.json",
+        "sha256": "3f5dff4524545c9c627096e3996d708dfc976077015ece0c2a4ed9387c15736b"
+      },
+      "related_concept_ids": [
+        "futures-and-spreads/cash-and-carry-arbitrage",
+        "futures-and-spreads/backwardation",
+        "futures-and-spreads/cost-of-carry",
+        "futures-and-spreads/convenience-yield",
+        "futures-and-spreads/basis"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-cost-of-carry",
+      "concept_id": "futures-and-spreads/cost-of-carry",
+      "display_name": "Cost of carry",
+      "domain": "Futures and spreads",
+      "description": "Explain, compare, or apply Cost of carry using the library's structured Futures and spreads reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Cost of carry",
+        "carrying charges",
+        "carry",
+        "explain Cost of carry",
+        "apply Cost of carry to a trading question",
+        "common misconception about Cost of carry"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 49,
+      "package_path": "skills/concepts/futures-and-spreads/cost-of-carry",
+      "canonical": {
+        "source_path": "concepts/futures-and-spreads.json",
+        "sha256": "ac24a36a7915799d299ee23cb788bcac04db5b60e6903db9543f6fab9ba3608b"
+      },
+      "related_concept_ids": [
+        "futures-and-spreads/convenience-yield",
+        "futures-and-spreads/contango",
+        "futures-and-spreads/cash-and-carry-arbitrage",
+        "futures-and-spreads/basis",
+        "futures-and-spreads/futures-curve"
       ]
     }
   ]

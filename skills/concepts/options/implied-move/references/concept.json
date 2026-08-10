@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/implied-move",
+  "canonical_sha256": "561905080efe7f8355cd0e1cfdc92efd7caa802e4624237a17f288ea7b650a8b",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/implied-move",
+    "name": "Implied move",
+    "aliases": [
+      "implied range",
+      "options-implied move"
+    ],
+    "domain": "Options",
+    "definition": "The implied move is the price range the options market currently prices for an underlying over a given horizon, conventionally estimated from the at-the-money straddle price (or a fraction of it) for the expiration covering that horizon. It is the dollar translation of implied volatility, widely used to gauge event expectations such as earnings.",
+    "intuition": "The cost of buying both the ATM call and put is, roughly, what the market charges for the expected round trip — so the straddle price reads directly as 'how big a move is priced in.'",
+    "mechanics": "Common practitioner conventions: implied move ~ ATM straddle price, or ~0.85 x straddle to approximate a one-standard-deviation (68%) range, or S x IV x sqrt(T/365) from ATM implied volatility. The implied move is a pricing statement, not a forecast: it embeds risk premia and supply/demand for event protection, and it typically exceeds the average realized event move.",
+    "formula": "Implied move ~ Price(ATM call) + Price(ATM put); 1-sd version ~ 0.85 x straddle, or S x IV x sqrt(T).",
+    "relationships": [
+      "Expected move",
+      "Long straddle",
+      "Implied volatility",
+      "Volatility term structure",
+      "At-the-money option"
+    ],
+    "failure_modes": "Treating the implied move as a confidence bound fails repeatedly: realized moves beyond the implied range are common around events, and the straddle-based estimate itself shifts with skew, term structure, and bid-ask width. Post-event volatility crush punishes traders who bought the move at its priced peak.",
+    "misconceptions": "The implied move is not the market's prediction of the actual move — it is the break-even for a straddle buyer, so the stock must move more than the implied move for that buyer to profit. It is also silent about direction.",
+    "example": "With XYZ at $100 before earnings, the weekly $100 straddle costs $6.00: the implied move is about $6 (breakevens $94 and $106), and an 85% rule would quote a ~$5.10 one-sigma expected range.",
+    "citations": [
+      {
+        "source": "Barchart — Expected Move methodology",
+        "url": "https://www.barchart.com/stocks/quotes/%24SPX/expected-move",
+        "section": "Expected Move definition (also referred to as Implied Move)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Straddle — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Straddle",
+        "section": "Long straddle (straddle price as move pricing)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

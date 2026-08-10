@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/variance-risk-premium",
+  "canonical_sha256": "b2017e69920ed982b0de0f613de0950680b747e867db8d275d54ec90862a268a",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/variance-risk-premium",
+    "name": "Variance risk premium",
+    "aliases": [
+      "VRP"
+    ],
+    "domain": "Options",
+    "definition": "The variance risk premium is the empirical tendency for option-implied (risk-neutral) variance to exceed subsequently realized variance — equivalently, the average loss borne by buyers of variance swaps and the average gain collected by sellers. Documented in equity-index markets by Carr and Wu (2009), it represents the compensation investors demand for bearing variance risk.",
+    "intuition": "Volatility insurance is expensive on average: the volatility implied by option prices usually turns out higher than the volatility that actually materializes, and that persistent gap is the premium paid to whoever sells the insurance.",
+    "mechanics": "Measured as implied variance (e.g., VIX^2 or a variance-swap strike) minus realized variance over the matching horizon. Carr and Wu show the excess returns of shorting variance swaps cannot be explained by standard factor models, implying variance is priced as its own risk factor; the premium is time-varying and spikes in crises, when realized variance can exceed implied many-fold.",
+    "formula": "VRP(T) = E^Q[Var_T] - E^P[Var_T], empirically approximated by VIX^2 (or variance-swap strike) minus realized variance over the period.",
+    "relationships": [
+      "Volatility risk premium",
+      "Implied volatility",
+      "Volatility surface",
+      "Risk-neutral probability",
+      "Short straddle"
+    ],
+    "failure_modes": "The premium is an average, not a constant: in crises realized variance dwarfs implied and short-variance books suffer losses that erase years of premium. Measurement is also sensitive to the realized-variance estimator, sampling frequency, and the implied benchmark used.",
+    "misconceptions": "A persistent variance premium does not make selling volatility a free lunch — it is compensation for negative-skew, crisis-concentrated losses, and its existence says nothing about whether any given short-vol trade is attractive today.",
+    "example": "If VIX averages 19% while the S&P 500's subsequent 30-day realized volatility averages 16%, the roughly 3-vol-point (in variance terms, 361 - 256 = 105 vol-squared points) gap is the variance risk premium earned by systematic option sellers on average.",
+    "citations": [
+      {
+        "source": "Variance risk premium — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Variance_risk_premium",
+        "section": "Analysis",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Carr, P. & Wu, L. (2009), Variance Risk Premiums, Review of Financial Studies 22(3):1311-1341 — Crossref record",
+        "url": "https://api.crossref.org/works/10.1093/rfs/hhn038",
+        "section": "DOI 10.1093/rfs/hhn038",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

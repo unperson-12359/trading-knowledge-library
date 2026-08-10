@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "futures-and-spreads/basis",
+  "canonical_sha256": "f3a1bcf58ddfcd5269dfee8250bcb7957ed1db3f593f5590cdabd133cc2877fe",
+  "source_path": "concepts/futures-and-spreads.json",
+  "concept": {
+    "id": "futures-and-spreads/basis",
+    "name": "Basis",
+    "aliases": [
+      "cash-futures basis"
+    ],
+    "domain": "Futures and spreads",
+    "definition": "The difference between the spot or cash price of a commodity and the price of the nearest futures contract for the same or a related commodity, typically calculated as cash minus futures. It is usually computed against the futures contract next to expire and may reflect differences in time, product form, grade, or location.",
+    "intuition": "Basis is the local truth adjustment: what you actually pay or receive at your elevator, hub, or grade versus the exchange's quoted futures price.",
+    "mechanics": "Computed as Basis = cash price - futures price (per CFTC convention). Commercial participants quote cash transactions as a premium or discount to futures (e.g. '10 cents over December corn'); hedgers lock in the basis rather than the flat price, and basis tends to narrow (converge) as the futures contract approaches delivery.",
+    "formula": "Basis = P_cash - P_futures (CFTC convention: cash minus futures, usually versus the contract next to expire).",
+    "relationships": [
+      "Contango",
+      "Backwardation",
+      "Futures curve",
+      "Cost of carry",
+      "Futures calendar spread"
+    ],
+    "failure_modes": "Basis is location- and grade-specific, so a futures hedge against a mismatched grade or delivery point leaves residual basis risk — the basis can widen or narrow unexpectedly between hedge placement and lifting. In delivery squeezes or logistics disruptions, basis can move violently even when flat prices are quiet.",
+    "misconceptions": "Traders often assume the basis always converges smoothly to zero at expiration; convergence holds only for the deliverable grade at the specified delivery point, and can fail under delivery frictions. Basis is also not the same as the calendar spread between two futures months.",
+    "example": "If a grain elevator bids $5.80 per bushel cash for corn while December corn futures trade at $6.00, the local basis is $5.80 - $6.00 = -$0.20, quoted as '20 under December'.",
+    "citations": [
+      {
+        "source": "CFTC Futures Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Basis; Basis Quote; Convergence",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

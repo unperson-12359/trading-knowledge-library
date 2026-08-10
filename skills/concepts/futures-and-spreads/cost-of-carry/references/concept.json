@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "futures-and-spreads/cost-of-carry",
+  "canonical_sha256": "ac24a36a7915799d299ee23cb788bcac04db5b60e6903db9543f6fab9ba3608b",
+  "source_path": "concepts/futures-and-spreads.json",
+  "concept": {
+    "id": "futures-and-spreads/cost-of-carry",
+    "name": "Cost of carry",
+    "aliases": [
+      "carrying charges",
+      "carry"
+    ],
+    "domain": "Futures and spreads",
+    "definition": "The cost of storing a physical commodity or holding a financial instrument over a period of time, including insurance, storage, and interest on the funds committed, plus other incidental costs. A market in which futures prices rise with each successive maturity by at least these charges is called a carrying-charge market; if the charges fully reimburse the holder, the carry is 'full'.",
+    "intuition": "It is the total bill for holding an asset from today until a future delivery date — rent for the warehouse, insurance premiums, and the interest on the money tied up.",
+    "mechanics": "Cost of carry links spot and futures prices: in equilibrium the futures price equals the spot price plus carry (for commodities, adjusted down by convenience yield). Comparing the actual futures premium to the cost of carry reveals whether the curve is at full carry (arbitrage-bound) or not, and drives cash-and-carry decisions.",
+    "formula": "F = S * e^((r + u - y) * T), where F = futures price, S = spot price, r = financing (interest) rate, u = storage and insurance cost rate, y = convenience yield, T = time to delivery in years. Net monetary carry without convenience yield: F = S * (1 + r + u)^T.",
+    "relationships": [
+      "Convenience yield",
+      "Contango",
+      "Cash-and-carry arbitrage",
+      "Basis",
+      "Futures curve"
+    ],
+    "failure_modes": "The model assumes storage and financing are freely available at known rates; in storage-constrained markets (e.g. full tank farms at Cushing) realized carry diverges from quoted rates. For financial futures, dividends, repo rates, and borrow costs complicate the simple financing term.",
+    "misconceptions": "Cost of carry is not itself a forecast of where futures should trade as a floor in all markets — with a large convenience yield, futures can trade below spot plus carry indefinitely (backwardation) without creating an exploitable arbitrage.",
+    "example": "If spot gold is $1,800/oz, annual financing is 5%, and storage/insurance is 0.5%, the one-year full-carry futures price is about $1,899/oz; a futures quote well above that invites cash-and-carry arbitrage.",
+    "citations": [
+      {
+        "source": "CFTC Futures Glossary: A Guide to the Language of the Futures Industry",
+        "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm",
+        "section": "Carrying Charges ('Also called Cost of Carry')",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

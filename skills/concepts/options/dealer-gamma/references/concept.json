@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/dealer-gamma",
+  "canonical_sha256": "ccbbea17902b830ef99a6648035e156c5e863f5832a3ce4142601f3e950504dc",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/dealer-gamma",
+    "name": "Dealer gamma",
+    "aliases": [
+      "market-maker gamma",
+      "dealer gamma positioning"
+    ],
+    "domain": "Options",
+    "definition": "Dealer gamma is the net gamma position carried by options market makers as a consequence of filling customer order flow: when customers net-buy options, dealers end up short gamma and must hedge by trading with the market's direction; when customers net-sell, dealers are long gamma and hedge against the move. It describes positioning, not a tradable instrument.",
+    "intuition": "Dealers try to stay direction-neutral, so whatever convexity customers buy, dealers are short — and that forces them to buy high and sell low mechanically, which can amplify trends, or the reverse, which dampens them.",
+    "mechanics": "A dealer short a call is short delta and short gamma: as the underlying rises they must buy more of it to re-hedge, and as it falls they sell — same-direction flow. Aggregate dealer gamma therefore determines whether hedging stabilizes or destabilizes: Cboe's 0DTE analysis quantifies net market-maker gamma per strike and found it generally small because customer buy/sell flow is balanced.",
+    "formula": "",
+    "relationships": [
+      "Gamma exposure",
+      "Gamma",
+      "Delta",
+      "Open interest",
+      "Pin risk",
+      "Charm"
+    ],
+    "failure_modes": "Dealer-gamma narratives are chronically over-extrapolated from unobservable positioning; even Cboe's transaction-level data show typical net exposures are a fraction of a percent of futures liquidity, so blaming dealer hedging for everyday moves usually misattributes cause. Positioning can also flip intraday as prices cross high-gamma strikes.",
+    "misconceptions": "Dealers do not hold views — they hold inventory to hedge, so 'dealers are short the market' confuses short gamma with directional shorting. Nor is dealer hedging automatically destabilizing: the sign of their net gamma, not its existence, determines the effect.",
+    "example": "Ahead of a large OPEX, if customers are net long SPX calls, dealers are short those calls and short gamma; a rally then forces them to buy futures into strength, mechanically adding to the move until positions roll off at expiration.",
+    "citations": [
+      {
+        "source": "Cboe — Volatility Insights: Evaluating the Market Impact of SPX 0DTE Options (Mandy Xu, 2023)",
+        "url": "https://www.cboe.com/insights/posts/volatility-insights-evaluating-the-market-impact-of-spx-0-dte-options/",
+        "section": "What Is Gamma Hedging?; High Volume != High Risk",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

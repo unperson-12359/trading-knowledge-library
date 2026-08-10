@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "options/forward-volatility",
+  "canonical_sha256": "3e069273462b6e37d8c42b8016a0499a5363ab5024519d1b33c477059cbab2aa",
+  "source_path": "concepts/options.json",
+  "concept": {
+    "id": "options/forward-volatility",
+    "name": "Forward volatility",
+    "aliases": [
+      "forward implied volatility",
+      "forward vol"
+    ],
+    "domain": "Options",
+    "definition": "Forward volatility is the implied volatility for a future time interval backed out of two points on the volatility term structure: the volatility that, compounded with the near-leg volatility, reproduces the far-leg's total implied variance. It expresses the market's current pricing of volatility over a forward window rather than from today.",
+    "intuition": "If 3-month options imply 20% vol and 6-month options imply 25%, the extra variance in the back three months implies a specific 'forward' vol for that window — the market's price for turbulence starting three months from now.",
+    "mechanics": "Because total implied variance grows approximately linearly in time, forward variance between T1 and T2 is the difference of the two legs' total variances scaled by the interval: sigma_fwd = sqrt[(T2*sigma2^2 - T1*sigma1^2)/(T2 - T1)]. Forward vols are used to isolate event windows, compare calendar spreads fairly, and price forward-start options.",
+    "formula": "sigma_fwd = sqrt((T2*sigma_2^2 - T1*sigma_1^2)/(T2 - T1)), where sigma_1, sigma_2 are implied volatilities to T1 < T2.",
+    "relationships": [
+      "Volatility term structure",
+      "Volatility surface",
+      "Implied volatility",
+      "Calendar spread",
+      "Variance risk premium"
+    ],
+    "failure_modes": "The square-root-of-difference formula amplifies quote noise: small errors in either leg can produce wildly unstable or even imaginary forward vols when the term structure inverts sharply. It also assumes variance additivity, which event-dominant windows violate in interpretation.",
+    "misconceptions": "Forward implied volatility is not a forecast of future implied or realized volatility — like a forward interest rate, it is a break-even price consistent with today's term structure, mixing expectations with risk premia.",
+    "example": "With 50-day implied vol at 12% and 80-day at 17%, the forward vol for the 30-day window between them is sqrt[(80*0.17^2 - 50*0.12^2)/30] ≈ 23% — the market pricing a volatile event in that window.",
+    "citations": [
+      {
+        "source": "SpotGamma Support — Forward Implied Volatility",
+        "url": "https://support.spotgamma.com/hc/en-us/articles/15249178424595-Forward-Implied-Volatility",
+        "section": "Basic Points; Derivation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
