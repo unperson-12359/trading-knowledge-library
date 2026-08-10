@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/cross-exchange-arbitrage",
+  "canonical_sha256": "b19c667a018a7309c26ccc82c5fb1758b3f8167127dee555bdc425fd4b41d362",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/cross-exchange-arbitrage",
+    "name": "Cross-exchange arbitrage",
+    "aliases": [
+      "exchange arbitrage",
+      "kimchi premium trade (crypto context)"
+    ],
+    "domain": "Trading systems",
+    "definition": "Buying an asset on the exchange where it is cheaper and simultaneously selling it where it is dearer to capture the price gap between venues. In cryptocurrency markets, Makarov and Schoar (2020) document that such deviations are recurrent and much larger across countries than within them, reflecting capital controls and limits to arbitrage.",
+    "intuition": "The same bitcoin should not be worth $30,000 in Seoul and $29,400 in New York for long - but moving dollars and coins across borders and exchanges is slow and costly, so the gap persists and pays whoever can bridge it.",
+    "mechanics": "Monitor quoted prices across venues, buy on the cheap exchange and sell on the expensive one, then rebalance fiat and asset inventories between venues. Speed, transfer costs, withdrawal limits, and capital controls determine which gaps are actually capturable.",
+    "formula": "Gross edge = P_venueB - P_venueA - (transfer + trading + FX costs); Makarov-Schoar find cross-country deviations co-move and widen during large bitcoin appreciations.",
+    "relationships": [
+      "Latency arbitrage",
+      "Funding-rate arbitrage",
+      "Index arbitrage",
+      "Limits to arbitrage"
+    ],
+    "failure_modes": "Transfer and settlement delays mean the legs are not simultaneous in practice - the gap can close while assets are in transit, and withdrawal halts, capital controls, or counterparty failure can strand one leg entirely.",
+    "misconceptions": "That a visible price gap equals capturable profit; the documented gaps persist precisely because frictions - capital controls and slow-moving arbitrage capital - prevent most traders from closing them.",
+    "example": "Bitcoin trades $500 higher on a Korean exchange than a U.S. one; an arbitrageur buys in the U.S. and sells in Korea but captures the spread only after moving won proceeds back through the banking system - days of exposure, not milliseconds.",
+    "citations": [
+      {
+        "source": "Makarov & Schoar, 'Trading and Arbitrage in Cryptocurrency Markets' (SSRN; published JFE 2020)",
+        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3171204",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/basis-trade",
+  "canonical_sha256": "c60c78dbe560d9073c0ef1939029fb4b08e27ef3c1a9a3dc1da9e475e52eafee",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/basis-trade",
+    "name": "Basis trade",
+    "aliases": [
+      "basis trading",
+      "cash-and-carry (one direction)"
+    ],
+    "domain": "Trading systems",
+    "definition": "A relative-value strategy that trades the basis - the spread between an asset's cash (spot) price and its futures price - by going long the cheap leg and short the rich leg, expecting convergence as the futures contract approaches delivery. The position is neutral to the asset's outright price and earns or loses the change in the spread.",
+    "intuition": "A futures contract and the deliverable asset are the same thing at expiry, so any gap between them today beyond financing and carry is a harvestable mispricing: buy the cheap one, sell the dear one, and wait for them to meet.",
+    "mechanics": "Compute fair value (spot plus cost of carry minus income such as dividends) and compare it with the futures price; if futures are rich, buy the asset and short the futures (long the basis), financing the cash leg, then hold to convergence or roll. Index-arbitrage desks apply the same logic to index futures versus the constituent basket.",
+    "formula": "Basis = futures price - spot price; fair value = cash x (1 + r x x/360) - dividends, so the tradeable edge approx. actual basis minus theoretical basis.",
+    "relationships": [
+      "Cash-futures basis trade",
+      "Index arbitrage",
+      "Calendar arbitrage",
+      "Cost of carry"
+    ],
+    "failure_modes": "The basis can widen before it converges, forcing margin and financing stress on the leveraged position - the archetypal limit-to-arbitrage failure; funding-cost spikes and forced unwinds (March 2020 Treasuries) can turn a convergent trade into a large realized loss.",
+    "misconceptions": "That basis trades are riskless arbitrage; convergence is only assured at delivery, and the leverage used to make thin spreads economical makes interim widening potentially fatal.",
+    "example": "With the S&P future trading 8 points above fair value, a desk buys the 500-stock basket and shorts the future; as expiry approaches, the two converge and the desk captures the 8 points less financing and execution costs.",
+    "citations": [
+      {
+        "source": "Investopedia, 'Index Arbitrage'",
+        "url": "https://www.investopedia.com/terms/i/indexarbitrage.asp",
+        "section": "Understanding Index Fair Value",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

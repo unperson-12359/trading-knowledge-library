@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/cash-futures-basis-trade",
+  "canonical_sha256": "ae80411e049d8afbd7f454054b8e79513d72f2dd74be3ba9afec4f858130ab41",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/cash-futures-basis-trade",
+    "name": "Cash-futures basis trade",
+    "aliases": [
+      "Treasury basis trade"
+    ],
+    "domain": "Trading systems",
+    "definition": "The Treasury-market instantiation of the basis trade: arbitrageurs, chiefly hedge funds, buy cash Treasury notes and bonds and short Treasury futures when futures trade above their no-arbitrage price, financing the bond in the repo market so the position requires almost no net cash outlay. Profit comes from cash and futures prices converging by the delivery date.",
+    "intuition": "If the future is priced above what the deliverable bond plus financing costs, you can warehouse the bond, deliver into the future, and lock in the gap - as long as your repo funding survives until delivery.",
+    "mechanics": "Identify the cheapest-to-deliver Treasury, buy it, short the corresponding CBOT futures contract, and finance the bond with overnight or short-term repo while posting futures margin. The Office of Financial Research estimates hedge-fund basis positions peaked around $400-500 billion before March 2020, when margin and repo stress forced partial unwinds.",
+    "formula": "No-arbitrage condition: P(t,tau) = sum_s B(t,s) c_s + B(t,T) F(t,tau,T) - the cash bond price equals discounted coupons plus the discounted futures invoice price; violations define the tradeable disconnect.",
+    "relationships": [
+      "Basis trade",
+      "Repo market",
+      "Treasury futures",
+      "Cheapest-to-deliver"
+    ],
+    "failure_modes": "Overnight repo creates rollover risk and futures margin creates cash-call risk; in March 2020 rising margins and repo costs forced hedge funds to sell the cash leg into an illiquid market, amplifying Treasury-market stress until the Federal Reserve intervened.",
+    "misconceptions": "That the high leverage makes the trade speculative rather than arbitrage; the position is hedged against rate moves, and its fragility comes from funding structure, not directional exposure.",
+    "example": "From end-2017 to September 2019 hedge-fund Treasury exposure roughly doubled to $2.02 trillion while short futures positions rose $352 billion - the footprint of the long-basis build-up that partially unwound in March 2020 (OFR estimates).",
+    "citations": [
+      {
+        "source": "Barth & Kahn, 'Hedge Funds and the Treasury Cash-Futures Disconnect', OFR Working Paper 21-01",
+        "url": "https://www.financialresearch.gov/working-papers/files/OFRwp-21-01-hedge-funds-and-the-treasury-cash-futures-disconnect.pdf",
+        "section": "Sections 1-2",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

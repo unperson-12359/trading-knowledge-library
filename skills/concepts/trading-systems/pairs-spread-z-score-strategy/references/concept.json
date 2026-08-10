@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/pairs-spread-z-score-strategy",
+  "canonical_sha256": "080123218f15b70f3e95822f7a07587c334b983dc7d5dfcfa13fd74b4f63a77a",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/pairs-spread-z-score-strategy",
+    "name": "Pairs spread z-score strategy",
+    "aliases": [
+      "z-score pairs trading",
+      "standardized spread stat-arb"
+    ],
+    "domain": "Trading systems",
+    "definition": "A statistical-arbitrage rule that monitors the spread between two historically linked securities, standardizes it as a z-score against its own rolling mean and standard deviation, and enters a market-neutral long/short when the spread stretches beyond a threshold (commonly two standard deviations), exiting at reversion. It is the standardized-distance variant of the Gatev-Goetzmann-Rouwenhorst pairs rule.",
+    "intuition": "If two stocks usually move together, the times they do not are opportunities: when the gap is two standard deviations wide, history says it more often narrows than widens - so you short the leader and buy the laggard.",
+    "mechanics": "Estimate the spread (price ratio or hedge-ratio residual), compute z = (spread - rolling mean) / rolling sigma, open the pair when |z| exceeds the entry threshold, and close when z reverts toward zero or crosses the exit threshold. Gatev et al. (2006) match pairs by minimum distance between normalized price series and trade divergences beyond two historical standard deviations.",
+    "formula": "z_t = (s_t - mu_s) / sigma_s; enter short the spread if z_t > +2, long if z_t < -2, exit near z_t approx. 0.",
+    "relationships": [
+      "Pairs trading",
+      "Statistical arbitrage",
+      "Pairs convergence trade",
+      "Pairs divergence trade",
+      "Mean reversion"
+    ],
+    "failure_modes": "Structural breaks - a takeover, earnings regime change, or delisting - turn a stretched spread into a permanently repriced one while the z-score keeps signaling reversion, and rolling-window estimates degrade in volatility regime shifts.",
+    "misconceptions": "That a 2-sigma threshold makes the trade statistically safe; spread distributions are fat-tailed and non-stationary, so extreme readings cluster exactly when the pair relationship is breaking.",
+    "example": "Two retail stocks' price-ratio spread has mean 1.00 and sigma 0.02; when the spread hits 1.05 (z = 2.5), short the outperformer and buy the underperformer dollar-neutral, exiting when the spread returns to 1.01.",
+    "citations": [
+      {
+        "source": "Gatev, Goetzmann & Rouwenhorst, 'Pairs Trading: Performance of a Relative Value Arbitrage Rule' (SSRN; published RFS 2006)",
+        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=141615",
+        "section": "Abstract",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/gap-and-go-strategy",
+  "canonical_sha256": "0ebe5a39d9cc0b8d8d89d3d1d226154c97017d496eddfbd9393cf704c3f5151c",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/gap-and-go-strategy",
+    "name": "Gap-and-go strategy",
+    "aliases": [
+      "gap and go"
+    ],
+    "domain": "Trading systems",
+    "definition": "A day-trading momentum strategy that buys (or shorts) a stock that gaps at the open on high volume and continues trending in the gap direction without a meaningful pullback, entering on continuation beyond the opening range. It is a named practitioner setup with no canonical source.",
+    "intuition": "A high-volume gap means overnight information repriced the stock and trapped the other side; if price never looks back, the trapped traders' exits and momentum chasers feed a one-way move you ride with tight invalidation.",
+    "mechanics": "Screen for gaps with elevated premarket and opening volume; enter on the break of the opening range in the gap direction, place the stop at the prior session's close or the gap's far edge, and trail the exit with a trend line or the most recent swing low.",
+    "formula": "",
+    "relationships": [
+      "Opening-range breakout",
+      "Momentum trading",
+      "News trading",
+      "Earnings trading"
+    ],
+    "failure_modes": "The setup's evil twin is the gap fade: gaps that stall and fill trap momentum entries at the day's extreme, and wide opening spreads plus slippage make realized entries far worse than chart-based backtests suggest.",
+    "misconceptions": "That the gap direction is itself the signal; practitioners require volume confirmation and continuation structure - many gaps fill, and trading every gap is an exercise in chasing.",
+    "example": "A stock gaps up 8% on earnings with triple normal opening volume; the trader buys the break of the first 5-minute high, stops below the prior close, and exits when the rising trend line from the open is breached near midday.",
+    "citations": [
+      {
+        "source": "TradingSim, 'Top 3 Morning Gap Trading Setups'",
+        "url": "https://www.tradingsim.com/blog/characteristics-of-a-morning-gap",
+        "section": "#1 - Gap and Go Strategy",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

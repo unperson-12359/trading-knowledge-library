@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/funding-rate-arbitrage",
+  "canonical_sha256": "b94cbacb64c43a14cb51c3e42be75f53123e3a9c6ff436bce376106a83ceab9c",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/funding-rate-arbitrage",
+    "name": "Funding-rate arbitrage",
+    "aliases": [
+      "funding-rate carry",
+      "perp cash-and-carry"
+    ],
+    "domain": "Trading systems",
+    "definition": "A crypto-market cash-and-carry style strategy that pairs a position in a perpetual futures contract with the opposite position in spot to harvest the funding rate - the periodic payment exchanged between perp longs and shorts that tethers the contract to the index price. When funding is positive, the classic trade shorts the perp and holds spot, collecting funding from longs.",
+    "intuition": "Perpetual futures never expire, so exchanges tax the crowded side: when longs pay shorts 0.01% every eight hours, being short the perp and long the coin collects the toll while the two legs' price risk cancels.",
+    "mechanics": "Hold spot (or a margin-equivalent) against an equal-notional short perp; funding payments accrue to the short when the rate is positive (contango) and to the long when negative (backwardation), typically every eight hours. The position is directionally hedged; risks are funding-rate flips, borrow and margin costs, liquidation mechanics, and exchange counterparty risk.",
+    "formula": "Funding payment per interval = position notional x funding rate; a $10,000 position at +0.01% pays or receives $1 every 8 hours.",
+    "relationships": [
+      "Basis trade",
+      "Cash-futures basis trade",
+      "Perpetual futures",
+      "Cross-exchange arbitrage"
+    ],
+    "failure_modes": "Funding flips sign in sharp selloffs, turning the income stream into a cost, and adverse wicks can liquidate the leveraged leg before the spot leg can be unwound, breaking the hedge; exchange freezes or defaults are uncompensated tail risks.",
+    "misconceptions": "That it is risk-free yield; the hedge is imperfect under liquidation and margin rules, and high positive funding usually signals crowded leverage that unwinds violently.",
+    "example": "With BTC perp funding at +0.01% per 8 hours, short $100,000 of perp against $100,000 of spot and collect about $30 per day in funding while the legs' price P&L nets to zero - until funding flips negative.",
+    "citations": [
+      {
+        "source": "Investopedia, 'Understanding Perpetual Futures: A Guide for Cryptocurrency Traders'",
+        "url": "https://www.investopedia.com/what-are-perpetual-futures-7494870",
+        "section": "How Does the Funding Rate Affect Perpetual Futures; Arbitrage",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/index-arbitrage",
+  "canonical_sha256": "7d6a1b3612415aa7f4240f9ee066ebf791c93a75f1fe680369eb280d86ee2ec6",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/index-arbitrage",
+    "name": "Index arbitrage",
+    "aliases": [
+      "index arb",
+      "program trading arbitrage"
+    ],
+    "domain": "Trading systems",
+    "definition": "A strategy that exploits deviations between the price of an index futures contract (or ETF) and the theoretical fair value of the underlying constituent basket, buying the cheaper side and selling the richer. It is the engine of classic program trading and enforces the law of one price between index derivatives and their components.",
+    "intuition": "The S&P 500 future is just the 500 stocks in a wrapper; if the wrapper trades rich to the contents, sell the wrapper and buy the contents - computers do this in milliseconds, which is why the gap rarely exceeds transaction costs.",
+    "mechanics": "Compute fair value = cash index x (1 + r x x/360) - dividends and compare it with the futures price; beyond a threshold set by round-trip costs, execute the basket and the futures as a unit. Opportunities are fleeting and razor-thin, so the strategy is dominated by institutions with high-speed execution and near-zero costs.",
+    "formula": "Fair value = cash x {1 + r(x/360)} - dividends; trade triggers when |futures - fair value| > round-trip transaction costs.",
+    "relationships": [
+      "Basis trade",
+      "Program trading",
+      "ETF arbitrage",
+      "Latency arbitrage"
+    ],
+    "failure_modes": "Execution-leg risk: a 500-stock basket cannot be filled at the quoted snapshot, so slippage can consume the edge; in dislocations (e.g., August 24, 2015) constituent and ETF prices detach violently, and part of the apparent gap is unpriceable, illiquid components.",
+    "misconceptions": "That index arbitrage is accessible to retail traders; the capital, speed, and cost structure needed to profit from sub-0.1% discrepancies are institutional by construction.",
+    "example": "If S&P 500 futures trade 0.2% above fair value, an institution buys all 500 stocks in index weights and shorts the equivalent futures, unwinding both at convergence for the spread minus financing and costs.",
+    "citations": [
+      {
+        "source": "Investopedia, 'Index Arbitrage'",
+        "url": "https://www.investopedia.com/terms/i/indexarbitrage.asp",
+        "section": "How Index Arbitrage Works; Real-World Examples",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

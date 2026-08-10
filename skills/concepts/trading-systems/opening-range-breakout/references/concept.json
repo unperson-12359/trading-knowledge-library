@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/opening-range-breakout",
+  "canonical_sha256": "5d7379f18e20fabfcd3af004dc888076ac052897ad5b77860b525e58f9842d65",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/opening-range-breakout",
+    "name": "Opening-range breakout",
+    "aliases": [
+      "ORB",
+      "opening range breakout (ORB)"
+    ],
+    "domain": "Trading systems",
+    "definition": "An intraday strategy that marks the high and low of the session's first minutes (commonly the first 15) and enters in the direction of a break beyond that range, treating the opening battle as the day's reference for momentum. It is a named day-trading system without a canonical academic source.",
+    "intuition": "The first 15 minutes concentrate overnight information and the day's heaviest volume; whichever side wins that skirmish often keeps control, so the range edges become the day's natural trigger levels.",
+    "mechanics": "Mark the opening-range high and low; enter long on a break above the high or short below the low, with stops inside the range or below the breakout candle and targets as multiples of risk or of the range width. The day's high or low is printed in the opening minutes far more often than a random walk would imply.",
+    "formula": "Long trigger: price > opening-range high; risk unit = OR high minus stop; a common first target is entry + 2 x risk unit.",
+    "relationships": [
+      "Breakout trading",
+      "Gap-and-go strategy",
+      "Day trading",
+      "News trading"
+    ],
+    "failure_modes": "False breakouts in mean-reverting sessions stop the trade repeatedly, and on low-conviction range-bound days the OR edges are noise rather than information; slippage at the open is structurally high.",
+    "misconceptions": "That every opening-range break is tradable; practitioners filter by gap context, relative volume, and higher-timeframe trend - the raw breakout is an analytical framework, not a validated edge.",
+    "example": "With a stock's 15-minute opening range at $41.08-$41.65, a break above $41.65 at 9:55 a.m. triggers a long with a stop below $41.08 and a first target near $42.80 (about 2R).",
+    "citations": [
+      {
+        "source": "Investopedia, 'Guide to Using the Opening Range in Trading'",
+        "url": "https://www.investopedia.com/terms/o/opening-range.asp",
+        "section": "How to Trade Effectively Using the Opening Range",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

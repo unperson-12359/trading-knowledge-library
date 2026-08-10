@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/calendar-arbitrage",
+  "canonical_sha256": "e70af6cf611dd9f1096761a3afd8f19c85444613e6f3c7612f5c59265dcfbc2d",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/calendar-arbitrage",
+    "name": "Calendar arbitrage",
+    "aliases": [
+      "calendar spread trading",
+      "intra-commodity spread"
+    ],
+    "domain": "Trading systems",
+    "definition": "Trading the price relationship between futures (or options) on the same underlying with different expiration months - the intra-commodity calendar spread - by buying one expiry and selling another to capture changes in the term-structure gap rather than the outright price. Framed as arbitrage, it targets spreads that deviate from carry-implied or historical norms.",
+    "intuition": "March wheat and September wheat are the same wheat at different dates; the gap between them reflects storage, financing, and seasonal demand - trade the gap when it stretches beyond what carry justifies.",
+    "mechanics": "Buy the nearby (or deferred) month and sell the other as a single unit with two legs; P&L equals the change in the inter-month spread. Exchanges grant reduced margins on calendar spreads because systematic market risk largely nets out between the legs.",
+    "formula": "Spread P&L = (P_near,exit - P_near,entry) - (P_far,exit - P_far,entry); a spread narrowing from -11 to -8 cents on a 5,000-bushel wheat contract earns $150.",
+    "relationships": [
+      "Basis trade",
+      "Futures curve",
+      "Roll yield",
+      "Contango and backwardation"
+    ],
+    "failure_modes": "Spreads are not bounded by delivery the way cash-futures convergence is: supply shocks, delivery squeezes in the nearby month, or storage-regime changes can run the spread far past fair carry, and liquidity in the deferred leg can be thin.",
+    "misconceptions": "That calendar spreads are slow and safe; nearby-month squeezes can move the spread more violently than the outright market, and the arbitrage framing is relative-value, not riskless.",
+    "example": "Buy March wheat at 526'6 and sell September at 537'6 (spread -11'0); when the spread narrows to -8'0, the 3-cent gain on the 5,000-bushel contract is $150 (Investopedia worked example).",
+    "citations": [
+      {
+        "source": "Investopedia, 'Futures Spread'",
+        "url": "https://www.investopedia.com/terms/f/futuresspread.asp",
+        "section": "Intra-Commodity Calendar Spread; Real-World Example",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/carry-trade",
+  "canonical_sha256": "223045d391235ed40c30720b166508c6c124fe8e9450c686e74954ae6abd66d3",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/carry-trade",
+    "name": "Carry trade",
+    "aliases": [
+      "currency carry",
+      "forward-bias trade"
+    ],
+    "domain": "Trading systems",
+    "definition": "A strategy of funding in a low-interest-rate currency (or asset) and investing in a high-interest-rate one to earn the interest differential, in violation of the uncovered-interest-parity benchmark that predicts offsetting depreciation. Its return profile is short-volatility: steady differential income punctuated by crash risk on the investment currency.",
+    "intuition": "Borrow yen at 0.5%, buy Australian dollars at 4.5%, and pocket the four-point spread - as long as AUD does not slide; the trade earns until everyone unwinds at once, which is why it goes up by the stairs and down by the elevator.",
+    "mechanics": "Sell or borrow the funding currency and buy the investment currency via spot, forwards, or futures, holding the differential as carry. Brunnermeier, Nagel and Pedersen (2009) document that high interest differentials predict negative skewness: crashes cluster with funding-liquidity squeezes and VIX spikes, when speculators unwind positions.",
+    "formula": "Carry return z(t+1) = (i*_t - i_t) - delta_s(t+1), where i* - i is the interest differential and delta_s the depreciation of the investment currency; profit requires the differential to exceed depreciation.",
+    "relationships": [
+      "Forward premium puzzle",
+      "Risk-on risk-off trading",
+      "Global macro trading",
+      "Currency futures"
+    ],
+    "failure_modes": "Funding-liquidity spirals force synchronized unwinds - investment currencies crash precisely when speculators must delever (e.g., the October 1998 dollar-yen collapse); rising global risk aversion (VIX, TED spread) is the canonical kill switch.",
+    "misconceptions": "That the carry differential is riskless arbitrage; the average profit coexists with negative skewness, so the return is compensation for bearing crash risk rather than a free lunch.",
+    "example": "A position long AUD funded in USD earned about the 0.6% quarterly differential plus 0.3% FX excess return in the 1986-2006 sample, while carrying average daily-return skewness around -0.32 (Brunnermeier-Nagel-Pedersen summary statistics).",
+    "citations": [
+      {
+        "source": "Brunnermeier, Nagel & Pedersen, 'Carry Trades and Currency Crashes', NBER Macroeconomics Annual 2008, vol. 23",
+        "url": "https://www.nber.org/system/files/chapters/c7286/c7286.pdf",
+        "section": "Sections I, III-IV (pp. 313-347)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

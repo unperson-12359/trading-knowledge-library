@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/earnings-trading",
+  "canonical_sha256": "17400fd170d7cce23bcb7defdd07cc8722c43d4c8d55a255eba940a900f7d1f5",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/earnings-trading",
+    "name": "Earnings trading",
+    "aliases": [
+      "earnings momentum trading",
+      "trading earnings announcements"
+    ],
+    "domain": "Trading systems",
+    "definition": "Trading equity positions around quarterly earnings announcements to exploit the announcement-day volatility and the post-announcement price drift documented in the accounting literature. Implementations range from intraday reaction trades to holding surprise winners and losers for the multi-week drift.",
+    "intuition": "Earnings are scheduled surprises: prices jump at the print and then, on average, keep crawling in the direction of the surprise for weeks, as if the market digests the news only gradually.",
+    "mechanics": "Screen for upcoming reports, estimate the surprise (actual versus consensus), and trade the direction of the surprise or the subsequent drift. Bernard and Thomas (1989) document post-earnings-announcement drift: abnormal returns continue in the direction of the surprise for roughly 60 days, a pattern they find consistent with delayed price response rather than risk mismeasurement.",
+    "formula": "Surprise proxies include SUE = (EPS_actual - EPS_expected) / sigma(forecast errors); portfolios sorted on SUE show drift in cumulative abnormal returns over the following quarter.",
+    "relationships": [
+      "News trading",
+      "Post-earnings-announcement drift",
+      "Gap-and-go strategy",
+      "Earnings surprise"
+    ],
+    "failure_modes": "Announcement windows concentrate gap risk - positions held through the print face binary moves that jump stops - and crowding plus post-publication decay of the drift anomaly compress the available edge.",
+    "misconceptions": "That earnings trading is just guessing the number; systematic versions trade the market's reaction function (surprise to drift), not the fundamental outcome itself.",
+    "example": "A stock reports EPS 15% above consensus and gaps up 6% at the open; a drift-following position held for the following weeks targets the continuation documented beyond the initial jump.",
+    "citations": [
+      {
+        "source": "Bernard & Thomas, 'Post-Earnings-Announcement Drift: Delayed Price Response or Risk Premium?', Journal of Accounting Research 27 (1989), 1-36 (EconPapers record)",
+        "url": "https://econpapers.repec.org/RePEc:bla:joares:v:27:y:1989:i::p:1-36",
+        "section": "Bibliographic record (DOI 10.2307/2491062)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

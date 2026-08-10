@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/latency-arbitrage",
+  "canonical_sha256": "ec37e9123518cfdfa27b33713a5a18da2d300b4d57dde827d401c935b45339c9",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/latency-arbitrage",
+    "name": "Latency arbitrage",
+    "aliases": [
+      "speed arbitrage",
+      "stale-quote sniping"
+    ],
+    "domain": "Trading systems",
+    "definition": "A high-frequency strategy that exploits the mechanical arbitrage opportunities created when correlated securities' prices update at slightly different times across venues, racing to trade on a stale quote before its owner can update it. Budish, Cramton and Shim (2015) show this arms race is built into the continuous limit order book design itself.",
+    "intuition": "When the E-mini jumps in Chicago, the SPY quote in New York is wrong for a few milliseconds; being first to pick off that stale quote is worth millions a year, so firms spend hundreds of millions on being microseconds faster.",
+    "mechanics": "Colocate near exchange matching engines, consume direct feeds, and send orders against quotes that have not yet incorporated price moves in correlated instruments. BCS document ES-SPY correlation falling to about 0.09 at 10 milliseconds and 0.007 at 1 millisecond, with the median arbitrage duration shrinking from 97ms in 2005 to 7ms in 2011 while profit per opportunity stayed roughly constant.",
+    "formula": "Median ES-SPY arbitrage profit approx. 0.08 index points per unit, about 1,000 opportunities per day (roughly $75 million per year) in the BCS 2005-2011 sample.",
+    "relationships": [
+      "Scalping",
+      "Market making",
+      "Cross-exchange arbitrage",
+      "High-frequency trading"
+    ],
+    "failure_modes": "The rent is competed away in speed rather than in price: as rivals get faster, capture requires ever-larger infrastructure spending for the same prize, and market-design changes such as frequent batch auctions or speed bumps can eliminate the opportunity set outright.",
+    "misconceptions": "That latency arbitrage involves predicting prices; it exploits purely mechanical, publicly visible mispricings whose existence depends on serial processing in continuous markets, not on information or forecasting skill.",
+    "example": "At 1:51:39.590 pm the E-mini jumps about 2.5 index points while SPY has not yet reacted; the fastest firm buys SPY at the stale offer and unwinds moments later at the corrected price, capturing the spread (BCS Figure 1.1 example).",
+    "citations": [
+      {
+        "source": "Budish, Cramton & Shim, 'The High-Frequency Trading Arms Race: Frequent Batch Auctions as a Market Design Response' (NBER version; published QJE 2015)",
+        "url": "https://conference.nber.org/confer/2013/MDf13/Budish_Cramton_Shim.pdf",
+        "section": "Introduction; Sections 4-5",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "trading-systems/scaling-out",
+  "canonical_sha256": "bf71dd912c9f4fae79cb3ae0aa44cdb1966112ed2e97e5e6030a23c98464499b",
+  "source_path": "concepts/trading-systems.json",
+  "concept": {
+    "id": "trading-systems/scaling-out",
+    "name": "Scaling out",
+    "aliases": [
+      "scale out",
+      "partial profit-taking"
+    ],
+    "domain": "Trading systems",
+    "definition": "Closing a position in partial tranches at successively more favorable prices rather than exiting all at once, banking profits progressively while leaving a residual position to capture further movement.",
+    "intuition": "Selling a third at each target converts an all-or-nothing exit into a ladder: some profit is locked in, and the remaining runner is effectively financed by realized gains.",
+    "mechanics": "Predefine partial-exit levels or targets; as each is reached, close a fraction of the position and commonly move the stop on the remainder to break-even or better, so the residual position carries little remaining downside relative to the entry.",
+    "formula": "Remaining size after k exits = Q_0 - sum(q_i); realized P&L = sum(q_i x (p_i - p_entry)) over exited tranches i.",
+    "relationships": [
+      "Scaling in",
+      "Pyramiding",
+      "Position sizing",
+      "Trailing stop"
+    ],
+    "failure_modes": "In strong trends scaling out caps participation in the biggest moves - the residual runner earns a fraction of what full size would have; in choppy markets premature partials plus tightened stops can exit the whole position at the worst moments.",
+    "misconceptions": "That scaling out is always the prudent choice; its main documented benefit is psychological and risk-smoothing, and fixed full exits can outperform staggered ones when trends persist.",
+    "example": "Holding 900 shares from a $50 entry, sell 300 at $52 and 300 at $54, move the stop to $50, and let the last 300 run - $1,200 is banked while upside exposure remains.",
+    "citations": [
+      {
+        "source": "Investopedia, 'What Is a Scale In?'",
+        "url": "https://www.investopedia.com/terms/s/scale-in.asp",
+        "section": "Scale In vs. Scale Out",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
