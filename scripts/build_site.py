@@ -77,8 +77,15 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 .query-controls input,.query-controls select{width:100%;padding:.5rem;border:1px solid #bbb;border-radius:5px;background:#fff}
 .query-controls label{font-size:.78rem;color:#555}.query-controls .check{display:flex;align-items:end;padding-bottom:.5rem}
 .query-result{border-bottom:1px solid #ddd;padding:.8rem 0}.query-result h2{font-size:1.05rem;margin:0 0 .2rem}
-.skill-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;margin:1rem 0}
-.skill-card{border:1px solid #ddd;border-radius:6px;padding:.8rem;background:#fafaf8}.skill-card h2{font-size:1.02rem;margin:0 0 .25rem}.skill-card p{margin:.3rem 0}.skill-links{font-family:system-ui;font-size:.78rem}
+.skills-hero{background:#111;color:#fff;border-radius:10px;padding:1.3rem 1.4rem;margin-bottom:1rem}.skills-hero h1{border:0;margin:.1rem 0}.skills-hero p{max-width:680px}.skills-hero a{color:#ffb08a}
+.catalog-stat{font-family:system-ui;font-size:1.05rem;margin:.8rem 0}.catalog-stat strong{font-size:1.45rem}
+.skill-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin:1rem 0}
+.skill-card{border:1px solid #ccc;border-radius:8px;padding:1rem;background:#fff;display:flex;flex-direction:column;min-height:205px}.skill-card:hover{border-color:#d97745;box-shadow:0 3px 12px #0000000d}.skill-card h2{font-family:system-ui;font-size:1.08rem;margin:0 0 .25rem}.skill-card p{margin:.5rem 0;flex:1}.skill-links{font-family:system-ui;font-size:.82rem;border-top:1px solid #eee;padding-top:.55rem}.skill-arrow{float:right;color:#d05f2c}
+.skill-identity{border:1px solid #ddd;border-radius:8px;padding:.8rem 1rem;font-family:system-ui;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1rem 0}.skill-identity strong{display:block;font-size:.78rem;color:#666}.skill-identity span{overflow-wrap:anywhere}
+.use-panel{border:1px solid #ccc;border-radius:8px;padding:1rem;margin:1rem 0}.copy-row{display:flex;gap:.5rem;align-items:start}.copy-row pre{flex:1;margin:0}.copy-button{border:1px solid #aaa;background:#fff;border-radius:5px;padding:.45rem .65rem;cursor:pointer;font-weight:600}.copy-button:hover{background:#f3f3f0}
+.source-nav{display:flex;gap:.5rem;flex-wrap:wrap;font-family:system-ui;font-size:.82rem;margin:.8rem 0}.source-nav a{border:1px solid #ccc;border-radius:5px;padding:.25rem .5rem}
+.source-file{border:1px solid #ddd;border-radius:7px;margin:.65rem 0;background:#fafaf8}.source-file summary{padding:.7rem .85rem;cursor:pointer;font-family:system-ui;font-weight:700}.source-file pre{border-top:1px solid #ddd;margin:0;border-radius:0;max-height:620px;overflow:auto;white-space:pre-wrap;word-break:break-word}
+.evidence-section{border-top:1px solid #ddd;padding-top:.35rem;margin-top:1rem}.citation-list li{margin:.35rem 0}
 .domainnav{display:flex;justify-content:space-between;margin-top:2rem;font-family:system-ui;font-size:.85rem}
 .toc{columns:2;font-family:system-ui;font-size:.82rem;background:#fafaf8;border:1px solid #e8e8e5;border-radius:6px;padding:.8rem 1rem}
 .toc a{color:#333}
@@ -95,6 +102,8 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
  .query-controls{grid-template-columns:1fr 1fr}
  .metric-grid{grid-template-columns:1fr 1fr}
  .skill-grid{grid-template-columns:1fr}
+ .skill-identity{grid-template-columns:1fr}
+ .copy-row{display:block}.copy-button{margin-top:.5rem}
 }
 """
 
@@ -142,13 +151,21 @@ SKILLS_JS = """
   var form=document.getElementById('skill-controls'),out=document.getElementById('skill-results'),count=document.getElementById('skill-count');
   if(!form||!out)return;var catalog=[];
   function h(s){return String(s==null?'':s).replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]});}
-  function render(){var q=form.elements.q.value.trim().toLowerCase(),domain=form.elements.domain.value,batch=form.elements.batch.value,core=form.elements.core.checked;
-    var rows=catalog.filter(function(x){var text=[x.display_name,x.concept_id,x.description,(x.trigger_phrases||[]).join(' ')].join(' ').toLowerCase();return (!q||text.indexOf(q)!==-1)&&(!domain||x.domain===domain)&&(!batch||String(x.batch_number)===batch)&&(!core||x.core);});
-    count.textContent=rows.length+' of '+catalog.length+' generated skills';
-    out.innerHTML=rows.slice(0,200).map(function(x){return '<article class="skill-card"><h2>'+h(x.display_name)+'</h2><div class="meta">'+h(x.skill_name)+' &middot; batch '+h(x.batch_number)+(x.core?' &middot; core':'')+'</div><p>'+h(x.description)+'</p><div class="skill-links"><a href="'+h(x.concept_url)+'">Concept</a> &middot; <a href="'+h(x.profile_url)+'">JSON profile</a> &middot; <a href="'+h(x.raw_skill_url)+'">SKILL.md on GitHub</a> &middot; <a href="'+h(x.raw_reference_url)+'">Reference JSON</a></div></article>';}).join('')||(catalog.length?'<p>No matching generated skills.</p>':'<p>No concept packages have been generated yet. Batch 1 is next.</p>');
+  function render(){var q=form.elements.q.value.trim().toLowerCase(),domain=form.elements.domain.value,core=form.elements.core.checked;
+    var rows=catalog.filter(function(x){var text=[x.display_name,x.concept_id,x.description,(x.trigger_phrases||[]).join(' ')].join(' ').toLowerCase();return (!q||text.indexOf(q)!==-1)&&(!domain||x.domain===domain)&&(!core||x.core);});
+    count.textContent=rows.length+' of '+catalog.length+' skills';
+    out.innerHTML=rows.map(function(x){return '<article class="skill-card"><h2><a href="'+h(x.detail_url)+'">'+h(x.display_name)+'</a><span class="skill-arrow">&rarr;</span></h2><div class="meta">'+h(x.domain)+(x.core?' &middot; core collection':'')+'</div><p>'+h(x.description)+'</p><div class="skill-links"><a href="'+h(x.detail_url)+'">View complete skill</a> &middot; <a href="'+h(x.profile_url)+'">JSON</a></div></article>';}).join('')||(catalog.length?'<p>No skills match these filters.</p>':'<p>The skill catalog is being prepared.</p>');
   }
   fetch('../api/v1/skills.json').then(function(r){return r.json()}).then(function(data){catalog=data.skills||[];var wanted=new URLSearchParams(location.search).get('skill');if(wanted)form.elements.q.value=wanted;render();});
   form.addEventListener('input',render);form.addEventListener('change',render);
+})();
+"""
+
+COPY_JS = """
+(function(){
+  document.querySelectorAll('[data-copy]').forEach(function(button){
+    button.addEventListener('click',function(){var target=document.getElementById(button.getAttribute('data-copy'));if(!target)return;navigator.clipboard.writeText(target.textContent).then(function(){var old=button.textContent;button.textContent='Copied';setTimeout(function(){button.textContent=old},1400);});});
+  });
 })();
 """
 
@@ -450,6 +467,7 @@ def main():
     az = {}              # letter -> [(name, url)]
     concept_urls = {}
     concept_names = {}
+    concept_by_id = {}
     term_ids = {}
     for slug, data in domains:
         for index, entry in enumerate(data):
@@ -458,6 +476,7 @@ def main():
             url += f"#{anchor(entry['name'])}"
             concept_urls[entry["id"]] = url
             concept_names[entry["id"]] = entry["name"]
+            concept_by_id[entry["id"]] = entry
             for term in [entry["name"], *entry.get("aliases", [])]:
                 term_ids.setdefault(term.casefold(), set()).add(entry["id"])
     relationship_lookup = {
@@ -653,34 +672,20 @@ def main():
     skill_domain_options = "".join(
         f'<option value="{esc(value)}">{esc(value)}</option>' for value in skill_domains
     )
-    skill_batch_options = "".join(
-        f'<option value="{number}">Batch {number:03d}</option>'
-        for number in range(1, skill_progress["completed_batches"] + 1)
-    )
-    rationale = "".join(
-        f"<li>{esc(item)}</li>" for item in skill_architecture["rationale"]
-    )
     skill_body = (
         '<div class="crumbs"><a href="../index.html">Home</a> / Concept skills</div>'
-        '<h1>Trading Concept Skills</h1>'
-        f'<p><strong>{skill_progress["completed_count"]} of '
-        f'{skill_progress["target_count"]}</strong> packages generated in '
-        f'{skill_progress["completed_batches"]} of {skill_progress["total_batches"]} batches.</p>'
+        '<section class="skills-hero"><h1>Trading Concept Skills</h1>'
+        '<p>Browse focused AI-readable skills for explaining and applying trading concepts '
+        'with mechanics, failure modes, misconceptions, and citations.</p>'
+        f'<p class="catalog-stat"><strong>{skill_progress["completed_count"]}</strong> skills available</p>'
+        '<p><a href="../api/v1/skills.json">Machine-readable catalog</a></p></section>'
         '<p class="warning">Built with AI systems. These packages provide educational research '
         'and decision support, not autonomous execution, financial advice, or evidence of profitability.</p>'
-        '<h2>Architecture</h2><p>One repository router handles discovery; focused, self-contained '
-        'concept packages remain organized in the GitHub catalog so a host does not need to load '
-        '1,500 skill descriptions into every context.</p><ul>' + rationale + '</ul>'
-        '<p><a href="../api/v1/skills.json">Catalog JSON</a> &middot; '
-        '<a href="../api/v1/skill-progress.json">Progress JSON</a> &middot; '
-        '<a href="../api/v1/skill-architecture.json">Architecture JSON</a> &middot; '
-        '<a href="https://github.com/unperson-12359/trading-knowledge-library/tree/main/skills">GitHub source</a></p>'
-        '<h2>Search generated packages</h2>'
+        '<h2>Find a skill</h2>'
         '<form id="skill-controls" class="query-controls">'
         '<label>Search<input name="q" type="search" placeholder="funding rate, slippage, margin..."></label>'
         f'<label>Domain<select name="domain"><option value="">All domains</option>{skill_domain_options}</select></label>'
-        f'<label>Batch<select name="batch"><option value="">All batches</option>{skill_batch_options}</select></label>'
-        '<label class="check"><input name="core" type="checkbox" style="width:auto;margin-right:.4rem">Core only</label>'
+        '<label class="check"><input name="core" type="checkbox" style="width:auto;margin-right:.4rem">Core collection only</label>'
         '</form><p id="skill-count" class="meta">Loading catalog...</p><div id="skill-results" class="skill-grid"></div>'
     )
     skill_html = page(
@@ -689,6 +694,107 @@ def main():
     ).replace("</body>", f"<script>{SKILLS_JS}</script></body>")
     (skill_dir / "index.html").write_text(skill_html, encoding="utf-8")
     written.add("skills/index.html")
+
+    # Every catalog item gets a complete human-readable page with its source files.
+    skill_by_concept = {
+        profile["concept_id"]: profile for profile in skill_manifest["skills"]
+    }
+    for profile in skill_manifest["skills"]:
+        concept = concept_by_id[profile["concept_id"]]
+        package = ROOT / profile["package_path"]
+        detail_dir = skill_dir / profile["skill_name"]
+        detail_dir.mkdir()
+        router_prompt = (
+            f"Use $tkl-concept-router to find and apply {profile['display_name']} "
+            "from the Pakupai Trading Knowledge Library. Separate facts, inferences, "
+            "and unknowns; include failure modes, misconceptions, and citations."
+        )
+        related_links = []
+        for related_id in profile["related_concept_ids"]:
+            related_skill = skill_by_concept.get(related_id)
+            if related_skill:
+                related_links.append(
+                    f'<li><a href="../{esc(related_skill["skill_name"])}/">'
+                    f'{esc(concept_names[related_id])}</a></li>'
+                )
+            else:
+                related_links.append(
+                    f'<li><a href="../../{esc(concept_urls[related_id])}">'
+                    f'{esc(concept_names[related_id])}</a></li>'
+                )
+        citations = "".join(
+            f'<li><a href="{esc(citation["url"])}" rel="noopener">'
+            f'{esc(citation["source"])}</a> — {esc(citation["section"])}</li>'
+            for citation in concept["citations"]
+        )
+        aliases = "".join(
+            f'<span class="tag">{esc(alias)}</span>'
+            for alias in concept.get("aliases", [])
+        )
+        formula = (
+            f'<div class="field"><span class="label">Formula</span>'
+            f'<div class="formula">{esc(concept["formula"])}</div></div>'
+            if concept.get("formula") else ""
+        )
+        skill_source = (package / "SKILL.md").read_text(encoding="utf-8")
+        profile_source = (package / "skill.json").read_text(encoding="utf-8")
+        agent_source = (package / "agents" / "openai.yaml").read_text(encoding="utf-8")
+        reference_source = (package / "references" / "concept.json").read_text(encoding="utf-8")
+        github_folder = (
+            "https://github.com/unperson-12359/trading-knowledge-library/tree/main/"
+            + profile["package_path"]
+        )
+        related_section = (
+            f'<div class="evidence-section"><h3>Related concepts</h3>'
+            f'<ul>{"".join(related_links)}</ul></div>' if related_links else ""
+        )
+        detail_body = (
+            '<div class="crumbs"><a href="../../index.html">Home</a> / '
+            '<a href="../">Skills</a> / ' + esc(profile["display_name"]) + '</div>'
+            f'<h1>{esc(profile["display_name"])}</h1><p>{esc(profile["description"])}</p>'
+            f'<div>{aliases}</div>'
+            '<div class="skill-identity">'
+            f'<div><strong>Skill</strong><span>{esc(profile["skill_name"])}</span></div>'
+            f'<div><strong>Domain</strong><span>{esc(profile["domain"])}</span></div>'
+            f'<div><strong>Concept ID</strong><span>{esc(profile["concept_id"])}</span></div>'
+            '</div>'
+            '<h2>Use this skill</h2><div class="use-panel">'
+            '<p>Use the catalog router in a repository that includes this library:</p>'
+            '<div class="copy-row"><pre id="router-prompt" class="json">'
+            + esc(router_prompt) +
+            '</pre><button class="copy-button" data-copy="router-prompt">Copy prompt</button></div>'
+            '<p class="meta">For a direct repository-local install, copy this package folder to '
+            f'<code>.agents/skills/{esc(profile["skill_name"])}/</code>. '
+            f'<a href="{esc(github_folder)}">Open the package on GitHub</a>.</p></div>'
+            '<h2>Concept evidence</h2>'
+            f'<p>{esc(concept["definition"])}</p>'
+            f'<div class="field"><span class="label">Intuition</span><p>{esc(concept["intuition"])}</p></div>'
+            f'<div class="field"><span class="label">Mechanics</span><p>{esc(concept["mechanics"])}</p></div>'
+            + formula +
+            f'<div class="evidence-section"><h3>Failure modes</h3><p>{esc(concept["failure_modes"])}</p></div>'
+            f'<div class="evidence-section"><h3>Misconceptions</h3><p>{esc(concept["misconceptions"])}</p></div>'
+            f'<div class="evidence-section"><h3>Example</h3><p>{esc(concept["example"])}</p></div>'
+            f'<div class="evidence-section"><h3>Citations</h3><ul class="citation-list">{citations}</ul></div>'
+            + related_section +
+            '<h2 id="source-files">Review the source files</h2>'
+            '<p>Everything required to inspect or install this skill is available here and in the JSON API.</p>'
+            '<nav class="source-nav"><a href="#skill-md">SKILL.md</a>'
+            '<a href="#skill-json">skill.json</a><a href="#concept-json">concept.json</a>'
+            '<a href="#openai-yaml">openai.yaml</a></nav>'
+            f'<details class="source-file" id="skill-md" open><summary>SKILL.md</summary><pre class="json">{esc(skill_source)}</pre></details>'
+            f'<details class="source-file" id="skill-json"><summary>skill.json</summary><pre class="json">{esc(profile_source)}</pre></details>'
+            f'<details class="source-file" id="concept-json"><summary>references/concept.json</summary><pre class="json">{esc(reference_source)}</pre></details>'
+            f'<details class="source-file" id="openai-yaml"><summary>agents/openai.yaml</summary><pre class="json">{esc(agent_source)}</pre></details>'
+            f'<p class="skill-links"><a href="../../api/v1/skills/{esc(profile["skill_name"])}.json">'
+            f'Open profile JSON</a> &middot; <a href="{esc(github_folder)}">GitHub source</a> &middot; '
+            f'<a href="../../{esc(concept_urls[profile["concept_id"]])}">Canonical concept page</a></p>'
+        )
+        detail_html = page(
+            profile["display_name"] + " skill", detail_body, "../../", "skills", domains,
+            description=profile["description"],
+        ).replace("</body>", f"<script>{COPY_JS}</script></body>")
+        (detail_dir / "index.html").write_text(detail_html, encoding="utf-8")
+        written.add(f'skills/{profile["skill_name"]}/index.html')
 
     # ---- research playbooks ----
     playbook_dir = DOCS / "playbooks"
@@ -841,8 +947,9 @@ def main():
         public_profile = dict(profile)
         public_profile["$schema"] = f"{BASE}/schemas/concept-skill.schema.json"
         public_profile.update({
-            "concept_url": "../" + concept_urls[profile["concept_id"]],
-            "profile_url": f'../api/v1/skills/{profile["skill_name"]}.json',
+            "detail_url": f'{BASE}/skills/{profile["skill_name"]}/',
+            "concept_url": f'{BASE}/{concept_urls[profile["concept_id"]]}',
+            "profile_url": f'{BASE}/api/v1/skills/{profile["skill_name"]}.json',
             "raw_skill_url": raw_base + profile["package_path"] + "/SKILL.md",
             "raw_profile_url": raw_base + profile["package_path"] + "/skill.json",
             "raw_reference_url": raw_base + profile["package_path"] + "/references/concept.json",

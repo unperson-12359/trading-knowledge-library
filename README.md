@@ -102,6 +102,12 @@ Versioned JSON endpoints live in `docs/api/v1/`:
   the installable skill catalog, exact rollout checkpoint, and design decision.
   Individual profiles live under `skills/<skill-name>.json`.
 
+The public `docs/skills/` catalog presents skills as a searchable library, not
+as maintenance batches. Every skill has a dedicated page with copyable usage,
+human-readable concept evidence, citations, related concepts, and complete
+views of `SKILL.md`, `skill.json`, `references/concept.json`, and
+`agents/openai.yaml`. GitHub remains the canonical package source.
+
 Unambiguous relationship names and aliases become internal links. Ambiguous or
 unresolved terms remain visible as plain text and are reported in the manifest.
 

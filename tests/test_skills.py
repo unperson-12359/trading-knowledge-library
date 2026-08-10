@@ -89,6 +89,21 @@ class ConceptSkillTests(unittest.TestCase):
         progress = json.loads((ROOT / "skills" / "progress.json").read_text(encoding="utf-8"))
         self.assertEqual(progress["completed_count"], progress["completed_batches"] * 20)
 
+    def test_public_catalog_uses_detail_pages_not_batch_language(self):
+        catalog = (ROOT / "docs" / "skills" / "index.html").read_text(encoding="utf-8")
+        self.assertNotIn("batch", catalog.casefold())
+        manifest = json.loads(
+            (ROOT / "skills" / "manifest.json").read_text(encoding="utf-8")
+        )
+        for profile in manifest["skills"]:
+            detail = ROOT / "docs" / "skills" / profile["skill_name"] / "index.html"
+            self.assertTrue(detail.is_file())
+            html = detail.read_text(encoding="utf-8")
+            self.assertIn("Concept evidence", html)
+            self.assertIn("Review the source files", html)
+            self.assertIn("SKILL.md", html)
+            self.assertIn("references/concept.json", html)
+
 
 if __name__ == "__main__":
     unittest.main()
