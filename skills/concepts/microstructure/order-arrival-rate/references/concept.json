@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/order-arrival-rate",
+  "canonical_sha256": "da15bfae2470352535a6e798f0fc0259589c4ee365d8567082ff819841c3dc7f",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/order-arrival-rate",
+    "name": "Order arrival rate",
+    "aliases": [
+      "order arrival intensity",
+      "message rate"
+    ],
+    "domain": "Microstructure",
+    "definition": "The frequency per unit time at which new orders of a given type or side reach a trading venue. It is a core primitive of queueing-based microstructure and market-making models - in the Avellaneda-Stoikov lineage formalized by Gueant, Lehalle and Fernandez-Tapia (2013), arrival rates of liquidity-consuming orders depend on the distance of the quote from the reference price.",
+    "intuition": "It measures how busy the order flow is - how many new orders show up each second at each price.",
+    "mechanics": "Estimated empirically as counts of order events per interval by side and price level, and modeled as Poisson or self-exciting (Hawkes) intensities; arrival rates jointly determine fill probabilities, queue dynamics, and optimal quote placement.",
+    "formula": "lambda = N_orders / Dt (orders per unit time); in market-making models, fill intensity lambda(delta) decreases with the distance delta of the quote from the reference price.",
+    "relationships": [
+      "Cancellation rate",
+      "Order-to-trade ratio",
+      "Queue position",
+      "Inventory risk",
+      "Order book"
+    ],
+    "failure_modes": "Arrival rates are strongly time-varying (U-shaped intraday patterns, news bursts) and clustered, so stationary Poisson calibrations fail out of sample; venue-specific message throttles also truncate observed rates.",
+    "misconceptions": "A high order arrival rate does not imply high traded volume: in automated markets most messages are small orders that are cancelled before execution.",
+    "example": "A liquid future sees 500 limit-order submissions per second at the inside prices but only 50 per second three ticks away.",
+    "citations": [
+      {
+        "source": "Gueant, Lehalle and Fernandez-Tapia, 'Dealing with the Inventory Risk: A Solution to the Market Making Problem', Mathematics and Financial Economics 7(4):477-507 (arXiv preprint)",
+        "url": "https://arxiv.org/abs/1105.3115",
+        "section": "Abstract (arrival rates of liquidity-consuming orders)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

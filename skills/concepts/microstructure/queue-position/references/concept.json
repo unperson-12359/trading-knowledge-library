@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/queue-position",
+  "canonical_sha256": "5f0e5f7216942137e747886de86d2fdb3b55e4bf0369a210e8d6dd5d7a1f6087",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/queue-position",
+    "name": "Queue position",
+    "aliases": [
+      "place in queue",
+      "book priority"
+    ],
+    "domain": "Microstructure",
+    "definition": "An order's rank in the priority sequence of resting orders at its price level, which determines how much incoming volume must trade (or cancel) ahead of it before it is executed. Under FIFO matching - where, per CME Group, the first order at a price level is the first matched - position is set by arrival time and lost if the order's price is changed, quantity increased, or account changed.",
+    "intuition": "It is your place in line at the front of the book.",
+    "mechanics": "Position improves as orders ahead execute or are cancelled, and resets to the back on priority-losing amendments; the probability and timing of a fill depend on the size ahead in the queue relative to incoming trade and cancellation flow.",
+    "formula": "",
+    "relationships": [
+      "Price-time priority",
+      "Order book",
+      "Cancellation rate",
+      "Order arrival rate",
+      "Limit order book"
+    ],
+    "failure_modes": "Queue models break down when size ahead is iceberg or hidden, when matching includes pro rata or top-order components that reorder priority, or when cancellations ahead accelerate unpredictably in fast markets.",
+    "misconceptions": "Joining a long queue is not necessarily hopeless - cancellations ahead of an order advance its position without any trades occurring, so the effective queue is often shorter than the displayed one.",
+    "example": "5,000 shares rest ahead of your bid at the NBB; after 3,000 cancel and 1,000 trade, your position improves to 1,000 shares from the front.",
+    "citations": [
+      {
+        "source": "CME Group Client Systems Wiki, 'Supported Matching Algorithms'",
+        "url": "https://cmegroupclientsite.atlassian.net/wiki/spaces/EPICSANDBOX/pages/457218479",
+        "section": "FIFO (priority and re-queuing rules)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

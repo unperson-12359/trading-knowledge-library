@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/flickering-quote",
+  "canonical_sha256": "426d1e5ff151925b8dd3967672bf084b49007be0b5f631735f35c01208f4615b",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/flickering-quote",
+    "name": "Flickering quote",
+    "aliases": [
+      "fleeting quote",
+      "flickering quotation"
+    ],
+    "domain": "Microstructure",
+    "definition": "A quotation that appears and disappears on extremely short timescales, produced by millisecond-lived limit orders that are cancelled almost immediately. Hasbrouck and Saar document such fleeting order and quoting behavior as a hallmark of low-latency trading, and Regulation NMS Rule 611(b)(8) accommodates it via the one-second flickering-quote exception to trade-through liability.",
+    "intuition": "These are quotes that blink in and out faster than slower participants can react to them.",
+    "mechanics": "High-frequency market makers continuously update and cancel quotes to manage inventory and avoid adverse selection, so a large share of displayed liquidity lives for only milliseconds; consolidated feeds may never fully capture the fastest flickers.",
+    "formula": "",
+    "relationships": [
+      "Cancellation rate",
+      "Stale quote",
+      "Latency",
+      "Displayed liquidity",
+      "Cancel-to-trade ratio"
+    ],
+    "failure_modes": "Quote-based liquidity metrics overstate accessible liquidity when much of it flickers, and flickering undermines the reliability of quote-midpoint benchmarks used for best-execution and trade-classification analysis.",
+    "misconceptions": "Flickering quotes are not necessarily phantom or spoofed orders; most are bona fide but very short-lived quotes reflecting legitimate high-frequency risk management.",
+    "example": "A 100-share offer at the NBO exists for 3 milliseconds before being cancelled and reposted one tick away, repeating hundreds of times per second.",
+    "citations": [
+      {
+        "source": "Hasbrouck and Saar, 'Low-Latency Trading', Journal of Financial Markets 16(4):646-679 (author-hosted copy)",
+        "url": "https://pages.stern.nyu.edu/~jhasbrou/Research/lowLatencyTrading/lowLatencyTradingHasbrouckSaarJFM.pdf",
+        "section": "Full text (fleeting orders and flickering quotes)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "17 CFR 242.611 - Order protection rule (Regulation NMS Rule 611)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.611",
+        "section": "paragraph (b)(8), one-second flickering-quote exception",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/tick-rule",
+  "canonical_sha256": "f72596e21b825b2af4d402cd65a87cd3263fdf0bb814df74e5e4160234d860f1",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/tick-rule",
+    "name": "Tick rule",
+    "aliases": [
+      "tick test",
+      "tick classification"
+    ],
+    "domain": "Microstructure",
+    "definition": "A trade-classification heuristic that signs a trade as buyer-initiated if its price is above the previous trade price (uptick) and seller-initiated if below (downtick), carrying the sign of the last nonzero price change through zero ticks. It is one of the component rules evaluated in Lee and Ready (1991).",
+    "intuition": "Rising prints suggest buyers are pushing the price up; falling prints suggest sellers are pushing it down.",
+    "mechanics": "Compare each trade price to the previous one: an uptick signs the trade positive, a downtick negative, and an unchanged price inherits the sign of the most recent nonzero change. It requires only the trade price series, not quote data.",
+    "formula": "s_t = sign(P_t - P_{t-1}); if P_t = P_{t-1}, s_t = s_{last nonzero change}.",
+    "relationships": [
+      "Quote rule",
+      "Lee-Ready algorithm",
+      "Trade initiation",
+      "Signed volume"
+    ],
+    "failure_modes": "It misclassifies trades that move within the quote range (bid-ask bounce reversals) and cannot see where a trade sits relative to the spread; Lee and Ready find quote-based classification generally more accurate.",
+    "misconceptions": "An uptick does not prove a market buy occurred - a trade can tick up while executing inside a rising quote range, so tick signs are noisy proxies for aggressor direction.",
+    "example": "Prints of 50.00, 50.01, 50.01, and 49.99 are signed +1, +1 (zero tick inherits), and -1.",
+    "citations": [
+      {
+        "source": "Lee and Ready, 'Inferring Trade Direction from Intraday Data', Journal of Finance 46(2):733-746 (course-hosted copy)",
+        "url": "https://www.acsu.buffalo.edu/~keechung/MGF743/Readings/Inferring%20trade%20direction%20from%20intraday%20data.pdf",
+        "section": "Tick test discussion",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

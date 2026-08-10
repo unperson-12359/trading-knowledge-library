@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/crossed-market",
+  "canonical_sha256": "f328768c0f2530fd1c48f9869519a39cb4e8a6078cbe387ea61d564e9275c586",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/crossed-market",
+    "name": "Crossed market",
+    "aliases": [
+      "crossed quotations"
+    ],
+    "domain": "Microstructure",
+    "definition": "A market state in which the best bid exceeds the best offer, producing a negative displayed spread. Regulation NMS Rule 610(e) requires exchange rules that members reasonably avoid displaying quotations that cross protected quotations, and Rule 611(b)(4) excepts from trade-through liability executions occurring while a protected bid is priced higher than a protected offer.",
+    "intuition": "Someone is publicly bidding more than someone else is asking - arbitrage on its face, usually an artifact of timing rather than a real opportunity.",
+    "mechanics": "Crosses are typically transient states caused by latency and feed delays across fragmented venues during fast price moves; they resolve through quote reconciliation, routing, or cancellation, often within microseconds to seconds.",
+    "formula": "",
+    "relationships": [
+      "Locked market",
+      "Stale quote",
+      "Latency",
+      "National best bid and offer",
+      "Trade-through"
+    ],
+    "failure_modes": "A crossed consolidated quote usually reflects a stale or slow data feed rather than an executable arbitrage; attempting to trade the apparent cross generally finds the quote already gone.",
+    "misconceptions": "A crossed NBBO almost never means free money - the crossing quotation is typically stale, inaccessible, or already executed by faster participants.",
+    "example": "During a rapid sell-off the consolidated feed briefly shows NBB $100.03 and NBO $100.02; within a few hundred microseconds the stale offer is updated and the cross disappears.",
+    "citations": [
+      {
+        "source": "17 CFR 242.610 - Access to quotations (Regulation NMS Rule 610)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.610",
+        "section": "paragraph (e) Locking or crossing quotations",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

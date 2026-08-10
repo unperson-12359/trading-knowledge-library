@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/queue-imbalance",
+  "canonical_sha256": "06155f4bbc1d4a2a2499024fbca2a6e8b7b656fd4116196cf29a6acfe132bc69",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/queue-imbalance",
+    "name": "Queue imbalance",
+    "aliases": [
+      "book imbalance",
+      "top-of-book imbalance"
+    ],
+    "domain": "Microstructure",
+    "definition": "The normalized difference between the displayed size at the best bid and the best ask, a short-horizon predictor of mid-price movements: when one side of the inside market is heavier, the price tends to move toward the lighter side. It is the state variable underlying Stoikov's (2018) micro-price and relates to the order-flow imbalance of Cont, Kukanov and Stoikov.",
+    "intuition": "A heavy bid queue and a thin ask queue mean sellers face little resistance - the price is more likely to tick up than down.",
+    "mechanics": "Computed from top-of-book sizes at each order book event; positive imbalance predicts upticks with a probability that Stoikov estimates from transition matrices of imbalance and spread states, and its information decays within milliseconds to seconds.",
+    "formula": "QI = (Q_bid - Q_ask) / (Q_bid + Q_ask), in [-1, 1], where Q_bid and Q_ask are displayed sizes at the best bid and ask.",
+    "relationships": [
+      "Microprice",
+      "Order-flow imbalance",
+      "Top of book",
+      "Midpoint",
+      "Market depth"
+    ],
+    "failure_modes": "Predictive power collapses when displayed size is cancelable or spoofed, around news jumps, and when the spread is wide; the signal is also crowded and degrades after latency and fees.",
+    "misconceptions": "Queue imbalance is a weak, short-lived statistical signal, not a standalone profitable trading rule; its in-sample edge typically fails to survive execution costs and queue-position realities.",
+    "example": "With 2,000 shares bid and 500 offered at the inside, QI = (2000-500)/(2000+500) = +0.6, tilting the microprice toward the ask.",
+    "citations": [
+      {
+        "source": "Stoikov, 'The Micro-Price: A High-Frequency Estimator of Future Prices', Quantitative Finance 18(12):1959-1966 (Crossref record DOI 10.1080/14697688.2018.1489139)",
+        "url": "https://api.crossref.org/works/10.1080/14697688.2018.1489139",
+        "section": "Bibliographic record",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "Cont, Kukanov and Stoikov, 'The Price Impact of Order Book Events', Journal of Financial Econometrics 12(1):47-88 (arXiv preprint)",
+        "url": "https://arxiv.org/abs/1011.6402",
+        "section": "Abstract (imbalance between supply and demand at the best bid and ask)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

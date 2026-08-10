@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/cancel-to-trade-ratio",
+  "canonical_sha256": "371b53b8b557f951238ad2dde7313466b09c86ab81799b3c31708c591006daf4",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/cancel-to-trade-ratio",
+    "name": "Cancel-to-trade ratio",
+    "aliases": [
+      "cancel-to-fill ratio",
+      "cancellation-to-execution ratio"
+    ],
+    "domain": "Microstructure",
+    "definition": "The ratio of cancelled orders (or cancelled quantity) to executed trades over a period - a standard metric of messaging intensity. The CFTC's Technology Advisory Committee working group listed cancel-to-fill ratios among the objective forms of measurement for the recurring high message rates characteristic of high-frequency trading.",
+    "intuition": "It counts how many quotes die for every trade that actually prints.",
+    "mechanics": "Computed per participant, instrument, or whole market over a session; exchanges and regulators monitor it to gauge system load, characterize quoting behavior, and detect potentially abusive messaging patterns.",
+    "formula": "CTR = N_cancelled orders / N_executed trades (or cancelled volume / traded volume) over a period.",
+    "relationships": [
+      "Cancellation rate",
+      "Order-to-trade ratio",
+      "Flickering quote",
+      "High-frequency trading"
+    ],
+    "failure_modes": "Appropriate levels vary enormously by asset class, venue, and strategy, so cross-market comparisons mislead; the ratio alone cannot distinguish benign market making from manipulative quote stuffing.",
+    "misconceptions": "A high cancel-to-trade ratio is not per se evidence of manipulation - passive electronic market making mechanically generates high cancel rates as quotes track a moving market.",
+    "example": "A firm cancels 40,000 orders and is filled on 800 in a session, a cancel-to-trade ratio of 50 to 1.",
+    "citations": [
+      {
+        "source": "CFTC, Concept Release on Risk Controls and System Safeguards for Automated Trading Environments, 78 FR 56542",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2013-09-12/html/2013-22185.htm",
+        "section": "Part II.A.1, TAC working group HFT attributes (cancel-to-fill ratios)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

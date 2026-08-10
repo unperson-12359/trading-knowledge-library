@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/direct-market-access",
+  "canonical_sha256": "a7f0b23057389cd225523313e8506d04dbaa775dad5231fab35042d9e32557a1",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/direct-market-access",
+    "name": "Direct market access",
+    "aliases": [
+      "DMA"
+    ],
+    "domain": "Microstructure",
+    "definition": "A connection arrangement that enables a market participant, often a broker's or clearing firm's client, to transmit orders directly to a trading platform without re-entry or prior review by the intermediary's systems; per the CFTC's concept release, DMA implies the participant's order flow is not routed through its clearing firm before reaching the platform.",
+    "intuition": "The client's orders ride the member's connection to the exchange at wire speed, without a human or broker system touching each order first.",
+    "mechanics": "The exchange or a third-party provider supplies connectivity under the member's credentials; because DMA removes the intermediary's workflow, regulators mandate automated pre-trade risk controls instead - CFTC Rule 1.73 requires pre-screening of DMA client orders against risk limits, and SEC Rule 15c3-5 governs the analogous securities-market access.",
+    "formula": "",
+    "relationships": [
+      "Sponsored access",
+      "Latency",
+      "Co-location",
+      "Market access rule"
+    ],
+    "failure_modes": "Removing the intermediary check lets errant algorithms reach the market instantly - the 2012 Knight Capital incident, cited in the CFTC release, sent erroneous orders swinging nearly 150 securities; weak or misconfigured automated controls are the main failure point.",
+    "misconceptions": "DMA is not unregulated naked access: current rules require automated pre-trade financial and regulatory checks, so 'direct' describes the workflow, not the absence of controls.",
+    "example": "A hedge fund's execution algorithm sends child orders straight to the futures exchange under its clearing firm's connection, with automated credit and size filters screening each order.",
+    "citations": [
+      {
+        "source": "CFTC, Concept Release on Risk Controls and System Safeguards for Automated Trading Environments, 78 FR 56542",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2013-09-12/html/2013-22185.htm",
+        "section": "Part II.A.2 (DMA definition and Rule 1.73, note 25)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/microprice",
+  "canonical_sha256": "06091c87a910461b915f110d4a5ab15ed16626527ee81598dbe57bf05974d078",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/microprice",
+    "name": "Microprice",
+    "aliases": [
+      "micro-price",
+      "weighted mid-price"
+    ],
+    "domain": "Microstructure",
+    "definition": "A size-weighted price between the bid and the ask that adjusts the midpoint for the imbalance of displayed quantities; Stoikov (2018) defines the micro-price as a high-frequency estimator of the short-horizon future price and shows empirically that it predicts near-term prices better than the mid-price or the weighted mid-price.",
+    "intuition": "If the bid queue is heavy relative to the ask, the fair price leans toward the ask - the microprice quantifies that lean.",
+    "mechanics": "The first-order form weights the ask by bid size and the bid by ask size; Stoikov derives refinements by modeling the mid-price as a Markov chain in imbalance and spread states and taking the expected limiting price. It updates on every change to top-of-book prices or sizes.",
+    "formula": "P_micro = (A x Q_bid + B x Q_ask) / (Q_bid + Q_ask), where B and A are the best bid and ask and Q_bid, Q_ask their sizes.",
+    "relationships": [
+      "Midpoint",
+      "Queue imbalance",
+      "Order-flow imbalance",
+      "Top of book",
+      "Quoted spread"
+    ],
+    "failure_modes": "The estimator assumes a stationary imbalance-transition structure, so it degrades under regime shifts, hidden size, and wide spreads; as a predictor it is useful only at high frequency and horizons of ticks, not minutes.",
+    "misconceptions": "The microprice is an estimate of the near-future transaction price, not a fundamental fair value and not a price at which one can necessarily trade.",
+    "example": "With the book at $100.00 bid for 1,000 shares and $100.02 offered for 250 shares, the microprice is (100.02 x 1000 + 100.00 x 250)/1250 = $100.016, above the $100.01 midpoint.",
+    "citations": [
+      {
+        "source": "Stoikov, 'The Micro-Price: A High-Frequency Estimator of Future Prices', Quantitative Finance 18(12):1959-1966 (Crossref record DOI 10.1080/14697688.2018.1489139)",
+        "url": "https://api.crossref.org/works/10.1080/14697688.2018.1489139",
+        "section": "Bibliographic record",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

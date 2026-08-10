@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/lee-ready-algorithm",
+  "canonical_sha256": "b3bf5651feec3f9399b6cade520634f4af510dd3fb62db380fbf4b9739858626",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/lee-ready-algorithm",
+    "name": "Lee-Ready algorithm",
+    "aliases": [
+      "Lee-Ready classification",
+      "Lee-Ready trade signing"
+    ],
+    "domain": "Microstructure",
+    "definition": "The standard trade-classification procedure of Lee and Ready (1991) for inferring trade direction from intraday data: sign trades by the quote rule relative to the prevailing midpoint, sign midpoint trades by the tick rule, and match trades to quotes with an allowance for trade-reporting delay.",
+    "intuition": "Combine quote information with tick information to make the best guess about who initiated each trade.",
+    "mechanics": "Trades are aligned to the quotes in effect just before the report (a lag of roughly five seconds in their NYSE sample); prices above the midpoint are buys, below are sells, and midpoint trades inherit the sign of the last nonzero price change.",
+    "formula": "",
+    "relationships": [
+      "Tick rule",
+      "Quote rule",
+      "Trade initiation",
+      "Signed volume",
+      "Effective spread"
+    ],
+    "failure_modes": "Accuracy degrades in modern fast markets where quotes update far faster than trades are reported, for trades executed inside the spread, and for large or ECN-executed trades; validation studies on proprietary data find error rates around 20 percent in historical samples and higher in fast markets.",
+    "misconceptions": "Lee-Ready signs are estimates with material error rates, not ground truth about the aggressor; treating them as exact biases measures such as signed volume and price impact.",
+    "example": "A trade prints at the $50.005 midpoint after two consecutive upticks; Lee-Ready classifies it as buyer-initiated via the tick-test fallback.",
+    "citations": [
+      {
+        "source": "Lee and Ready, 'Inferring Trade Direction from Intraday Data', Journal of Finance 46(2):733-746 (course-hosted copy)",
+        "url": "https://www.acsu.buffalo.edu/~keechung/MGF743/Readings/Inferring%20trade%20direction%20from%20intraday%20data.pdf",
+        "section": "Full text (Journal of Finance 46(2), 733-746)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

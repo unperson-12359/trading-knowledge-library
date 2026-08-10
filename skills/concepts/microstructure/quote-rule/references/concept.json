@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/quote-rule",
+  "canonical_sha256": "ad03a8cb6f61030556371ba8c4b260f68d84684005f94fa4e0e1e6c4ac4ed3ae",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/quote-rule",
+    "name": "Quote rule",
+    "aliases": [
+      "quote test",
+      "midpoint rule"
+    ],
+    "domain": "Microstructure",
+    "definition": "A trade-classification heuristic that signs trades above the prevailing quote midpoint as buyer-initiated and trades below it as seller-initiated; trades exactly at the midpoint require a tie-breaking rule such as the tick test. It is the primary component of the Lee and Ready (1991) classification procedure.",
+    "intuition": "Paying more than the middle of the market means you were the buyer; receiving less means you were the seller.",
+    "mechanics": "Each trade is matched to the bid-ask quote in effect when it executed - Lee and Ready allow for a reporting lag of about five seconds on NYSE-era data - and the trade price is compared to that quote's midpoint.",
+    "formula": "s_t = +1 if P_t > M_t, -1 if P_t < M_t, where M_t is the prevailing quote midpoint; if P_t = M_t, defer to the tick test.",
+    "relationships": [
+      "Tick rule",
+      "Lee-Ready algorithm",
+      "Midpoint",
+      "Trade initiation",
+      "Signed volume"
+    ],
+    "failure_modes": "Quote-trade misalignment from reporting delays and fast quote updates corrupts the comparison, midpoint trades are left unsigned without a tie-break, and locked or crossed quotes distort the reference.",
+    "misconceptions": "The quote stamped at the trade's report time is not necessarily the quote in effect at execution; failing to model the reporting lag systematically misclassifies trades.",
+    "example": "With quotes at $100.00 x $100.02 (midpoint $100.01), a print at $100.02 is a buy and a print at $100.01 falls back to the tick test.",
+    "citations": [
+      {
+        "source": "Lee and Ready, 'Inferring Trade Direction from Intraday Data', Journal of Finance 46(2):733-746 (course-hosted copy)",
+        "url": "https://www.acsu.buffalo.edu/~keechung/MGF743/Readings/Inferring%20trade%20direction%20from%20intraday%20data.pdf",
+        "section": "Quote rule and midpoint tie-breaking",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

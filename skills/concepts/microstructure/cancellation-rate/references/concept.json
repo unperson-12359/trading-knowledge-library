@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/cancellation-rate",
+  "canonical_sha256": "1f3a4b15f090c3ff4d29200da3c0324621059e67b6b383932a43dcd82a0c28bb",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/cancellation-rate",
+    "name": "Cancellation rate",
+    "aliases": [
+      "cancel rate",
+      "quote cancellation rate"
+    ],
+    "domain": "Microstructure",
+    "definition": "The rate or fraction at which resting orders are cancelled before execution. In automated markets the large majority of displayed orders are cancelled rather than executed - the SEC notes that high-frequency liquidity providers cancel a very high percentage of their orders, and the CFTC lists cancel-to-fill ratios among the objective measures of high message rates.",
+    "intuition": "Most quotes are withdrawn, not traded; the cancellation rate tells you how quickly the visible book evaporates and renews.",
+    "mechanics": "Computed as cancellations per unit time or as cancels relative to cancels plus executions, per participant, instrument, or venue; together with arrival rates it determines queue-position dynamics and the fill probability of resting orders.",
+    "formula": "Cancellation rate = N_cancels / (N_cancels + N_executions) over an interval, or cancels per second.",
+    "relationships": [
+      "Cancel-to-trade ratio",
+      "Order arrival rate",
+      "Flickering quote",
+      "Queue position",
+      "Displayed liquidity"
+    ],
+    "failure_modes": "When cancellation rates are extreme, displayed depth becomes a weak proxy for executable liquidity; spikes in cancellations also accompany stress episodes and manipulative quoting schemes.",
+    "misconceptions": "High cancellation is mostly normal risk management by market makers repricing to new information - it is not inherently evidence of spoofing or phantom liquidity.",
+    "example": "Of 1,000 lots a market maker posts in a minute, 950 are cancelled unfilled, a 95 percent cancellation rate typical of active electronic quoting.",
+    "citations": [
+      {
+        "source": "CFTC, Concept Release on Risk Controls and System Safeguards for Automated Trading Environments, 78 FR 56542",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2013-09-12/html/2013-22185.htm",
+        "section": "Part II.A.1 (cancel-to-fill ratios as message-rate measures)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

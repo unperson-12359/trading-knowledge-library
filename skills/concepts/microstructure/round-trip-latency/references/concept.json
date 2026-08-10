@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/round-trip-latency",
+  "canonical_sha256": "6fde7c74dbbede3c2e88c2e855ae7509fb4cfb420f75c17563fd6fea759378b3",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/round-trip-latency",
+    "name": "Round-trip latency",
+    "aliases": [
+      "roundtrip time",
+      "order-to-ack latency"
+    ],
+    "domain": "Microstructure",
+    "definition": "The elapsed time for an order message to travel from a participant's system to the exchange matching engine and for the acknowledgment or execution response to return. The CFTC's concept release cites industry data showing roundtrip trade times on one exchange group falling from 127 milliseconds in 2004 to 4.2 milliseconds in 2011.",
+    "intuition": "It is the order-to-answer time: send an order, and measure how long until the exchange confirms what happened.",
+    "mechanics": "Measured end-to-end from timestamps on the outbound order and the inbound acknowledgment, spanning gateways, the matching engine, and the return path; exchanges and firms monitor it as a key infrastructure and competitiveness metric.",
+    "formula": "Round-trip latency = t(acknowledgment received) - t(order sent).",
+    "relationships": [
+      "Latency",
+      "Co-location",
+      "Direct market access",
+      "Matching engine"
+    ],
+    "failure_modes": "Jitter and tail behavior matter more than averages - a venue with a fast mean but heavy-tailed round trips can be worse for time-critical strategies; published figures may exclude client-side network segments and are not comparable across venues.",
+    "misconceptions": "Exchange-published round-trip times cover only the measured segment (often inside the data center); they understate the full latency a remote participant experiences.",
+    "example": "An order is sent at 12:00:00.000000 and the exchange acknowledgment arrives at 12:00:00.000850, a round-trip latency of 850 microseconds.",
+    "citations": [
+      {
+        "source": "CFTC, Concept Release on Risk Controls and System Safeguards for Automated Trading Environments, 78 FR 56542",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2013-09-12/html/2013-22185.htm",
+        "section": "Part II.A.2 (roundtrip trade times, notes 19-20)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

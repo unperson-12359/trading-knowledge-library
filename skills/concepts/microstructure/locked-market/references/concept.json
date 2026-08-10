@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/locked-market",
+  "canonical_sha256": "6554c11f24dcb6240e523191914058f6a0195a7e79f221135c398b4e622e247f",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/locked-market",
+    "name": "Locked market",
+    "aliases": [
+      "locked quotations"
+    ],
+    "domain": "Microstructure",
+    "definition": "A market state in which the national best bid equals the national best offer, so the displayed spread is zero. Regulation NMS Rule 610(e) requires exchanges and associations to maintain rules requiring members reasonably to avoid displaying quotations that lock any protected quotation and to assure the reconciliation of locked quotations.",
+    "intuition": "A buyer and a seller publicly agree on price, but their quotes sit on different venues and do not automatically interact.",
+    "mechanics": "Locks arise from fragmentation and latency when a bid on one venue reaches the price of an offer on another; Rule 610(e) obliges market participants to avoid, and venues to reconcile, locking quotations, with routing exceptions (such as intermarket sweep orders) permitting resolution.",
+    "formula": "",
+    "relationships": [
+      "Crossed market",
+      "National best bid and offer",
+      "Trade-through",
+      "Regulation NMS",
+      "Quoted spread"
+    ],
+    "failure_modes": "During a lock the quoted spread signals free immediacy that may not be deliverable across venues, and persistent locks indicate linkage or latency problems between markets; quote-based analytics misbehave when the spread is zero.",
+    "misconceptions": "A locked market is not a trading halt - trading continues, but displaying quotations that lock protected quotes is restricted and repeated locking is a prohibited pattern.",
+    "example": "The NBB is $100.01 on NYSE and the NBO is $100.01 on Nasdaq; the NBBO is locked at $100.01 until one side executes, cancels, or reprices.",
+    "citations": [
+      {
+        "source": "17 CFR 242.610 - Access to quotations (Regulation NMS Rule 610)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.610",
+        "section": "paragraph (e) Locking or crossing quotations",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

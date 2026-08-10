@@ -187,6 +187,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="tick-rule"><h3>Tick rule <a class="anchor" href="#tick-rule">#</a></h3>
 <div class="field">A trade-classification heuristic that signs a trade as buyer-initiated if its price is above the previous trade price (uptick) and seller-initiated if below (downtick), carrying the sign of the last nonzero price change through zero ticks. It is one of the component rules evaluated in Lee and Ready (1991).</div>
+<div class="skill-links"><a href="../skills/tkl-tick-rule/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Rising prints suggest buyers are pushing the price up; falling prints suggest sellers are pushing it down.</div>
 <div class="field"><span class="label">Mechanics:</span> Compare each trade price to the previous one: an uptick signs the trade positive, a downtick negative, and an unchanged price inherits the sign of the most recent nonzero change. It requires only the trade price series, not quote data.</div>
 <div class="field"><span class="label">Failure modes:</span> It misclassifies trades that move within the quote range (bid-ask bounce reversals) and cannot see where a trade sits relative to the spread; Lee and Ready find quote-based classification generally more accurate.</div>
@@ -199,6 +200,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="quote-rule"><h3>Quote rule <a class="anchor" href="#quote-rule">#</a></h3>
 <div class="field">A trade-classification heuristic that signs trades above the prevailing quote midpoint as buyer-initiated and trades below it as seller-initiated; trades exactly at the midpoint require a tie-breaking rule such as the tick test. It is the primary component of the Lee and Ready (1991) classification procedure.</div>
+<div class="skill-links"><a href="../skills/tkl-quote-rule/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Paying more than the middle of the market means you were the buyer; receiving less means you were the seller.</div>
 <div class="field"><span class="label">Mechanics:</span> Each trade is matched to the bid-ask quote in effect when it executed - Lee and Ready allow for a reporting lag of about five seconds on NYSE-era data - and the trade price is compared to that quote&#x27;s midpoint.</div>
 <div class="field"><span class="label">Failure modes:</span> Quote-trade misalignment from reporting delays and fast quote updates corrupts the comparison, midpoint trades are left unsigned without a tie-break, and locked or crossed quotes distort the reference.</div>
@@ -211,6 +213,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="lee-ready-algorithm"><h3>Lee-Ready algorithm <a class="anchor" href="#lee-ready-algorithm">#</a></h3>
 <div class="field">The standard trade-classification procedure of Lee and Ready (1991) for inferring trade direction from intraday data: sign trades by the quote rule relative to the prevailing midpoint, sign midpoint trades by the tick rule, and match trades to quotes with an allowance for trade-reporting delay.</div>
+<div class="skill-links"><a href="../skills/tkl-lee-ready-algorithm/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Combine quote information with tick information to make the best guess about who initiated each trade.</div>
 <div class="field"><span class="label">Mechanics:</span> Trades are aligned to the quotes in effect just before the report (a lag of roughly five seconds in their NYSE sample); prices above the midpoint are buys, below are sells, and midpoint trades inherit the sign of the last nonzero price change.</div>
 <div class="field"><span class="label">Failure modes:</span> Accuracy degrades in modern fast markets where quotes update far faster than trades are reported, for trades executed inside the spread, and for large or ECN-executed trades; validation studies on proprietary data find error rates around 20 percent in historical samples and higher in fast markets.</div>
@@ -222,6 +225,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="order-arrival-rate"><h3>Order arrival rate <a class="anchor" href="#order-arrival-rate">#</a></h3>
 <div class="field">The frequency per unit time at which new orders of a given type or side reach a trading venue. It is a core primitive of queueing-based microstructure and market-making models - in the Avellaneda-Stoikov lineage formalized by Gueant, Lehalle and Fernandez-Tapia (2013), arrival rates of liquidity-consuming orders depend on the distance of the quote from the reference price.</div>
+<div class="skill-links"><a href="../skills/tkl-order-arrival-rate/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It measures how busy the order flow is - how many new orders show up each second at each price.</div>
 <div class="field"><span class="label">Mechanics:</span> Estimated empirically as counts of order events per interval by side and price level, and modeled as Poisson or self-exciting (Hawkes) intensities; arrival rates jointly determine fill probabilities, queue dynamics, and optimal quote placement.</div>
 <div class="field"><span class="label">Failure modes:</span> Arrival rates are strongly time-varying (U-shaped intraday patterns, news bursts) and clustered, so stationary Poisson calibrations fail out of sample; venue-specific message throttles also truncate observed rates.</div>
@@ -234,6 +238,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="cancellation-rate"><h3>Cancellation rate <a class="anchor" href="#cancellation-rate">#</a></h3>
 <div class="field">The rate or fraction at which resting orders are cancelled before execution. In automated markets the large majority of displayed orders are cancelled rather than executed - the SEC notes that high-frequency liquidity providers cancel a very high percentage of their orders, and the CFTC lists cancel-to-fill ratios among the objective measures of high message rates.</div>
+<div class="skill-links"><a href="../skills/tkl-cancellation-rate/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Most quotes are withdrawn, not traded; the cancellation rate tells you how quickly the visible book evaporates and renews.</div>
 <div class="field"><span class="label">Mechanics:</span> Computed as cancellations per unit time or as cancels relative to cancels plus executions, per participant, instrument, or venue; together with arrival rates it determines queue-position dynamics and the fill probability of resting orders.</div>
 <div class="field"><span class="label">Failure modes:</span> When cancellation rates are extreme, displayed depth becomes a weak proxy for executable liquidity; spikes in cancellations also accompany stress episodes and manipulative quoting schemes.</div>
@@ -246,6 +251,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="cancel-to-trade-ratio"><h3>Cancel-to-trade ratio <a class="anchor" href="#cancel-to-trade-ratio">#</a></h3>
 <div class="field">The ratio of cancelled orders (or cancelled quantity) to executed trades over a period - a standard metric of messaging intensity. The CFTC&#x27;s Technology Advisory Committee working group listed cancel-to-fill ratios among the objective forms of measurement for the recurring high message rates characteristic of high-frequency trading.</div>
+<div class="skill-links"><a href="../skills/tkl-cancel-to-trade-ratio/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It counts how many quotes die for every trade that actually prints.</div>
 <div class="field"><span class="label">Mechanics:</span> Computed per participant, instrument, or whole market over a session; exchanges and regulators monitor it to gauge system load, characterize quoting behavior, and detect potentially abusive messaging patterns.</div>
 <div class="field"><span class="label">Failure modes:</span> Appropriate levels vary enormously by asset class, venue, and strategy, so cross-market comparisons mislead; the ratio alone cannot distinguish benign market making from manipulative quote stuffing.</div>
@@ -258,6 +264,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="order-to-trade-ratio"><h3>Order-to-trade ratio <a class="anchor" href="#order-to-trade-ratio">#</a></h3>
 <div class="field">The ratio of order messages (submissions, modifications, and cancellations) to executed trades, computed in count or volume terms over a period. Exchanges use it to calibrate messaging load - for example Eurex computes order-to-trade ratios per product under its Excessive System Usage Fee framework, charging fees when a participant&#x27;s ratio exceeds calibrated limits.</div>
+<div class="skill-links"><a href="../skills/tkl-order-to-trade-ratio/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It measures how much messaging chatter a participant generates for each actual transaction.</div>
 <div class="field"><span class="label">Mechanics:</span> The venue tallies order entries, modifications, and deletions against executions per participant and product (often monthly); ratios above predefined thresholds - which vary with the product&#x27;s liquidity and the participant&#x27;s quoting role - trigger graduated excessive-usage fees.</div>
 <div class="field"><span class="label">Failure modes:</span> Legitimate market making can breach thresholds in volatile periods when repricing is intense, and rigid caps can reduce displayed liquidity; participants may also restructure messaging to game the metric.</div>
@@ -270,6 +277,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="queue-position"><h3>Queue position <a class="anchor" href="#queue-position">#</a></h3>
 <div class="field">An order&#x27;s rank in the priority sequence of resting orders at its price level, which determines how much incoming volume must trade (or cancel) ahead of it before it is executed. Under FIFO matching - where, per CME Group, the first order at a price level is the first matched - position is set by arrival time and lost if the order&#x27;s price is changed, quantity increased, or account changed.</div>
+<div class="skill-links"><a href="../skills/tkl-queue-position/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is your place in line at the front of the book.</div>
 <div class="field"><span class="label">Mechanics:</span> Position improves as orders ahead execute or are cancelled, and resets to the back on priority-losing amendments; the probability and timing of a fill depend on the size ahead in the queue relative to incoming trade and cancellation flow.</div>
 <div class="field"><span class="label">Failure modes:</span> Queue models break down when size ahead is iceberg or hidden, when matching includes pro rata or top-order components that reorder priority, or when cancellations ahead accelerate unpredictably in fast markets.</div>
@@ -281,6 +289,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="queue-imbalance"><h3>Queue imbalance <a class="anchor" href="#queue-imbalance">#</a></h3>
 <div class="field">The normalized difference between the displayed size at the best bid and the best ask, a short-horizon predictor of mid-price movements: when one side of the inside market is heavier, the price tends to move toward the lighter side. It is the state variable underlying Stoikov&#x27;s (2018) micro-price and relates to the order-flow imbalance of Cont, Kukanov and Stoikov.</div>
+<div class="skill-links"><a href="../skills/tkl-queue-imbalance/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A heavy bid queue and a thin ask queue mean sellers face little resistance - the price is more likely to tick up than down.</div>
 <div class="field"><span class="label">Mechanics:</span> Computed from top-of-book sizes at each order book event; positive imbalance predicts upticks with a probability that Stoikov estimates from transition matrices of imbalance and spread states, and its information decays within milliseconds to seconds.</div>
 <div class="field"><span class="label">Failure modes:</span> Predictive power collapses when displayed size is cancelable or spoofed, around news jumps, and when the spread is wide; the signal is also crowded and degrades after latency and fees.</div>
@@ -294,6 +303,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="microprice"><h3>Microprice <a class="anchor" href="#microprice">#</a></h3>
 <div class="field">A size-weighted price between the bid and the ask that adjusts the midpoint for the imbalance of displayed quantities; Stoikov (2018) defines the micro-price as a high-frequency estimator of the short-horizon future price and shows empirically that it predicts near-term prices better than the mid-price or the weighted mid-price.</div>
+<div class="skill-links"><a href="../skills/tkl-microprice/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> If the bid queue is heavy relative to the ask, the fair price leans toward the ask - the microprice quantifies that lean.</div>
 <div class="field"><span class="label">Mechanics:</span> The first-order form weights the ask by bid size and the bid by ask size; Stoikov derives refinements by modeling the mid-price as a Markov chain in imbalance and spread states and taking the expected limiting price. It updates on every change to top-of-book prices or sizes.</div>
 <div class="field"><span class="label">Failure modes:</span> The estimator assumes a stationary imbalance-transition structure, so it degrades under regime shifts, hidden size, and wide spreads; as a predictor it is useful only at high frequency and horizons of ticks, not minutes.</div>
@@ -306,6 +316,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="trade-through"><h3>Trade-through <a class="anchor" href="#trade-through">#</a></h3>
 <div class="field">An execution at a price inferior to a protected quotation displayed by another trading center - Regulation NMS Rule 600(b)(105) defines a trade-through as the purchase or sale of an NMS stock during regular trading hours at a price lower than a protected bid or higher than a protected offer. Rule 611 (the Order Protection Rule) requires trading centers to maintain policies reasonably designed to prevent trade-throughs.</div>
+<div class="skill-links"><a href="../skills/tkl-trade-through/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is trading at a worse price while a better displayed price is available somewhere else in the national market system.</div>
 <div class="field"><span class="label">Mechanics:</span> Trading centers prevent trade-throughs by routing to better-priced protected quotations (e.g. via intermarket sweep orders) before executing locally; Rule 611 lists exceptions, including executions during crossed markets, ISO routings, stopped orders, and quotes that flickered to an inferior price within one second prior.</div>
 <div class="field"><span class="label">Failure modes:</span> Consolidated-feed latency can make a quote appear tradeable when it is already gone (or vice versa), so mechanical trade-through protection can force routing to trivially small or stale protected quotes; the rule protects only top-of-book displayed prices, not depth.</div>
@@ -318,6 +329,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="locked-market"><h3>Locked market <a class="anchor" href="#locked-market">#</a></h3>
 <div class="field">A market state in which the national best bid equals the national best offer, so the displayed spread is zero. Regulation NMS Rule 610(e) requires exchanges and associations to maintain rules requiring members reasonably to avoid displaying quotations that lock any protected quotation and to assure the reconciliation of locked quotations.</div>
+<div class="skill-links"><a href="../skills/tkl-locked-market/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> A buyer and a seller publicly agree on price, but their quotes sit on different venues and do not automatically interact.</div>
 <div class="field"><span class="label">Mechanics:</span> Locks arise from fragmentation and latency when a bid on one venue reaches the price of an offer on another; Rule 610(e) obliges market participants to avoid, and venues to reconcile, locking quotations, with routing exceptions (such as intermarket sweep orders) permitting resolution.</div>
 <div class="field"><span class="label">Failure modes:</span> During a lock the quoted spread signals free immediacy that may not be deliverable across venues, and persistent locks indicate linkage or latency problems between markets; quote-based analytics misbehave when the spread is zero.</div>
@@ -329,6 +341,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="crossed-market"><h3>Crossed market <a class="anchor" href="#crossed-market">#</a></h3>
 <div class="field">A market state in which the best bid exceeds the best offer, producing a negative displayed spread. Regulation NMS Rule 610(e) requires exchange rules that members reasonably avoid displaying quotations that cross protected quotations, and Rule 611(b)(4) excepts from trade-through liability executions occurring while a protected bid is priced higher than a protected offer.</div>
+<div class="skill-links"><a href="../skills/tkl-crossed-market/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Someone is publicly bidding more than someone else is asking - arbitrage on its face, usually an artifact of timing rather than a real opportunity.</div>
 <div class="field"><span class="label">Mechanics:</span> Crosses are typically transient states caused by latency and feed delays across fragmented venues during fast price moves; they resolve through quote reconciliation, routing, or cancellation, often within microseconds to seconds.</div>
 <div class="field"><span class="label">Failure modes:</span> A crossed consolidated quote usually reflects a stale or slow data feed rather than an executable arbitrage; attempting to trade the apparent cross generally finds the quote already gone.</div>
@@ -340,6 +353,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="latency"><h3>Latency <a class="anchor" href="#latency">#</a></h3>
 <div class="field">The time delay between a market event and a participant&#x27;s ability to observe and act on it - quoted in the CFTC&#x27;s automated-trading concept release from Hasbrouck and Saar as the time it takes to learn about an event (e.g., a change in the bid), generate a response, and have the exchange act on the response.</div>
+<div class="skill-links"><a href="../skills/tkl-latency/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the lag between something happening in the market and your reaction actually landing at the exchange.</div>
 <div class="field"><span class="label">Mechanics:</span> Latency decomposes into market-data dissemination, network transit, decision logic, and exchange processing; participants reduce it through co-location, direct exchange data feeds, microwave networks, and streamlined code, with competitive levels now in microseconds.</div>
 <div class="field"><span class="label">Failure modes:</span> Latency differentials let faster participants pick off slower resting orders after price moves, and average latency figures hide the tail spikes that dominate adverse outcomes in fast markets.</div>
@@ -351,6 +365,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="round-trip-latency"><h3>Round-trip latency <a class="anchor" href="#round-trip-latency">#</a></h3>
 <div class="field">The elapsed time for an order message to travel from a participant&#x27;s system to the exchange matching engine and for the acknowledgment or execution response to return. The CFTC&#x27;s concept release cites industry data showing roundtrip trade times on one exchange group falling from 127 milliseconds in 2004 to 4.2 milliseconds in 2011.</div>
+<div class="skill-links"><a href="../skills/tkl-round-trip-latency/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> It is the order-to-answer time: send an order, and measure how long until the exchange confirms what happened.</div>
 <div class="field"><span class="label">Mechanics:</span> Measured end-to-end from timestamps on the outbound order and the inbound acknowledgment, spanning gateways, the matching engine, and the return path; exchanges and firms monitor it as a key infrastructure and competitiveness metric.</div>
 <div class="field"><span class="label">Failure modes:</span> Jitter and tail behavior matter more than averages - a venue with a fast mean but heavy-tailed round trips can be worse for time-critical strategies; published figures may exclude client-side network segments and are not comparable across venues.</div>
@@ -363,6 +378,7 @@ ul.rel{margin:.2rem 0;padding-left:1.2rem}
 </article>
 <article class="entry" id="co-location"><h3>Co-location <a class="anchor" href="#co-location">#</a></h3>
 <div class="field">The placement of a firm&#x27;s trading servers in or near the exchange&#x27;s own data center to minimize network latency to the matching engine; the CFTC defines co-location as connectivity solutions hosted by the exchange itself, with third-party equivalents termed proximity hosting.</div>
+<div class="skill-links"><a href="../skills/tkl-co-location/">Open unified concept + skill view &rarr;</a></div>
 <div class="field"><span class="label">Intuition:</span> Physically sit your computers next to the exchange&#x27;s computers so your messages arrive before everyone else&#x27;s.</div>
 <div class="field"><span class="label">Mechanics:</span> Exchanges rent rack space and cross-connects, typically with equalized cable lengths to equalize latency among co-located customers; regulators require such services to be offered on fair, uniform, and non-discriminatory terms (CFTC co-location rulemaking; SEC oversight of exchange co-location services).</div>
 <div class="field"><span class="label">Failure modes:</span> Co-location creates a two-tier speed structure between co-located and remote participants and feeds a costly latency arms race whose social value is contested; it shortens only the last network segment, not decision time or cross-market links.</div>

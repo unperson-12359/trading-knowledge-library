@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/stale-quote",
+  "canonical_sha256": "5b7b93c0f50aaae52fb83ec2c93678e281d36ffbdf39943808ab653b199ed7ea",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/stale-quote",
+    "name": "Stale quote",
+    "aliases": [
+      "stale quotation"
+    ],
+    "domain": "Microstructure",
+    "definition": "A displayed quotation that no longer reflects current market value because prices have moved without the quote being updated, leaving it executable at an obsolete price. Bartlett and McCrary analyze how such stale quotes arise and how faster traders can arbitrage them when venues or feed systems update slowly.",
+    "intuition": "It is yesterday's price still posted in today's market - an offer to trade at terms the quoter would no longer choose.",
+    "mechanics": "Staleness arises from slow quote updates, data-feed and processing latency (e.g. consolidated feeds lagging direct exchange feeds), or venue malfunctions; low-latency participants monitor correlated instruments and lift or hit stale quotes before they are repriced.",
+    "formula": "",
+    "relationships": [
+      "Flickering quote",
+      "Latency",
+      "Crossed market",
+      "Adverse selection",
+      "Locked market"
+    ],
+    "failure_modes": "Analyses based on displayed quotes can be systematically biased in fast markets because the quotes lag faster data sources; conversely, apparent stale-quote arbitrage is often unexecutable because the quote is cancelled or amended before an order arrives.",
+    "misconceptions": "A stale-looking quote on a slow feed is rarely a real free lunch - by the time an order reaches the venue, the quote has usually been updated or already picked off by faster participants.",
+    "example": "Index futures drop 0.5 percent; an ETF's displayed offer at the old level is lifted within microseconds by low-latency traders before the market maker reprices it.",
+    "citations": [
+      {
+        "source": "Bartlett and McCrary, 'Does SEC Enforcement Policy Encourage Stale Quote Arbitrage?' (UC Berkeley working paper; published version: 'How Rigged Are Stock Markets? Evidence from Microsecond Timestamps', Journal of Financial Economics)",
+        "url": "https://eml.berkeley.edu/~jmccrary/bartlett_mccrary2016b.pdf",
+        "section": "Full text",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

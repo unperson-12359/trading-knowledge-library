@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/order-to-trade-ratio",
+  "canonical_sha256": "19259dbffd43d3e18d7e8ce4b47ac1b6baf66a9a4de171d88298e0cca1f91d4c",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/order-to-trade-ratio",
+    "name": "Order-to-trade ratio",
+    "aliases": [
+      "OTR",
+      "order-to-execution ratio"
+    ],
+    "domain": "Microstructure",
+    "definition": "The ratio of order messages (submissions, modifications, and cancellations) to executed trades, computed in count or volume terms over a period. Exchanges use it to calibrate messaging load - for example Eurex computes order-to-trade ratios per product under its Excessive System Usage Fee framework, charging fees when a participant's ratio exceeds calibrated limits.",
+    "intuition": "It measures how much messaging chatter a participant generates for each actual transaction.",
+    "mechanics": "The venue tallies order entries, modifications, and deletions against executions per participant and product (often monthly); ratios above predefined thresholds - which vary with the product's liquidity and the participant's quoting role - trigger graduated excessive-usage fees.",
+    "formula": "OTR = N_order entries + modifications + deletions / N_trades (or volume-based equivalent), per participant per product over the measurement period.",
+    "relationships": [
+      "Cancel-to-trade ratio",
+      "Cancellation rate",
+      "Order arrival rate",
+      "High-frequency trading"
+    ],
+    "failure_modes": "Legitimate market making can breach thresholds in volatile periods when repricing is intense, and rigid caps can reduce displayed liquidity; participants may also restructure messaging to game the metric.",
+    "misconceptions": "Order-to-trade ratio limits are infrastructure-load and fairness tools, not judgments that high quoting activity is manipulative.",
+    "example": "A participant enters or modifies 2 million orders in a product with 5,000 trades in a month, an OTR of 400, and pays an excessive system usage fee on the portion above the product's limit.",
+    "citations": [
+      {
+        "source": "Eurex, 'Excessive System Usage Fee' (Rules and Regulations)",
+        "url": "https://www.eurex.com/ex-en/rules-regs/regulations/excessive-system-usage-fee",
+        "section": "Order-to-Trade Ratio",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

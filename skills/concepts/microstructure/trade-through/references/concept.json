@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/trade-through",
+  "canonical_sha256": "cb9dd850fcea7eccc32be6f5fefe0a7c764bcbf120f9a40f4cd12c3e624d014a",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/trade-through",
+    "name": "Trade-through",
+    "aliases": [
+      "trade through"
+    ],
+    "domain": "Microstructure",
+    "definition": "An execution at a price inferior to a protected quotation displayed by another trading center - Regulation NMS Rule 600(b)(105) defines a trade-through as the purchase or sale of an NMS stock during regular trading hours at a price lower than a protected bid or higher than a protected offer. Rule 611 (the Order Protection Rule) requires trading centers to maintain policies reasonably designed to prevent trade-throughs.",
+    "intuition": "It is trading at a worse price while a better displayed price is available somewhere else in the national market system.",
+    "mechanics": "Trading centers prevent trade-throughs by routing to better-priced protected quotations (e.g. via intermarket sweep orders) before executing locally; Rule 611 lists exceptions, including executions during crossed markets, ISO routings, stopped orders, and quotes that flickered to an inferior price within one second prior.",
+    "formula": "",
+    "relationships": [
+      "National best bid and offer",
+      "Protected quotation",
+      "Locked market",
+      "Crossed market",
+      "Best execution"
+    ],
+    "failure_modes": "Consolidated-feed latency can make a quote appear tradeable when it is already gone (or vice versa), so mechanical trade-through protection can force routing to trivially small or stale protected quotes; the rule protects only top-of-book displayed prices, not depth.",
+    "misconceptions": "Rule 611 does not guarantee best execution for institutional size - it protects only the displayed protected quotation, and it applies to trading centers, which is distinct from a broker's broader best-execution duty.",
+    "example": "The NBO is $100.01 on NYSE; a trade executes at $100.03 on another venue without routing to NYSE first - a trade-through of the protected offer, absent an exception.",
+    "citations": [
+      {
+        "source": "17 CFR 242.611 - Order protection rule (Regulation NMS Rule 611)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.611",
+        "section": "Full section (trade-through prevention and exceptions)",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "17 CFR 242.600 - NMS security designation and definitions (Regulation NMS Rule 600)",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-242/section-242.600",
+        "section": "paragraph (b)(105) Trade-through",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

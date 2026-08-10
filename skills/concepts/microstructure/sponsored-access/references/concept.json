@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "microstructure/sponsored-access",
+  "canonical_sha256": "83c18129f45b2f70d84756fdd42e722f3f6eebf371789d38521d7b2ef26aa51d",
+  "source_path": "concepts/microstructure.json",
+  "concept": {
+    "id": "microstructure/sponsored-access",
+    "name": "Sponsored access",
+    "aliases": [
+      "sponsored market access"
+    ],
+    "domain": "Microstructure",
+    "definition": "A form of market access in which a customer or other person trades on an exchange or alternative trading system through the use of a broker-dealer's market participant identifier. SEC Rule 15c3-5 (the Market Access Rule) requires brokers providing such access to maintain, under their direct and exclusive control, risk management controls that prevent orders exceeding pre-set credit or capital thresholds and erroneous orders.",
+    "intuition": "The customer trades under the sponsoring broker's name and clearing umbrella, so the broker must police every order at the gateway.",
+    "mechanics": "Orders flow to the venue under the sponsor's MPID through automated pre-trade financial and regulatory filters; the sponsor must document and annually review the controls, with CEO certification, and may allocate only certain regulatory controls to broker-dealer customers by written contract after due diligence.",
+    "formula": "",
+    "relationships": [
+      "Direct market access",
+      "Market access rule",
+      "Latency",
+      "Erroneous order"
+    ],
+    "failure_modes": "Misconfigured filters, or impermissible delegation of control, can let erroneous or uncreditworthy orders reach the market at full speed; regulatory responsibility remains with the sponsoring broker-dealer regardless of allocation arrangements.",
+    "misconceptions": "Sponsored access is not unfiltered 'naked' access - since Rule 15c3-5, unfiltered access arrangements are prohibited in US securities markets.",
+    "example": "A proprietary trading firm routes orders to an exchange via its sponsor broker's MPID; the broker's gateway rejects any order that would breach the firm's pre-set capital threshold.",
+    "citations": [
+      {
+        "source": "17 CFR 240.15c3-5 - Risk management controls for brokers or dealers with market access",
+        "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-240/subject-group-ECFRc8401dcba174f73/section-240.15c3-5",
+        "section": "Full section (market access definition and required controls)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
