@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "id": "generic-perps-regimes",
+  "name": "Generic Perpetual Futures Regime Taxonomy",
+  "description": "A descriptive market-state vocabulary for research and retrieval. Regime labels are observations, not forecasts or trading signals.",
+  "tag_format": "<dimension>.<state>",
+  "dimensions": [
+    {
+      "id": "trend",
+      "name": "Trend state",
+      "states": [
+        {"id": "uptrend", "definition": "Sustained upward directional structure across the selected observation window."},
+        {"id": "downtrend", "definition": "Sustained downward directional structure across the selected observation window."},
+        {"id": "range", "definition": "Two-sided rotation without persistent directional structure across the selected window."},
+        {"id": "transition", "definition": "Unstable directional structure during a break, reversal, or change between established states."}
+      ]
+    },
+    {
+      "id": "volatility",
+      "name": "Volatility state",
+      "states": [
+        {"id": "compressed", "definition": "Realized price variation is low relative to a stated rolling baseline."},
+        {"id": "normal", "definition": "Realized price variation is near its stated rolling baseline."},
+        {"id": "expanded", "definition": "Realized price variation is elevated relative to a stated rolling baseline."},
+        {"id": "shock", "definition": "Abrupt extreme movement or discontinuity makes ordinary volatility estimates unreliable."}
+      ]
+    },
+    {
+      "id": "liquidity",
+      "name": "Liquidity state",
+      "states": [
+        {"id": "deep", "definition": "Displayed and executable depth is high and price impact is low for the stated order size."},
+        {"id": "normal", "definition": "Depth, spread, and impact are near their stated rolling baselines."},
+        {"id": "thin", "definition": "Depth is reduced or spreads and price impact are elevated for the stated order size."},
+        {"id": "dislocated", "definition": "Order-book continuity, cross-venue pricing, or executable liquidity is materially impaired."}
+      ]
+    },
+    {
+      "id": "positioning",
+      "name": "Positioning state",
+      "states": [
+        {"id": "balanced", "definition": "Leverage, funding, basis, and open-interest evidence does not indicate a clear directional crowd."},
+        {"id": "long-crowded", "definition": "Positioning evidence indicates concentrated leveraged long exposure."},
+        {"id": "short-crowded", "definition": "Positioning evidence indicates concentrated leveraged short exposure."},
+        {"id": "deleveraging", "definition": "Open interest and leveraged exposure are contracting through voluntary exits or forced liquidation."}
+      ]
+    }
+  ],
+  "classification_notes": [
+    "Every label requires an explicit market, venue set, timeframe, lookback, and threshold definition.",
+    "Dimensions are independent: a market can be trending, volatile, thin, and crowded at the same time.",
+    "States can be uncertain or disagree across timeframes; callers should retain the underlying measurements.",
+    "The taxonomy describes context and does not establish expected return, profitability, or position size."
+  ]
+}

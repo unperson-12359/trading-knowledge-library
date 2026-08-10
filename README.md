@@ -12,6 +12,8 @@ workflows, research playbooks, and products build on.
 - `exports/` and `docs/` are generated and must not be edited by hand.
 - `sources/master_v1.txt` is the original imported catalog and remains a
   read-only historical reference.
+- `collections/core-perps.json` fixes the 50-concept generic-perpetual core;
+  each core concept has at least two citations and an explicit regime note.
 
 ## AI disclosure
 
@@ -39,6 +41,7 @@ pattern, indicator, or strategy is profitable.
 ```text
 concepts/<domain>.json   one file per domain, array of entry objects
 collections/             focused operational concept collections
+regimes/taxonomy.json    controlled market-state vocabulary
 scripts/status.py       validate the complete catalog
 scripts/export_master.py generate exports/master_v2.txt
 scripts/build_site.py   generate the GitHub Pages site in docs/
@@ -46,6 +49,10 @@ exports/                 generated text output
 docs/                    generated website
 sources/                 read-only import reference
 ```
+
+The generated regime API is available at `docs/api/v1/regimes.json` (and at
+the matching path on GitHub Pages). Regime tags are descriptive research
+context, not forecasts, signals, or evidence of expected return.
 
 ## Workflow
 

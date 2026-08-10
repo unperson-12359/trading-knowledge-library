@@ -22,6 +22,12 @@ REQUIRED_CITATION = ("source", "url", "section", "accessed")
 REMOVED_PROVENANCE_FIELDS = {
     "status", "reviewed_by", "review_date", "review_note",
 }
+EXPECTED_REGIME_DIMENSIONS = {
+    "trend": {"uptrend", "downtrend", "range", "transition"},
+    "volatility": {"compressed", "normal", "expanded", "shock"},
+    "liquidity": {"deep", "normal", "thin", "dislocated"},
+    "positioning": {"balanced", "long-crowded", "short-crowded", "deleveraging"},
+}
 
 
 def _valid_date(value):
@@ -118,8 +124,49 @@ def main():
     elif sorted(indexes) != list(range(1, 1501)):
         failures.append("master_index must cover 1..1500 exactly once")
 
+    valid_regime_tags = set()
+    taxonomy_path = ROOT / "regimes" / "taxonomy.json"
+    if not taxonomy_path.exists():
+        failures.append("regimes/taxonomy.json is required")
+    else:
+        try:
+            taxonomy = json.loads(taxonomy_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"regimes/taxonomy.json: invalid JSON: {exc}")
+        else:
+            found_dimensions = {}
+            dimensions = taxonomy.get("dimensions")
+            if not isinstance(dimensions, list):
+                failures.append("regime taxonomy dimensions must be an array")
+            else:
+                for dimension in dimensions:
+                    if not isinstance(dimension, dict):
+                        failures.append("regime taxonomy dimension is not an object")
+                        continue
+                    dimension_id = dimension.get("id")
+                    states = dimension.get("states")
+                    if not isinstance(dimension_id, str) or not isinstance(states, list):
+                        failures.append("regime taxonomy dimension is missing id or states")
+                        continue
+                    state_ids = {
+                        state.get("id") for state in states if isinstance(state, dict)
+                    }
+                    found_dimensions[dimension_id] = state_ids
+                    for state in states:
+                        if (not isinstance(state, dict)
+                                or not isinstance(state.get("id"), str)
+                                or not isinstance(state.get("definition"), str)
+                                or not state["definition"].strip()):
+                            failures.append(f"regime taxonomy {dimension_id} has an invalid state")
+                            continue
+                        valid_regime_tags.add(f"{dimension_id}.{state['id']}")
+                if found_dimensions != EXPECTED_REGIME_DIMENSIONS:
+                    failures.append("regime taxonomy does not match the controlled dimensions and states")
+
     collection_path = ROOT / "collections" / "core-perps.json"
-    if collection_path.exists():
+    if not collection_path.exists():
+        failures.append("collections/core-perps.json is required")
+    else:
         try:
             collection = json.loads(collection_path.read_text(encoding="utf-8"))
         except json.JSONDecodeError as exc:
@@ -134,6 +181,39 @@ def main():
                 missing = sorted(set(concept_ids) - set(ids))
                 if missing:
                     failures.append("core-perps collection has unknown IDs: " + ", ".join(missing))
+                by_id = {entry["id"]: entry for entry in entries}
+                shallow = [
+                    concept_id for concept_id in concept_ids
+                    if len(by_id[concept_id].get("citations", [])) < 2
+                ]
+                if shallow:
+                    failures.append("core-perps concepts need at least two citations: " + ", ".join(shallow))
+
+                annotations = collection.get("annotations")
+                if not isinstance(annotations, dict):
+                    failures.append("core-perps annotations must be an object")
+                elif set(annotations) != set(concept_ids):
+                    failures.append("core-perps annotations must cover exactly the 50 concept IDs")
+                else:
+                    for concept_id, annotation in annotations.items():
+                        if not isinstance(annotation, dict):
+                            failures.append(f"core-perps annotation {concept_id} is not an object")
+                            continue
+                        tags = annotation.get("regime_relevance")
+                        note = annotation.get("behavior_note")
+                        if not isinstance(tags, list) or not tags:
+                            failures.append(f"core-perps annotation {concept_id} needs regime_relevance")
+                        elif len(tags) != len(set(tags)):
+                            failures.append(f"core-perps annotation {concept_id} has duplicate regime tags")
+                        else:
+                            unknown_tags = sorted(set(tags) - valid_regime_tags)
+                            if unknown_tags:
+                                failures.append(
+                                    f"core-perps annotation {concept_id} has unknown regime tags: "
+                                    + ", ".join(unknown_tags)
+                                )
+                        if not isinstance(note, str) or not note.strip():
+                            failures.append(f"core-perps annotation {concept_id} needs behavior_note")
 
     placeholders = sum(
         1 for entry in entries

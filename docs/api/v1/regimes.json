@@ -1,0 +1,537 @@
+{
+  "taxonomy": {
+    "schema_version": 1,
+    "id": "generic-perps-regimes",
+    "name": "Generic Perpetual Futures Regime Taxonomy",
+    "description": "A descriptive market-state vocabulary for research and retrieval. Regime labels are observations, not forecasts or trading signals.",
+    "tag_format": "<dimension>.<state>",
+    "dimensions": [
+      {
+        "id": "trend",
+        "name": "Trend state",
+        "states": [
+          {
+            "id": "uptrend",
+            "definition": "Sustained upward directional structure across the selected observation window."
+          },
+          {
+            "id": "downtrend",
+            "definition": "Sustained downward directional structure across the selected observation window."
+          },
+          {
+            "id": "range",
+            "definition": "Two-sided rotation without persistent directional structure across the selected window."
+          },
+          {
+            "id": "transition",
+            "definition": "Unstable directional structure during a break, reversal, or change between established states."
+          }
+        ]
+      },
+      {
+        "id": "volatility",
+        "name": "Volatility state",
+        "states": [
+          {
+            "id": "compressed",
+            "definition": "Realized price variation is low relative to a stated rolling baseline."
+          },
+          {
+            "id": "normal",
+            "definition": "Realized price variation is near its stated rolling baseline."
+          },
+          {
+            "id": "expanded",
+            "definition": "Realized price variation is elevated relative to a stated rolling baseline."
+          },
+          {
+            "id": "shock",
+            "definition": "Abrupt extreme movement or discontinuity makes ordinary volatility estimates unreliable."
+          }
+        ]
+      },
+      {
+        "id": "liquidity",
+        "name": "Liquidity state",
+        "states": [
+          {
+            "id": "deep",
+            "definition": "Displayed and executable depth is high and price impact is low for the stated order size."
+          },
+          {
+            "id": "normal",
+            "definition": "Depth, spread, and impact are near their stated rolling baselines."
+          },
+          {
+            "id": "thin",
+            "definition": "Depth is reduced or spreads and price impact are elevated for the stated order size."
+          },
+          {
+            "id": "dislocated",
+            "definition": "Order-book continuity, cross-venue pricing, or executable liquidity is materially impaired."
+          }
+        ]
+      },
+      {
+        "id": "positioning",
+        "name": "Positioning state",
+        "states": [
+          {
+            "id": "balanced",
+            "definition": "Leverage, funding, basis, and open-interest evidence does not indicate a clear directional crowd."
+          },
+          {
+            "id": "long-crowded",
+            "definition": "Positioning evidence indicates concentrated leveraged long exposure."
+          },
+          {
+            "id": "short-crowded",
+            "definition": "Positioning evidence indicates concentrated leveraged short exposure."
+          },
+          {
+            "id": "deleveraging",
+            "definition": "Open interest and leveraged exposure are contracting through voluntary exits or forced liquidation."
+          }
+        ]
+      }
+    ],
+    "classification_notes": [
+      "Every label requires an explicit market, venue set, timeframe, lookback, and threshold definition.",
+      "Dimensions are independent: a market can be trending, volatile, thin, and crowded at the same time.",
+      "States can be uncertain or disagree across timeframes; callers should retain the underlying measurements.",
+      "The taxonomy describes context and does not establish expected return, profitability, or position size."
+    ]
+  },
+  "collection_id": "core-perps",
+  "annotations": {
+    "instruments/perpetual-futures-contract": {
+      "regime_relevance": [
+        "positioning.balanced",
+        "positioning.long-crowded",
+        "positioning.short-crowded",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "Funding, leverage, and liquidation mechanics make the instrument sensitive to positioning state in every directional regime."
+    },
+    "contract-mechanics/open-interest": {
+      "regime_relevance": [
+        "positioning.balanced",
+        "positioning.long-crowded",
+        "positioning.short-crowded",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "Changes in open interest help distinguish exposure accumulation from contraction but do not identify direction alone."
+    },
+    "risk-and-performance/margin": {
+      "regime_relevance": [
+        "volatility.expanded",
+        "volatility.shock",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "Rapid mark-to-market losses and changing requirements make collateral adequacy most fragile in expanded or shock conditions."
+    },
+    "risk-and-performance/initial-margin": {
+      "regime_relevance": [
+        "volatility.expanded",
+        "liquidity.thin",
+        "positioning.long-crowded",
+        "positioning.short-crowded"
+      ],
+      "behavior_note": "Initial margin sets entry leverage, while volatility and liquidity determine how quickly that cushion can become inadequate."
+    },
+    "risk-and-performance/maintenance-margin": {
+      "regime_relevance": [
+        "volatility.shock",
+        "liquidity.dislocated",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "Maintenance requirements become operationally decisive when marks move rapidly and forced exits compete for impaired liquidity."
+    },
+    "risk-and-performance/leverage": {
+      "regime_relevance": [
+        "volatility.expanded",
+        "volatility.shock",
+        "positioning.long-crowded",
+        "positioning.short-crowded",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "Leverage magnifies ordinary variation and can accelerate position loss, margin calls, and forced exits in stressed states."
+    },
+    "risk-and-performance/effective-leverage": {
+      "regime_relevance": [
+        "volatility.expanded",
+        "volatility.shock",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "Effective leverage can rise mechanically as equity falls, so measured exposure must be refreshed during fast markets."
+    },
+    "crypto-and-defi/cross-margin": {
+      "regime_relevance": [
+        "volatility.shock",
+        "liquidity.dislocated",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "Shared collateral can absorb local losses but also transmits one position's stress across the account."
+    },
+    "crypto-and-defi/isolated-margin": {
+      "regime_relevance": [
+        "volatility.expanded",
+        "volatility.shock",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "Losses are compartmentalized, but a small isolated collateral pool reaches liquidation quickly during abrupt movement."
+    },
+    "crypto-and-defi/perpetual-basis": {
+      "regime_relevance": [
+        "trend.uptrend",
+        "trend.downtrend",
+        "positioning.long-crowded",
+        "positioning.short-crowded"
+      ],
+      "behavior_note": "Persistent premiums or discounts can reflect directional demand and crowding, subject to venue and index construction."
+    },
+    "crypto-and-defi/oracle": {
+      "regime_relevance": [
+        "volatility.shock",
+        "liquidity.dislocated"
+      ],
+      "behavior_note": "Update latency, source divergence, and manipulation resistance matter most when spot venues or books dislocate."
+    },
+    "crypto-and-defi/liquidation-threshold": {
+      "regime_relevance": [
+        "volatility.expanded",
+        "volatility.shock",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "Threshold distance can collapse quickly as marks move and account equity changes."
+    },
+    "crypto-and-defi/funding-rate": {
+      "regime_relevance": [
+        "positioning.balanced",
+        "positioning.long-crowded",
+        "positioning.short-crowded"
+      ],
+      "behavior_note": "Funding is a venue-specific transfer and crowding input; its sign alone is not a directional signal."
+    },
+    "crypto-and-defi/funding-interval": {
+      "regime_relevance": [
+        "positioning.long-crowded",
+        "positioning.short-crowded",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "Payment cadence controls when carrying costs are realized and must be aligned precisely in research."
+    },
+    "crypto-and-defi/liquidation-cascade": {
+      "regime_relevance": [
+        "volatility.shock",
+        "liquidity.thin",
+        "liquidity.dislocated",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "Forced orders can reinforce price movement when crowded leverage meets insufficient executable depth."
+    },
+    "crypto-and-defi/open-interest-leverage-ratio": {
+      "regime_relevance": [
+        "positioning.long-crowded",
+        "positioning.short-crowded",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "The ratio is a leverage-pressure proxy whose interpretation depends on denominator quality and venue coverage."
+    },
+    "risk-and-performance/liquidation-price": {
+      "regime_relevance": [
+        "volatility.expanded",
+        "volatility.shock",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "Liquidation price is account- and venue-dependent and may change with collateral, funding, and maintenance tiers."
+    },
+    "risk-and-performance/forced-liquidation": {
+      "regime_relevance": [
+        "volatility.shock",
+        "liquidity.thin",
+        "liquidity.dislocated",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "Execution quality deteriorates when many forced orders arrive together in a shallow or broken market."
+    },
+    "risk-and-performance/auto-deleveraging": {
+      "regime_relevance": [
+        "volatility.shock",
+        "liquidity.dislocated",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "ADL is a venue backstop that becomes relevant only after ordinary liquidation resources are insufficient."
+    },
+    "risk-and-performance/insurance-fund": {
+      "regime_relevance": [
+        "volatility.shock",
+        "liquidity.dislocated",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "Fund sufficiency is most relevant when liquidation fills leave losses beyond posted collateral."
+    },
+    "orders-and-execution/market-order": {
+      "regime_relevance": [
+        "liquidity.deep",
+        "liquidity.thin",
+        "liquidity.dislocated",
+        "volatility.shock"
+      ],
+      "behavior_note": "Execution certainty is exchanged for price uncertainty, which increases as depth disappears or prices gap."
+    },
+    "orders-and-execution/limit-order": {
+      "regime_relevance": [
+        "liquidity.deep",
+        "liquidity.normal",
+        "liquidity.thin",
+        "trend.transition"
+      ],
+      "behavior_note": "Price control does not ensure a fill, and queue position plus adverse selection vary with liquidity and transition speed."
+    },
+    "orders-and-execution/stop-order": {
+      "regime_relevance": [
+        "volatility.expanded",
+        "volatility.shock",
+        "liquidity.thin",
+        "liquidity.dislocated"
+      ],
+      "behavior_note": "A triggered stop can execute far from its trigger when volatility jumps or the book has gaps."
+    },
+    "orders-and-execution/market-impact": {
+      "regime_relevance": [
+        "liquidity.deep",
+        "liquidity.thin",
+        "liquidity.dislocated"
+      ],
+      "behavior_note": "Impact is conditional on order size, available depth, participation, and the market's ability to replenish."
+    },
+    "orders-and-execution/slippage": {
+      "regime_relevance": [
+        "volatility.expanded",
+        "volatility.shock",
+        "liquidity.thin",
+        "liquidity.dislocated"
+      ],
+      "behavior_note": "Expected-versus-realized price gaps widen when latency, volatility, spread, and impact rise together."
+    },
+    "microstructure/bid-ask-spread": {
+      "regime_relevance": [
+        "liquidity.deep",
+        "liquidity.normal",
+        "liquidity.thin",
+        "liquidity.dislocated"
+      ],
+      "behavior_note": "Spread is an immediate liquidity-cost measure but must be paired with depth and executable size."
+    },
+    "microstructure/order-book": {
+      "regime_relevance": [
+        "liquidity.deep",
+        "liquidity.normal",
+        "liquidity.thin",
+        "liquidity.dislocated"
+      ],
+      "behavior_note": "Displayed state can change or cancel before execution, especially during shocks and cross-venue dislocations."
+    },
+    "microstructure/market-depth": {
+      "regime_relevance": [
+        "liquidity.deep",
+        "liquidity.normal",
+        "liquidity.thin",
+        "liquidity.dislocated"
+      ],
+      "behavior_note": "Depth is meaningful only at stated price distances, sizes, venues, and timestamps."
+    },
+    "microstructure/order-flow-imbalance": {
+      "regime_relevance": [
+        "trend.transition",
+        "volatility.expanded",
+        "liquidity.thin"
+      ],
+      "behavior_note": "Imbalance can accompany short-horizon pressure but becomes unstable as liquidity cancels or fragments."
+    },
+    "crypto-and-defi/slippage-tolerance": {
+      "regime_relevance": [
+        "volatility.expanded",
+        "liquidity.thin",
+        "liquidity.dislocated"
+      ],
+      "behavior_note": "A wide tolerance improves fill probability while increasing exposure to adverse price movement and manipulation."
+    },
+    "indicators/volume-weighted-average-price": {
+      "regime_relevance": [
+        "trend.uptrend",
+        "trend.downtrend",
+        "trend.range",
+        "liquidity.normal"
+      ],
+      "behavior_note": "VWAP is an activity-weighted reference; distance from it has different meaning in persistent trends and two-sided ranges."
+    },
+    "indicators/anchored-vwap": {
+      "regime_relevance": [
+        "trend.uptrend",
+        "trend.downtrend",
+        "trend.transition"
+      ],
+      "behavior_note": "The chosen anchor defines the participant cohort being approximated, making anchor selection part of the hypothesis."
+    },
+    "indicators/average-true-range": {
+      "regime_relevance": [
+        "volatility.compressed",
+        "volatility.normal",
+        "volatility.expanded",
+        "volatility.shock"
+      ],
+      "behavior_note": "ATR describes recent range scale and lags discontinuous changes; it does not predict direction."
+    },
+    "indicators/stochastic-oscillator": {
+      "regime_relevance": [
+        "trend.range",
+        "trend.uptrend",
+        "trend.downtrend",
+        "trend.transition"
+      ],
+      "behavior_note": "Extreme readings can mean exhaustion in ranges or sustained momentum in trends, so direction state is essential context."
+    },
+    "risk-and-performance/realized-volatility": {
+      "regime_relevance": [
+        "volatility.compressed",
+        "volatility.normal",
+        "volatility.expanded",
+        "volatility.shock"
+      ],
+      "behavior_note": "Estimator window, sampling, and annualization determine the state label; realized volatility remains backward-looking."
+    },
+    "time-series-analysis/regime-switching-model": {
+      "regime_relevance": [
+        "trend.transition",
+        "volatility.compressed",
+        "volatility.expanded",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "Latent-state estimates are model-dependent and can revise as new data arrives."
+    },
+    "trading-systems/trend-following": {
+      "regime_relevance": [
+        "trend.uptrend",
+        "trend.downtrend",
+        "trend.range",
+        "trend.transition"
+      ],
+      "behavior_note": "Directional persistence supports the hypothesis, while ranges and repeated transitions create whipsaw risk."
+    },
+    "trading-systems/mean-reversion": {
+      "regime_relevance": [
+        "trend.range",
+        "trend.transition",
+        "volatility.shock"
+      ],
+      "behavior_note": "Two-sided ranges may support reversion; structural breaks and cascades can turn apparent deviations into new levels."
+    },
+    "trading-systems/breakout-trading": {
+      "regime_relevance": [
+        "trend.transition",
+        "volatility.compressed",
+        "volatility.expanded",
+        "liquidity.thin"
+      ],
+      "behavior_note": "Compression and transition can precede expansion, but thin liquidity also increases false breaks and execution cost."
+    },
+    "risk-and-performance/position-sizing": {
+      "regime_relevance": [
+        "volatility.normal",
+        "volatility.expanded",
+        "volatility.shock",
+        "liquidity.thin"
+      ],
+      "behavior_note": "Sizing must use current risk distance, account constraints, and executable liquidity rather than signal confidence alone."
+    },
+    "risk-and-performance/volatility-targeting": {
+      "regime_relevance": [
+        "volatility.compressed",
+        "volatility.normal",
+        "volatility.expanded",
+        "volatility.shock"
+      ],
+      "behavior_note": "Inverse-volatility scaling can add exposure during calm periods and reacts late when a shock follows compression."
+    },
+    "risk-and-performance/trade-expectancy": {
+      "regime_relevance": [
+        "trend.uptrend",
+        "trend.downtrend",
+        "trend.range",
+        "trend.transition"
+      ],
+      "behavior_note": "Expectancy is conditional on regime, costs, sampling uncertainty, and the exact execution policy."
+    },
+    "risk-and-performance/stop-loss-level": {
+      "regime_relevance": [
+        "volatility.expanded",
+        "volatility.shock",
+        "liquidity.thin",
+        "liquidity.dislocated"
+      ],
+      "behavior_note": "The planned stop defines risk distance but not the guaranteed exit price."
+    },
+    "risk-and-performance/volatility-stop": {
+      "regime_relevance": [
+        "volatility.compressed",
+        "volatility.normal",
+        "volatility.expanded",
+        "volatility.shock"
+      ],
+      "behavior_note": "Volatility-scaled distance adapts gradually and can be miscalibrated immediately after state changes."
+    },
+    "risk-and-performance/maximum-drawdown": {
+      "regime_relevance": [
+        "volatility.expanded",
+        "volatility.shock",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "Historical maximum drawdown is sample-dependent and does not cap future loss under a new regime."
+    },
+    "risk-and-performance/tail-risk": {
+      "regime_relevance": [
+        "volatility.shock",
+        "liquidity.dislocated",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "Rare joint failures of price, liquidity, correlation, and leverage dominate left-tail outcomes."
+    },
+    "research-and-backtesting/backtest": {
+      "regime_relevance": [
+        "trend.uptrend",
+        "trend.downtrend",
+        "trend.range",
+        "volatility.shock"
+      ],
+      "behavior_note": "Results require enough observations from each relevant state and cannot establish behavior in unseen regimes."
+    },
+    "research-and-backtesting/walk-forward-analysis": {
+      "regime_relevance": [
+        "trend.transition",
+        "volatility.compressed",
+        "volatility.expanded"
+      ],
+      "behavior_note": "Sequential testing preserves time order but can still under-sample rare transitions and shocks."
+    },
+    "research-and-backtesting/execution-simulator": {
+      "regime_relevance": [
+        "volatility.shock",
+        "liquidity.deep",
+        "liquidity.thin",
+        "liquidity.dislocated"
+      ],
+      "behavior_note": "Fill assumptions should vary with spread, depth, latency, and participation rather than remain constant across states."
+    },
+    "research-and-backtesting/funding-cost-model": {
+      "regime_relevance": [
+        "positioning.balanced",
+        "positioning.long-crowded",
+        "positioning.short-crowded",
+        "positioning.deleveraging"
+      ],
+      "behavior_note": "Research must apply venue-specific funding formulas and payment timestamps to the held exposure."
+    }
+  }
+}

@@ -6,6 +6,7 @@ Stdlib only. Generates:
   docs/all.html                A-Z index of every concept
   docs/<slug>/index.html       domain page 1 (25 entries/page)
   docs/<slug>/page-N.html      further domain pages
+  docs/api/v1/regimes.json     regime taxonomy + core annotations
   docs/search-index.json       client-side search data
   docs/sitemap.xml             every generated page
 
@@ -316,6 +317,20 @@ def main():
     # ---- search index + sitemap ----
     (DOCS / "search-index.json").write_text(
         json.dumps(search_index, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    api_dir = DOCS / "api" / "v1"
+    api_dir.mkdir(parents=True)
+    taxonomy = json.loads((ROOT / "regimes" / "taxonomy.json").read_text(encoding="utf-8"))
+    core_collection = json.loads(
+        (ROOT / "collections" / "core-perps.json").read_text(encoding="utf-8")
+    )
+    regime_api = {
+        "taxonomy": taxonomy,
+        "collection_id": core_collection["id"],
+        "annotations": core_collection["annotations"],
+    }
+    (api_dir / "regimes.json").write_text(
+        json.dumps(regime_api, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
     urls = [f"{BASE}/{w.replace('index.html', '')}" for w in sorted(written)]
     (DOCS / "sitemap.xml").write_text(
         "<?xml version='1.0' encoding='UTF-8'?>\n"

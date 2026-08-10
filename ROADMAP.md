@@ -7,8 +7,8 @@ knowledge rollout.
 |---|---|
 | Remove provenance metadata and add AI disclosure | Complete |
 | Build and source-audit the 50-concept core | Complete |
-| Add regime taxonomy and core annotations | In progress |
-| Add five generic-perpetual research playbooks | Pending |
+| Add regime taxonomy and core annotations | Complete |
+| Add five generic-perpetual research playbooks | In progress |
 | Add structured query/API and relationship links | Pending |
 
 Every completed checkpoint is validated, committed to `main`, pushed, and

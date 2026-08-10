@@ -25,6 +25,18 @@ entry. Citations are retained so readers can inspect source material directly.
 The project-wide AI disclosure is documented in the README and on the generated
 About & Methodology page.
 
+## Core collection annotations
+
+`collections/core-perps.json` contains exactly 50 concept IDs. Its
+`annotations` object must cover those same IDs exactly. Each annotation has a
+non-empty `regime_relevance` array of controlled tags and a concise
+`behavior_note` explaining why the concept matters in those states.
+
+Valid tags come only from `regimes/taxonomy.json` and use the form
+`<dimension>.<state>`. The controlled dimensions are trend, volatility,
+liquidity, and positioning. These labels describe observed context; they do not
+claim predictive power or profitability.
+
 ## Rules
 
 - Every entry must contain the full explanatory fields and at least one valid
