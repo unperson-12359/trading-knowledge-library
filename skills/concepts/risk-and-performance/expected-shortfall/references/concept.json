@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/expected-shortfall",
+  "canonical_sha256": "c853c7ec0175b15849eceddc723c12335299afaf0c74db40cbf111f9ef0488ca",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/expected-shortfall",
+    "name": "Expected shortfall",
+    "aliases": [
+      "CVaR",
+      "conditional value at risk",
+      "average value at risk",
+      "tail VaR",
+      "ES"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The expected loss conditional on the loss exceeding a given VaR level — equivalently the average of VaR over all levels beyond the threshold. It is a coherent risk measure, more sensitive to tail shape than VaR, and it replaced VaR as the basis of Basel internal-models market-risk capital.",
+    "intuition": "Where VaR tells you where the bad region starts, expected shortfall tells you how bad the bad region is on average.",
+    "mechanics": "Compute the mean of the loss distribution beyond the alpha quantile; for continuous distributions this is E[L | L >= VaR_alpha]. Under the revised Basel market-risk framework, capital is based on ES at the 97.5% level calibrated to stressed periods, with VaR retained for backtesting.",
+    "formula": "ES_alpha = (1/(1 - alpha)) * integral_alpha^1 VaR_gamma(L) d_gamma; for continuous loss distributions, ES_alpha(L) = E[ L | L >= VaR_alpha(L) ].",
+    "relationships": [
+      "Value at risk",
+      "Tail risk",
+      "Market risk",
+      "Stress testing",
+      "Drawdown"
+    ],
+    "failure_modes": "ES is harder to backtest than VaR (no simple breach-frequency test) and more data-hungry in the tail; it still inherits the input distribution's blind spots — garbage scenarios in, precise-looking tail numbers out. Being a tail mean, it is also sensitive to single extreme observations.",
+    "misconceptions": "ES and CVaR/TVaR are often treated as identical, but the definitions diverge for distributions with atoms at the quantile; and ES does not fix VaR's dependence on assumed distributions — it deepens the measurement, it does not make the tail knowable.",
+    "example": "If the worst 5% of days average a $2M loss while the 95% VaR is $1.2M, the 5% expected shortfall is $2M; Basel internal-models capital now uses ES at the 97.5% confidence level.",
+    "citations": [
+      {
+        "source": "Wikipedia: Expected shortfall",
+        "url": "https://en.wikipedia.org/wiki/Expected_shortfall",
+        "section": "Background; Formal definition",
+        "accessed": "2026-08-06"
+      },
+      {
+        "source": "BCBS: Minimum capital requirements for market risk (revised standard)",
+        "url": "https://www.bis.org/bcbs/publ/d457.htm",
+        "section": "Overview (internal models approach based on expected shortfall)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

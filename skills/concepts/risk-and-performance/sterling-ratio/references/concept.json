@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/sterling-ratio",
+  "canonical_sha256": "e5cedc16606cfa0aa0da0f8cb6839c9808710745f1aa8c39f1e0cff33e46c92c",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/sterling-ratio",
+    "name": "Sterling ratio",
+    "aliases": [
+      "Sterling risk-adjusted ratio"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A risk-adjusted return measure that divides the compound annual return by a function of average annual drawdown — originally, per Deane Sterling Jones (1981), the compound rate of return divided by the absolute value of (average annual drawdown minus 10%); modern variants use excess return over the average largest drawdown.",
+    "intuition": "Where Calmar charges only for the single worst drawdown, the Sterling ratio charges for the typical yearly drawdown: the routine pain, not just the record pain.",
+    "mechanics": "Compute each calendar year's worst peak-to-trough loss, average those drawdowns, and divide the compound annual return by that average adjusted by 10% (the original 1981 T-bill reference); the Sharpe-like modern form subtracts the risk-free rate in the numerator instead. Multiple definitions coexist in practice.",
+    "formula": "Original: SR = CompoundROR / |AvgAnnualDD - 10%|; modern variant: SR = (Annual portfolio return - annual risk-free rate) / average largest drawdown.",
+    "relationships": [
+      "Calmar ratio",
+      "Maximum drawdown",
+      "Drawdown",
+      "Sharpe ratio"
+    ],
+    "failure_modes": "The definition is not standardized — the 10% adjustment, the averaging convention, and the drawdown definition vary — so quoted Sterling ratios are frequently non-comparable across sources. Averaging drawdowns also dilutes the impact of one catastrophic year.",
+    "misconceptions": "The 10% in the original denominator is not a universal constant — it was the 1981 T-bill yield used as the risk-free benchmark — and the Sterling ratio is not just Calmar under another name: they use different drawdown aggregates.",
+    "example": "A fund compounding 18% annually with a 12% average annual maximum drawdown has an original-form Sterling ratio of 18 / |12 - 10| = 9, versus 1.5 on the modern excess-return form — illustrating the convention problem.",
+    "citations": [
+      {
+        "source": "Wikipedia: Sterling ratio",
+        "url": "https://en.wikipedia.org/wiki/Sterling_ratio",
+        "section": "Definition",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

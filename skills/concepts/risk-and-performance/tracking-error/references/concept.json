@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/tracking-error",
+  "canonical_sha256": "2797765b1010cd84fd40db648bddbbc7261c8fd1f85293779ab692fd5ce142fe",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/tracking-error",
+    "name": "Tracking error",
+    "aliases": [
+      "active risk",
+      "TE"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The standard deviation of a portfolio's active return relative to its benchmark — also called active risk — measuring how closely the portfolio follows its index. Measured historically it is ex post (realized) tracking error; model-predicted it is ex ante tracking error.",
+    "intuition": "It is the wobble between you and the index: an index fund hugs the benchmark (tracking error near zero) while an aggressive active manager wanders far from it.",
+    "mechanics": "Compute the active return series (portfolio minus benchmark) and take its standard deviation; in factor-model terms it is the non-systematic (residual) risk, and in weight space it equals sqrt((w_p - w_b)' Sigma (w_p - w_b)). Dividing mean active return by tracking error gives the information ratio.",
+    "formula": "TE = sqrt( var(r_p - r_b) ) = sqrt( (w_p - w_b)' Sigma (w_p - w_b) ), where r_p and r_b are portfolio and benchmark returns and (w_p - w_b) the vector of active weights.",
+    "relationships": [
+      "Information ratio",
+      "Jensen's alpha",
+      "Sharpe ratio",
+      "Directional exposure"
+    ],
+    "failure_modes": "Ex ante estimates from factor models can diverge from realized values by large factors when the model misses risks, and TE measured over benign windows understates active risk in regime shifts. A low-TE 'active' fund may simply be a closet indexer charging active fees.",
+    "misconceptions": "Tracking error is not a mistake or failure — for index funds it should be minimal, but for active mandates a larger TE is the deliberate price of seeking alpha — and it excludes market-direction risk, measuring only deviation from the benchmark.",
+    "example": "An active equity fund whose monthly returns deviate from its benchmark with a standard deviation of 0.67% has a tracking error of about 0.67% * sqrt(12), roughly 2.3% annualized.",
+    "citations": [
+      {
+        "source": "Wikipedia: Tracking error",
+        "url": "https://en.wikipedia.org/wiki/Tracking_error",
+        "section": "Definition; Formulas",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

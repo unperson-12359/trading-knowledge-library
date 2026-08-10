@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/jensen-s-alpha",
+  "canonical_sha256": "cdd46674422b6793f371011df612e9ddcd32ab42f639e215069b90ea31140f94",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/jensen-s-alpha",
+    "name": "Jensen's alpha",
+    "aliases": [
+      "Jensen's measure",
+      "ex-post alpha",
+      "CAPM alpha"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The intercept of the regression of a portfolio's excess returns on the market's excess returns — the abnormal return over what the CAPM predicts for the portfolio's beta. Introduced by Michael Jensen in 1968 to evaluate mutual fund managers; it generalizes to multi-factor models as the return unexplained by the included factors.",
+    "intuition": "It is the residual: after accounting for the market exposure you took (beta), how much return was left over that the market can't explain?",
+    "mechanics": "Regress periodic excess portfolio returns on excess market returns; the estimated intercept is alpha, with its t-statistic indicating statistical significance. Adding factors (size, value, momentum) redefines alpha against the richer model — 3-factor, 4-factor alphas, and so on.",
+    "formula": "alpha_J = R_i - [ R_f + beta_i * (R_M - R_f) ] = (R_i - R_f) - beta_i * (R_M - R_f), with R_i the portfolio return, R_M the market return, R_f the risk-free rate, and beta_i the portfolio beta.",
+    "relationships": [
+      "Treynor ratio",
+      "Sharpe ratio",
+      "Information ratio",
+      "Beta",
+      "Tracking error"
+    ],
+    "failure_modes": "Alpha is model-dependent: it shrinks or vanishes as explanatory factors are added, so 'alpha' against CAPM may be beta against a better model. Estimated betas and alphas are noisy and non-stationary, and in small samples are statistically indistinguishable from luck; survivorship and backfill bias inflate reported fund alphas.",
+    "misconceptions": "A positive historical alpha is not proof of skill — significance requires many observations, and the efficient-markets critique holds that persistent alpha after costs is rare — nor is alpha the same as raw outperformance, which can come entirely from beta.",
+    "example": "A fund returns 12% when the risk-free rate is 3%, the market 10%, and the fund's beta is 1.2: alpha = 12% - [3% + 1.2 * (10% - 3%)] = +0.6%.",
+    "citations": [
+      {
+        "source": "Wikipedia: Jensen's alpha",
+        "url": "https://en.wikipedia.org/wiki/Jensen%27s_alpha",
+        "section": "History; Calculation",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

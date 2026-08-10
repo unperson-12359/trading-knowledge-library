@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/sortino-ratio",
+  "canonical_sha256": "fb77d8760524ee32f42206f6d9527f621f6b9658adc0b88a4c3a30596fcda1fa",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/sortino-ratio",
+    "name": "Sortino ratio",
+    "aliases": [],
+    "domain": "Risk and performance",
+    "definition": "A risk-adjusted performance measure that modifies the Sharpe ratio by penalizing only returns below a user-specified target (the minimum acceptable return): the excess of realized return over the target divided by the downside deviation (target semi-deviation).",
+    "intuition": "Upside volatility is profit, not danger; the Sortino ratio only charges the strategy for the harmful, below-target fluctuations.",
+    "mechanics": "Choose the target return T (e.g. 0% or the risk-free rate), compute the average realized excess over T and the downside deviation DR — the root of the probability-weighted squared below-target shortfalls — then divide. Developed by Frank Sortino and Brian Rom within post-modern portfolio theory.",
+    "formula": "S = (R - T) / DR, with DR = sqrt( integral_{-inf}^{T} (T - r)^2 f(r) dr ), where R is the average realized return, T the target (MAR), and f(r) the return distribution.",
+    "relationships": [
+      "Sharpe ratio",
+      "Downside volatility",
+      "Semivariance",
+      "Omega ratio"
+    ],
+    "failure_modes": "Results hinge on the chosen target and on having enough below-target observations; short samples make DR statistically fragile. For near-symmetric distributions with T near the median it adds little over Sharpe, and discrete versus continuous conventions distort comparability.",
+    "misconceptions": "It is not Sharpe with a naive 'standard deviation of negative returns': the deviation is computed against a target across the whole distribution, and a higher Sortino than Sharpe does not mean the strategy is safer — only that its volatility skews to the upside.",
+    "example": "A strategy returning 28% annualized with a 7% downside deviation against a 5.25% target has a Sortino near 3.25 even though its total-volatility Sharpe is unimpressive — the classic asymmetric-payoff case.",
+    "citations": [
+      {
+        "source": "Wikipedia: Sortino ratio",
+        "url": "https://en.wikipedia.org/wiki/Sortino_ratio",
+        "section": "Definition",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

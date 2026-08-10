@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/scenario-analysis",
+  "canonical_sha256": "ea7d4e9832443a96572feacb418ffbf8c119be7e74f09595d0906a1ce1010538",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/scenario-analysis",
+    "name": "Scenario analysis",
+    "aliases": [
+      "what-if analysis",
+      "scenario testing"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The evaluation of portfolio or firm outcomes under explicitly constructed states of the world — combinations of factor moves reflecting historical episodes, hypothetical narratives, or reverse-engineered loss targets — used to understand exposure to joint events rather than single-factor moves.",
+    "intuition": "It is structured what-if thinking: pick a coherent story (recession, rate shock, venue failure) and trace what it does to every position at once.",
+    "mechanics": "Build scenarios as joint moves in risk factors (prices, volatilities, correlations, liquidity), then re-value the book under each; reverse stress testing starts from a defined failure point, such as a capital breach, and works backward to the scenarios that produce it. Within stress-testing frameworks, scenario selection and severity are governance decisions tied to risk appetite.",
+    "formula": "Scenario impact = V(f_1', ..., f_k') - V(f_1, ..., f_k), where f_i are risk factors and primes denote their shocked values.",
+    "relationships": [
+      "Stress testing",
+      "Sensitivity analysis",
+      "Value at risk",
+      "Tail risk",
+      "Model risk"
+    ],
+    "failure_modes": "Results are entirely conditional on scenario choice and internal consistency — factors that cannot co-move are often shocked together, and vice versa — and the correlation assumptions inside scenarios are judgmental and fail in real crises. It enumerates imagined risks and is silent on unimagined ones.",
+    "misconceptions": "Scenario analysis is not prediction and carries no probabilities by default — a scenario is a conditional exercise, not a forecast — and running more scenarios does not amount to covering the tail.",
+    "example": "Testing the book under a 'crypto venue failure' scenario — BTC -40%, stressed funding rates, stablecoin depeg, withdrawal halt simultaneously — to see which positions and counterparties break first.",
+    "citations": [
+      {
+        "source": "BCBS: Stress testing principles",
+        "url": "https://www.bis.org/bcbs/publ/d450.htm",
+        "section": "Principles (scenarios and sensitivities within stress testing frameworks)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/information-ratio",
+  "canonical_sha256": "f17523096eb728379c510023d8fc6bbe64866990fe7781b5225ecb81eb9e64cd",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/information-ratio",
+    "name": "Information ratio",
+    "aliases": [
+      "IR",
+      "appraisal ratio (variant)"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The ratio of active return (portfolio return minus benchmark return) to active risk (the tracking error, i.e. the standard deviation of the active return). It measures the consistency of a manager's value added per unit of benchmark-relative risk and is the natural analogue of the Sharpe ratio for benchmarked mandates.",
+    "intuition": "It grades the active bet itself: how much did deviating from the index earn, per unit of deviation risk taken?",
+    "mechanics": "Compute the active return series against the agreed benchmark, take its mean and its standard deviation (tracking error), and divide; annualize both components. Top-quartile managers historically achieve annualized IRs around 0.5 (Grinold and Kahn). Using regression alpha and residual risk instead yields the appraisal ratio.",
+    "formula": "IR = E[R_p - R_b] / sigma(R_p - R_b) = alpha / omega, where omega = sqrt(var(R_p - R_b)) is the tracking error.",
+    "relationships": [
+      "Tracking error",
+      "Sharpe ratio",
+      "Jensen's alpha",
+      "Treynor ratio"
+    ],
+    "failure_modes": "It is benchmark-dependent: the same manager posts different IRs against different indices, and gaming the benchmark (closet indexing with tilts) can flatter it. It uses arithmetic active returns and ignores leverage, so geometric-compounding effects can make a genuinely value-adding manager look negative.",
+    "misconceptions": "The IR numerator is simple active return, not Jensen's regression alpha — using regression alpha makes it the appraisal ratio, a different measure — and a high IR with tiny tracking error may reflect almost no real active management.",
+    "example": "A manager beating the benchmark by 2% per year with a 4% tracking error has an information ratio of 0.5, the level Grinold and Kahn associate with top-quartile performance.",
+    "citations": [
+      {
+        "source": "Wikipedia: Information ratio",
+        "url": "https://en.wikipedia.org/wiki/Information_ratio",
+        "section": "Definition; Use in finance",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -2,7 +2,7 @@
   "$schema": "../schemas/skill-manifest.schema.json",
   "schema_version": 1,
   "target_count": 1500,
-  "completed_count": 540,
+  "completed_count": 560,
   "skills": [
     {
       "$schema": "../../../../schemas/concept-skill.schema.json",
@@ -43605,6 +43605,1607 @@
         "risk-and-performance/stress-testing",
         "risk-and-performance/volatility",
         "risk-and-performance/model-risk"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-expected-shortfall",
+      "concept_id": "risk-and-performance/expected-shortfall",
+      "display_name": "Expected shortfall",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Expected shortfall using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Expected shortfall",
+        "CVaR",
+        "conditional value at risk",
+        "average value at risk",
+        "tail VaR",
+        "ES",
+        "explain Expected shortfall",
+        "apply Expected shortfall to a trading question",
+        "common misconception about Expected shortfall"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/risk-and-performance/expected-shortfall",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "c853c7ec0175b15849eceddc723c12335299afaf0c74db40cbf111f9ef0488ca"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/value-at-risk",
+        "risk-and-performance/tail-risk",
+        "risk-and-performance/stress-testing",
+        "risk-and-performance/drawdown"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-stress-testing",
+      "concept_id": "risk-and-performance/stress-testing",
+      "display_name": "Stress testing",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Stress testing using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Stress testing",
+        "stress test",
+        "explain Stress testing",
+        "apply Stress testing to a trading question",
+        "common misconception about Stress testing"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/risk-and-performance/stress-testing",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "f7267811e44166d2a55121ee8d0a610439b03fcfaf739aa4d9fc150978d1c284"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/scenario-analysis",
+        "risk-and-performance/sensitivity-analysis",
+        "risk-and-performance/value-at-risk",
+        "risk-and-performance/expected-shortfall",
+        "risk-and-performance/model-risk",
+        "risk-and-performance/tail-risk"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-scenario-analysis",
+      "concept_id": "risk-and-performance/scenario-analysis",
+      "display_name": "Scenario analysis",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Scenario analysis using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Scenario analysis",
+        "what-if analysis",
+        "scenario testing",
+        "explain Scenario analysis",
+        "apply Scenario analysis to a trading question",
+        "common misconception about Scenario analysis"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/risk-and-performance/scenario-analysis",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "ea7d4e9832443a96572feacb418ffbf8c119be7e74f09595d0906a1ce1010538"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/stress-testing",
+        "risk-and-performance/sensitivity-analysis",
+        "risk-and-performance/value-at-risk",
+        "risk-and-performance/tail-risk",
+        "risk-and-performance/model-risk"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-sensitivity-analysis",
+      "concept_id": "risk-and-performance/sensitivity-analysis",
+      "display_name": "Sensitivity analysis",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Sensitivity analysis using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Sensitivity analysis",
+        "factor sensitivity",
+        "bump analysis",
+        "explain Sensitivity analysis",
+        "apply Sensitivity analysis to a trading question",
+        "common misconception about Sensitivity analysis"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/risk-and-performance/sensitivity-analysis",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "8efb14e69b6d3b940d2e962e453cbbd5dda97747e23f552e39a64ce9627110aa"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/scenario-analysis",
+        "risk-and-performance/stress-testing",
+        "risk-and-performance/model-risk",
+        "risk-and-performance/risk-limit"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-sharpe-ratio",
+      "concept_id": "risk-and-performance/sharpe-ratio",
+      "display_name": "Sharpe ratio",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Sharpe ratio using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Sharpe ratio",
+        "reward-to-variability ratio",
+        "Sharpe measure",
+        "explain Sharpe ratio",
+        "apply Sharpe ratio to a trading question",
+        "common misconception about Sharpe ratio"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/risk-and-performance/sharpe-ratio",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "27ef47f7d09a171a97b480c599b6e6782512a5392b36ca873ef8b7f81df3cbc5"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/sortino-ratio",
+        "risk-and-performance/information-ratio",
+        "risk-and-performance/treynor-ratio",
+        "risk-and-performance/volatility",
+        "risk-and-performance/kelly-criterion"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-sortino-ratio",
+      "concept_id": "risk-and-performance/sortino-ratio",
+      "display_name": "Sortino ratio",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Sortino ratio using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Sortino ratio",
+        "explain Sortino ratio",
+        "apply Sortino ratio to a trading question",
+        "common misconception about Sortino ratio"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/risk-and-performance/sortino-ratio",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "fb77d8760524ee32f42206f6d9527f621f6b9658adc0b88a4c3a30596fcda1fa"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/sharpe-ratio",
+        "risk-and-performance/downside-volatility",
+        "risk-and-performance/semivariance",
+        "risk-and-performance/omega-ratio"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-calmar-ratio",
+      "concept_id": "risk-and-performance/calmar-ratio",
+      "display_name": "Calmar ratio",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Calmar ratio using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Calmar ratio",
+        "drawdown ratio",
+        "explain Calmar ratio",
+        "apply Calmar ratio to a trading question",
+        "common misconception about Calmar ratio"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/risk-and-performance/calmar-ratio",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "5fc4ecc232e6ff286237969d5724068e429bad410c27343e77cff16f5d496dbe"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/maximum-drawdown",
+        "risk-and-performance/drawdown",
+        "risk-and-performance/sterling-ratio",
+        "risk-and-performance/sharpe-ratio",
+        "risk-and-performance/equity-curve"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-sterling-ratio",
+      "concept_id": "risk-and-performance/sterling-ratio",
+      "display_name": "Sterling ratio",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Sterling ratio using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Sterling ratio",
+        "Sterling risk-adjusted ratio",
+        "explain Sterling ratio",
+        "apply Sterling ratio to a trading question",
+        "common misconception about Sterling ratio"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/risk-and-performance/sterling-ratio",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "e5cedc16606cfa0aa0da0f8cb6839c9808710745f1aa8c39f1e0cff33e46c92c"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/calmar-ratio",
+        "risk-and-performance/maximum-drawdown",
+        "risk-and-performance/drawdown",
+        "risk-and-performance/sharpe-ratio"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-omega-ratio",
+      "concept_id": "risk-and-performance/omega-ratio",
+      "display_name": "Omega ratio",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Omega ratio using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Omega ratio",
+        "Omega measure",
+        "explain Omega ratio",
+        "apply Omega ratio to a trading question",
+        "common misconception about Omega ratio"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/risk-and-performance/omega-ratio",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "5c750a09d38615b59be57a9d3e1bfc6ef054e137d53ce893e115abe60e871da7"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/sortino-ratio",
+        "risk-and-performance/sharpe-ratio",
+        "risk-and-performance/downside-volatility",
+        "risk-and-performance/expected-shortfall"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-information-ratio",
+      "concept_id": "risk-and-performance/information-ratio",
+      "display_name": "Information ratio",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Information ratio using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Information ratio",
+        "IR",
+        "appraisal ratio (variant)",
+        "explain Information ratio",
+        "apply Information ratio to a trading question",
+        "common misconception about Information ratio"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/risk-and-performance/information-ratio",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "f17523096eb728379c510023d8fc6bbe64866990fe7781b5225ecb81eb9e64cd"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/tracking-error",
+        "risk-and-performance/sharpe-ratio",
+        "risk-and-performance/treynor-ratio"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-treynor-ratio",
+      "concept_id": "risk-and-performance/treynor-ratio",
+      "display_name": "Treynor ratio",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Treynor ratio using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Treynor ratio",
+        "reward-to-volatility ratio",
+        "Treynor measure",
+        "explain Treynor ratio",
+        "apply Treynor ratio to a trading question",
+        "common misconception about Treynor ratio"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/risk-and-performance/treynor-ratio",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "ed5ab14ff6fa7f379bfa0e9e660b6b1adc246f418286e424abf1622dbc2822ed"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/sharpe-ratio",
+        "portfolio-management/beta",
+        "risk-and-performance/information-ratio"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-jensen-s-alpha",
+      "concept_id": "risk-and-performance/jensen-s-alpha",
+      "display_name": "Jensen's alpha",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Jensen's alpha using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Jensen's alpha",
+        "Jensen's measure",
+        "ex-post alpha",
+        "CAPM alpha",
+        "explain Jensen's alpha",
+        "apply Jensen's alpha to a trading question",
+        "common misconception about Jensen's alpha"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/risk-and-performance/jensen-s-alpha",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "cdd46674422b6793f371011df612e9ddcd32ab42f639e215069b90ea31140f94"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/treynor-ratio",
+        "risk-and-performance/sharpe-ratio",
+        "risk-and-performance/information-ratio",
+        "portfolio-management/beta",
+        "risk-and-performance/tracking-error"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-tracking-error",
+      "concept_id": "risk-and-performance/tracking-error",
+      "display_name": "Tracking error",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Tracking error using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Tracking error",
+        "active risk",
+        "TE",
+        "explain Tracking error",
+        "apply Tracking error to a trading question",
+        "common misconception about Tracking error"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/risk-and-performance/tracking-error",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "2797765b1010cd84fd40db648bddbbc7261c8fd1f85293779ab692fd5ce142fe"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/information-ratio",
+        "risk-and-performance/sharpe-ratio",
+        "risk-and-performance/directional-exposure"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-hit-rate",
+      "concept_id": "risk-and-performance/hit-rate",
+      "display_name": "Hit rate",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Hit rate using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Hit rate",
+        "success rate",
+        "batting average",
+        "explain Hit rate",
+        "apply Hit rate to a trading question",
+        "common misconception about Hit rate"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/risk-and-performance/hit-rate",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "adecb9593a6d1daaef9d0d0594f058fa5a7fd338ea2b74ba1e5c041dbe0e88a9"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/win-rate",
+        "risk-and-performance/loss-rate",
+        "risk-and-performance/trade-expectancy",
+        "risk-and-performance/breakeven-rate"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-equity-curve",
+      "concept_id": "risk-and-performance/equity-curve",
+      "display_name": "Equity curve",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Equity curve using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Equity curve",
+        "cumulative PnL curve",
+        "account equity curve",
+        "explain Equity curve",
+        "apply Equity curve to a trading question",
+        "common misconception about Equity curve"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/risk-and-performance/equity-curve",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "95af553cc77f7db33104ed0fbc31869f18f2633aae10a9c7dc03cc56b8002e9c"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/drawdown",
+        "risk-and-performance/maximum-drawdown",
+        "risk-and-performance/underwater-curve",
+        "risk-and-performance/time-under-water",
+        "risk-and-performance/trade-expectancy"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-underwater-curve",
+      "concept_id": "risk-and-performance/underwater-curve",
+      "display_name": "Underwater curve",
+      "domain": "Risk and performance",
+      "description": "Explain, compare, or apply Underwater curve using the library's structured Risk and performance reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Underwater curve",
+        "underwater equity curve",
+        "drawdown curve",
+        "explain Underwater curve",
+        "apply Underwater curve to a trading question",
+        "common misconception about Underwater curve"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/risk-and-performance/underwater-curve",
+      "canonical": {
+        "source_path": "concepts/risk-and-performance.json",
+        "sha256": "bef8c6bc19934aba818579a4524b5712755a96122993ecc7fed651bdf88404eb"
+      },
+      "related_concept_ids": [
+        "risk-and-performance/drawdown",
+        "risk-and-performance/maximum-drawdown",
+        "risk-and-performance/time-under-water",
+        "risk-and-performance/drawdown-duration",
+        "risk-and-performance/equity-curve"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-portfolio",
+      "concept_id": "portfolio-management/portfolio",
+      "display_name": "Portfolio",
+      "domain": "Portfolio management",
+      "description": "Explain, compare, or apply Portfolio using the library's structured Portfolio management reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Portfolio",
+        "investment portfolio",
+        "explain Portfolio",
+        "apply Portfolio to a trading question",
+        "common misconception about Portfolio"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/portfolio-management/portfolio",
+      "canonical": {
+        "source_path": "concepts/portfolio-management.json",
+        "sha256": "622baf2d5e6b5a0a12f4139c67583e3ead85bf3098b3788552881a054e61d2d9"
+      },
+      "related_concept_ids": [
+        "portfolio-management/asset-allocation",
+        "portfolio-management/diversification",
+        "portfolio-management/portfolio-variance",
+        "portfolio-management/rebalancing"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-asset-allocation",
+      "concept_id": "portfolio-management/asset-allocation",
+      "display_name": "Asset allocation",
+      "domain": "Portfolio management",
+      "description": "Explain, compare, or apply Asset allocation using the library's structured Portfolio management reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Asset allocation",
+        "asset mix",
+        "explain Asset allocation",
+        "apply Asset allocation to a trading question",
+        "common misconception about Asset allocation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/portfolio-management/asset-allocation",
+      "canonical": {
+        "source_path": "concepts/portfolio-management.json",
+        "sha256": "ee2fb2451616fa4b7877578ece68ae91d5d8947225a58c4893a44a481446e416"
+      },
+      "related_concept_ids": [
+        "portfolio-management/strategic-asset-allocation",
+        "portfolio-management/tactical-asset-allocation",
+        "portfolio-management/diversification",
+        "portfolio-management/rebalancing",
+        "portfolio-management/portfolio"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-strategic-asset-allocation",
+      "concept_id": "portfolio-management/strategic-asset-allocation",
+      "display_name": "Strategic asset allocation",
+      "domain": "Portfolio management",
+      "description": "Explain, compare, or apply Strategic asset allocation using the library's structured Portfolio management reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Strategic asset allocation",
+        "SAA",
+        "policy portfolio",
+        "policy mix",
+        "explain Strategic asset allocation",
+        "apply Strategic asset allocation to a trading question",
+        "common misconception about Strategic asset allocation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/portfolio-management/strategic-asset-allocation",
+      "canonical": {
+        "source_path": "concepts/portfolio-management.json",
+        "sha256": "1c865664bd80d91585eeb452f6a45d8ce62af2e60f217c72aae79b2b3a698641"
+      },
+      "related_concept_ids": [
+        "portfolio-management/asset-allocation",
+        "portfolio-management/tactical-asset-allocation",
+        "portfolio-management/rebalancing",
+        "portfolio-management/diversification"
+      ]
+    },
+    {
+      "$schema": "../../../../schemas/concept-skill.schema.json",
+      "schema_version": 1,
+      "version": 1,
+      "skill_name": "tkl-tactical-asset-allocation",
+      "concept_id": "portfolio-management/tactical-asset-allocation",
+      "display_name": "Tactical asset allocation",
+      "domain": "Portfolio management",
+      "description": "Explain, compare, or apply Tactical asset allocation using the library's structured Portfolio management reference, including failure modes and misconceptions.",
+      "trigger_phrases": [
+        "Tactical asset allocation",
+        "TAA",
+        "explain Tactical asset allocation",
+        "apply Tactical asset allocation to a trading question",
+        "common misconception about Tactical asset allocation"
+      ],
+      "supported_intents": [
+        "explain",
+        "compare",
+        "apply",
+        "diagnose-misconception"
+      ],
+      "context_requirements": {
+        "required": [
+          "the user's question or claim",
+          "the intended analysis context"
+        ],
+        "optional": [
+          "market and venue",
+          "timeframe",
+          "current observations",
+          "risk constraints"
+        ]
+      },
+      "workflow": [
+        "Identify whether the request asks to explain, compare, apply, or diagnose a misconception.",
+        "Read references/concept.json and verify its canonical_sha256 matches this profile.",
+        "Use the definition, mechanics, relationships, and citations as sourced facts.",
+        "Request or label missing context before applying the concept to a market situation.",
+        "Separate sourced facts from analytical inferences and unknown live conditions.",
+        "State the concept's failure modes and misconceptions before giving a practical implication.",
+        "Cite the carried sources and return JSON when the user requests machine-readable output."
+      ],
+      "constraints": [
+        "Do not invent live market data, venue rules, or user positions.",
+        "Do not place orders or claim certainty or guaranteed profitability.",
+        "Do not present educational analysis as personalized financial advice.",
+        "Do not treat the concept alone as a complete entry, exit, or sizing rule.",
+        "Flag stale or venue-specific facts that require current official documentation."
+      ],
+      "output_contract": {
+        "format": "human-readable-or-json-on-request",
+        "required_fields": [
+          "concept_id",
+          "intent",
+          "summary",
+          "facts",
+          "inferences",
+          "unknowns",
+          "failure_modes",
+          "misconceptions",
+          "citations",
+          "warning"
+        ]
+      },
+      "core": false,
+      "batch_number": 28,
+      "package_path": "skills/concepts/portfolio-management/tactical-asset-allocation",
+      "canonical": {
+        "source_path": "concepts/portfolio-management.json",
+        "sha256": "d778873707e6d5b6392962d6890551e6f2e6445d2348fcfc089b8699886678d9"
+      },
+      "related_concept_ids": [
+        "portfolio-management/strategic-asset-allocation",
+        "portfolio-management/asset-allocation",
+        "portfolio-management/rebalancing"
       ]
     }
   ]

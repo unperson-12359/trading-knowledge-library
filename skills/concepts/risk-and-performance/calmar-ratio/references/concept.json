@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/calmar-ratio",
+  "canonical_sha256": "5fc4ecc232e6ff286237969d5724068e429bad410c27343e77cff16f5d496dbe",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/calmar-ratio",
+    "name": "Calmar ratio",
+    "aliases": [
+      "drawdown ratio"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A drawdown-based performance measure: the average annual (compound) rate of return over a trailing 36-month window divided by the maximum drawdown over the same window, computed monthly. Created by Terry W. Young in 1991 for evaluating commodity trading advisors.",
+    "intuition": "It prices performance in units of worst pain: how much annual return do you get for each unit of the deepest hole the strategy digs in three years?",
+    "mechanics": "Compute the compound annualized return over the last 36 months and divide by the absolute maximum drawdown measured on that window; recalculate monthly so the ratio evolves gradually. A close relative, the MAR ratio, uses the full track record from inception instead of the rolling window.",
+    "formula": "Calmar = CAGR(36 months) / |max drawdown(36 months)|.",
+    "relationships": [
+      "Maximum drawdown",
+      "Drawdown",
+      "Sterling ratio",
+      "Sharpe ratio",
+      "Equity curve"
+    ],
+    "failure_modes": "The 36-month window makes it backward-window-dependent: a crisis rolling out of the window can improve the ratio without any change in the strategy, and young funds without a full window are unevaluable. Like all drawdown ratios it is driven by a single worst episode.",
+    "misconceptions": "Calmar and MAR ratios are not identical — Calmar uses a rolling 36-month window while MAR uses inception-to-date data — and a high Calmar can coexist with mediocre recent performance if the window's drawdown was shallow.",
+    "example": "A CTA with a 15% compound annual return and a 10% maximum drawdown over the trailing 36 months has a Calmar ratio of 1.5.",
+    "citations": [
+      {
+        "source": "Wikipedia: Calmar ratio",
+        "url": "https://en.wikipedia.org/wiki/Calmar_ratio",
+        "section": "Definition (Young 1991)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

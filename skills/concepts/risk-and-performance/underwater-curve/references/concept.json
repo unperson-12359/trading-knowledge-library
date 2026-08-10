@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/underwater-curve",
+  "canonical_sha256": "bef8c6bc19934aba818579a4524b5712755a96122993ecc7fed651bdf88404eb",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/underwater-curve",
+    "name": "Underwater curve",
+    "aliases": [
+      "underwater equity curve",
+      "drawdown curve"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The time series of percentage (or absolute) drawdown from the running equity peak, plotted as a persistently non-positive curve that touches zero only at new equity highs. It is the drawdown view of the equity curve, showing the depth and duration of every loss episode at a glance.",
+    "intuition": "Flip the equity curve's perspective: instead of how high you've climbed, the underwater curve shows how far below the surface you've spent your time.",
+    "mechanics": "At each period compute (running peak - current equity) / running peak and plot it; the depth (maximum drawdown), width (time under water / drawdown duration), and area of the resulting episodes summarize the strategy's pain profile better than the equity curve alone.",
+    "formula": "UW_t = ( E_t - max_{s<=t} E_s ) / max_{s<=t} E_s <= 0, where E_t is equity at time t.",
+    "relationships": [
+      "Drawdown",
+      "Maximum drawdown",
+      "Time under water",
+      "Drawdown duration",
+      "Equity curve"
+    ],
+    "failure_modes": "It inherits every flaw of drawdown statistics: sample dependence, censoring of unrecovered episodes, and flattering by smoothed marks; and it hides the return side — two strategies with identical underwater curves can have very different compound returns.",
+    "misconceptions": "A brief, shallow underwater curve does not prove a safe strategy — it may simply never have met a regime shift — and a curve not back at zero by the sample end means the worst episode is still running, not that it ended.",
+    "example": "A fund whose equity peaked 14 months ago and sits 8% below that peak shows an underwater curve pinned at -8% for the whole episode, making the recovery burden (an 8.7% gain is needed) explicit.",
+    "citations": [
+      {
+        "source": "Wikipedia: Drawdown (economics)",
+        "url": "https://en.wikipedia.org/wiki/Drawdown_(economics)",
+        "section": "Definition; Pseudocode (drawdown series computation)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/treynor-ratio",
+  "canonical_sha256": "ed5ab14ff6fa7f379bfa0e9e660b6b1adc246f418286e424abf1622dbc2822ed",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/treynor-ratio",
+    "name": "Treynor ratio",
+    "aliases": [
+      "reward-to-volatility ratio",
+      "Treynor measure"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A risk-adjusted performance measure relating a portfolio's excess return over the risk-free rate to its systematic risk (beta) rather than total volatility: the reward-to-volatility ratio introduced by Jack Treynor.",
+    "intuition": "It pays you only for market risk you can't diversify away: excess return per unit of beta, ignoring idiosyncratic swings a diversified investor needn't bear.",
+    "mechanics": "Compute the portfolio's average return minus the risk-free rate and divide by the portfolio's beta against the market. Meaningful comparisons assume the evaluated portfolios are sub-portfolios within a broader diversified whole; for undiversified holdings, total-risk measures such as Sharpe are more appropriate.",
+    "formula": "T = (r_i - r_f) / beta_i, where r_i is the portfolio return, r_f the risk-free rate, and beta_i the portfolio's market beta.",
+    "relationships": [
+      "Sharpe ratio",
+      "Jensen's alpha",
+      "Beta",
+      "Information ratio"
+    ],
+    "failure_modes": "Beta is an unstable, window-dependent estimate, and the ratio says nothing about diversification quality — two portfolios with identical beta but different total risk rank the same even when one carries large unrewarded idiosyncratic risk. It is a ranking device, not a measure of value added.",
+    "misconceptions": "Treynor is not interchangeable with Sharpe: dividing by beta instead of sigma can rank the same funds in opposite orders, and a high Treynor for an undiversified portfolio is misleading because unsystematic risk is excluded from the denominator.",
+    "example": "A portfolio returning 20% with a 5% risk-free rate and beta 1.5 has a Treynor ratio of (0.20 - 0.05) / 1.5 = 0.10.",
+    "citations": [
+      {
+        "source": "Wikipedia: Treynor ratio",
+        "url": "https://en.wikipedia.org/wiki/Treynor_ratio",
+        "section": "Formula; Limitations",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

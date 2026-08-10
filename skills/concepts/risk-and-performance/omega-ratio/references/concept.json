@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/omega-ratio",
+  "canonical_sha256": "5c750a09d38615b59be57a9d3e1bfc6ef054e137d53ce893e115abe60e871da7",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/omega-ratio",
+    "name": "Omega ratio",
+    "aliases": [
+      "Omega measure"
+    ],
+    "domain": "Risk and performance",
+    "definition": "A performance measure defined by Keating and Shadwick (2002) as the probability-weighted ratio of gains to losses relative to a threshold return: the area of the return distribution above the threshold divided by the area below it. Because it uses the entire distribution, it captures all moments rather than only mean and variance.",
+    "intuition": "Split the whole return distribution at your 'good enough' line and weigh everything above against everything below — no moment is thrown away.",
+    "mechanics": "Partition the cumulative return distribution at threshold theta, integrate the tail masses above and below, and take their ratio. Omega of 1 at a given threshold means gains and losses balance; higher is better. Setting theta to zero recovers the Bernardo-Ledoit gain-loss ratio as a special case.",
+    "formula": "Omega(theta) = [ integral_theta^inf (1 - F(r)) dr ] / [ integral_{-inf}^theta F(r) dr ], where F is the cumulative distribution of returns and theta the threshold return.",
+    "relationships": [
+      "Sortino ratio",
+      "Sharpe ratio",
+      "Downside volatility",
+      "Expected shortfall"
+    ],
+    "failure_modes": "Empirical estimation needs enough data to characterize both tails, and the ratio is threshold-dependent — rankings can flip as theta moves. Its non-convex standard form complicates portfolio optimization, requiring transformation to linear-fractional programs.",
+    "misconceptions": "Capturing 'all moments' does not make Omega universally superior: with sparse data the tail integrals are the least reliably estimated part, and the threshold choice is as discretionary as the Sortino target it was meant to transcend.",
+    "example": "With threshold 0%, a strategy whose probability-weighted gains above zero total twice its probability-weighted losses has Omega = 2, summarizing skew and kurtosis that a Sharpe ratio would miss.",
+    "citations": [
+      {
+        "source": "Wikipedia: Omega ratio",
+        "url": "https://en.wikipedia.org/wiki/Omega_ratio",
+        "section": "Definition (Keating and Shadwick 2002)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

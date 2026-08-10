@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/hit-rate",
+  "canonical_sha256": "adecb9593a6d1daaef9d0d0594f058fa5a7fd338ea2b74ba1e5c041dbe0e88a9",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/hit-rate",
+    "name": "Hit rate",
+    "aliases": [
+      "success rate",
+      "batting average"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The proportion of trades, forecasts, or periods that are 'hits' — profitable trades, correct directional calls, or outperforming intervals, depending on context. In trading-performance statistics it is synonymous with the win rate.",
+    "intuition": "The batting average of a strategy or forecaster: how often the call or the trade actually worked.",
+    "mechanics": "Count hits over total trials in the sample. For trading systems a hit is a trade with PnL above zero after costs (equivalent to win rate); for forecasting it is a correct sign prediction. It gains meaning only alongside payoff asymmetry — the average win versus the average loss.",
+    "formula": "Hit rate = (number of hits) / (number of trials), e.g. winning trades / total closed trades.",
+    "relationships": [
+      "Win rate",
+      "Loss rate",
+      "Trade expectancy",
+      "Breakeven rate"
+    ],
+    "failure_modes": "A 55% hit rate is meaningless without the payoff ratio — it can be highly profitable or ruinous depending on the size of wins versus losses. Small samples make the rate statistically meaningless, and transaction costs flip marginal hit rates from green to red.",
+    "misconceptions": "Hit rate is not a skill certificate: market makers and trend followers profit with hit rates on opposite sides of 50% because their payoff asymmetries differ; only hit rate combined with payoff structure determines expectancy.",
+    "example": "A forecaster right on direction 58 of 100 days has a 58% hit rate; a trading system profitable on 42 of 100 trades has a 42% hit rate — viable if winners average twice the losers.",
+    "citations": [
+      {
+        "source": "Investopedia: Gap Risk",
+        "url": "https://www.investopedia.com/terms/g/gaprisk.asp",
+        "section": "Strategies for Managing Gap Risk (win rate and breakeven discussion)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

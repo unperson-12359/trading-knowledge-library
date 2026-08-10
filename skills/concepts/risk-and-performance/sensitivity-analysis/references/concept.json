@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/sensitivity-analysis",
+  "canonical_sha256": "8efb14e69b6d3b940d2e962e453cbbd5dda97747e23f552e39a64ce9627110aa",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/sensitivity-analysis",
+    "name": "Sensitivity analysis",
+    "aliases": [
+      "factor sensitivity",
+      "bump analysis"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The measurement of how a portfolio's value or a model's output changes in response to a change in one input or risk factor at a time; the Greeks (delta, vega, rho), basis-point values, and one-at-a-time parameter perturbations are its standard forms.",
+    "intuition": "Rather than shocking the whole world, nudge one dial at a time and read the needle: how much does the book lose per basis point, per vol point, per day of decay?",
+    "mechanics": "Compute first-order (and higher-order) partial responses: bump a single input by a small amount and re-price, or use analytic derivatives. BCBS stress-testing principles require that models assessing the impacts of scenarios and sensitivities be fit for purpose; in practice, sensitivity limits (delta, DV01, and vega caps) operationalize the results.",
+    "formula": "Sensitivity ~= [V(x + h) - V(x)] / h per unit of factor x; e.g. DV01 = change in value for a 1bp parallel rate move.",
+    "relationships": [
+      "Scenario analysis",
+      "Stress testing",
+      "Market risk",
+      "Model risk",
+      "Risk limit"
+    ],
+    "failure_modes": "One-at-a-time moves miss interaction effects — real crises move factors together nonlinearly — and linear sensitivities misstate exposure for convex positions such as options exactly when moves are large. Sensitivities are also local: they describe the neighborhood of current prices, not jumps.",
+    "misconceptions": "A book with zero delta is not risk-free — gamma, vega, and higher-order sensitivities remain — and sensitivity analysis is not a substitute for scenario analysis, since it assumes the other dials stay put.",
+    "example": "An options desk measures vega at +$50k per volatility point: a 5-point implied-volatility crush loses roughly $250k, a number no delta measure would reveal.",
+    "citations": [
+      {
+        "source": "BCBS: Stress testing principles",
+        "url": "https://www.bis.org/bcbs/publ/d450.htm",
+        "section": "Principle 7 (models and methodologies for scenarios and sensitivities)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

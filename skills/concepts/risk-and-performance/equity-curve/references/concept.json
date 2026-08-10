@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/equity-curve",
+  "canonical_sha256": "95af553cc77f7db33104ed0fbc31869f18f2633aae10a9c7dc03cc56b8002e9c",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/equity-curve",
+    "name": "Equity curve",
+    "aliases": [
+      "cumulative PnL curve",
+      "account equity curve"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The time series of a trading account's or strategy's value — cumulative realized profit/loss plus open equity, net of deposits and withdrawals — plotted over time. It is the primary visual record of performance, from which drawdown, time under water, and related statistics are computed.",
+    "intuition": "It is the strategy's cardiogram: trend, smoothness, and depth of dips say more about robustness than any single return number.",
+    "mechanics": "Mark the account to market each period and plot cumulative equity; read off slope (return), path volatility, drawdowns (peak-to-trough declines), and recovery times. Some practitioners overlay a moving average on the curve and reduce size when equity falls below it ('equity curve trading').",
+    "formula": "E_t = E_0 + sum_{i=1..t} PnL_i (+ deposits - withdrawals); drawdown at t = (max_{s<=t} E_s - E_t) / max_{s<=t} E_s.",
+    "relationships": [
+      "Drawdown",
+      "Maximum drawdown",
+      "Underwater curve",
+      "Time under water",
+      "Trade expectancy"
+    ],
+    "failure_modes": "A smooth equity curve can be manufactured by illiquid marks or by hiding open losses (marking only closed trades), and backtested curves embed overfitting — the live realization is one path from a distribution the backtest does not show. Curve-based size rules can whipsaw at regime boundaries.",
+    "misconceptions": "The equity curve is not just a price chart of profits — conventions differ on open equity and cash flows — and two curves with identical endpoints can represent radically different risk through different drawdowns and time under water.",
+    "example": "An account starting at $100k that reaches $130k, falls to $110k, and recovers to $140k shows a 15.4% mid-path drawdown on its equity curve — invisible if you only compare start and end values.",
+    "citations": [
+      {
+        "source": "TradesViz Glossary: Equity Curve",
+        "url": "https://www.tradesviz.com/glossary/equity-curve/",
+        "section": "What is an Equity Curve; Equity Curve Analysis",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "concept_id": "risk-and-performance/sharpe-ratio",
+  "canonical_sha256": "27ef47f7d09a171a97b480c599b6e6782512a5392b36ca873ef8b7f81df3cbc5",
+  "source_path": "concepts/risk-and-performance.json",
+  "concept": {
+    "id": "risk-and-performance/sharpe-ratio",
+    "name": "Sharpe ratio",
+    "aliases": [
+      "reward-to-variability ratio",
+      "Sharpe measure"
+    ],
+    "domain": "Risk and performance",
+    "definition": "The ratio of a fund's average differential (excess) return over a benchmark or risk-free rate to the standard deviation of that differential return — the reward-to-variability measure introduced by William Sharpe in 1966 and generalized in his 1994 exposition. It summarizes expected (ex ante) or realized (ex post) return per unit of total risk.",
+    "intuition": "It answers: for each unit of volatility endured, how much return above the risk-free alternative did the strategy deliver? Higher means more efficient conversion of risk into return.",
+    "mechanics": "Compute the differential return series (fund minus benchmark or risk-free rate), take its mean and standard deviation over the sample, and divide; annualize by scaling the mean by the period count and sigma by its square root. The ratio is scale-independent — leverage changes mean and sigma proportionally — which is why it suits zero-investment strategies.",
+    "formula": "S = E[D] / sigma_D, where D_t = R_F,t - R_B,t is the differential return versus the benchmark or risk-free rate; annualized, S_ann = S_period * sqrt(P) for P periods per year.",
+    "relationships": [
+      "Sortino ratio",
+      "Information ratio",
+      "Treynor ratio",
+      "Volatility",
+      "Kelly criterion",
+      "Volatility targeting"
+    ],
+    "failure_modes": "It uses only the first two moments, so skewed or fat-tailed strategies (option selling, carry) show inflated Sharpes until the tail event arrives; smoothed or stale marks on illiquid assets understate sigma and overstate the ratio. It is also time-scale dependent and assumes the differential returns are comparable across the sample.",
+    "misconceptions": "A high historical Sharpe is not a forecast — ex post ratios are noisy estimates of ex ante performance — and the numerator must be the differential (excess) return: dividing the raw return mean by sigma loses the measure's meaning.",
+    "example": "An annual excess return of 6% with 15% volatility gives a Sharpe ratio of 0.40 — Sharpe's own illustration of a developed-country stock market index.",
+    "citations": [
+      {
+        "source": "Sharpe, W. F.: The Sharpe Ratio (Journal of Portfolio Management, Fall 1994; author-hosted reprint, Stanford)",
+        "url": "https://web.stanford.edu/~wfsharpe/art/sr/sr.htm",
+        "section": "The Ratio (ex ante and ex post definitions)",
+        "accessed": "2026-08-06"
+      }
+    ]
+  }
+}
